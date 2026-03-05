@@ -8,7 +8,7 @@
 
 body{
 font-family: Georgia, serif;
-max-width: 720px;
+max-width: 760px;
 margin: 80px auto;
 padding: 20px;
 line-height: 1.7;
@@ -16,20 +16,49 @@ color:#222;
 background:#fafafa;
 }
 
+header{
+display:flex;
+align-items:center;
+gap:25px;
+margin-bottom:40px;
+}
+
+header img{
+width:120px;
+border-radius:6px;
+}
+
 h1{
-font-size:42px;
-margin-bottom:10px;
+margin:0;
+font-size:40px;
 }
 
 .tagline{
 color:#666;
-margin-bottom:50px;
-font-size:18px;
+margin-top:8px;
+}
+
+nav{
+margin-top:20px;
+}
+
+nav a{
+margin-right:20px;
+text-decoration:none;
+border-bottom:1px solid #ccc;
+color:#000;
+}
+
+nav a:hover{
+border-bottom:1px solid #000;
+}
+
+section{
+margin-top:60px;
 }
 
 h2{
-margin-top:50px;
-font-size:22px;
+margin-bottom:10px;
 }
 
 a{
@@ -43,9 +72,9 @@ border-bottom:1px solid #000;
 }
 
 .footer{
-margin-top:60px;
-color:#888;
+margin-top:80px;
 font-size:14px;
+color:#888;
 }
 
 </style>
@@ -54,41 +83,92 @@ font-size:14px;
 
 <body>
 
+<header>
+
+<img src="photo.jpg">
+
+<div>
 <h1>Sabino Pereira</h1>
 
 <p class="tagline">
 Writing about society, technology and human behavior.
 </p>
 
+<nav>
+<a href="#about">About</a>
+<a href="#essays">Essays</a>
+<a href="#books">Books</a>
+<a href="#contact">Contact</a>
+</nav>
+
+</div>
+
+</header>
+
+<section id="about">
+
 <h2>About</h2>
 
 <p>
-I write about the contradictions of modern life — technology, productivity,
-belief systems and the strange incentives shaping contemporary society.
+I write about technology, productivity, belief systems and the strange incentives shaping modern society.
 </p>
 
 <p>
-My work explores how traditional values, emerging technologies and human
-nature collide in the 21st century.
+My work explores how traditional values and emerging technologies collide in the 21st century.
 </p>
 
-<h2>Writing</h2>
+</section>
 
-<p>
-Essays and ideas will appear here soon.
-</p>
+
+<section id="essays">
+
+<h2>Essays</h2>
+
+<ul>
+
+<li>
+<a href="#">Why modern productivity culture fails</a>
+</li>
+
+<li>
+<a href="#">Technology and the illusion of progress</a>
+</li>
+
+<li>
+<a href="#">Belief systems in the age of algorithms</a>
+</li>
+
+</ul>
+
+</section>
+
+
+<section id="books">
 
 <h2>Books</h2>
 
 <p>
-Upcoming publications and projects.
+Upcoming publications and writing projects.
 </p>
 
-<h2>Elsewhere</h2>
+</section>
+
+
+<section id="contact">
+
+<h2>Contact</h2>
 
 <p>
+
+<a href="mailto:email@email.com">Email</a>  
+<br><br>
+
 <a href="https://github.com/sabinopereira">GitHub</a>
+
 </p>
+
+</section>
+
 
 <div class="footer">
 © Sabino Pereira
