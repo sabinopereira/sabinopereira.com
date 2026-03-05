@@ -17,29 +17,36 @@ background:#fafafa;
 }
 
 header{
-display:flex;
-align-items:center;
-gap:25px;
-margin-bottom:40px;
-}
-
-header img{
-width:120px;
-border-radius:6px;
+margin-bottom:60px;
 }
 
 h1{
-margin:0;
-font-size:40px;
+font-size:42px;
+margin-bottom:10px;
 }
 
 .tagline{
-color:#666;
-margin-top:8px;
+font-size:20px;
+color:#555;
+margin-bottom:30px;
+}
+
+.hero-button{
+display:inline-block;
+padding:10px 18px;
+border:1px solid #000;
+text-decoration:none;
+color:#000;
+margin-top:10px;
+}
+
+.hero-button:hover{
+background:#000;
+color:white;
 }
 
 nav{
-margin-top:20px;
+margin-top:30px;
 }
 
 nav a{
@@ -54,11 +61,15 @@ border-bottom:1px solid #000;
 }
 
 section{
-margin-top:60px;
+margin-top:70px;
 }
 
 h2{
 margin-bottom:10px;
+}
+
+.book{
+margin-bottom:30px;
 }
 
 a{
@@ -72,7 +83,7 @@ border-bottom:1px solid #000;
 }
 
 .footer{
-margin-top:80px;
+margin-top:100px;
 font-size:14px;
 color:#888;
 }
@@ -85,37 +96,43 @@ color:#888;
 
 <header>
 
-<img src="photo.jpg">
-
-<div>
 <h1>Sabino Pereira</h1>
 
 <p class="tagline">
-Writing about society, technology and human behavior.
+Books and essays about modern society, incentives and belief systems.
 </p>
 
+<a class="hero-button" href="#books">View my books</a>
+
 <nav>
-<a href="#about">About</a>
-<a href="#essays">Essays</a>
 <a href="#books">Books</a>
+<a href="#essays">Essays</a>
+<a href="#about">About</a>
+<a href="#store">Store</a>
 <a href="#contact">Contact</a>
 </nav>
 
-</div>
-
 </header>
 
-<section id="about">
 
-<h2>About</h2>
+<section id="books">
 
-<p>
-I write about technology, productivity, belief systems and the strange incentives shaping modern society.
-</p>
+<h2>Books</h2>
 
-<p>
-My work explores how traditional values and emerging technologies collide in the 21st century.
-</p>
+<div class="book">
+<strong>Book Title One</strong><br>
+A short sentence describing the core idea of the book.
+</div>
+
+<div class="book">
+<strong>Book Title Two</strong><br>
+A short sentence explaining the main thesis.
+</div>
+
+<div class="book">
+<strong>Book Title Three</strong><br>
+Another concise description of the book.
+</div>
 
 </section>
 
@@ -138,17 +155,40 @@ My work explores how traditional values and emerging technologies collide in the
 <a href="#">Belief systems in the age of algorithms</a>
 </li>
 
+<li>
+<a href="#">The incentives shaping modern society</a>
+</li>
+
 </ul>
 
 </section>
 
 
-<section id="books">
+<section id="about">
 
-<h2>Books</h2>
+<h2>About</h2>
 
 <p>
-Upcoming publications and writing projects.
+I write about modern society, incentives and the strange systems shaping human behavior.
+</p>
+
+<p>
+My background is in compliance and financial crime prevention, while my creative work focuses on writing, design and independent publishing.
+</p>
+
+</section>
+
+
+<section id="store">
+
+<h2>Store</h2>
+
+<p>
+Selected merchandise and print-on-demand products inspired by my writing.
+</p>
+
+<p>
+<a href="#">Visit the store</a>
 </p>
 
 </section>
@@ -160,7 +200,7 @@ Upcoming publications and writing projects.
 
 <p>
 
-<a href="mailto:email@email.com">Email</a>  
+<a href="mailto:youremail@email.com">Email</a>
 <br><br>
 
 <a href="https://github.com/sabinopereira">GitHub</a>
