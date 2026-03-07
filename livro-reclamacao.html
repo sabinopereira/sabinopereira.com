@@ -4,11 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Livro de Reclamação para o Mundo — Sabino Pereira</title>
 
 <style>
-
 body{
 font-family: Georgia, serif;
 max-width: 720px;
@@ -18,25 +16,46 @@ line-height: 1.8;
 color:#111;
 background:#ffffff;
 }
-
+.site-nav{
+position:fixed;
+top:0;
+left:0;
+right:0;
+background:#fff;
+border-bottom:1px solid #eee;
+padding:14px 30px;
+display:flex;
+gap:24px;
+z-index:100;
+font-family: Georgia, serif;
+font-size:15px;
+}
+.site-nav a{
+text-decoration:none;
+color:#111;
+border-bottom:1px solid transparent;
+}
+.site-nav a:hover{
+border-bottom:1px solid #111;
+}
+.site-nav a.active{
+border-bottom:1px solid #111;
+}
 h1{
 font-size:42px;
 font-weight:normal;
 margin-bottom:10px;
 }
-
 .tagline{
 font-size:20px;
 color:#666;
 margin-bottom:30px;
 }
-
 .book-cover{
 width:220px;
 margin-top:20px;
 box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
-
 .hero-button{
 display:inline-block;
 padding:12px 22px;
@@ -46,46 +65,45 @@ color:#111;
 margin-right:10px;
 margin-top:25px;
 }
-
 .hero-button:hover{
 background:#111;
 color:white;
 }
-
-.back{
-margin-top:60px;
-display:block;
-color:#666;
+.book-layout{
+display:flex;
+gap:50px;
+align-items:flex-start;
+margin-top:40px;
 }
-
+.book-content{
+max-width:420px;
+}
 </style>
 </head>
 
 <body>
 
-<h1>Livro de Reclamação para o Mundo</h1>
+<nav class="site-nav">
+  <a href="index.html">Home</a>
+  <a href="quiet-power.html">Quiet Power</a>
+  <a href="livro-reclamacao.html" class="active">Livro de Reclamação</a>
+  <a href="ideas.html">Ideas</a>
+  <a href="contact.html">Contact</a>
+</nav>
 
-<p class="tagline"><strong>Crónicas do Absurdo</strong></p>
-
-<img class="book-cover" src="books/cover-livro-reclamacao.jpg">
-
-<p>
-A sharp and ironic reflection on the contradictions of modern society.
-</p>
-
-<p>
-Inspired by the Portuguese "complaint book" tradition, this short book turns everyday frustrations into a humorous and philosophical commentary on modern life.
-</p>
-
-<a class="hero-button" href="#">
-▶ Listen to the discussion
-</a>
-
-<a class="hero-button" href="https://amzn.eu/d/00YqZdv1" target="_blank">
-Buy on Amazon
-</a>
-
-<a class="back" href="index.html">← Back to homepage</a>
+<div class="book-layout">
+  <div>
+    <img class="book-cover" src="books/livro-reclamacao-cover.jpg" alt="Livro de Reclamação cover">
+  </div>
+  <div class="book-content">
+    <h1>Livro de Reclamação para o Mundo</h1>
+    <p class="tagline"><strong>Crónicas do Absurdo</strong></p>
+    <p>A sharp and ironic reflection on the contradictions of modern society.</p>
+    <p>Inspired by the Portuguese "complaint book" tradition, this short book turns everyday frustrations into a humorous and philosophical commentary on modern life.</p>
+    <a class="hero-button" href="#">▶ Listen to the discussion</a>
+    <a class="hero-button" href="https://amzn.eu/d/00YqZdv1">Buy on Amazon</a>
+  </div>
+</div>
 
 </body>
 </html>
