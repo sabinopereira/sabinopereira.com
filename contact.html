@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Sabino Pereira</title>
+  <style>
+    body{
+        font-family: Georgia, serif;
+        max-width:720px;
+        margin:100px auto;
+        padding:20px;
+        line-height:1.8;
+        color:#111;
+        background:#fff;
+    }
+    h1{ font-size:40px; font-weight:normal; margin-bottom:40px; }
+    label{ display:block; margin-top:25px; margin-bottom:5px; }
+    input, textarea{
+        width:100%;
+        border:none;
+        border-bottom:1px solid #ccc;
+        padding:8px 4px;
+        font-family: Georgia, serif;
+        font-size:16px;
+        background:transparent;
+    }
+    input:focus, textarea:focus{ outline:none; border-bottom:1px solid #111; }
+    button{
+        margin-top:35px;
+        padding:10px 20px;
+        border:1px solid #111;
+        background:white;
+        cursor:pointer;
+        font-family: Georgia, serif;
+    }
+    button:hover{ background:#111; color:white; }
+    .back{ display:block; margin-top:60px; color:#666; text-decoration:none; }
+    </style>
+  </head>
+  <body>
+    <h1>Contact</h1>
+  <p>If something in the book made you think, I'd like to hear it.</p>
+  <form action="https://formspree.io/f/meerqwop" method="POST">
+    <label>Name</label>
+    <input type="text" name="name" required>
+    <label>Email</label>
+    <input type="email" name="email" required>
+    <label>Message</label>
+    <textarea name="message" rows="5" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+  <a class="back" href="index.html">← Back to homepage</a>
+  </body>
+</html>
