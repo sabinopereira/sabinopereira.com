@@ -22,35 +22,40 @@ text-align:center;
 margin-bottom:50px;
 }
 
-h1{
-font-size:52px;
-margin-bottom:10px;
-text-align:center;
+.site-title {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 3rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  margin: 40px 0 8px;
+  text-align: center;
+  color: #3c2f1d;
 }
 
-.tagline{
-font-size:18px;
-color:#555;
-margin-bottom:25px;
+.site-tagline {
+  text-align: center;
+  font-size: 1.05rem;
+  margin: 0 0 16px;
+  color: #5a4630;
 }
 
-nav{
-margin-top:20px;
-margin-bottom:10px;
-text-align:left;
+.main-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin: 12px 0 28px;
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.95rem;
 }
 
-nav a{
-margin-right:18px;
-text-decoration:none;
-color:#333;
-font-weight:500;
+.main-nav a {
+  text-decoration: none;
+  color: #5a4630;
 }
 
-nav a:hover{
-background:#000;
-color:#fff;
-border-color:#000;
+.main-nav span {
+  color: #c1a87a;
 }
 
 section{
@@ -93,19 +98,24 @@ color:#777;
 
 <header>
 
-<h1>Sabino Pereira</h1>
+<h1 class="site-title">Sabino Pereira</h1>
 
-<p class="tagline">
-Essays and books about modern society, discipline and clear thinking.
+<p class="site-tagline">
+  Essays and books about modern society, discipline and clear thinking.
 </p>
 
-<nav>
-<a href="index.html">Home</a>
-<a href="books.html">Books</a>
-<a href="ideas.html">Ideas</a>
-<a href="shop.html">Shop</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
+<nav class="main-nav">
+  <a href="https://sabinopereira.com/index.html">Home</a>
+  <span>|</span>
+  <a href="https://sabinopereira.com/books.html">Books</a>
+  <span>|</span>
+  <a href="https://sabinopereira.com/ideas.html">Ideas</a>
+  <span>|</span>
+  <a href="https://sabinopereira.com/shop.html">Shop</a>
+  <span>|</span>
+  <a href="https://sabinopereira.com/about.html">About</a>
+  <span>|</span>
+  <a href="https://sabinopereira.com/contact.html">Contact</a>
 </nav>
 
 </header>
