@@ -68,76 +68,6 @@ margin-bottom:50px;
   color: #c1a87a;
 }
 
-/* Hero Book */
-.hero-book {
-  padding: 30px 0 20px;
-}
-
-.hero-container {
-  max-width: 960px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 40px;
-  align-items: center;
-}
-
-.section-label {
-  font-size: 1.05rem;
-  margin: 0 0 4px;
-  color: #5a4630;
-}
-
-.book-title {
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 2.4rem;
-  margin: 0;
-  color: #3c2f1d;
-}
-
-.book-subtitle {
-  font-style: italic;
-  margin: 4px 0 16px;
-  color: #5a4630;
-}
-
-.book-description {
-  line-height: 1.5;
-  margin: 0 0 18px;
-  color: #3c2f1d;
-}
-
-.btn-primary {
-  display: inline-block;
-  padding: 10px 24px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-  border: 1px solid #d2b889;
-  background-color: #f9e6c3;
-  color: #3c2f1d;
-}
-
-.hero-book-cover img {
-  width: 100%;
-  max-width: 260px;
-  height: auto;
-  object-fit: cover;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
-  border-radius: 6px;
-}
-
-@media (max-width: 720px) {
-  .hero-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .hero-book-cover img {
-    margin: 20px auto 0;
-  }
-}
-
 section{
 margin-bottom:60px;
 }
@@ -145,6 +75,27 @@ margin-bottom:60px;
 h2{
 font-size:24px;
 margin-bottom:10px;
+}
+
+/* Book section layout */
+.book-section{
+display:flex;
+align-items:flex-start;
+gap:30px;
+margin-top:20px;
+}
+
+.book-cover{
+width:160px;
+height:auto;
+}
+
+.book-content{
+max-width:520px;
+}
+
+.book-content h3{
+margin-top:0;
 }
 
 .button{
@@ -200,27 +151,26 @@ color:#777;
 
 </header>
 
-<section class="hero-book">
-  <div class="hero-container">
-    <div class="hero-book-text">
-      <p class="section-label">Latest Book:</p>
-      <h2 class="book-title">Quiet Power</h2>
-      <p class="book-subtitle">Calm. Focused. Unshaken.</p>
+<section>
 
-      <p class="book-description">
-        Quiet Power is about using introversion as an advantage in a noisy world.
-        It focuses on calm confidence, deep thinking and disciplined action.
-      </p>
+<h2>Latest Book</h2>
 
-      <a class="btn-primary" href="https://www.amazon.com/dp/XXXXXXXX">
-        Buy on Amazon
-      </a>
-    </div>
+<div class="book-section">
+  <img src="books/cover-quiet-power.png" alt="Quiet Power book cover" class="book-cover">
 
-    <div class="hero-book-cover">
-      <img src="books/cover-quiet-power.png" alt="Quiet Power book cover">
-    </div>
+  <div class="book-content">
+    <h3>Quiet Power</h3>
+    <p><strong>Calm. Focused. Unshaken.</strong></p>
+    <p>
+      Quiet Power is about using introversion as an advantage in a noisy world.
+      It focuses on calm confidence, deep thinking and disciplined action.
+    </p>
+    <a class="button" href="https://www.amazon.com/dp/XXXXXXXX">
+      Buy on Amazon
+    </a>
   </div>
+</div>
+
 </section>
 
 <section>
