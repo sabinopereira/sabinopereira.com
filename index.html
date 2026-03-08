@@ -58,6 +58,77 @@ margin-bottom:50px;
   color: #c1a87a;
 }
 
+/* Hero Book */
+.hero-book {
+  margin-bottom: 60px;
+}
+
+.hero-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.hero-book-text {
+  flex: 1;
+}
+
+.hero-book-cover {
+  flex-shrink: 0;
+}
+
+.hero-book-cover img {
+  width: 180px;
+  border-radius: 4px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+  display: block;
+}
+
+.section-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9a7a50;
+  margin: 0 0 8px;
+}
+
+.book-title {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #3c2f1d;
+  margin: 0 0 6px;
+}
+
+.book-subtitle {
+  font-size: 1rem;
+  color: #7a6040;
+  font-style: italic;
+  margin: 0 0 16px;
+}
+
+.book-description {
+  font-size: 0.97rem;
+  color: #444;
+  margin: 0 0 24px;
+  line-height: 1.7;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 11px 24px;
+  background: #3c2f1d;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.btn-primary:hover {
+  background: #5a4630;
+}
+
 section{
 margin-bottom:60px;
 }
@@ -120,18 +191,27 @@ color:#777;
 
 </header>
 
-<section>
+<section class="hero-book">
+  <div class="hero-container">
+    <div class="hero-book-text">
+      <p class="section-label">Latest Book:</p>
+      <h2 class="book-title">Quiet Power</h2>
+      <p class="book-subtitle">Calm. Focused. Unshaken.</p>
 
-<h2>Books</h2>
+      <p class="book-description">
+        Quiet Power is about using introversion as an advantage in a noisy world.
+        It focuses on calm confidence, deep thinking and disciplined action.
+      </p>
 
-<h3>Quiet Power</h3>
+      <a class="btn-primary" href="https://www.amazon.com/dp/XXXXXXXX">
+        Buy on Amazon
+      </a>
+    </div>
 
-<p>
-A short guide about mental strength, calm thinking and staying grounded in a noisy world.
-</p>
-
-<a class="button" href="quiet-power.html">Explore Book</a>
-
+    <div class="hero-book-cover">
+      <img src="books/quiet-power-cover.jpg" alt="Quiet Power book cover">
+    </div>
+  </div>
 </section>
 
 <section>
