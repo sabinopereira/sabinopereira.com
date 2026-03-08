@@ -1,150 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Explore Books — Sabino Pereira</title>
-  <style>
-    body{
-      font-family: Georgia, serif;
-      max-width: 720px;
-      margin: 100px auto;
-      padding: 20px;
-      line-height: 1.8;
-      color:#111;
-      background:#DFD8C1;
-    }
-    .site-nav{
-      position:fixed;
-      top:0;
-      left:0;
-      right:0;
-      background:#DFD8C1;
-      border-bottom:1px solid #eee;
-      padding:14px 30px;
-      display:flex;
-      gap:24px;
-      z-index:100;
-      font-family: Georgia, serif;
-      font-size:15px;
-    }
-    .site-nav a{
-      text-decoration:none;
-      color:#111;
-      border-bottom:1px solid transparent;
-    }
-    .site-nav a:hover{
-      border-bottom:1px solid #111;
-    }
-    .site-nav a.active{
-      border-bottom:1px solid #111;
-    }
-    h1{
-      font-size:40px;
-      font-weight:normal;
-      margin-bottom:40px;
-    }
-    h2{
-      font-size:28px;
-      margin-bottom:15px;
-      font-weight:normal;
-    }
-    .book{
-      display:flex;
-      gap:25px;
-      margin-bottom:50px;
-      align-items:flex-start;
-    }
-    .book img{
-      width:160px;
-      border-radius:4px;
-      box-shadow:0 10px 25px rgba(0,0,0,0.15);
-    }
-    .book-text{
-      text-align:left;
-    }
-    .book-text p{
-      margin-top:6px;
-      color:#333;
-    }
-    .book-text p strong a{
-      font-size:20px;
-    }
-    .book .tag{
-      font-size:13px;
-      color:#888;
-      margin-top:4px;
-    }
-    a{
-      color:#111;
-      text-decoration:none;
-      border-bottom:1px solid #ccc;
-    }
-    a:hover{
-      border-bottom:1px solid #111;
-    }
-    .footer{
-      margin-top:120px;
-      font-size:14px;
-      color:#888;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore Books — Sabino Pereira</title>
+
+<style>
+
+body{
+  font-family: Georgia, serif;
+  max-width:900px;
+  margin:100px auto;
+  padding:20px;
+  line-height:1.8;
+  color:#111;
+  background:#FFFBEB;
+}
+
+/* navigation */
+
+.site-nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  background:#FFFBEB;
+  border-bottom:1px solid #eee;
+  padding:16px 40px;
+  display:flex;
+  gap:28px;
+  z-index:100;
+  font-size:16px;
+}
+
+.site-nav a{
+  text-decoration:none;
+  color:#111;
+  border-bottom:1px solid transparent;
+}
+
+.site-nav a:hover{
+  border-bottom:1px solid #111;
+}
+
+.site-nav a.active{
+  border-bottom:1px solid #111;
+}
+
+/* headings */
+
+h1{
+  font-size:44px;
+  font-weight:normal;
+  margin-bottom:50px;
+}
+
+/* books */
+
+.book{
+  display:flex;
+  gap:30px;
+  margin-bottom:70px;
+  align-items:flex-start;
+}
+
+.book img{
+  width:170px;
+  border-radius:6px;
+  box-shadow:0 12px 28px rgba(0,0,0,0.18);
+}
+
+.book-text{
+  text-align:left;
+  max-width:560px;
+}
+
+.book-text p{
+  margin-top:6px;
+  color:#333;
+}
+
+.book-text strong{
+  font-size:22px;
+}
+
+.tag{
+  font-size:13px;
+  color:#777;
+  margin-top:6px;
+}
+
+/* links */
+
+a{
+  color:#111;
+  text-decoration:none;
+  border-bottom:1px solid #ccc;
+}
+
+a:hover{
+  border-bottom:1px solid #111;
+}
+
+/* amazon button */
+
+.amazon{
+  display:inline-block;
+  margin-top:10px;
+  padding:6px 12px;
+  font-size:14px;
+  background:#FF9900;
+  color:#111;
+  border-radius:5px;
+  text-decoration:none;
+  border:none;
+}
+
+.amazon:hover{
+  background:#e68900;
+}
+
+/* footer */
+
+.footer{
+  margin-top:140px;
+  font-size:14px;
+  color:#777;
+}
+
+</style>
 </head>
+
 <body>
-  <nav class="site-nav">
-    <a href="index.html">Home</a>
-    <a href="books.html" class="active">Explore Books</a>
-    <a href="ideas.html">Ideias</a>
-    <a href="contact.html">Contact</a>
-    <a href="about.html">About</a>
-    <a href="shop.html">Shop</a>
-  </nav>
 
-  <h1>Explore Books</h1>
+<nav class="site-nav">
+<a href="index.html">Home</a>
+<a href="books.html" class="active">Books</a>
+<a href="ideas.html">Ideas</a>
+<a href="contact.html">Contact</a>
+<a href="about.html">About</a>
+<a href="shop.html">Shop</a>
+</nav>
 
-  <div class="book">
-    <div>
-      <a href="quiet-power.html">
-        <img src="books/cover-quiet-power.png" alt="Quiet Power">
-      </a>
-      <p class="tag">Published March 2026</p>
-    </div>
-    <div class="book-text">
-      <p><strong><a href="quiet-power.html">Quiet Power</a></strong></p>
-      <p>Calm. Focused. Unshaken.</p>
-      <p>A short guide to cultivating inner strength and mental clarity in everyday life.</p>
-      <p><a href="https://amzn.eu/d/0aqOJyCI">Buy on Amazon →</a></p>
-    </div>
-  </div>
+<h1>Explore Books</h1>
 
-  <div class="book">
-    <div>
-      <a href="livro-reclamacao.html">
-        <img src="books/cover-livro-reclamacao.jpg" alt="Livro de Reclamação para o Mundo">
-      </a>
-      <p class="tag">Published February 2026</p>
-    </div>
-    <div class="book-text">
-      <p><strong><a href="livro-reclamacao.html">Livro de Reclamação para o Mundo</a></strong></p>
-      <p>Crónicas do Absurdo</p>
-      <p>A sharp and ironic reflection on the contradictions of modern society.</p>
-      <p><a href="https://amzn.eu/d/00YqZdv1">Buy on Amazon →</a></p>
-    </div>
-  </div>
+<!-- BOOK 1 -->
 
-  <div class="book">
-    <div>
-      <img src="books/cover-modern-senior-guide.png" alt="The Modern Senior Survival Guide" style="width:160px;opacity:0.4;">
-    </div>
-    <div class="book-text">
-      <p><strong>The Modern Senior Survival Guide</strong></p>
-      <p>A practical guide for navigating the modern world as a senior.</p>
-      <p class="tag">Coming soon</p>
-    </div>
-  </div>
+<div class="book">
 
-  <div class="footer">
-    &copy; 2026 Sabino Pereira — All rights reserved
-  </div>
+<div>
+<a href="quiet-power.html">
+<img src="books/cover-quiet-power.png" alt="Quiet Power">
+</a>
+
+<p class="tag">Published March 2026</p>
+</div>
+
+<div class="book-text">
+
+<p><strong><a href="quiet-power.html">Quiet Power</a></strong></p>
+
+<p>Calm. Focused. Unshaken.</p>
+
+<p>
+A short guide to cultivating inner strength and mental clarity in everyday life.
+</p>
+
+<a class="amazon" href="https://amzn.eu/d/0aTyWKn5">
+Buy on Amazon
+</a>
+
+</div>
+</div>
+
+<!-- BOOK 2 -->
+
+<div class="book">
+
+<div>
+<a href="livro-reclamacao.html">
+<img src="books/cover-livro-reclamacao.jpg" alt="Livro de Reclamação para o Mundo">
+</a>
+
+<p class="tag">Published February 2026</p>
+</div>
+
+<div class="book-text">
+
+<p>
+<strong>
+<a href="livro-reclamacao.html">Livro de Reclamação para o Mundo</a>
+</strong>
+</p>
+
+<p>Crónicas do Absurdo</p>
+
+<p>
+A sharp and ironic reflection on the contradictions of modern society.
+</p>
+
+<a class="amazon" href="https://amzn.eu/d/00YqZdv1">
+Buy on Amazon
+</a>
+
+</div>
+</div>
+
+<!-- BOOK 3 -->
+
+<div class="book">
+
+<div>
+<img src="books/cover-modern-senior-guide.png" alt="The Modern Senior Survival Guide" style="opacity:0.35;">
+</div>
+
+<div class="book-text">
+
+<p><strong>The Modern Senior Survival Guide</strong></p>
+
+<p>
+A practical guide for navigating the modern world as a senior.
+</p>
+
+<p class="tag">Coming soon</p>
+
+</div>
+</div>
+
+<div class="footer">
+© 2026 Sabino Pereira — All rights reserved
+</div>
+
 </body>
 </html>
