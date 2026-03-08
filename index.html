@@ -71,11 +71,6 @@ color:#777;
 margin-bottom:14px;
 }
 
-h2{
-font-size:24px;
-margin-bottom:10px;
-}
-
 .button{
 display:inline-block;
 margin-top:12px;
@@ -91,6 +86,24 @@ font-size:15px;
 
 .button:hover{
 background:#e68a00;
+}
+
+/* FEATURED BOOK LAYOUT */
+
+.book{
+display:flex;
+gap:30px;
+align-items:flex-start;
+}
+
+.book-cover{
+width:180px;
+border-radius:6px;
+box-shadow:0 12px 28px rgba(0,0,0,0.18);
+}
+
+.book-info{
+max-width:600px;
 }
 
 /* Idea card */
@@ -166,9 +179,13 @@ Essays and books about modern society, discipline and clear thinking.
 
 <div class="section-label">Featured Book</div>
 
-<img src="books/cover-quiet-power.png" alt="Quiet Power book cover">
+<div class="book">
 
-<p style="font-size:14px;color:#777;margin-top:6px;">
+<img class="book-cover" src="books/cover-quiet-power.png" alt="Quiet Power">
+
+<div class="book-info">
+
+<p style="font-size:14px;color:#777;margin-top:0;">
 Published March 2026
 </p>
 
@@ -193,6 +210,10 @@ In a culture obsessed with hustle, reaction and visibility, this book shows how 
 <a class="button" href="https://amzn.eu/d/0aTyWKn5">
 Buy Quiet Power on Amazon
 </a>
+
+</div>
+
+</div>
 
 </section>
 
