@@ -144,6 +144,67 @@ margin-top:8px;
 font-size:14px;
 }
 
+.store-section {
+  margin-top: 60px;
+}
+
+.store-grid {
+  display: grid;
+  gap: 30px;
+}
+
+@media (min-width: 768px) {
+  .store-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.store-card {
+  background: #fffdf5;
+  border-radius: 10px;
+  border: 1px solid #e5e0d5;
+  padding: 16px;
+  text-align: left;
+}
+
+.store-card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.store-card h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.store-card .price {
+  margin: 0 0 10px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.btn-store {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #e0c08a;
+  background: #ffe9b3;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #5a4632;
+}
+
+.btn-store:hover {
+  background: #ffd97a;
+}
+
+.store-link {
+  display: inline-block;
+  margin-top: 16px;
+}
+
 footer{
 text-align:center;
 margin-top:80px;
