@@ -126,67 +126,67 @@ color:#444;
 line-height:1.6;
 }
 
-/* Store (novo layout) */
+/* Store */
 
 .store-section {
-  margin-top: 60px;
+margin-top:60px;
 }
 
 .store-grid {
-  display: grid;
-  gap: 30px;
+display:grid;
+gap:30px;
 }
 
-@media (min-width: 768px) {
-  .store-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
+@media (min-width:768px) {
+.store-grid {
+grid-template-columns: repeat(2, minmax(0,1fr));
+}
 }
 
-.store-card {
-  background: #fffdf5;
-  border-radius: 10px;
-  border: 1px solid #e5e0d5;
-  padding: 16px;
-  text-align: left;
+.store-card{
+background:#fffdf5;
+border-radius:10px;
+border:1px solid #e5e0d5;
+padding:16px;
+text-align:left;
 }
 
-.store-card img {
-  width: 100%;
-  border-radius: 6px;
-  margin-bottom: 10px;
+.store-card img{
+width:100%;
+border-radius:6px;
+margin-bottom:10px;
 }
 
-.store-card h3 {
-  margin: 0 0 4px;
-  font-size: 16px;
+.store-card h3{
+margin:0 0 4px;
+font-size:16px;
 }
 
-.store-card .price {
-  margin: 0 0 10px;
-  font-weight: 600;
-  font-size: 14px;
+.store-card .price{
+margin:0 0 10px;
+font-weight:600;
+font-size:14px;
 }
 
-.btn-store {
-  display: inline-block;
-  padding: 8px 14px;
-  border-radius: 6px;
-  border: 1px solid #e0c08a;
-  background: #ffe9b3;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
-  color: #5a4632;
+.btn-store{
+display:inline-block;
+padding:8px 14px;
+border-radius:6px;
+border:1px solid #e0c08a;
+background:#ffe9b3;
+text-decoration:none;
+font-size:14px;
+font-weight:600;
+color:#5a4632;
 }
 
-.btn-store:hover {
-  background: #ffd97a;
+.btn-store:hover{
+background:#ffd97a;
 }
 
-.store-link {
-  display: inline-block;
-  margin-top: 16px;
+.store-link{
+display:inline-block;
+margin-top:16px;
 }
 
 footer{
@@ -281,47 +281,58 @@ Then regret the decision.
 </section>
 
 <section class="store-section">
-  <div class="section-label">Latest Products on the Store</div>
 
-  <div style="text-align:center; margin:10px 0 30px 0;">
-    <img src="qp-collection-1.png"
-         alt="Quiet Power collection"
-         style="max-width:260px; width:100%; height:auto; border-radius:6px;">
-  </div>
+<div class="section-label">Latest Products</div>
 
-  <div class="store-grid">
-    <article class="store-card">
-      <img src="qp-notebook.png" alt="My Quiet Power! Notebook">
-      <h3>My Quiet Power! Notebook</h3>
-      <p class="price">$14.99</p>
-      <p>A5 softcover notebook for creative minds, introverts and deep thinkers.</p>
-      <a class="btn-store" href="https://spdezigns.com/product/27255206" target="_blank" rel="noopener noreferrer">
-        Shop Notebook
-      </a>
-    </article>
+<div class="store-grid">
 
-    <article class="store-card">
-      <img src="qp-bracelet.png" alt="Quiet Power Bracelet">
-      <h3>Quiet Power Bracelet</h3>
-      <p class="price">$29.00</p>
-      <p>A slim bracelet as a daily reminder of focus, resilience and quiet confidence.</p>
-      <a class="btn-store" href="https://spdezigns.com/product/27254968" target="_blank" rel="noopener noreferrer">
-        Shop Bracelet
-      </a>
-    </article>
+<article class="store-card">
 
-    <article class="store-card">
-      <img src="qp-necklace-rose.png" alt="Quiet Power Necklace — Rose Gold">
-      <h3>Quiet Power Necklace — Rose Gold</h3>
-      <p class="price">$39.00</p>
-      <p>A simple rose gold necklace to keep your quiet strength close to your heart.</p>
-      <a class="btn-store" href="https://spdezigns.com/product/27254961" target="_blank" rel="noopener noreferrer">
-        Shop Necklace
-      </a>
-    </article>
-  </div>
+<img src="qp-collection-1.png" alt="Quiet Power Collection">
 
-  <a class="store-link" href="shop.html">Visit the Shop</a>
+<h3>Quiet Power Collection</h3>
+
+<p class="price">From $14.99</p>
+
+<p>
+A minimalist collection inspired by calm strength, discipline and focused thinking.
+</p>
+
+<a class="btn-store"
+href="https://spdezigns.com/product/27255206"
+target="_blank"
+rel="noopener noreferrer">
+Shop Collection
+</a>
+
+</article>
+
+
+<article class="store-card">
+
+<img src="qp-collections-2.png" alt="Quiet Power Collection II">
+
+<h3>Quiet Power Collection II</h3>
+
+<p class="price">From $29.00</p>
+
+<p>
+A second collection of quiet symbols designed for resilience, clarity and inner strength.
+</p>
+
+<a class="btn-store"
+href="https://spdezigns.com/product/27254961"
+target="_blank"
+rel="noopener noreferrer">
+Shop Collection
+</a>
+
+</article>
+
+</div>
+
+<a class="store-link" href="shop.html">Visit the Shop</a>
+
 </section>
 
 <footer>
