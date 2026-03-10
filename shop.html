@@ -1,171 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop — Sabino Pereira</title>
-  <style>
-    body{
-      font-family: Georgia, serif;
-      max-width:720px;
-      margin:100px auto;
-      padding:20px;
-      line-height:1.8;
-      color:#111;
-      background:#DFD8C1;
-    }
-    .site-nav{
-      position:fixed;
-      top:0;
-      left:0;
-      right:0;
-      background:#DFD8C1;
-      border-bottom:1px solid #eee;
-      padding:14px 30px;
-      display:flex;
-      gap:24px;
-      z-index:100;
-      font-family: Georgia, serif;
-      font-size:15px;
-    }
-    .site-nav a{
-      text-decoration:none;
-      color:#111;
-      border-bottom:1px solid transparent;
-    }
-    .site-nav a:hover{
-      border-bottom:1px solid #111;
-    }
-    .site-nav a.active{
-      border-bottom:1px solid #111;
-    }
-    h1{
-      font-size:40px;
-      font-weight:normal;
-      margin-bottom:40px;
-    }
-    h2{
-      font-size:24px;
-      font-weight:normal;
-      margin-top:50px;
-      margin-bottom:15px;
-    }
-    .hero-button{
-      display:inline-block;
-      padding:12px 22px;
-      border:1px solid #111;
-      text-decoration:none;
-      color:#111;
-      margin-top:10px;
-    }
-    .hero-button:hover{
-      background:#111;
-      color:white;
-    }
-    a{
-      color:#111;
-      text-decoration:none;
-      border-bottom:1px solid #ccc;
-    }
-    a:hover{
-      border-bottom:1px solid #111;
-    }
-    .product-card{
-      border:1px solid #ccc;
-      padding:14px 16px;
-      margin:12px 0;
-      background:#e9e2cc;
-    }
-    .product-card strong{
-      display:block;
-      margin-bottom:4px;
-    }
-    .product-card a{
-      border-bottom:1px solid #999;
-    }
-    .footer{
-      margin-top:120px;
-      font-size:14px;
-      color:#888;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop — Sabino Pereira</title>
+
+<style>
+body{
+font-family: Georgia, serif;
+max-width:1100px;
+margin:100px auto;
+padding:20px;
+line-height:1.7;
+color:#111;
+background:#DFD8C1;
+}
+
+.site-nav{
+position:fixed;
+top:0;
+left:0;
+right:0;
+background:#DFD8C1;
+border-bottom:1px solid #e6dfcb;
+padding:14px 30px;
+display:flex;
+gap:24px;
+z-index:100;
+font-size:15px;
+}
+
+.site-nav a{
+text-decoration:none;
+color:#111;
+border-bottom:1px solid transparent;
+}
+
+.site-nav a:hover{
+border-bottom:1px solid #111;
+}
+
+.site-nav a.active{
+border-bottom:1px solid #111;
+}
+
+.hero{
+margin-bottom:50px;
+}
+
+h1{
+font-size:42px;
+font-weight:normal;
+margin-bottom:10px;
+}
+
+.subtitle{
+max-width:700px;
+color:#444;
+font-size:17px;
+margin-bottom:20px;
+}
+
+.hero-button{
+display:inline-block;
+padding:10px 18px;
+border:1px solid #111;
+text-decoration:none;
+color:#111;
+font-size:14px;
+transition:all 0.2s ease;
+}
+
+.hero-button:hover{
+background:#111;
+color:#fff;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:28px;
+margin-top:30px;
+}
+
+.product{
+background:#f5efdf;
+border:1px solid #ddd2b8;
+padding:16px;
+border-radius:14px;
+box-shadow:0 8px 18px rgba(0,0,0,0.04);
+transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product:hover{
+transform:translateY(-3px);
+box-shadow:0 12px 24px rgba(0,0,0,0.08);
+}
+
+.product-image{
+background:#fff;
+border-radius:10px;
+padding:12px;
+margin-bottom:14px;
+border:1px solid #ece5d4;
+}
+
+.product img{
+width:100%;
+height:260px;
+object-fit:contain;
+display:block;
+}
+
+.product h3{
+font-size:18px;
+font-weight:normal;
+margin-bottom:8px;
+line-height:1.4;
+}
+
+.product p{
+font-size:14px;
+color:#444;
+margin-bottom:14px;
+min-height:44px;
+}
+
+.button{
+display:inline-block;
+padding:9px 14px;
+border:1px solid #111;
+text-decoration:none;
+color:#111;
+font-size:14px;
+border-radius:8px;
+transition:all 0.2s ease;
+}
+
+.button:hover{
+background:#111;
+color:#fff;
+}
+
+.section-note{
+margin-top:8px;
+color:#555;
+font-size:15px;
+}
+
+.footer{
+margin-top:100px;
+font-size:14px;
+color:#888;
+}
+</style>
 </head>
+
 <body>
 
 <nav class="site-nav">
-  <a href="index.html">Home</a>
-  <a href="books.html">Explore Books</a>
-  <a href="ideas.html">Ideias</a>
-  <a href="contact.html">Contact</a>
-  <a href="about.html">About</a>
-  <a href="shop.html" class="active">Shop</a>
+<a href="index.html">Home</a>
+<a href="books.html">Explore Books</a>
+<a href="ideas.html">Ideas</a>
+<a href="contact.html">Contact</a>
+<a href="about.html">About</a>
+<a href="shop.html" class="active">Shop</a>
 </nav>
 
+<div class="hero">
 <h1>Shop</h1>
-
-<p>Selected merchandise and print-on-demand products inspired by my writing.</p>
-
-<h2>Books</h2>
-
-<p><a href="quiet-power.html">Quiet Power</a> — available on <a href="https://amzn.eu/d/0aqOJyCI">Amazon</a></p>
-
-<p><a href="livro-reclamacao.html">Livro de Reclamação para o Mundo</a> — available on <a href="https://amzn.eu/d/00YqZdv1">Amazon</a></p>
-
-<h2>Quiet Power Collection</h2>
-
-<p>Quiet Power lifestyle collection</p>
-
-<p>A small, curated collection of products designed around one idea: quiet strength for creative minds.</p>
-
-<!-- Notebook -->
-<div class="product-card">
-  <strong>My Quiet Power! A5 Softcover Notebook</strong>
-  <span>A minimalist notebook for creative minds, introverts and deep thinkers.</span><br>
-  <a href="https://spdezigns.com/product/27255206" target="_blank">View notebook</a>
+<p class="subtitle">
+Quiet Power merchandise and selected print-on-demand products designed around calm focus, quiet strength and minimal style.
+</p>
+<a class="hero-button" href="https://quiet-power-shop.fourthwall.com" target="_blank">Visit full store</a>
+<p class="section-note">All products open in the official Quiet Power store.</p>
 </div>
 
-<!-- T-shirts -->
-<div class="product-card">
-  <strong>Quiet Power T-Shirt — White</strong>
-  <span>Clean white tee with a subtle Quiet Power statement for everyday wear.</span><br>
-  <a href="https://www.amazon.com/dp/B0GRV2959X?customId=B07537H64L&customizationToken=MC_Assembly_1%23B07537H64L&th=1&psc=1" target="_blank">View white shirt</a>
+<div class="products">
+
+<div class="product">
+<div class="product-image">
+<img src="images/quiet-power-essential-black-shirt.avif" alt="Quiet Power Essential Tee Black">
+</div>
+<h3>Quiet Power Essential Tee (Black)</h3>
+<p>Minimal black tee with a clean Quiet Power statement.</p>
+<a class="button" href="https://quiet-power-shop.fourthwall.com/products/quiet-power-essential-tee-black" target="_blank">View product</a>
 </div>
 
-<div class="product-card">
-  <strong>Quiet Power T-Shirt — Black</strong>
-  <span>Black tee with Quiet Power minimal design, ideal for a low-key, confident look.</span><br>
-  <a href="https://www.amazon.com/dp/B0GRSJDM3R?customId=B0752XJYNL&customizationToken=MC_Assembly_1%23B0752XJYNL&th=1&psc=1" target="_blank">View black shirt</a>
+<div class="product">
+<div class="product-image">
+<img src="images/quiet-power-classic-cap.avif" alt="Quiet Power Classic Cap">
+</div>
+<h3>Quiet Power Classic Cap</h3>
+<p>Classic cap with subtle Quiet Power branding.</p>
+<a class="button" href="https://quiet-power-shop.fourthwall.com/products/quiet-power-classic-cap" target="_blank">View product</a>
 </div>
 
-<!-- Necklace -->
-<div class="product-card">
-  <strong>Quiet Power Necklace — Rose Gold</strong>
-  <span>A simple rose gold necklace to keep your quiet strength close to your heart.</span><br>
-  <a href="https://spdezigns.com/product/27254961" target="_blank">View rose gold necklace</a>
+<div class="product">
+<div class="product-image">
+<img src="images/quiet-power-hoodie.avif" alt="Quiet Power Essential Hoodie">
+</div>
+<h3>Quiet Power Essential Hoodie</h3>
+<p>Comfortable hoodie built around quiet strength and everyday focus.</p>
+<a class="button" href="https://quiet-power-shop.fourthwall.com/products/quiet-power-essential-hoodie" target="_blank">View product</a>
 </div>
 
-<div class="product-card">
-  <strong>Quiet Power Necklace — Silver</strong>
-  <span>A minimalist silver necklace for a calm, subtle daily reminder of inner power.</span><br>
-  <a href="https://spdezigns.com/product/27090913" target="_blank">View silver necklace</a>
+<div class="product">
+<div class="product-image">
+<img src="images/quiet-power-hoodie-black.avif" alt="Quiet Power Hoodie Black">
+</div>
+<h3>Quiet Power Hoodie — Black</h3>
+<p>Minimal black hoodie for a calm, low-key and confident look.</p>
+<a class="button" href="https://quiet-power-shop.fourthwall.com/products/quiet-power-hoodie-black" target="_blank">View product</a>
 </div>
 
-<!-- Bracelet -->
-<div class="product-card">
-  <strong>Quiet Power Bracelet</strong>
-  <span>A slim bracelet designed as a daily reminder of focus, resilience and quiet confidence.</span><br>
-  <a href="https://spdezigns.com/product/27254968" target="_blank">View bracelet</a>
+<div class="product">
+<div class="product-image">
+<img src="images/quiet-power-white-shirt.avif" alt="Quiet Power Tee White">
+</div>
+<h3>Quiet Power Tee — White</h3>
+<p>Clean white tee with a subtle Quiet Power message.</p>
+<a class="button" href="https://quiet-power-shop.fourthwall.com/products/quiet-power-tee-white-desert-sand" target="_blank">View product</a>
 </div>
 
-<!-- Frame / Wall Art -->
-<div class="product-card">
-  <strong>Quiet Power Wall Art</strong>
-  <span>Framed print to bring a calm, focused Quiet Power message into your workspace.</span><br>
-  <a href="https://spdezigns.com/product/27255481" target="_blank">View framed wall art</a>
+<div class="product">
+<div class="product-image">
+<img src="images/quiet-power-trucker-cap.avif" alt="Quiet Power Trucker Cap">
+</div>
+<h3>Quiet Power Trucker Cap</h3>
+<p>Casual trucker cap with a simple Quiet Power identity.</p>
+<a class="button" href="https://quiet-power-shop.fourthwall.com/products/quiet-power-trucker-cap" target="_blank">View product</a>
+</div>
+
+<div class="product">
+<div class="product-image">
+<img src="images/quiet-power-poster.avif" alt="Quiet Power Minimal Poster">
+</div>
+<h3>Quiet Power Minimal Poster</h3>
+<p>Minimal wall poster built around the Quiet Power philosophy.</p>
+<a class="button" href="https://quiet-power-shop.fourthwall.com/products/quiet-power-minimal-poster" target="_blank">View product</a>
+</div>
+
+<div class="product">
+<div class="product-image">
+<img src="images/quiet-power-journal.avif" alt="Quiet Power Journal">
+</div>
+<h3>Quiet Power Journal</h3>
+<p>A notebook for thinkers, creators and calm minds.</p>
+<a class="button" href="https://quiet-power-shop.fourthwall.com/products/quiet-power-journal" target="_blank">View product</a>
+</div>
+
+<div class="product">
+<div class="product-image">
+<img src="images/quiet-power-water-bottle.avif" alt="Quiet Power Water Bottle">
+</div>
+<h3>Quiet Power Water Bottle</h3>
+<p>Minimal everyday bottle for focus, movement and routine.</p>
+<a class="button" href="https://quiet-power-shop.fourthwall.com/products/quiet-power-water-bottle" target="_blank">View product</a>
+</div>
+
 </div>
 
 <div class="footer">
-  &copy; 2026 Sabino Pereira — All rights reserved
+© 2026 Sabino Pereira — All rights reserved
 </div>
 
 </body>
