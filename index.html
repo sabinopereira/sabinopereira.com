@@ -290,41 +290,60 @@
     /* ── Site Header ── */
     .site-header {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 2rem;
-      padding: 1.5rem 0;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 2.5rem 0 2rem;
       border-bottom: 1px solid #eee;
     }
 
-    .branding {
-      display: flex;
-      flex-direction: column;
-    }
-
+    /* Branding (nome + subtítulo) */
     .site-title {
-      font-size: 1.6rem;
+      font-size: 2.4rem;
       font-weight: 700;
       margin: 0;
     }
 
     .site-subtitle {
-      margin: 0.2rem 0 0;
-      font-size: 0.9rem;
-      letter-spacing: 0.06em;
+      margin: 0.4rem 0 0;
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      opacity: 0.75;
+      opacity: 0.8;
     }
 
+    /* Navegação */
     .site-nav a {
-      margin-left: 1rem;
+      margin-right: 1.25rem;
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       opacity: 0.85;
     }
 
     .site-nav a:hover {
       opacity: 1;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      .site-header {
+        padding: 1.75rem 0 1.5rem;
+      }
+
+      .site-title {
+        font-size: 1.8rem;
+      }
+
+      .site-subtitle {
+        font-size: 0.85rem;
+        letter-spacing: 0.14em;
+      }
+
+      .site-nav a {
+        display: inline-block;
+        margin-right: 0.8rem;
+        font-size: 0.85rem;
+      }
     }
 </style>
 </head>
@@ -332,7 +351,7 @@
   <header class="site-header">
     <div class="branding">
       <h1 class="site-title">Sabino Pereira</h1>
-      <p class="site-subtitle">Books · Design · Quiet Ideas</p>
+      <p class="site-subtitle">BOOKS · DESIGN · QUIET IDEAS</p>
     </div>
     <nav class="site-nav">
       <a href="/index.html">Home</a>
