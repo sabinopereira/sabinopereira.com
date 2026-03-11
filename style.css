@@ -756,3 +756,8 @@ grid-template-columns:1fr;
 }
 
 }
+.shop-card img{
+width:100%;
+border-radius:10px;
+margin-bottom:0.9rem;
+}
