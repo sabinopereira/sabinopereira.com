@@ -1,190 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Explore Books — Sabino Pereira</title>
-<style>
-body{
-  font-family: Georgia, serif;
-  max-width:900px;
-  margin:100px auto;
-  padding:20px;
-  line-height:1.8;
-  color:#111;
-  background:#FFFBEB;
-}
+  <meta charset="UTF-8">
+  <title>Books — Sabino Pereira</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-/* navigation */
-.site-nav{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  background:#FFFBEB;
-  border-bottom:1px solid #eee;
-  padding:16px 40px;
-  display:flex;
-  gap:28px;
-  z-index:100;
-  font-size:16px;
-}
-.site-nav a{
-  text-decoration:none;
-  color:#111;
-  border-bottom:1px solid transparent;
-}
-.site-nav a:hover{
-  border-bottom:1px solid #111;
-}
-.site-nav a.active{
-  border-bottom:1px solid #111;
-}
+  <meta name="description" content="Explore books by Sabino Pereira — Quiet Power, Livro de Reclamação para o Mundo, and upcoming titles.">
+  <meta name="author" content="Sabino Pereira">
 
-/* headings */
-h1{
-  font-size:44px;
-  font-weight:normal;
-  margin-bottom:50px;
-}
+  <link rel="canonical" href="https://sabinopereira.com/books.html">
+  <link rel="icon" type="image/png" href="/images/avatar.png">
+  <link rel="apple-touch-icon" href="/images/avatar.png">
 
-/* books */
-.book{
-  display:flex;
-  gap:30px;
-  margin-bottom:70px;
-  align-items:flex-start;
-}
-.book img{
-  width:170px;
-  border-radius:6px;
-  box-shadow:0 12px 28px rgba(0,0,0,0.18);
-}
-.book-text{
-  text-align:left;
-  max-width:560px;
-}
-.book-text p{
-  margin-top:6px;
-  color:#333;
-}
-.book-text strong{
-  font-size:22px;
-}
-.tag{
-  font-size:13px;
-  color:#777;
-  margin-top:6px;
-}
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 3rem;
+      line-height: 1.7;
+      color: #111;
+      background: #FFFBEB;
+    }
 
-/* links */
-a{
-  color:#111;
-  text-decoration:none;
-  border-bottom:1px solid #ccc;
-}
-a:hover{
-  border-bottom:1px solid #111;
-}
+    a {
+      color: inherit;
+    }
 
-/* amazon button */
-.amazon{
-  display:inline-block;
-  margin-top:10px;
-  padding:6px 12px;
-  font-size:14px;
-  background:#FF9900;
-  color:#111;
-  border-radius:5px;
-  text-decoration:none;
-  border:none;
-}
-.amazon:hover{
-  background:#e68900;
-}
+    /* Header / Nav */
+    .site-header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 2rem 0 1.75rem;
+      border-bottom: 1px solid #eee;
+    }
 
-/* footer */
-.footer{
-  margin-top:140px;
-  font-size:14px;
-  color:#777;
-}
-</style>
+    .branding-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .site-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .branding-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    .branding-subtitle {
+      margin: 0.35rem 0 0;
+      font-size: 0.9rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.65;
+    }
+
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem 1.1rem;
+    }
+
+    .site-nav a {
+      text-decoration: none;
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+
+    .site-nav a:hover,
+    .site-nav a.active {
+      opacity: 1;
+    }
+
+    /* Page intro */
+    .page-intro {
+      padding: 1rem 0 2rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .page-kicker {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      opacity: 0.75;
+      margin: 0 0 0.5rem;
+    }
+
+    .page-title {
+      font-size: 1.9rem;
+      font-weight: 600;
+      margin: 0 0 0.8rem;
+    }
+
+    .page-text {
+      margin: 0;
+      max-width: 46rem;
+    }
+
+    /* Books list */
+    .books-list {
+      margin-top: 2.75rem;
+    }
+
+    .book-card {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      padding: 1.5rem 0;
+      border-top: 1px solid #eee;
+    }
+
+    .book-card:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .book-cover {
+      width: 160px;
+      border-radius: 8px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .book-cover.coming-soon {
+      opacity: 0.35;
+    }
+
+    .book-content {
+      flex: 1;
+    }
+
+    .book-meta {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.7;
+      margin: 0 0 0.45rem;
+    }
+
+    .book-title {
+      font-size: 1.25rem;
+      margin: 0 0 0.35rem;
+      line-height: 1.25;
+    }
+
+    .book-subtitle {
+      margin: 0 0 0.55rem;
+      font-size: 1rem;
+      opacity: 0.85;
+    }
+
+    .book-description {
+      margin: 0 0 0.9rem;
+      max-width: 38rem;
+    }
+
+    .book-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-block;
+      padding: 0.55rem 1.1rem;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border-radius: 999px;
+      border: none;
+    }
+
+    .btn-primary {
+      background: #111;
+      color: #fff;
+    }
+
+    .btn-secondary {
+      border: 1px solid #ddd;
+      color: #111;
+      background: transparent;
+    }
+
+    .coming-soon-text {
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    .footer {
+      margin-top: 3.25rem;
+      padding-top: 2rem;
+      border-top: 1px solid #eee;
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 700px) {
+      .book-card {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .book-cover {
+        width: 140px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1.25rem 1rem 2.5rem;
+      }
+
+      .branding-title {
+        font-size: 1.8rem;
+      }
+
+      .branding-subtitle {
+        font-size: 0.78rem;
+        letter-spacing: 0.14em;
+      }
+
+      .site-avatar {
+        width: 46px;
+        height: 46px;
+      }
+
+      .site-nav {
+        gap: 0.6rem 0.85rem;
+      }
+
+      .site-nav a {
+        font-size: 0.85rem;
+      }
+
+      .page-title {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<nav class="site-nav">
-  <a href="index.html">Home</a>
-  <a href="books.html" class="active">Books</a>
-  <a href="ideas.html">Ideas</a>
-  <a href="contact.html">Contact</a>
-  <a href="about.html">About</a>
-  <a href="shop.html">Shop</a>
-</nav>
+  <header class="site-header">
+    <div class="branding-wrap">
+      <img src="/images/avatar.png" alt="Sabino Pereira" class="site-avatar">
 
-<h1>Explore Books</h1>
+      <div>
+        <h1 class="branding-title">Sabino Pereira</h1>
+        <p class="branding-subtitle">BOOKS · DESIGN · QUIET IDEAS</p>
+      </div>
+    </div>
 
-<!-- BOOK 1 -->
-<div class="book">
-  <div>
-    <a href="quiet-power.html">
-      <img src="books/cover-quiet-power.png" alt="Quiet Power">
-    </a>
-    <p class="tag">Published March 2026</p>
-  </div>
-  <div class="book-text">
-    <p><strong><a href="quiet-power.html">Quiet Power</a></strong></p>
-    <p>Calm. Focused. Unshaken.</p>
-    <p>
-      A short guide to cultivating inner strength and mental clarity in everyday life.
+    <nav class="site-nav">
+      <a href="/index.html">Home</a>
+      <a href="/books.html" class="active">Books</a>
+      <a href="/ideas.html">Ideas</a>
+      <a href="/podcast.html">Podcast</a>
+      <a href="/about.html">About</a>
+      <a href="/shop.html">Shop</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="page-intro">
+    <p class="page-kicker">Writing</p>
+    <h2 class="page-title">Explore Books</h2>
+    <p class="page-text">
+      Books shaped by reflection, discipline, irony, and modern life — calm on the surface, sharp underneath.
     </p>
-    <a class="amazon" href="https://amzn.eu/d/0aTyWKn5">
-      Buy on Amazon
-    </a>
-  </div>
-</div>
+  </section>
 
-<!-- BOOK 2 -->
-<div class="book">
-  <div>
-    <a href="livro-reclamacao.html">
-      <img src="books/cover-livro-reclamacao.jpg" alt="Livro de Reclamação para o Mundo">
-    </a>
-    <p class="tag">Published February 2026</p>
-  </div>
-  <div class="book-text">
-    <p>
-      <strong>
-        <a href="livro-reclamacao.html">Livro de Reclamação para o Mundo</a>
-      </strong>
-    </p>
-    <p>Crónicas do Absurdo</p>
-    <p>
-      A sharp and ironic reflection on the contradictions of modern society.
-    </p>
-    <a class="amazon" href="https://amzn.eu/d/00YqZdv1">
-      Buy on Amazon
-    </a>
-  </div>
-</div>
+  <section class="books-list">
 
-<!-- BOOK 3 -->
-<div class="book">
-  <div>
-    <img src="books/cover-modern-senior-guide.png" alt="The Modern Senior Survival Guide" style="opacity:0.35;">
-  </div>
-  <div class="book-text">
-    <p><strong>The Modern Senior Survival Guide</strong></p>
-    <p>
-      A practical guide for navigating the modern world as a senior.
-    </p>
-    <p class="tag">Coming soon</p>
-  </div>
-</div>
+    <article class="book-card">
+      <a href="/quiet-power.html">
+        <img src="/books/cover-quiet-power.png" alt="Quiet Power" class="book-cover">
+      </a>
 
-<div class="footer">
-  © 2026 Sabino Pereira — All rights reserved
-</div>
+      <div class="book-content">
+        <p class="book-meta">Published March 2026</p>
+        <h3 class="book-title">
+          <a href="/quiet-power.html">Quiet Power</a>
+        </h3>
+        <p class="book-subtitle">Calm. Focused. Unshaken.</p>
+        <p class="book-description">
+          A short guide to cultivating inner strength and mental clarity in everyday life.
+        </p>
+        <div class="book-actions">
+          <a href="/quiet-power.html" class="btn-secondary">Learn more</a>
+          <a href="https://amzn.eu/d/0aTyWKn5" target="_blank" rel="noopener" class="btn-primary">Buy on Amazon</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="book-card">
+      <a href="/livro-reclamacao.html">
+        <img src="/books/cover-livro-reclamacao.jpg" alt="Livro de Reclamação para o Mundo" class="book-cover">
+      </a>
+
+      <div class="book-content">
+        <p class="book-meta">Published February 2026</p>
+        <h3 class="book-title">
+          <a href="/livro-reclamacao.html">Livro de Reclamação para o Mundo</a>
+        </h3>
+        <p class="book-subtitle">Crónicas do Absurdo</p>
+        <p class="book-description">
+          A sharp and ironic reflection on the contradictions of modern society.
+        </p>
+        <div class="book-actions">
+          <a href="/livro-reclamacao.html" class="btn-secondary">Learn more</a>
+          <a href="https://amzn.eu/d/00YqZdv1" target="_blank" rel="noopener" class="btn-primary">Buy on Amazon</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="book-card">
+      <img src="/books/cover-modern-senior-guide.png" alt="The Modern Senior Survival Guide" class="book-cover coming-soon">
+
+      <div class="book-content">
+        <p class="book-meta">Coming soon</p>
+        <h3 class="book-title">The Modern Senior Survival Guide</h3>
+        <p class="book-description">
+          A practical guide for navigating the modern world with more clarity, confidence, and calm.
+        </p>
+        <p class="coming-soon-text">More details soon.</p>
+      </div>
+    </article>
+
+  </section>
+
+  <div class="footer">
+    © 2026 Sabino Pereira — Built with quiet ideas and steady work.
+  </div>
 
 </body>
 </html>
