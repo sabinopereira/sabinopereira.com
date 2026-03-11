@@ -1,62 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
-<title>Sabino Pereira — Quiet Power, Books, Ideas and Design</title>
+  <meta charset="UTF-8">
+  <title>Sabino Pereira — Quiet Power, Books, Ideas and Design</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Author Sabino Pereira — books, quiet ideas, design and the Quiet Power project. Reflections on discipline, modern life and calm thinking.">
+  <meta name="author" content="Sabino Pereira">
 
-<meta name="description" content="Author Sabino Pereira — books, quiet ideas, design and the Quiet Power project. Reflections on discipline, modern life and calm thinking.">
+  <link rel="canonical" href="https://sabinopereira.com">
+  <link rel="icon" type="image/png" href="/images/avatar.png">
+  <link rel="apple-touch-icon" href="/images/avatar.png">
 
-<meta name="author" content="Sabino Pereira">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Sabino Pereira",
+    "url": "https://sabinopereira.com",
+    "sameAs": [
+      "https://www.instagram.com/my_quiet_power/"
+    ],
+    "jobTitle": "Author",
+    "description": "Author of Quiet Power. Writing about discipline, clarity and calm thinking.",
+    "image": "https://sabinopereira.com/images/avatar.png"
+  }
+  </script>
 
-<link rel="canonical" href="https://sabinopereira.com">
-<link rel="icon" href="/images/avatar.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": "Quiet Power",
+    "author": {
+      "@type": "Person",
+      "name": "Sabino Pereira",
+      "url": "https://sabinopereira.com"
+    },
+    "url": "https://sabinopereira.com/quiet-power.html",
+    "image": "https://sabinopereira.com/images/quiet-power-cover.jpg",
+    "description": "Quiet Power explores discipline, clarity and calm thinking in a noisy world."
+  }
+  </script>
 
-<script type="application/ld+json">
-{
-"@context": "https://schema.org",
-"@type": "Person",
-"name": "Sabino Pereira",
-"url": "https://sabinopereira.com",
-"sameAs": [
-"https://www.instagram.com/my_quiet_power/"
-],
-"jobTitle": "Author",
-"description": "Author of Quiet Power. Writing about discipline, clarity and calm thinking.",
-"image": "https://sabinopereira.com/images/avatar.png"
-}
-</script>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sabino Pereira — Quiet Power">
+  <meta property="og:description" content="Books, ideas and reflections about discipline, clarity and calm thinking in a noisy world.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sabinopereira.com">
+  <meta property="og:image" content="https://sabinopereira.com/images/quiet-power-cover.jpg">
 
-<script type="application/ld+json">
-{
-"@context": "https://schema.org",
-"@type": "Book",
-"name": "Quiet Power",
-"author": {
-"@type": "Person",
-"name": "Sabino Pereira",
-"url": "https://sabinopereira.com"
-},
-"url": "https://sabinopereira.com/quiet-power.html",
-"image": "https://sabinopereira.com/images/quiet-power-cover.jpg",
-"description": "Quiet Power explores discipline, clarity and calm thinking in a noisy world."
-}
-</script>
-
-
-<!-- Open Graph (social media preview) -->
-<meta property="og:title" content="Sabino Pereira — Quiet Power">
-<meta property="og:description" content="Books, ideas and reflections about discipline, clarity and calm thinking in a noisy world.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://sabinopereira.com">
-<meta property="og:image" content="https://sabinopereira.com/images/quiet-power-cover.jpg">
-
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Sabino Pereira — Quiet Power">
-<meta name="twitter:description" content="Books, quiet ideas and reflections about discipline, clarity and calm thinking.">
-<meta name="twitter:image" content="https://sabinopereira.com/images/quiet-power-cover.jpg">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sabino Pereira — Quiet Power">
+  <meta name="twitter:description" content="Books, quiet ideas and reflections about discipline, clarity and calm thinking.">
+  <meta name="twitter:image" content="https://sabinopereira.com/images/quiet-power-cover.jpg">
 
   <style>
     body {
@@ -82,10 +80,26 @@
       border-bottom: 1px solid #eee;
     }
 
+    .branding-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .site-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      flex-shrink: 0;
+    }
+
     .branding-title {
       font-size: 2.2rem;
       font-weight: 700;
       margin: 0;
+      line-height: 1.1;
     }
 
     .branding-subtitle {
@@ -96,8 +110,13 @@
       opacity: 0.8;
     }
 
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem 1.1rem;
+    }
+
     .site-nav a {
-      margin-right: 1.25rem;
       text-decoration: none;
       font-size: 0.95rem;
       opacity: 0.85;
@@ -276,12 +295,25 @@
         font-size: 1.8rem;
       }
 
+      .branding-subtitle {
+        font-size: 0.78rem;
+        letter-spacing: 0.14em;
+      }
+
+      .site-avatar {
+        width: 46px;
+        height: 46px;
+      }
+
       .hero-title {
         font-size: 1.6rem;
       }
 
+      .site-nav {
+        gap: 0.6rem 0.85rem;
+      }
+
       .site-nav a {
-        margin-right: 0.85rem;
         font-size: 0.85rem;
       }
     }
@@ -291,26 +323,26 @@
 <body id="top">
 
   <!-- Header -->
- <header class="site-header">
-  <div class="branding-wrap">
-    <img src="/images/avatar.png" alt="Sabino Pereira" class="site-avatar">
+  <header class="site-header">
+    <div class="branding-wrap">
+      <img src="/images/avatar.png" alt="Sabino Pereira" class="site-avatar">
 
-    <div>
-      <h1 class="branding-title">Sabino Pereira</h1>
-      <p class="branding-subtitle">BOOKS · DESIGN · QUIET IDEAS</p>
+      <div>
+        <h1 class="branding-title">Sabino Pereira</h1>
+        <p class="branding-subtitle">BOOKS · DESIGN · QUIET IDEAS</p>
+      </div>
     </div>
-  </div>
 
-  <nav class="site-nav">
-    <a href="/index.html">Home</a>
-    <a href="/books.html">Books</a>
-    <a href="/ideas.html">Ideas</a>
-    <a href="/podcast.html">Podcast</a>
-    <a href="/about.html">About</a>
-    <a href="/shop.html">Shop</a>
-    <a href="/contact.html">Contact</a>
-  </nav>
-</header>
+    <nav class="site-nav">
+      <a href="/index.html">Home</a>
+      <a href="/books.html">Books</a>
+      <a href="/ideas.html">Ideas</a>
+      <a href="/podcast.html">Podcast</a>
+      <a href="/about.html">About</a>
+      <a href="/shop.html">Shop</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </header>
 
   <!-- Hero Quiet Power -->
   <section class="hero">
@@ -354,7 +386,6 @@
       </p>
       <p>
         <a href="/quiet-power.html" class="btn-secondary">Learn more</a>
-        <!-- Exemplo: quando tiveres o link externo de compra, usa target="_blank" -->
         <!-- <a href="https://amzn.eu/..." target="_blank" rel="noopener" class="btn-primary">Buy on Amazon</a> -->
       </p>
     </div>
@@ -409,7 +440,7 @@
       <h4>Featured pieces</h4>
       <ul>
         <li>Quiet Power classic tee</li>
-        <li>Calm & Focused notebook</li>
+        <li>Calm &amp; Focused notebook</li>
         <li>Quiet Ideas print series</li>
       </ul>
       <p>
@@ -429,7 +460,6 @@
     <div class="podcast-block">
       <h3>Quiet Power episodes</h3>
       <p>Thoughtful audio built for listeners who like depth without the performance.</p>
-      <!-- Quando tiveres feed/Spotify/YouTube, usa target="_blank" -->
       <!-- <p><a href="https://..." target="_blank" rel="noopener" class="btn-secondary">Listen to Quiet Power</a></p> -->
     </div>
 
