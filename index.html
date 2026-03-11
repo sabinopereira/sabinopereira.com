@@ -109,71 +109,72 @@
     }
 
     .hero {
-      padding: 72px 0 36px;
+      padding: 3rem 0 2.5rem;
+      border-bottom: 1px solid #eee;
+      max-width: 720px;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 32px;
-      align-items: center;
+    .hero-kicker {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      opacity: 0.75;
+      margin: 0 0 0.5rem;
     }
 
-    .eyebrow {
-      display: inline-block;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-size: 0.88rem;
-      font-weight: 700;
-      margin-bottom: 18px;
+    .hero-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 0 0 1rem;
     }
 
-    h1 {
-      font-size: clamp(2.4rem, 7vw, 5rem);
-      line-height: 0.98;
-      margin: 0 0 16px;
-      letter-spacing: -1.8px;
-      color: var(--accent);
+    .hero-text {
+      margin: 0 0 1.5rem;
+      line-height: 1.6;
+      max-width: 42rem;
     }
 
-    .hero p {
-      font-size: 1.08rem;
-      color: var(--muted);
-      max-width: 650px;
-      margin: 0 0 24px;
-    }
-
+    /* Botões */
     .hero-actions {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
-      margin-top: 24px;
+      gap: 0.75rem;
     }
 
-    .hero-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: 28px;
-      box-shadow: var(--shadow);
+    .btn-primary, .btn-ghost {
+      display: inline-block;
+      padding: 0.55rem 1.1rem;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border-radius: 999px;
     }
 
-    .hero-card h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      color: var(--accent);
+    .btn-primary {
+      background: #111;
+      color: #fff;
     }
 
-    .hero-card ul {
-      padding-left: 18px;
-      margin: 0;
-      color: var(--muted);
+    .btn-ghost {
+      border: 1px solid #ddd;
+      color: #111;
+    }
+
+    /* Intro list */
+    .intro-list {
+      margin: 2.5rem 0 2rem;
+    }
+
+    .intro-list h3 {
+      margin-bottom: 0.75rem;
+    }
+
+    .intro-list ul {
+      list-style: disc;
+      padding-left: 1.2rem;
     }
 
     section {
-      padding: 28px 0 20px;
+      margin: 3rem 0;
     }
 
     .section-head {
@@ -365,29 +366,26 @@
 
   <main id="top">
     <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">Quiet Power in public</div>
-          <h1>Calm ideas.<br>Strong work.<br>No noise.</h1>
-          <p>
-            Welcome to my digital space — books, quiet reflections, design projects, and practical ideas for people who prefer clarity over chaos.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#books">Explore the books</a>
-            <a class="btn" href="#ideas">Read Quiet Ideas</a>
-          </div>
-        </div>
-
-        <aside class="hero-card">
-          <h3>What you’ll find here</h3>
-          <ul>
-            <li>Books shaped by reflection, discipline, and modern life</li>
-            <li>Quiet Ideas — short observations with depth</li>
-            <li>Design and POD projects with a clean identity</li>
-            <li>Podcast and content built around calm thinking</li>
-          </ul>
-        </aside>
+      <h2 class="hero-kicker">Quiet Power in public</h2>
+      <h3 class="hero-title">Calm ideas. Strong work. No noise.</h3>
+      <p class="hero-text">
+        Welcome to my digital space — books, quiet reflections, design projects,
+        and practical ideas for people who prefer clarity over chaos.
+      </p>
+      <div class="hero-actions">
+        <a href="#books" class="btn-primary">Explore the books</a>
+        <a href="#ideas" class="btn-ghost">Read Quiet Ideas</a>
       </div>
+    </section>
+
+    <section class="intro-list">
+      <h3>What you'll find here</h3>
+      <ul>
+        <li>Books shaped by reflection, discipline, and modern life</li>
+        <li>Quiet Ideas — short observations with depth</li>
+        <li>Design and POD projects with a clear visual identity</li>
+        <li>Podcast and content built around calm thinking</li>
+      </ul>
     </section>
 
     <section id="books">
