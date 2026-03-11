@@ -286,21 +286,61 @@
         padding-top: 48px;
       }
     }
-  </style>
+  
+    /* ── Site Header ── */
+    .site-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .branding {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .site-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .site-subtitle {
+      margin: 0.2rem 0 0;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.75;
+    }
+
+    .site-nav a {
+      margin-left: 1rem;
+      text-decoration: none;
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
+    .site-nav a:hover {
+      opacity: 1;
+    }
+</style>
 </head>
 <body>
   <header class="site-header">
     <div class="branding">
-      <a href="#top" class="site-title">Sabino Pereira</a>
+      <h1 class="site-title">Sabino Pereira</h1>
       <p class="site-subtitle">Books · Design · Quiet Ideas</p>
     </div>
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="books.html">Explore Books</a>
-      <a href="ideas.html">Ideas</a>
-      <a href="about.html">About</a>
-      <a href="shop.html">Shop</a>
-      <a href="contact.html">Contact</a>
+    <nav class="site-nav">
+      <a href="/index.html">Home</a>
+      <a href="/books.html">Explore Books</a>
+      <a href="/ideas.html">Ideas</a>
+      <a href="/about.html">About</a>
+      <a href="/shop.html">Shop</a>
+      <a href="/contact.html">Contact</a>
     </nav>
   </header>
 
