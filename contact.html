@@ -1,1 +1,101 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Contact — Sabino Pereira</title> <style> body{ font-family: Georgia, serif; max-width:720px; margin:100px auto; padding:20px; line-height:1.8; color:#111; background:#DFD8C1; } .site-nav{ position:fixed; top:0; left:0; right:0; background:#DFD8C1; border-bottom:1px solid #eee; padding:14px 30px; display:flex; gap:24px; z-index:100; font-family: Georgia, serif; font-size:15px; } .site-nav a{ text-decoration:none; color:#111; border-bottom:1px solid transparent; } .site-nav a:hover{ border-bottom:1px solid #111; } .site-nav a.active{ border-bottom:1px solid #111; } h1{ font-size:40px; font-weight:normal; margin-bottom:40px; } label{ display:block; margin-top:25px; margin-bottom:5px; } input, textarea{ width:100%; border:none; border-bottom:1px solid #ccc; padding:8px 4px; font-family: Georgia, serif; font-size:16px; background:transparent; } input:focus, textarea:focus{ outline:none; border-bottom:1px solid #111; } button{ margin-top:35px; padding:10px 20px; border:1px solid #111; background:white; cursor:pointer; font-family: Georgia, serif; } button:hover{ background:#111; color:white; } </style> </head> <body> <nav class="site-nav"> <a href="index.html">Home</a> <a href="books.html">Explore Books</a> <a href="ideas.html">Ideias</a> <a href="contact.html" class="active">Contact</a> <a href="about.html">About</a> <a href="shop.html">Shop</a> </nav> <h1>Contact</h1> <p>If something in the book made you think, I'd like to hear it.</p> <form action="https://formspree.io/f/meerqwop" method="POST"> <label>Name</label> <input type="text" name="name" required> <label>Email</label> <input type="email" name="email" required> <label>Message</label> <textarea name="message" rows="5" required></textarea> <button type="submit">Send</button> </form> </body> </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact — Sabino Pereira</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="Contact Sabino Pereira for books, ideas, design, podcast, and creative projects.">
+  <meta name="author" content="Sabino Pereira">
+
+  <link rel="canonical" href="https://sabinopereira.com/contact.html">
+  <link rel="icon" type="image/png" href="/images/avatar.png">
+  <link rel="apple-touch-icon" href="/images/avatar.png">
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="branding-wrap">
+      <img src="/images/avatar.png" alt="Sabino Pereira" class="site-avatar">
+
+      <div>
+        <h1 class="branding-title">Sabino Pereira</h1>
+        <p class="branding-subtitle">BOOKS · DESIGN · QUIET IDEAS</p>
+      </div>
+    </div>
+
+    <nav class="site-nav">
+      <a href="/index.html">Home</a>
+      <a href="/books.html">Books</a>
+      <a href="/ideas.html">Ideas</a>
+      <a href="/podcast.html">Podcast</a>
+      <a href="/about.html">About</a>
+      <a href="/shop.html">Shop</a>
+      <a href="/contact.html" class="active">Contact</a>
+    </nav>
+  </header>
+
+  <section class="page-intro">
+    <p class="page-kicker">Contact</p>
+    <h2 class="page-title">Let’s build something calm and strong.</h2>
+    <p class="page-text">
+      Whether it’s a project, a quiet idea, a book, or a creative collaboration, this is the place to reach me.
+    </p>
+  </section>
+
+  <section class="contact-page">
+    <div class="contact-page-layout">
+
+      <div class="contact-copy">
+        <h3>Get in touch</h3>
+        <p>
+          Use the form to send a message about books, podcast ideas, design work, or future collaborations.
+        </p>
+
+        <div class="contact-copy-block">
+          <h4>Good reasons to message me</h4>
+          <ul>
+            <li>Book-related questions or opportunities</li>
+            <li>Podcast, content, or interview ideas</li>
+            <li>Design and creative collaboration</li>
+            <li>General contact and thoughtful conversation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <form action="https://formspree.io/f/meerqwop" method="POST" class="contact-form">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="7" required></textarea>
+
+          <button type="submit" class="btn-primary contact-submit">Send message</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <h2>Quiet ideas. Clear work. Real contact.</h2>
+    <p>
+      Thanks for visiting. I read messages with attention and intention.
+    </p>
+    <p>
+      <a href="/index.html" class="btn-secondary">Back home</a>
+    </p>
+
+    <p class="footer-note">
+      © 2026 Sabino Pereira — Built with quiet ideas and steady work.
+    </p>
+  </section>
+
+</body>
+</html>
