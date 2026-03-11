@@ -539,6 +539,7 @@ h2 {
 .about-avatar img {
   width: 90px;
   height: 90px;
+  max-width: 90px;
   object-fit: cover;
   border-radius: 50%;
   display: block;
