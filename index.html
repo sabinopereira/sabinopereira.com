@@ -1,117 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sabino Pereira</title>
+  <meta charset="UTF-8">
+  <title>Sabino Pereira — Books · Design · Quiet Ideas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
-    :root {
-      --bg: #f8f2e8;
-      --surface: #fffaf2;
-      --text: #1f1f1f;
-      --muted: #6e655c;
-      --line: #e7dccd;
-      --accent: #4d3f33;
-      --accent-soft: #efe3d3;
-      --max: 1100px;
-      --radius: 22px;
-      --shadow: 0 12px 40px rgba(60, 40, 20, 0.08);
-    }
-
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
     body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: linear-gradient(180deg, #fffaf3 0%, var(--bg) 100%);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .container {
-      width: min(var(--max), calc(100% - 32px));
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      max-width: 800px;
       margin: 0 auto;
+      padding: 1.5rem 1.25rem 3rem;
+      line-height: 1.6;
+      color: #111;
     }
 
+    a {
+      color: inherit;
+    }
+
+    /* Header / Nav */
     .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(10px);
-      background: rgba(255, 250, 243, 0.8);
-      border-bottom: 1px solid rgba(231, 220, 205, 0.8);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 16px 0;
-    }
-
-    .brand {
       display: flex;
       flex-direction: column;
-      gap: 2px;
-    }
-
-    .brand strong {
-      font-size: 1.05rem;
-      letter-spacing: 0.2px;
-    }
-
-    .brand span {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      font-weight: 500;
-      transition: 0.2s ease;
-    }
-
-    .nav-links a:hover { color: var(--accent); }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 18px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: white;
-      font-weight: 600;
-      transition: 0.2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: var(--shadow);
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: white;
-      border-color: var(--accent);
-    }
-
-    .hero {
-      padding: 3rem 0 2.5rem;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 2rem 0 1.75rem;
       border-bottom: 1px solid #eee;
-      max-width: 720px;
+    }
+
+    .branding-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .branding-subtitle {
+      margin: 0.35rem 0 0;
+      font-size: 0.9rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    .site-nav a {
+      margin-right: 1.25rem;
+      text-decoration: none;
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+
+    .site-nav a:hover {
+      opacity: 1;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 2.5rem 0 2.25rem;
+      border-bottom: 1px solid #eee;
     }
 
     .hero-kicker {
@@ -130,18 +76,17 @@
 
     .hero-text {
       margin: 0 0 1.5rem;
-      line-height: 1.6;
-      max-width: 42rem;
+      max-width: 46rem;
     }
 
-    /* Botões */
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
     }
 
-    .btn-primary, .btn-ghost {
+    .btn-primary,
+    .btn-secondary {
       display: inline-block;
       padding: 0.55rem 1.1rem;
       font-size: 0.9rem;
@@ -154,17 +99,18 @@
       color: #fff;
     }
 
-    .btn-ghost {
+    .btn-secondary {
       border: 1px solid #ddd;
       color: #111;
     }
 
-    /* Intro list */
-    .intro-list {
-      margin: 2.5rem 0 2rem;
+    /* Generic sections */
+    section {
+      margin: 2.75rem 0 0;
     }
 
-    .intro-list h3 {
+    h2 {
+      font-size: 1.4rem;
       margin-bottom: 0.75rem;
     }
 
@@ -173,187 +119,131 @@
       padding-left: 1.2rem;
     }
 
-    section {
-      margin: 3rem 0;
+    .intro-list li {
+      margin-bottom: 0.3rem;
     }
 
-    .section-head {
-      margin-bottom: 18px;
+    /* Books section */
+    .books-intro {
+      margin-bottom: 1.5rem;
     }
 
-    .section-head h2 {
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-      margin: 0 0 8px;
-      color: var(--accent);
-      letter-spacing: -0.8px;
+    .feature-block {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid #eee;
     }
 
-    .section-head p {
-      margin: 0;
-      color: var(--muted);
-      max-width: 700px;
+    .feature-block h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1.1rem;
     }
 
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.72);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: var(--shadow);
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      color: var(--accent);
-      font-size: 1.18rem;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .mini-label {
-      display: inline-block;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--accent);
-      background: var(--accent-soft);
-      border-radius: 999px;
-      padding: 6px 10px;
-      margin-bottom: 12px;
-    }
-
-    .feature-list {
-      display: grid;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .feature-item {
-      padding: 14px 16px;
-      border-radius: 16px;
-      background: #fff;
-      border: 1px solid var(--line);
-      color: var(--muted);
-    }
-
-    .cta {
-      margin: 32px 0 8px;
-      padding: 28px;
-      border-radius: 28px;
-      background: var(--accent);
-      color: white;
-      box-shadow: var(--shadow);
-    }
-
-    .cta h2, .cta p { color: white; margin-top: 0; }
-
-    .cta .hero-actions { margin-top: 18px; }
-
-    .cta .btn { background: white; color: var(--accent); border-color: white; }
-
-    .site-footer {
-      padding: 38px 0 60px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 900px) {
-      .hero-grid,
-      .grid-3,
-      .grid-2 {
-        grid-template-columns: 1fr;
-      }
-
-      .nav {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .hero {
-        padding-top: 48px;
-      }
-    }
-  
-    /* ── Site Header ── */
-    .site-header {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1.25rem;
-      padding: 2.5rem 0 2rem;
-      border-bottom: 1px solid #eee;
-    }
-
-    /* Branding (nome + subtítulo) */
-    .site-title {
-      font-size: 2.4rem;
-      font-weight: 700;
-      margin: 0;
-    }
-
-    .site-subtitle {
-      margin: 0.4rem 0 0;
-      font-size: 0.95rem;
-      letter-spacing: 0.18em;
+    .feature-meta {
+      font-size: 0.85rem;
       text-transform: uppercase;
-      opacity: 0.8;
+      letter-spacing: 0.12em;
+      opacity: 0.75;
+      margin-bottom: 0.35rem;
     }
 
-    /* Navegação */
-    .site-nav a {
-      margin-right: 1.25rem;
-      text-decoration: none;
-      font-size: 0.95rem;
-      opacity: 0.85;
+    .feature-text {
+      margin: 0 0 0.75rem;
     }
 
-    .site-nav a:hover {
-      opacity: 1;
+    /* Quiet Ideas */
+    .ideas-list h4 {
+      margin: 0.4rem 0 0.1rem;
+      font-size: 1rem;
     }
 
-    /* Mobile */
+    .ideas-list p {
+      margin: 0 0 0.35rem;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    /* Design */
+    .design-list p {
+      margin: 0 0 0.3rem;
+    }
+
+    .design-products {
+      margin-top: 0.9rem;
+    }
+
+    .design-products h4 {
+      margin: 0 0 0.4rem;
+      font-size: 1rem;
+    }
+
+    .design-products ul {
+      list-style: disc;
+      padding-left: 1.2rem;
+      margin: 0;
+    }
+
+    .design-products li {
+      margin-bottom: 0.25rem;
+    }
+
+    /* Podcast */
+    .podcast-block h3 {
+      margin: 0.4rem 0 0.25rem;
+      font-size: 1.05rem;
+    }
+
+    .podcast-block p {
+      margin: 0 0 0.5rem;
+    }
+
+    /* Footer / contact */
+    .contact-section {
+      margin-top: 3.25rem;
+      padding-top: 2rem;
+      border-top: 1px solid #eee;
+    }
+
+    .contact-section h2 {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-note {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
     @media (max-width: 600px) {
-      .site-header {
-        padding: 1.75rem 0 1.5rem;
+      body {
+        padding: 1.25rem 1rem 2.5rem;
       }
 
-      .site-title {
+      .branding-title {
         font-size: 1.8rem;
       }
 
-      .site-subtitle {
-        font-size: 0.85rem;
-        letter-spacing: 0.14em;
+      .hero-title {
+        font-size: 1.6rem;
       }
 
       .site-nav a {
-        display: inline-block;
-        margin-right: 0.8rem;
+        margin-right: 0.85rem;
         font-size: 0.85rem;
       }
     }
-</style>
+  </style>
 </head>
-<body>
+
+<body id="top">
+
+  <!-- Header -->
   <header class="site-header">
-    <div class="branding">
-      <h1 class="site-title">Sabino Pereira</h1>
-      <p class="site-subtitle">BOOKS · DESIGN · QUIET IDEAS</p>
+    <div>
+      <h1 class="branding-title">Sabino Pereira</h1>
+      <p class="branding-subtitle">BOOKS · DESIGN · QUIET IDEAS</p>
     </div>
+
     <nav class="site-nav">
       <a href="/index.html">Home</a>
       <a href="/books.html">Explore Books</a>
@@ -364,141 +254,149 @@
     </nav>
   </header>
 
-  <main id="top">
-    <section class="hero">
-      <h2 class="hero-kicker">Quiet Power in public</h2>
-      <h3 class="hero-title">Calm ideas. Strong work. No noise.</h3>
-      <p class="hero-text">
-        Welcome to my digital space — books, quiet reflections, design projects,
-        and practical ideas for people who prefer clarity over chaos.
-      </p>
-      <div class="hero-actions">
-        <a href="#books" class="btn-primary">Explore the books</a>
-        <a href="#ideas" class="btn-ghost">Read Quiet Ideas</a>
-      </div>
-    </section>
-
-    <section class="intro-list">
-      <h3>What you'll find here</h3>
-      <ul>
-        <li>Books shaped by reflection, discipline, and modern life</li>
-        <li>Quiet Ideas — short observations with depth</li>
-        <li>Design and POD projects with a clear visual identity</li>
-        <li>Podcast and content built around calm thinking</li>
-      </ul>
-    </section>
-
-    <section id="books">
-      <div class="container">
-        <div class="section-head">
-          <h2>Books</h2>
-          <p>Writing that mixes reflection, structure, and real life. Calm on the surface, sharp underneath.</p>
-        </div>
-
-        <div class="grid-2">
-          <article class="card">
-            <div class="mini-label">Featured</div>
-            <h3>Quiet Power</h3>
-            <p>
-              A focused project around calm strength, inner discipline, and mental clarity in a world that rewards noise.
-            </p>
-          </article>
-
-          <article class="card">
-            <div class="mini-label">Also writing</div>
-            <h3>Other projects</h3>
-            <p>
-              Essays, practical guides, social observation, and future titles built with the same signature: thoughtful, useful, direct.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="ideas">
-      <div class="container">
-        <div class="section-head">
-          <h2>Quiet Ideas</h2>
-          <p>A space for sharp observations, modern contradictions, and ideas worth sitting with for a minute.</p>
-        </div>
-
-        <div class="grid-3">
-          <article class="card">
-            <h3>Incentives shape behavior more than rules</h3>
-            <p>Most systems try to control people with rules, while the real driver is what behavior gets rewarded.</p>
-          </article>
-
-          <article class="card">
-            <h3>Noise looks productive</h3>
-            <p>Modern life often confuses motion with progress. Calm people get underestimated until results appear.</p>
-          </article>
-
-          <article class="card">
-            <h3>Slow decisions can be stronger decisions</h3>
-            <p>Not every fast response is intelligence. Sometimes restraint is the smartest move in the room.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="design">
-      <div class="container">
-        <div class="section-head">
-          <h2>Design</h2>
-          <p>Minimal products, clear mood, and a visual identity built around Quiet Power.</p>
-        </div>
-
-        <div class="card">
-          <div class="feature-list">
-            <div class="feature-item">Minimal apparel and print-on-demand pieces</div>
-            <div class="feature-item">Quiet Power concepts with clean, wearable branding</div>
-            <div class="feature-item">Visual work that feels modern, calm, and intentional</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="podcast">
-      <div class="container">
-        <div class="section-head">
-          <h2>Podcast</h2>
-          <p>Conversations and reflections about culture, identity, ideas, discipline, and the weird little bugs of modern life.</p>
-        </div>
-
-        <div class="grid-2">
-          <article class="card">
-            <h3>Quiet Power episodes</h3>
-            <p>Thoughtful audio built for listeners who like depth without the performance.</p>
-          </article>
-
-          <article class="card">
-            <h3>Observational series</h3>
-            <p>Short-form ideas, social commentary, and real-life patterns people recognize instantly.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="cta">
-          <h2>Let’s build something calm and strong.</h2>
-          <p>
-            Whether it’s a book, a design idea, a collaboration, or a good conversation, this is the place to reach out.
-          </p>
-          <div class="hero-actions">
-            <a class="btn" href="contact.html">Contact me</a>
-            <a class="btn" href="#top">Back to top</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      © 2026 Sabino Pereira — Built with quiet ideas and steady work.
+  <!-- Hero Quiet Power -->
+  <section class="hero">
+    <p class="hero-kicker">Quiet Power in public</p>
+    <h2 class="hero-title">Calm ideas. Strong work. No noise.</h2>
+    <p class="hero-text">
+      Welcome to my digital space — books, quiet reflections, design projects,
+      and practical ideas for people who prefer clarity over chaos.
+    </p>
+    <div class="hero-actions">
+      <a href="#books" class="btn-primary">Explore the books</a>
+      <a href="#ideas" class="btn-secondary">Read Quiet Ideas</a>
     </div>
-  </footer>
+  </section>
+
+  <!-- What you'll find here -->
+  <section class="intro-list">
+    <h2>What you'll find here</h2>
+    <ul>
+      <li>Books shaped by reflection, discipline, and modern life</li>
+      <li>Quiet Ideas — short observations with depth</li>
+      <li>Designs and projects with a clear visual identity</li>
+      <li>Podcast and content built around calm thinking</li>
+    </ul>
+  </section>
+
+  <!-- Books -->
+  <section id="books">
+    <h2>Books</h2>
+    <p class="books-intro">
+      Writing that mixes reflection, structure, and real life — calm on the surface, sharp underneath.
+    </p>
+
+    <div class="feature-block">
+      <div class="feature-meta">Featured</div>
+      <h3>
+        <a href="/quiet-power.html">Quiet Power</a>
+      </h3>
+      <p class="feature-text">
+        A focused project around calm strength, inner discipline, and mental clarity in a world that rewards noise.
+      </p>
+      <p>
+        <a href="/quiet-power.html" class="btn-secondary">Learn more</a>
+        <!-- Exemplo: quando tiveres o link externo de compra, usa target="_blank" -->
+        <!-- <a href="https://amzn.eu/..." target="_blank" rel="noopener" class="btn-primary">Buy on Amazon</a> -->
+      </p>
+    </div>
+
+    <div class="feature-block">
+      <div class="feature-meta">Also writing</div>
+      <h3>Other projects</h3>
+      <p class="feature-text">
+        Essays, practical guides, social observation, and future titles built with the same signature:
+        thoughtful, useful, and direct.
+      </p>
+    </div>
+  </section>
+
+  <!-- Quiet Ideas -->
+  <section id="ideas">
+    <h2>Quiet Ideas</h2>
+    <p>
+      A space for sharp observations, modern contradictions, and ideas worth sitting with for a minute.
+    </p>
+
+    <div class="ideas-list">
+      <h4>Incentives shape behavior more than rules</h4>
+      <p>Most systems try to control people with rules, while the real driver is what behavior gets rewarded.</p>
+
+      <h4>Noise looks productive</h4>
+      <p>Modern life often confuses motion with progress. Calm people get underestimated until results appear.</p>
+
+      <h4>Slow decisions can be stronger decisions</h4>
+      <p>Not every fast response is intelligence. Sometimes restraint is the smartest move in the room.</p>
+
+      <p>
+        <a href="/ideas.html" class="btn-secondary">Read more Quiet Ideas</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Design -->
+  <section id="design">
+    <h2>Design</h2>
+    <p>
+      Minimal products, clear mood, and a visual identity built around Quiet Power.
+    </p>
+
+    <div class="design-list">
+      <p>Minimal apparel and print-on-demand pieces</p>
+      <p>Quiet Power concepts with clean, wearable branding</p>
+      <p>Visual work that feels modern, calm, and intentional</p>
+    </div>
+
+    <div class="design-products">
+      <h4>Featured pieces</h4>
+      <ul>
+        <li>Quiet Power classic tee</li>
+        <li>Calm & Focused notebook</li>
+        <li>Quiet Ideas print series</li>
+      </ul>
+      <p>
+        <a href="/shop.html" class="btn-secondary">See products</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Podcast -->
+  <section id="podcast">
+    <h2>Podcast</h2>
+    <p>
+      Conversations and reflections about culture, identity, ideas, discipline,
+      and the weird little bugs of modern life.
+    </p>
+
+    <div class="podcast-block">
+      <h3>Quiet Power episodes</h3>
+      <p>Thoughtful audio built for listeners who like depth without the performance.</p>
+      <!-- Quando tiveres feed/Spotify/YouTube, usa target="_blank" -->
+      <!-- <p><a href="https://..." target="_blank" rel="noopener" class="btn-secondary">Listen to Quiet Power</a></p> -->
+    </div>
+
+    <div class="podcast-block">
+      <h3>Observational series</h3>
+      <p>Short-form ideas, social commentary, and real-life patterns people recognize instantly.</p>
+      <!-- <p><a href="https://..." target="_blank" rel="noopener" class="btn-secondary">Listen to Observational series</a></p> -->
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact-section" id="contact">
+    <h2>Let’s build something calm and strong.</h2>
+    <p>
+      Whether it’s a project, a quiet idea, or just a good conversation, this is the place to reach me.
+    </p>
+    <p>
+      <a href="/contact.html" class="btn-primary">Contact me</a>
+      <a href="#top" class="btn-secondary">Back to top</a>
+    </p>
+
+    <p class="footer-note">
+      © 2026 Sabino Pereira — Built with quiet ideas and steady work.
+    </p>
+  </section>
+
 </body>
 </html>
