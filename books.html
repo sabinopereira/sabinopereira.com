@@ -11,247 +11,7 @@
   <link rel="canonical" href="https://sabinopereira.com/books.html">
   <link rel="icon" type="image/png" href="/images/avatar.png">
   <link rel="apple-touch-icon" href="/images/avatar.png">
-
-  <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 1.5rem 1.25rem 3rem;
-      line-height: 1.7;
-      color: #111;
-      background: #FFFBEB;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    /* Header / Nav */
-    .site-header {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1.25rem;
-      padding: 2rem 0 1.75rem;
-      border-bottom: 1px solid #eee;
-    }
-
-    .branding-wrap {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .site-avatar {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-      flex-shrink: 0;
-    }
-
-    .branding-title {
-      font-size: 2.2rem;
-      font-weight: 700;
-      margin: 0;
-      line-height: 1.1;
-    }
-
-    .branding-subtitle {
-      margin: 0.35rem 0 0;
-      font-size: 0.9rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      opacity: 0.65;
-    }
-
-    .site-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.85rem 1.1rem;
-    }
-
-    .site-nav a {
-      text-decoration: none;
-      font-size: 0.95rem;
-      opacity: 0.85;
-    }
-
-    .site-nav a:hover,
-    .site-nav a.active {
-      opacity: 1;
-    }
-
-    /* Page intro */
-    .page-intro {
-      padding: 1rem 0 2rem;
-      border-bottom: 1px solid #eee;
-    }
-
-    .page-kicker {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      opacity: 0.75;
-      margin: 0 0 0.5rem;
-    }
-
-    .page-title {
-      font-size: 1.9rem;
-      font-weight: 600;
-      margin: 0 0 0.8rem;
-    }
-
-    .page-text {
-      margin: 0;
-      max-width: 46rem;
-    }
-
-    /* Books list */
-    .books-list {
-      margin-top: 2.75rem;
-    }
-
-    .book-card {
-      display: flex;
-      gap: 1.5rem;
-      align-items: flex-start;
-      padding: 1.5rem 0;
-      border-top: 1px solid #eee;
-    }
-
-    .book-card:first-child {
-      border-top: none;
-      padding-top: 0;
-    }
-
-    .book-cover {
-      width: 160px;
-      border-radius: 8px;
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
-      display: block;
-      flex-shrink: 0;
-    }
-
-    .book-cover.coming-soon {
-      opacity: 0.35;
-    }
-
-    .book-content {
-      flex: 1;
-    }
-
-    .book-meta {
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      opacity: 0.7;
-      margin: 0 0 0.45rem;
-    }
-
-    .book-title {
-      font-size: 1.25rem;
-      margin: 0 0 0.35rem;
-      line-height: 1.25;
-    }
-
-    .book-subtitle {
-      margin: 0 0 0.55rem;
-      font-size: 1rem;
-      opacity: 0.85;
-    }
-
-    .book-description {
-      margin: 0 0 0.9rem;
-      max-width: 38rem;
-    }
-
-    .book-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      align-items: center;
-    }
-
-    .btn-primary,
-    .btn-secondary {
-      display: inline-block;
-      padding: 0.55rem 1.1rem;
-      font-size: 0.9rem;
-      text-decoration: none;
-      border-radius: 999px;
-      border: none;
-    }
-
-    .btn-primary {
-      background: #111;
-      color: #fff;
-    }
-
-    .btn-secondary {
-      border: 1px solid #ddd;
-      color: #111;
-      background: transparent;
-    }
-
-    .coming-soon-text {
-      font-size: 0.9rem;
-      opacity: 0.7;
-    }
-
-    .footer {
-      margin-top: 3.25rem;
-      padding-top: 2rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85rem;
-      opacity: 0.7;
-    }
-
-    @media (max-width: 700px) {
-      .book-card {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .book-cover {
-        width: 140px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      body {
-        padding: 1.25rem 1rem 2.5rem;
-      }
-
-      .branding-title {
-        font-size: 1.8rem;
-      }
-
-      .branding-subtitle {
-        font-size: 0.78rem;
-        letter-spacing: 0.14em;
-      }
-
-      .site-avatar {
-        width: 46px;
-        height: 46px;
-      }
-
-      .site-nav {
-        gap: 0.6rem 0.85rem;
-      }
-
-      .site-nav a {
-        font-size: 0.85rem;
-      }
-
-      .page-title {
-        font-size: 1.6rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
@@ -344,9 +104,137 @@
 
   </section>
 
-  <div class="footer">
-    © 2026 Sabino Pereira — Built with quiet ideas and steady work.
-  </div>
+  <section class="contact-section">
+    <h2>Looking for a specific title?</h2>
+    <p>
+      More books, essays, and future projects are on the way.
+    </p>
+    <p>
+      <a href="/contact.html" class="btn-primary">Contact me</a>
+      <a href="/index.html" class="btn-secondary">Back home</a>
+    </p>
+
+    <p class="footer-note">
+      © 2026 Sabino Pereira — Built with quiet ideas and steady work.
+    </p>
+  </section>
 
 </body>
 </html>
+/* Active nav */
+.site-nav a.active {
+  opacity: 1;
+}
+
+/* Generic page intro */
+.page-intro {
+  padding: 1rem 0 2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.page-kicker {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  opacity: 0.75;
+  margin: 0 0 0.5rem;
+}
+
+.page-title {
+  font-size: 1.9rem;
+  font-weight: 600;
+  margin: 0 0 0.8rem;
+}
+
+.page-text {
+  margin: 0;
+  max-width: 46rem;
+}
+
+/* Books page */
+.books-list {
+  margin-top: 2.75rem;
+}
+
+.book-card {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 1.5rem 0;
+  border-top: 1px solid #eee;
+}
+
+.book-card:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.book-cover {
+  width: 160px;
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+  display: block;
+  flex-shrink: 0;
+}
+
+.book-cover.coming-soon {
+  opacity: 0.35;
+}
+
+.book-content {
+  flex: 1;
+}
+
+.book-meta {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.7;
+  margin: 0 0 0.45rem;
+}
+
+.book-title {
+  font-size: 1.25rem;
+  margin: 0 0 0.35rem;
+  line-height: 1.25;
+}
+
+.book-subtitle {
+  margin: 0 0 0.55rem;
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+.book-description {
+  margin: 0 0 0.9rem;
+  max-width: 38rem;
+}
+
+.book-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.coming-soon-text {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+@media (max-width: 700px) {
+  .book-card {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .book-cover {
+    width: 140px;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-title {
+    font-size: 1.6rem;
+  }
+}
