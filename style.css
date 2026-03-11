@@ -326,11 +326,16 @@ h2 {
 }
 
 .book-cover {
-  width: 160px;
+  width: 120px;
+  height: auto;
   border-radius: 8px;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
   display: block;
   flex-shrink: 0;
+}
+.book-cover:hover {
+  transform: translateY(-3px);
+  transition: 0.2s ease;
 }
 
 .book-cover.coming-soon {
