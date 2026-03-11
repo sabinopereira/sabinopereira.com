@@ -1,1 +1,279 @@
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+  line-height: 1.7;
+  color: #111;
+}
 
+a {
+  color: inherit;
+}
+
+/* Header */
+
+.site-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 2rem 0 1.75rem;
+  border-bottom: 1px solid #eee;
+}
+
+.branding-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.site-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
+}
+
+.branding-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.branding-subtitle {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+/* Navigation */
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem 1.1rem;
+}
+
+.site-nav a {
+  text-decoration: none;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.site-nav a:hover {
+  opacity: 1;
+}
+
+/* Hero */
+
+.hero {
+  padding: 0.8rem 0 2.25rem;
+  border-bottom: 1px solid #eee;
+}
+
+.hero-kicker {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  opacity: 0.75;
+  margin: 0 0 0.5rem;
+}
+
+.hero-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.hero-text {
+  margin: 0 0 1.5rem;
+  max-width: 46rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Buttons */
+
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-radius: 999px;
+}
+
+.btn-primary {
+  background: #111;
+  color: #fff;
+}
+
+.btn-secondary {
+  border: 1px solid #ddd;
+  color: #111;
+}
+
+/* Sections */
+
+section {
+  margin: 2.75rem 0 0;
+}
+
+h2 {
+  font-size: 1.45rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+/* Intro */
+
+.intro-list ul {
+  list-style: disc;
+  padding-left: 1.2rem;
+}
+
+.intro-list li {
+  margin-bottom: 0.3rem;
+}
+
+/* Books */
+
+.books-intro {
+  margin-bottom: 1.5rem;
+}
+
+.feature-block {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.feature-block h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+}
+
+.feature-meta {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.75;
+  margin-bottom: 0.35rem;
+}
+
+.feature-text {
+  margin: 0 0 0.75rem;
+}
+
+/* Ideas */
+
+.ideas-list h4 {
+  margin: 0.4rem 0 0.1rem;
+  font-size: 1rem;
+}
+
+.ideas-list p {
+  margin: 0 0 0.35rem;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Design */
+
+.design-list p {
+  margin: 0 0 0.3rem;
+}
+
+.design-products {
+  margin-top: 0.9rem;
+}
+
+.design-products h4 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+}
+
+.design-products ul {
+  list-style: disc;
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.design-products li {
+  margin-bottom: 0.25rem;
+}
+
+/* Podcast */
+
+.podcast-block h3 {
+  margin: 0.4rem 0 0.25rem;
+  font-size: 1.05rem;
+}
+
+.podcast-block p {
+  margin: 0 0 0.5rem;
+}
+
+/* Contact */
+
+.contact-section {
+  margin-top: 3.25rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.contact-section h2 {
+  margin-bottom: 0.5rem;
+}
+
+.footer-note {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  body {
+    padding: 1.25rem 1rem 2.5rem;
+  }
+
+  .branding-title {
+    font-size: 1.8rem;
+  }
+
+  .branding-subtitle {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+  }
+
+  .site-avatar {
+    width: 46px;
+    height: 46px;
+  }
+
+  .hero-title {
+    font-size: 1.6rem;
+  }
+
+  .site-nav {
+    gap: 0.6rem 0.85rem;
+  }
+
+  .site-nav a {
+    font-size: 0.85rem;
+  }
+
+}
