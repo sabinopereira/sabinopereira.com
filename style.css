@@ -715,3 +715,44 @@ line-height:1.3;
 margin:0 0 0.6rem;
 max-width:40rem;
 }
+/* Shop page */
+
+.shop-page{
+margin-top:2.75rem;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:1.5rem;
+}
+
+.shop-card{
+border:1px solid #eee;
+padding:1.5rem;
+border-radius:14px;
+background:#fff;
+}
+
+.shop-card h3{
+margin:0 0 0.6rem;
+font-size:1.1rem;
+line-height:1.3;
+}
+
+.shop-card p{
+margin:0 0 0.85rem;
+}
+
+@media (max-width:900px){
+
+.shop-page{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media (max-width:600px){
+
+.shop-page{
+grid-template-columns:1fr;
+}
+
+}
