@@ -565,3 +565,66 @@ gap:1.5rem;
 max-width:none;
 }
 
+/* About page */
+
+.about-page{
+margin-top:2.75rem;
+}
+
+.about-layout{
+display:flex;
+gap:2rem;
+align-items:flex-start;
+}
+
+.about-text{
+flex:1;
+max-width:38rem;
+}
+
+.about-text p{
+margin:0 0 1rem;
+}
+
+.about-block{
+margin-top:1.5rem;
+padding-top:1rem;
+border-top:1px solid #eee;
+}
+
+.about-block h3{
+margin:0 0 0.5rem;
+font-size:1.05rem;
+}
+
+.about-block ul{
+margin:0;
+padding-left:1.2rem;
+}
+
+.about-block li{
+margin-bottom:0.35rem;
+}
+
+.about-avatar{
+flex-shrink:0;
+}
+
+.about-avatar img{
+width:120px;
+border-radius:50%;
+display:block;
+}
+
+@media (max-width:700px){
+
+.about-layout{
+flex-direction:column;
+gap:1.5rem;
+}
+
+.about-avatar img{
+width:90px;
+}
+
+}
