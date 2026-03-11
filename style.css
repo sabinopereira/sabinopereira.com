@@ -715,10 +715,11 @@ border-color:#ddd;
 
 .shop-card img{
 width:100%;
+max-width:260px;
 aspect-ratio:1 / 1;
 object-fit:cover;
 border-radius:12px;
-margin-bottom:0.95rem;
+margin:0 auto 0.95rem;
 transition:transform 0.25s ease, opacity 0.25s ease;
 display:block;
 }
