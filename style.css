@@ -851,3 +851,59 @@ height:3px;
 background:#5a4632;
 margin-bottom:15px;
 }
+/* Quiet Ideas */
+
+.quiet-ideas-container{
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.quiet-idea{
+  margin: 90px 0;
+  padding-bottom: 60px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.quiet-idea h2{
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+.quiet-idea h3{
+  font-size: 34px;
+  line-height: 1.2;
+  margin-bottom: 25px;
+  color: #5a4632;
+  font-weight: 600;
+}
+
+.quiet-idea p{
+  font-size: 19px;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.quiet-idea strong{
+  display: block;
+  margin-top: 30px;
+  font-size: 22px;
+  line-height: 1.5;
+  color: #000;
+}
+
+.quiet-idea strong::before{
+  content: "";
+  display: block;
+  width: 42px;
+  height: 3px;
+  background: #5a4632;
+  margin-bottom: 15px;
+}
+
+.ideas-coming-soon{
+  margin-top: 20px;
+}
