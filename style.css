@@ -763,3 +763,39 @@ h2 {
     max-width: none;
   }
 }
+/* Quiet Ideas */
+
+.quiet-idea{
+margin:70px 0;
+padding-bottom:40px;
+border-bottom:1px solid #e5e5e5;
+}
+
+.quiet-idea h2{
+font-size:20px;
+letter-spacing:1px;
+text-transform:uppercase;
+color:#888;
+margin-bottom:10px;
+}
+
+.quiet-idea h3{
+font-size:32px;
+margin-bottom:20px;
+color:#5a4632;
+font-weight:600;
+}
+
+.quiet-idea p{
+font-size:18px;
+line-height:1.7;
+margin-bottom:18px;
+max-width:640px;
+}
+
+.quiet-idea strong{
+display:block;
+margin-top:25px;
+font-size:20px;
+color:#000;
+}
