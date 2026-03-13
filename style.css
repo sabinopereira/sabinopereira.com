@@ -971,3 +971,16 @@ h3 + p {
     height:auto;
   }
 }
+.book-cover-link {
+  display:inline-block;
+  margin:1rem 0 0.5rem;
+}
+
+.book-cover {
+  display:block;
+  width:100%;
+  max-width:180px;  /* controla o tamanho máximo da capa */
+  height:auto;
+  border-radius:12px;
+  box-shadow:0 10px 24px rgba(0,0,0,.14);
+}
