@@ -686,3 +686,58 @@ main,
 .about-block li {
   margin:.2rem 0;
 }
+.podcast-series {
+  width:min(calc(100% - 2rem), var(--max));
+  margin:2rem auto 2.5rem;
+  display:grid;
+  gap:1.5rem;
+}
+
+.podcast-series-block {
+  background:rgba(255,255,255,.56);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:1.4rem;
+  box-shadow:0 12px 30px rgba(47,38,31,.06);
+}
+
+.podcast-series-block h3 {
+  margin:0 0 .6rem;
+  font-size:1.7rem;
+  letter-spacing:-.02em;
+}
+
+.podcast-series-block p {
+  margin:0 0 1rem;
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.8;
+  color:#554b44;
+}
+
+.podcast-coming {
+  width:min(calc(100% - 2rem), var(--max));
+  margin:0 auto 3rem;
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.8;
+  color:#554b44;
+}
+
+.btn-listen {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0.9rem 1.4rem;
+  border-radius:999px;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:.96rem;
+  border:1px solid #2f5f49;
+  background:#e4f3eb;
+  color:#1f3a2f;
+  text-decoration:none;
+  transition:.2s ease;
+}
+
+.btn-listen:hover {
+  background:#2f5f49;
+  color:#fff;
+}
