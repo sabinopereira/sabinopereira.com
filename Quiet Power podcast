@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiet Power Podcast — Sabino Pereira</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="Quiet Power podcast by Sabino Pereira — thoughtful audio on calm thinking, discipline, and modern life.">
+  <meta name="author" content="Sabino Pereira">
+
+  <link rel="canonical" href="https://sabinopereira.com/podcast-quiet-power.html">
+  <link rel="icon" type="image/png" href="/images/avatar.png">
+  <link rel="apple-touch-icon" href="/images/avatar.png">
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="branding-wrap">
+    <img src="/images/avatar.png" alt="Sabino Pereira" class="site-avatar">
+    <div>
+      <h1 class="branding-title">Sabino Pereira</h1>
+      <p class="branding-subtitle">BOOKS · DESIGN · QUIET IDEAS</p>
+    </div>
+  </div>
+
+  <nav class="site-nav">
+    <a href="/index.html">Home</a>
+    <a href="/books.html">Books</a>
+    <a href="/ideas.html">Ideas</a>
+    <a href="/podcast.html" class="active">Podcast</a>
+    <a href="/about.html">About</a>
+    <a href="/shop.html">Shop</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="page-intro">
+  <p class="page-kicker">Podcast · Quiet Power</p>
+  <h2 class="page-title">Quiet Power podcast</h2>
+  <p class="page-text">
+    Thoughtful conversations and reflections on calm thinking, discipline, and modern life.
+  </p>
+</section>
+
+<section class="about-page">
+  <div class="about-layout">
+    <div class="about-text">
+      <p>
+        Quiet Power episodes are built for listeners who prefer depth without performance:
+        calm delivery, honest ideas, and space to think.
+      </p>
+      <p>
+        The series explores inner strength, clarity, slow decisions, and what it means to stay grounded
+        in a noisy world.
+      </p>
+
+      <div class="about-block">
+        <h3>Episodes</h3>
+        <p>
+          The first episodes and full listening links will be added here as the project grows.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section">
+  <h2>Audio built around clarity, not noise.</h2>
+  <p>
+    If you'd like to be notified when Quiet Power episodes go live, feel free to reach out.
+  </p>
+  <p>
+    <a href="/contact.html" class="btn-primary">Contact me</a>
+    <a href="/ideas.html" class="btn-secondary">Read Quiet Ideas</a>
+  </p>
+  <p class="footer-note">
+    © 2026 Sabino Pereira — Built with quiet ideas and steady work.
+  </p>
+</section>
+
+</body>
+</html>
