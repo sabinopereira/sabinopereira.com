@@ -741,3 +741,21 @@ main,
   background:#2f5f49;
   color:#fff;
 }
+.episode-card {
+  margin:1.4rem 0;
+  padding:1.1rem 1.2rem;
+  border-radius:18px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.6);
+  box-shadow:0 10px 24px rgba(47,38,31,.06);
+}
+
+.episode-card h4 {
+  margin:0 0 .4rem;
+  font-size:1.3rem;
+  letter-spacing:-.01em;
+}
+
+.episode-card p {
+  margin:0;
+}
