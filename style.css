@@ -12,7 +12,7 @@
     object-fit: cover;
 }
 
-/* Home hero actions (já não usado, mas podes manter se quiseres reaproveitar no futuro) */
+/* Home hero actions (já não usado, podes reaproveitar no futuro) */
 .hero-actions{
     margin-top: 1.5rem;
     display: flex;
@@ -79,10 +79,16 @@
     font-size: 0.9rem;
 }
 
-/* Featured book (minimal, sem capa) */
+/* Featured book (minimal) */
 .featured-book-home{
-    margin-top: 4rem;
-    padding: 3rem 0;
+    margin-top: 2.5rem;
+    padding: 2.5rem 0;
+}
+
+.section-heading-left{
+    max-width: 720px;
+    margin-left: 0;
+    margin-right: auto;
 }
 
 /* Quiet Ideas preview */
@@ -97,213 +103,12 @@
 }
 
 .idea-card{
-    background: rgba(255,255,255,0.6);
-    border: 1px solid rgba(60,50,40,0.08);
+    background-color: #fafafa;
+    border: 1px solid #e0e0e0;
     border-radius: 20px;
     padding: 1.5rem 1.4rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .idea-card:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 12px 26px rgba(0,0,0,0.06);
-    border-color: rgba(60,50,40,0.14);
-}
-
-.idea-label{
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: #8a7f73;
-    margin-bottom: 0.7rem;
-}
-
-.idea-card h3{
-    margin-bottom: 0.75rem;
-    font-size: 1.3rem;
-    line-height: 1.3;
-}
-
-.idea-card p{
-    color: #5f5a54;
-    line-height: 1.75;
-    margin-bottom: 0;
-}
-
-/* Podcast section */
-.podcast-preview{
-    padding: 3.5rem 0;
-    margin-top: 2.5rem;
-}
-
-.podcast-grid{
-    display: grid;
-    gap: 1.5rem;
-}
-
-.podcast-card{
-    border: 1px solid #e0e0e0;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    background-color: #fafafa;
-}
-
-/* Better spacing on contact block when used on homepage */
-.contact-section{
-    margin-top: 5rem;
-}
-
-/* Shop page */
-.shop-page {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 2.5rem;
-    margin-bottom: 3rem;
-}
-
-.shop-card {
-    background: rgba(255,255,255,0.6);
-    border: 1px solid rgba(60,50,40,0.08);
-    border-radius: 18px;
-    overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.shop-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.08);
-}
-
-.shop-card img {
-    width: 100%;
-    height: 240px;
-    object-fit: cover;
-    display: block;
-}
-
-.shop-card h3 {
-    font-size: 1.05rem;
-    margin: 1rem 1.2rem 0.4rem;
-}
-
-.shop-card p {
-    font-size: 0.95rem;
-    color: #5f5a54;
-    line-height: 1.7;
-    margin: 0 1.2rem 1rem;
-}
-
-/* Books page — book cover */
-.book-cover,
-.book-cover-img {
-    width: 100%;
-    max-width: 220px;
-    height: auto;
-    display: block;
-    border-radius: 12px;
-    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
-}
-
-/* Books list layout */
-.books-list {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    margin-top: 2.5rem;
-    margin-bottom: 3rem;
-}
-
-.book-card {
-    display: grid;
-    grid-template-columns: 160px 1fr;
-    gap: 2rem;
-    align-items: start;
-    background: rgba(255,255,255,0.55);
-    border: 1px solid rgba(60,50,40,0.08);
-    border-radius: 18px;
-    padding: 1.8rem;
-}
-
-.book-cover {
-    width: 100%;
-    max-width: 160px;
-    height: auto;
-    display: block;
-    border-radius: 10px;
-    box-shadow: 0 10px 28px rgba(0,0,0,0.13);
-}
-
-/* Responsive */
-@media (max-width: 900px){
-    .shop-page {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 700px){
-    .ideas-preview-grid{
-        grid-template-columns: 1fr;
-    }
-    .quiet-ideas-preview,
-    .contact-section,
-    .featured-book-home{
-        margin-top: 3.4rem;
-    }
-    .idea-card{
-        padding: 1.2rem 1.1rem;
-    }
-    .shop-page {
-        grid-template-columns: 1fr;
-    }
-    .shop-card img {
-        height: 200px;
-    }
-}
-
-@media (max-width: 600px) {
-    .book-card {
-        grid-template-columns: 1fr;
-    }
-    .book-cover {
-        max-width: 140px;
-        margin: 0 auto;
-    }
-}
-
-/* Desktop-only refinements */
-@media (min-width: 768px){
-    .podcast-preview{
-        padding: 4rem 0;
-        margin-top: 3rem;
-    }
-    .podcast-grid{
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-featured-book-home{
-    margin-top: 2.5rem;   /* ou 3rem, se preferires um pouco mais de espaço */
-    padding: 2.5rem 0;
-}
-
-.featured-book-inner{
-    max-width: 720px;
-    margin: 0 auto;
-    text-align: left;
-}
-
-.contact-section{
-    margin-top: 5rem;
-    text-align: center;
-}
-.section-heading-left{
-    max-width: 720px;
-    margin-left: 0;
-    margin-right: auto;
-}
-
-@media (min-width: 768px){
-  .section-heading-left{
-    text-align: left;
-  }
-}
+    transform:
