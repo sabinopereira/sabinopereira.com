@@ -772,3 +772,47 @@ h2 + h3 {
 h3 + p {
   margin-top: 0.6rem;
 }
+.ideas-page {
+  width:min(calc(100% - 2rem), var(--max));
+  margin:0 auto 3rem;
+}
+
+.ideas-layout {
+  max-width:720px;
+}
+
+.idea-card-full {
+  background:rgba(255,255,255,.56);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:1.4rem 1.6rem;
+  box-shadow:0 12px 30px rgba(47,38,31,.06);
+  margin-bottom:1.8rem;
+}
+
+.idea-card-full .idea-number {
+  margin:0 0 .4rem;
+  font-family:Arial,Helvetica,sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--muted);
+  font-size:.78rem;
+}
+
+.idea-card-full h3 {
+  margin:0 0 .7rem;
+  font-size:1.8rem;
+  line-height:1.05;
+}
+
+.idea-card-full p {
+  margin:0 0 .7rem;
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.85;
+  color:#554b44;
+}
+
+.ideas-coming {
+  font-family:Arial,Helvetica,sans-serif;
+  color:#6d6258;
+}
