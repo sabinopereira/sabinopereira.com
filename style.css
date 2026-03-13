@@ -759,3 +759,16 @@ main,
 .episode-card p {
   margin:0;
 }
+/* Página Ideas: mais espaço entre ideias */
+.page-intro + h2,
+.page-intro + h2 + p {
+  margin-top: 1.5rem;
+}
+
+h2 + h3 {
+  margin-top: 1.8rem;
+}
+
+h3 + p {
+  margin-top: 0.6rem;
+}
