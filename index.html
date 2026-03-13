@@ -1,205 +1,900 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sabino Pereira — Quiet Power, Books, Ideas and Design</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sabino Pereira — books, quiet ideas, podcasts and design projects shaped by calm thinking, discipline and modern life." />
+  <style>
+    :root{
+      --bg:#f6efdf;
+      --bg-2:#fbf7ee;
+      --paper:rgba(255,255,255,.46);
+      --ink:#2f261f;
+      --muted:#6d6258;
+      --line:rgba(47,38,31,.11);
+      --accent:#e9dcc6;
+      --accent-2:#d9c3a4;
+      --shadow:0 18px 50px rgba(47,38,31,.09);
+      --radius:28px;
+      --radius-sm:18px;
+      --max:1180px;
+    }
 
-  <meta name="description" content="Sabino Pereira — books, quiet ideas, podcasts and design projects shaped by calm thinking, discipline and modern life.">
-  <meta name="author" content="Sabino Pereira">
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Georgia,"Times New Roman",serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,.4), transparent 30%),
+        linear-gradient(180deg, #f8f2e5 0%, #f3ead8 100%);
+    }
 
-  <link rel="canonical" href="https://sabinopereira.com/index.html">
-  <link rel="icon" type="image/png" href="/images/avatar.png">
-  <link rel="apple-touch-icon" href="/images/avatar.png">
-  <link rel="stylesheet" href="/style.css">
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+
+    .wrap{
+      width:min(calc(100% - 2rem), var(--max));
+      margin:0 auto;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(12px);
+      background:rgba(246,239,223,.78);
+      border-bottom:1px solid var(--line);
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:1rem;
+      min-height:88px;
+      padding:.8rem 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:1rem;
+      min-width:0;
+    }
+
+    .brand img{
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      object-fit:cover;
+      border:1px solid rgba(47,38,31,.08);
+      box-shadow:0 8px 20px rgba(47,38,31,.08);
+    }
+
+    .brand h1{
+      margin:0;
+      font-size:1.7rem;
+      line-height:1;
+      letter-spacing:-.02em;
+    }
+
+    .brand p{
+      margin:.28rem 0 0;
+      font-family:Arial,Helvetica,sans-serif;
+      font-size:.82rem;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .site-nav{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      gap:1rem;
+      font-family:Arial,Helvetica,sans-serif;
+    }
+
+    .site-nav a{
+      font-size:.97rem;
+      color:var(--muted);
+      padding:.35rem 0;
+      position:relative;
+    }
+
+    .site-nav a.active,
+    .site-nav a:hover{color:var(--ink)}
+
+    .site-nav a.active::after,
+    .site-nav a:hover::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:-4px;
+      height:1px;
+      background:var(--ink);
+    }
+
+    .hero{
+      padding:4.8rem 0 2.3rem;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:2rem;
+      align-items:center;
+    }
+
+    .eyebrow{
+      margin:0 0 1rem;
+      font-family:Arial,Helvetica,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color:var(--muted);
+      font-size:.82rem;
+    }
+
+    .hero h2{
+      margin:0;
+      font-size:clamp(3rem,7vw,5.7rem);
+      line-height:.94;
+      letter-spacing:-.04em;
+    }
+
+    .hero .lead{
+      margin:1.25rem 0 0;
+      max-width:670px;
+      font-family:Arial,Helvetica,sans-serif;
+      font-size:1.1rem;
+      line-height:1.85;
+      color:#4d443d;
+    }
+
+    .hero-actions,
+    .dual-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:1rem;
+      margin-top:1.7rem;
+    }
+
+    .btn,
+    .btn-outline{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:1rem 1.25rem;
+      border-radius:999px;
+      font-family:Arial,Helvetica,sans-serif;
+      font-size:.98rem;
+      transition:.25s ease;
+    }
+
+    .btn{
+      background:var(--ink);
+      color:#fff;
+      box-shadow:var(--shadow);
+    }
+
+    .btn:hover{transform:translateY(-2px)}
+
+    .btn-outline{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.48);
+      color:var(--ink);
+    }
+
+    .hero-card{
+      padding:1.3rem;
+      border-radius:32px;
+      background:linear-gradient(180deg, rgba(255,255,255,.64), rgba(255,255,255,.34));
+      border:1px solid rgba(255,255,255,.7);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero-card::after{
+      content:"";
+      position:absolute;
+      width:180px;
+      height:180px;
+      right:-50px;
+      bottom:-50px;
+      background:radial-gradient(circle, rgba(217,195,164,.95), rgba(217,195,164,0));
+      opacity:.5;
+    }
+
+    .book-visual{
+      border-radius:24px;
+      padding:1rem;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, #f8f3e8, #ede2cf);
+    }
+
+    .apple-book-visual{
+      background:linear-gradient(180deg, rgba(255,255,255,.62), rgba(244,236,223,.92));
+      border:1px solid rgba(255,255,255,.7);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.65);
+    }
+
+    .book-mockup-shell{
+      position:relative;
+      width:min(100%, 360px);
+      margin:0 auto;
+      aspect-ratio:4/5.1;
+      display:flex;
+      align-items:stretch;
+      filter:drop-shadow(0 26px 40px rgba(47,38,31,.16));
+    }
+
+    .book-mockup-spine{
+      width:24px;
+      border-radius:18px 0 0 18px;
+      background:linear-gradient(180deg, #f5efe3, #d9cdbb);
+      border:1px solid rgba(47,38,31,.08);
+      border-right:none;
+      box-shadow:inset -8px 0 12px rgba(47,38,31,.05);
+    }
+
+    .book-mockup-face{
+      flex:1;
+      border-radius:0 22px 22px 0;
+      background:linear-gradient(180deg, #fcfaf5, #eee4d3);
+      border:1px solid rgba(47,38,31,.08);
+      padding:1.45rem;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .book-mockup-face::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg, rgba(255,255,255,.55), transparent 22%, transparent 78%, rgba(255,255,255,.18));
+      pointer-events:none;
+    }
+
+    .book-mockup-face h3{
+      margin:0;
+      font-size:3rem;
+      line-height:.88;
+      letter-spacing:-.05em;
+    }
+
+    .book-mockup-face p{
+      margin:.45rem 0 0;
+      font-family:Arial,Helvetica,sans-serif;
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .wave-art-cover{
+      height:170px;
+      border-radius:16px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.4), rgba(255,255,255,0)),
+        repeating-radial-gradient(circle at 50% 150%, rgba(109,98,88,.17) 0 5px, rgba(255,255,255,0) 6px 18px);
+      opacity:.95;
+    }
+
+    .book-cover{
+      aspect-ratio:4/5;
+      border-radius:20px;
+      background:linear-gradient(180deg, rgba(255,255,255,.88), rgba(241,233,216,.95));
+      padding:1.4rem;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      box-shadow:0 18px 38px rgba(47,38,31,.12);
+    }
+
+    .book-cover h3{
+      margin:0;
+      font-size:2.4rem;
+      line-height:.95;
+      letter-spacing:-.03em;
+    }
+
+    .book-cover p{
+      margin:.35rem 0 0;
+      font-family:Arial,Helvetica,sans-serif;
+      color:var(--muted);
+    }
+
+    .wave-art{
+      height:180px;
+      border-radius:18px;
+      background:
+        radial-gradient(circle at 8% 15%, rgba(255,255,255,.95), rgba(255,255,255,0) 28%),
+        repeating-radial-gradient(circle at 50% 150%, rgba(109,98,88,.22) 0 4px, rgba(255,255,255,0) 5px 15px);
+    }
+
+    .signal-row{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1rem;
+      margin-top:2rem;
+    }
+
+    .signal-card{
+      background:rgba(255,255,255,.44);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:1rem 1.05rem;
+    }
+
+    .signal-card strong{
+      display:block;
+      font-size:1.25rem;
+      margin-bottom:.2rem;
+    }
+
+    .signal-card span{
+      font-family:Arial,Helvetica,sans-serif;
+      color:var(--muted);
+      font-size:.94rem;
+    }
+
+    section.block{
+      padding:1.4rem 0;
+    }
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:1rem;
+      margin-bottom:1.25rem;
+    }
+
+    .section-head .kicker{
+      margin:0 0 .55rem;
+      font-family:Arial,Helvetica,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color:var(--muted);
+      font-size:.78rem;
+    }
+
+    .section-head h3{
+      margin:0;
+      font-size:2.45rem;
+      line-height:1;
+      letter-spacing:-.03em;
+    }
+
+    .section-head .text{
+      margin:.8rem 0 0;
+      max-width:700px;
+      font-family:Arial,Helvetica,sans-serif;
+      color:#544a43;
+      line-height:1.75;
+    }
+
+    .book-feature{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:2rem;
+      align-items:center;
+      background:rgba(255,255,255,.34);
+      border:1px solid var(--line);
+      border-radius:32px;
+      padding:1.4rem;
+      box-shadow:var(--shadow);
+    }
+
+    .book-stage{
+      background:linear-gradient(180deg, #f7f2e8, #ebdfca);
+      border-radius:26px;
+      padding:1.2rem;
+      border:1px solid rgba(47,38,31,.08);
+    }
+
+    .book-stage-mockup{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:560px;
+      overflow:hidden;
+    }
+
+    .book-mockup-large{
+      width:min(100%, 470px);
+      aspect-ratio:4/5.2;
+      display:flex;
+      align-items:stretch;
+      filter:drop-shadow(0 34px 46px rgba(47,38,31,.16));
+    }
+
+    .book-mockup-large-spine{
+      width:30px;
+      border-radius:20px 0 0 20px;
+      background:linear-gradient(180deg, #f7f0e4, #d7cbb9);
+      border:1px solid rgba(47,38,31,.08);
+      border-right:none;
+      box-shadow:inset -10px 0 14px rgba(47,38,31,.06);
+    }
+
+    .book-mockup-large-face{
+      flex:1;
+      border-radius:0 26px 26px 0;
+      background:linear-gradient(180deg, #fcfaf5, #ede2d1);
+      border:1px solid rgba(47,38,31,.08);
+      padding:1.8rem;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .book-mockup-large-face::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg, rgba(255,255,255,.55), transparent 18%, transparent 80%, rgba(255,255,255,.14));
+      pointer-events:none;
+    }
+
+    .book-mark{
+      font-size:3.25rem;
+      line-height:.9;
+      letter-spacing:-.05em;
+      font-weight:700;
+    }
+
+    .book-mark-sub{
+      margin-top:.55rem;
+      font-family:Arial,Helvetica,sans-serif;
+      color:var(--muted);
+      font-size:1.04rem;
+    }
+
+    .wave-art-large{
+      height:220px;
+      border-radius:18px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.36), rgba(255,255,255,0)),
+        repeating-radial-gradient(circle at 50% 150%, rgba(109,98,88,.17) 0 5px, rgba(255,255,255,0) 6px 18px);
+      opacity:.95;
+    }
+
+    .book-copy h4{
+      margin:0 0 .85rem;
+      font-size:2.85rem;
+      line-height:.95;
+      letter-spacing:-.04em;
+    }
+
+    .book-copy p{
+      margin:0 0 1rem;
+      font-family:Arial,Helvetica,sans-serif;
+      line-height:1.85;
+      color:#4e453e;
+      font-size:1.04rem;
+    }
+
+    .quote{
+      padding-left:1rem;
+      border-left:3px solid rgba(47,38,31,.14);
+      color:var(--muted);
+      font-style:italic;
+      margin:1.15rem 0 0;
+    }
+
+    .ideas-grid,
+    .podcast-grid,
+    .shop-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:1.25rem;
+    }
+
+    .card{
+      background:rgba(255,255,255,.5);
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:1.2rem;
+      box-shadow:0 12px 30px rgba(47,38,31,.06);
+      transition:.25s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 20px 40px rgba(47,38,31,.1);
+    }
+
+    .label{
+      margin:0 0 .55rem;
+      font-family:Arial,Helvetica,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:var(--muted);
+      font-size:.76rem;
+    }
+
+    .card h4{
+      margin:0 0 .7rem;
+      font-size:1.8rem;
+      line-height:1.05;
+      letter-spacing:-.02em;
+    }
+
+    .card p{
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      line-height:1.78;
+      color:#554b44;
+    }
+
+    .text-link{
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      margin-top:1rem;
+      font-family:Arial,Helvetica,sans-serif;
+      font-weight:600;
+    }
+
+    .podcast-shell{
+      background:rgba(255,255,255,.34);
+      border:1px solid var(--line);
+      border-radius:32px;
+      padding:1.4rem;
+      box-shadow:var(--shadow);
+    }
+
+    .shop-grid{grid-template-columns:repeat(2, minmax(0, 1fr));}
+
+    .shop-card{
+      background:rgba(255,255,255,.56);
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:1rem;
+      box-shadow:0 12px 30px rgba(47,38,31,.06);
+      transition:.25s ease;
+    }
+
+    .shop-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 20px 40px rgba(47,38,31,.1);
+    }
+
+    .shop-card img{
+      aspect-ratio:1/1;
+      width:100%;
+      object-fit:cover;
+      border-radius:18px;
+      margin-bottom:1rem;
+      background:#efe4d1;
+    }
+
+    .shop-card h4{
+      margin:0 0 .5rem;
+      font-size:1.6rem;
+      line-height:1.05;
+    }
+
+    .shop-card p{
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      line-height:1.72;
+      color:#564c45;
+    }
+
+    .shop-card .shop-btn{margin-top:1rem;width:100%}
+
+    .contact-band{
+      margin:3rem 0 1rem;
+      background:linear-gradient(135deg, rgba(255,255,255,.6), rgba(255,255,255,.34));
+      border:1px solid var(--line);
+      border-radius:32px;
+      padding:2rem;
+      box-shadow:var(--shadow);
+      text-align:center;
+    }
+
+    .contact-band h3{
+      margin:0 0 .7rem;
+      font-size:2.45rem;
+      line-height:1;
+    }
+
+    .contact-band p{
+      max-width:720px;
+      margin:0 auto;
+      font-family:Arial,Helvetica,sans-serif;
+      line-height:1.8;
+      color:var(--muted);
+    }
+
+    .footer-note{
+      margin-top:1.2rem;
+      font-size:.94rem;
+      color:var(--muted);
+      font-family:Arial,Helvetica,sans-serif;
+    }
+
+    footer{
+      padding:0 0 3rem;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid,
+      .book-feature,
+      .ideas-grid,
+      .podcast-grid,
+      .shop-grid,
+      .signal-row{grid-template-columns:1fr}
+      .section-head{align-items:flex-start;flex-direction:column}
+    }
+
+    @media (max-width: 760px){
+      .topbar{align-items:flex-start;flex-direction:column}
+      .site-nav{justify-content:flex-start;gap:.9rem}
+      .hero{padding-top:3.5rem}
+      .hero h2{font-size:3.2rem}
+      .book-copy h4,.contact-band h3,.section-head h3{font-size:2.15rem}
+      .brand img{width:52px;height:52px}
+      .brand h1{font-size:1.45rem}
+      .book-mockup-face h3{font-size:2.35rem}
+      .book-mark{font-size:2.5rem}
+      .book-stage-mockup{min-height:auto}
+      .wave-art-large{height:170px}
+    }
+      .site-nav{justify-content:flex-start;gap:.9rem}
+      .hero{padding-top:3.5rem}
+      .hero h2{font-size:3.2rem}
+      .book-copy h4,.contact-band h3,.section-head h3{font-size:2.15rem}
+      .brand img{width:52px;height:52px}
+      .brand h1{font-size:1.45rem}
+    }
+  </style>
 </head>
-
 <body>
-
   <header class="site-header">
-    <div class="branding-wrap">
-      <img src="/images/avatar.png" alt="Sabino Pereira" class="site-avatar">
-
-      <div>
-        <h1 class="branding-title">Sabino Pereira</h1>
-        <p class="branding-subtitle">BOOKS · DESIGN · QUIET IDEAS</p>
+    <div class="wrap topbar">
+      <div class="brand">
+        <img src="/images/avatar.png" alt="Sabino Pereira" />
+        <div>
+          <h1>Sabino Pereira</h1>
+          <p>Books · Design · Quiet Ideas</p>
+        </div>
       </div>
-    </div>
 
-    <nav class="site-nav">
-      <a href="/index.html" class="active">Home</a>
-      <a href="/books.html">Books</a>
-      <a href="/ideas.html">Ideas</a>
-      <a href="/podcast.html">Podcast</a>
-      <a href="/about.html">About</a>
-      <a href="/shop.html">Shop</a>
-      <a href="/contact.html">Contact</a>
-    </nav>
+      <nav class="site-nav">
+        <a href="/index.html" class="active">Home</a>
+        <a href="/books.html">Books</a>
+        <a href="/ideas.html">Ideas</a>
+        <a href="/podcast.html">Podcast</a>
+        <a href="/about.html">About</a>
+        <a href="/shop.html">Shop</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-
-    <section class="page-intro home-intro">
+    <section class="hero wrap">
       <div class="hero-grid">
-        <div class="hero-book">
-          <img src="/images/quiet-power-mockup.png.PNG" alt="Quiet Power by Sabino Pereira">
-        </div>
-
-        <div class="hero-text">
-          <p class="page-kicker">Quiet Power in public</p>
-
-          <h2 class="hero-title">
-            Calm ideas.<br>
-            Strong work.<br>
-            No noise.
-          </h2>
-
-          <p class="hero-description">
-            This is my home for books, quiet reflections, design projects, podcasts, and practical ideas
-            for people who value clarity over chaos.
+        <div>
+          <p class="eyebrow">Quiet Power in public</p>
+          <h2>Calm ideas.<br>Strong work.<br>No noise.</h2>
+          <p class="lead">
+            This is your home for books, quiet reflections, design projects, podcasts, and practical ideas
+            for people who value clarity over chaos. Same message as your current homepage — just with more presence,
+            better hierarchy, and a stronger brand feel.
           </p>
 
-          <div class="hero-buttons">
-            <a href="/quiet-power.html" class="btn-primary">Read more about Quiet Power</a>
-            <a href="/books.html" class="btn-secondary">See all books</a>
+          <div class="hero-actions">
+            <a href="/quiet-power.html" class="btn">Explore Quiet Power</a>
+            <a href="/ideas.html" class="btn-outline">Read the ideas</a>
+          </div>
+
+          <div class="signal-row">
+            <div class="signal-card">
+              <strong>Books</strong>
+              <span>Quiet Power and future releases</span>
+            </div>
+            <div class="signal-card">
+              <strong>Ideas</strong>
+              <span>Reflections on modern life and incentives</span>
+            </div>
+            <div class="signal-card">
+              <strong>Podcast</strong>
+              <span>Thoughtful episodes, not timeline noise</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="book-visual apple-book-visual">
+            <div class="book-mockup-shell">
+              <div class="book-mockup-spine"></div>
+              <div class="book-mockup-face">
+                <div>
+                  <h3>Quiet<br>Power</h3>
+                  <p>Calm. Focused. Unshaken.</p>
+                </div>
+                <div class="wave-art wave-art-cover"></div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="block wrap">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Featured Book</p>
+          <h3>Quiet Power</h3>
+          <p class="text">
+            Calm. Focused. Unshaken. A reflection on calm thinking, discipline, and navigating modern life without noise.
+          </p>
+        </div>
+      </div>
+
+      <div class="book-feature">
+        <div class="book-stage book-stage-mockup">
+          <div class="book-mockup-large">
+            <div class="book-mockup-large-spine"></div>
+            <div class="book-mockup-large-face">
+              <div>
+                <div class="book-mark">Quiet Power</div>
+                <div class="book-mark-sub">Calm. Focused. Unshaken.</div>
+              </div>
+              <div class="wave-art wave-art-large"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="book-copy">
+          <h4>Calm is not passive.<br>It is structured strength.</h4>
+          <p>
+            <em>Quiet Power</em> sits at the center of the brand and should feel that way on the homepage. Instead of a small mention,
+            this concept gives it weight, breathing room and a more premium presentation.
+          </p>
+          <p>
+            The current copy already works. What improves here is the delivery: stronger typography, clearer spacing, and a layout that
+            makes the book feel like the anchor of your world rather than just another section on the page.
+          </p>
+          <div class="quote">A quiet book with real backbone.</div>
+          <div class="dual-actions">
+            <a href="/quiet-power.html" class="btn">Read more about Quiet Power</a>
+            <a href="/books.html" class="btn-outline">See all books</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="featured-book-home">
-      <div class="section-heading section-heading-left">
-        <p class="section-kicker">Featured Book</p>
-        <h2>Quiet Power</h2>
-        <p class="section-text">
-          Calm. Focused. Unshaken. A reflection on calm thinking, discipline, and navigating
-          modern life without noise.
-        </p>
+    <section class="block wrap">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Quiet Ideas</p>
+          <h3>Short observations on modern life.</h3>
+          <p class="text">
+            A growing series of reflections on calm thinking, incentives, contradiction, and the patterns people recognise instantly.
+          </p>
+        </div>
+        <a href="/ideas.html" class="text-link">View all ideas →</a>
+      </div>
+
+      <div class="ideas-grid">
+        <article class="card">
+          <p class="label">Quiet Idea #01</p>
+          <h4>Noise Looks Productive</h4>
+          <p>
+            Most people confuse activity with progress. Meetings, emails, notifications, constant updates.
+            This layout makes each idea feel more like an essay preview and less like a small blog snippet.
+          </p>
+          <a href="/ideas.html#quiet-idea-01" class="text-link">Read idea →</a>
+        </article>
+
+        <article class="card">
+          <p class="label">Quiet Idea #02</p>
+          <h4>Incentives Shape Behaviour</h4>
+          <p>
+            Most systems try to control behaviour with rules. But behaviour usually follows incentives.
+            Strong title, strong concept — worth giving it a cleaner card and more breathing room.
+          </p>
+          <a href="/ideas.html#quiet-idea-02" class="text-link">Read idea →</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="block wrap">
+      <div class="podcast-shell">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Podcast</p>
+            <h3>Quiet conversations in public.</h3>
+            <p class="text">
+              Episodes about calm work, modern life, incentives, and the kind of ideas that usually stay off the timeline.
+            </p>
+          </div>
+          <a href="/podcast.html" class="text-link">Go to podcast →</a>
+        </div>
+
+        <div class="podcast-grid">
+          <article class="card">
+            <p class="label">Episode 01</p>
+            <h4>Noise Looks Productive</h4>
+            <p>
+              Most people confuse activity with progress. In this episode, we explore how meetings, emails, and constant notifications
+              create an illusion of work while stalling meaningful results.
+            </p>
+          </article>
+
+          <article class="card">
+            <p class="label">Episode 02</p>
+            <h4>Incentives Shape Behaviour</h4>
+            <p>
+              Rules rarely change human behaviour; incentives do. If a system produces poor outcomes, stop blaming the people and start
+              auditing the incentives that drive them.
+            </p>
+          </article>
+        </div>
+
+        <div class="hero-actions">
+          <a href="/podcast.html" class="btn">Listen</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="block wrap">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Shop</p>
+          <h3>Quiet Power products</h3>
+          <p class="text">
+            Selected pieces from the Quiet Power shop — simple, wearable, and built around calm strength.
+          </p>
+        </div>
+        <a href="/shop.html" class="text-link">Visit the shop →</a>
+      </div>
+
+      <div class="shop-grid">
+        <article class="shop-card">
+          <img src="/images/quietpowerteestatementedition.avif" alt="Quiet Power Tee — Statement Edition" />
+          <h4>Quiet Power Tee — Statement Edition</h4>
+          <p>A clean statement piece built around the Quiet Power identity.</p>
+          <a href="https://quiet-power-shop.fourthwall.com/products/quiet-power-tee-statement-edition" target="_blank" rel="noopener" class="btn shop-btn">View product</a>
+        </article>
+
+        <article class="shop-card">
+          <img src="/images/quiet-power-journal.avif" alt="Quiet Power Journal" />
+          <h4>Quiet Power Journal</h4>
+          <p>A journal created for reflection, focus, and clear thinking.</p>
+          <a href="https://quiet-power-shop.fourthwall.com/products/quiet-power-journal" target="_blank" rel="noopener" class="btn shop-btn">View product</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="block wrap">
+      <div class="contact-band">
+        <h3>Let’s build something calm and strong.</h3>
         <p>
-          <a href="/quiet-power.html" class="text-link">Read more about Quiet Power</a>
+          Whether it’s a project, a quiet idea, or just a good conversation, this is the place to reach you.
+          A homepage should end with confidence, not just drift into a footer.
         </p>
+        <div class="hero-actions" style="justify-content:center;">
+          <a href="/contact.html" class="btn">Contact me</a>
+        </div>
+        <div class="footer-note">© 2026 Sabino Pereira — Built with quiet ideas and steady work.</div>
       </div>
     </section>
-
-    <section class="quiet-ideas-preview">
-      <div class="section-heading">
-        <p class="section-kicker">Quiet Ideas</p>
-        <h2>Short observations on modern life.</h2>
-        <p class="section-text">
-          A growing series of reflections on calm thinking, incentives, contradiction,
-          and the patterns people recognise instantly.
-        </p>
-      </div>
-
-      <div class="ideas-preview-grid">
-        <article class="idea-card">
-          <p class="idea-label">Quiet Idea #01</p>
-          <h3>Noise Looks Productive</h3>
-          <p>
-            Most people confuse activity with progress. Meetings, emails, notifications,
-            constant updates.
-          </p>
-          <a href="/ideas.html#quiet-idea-01" class="text-link">Read idea</a>
-        </article>
-
-        <article class="idea-card">
-          <p class="idea-label">Quiet Idea #02</p>
-          <h3>Incentives Shape Behaviour</h3>
-          <p>
-            Most systems try to control behaviour with rules. But behaviour usually
-            follows incentives.
-          </p>
-          <a href="/ideas.html#quiet-idea-02" class="text-link">Read idea</a>
-        </article>
-      </div>
-    </section>
-
-    <section class="podcast-preview">
-      <div class="section-heading">
-        <p class="section-kicker">Podcast</p>
-        <h2>Quiet conversations in public.</h2>
-        <p class="section-text">
-          Episodes about calm work, modern life, incentives, and the kind of ideas
-          that usually stay off the timeline.
-        </p>
-      </div>
-
-      <div class="podcast-grid">
-        <article class="podcast-card">
-          <p class="idea-label">Episode 01</p>
-          <h3>Noise Looks Productive</h3>
-          <p>
-            Most people confuse activity with progress. In this episode, we explore how meetings,
-            emails, and constant notifications create an illusion of work while stalling meaningful
-            results. Learn why real progress only happens when you stop the cycle of reaction and
-            start the process of deliberate thinking.
-          </p>
-        </article>
-
-        <article class="podcast-card">
-          <p class="idea-label">Episode 02</p>
-          <h3>Incentives Shape Behaviour</h3>
-          <p>
-            Rules rarely change human behaviour; incentives do. This episode dives into the architecture
-            of systems and explains why people naturally gravitate toward what is rewarded. If a system
-            produces poor outcomes, we must stop blaming the people and start auditing the incentives
-            that drive them.
-          </p>
-        </article>
-      </div>
-
-      <p>
-        <a href="/podcast.html" class="btn-primary">Listen</a>
-      </p>
-    </section>
-
-    <section class="shop-page">
-      <div class="section-heading">
-        <p class="section-kicker">Shop</p>
-        <h2>Quiet Power products</h2>
-        <p class="section-text">
-          Selected pieces from the Quiet Power shop — simple, wearable, and built around calm strength.
-        </p>
-      </div>
-
-      <article class="shop-card">
-        <img src="/images/quietpowerteestatementedition.avif" alt="Quiet Power Tee — Statement Edition">
-        <h3>Quiet Power Tee — Statement Edition</h3>
-        <p>A clean statement piece built around the Quiet Power identity.</p>
-        <p>
-          <a href="https://quiet-power-shop.fourthwall.com/products/quiet-power-tee-statement-edition"
-             target="_blank" rel="noopener" class="btn-primary">View product</a>
-        </p>
-      </article>
-
-      <article class="shop-card">
-        <img src="/images/quiet-power-journal.avif" alt="Quiet Power Journal">
-        <h3>Quiet Power Journal</h3>
-        <p>A journal created for reflection, focus, and clear thinking.</p>
-        <p>
-          <a href="https://quiet-power-shop.fourthwall.com/products/quiet-power-journal"
-             target="_blank" rel="noopener" class="btn-primary">View product</a>
-        </p>
-      </article>
-    </section>
-
-    <section class="contact-section">
-      <h2>Let’s build something calm and strong.</h2>
-      <p>
-        Whether it’s a project, a quiet idea, or just a good conversation,
-        this is the place to reach me.
-      </p>
-
-      <p>
-        <a href="/contact.html" class="btn-primary">Contact me</a>
-      </p>
-
-      <p class="footer-note">
-        © 2026 Sabino Pereira — Built with quiet ideas and steady work.
-      </p>
-    </section>
-
   </main>
 
+  <footer class="wrap"></footer>
 </body>
 </html>
