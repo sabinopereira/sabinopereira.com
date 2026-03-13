@@ -1,114 +1,157 @@
 /* Branding / header avatar */
 .branding-wrap{
-    display: flex;
-    align-items: center;
-    gap: 14px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
 }
 
 .site-avatar{
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    object-fit: cover;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        object-fit: cover;
 }
 
 /* Home hero actions (já não usado, podes reaproveitar no futuro) */
 .hero-actions{
-    margin-top: 1.5rem;
-    display: flex;
-    gap: 0.9rem;
-    flex-wrap: wrap;
-    justify-content: center;
+        margin-top: 1.5rem;
+        display: flex;
+        gap: 0.9rem;
+        flex-wrap: wrap;
+        justify-content: center;
 }
 
 /* Shared section helpers */
 .section-kicker{
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: #8a7f73;
-    margin-bottom: 0.6rem;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: #8a7f73;
+        margin-bottom: 0.6rem;
 }
 
 .section-heading{
-    text-align: center;
-    max-width: 760px;
-    margin: 0 auto 2.2rem auto;
+        text-align: center;
+        max-width: 760px;
+        margin: 0 auto 2.2rem auto;
 }
 
 .section-heading h2{
-    margin-bottom: 0.8rem;
+        margin-bottom: 0.8rem;
 }
 
 .section-text{
-    font-size: 1.02rem;
-    color: #5f5a54;
-    line-height: 1.75;
+        font-size: 1.02rem;
+        color: #5f5a54;
+        line-height: 1.75;
 }
 
 .section-action{
-    margin-top: 2rem;
-    text-align: center;
+        margin-top: 2rem;
+        text-align: center;
 }
 
 .text-link{
-    display: inline-block;
-    margin-top: 0.8rem;
-    color: #2f2a26;
-    font-weight: 600;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(47,42,38,0.25);
-    transition: color 0.2s ease, border-color 0.2s ease;
+        display: inline-block;
+        margin-top: 0.8rem;
+        color: #2f2a26;
+        font-weight: 600;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(47,42,38,0.25);
+        transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .text-link:hover{
-    color: #000;
-    border-color: rgba(0,0,0,0.5);
+        color: #000;
+        border-color: rgba(0,0,0,0.5);
 }
 
 /* Homepage hero */
 .home-intro{
-    margin-top: 3rem;
-    margin-bottom: 2rem;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
 }
 
 .page-kicker{
-    color: #777777;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.9rem;
+        color: #777777;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.9rem;
 }
 
 /* Featured book (minimal) */
 .featured-book-home{
-    margin-top: 2.5rem;
-    padding: 2.5rem 0;
+        margin-top: 2.5rem;
+        padding: 2.5rem 0;
 }
 
 .section-heading-left{
-    max-width: 720px;
-    margin-left: 0;
-    margin-right: auto;
+        max-width: 720px;
+        margin-left: 0;
+        margin-right: auto;
 }
 
 /* Quiet Ideas preview */
 .quiet-ideas-preview{
-    margin-top: 4.8rem;
+        margin-top: 4.8rem;
 }
 
 .ideas-preview-grid{
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.4rem;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.4rem;
 }
 
-.idea-card{
-    background-color: #fafafa;
-    border: 1px solid #e0e0e0;
-    border-radius: 20px;
-    padding: 1.5rem 1.4rem;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+.idea-card, .podcast-card{
+        background-color: #fafafa;
+        border: 1px solid #e0e0e0;
+        border-radius: 20px;
+        padding: 1.5rem 1.4rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .idea-card:hover{
-    transform:
+        transform: translateY(-2px);
+        box-shadow: 0 12px 26px rgba(0,0,0,0.06);
+        border-color: rgba(60,50,40,0.14);
+}
+
+.idea-label{
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #8a7f73;
+        margin-bottom: 0.7rem;
+}
+
+.idea-card h3, .podcast-card h3{
+        margin-bottom: 0.75rem;
+        font-size: 1.3rem;
+        line-height: 1.3;
+}
+
+.idea-card p, .podcast-card p{
+        color: #5f5a54;
+        line-height: 1.75;
+        margin-bottom: 0;
+}
+
+/* Global image guard-rail */
+img{
+        max-width: 100%;
+        height: auto;
+}
+
+/* Shop card images */
+.shop-card img{
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+        display: block;
+}
+
+/* Contact section */
+.contact-section{
+        margin-top: 6rem;
+        text-align: center;
+}
