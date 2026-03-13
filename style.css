@@ -622,3 +622,24 @@ main,
   display: block;
   margin-bottom: 1rem;
 }
+.shop-intro {
+  text-align: center;
+}
+
+.shop-collection-hero {
+  margin: 2.5rem auto 2rem;
+}
+
+.shop-collection-images {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.shop-collection-images img {
+  max-width: 260px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
