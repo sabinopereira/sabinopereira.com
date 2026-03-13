@@ -349,3 +349,23 @@
   letter-spacing: 0.08em;
   font-size: 0.9rem;
 }
+.home-intro {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.podcast-preview {
+  padding: 3.5rem 0;
+}
+
+.podcast-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.podcast-card {
+  border: 1px solid #e0e0e0;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: #fafafa;
+}
