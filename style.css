@@ -482,7 +482,7 @@ main,
 
 /* Contact */
 .contact-section{
-  margin:3rem auto 1rem;
+  margin:3rem auto 2.5rem; /* em vez de 1rem */
   background:linear-gradient(135deg, rgba(255,255,255,.6), rgba(255,255,255,.34));
   border:1px solid var(--line);
   border-radius:32px;
