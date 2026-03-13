@@ -646,3 +646,7 @@ main,
   display: block;
   margin: 0 auto 1rem;
 }
+.btn-store {
+  font-weight: 700;
+  padding-inline: 1.8rem;
+}
