@@ -155,3 +155,40 @@ img{
         margin-top: 6rem;
         text-align: center;
 }
+.hero-grid{
+display:grid;
+grid-template-columns: 420px 1fr;
+gap:60px;
+align-items:center;
+}
+
+.hero-book img{
+width:100%;
+max-width:420px;
+filter: drop-shadow(0 30px 45px rgba(0,0,0,0.18));
+}
+
+.hero-title{
+font-size:56px;
+line-height:1.1;
+margin-bottom:20px;
+}
+
+.hero-description{
+max-width:520px;
+font-size:18px;
+color:#5a5a5a;
+margin-bottom:30px;
+}
+
+.hero-buttons{
+display:flex;
+gap:15px;
+}
+
+.btn-secondary{
+padding:12px 20px;
+border-radius:25px;
+border:1px solid #ccc;
+background:#f4f1ec;
+}
