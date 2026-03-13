@@ -296,3 +296,14 @@ featured-book-home{
     margin-top: 5rem;
     text-align: center;
 }
+.section-heading-left{
+    max-width: 720px;
+    margin-left: 0;
+    margin-right: auto;
+}
+
+@media (min-width: 768px){
+  .section-heading-left{
+    text-align: left;
+  }
+}
