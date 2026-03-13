@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Observational Series — Sabino Pereira</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="Observational series by Sabino Pereira — short audio on daily contradictions and social behaviour.">
+  <meta name="author" content="Sabino Pereira">
+
+  <link rel="canonical" href="https://sabinopereira.com/podcast-observational.html">
+  <link rel="icon" type="image/png" href="/images/avatar.png">
+  <link rel="apple-touch-icon" href="/images/avatar.png">
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="branding-wrap">
+    <img src="/images/avatar.png" alt="Sabino Pereira" class="site-avatar">
+    <div>
+      <h1 class="branding-title">Sabino Pereira</h1>
+      <p class="branding-subtitle">BOOKS · DESIGN · QUIET IDEAS</p>
+    </div>
+  </div>
+
+  <nav class="site-nav">
+    <a href="/index.html">Home</a>
+    <a href="/books.html">Books</a>
+    <a href="/ideas.html">Ideas</a>
+    <a href="/podcast.html" class="active">Podcast</a>
+    <a href="/about.html">About</a>
+    <a href="/shop.html">Shop</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="page-intro">
+  <p class="page-kicker">Podcast · Observational</p>
+  <h2 class="page-title">Observational series</h2>
+  <p class="page-text">
+    Short-form episodes about daily contradictions, social behaviour, and patterns people recognise instantly.
+  </p>
+</section>
+
+<section class="about-page">
+  <div class="about-layout">
+    <div class="about-text">
+      <p>
+        The observational series looks at the small glitches of daily life:
+        social habits, quiet tensions, and behaviours we all recognise but rarely name.
+      </p>
+      <p>
+        Episodes are short, focused, and built for listeners who enjoy noticing patterns in how people move through the world.
+      </p>
+
+      <div class="about-block">
+        <h3>Episodes</h3>
+        <p>
+          The first short episodes and listening links will be added here as the project grows.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section">
+  <h2>Short episodes, clear observations.</h2>
+  <p>
+    If you'd like to suggest topics or situations for future episodes, you're welcome to reach out.
+  </p>
+  <p>
+    <a href="/contact.html" class="btn-primary">Contact me</a>
+    <a href="/ideas.html" class="btn-secondary">Read Quiet Ideas</a>
+  </p>
+  <p class="footer-note">
+    © 2026 Sabino Pereira — Built with quiet ideas and steady work.
+  </p>
+</section>
+
+</body>
+</html>
