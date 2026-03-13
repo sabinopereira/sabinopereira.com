@@ -428,15 +428,15 @@ main,
   margin-top:1.5rem;
 }
 
-/* Shop */
+/* Shop (home section) */
 .shop-section{
   padding:1.5rem 0;
 }
 
 .shop-grid{
   display:grid;
-  grid-template-columns:repeat(2, minmax(0,1fr));
-  gap:1.25rem;
+  gap:2rem;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .shop-card{
@@ -446,6 +446,7 @@ main,
   padding:1rem;
   box-shadow:0 12px 30px rgba(47,38,31,.06);
   transition:.25s ease;
+  text-align:center;
 }
 
 .shop-card:hover{
@@ -477,7 +478,6 @@ main,
 
 .shop-card .btn{
   margin-top:1rem;
-  width:100%;
 }
 
 /* Contact */
@@ -615,13 +615,8 @@ main,
     grid-template-columns:1fr;
   }
 }
-.shop-image {
-  max-width: 260px;
-  width: 100%;
-  height: auto;
-  display: block;
-  margin-bottom: 1rem;
-}
+
+/* Shop page specific */
 .shop-intro {
   text-align: center;
 }
@@ -642,4 +637,12 @@ main,
   width: 100%;
   height: auto;
   display: block;
+}
+
+.shop-image {
+  max-width: 240px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem;
 }
