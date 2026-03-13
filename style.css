@@ -339,3 +339,13 @@
         margin: 0 auto;
     }
 }
+.home-intro {
+  margin-top: 3rem; /* ajusta para mais/menos espaço */
+}
+
+.page-kicker {
+  color: #777777;   /* cinza suave para contraste */
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.9rem;
+}
