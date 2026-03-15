@@ -617,7 +617,7 @@ main,
 }
 
 /* Shop page specific */
-.shop-intro {
+.shop-intro, .page-intro {
   text-align: center;
 }
 
