@@ -1,155 +1,249 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Test — Quiet Power</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/style.css">
-</head>
+/* ===== Quiet Power Test v1 ===== */
 
-<body>
+.qp-test-section {
+  width: min(calc(100% - 2rem), var(--max));
+  margin: 0 auto 3rem;
+  padding: 3rem 0 1rem;
+  text-align: center;
+}
 
-<header class="site-header">
-  <div class="branding-wrap">
-    <img src="/images/avatar.png" alt="Sabino Pereira" class="site-avatar">
-    <div>
-      <h1 class="branding-title">Sabino Pereira</h1>
-      <p class="branding-subtitle">QUIET POWER</p>
-    </div>
-  </div>
+.qp-test-card {
+  max-width: 760px;
+  margin: 2rem auto 0;
+  padding: 2rem;
+  background: rgba(255,255,255,.56);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  box-shadow: 0 12px 30px rgba(47,38,31,.06);
+}
 
-  <nav class="site-nav">
-    <a href="/index.html">Home</a>
-    <a href="/ideas.html">Ideas</a>
-    <a href="/books.html">Books</a>
-    <a href="/podcast.html">Podcast</a>
-    <a href="/about.html">About</a>
-    <a href="/contact.html">Contact</a>
-    <a href="/test.html" class="active">Test</a>
-  </nav>
-</header>
+.qp-progress-wrap {
+  margin-bottom: 1.8rem;
+  text-align: left;
+}
 
-<section class="qp-test-section">
+.qp-progress-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: .7rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .86rem;
+  color: var(--muted);
+}
 
-  <p class="page-kicker">Quiet Power</p>
-  <h2 class="page-title">Test your reaction.</h2>
-  <p class="page-text">
-    A small scenario. A real choice. Notice your first instinct.
-  </p>
+.qp-progress-track {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(47,38,31,.08);
+  overflow: hidden;
+}
 
-  <div class="qp-test-card">
+.qp-progress-bar {
+  width: 0;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2f261f 0%, #5a4d43 100%);
+  transition: width .4s ease;
+}
 
-    <p class="qp-test-scenario">
-      You receive a message that triggers you.
-    </p>
+.qp-test-scenario {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.35;
+  color: var(--ink);
+}
 
-    <p class="qp-test-instruction">
-      What do you do first?
-    </p>
+.qp-test-actions {
+  display: flex;
+  flex-direction: column;
+  gap: .9rem;
+  margin-top: 1.5rem;
+}
 
-    <div class="qp-test-actions">
-      <button id="btn-react" class="qp-btn qp-btn-react" onclick="chooseOption('react')">
-        React now
-      </button>
+.qp-answer-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255,255,255,.88);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .98rem;
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
 
-      <button id="btn-pause" class="qp-btn qp-btn-pause" onclick="chooseOption('pause')">
-        Pause first
-      </button>
-    </div>
+.qp-answer-btn:hover {
+  transform: translateY(-2px);
+  background: #fff;
+  border-color: rgba(47,38,31,.18);
+  box-shadow: 0 10px 24px rgba(47,38,31,.08);
+}
 
-    <p class="qp-choice-hint">
-      One gives relief. The other gives control.
-    </p>
+.qp-choice-hint {
+  margin: 1rem 0 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .94rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
 
-    <div id="qp-result" class="qp-result hidden">
+.qp-result {
+  margin-top: .5rem;
+}
 
-      <p id="qp-result-text"></p>
+.hidden {
+  display: none !important;
+}
 
-      <div class="qp-bars">
-        <div class="qp-bar">
-          <span>Reactivity</span>
-          <div class="qp-bar-track">
-            <div id="bar-react" class="qp-bar-fill react"></div>
-          </div>
-        </div>
+.qp-result-label {
+  margin: 0 0 .55rem;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+  font-size: .76rem;
+}
 
-        <div class="qp-bar">
-          <span>Control</span>
-          <div class="qp-bar-track">
-            <div id="bar-control" class="qp-bar-fill control"></div>
-          </div>
-        </div>
-      </div>
+.qp-profile-title {
+  margin: 0;
+  font-size: 2.2rem;
+  line-height: 1.05;
+  letter-spacing: -.03em;
+}
 
-      <p class="qp-result-note" id="qp-result-note">
-        Most people choose speed. Few choose control.
-      </p>
+.qp-profile-text {
+  max-width: 620px;
+  margin: 1rem auto 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.85;
+  color: #544a43;
+}
 
-      <div class="qp-test-links">
-        <a href="/ideas.html" class="btn-outline">Explore the Ideas</a>
-        <a href="/podcast.html" class="btn">Listen to the Podcast</a>
-      </div>
+.qp-score-block {
+  margin-top: 1.5rem;
+}
 
-      <div class="qp-test-reset-wrap">
-        <button class="qp-reset-btn" onclick="resetTest()">
-          Try again
-        </button>
-      </div>
+.qp-score-line {
+  margin: 0 0 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+}
 
-    </div>
+.qp-bars {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
 
-  </div>
+.qp-bar {
+  text-align: left;
+}
 
-</section>
+.qp-bar span {
+  display: block;
+  margin-bottom: .45rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .92rem;
+  color: var(--muted);
+}
 
-<script>
-function chooseOption(choice) {
-  const result = document.getElementById("qp-result");
-  const text = document.getElementById("qp-result-text");
-  const note = document.getElementById("qp-result-note");
-  const btnReact = document.getElementById("btn-react");
-  const btnPause = document.getElementById("btn-pause");
-  const barReact = document.getElementById("bar-react");
-  const barControl = document.getElementById("bar-control");
+.qp-bar-track {
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(47,38,31,.08);
+  overflow: hidden;
+}
 
-  result.classList.remove("hidden");
+.qp-bar-fill {
+  width: 0;
+  height: 100%;
+  border-radius: 999px;
+  transition: width .7s ease;
+}
 
-  btnReact.classList.remove("is-selected");
-  btnPause.classList.remove("is-selected");
+.qp-bar-reactivity {
+  background: linear-gradient(90deg, #7a2e2e 0%, #b24a4a 100%);
+}
 
-  if (choice === "react") {
-    text.innerHTML = "You chose speed. It feels powerful in the moment, but often costs clarity.";
-    note.innerHTML = "Most people choose immediate relief. Fewer choose distance and judgment.";
-    btnReact.classList.add("is-selected");
-    barReact.style.width = "68%";
-    barControl.style.width = "32%";
-  } else {
-    text.innerHTML = "You chose control. The pause creates space, and space creates leverage.";
-    note.innerHTML = "Most people react fast. Fewer slow down enough to see clearly.";
-    btnPause.classList.add("is-selected");
-    barReact.style.width = "68%";
-    barControl.style.width = "32%";
+.qp-bar-quiet {
+  background: linear-gradient(90deg, #2f5f49 0%, #4f8f72 100%);
+}
+
+.qp-result-note {
+  margin: 1rem 0 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .94rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.qp-test-links {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+  justify-content: center;
+}
+
+.qp-test-reset-wrap {
+  margin-top: 1rem;
+}
+
+.qp-reset-btn {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  padding: .75rem 1rem;
+  border-radius: 999px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .94rem;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, transform .2s ease;
+}
+
+.qp-reset-btn:hover {
+  background: rgba(255,255,255,.7);
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 760px) {
+  .qp-test-section {
+    padding: 2.2rem 0 1rem;
+  }
+
+  .qp-test-card {
+    padding: 1.3rem;
+    border-radius: 22px;
+  }
+
+  .qp-progress-meta {
+    flex-direction: column;
+    gap: .35rem;
+  }
+
+  .qp-test-scenario {
+    font-size: 1.15rem;
+  }
+
+  .qp-profile-title {
+    font-size: 1.8rem;
+  }
+
+  .qp-test-links {
+    flex-direction: column;
+  }
+
+  .qp-test-links a,
+  .qp-reset-btn {
+    width: 100%;
   }
 }
-
-function resetTest() {
-  const result = document.getElementById("qp-result");
-  const text = document.getElementById("qp-result-text");
-  const note = document.getElementById("qp-result-note");
-  const btnReact = document.getElementById("btn-react");
-  const btnPause = document.getElementById("btn-pause");
-  const barReact = document.getElementById("bar-react");
-  const barControl = document.getElementById("bar-control");
-
-  result.classList.add("hidden");
-  text.innerHTML = "";
-  note.innerHTML = "Most people choose speed. Few choose control.";
-  btnReact.classList.remove("is-selected");
-  btnPause.classList.remove("is-selected");
-  barReact.style.width = "0";
-  barControl.style.width = "0";
-}
-</script>
-
-</body>
-</html>
