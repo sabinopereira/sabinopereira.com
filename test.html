@@ -21,6 +21,10 @@
   <nav class="site-nav">
     <a href="/index.html">Home</a>
     <a href="/ideas.html">Ideas</a>
+    <a href="/books.html">Books</a>
+    <a href="/podcast.html">Podcast</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
     <a href="/test.html" class="active">Test</a>
   </nav>
 </header>
@@ -30,7 +34,7 @@
   <p class="page-kicker">Quiet Power</p>
   <h2 class="page-title">Test your reaction.</h2>
   <p class="page-text">
-    Most people react. Few stay in control.
+    A small scenario. A real choice. Notice your first instinct.
   </p>
 
   <div class="qp-test-card">
@@ -39,37 +43,52 @@
       You receive a message that triggers you.
     </p>
 
+    <p class="qp-test-instruction">
+      What do you do first?
+    </p>
+
     <div class="qp-test-actions">
-      <button class="qp-btn" onclick="chooseOption('react')">
-        React immediately
+      <button class="qp-btn qp-btn-react" onclick="chooseOption('react')">
+        React now
       </button>
 
-      <button class="qp-btn qp-btn-secondary" onclick="chooseOption('pause')">
-        Pause and respond later
+      <button class="qp-btn qp-btn-pause" onclick="chooseOption('pause')">
+        Pause first
       </button>
     </div>
+
+    <p class="qp-choice-hint">
+      One choice gives relief. The other gives leverage.
+    </p>
 
     <div id="qp-result" class="qp-result hidden">
 
       <p id="qp-result-text"></p>
 
       <div class="qp-bars">
-
         <div class="qp-bar">
           <span>Reactivity</span>
-          <div class="qp-bar-fill react"></div>
+          <div class="qp-bar-track">
+            <div class="qp-bar-fill react"></div>
+          </div>
         </div>
 
         <div class="qp-bar">
           <span>Control</span>
-          <div class="qp-bar-fill control"></div>
+          <div class="qp-bar-track">
+            <div class="qp-bar-fill control"></div>
+          </div>
         </div>
-
       </div>
 
-      <p class="qp-result-note">
+      <p class="qp-result-note" id="qp-result-note">
         Most people choose speed. Few choose control.
       </p>
+
+      <div class="qp-test-links">
+        <a href="/ideas.html" class="btn-outline">Explore the Ideas</a>
+        <a href="/podcast.html" class="btn">Listen to the Podcast</a>
+      </div>
 
     </div>
 
@@ -81,13 +100,16 @@
 function chooseOption(choice) {
   const result = document.getElementById("qp-result");
   const text = document.getElementById("qp-result-text");
+  const note = document.getElementById("qp-result-note");
 
   result.classList.remove("hidden");
 
   if (choice === "react") {
-    text.innerHTML = "You chose speed. Cost: control.";
+    text.innerHTML = "You chose speed. It feels powerful in the moment, but often costs clarity.";
+    note.innerHTML = "Most people choose immediate relief. Fewer choose distance and judgment.";
   } else {
-    text.innerHTML = "You chose control. Result: leverage.";
+    text.innerHTML = "You chose control. The pause creates space, and space creates leverage.";
+    note.innerHTML = "Most people react fast. Fewer slow down enough to see clearly.";
   }
 }
 </script>
