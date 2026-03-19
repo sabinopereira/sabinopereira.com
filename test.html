@@ -1,249 +1,263 @@
-/* ===== Quiet Power Test v1 ===== */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test — Quiet Power</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/style.css">
+</head>
 
-.qp-test-section {
-  width: min(calc(100% - 2rem), var(--max));
-  margin: 0 auto 3rem;
-  padding: 3rem 0 1rem;
-  text-align: center;
-}
+<body>
 
-.qp-test-card {
-  max-width: 760px;
-  margin: 2rem auto 0;
-  padding: 2rem;
-  background: rgba(255,255,255,.56);
-  border: 1px solid var(--line);
-  border-radius: 28px;
-  box-shadow: 0 12px 30px rgba(47,38,31,.06);
-}
+<header class="site-header">
+  <div class="branding-wrap">
+    <img src="/images/avatar.png" alt="Sabino Pereira" class="site-avatar">
+    <div>
+      <h1 class="branding-title">Sabino Pereira</h1>
+      <p class="branding-subtitle">QUIET POWER</p>
+    </div>
+  </div>
 
-.qp-progress-wrap {
-  margin-bottom: 1.8rem;
-  text-align: left;
-}
+  <nav class="site-nav">
+    <a href="/index.html">Home</a>
+    <a href="/ideas.html">Ideas</a>
+    <a href="/books.html">Books</a>
+    <a href="/podcast.html">Podcast</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/test.html" class="active">Test</a>
+  </nav>
+</header>
 
-.qp-progress-meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: .7rem;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: .86rem;
-  color: var(--muted);
-}
+<section class="qp-test-section">
+  <p class="page-kicker">Quiet Power</p>
+  <h2 class="page-title">Measure your Quiet Power.</h2>
+  <p class="page-text">
+    7 short questions. One honest result.
+  </p>
 
-.qp-progress-track {
-  width: 100%;
-  height: 10px;
-  border-radius: 999px;
-  background: rgba(47,38,31,.08);
-  overflow: hidden;
-}
+  <div class="qp-test-card">
 
-.qp-progress-bar {
-  width: 0;
-  height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #2f261f 0%, #5a4d43 100%);
-  transition: width .4s ease;
-}
+    <div class="qp-progress-wrap">
+      <div class="qp-progress-meta">
+        <span id="qp-level-label">Level 1 — Reaction</span>
+        <span id="qp-question-count">Question 1 of 7</span>
+      </div>
+      <div class="qp-progress-track">
+        <div id="qp-progress-bar" class="qp-progress-bar"></div>
+      </div>
+    </div>
 
-.qp-test-scenario {
-  margin: 0;
-  font-size: 1.5rem;
-  line-height: 1.35;
-  color: var(--ink);
-}
+    <div id="qp-question-screen">
+      <p id="qp-question-text" class="qp-test-scenario"></p>
 
-.qp-test-actions {
-  display: flex;
-  flex-direction: column;
-  gap: .9rem;
-  margin-top: 1.5rem;
-}
+      <div id="qp-options" class="qp-test-actions"></div>
 
-.qp-answer-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 1rem 1.2rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(255,255,255,.88);
-  color: var(--ink);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: .98rem;
-  cursor: pointer;
-  transition: transform .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
-}
+      <p class="qp-choice-hint">
+        Choose the answer that feels most true, not most flattering.
+      </p>
+    </div>
 
-.qp-answer-btn:hover {
-  transform: translateY(-2px);
-  background: #fff;
-  border-color: rgba(47,38,31,.18);
-  box-shadow: 0 10px 24px rgba(47,38,31,.08);
-}
+    <div id="qp-result-screen" class="qp-result hidden">
+      <p class="qp-result-label">Your Quiet Power Profile</p>
+      <h3 id="qp-profile-title" class="qp-profile-title"></h3>
+      <p id="qp-profile-text" class="qp-profile-text"></p>
 
-.qp-choice-hint {
-  margin: 1rem 0 0;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: .94rem;
-  line-height: 1.7;
-  color: var(--muted);
-}
+      <div class="qp-score-block">
+        <p class="qp-score-line">
+          Your score: <strong id="qp-score-value"></strong> / 14
+        </p>
 
-.qp-result {
-  margin-top: .5rem;
-}
+        <div class="qp-bars">
+          <div class="qp-bar">
+            <span>Reactivity</span>
+            <div class="qp-bar-track">
+              <div id="qp-bar-reactivity" class="qp-bar-fill qp-bar-reactivity"></div>
+            </div>
+          </div>
 
-.hidden {
-  display: none !important;
-}
+          <div class="qp-bar">
+            <span>Quiet Power</span>
+            <div class="qp-bar-track">
+              <div id="qp-bar-quiet" class="qp-bar-fill qp-bar-quiet"></div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-.qp-result-label {
-  margin: 0 0 .55rem;
-  font-family: Arial, Helvetica, sans-serif;
-  text-transform: uppercase;
-  letter-spacing: .12em;
-  color: var(--muted);
-  font-size: .76rem;
-}
+      <p id="qp-result-note" class="qp-result-note"></p>
 
-.qp-profile-title {
-  margin: 0;
-  font-size: 2.2rem;
-  line-height: 1.05;
-  letter-spacing: -.03em;
-}
+      <div class="qp-test-links">
+        <a href="/ideas.html" class="btn-outline">Explore the Ideas</a>
+        <a href="/podcast.html" class="btn">Listen to the Podcast</a>
+      </div>
 
-.qp-profile-text {
-  max-width: 620px;
-  margin: 1rem auto 0;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
-  line-height: 1.85;
-  color: #544a43;
-}
+      <div class="qp-test-reset-wrap">
+        <button class="qp-reset-btn" onclick="restartTest()">Try again</button>
+      </div>
+    </div>
 
-.qp-score-block {
-  margin-top: 1.5rem;
-}
+  </div>
+</section>
 
-.qp-score-line {
-  margin: 0 0 1rem;
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--ink);
-}
+<script>
+  const questions = [
+    {
+      level: "Level 1 — Reaction",
+      text: "Your phone vibrates during an important conversation.",
+      options: [
+        { label: "Check it immediately", score: 0 },
+        { label: "Notice it, resist", score: 1 },
+        { label: "Don’t even register it", score: 2 }
+      ]
+    },
+    {
+      level: "Level 1 — Reaction",
+      text: "A problem appears during a relaxed moment.",
+      options: [
+        { label: "Stress instantly", score: 0 },
+        { label: "Act without thinking", score: 1 },
+        { label: "Pause before reacting", score: 2 }
+      ]
+    },
+    {
+      level: "Level 2 — Energy",
+      text: "You suddenly have free time.",
+      options: [
+        { label: "Fill it with noise", score: 0 },
+        { label: "Try to stay productive", score: 1 },
+        { label: "Accept the silence", score: 2 }
+      ]
+    },
+    {
+      level: "Level 2 — Energy",
+      text: "Someone criticises you.",
+      options: [
+        { label: "React immediately", score: 0 },
+        { label: "Think about it for hours", score: 1 },
+        { label: "Stay detached", score: 2 }
+      ]
+    },
+    {
+      level: "Level 3 — Control",
+      text: "A trend appears while you're building something.",
+      options: [
+        { label: "Change direction", score: 0 },
+        { label: "Feel anxious", score: 1 },
+        { label: "Stay your course", score: 2 }
+      ]
+    },
+    {
+      level: "Level 3 — Control",
+      text: "A productive day is:",
+      options: [
+        { label: "Non-stop activity", score: 0 },
+        { label: "Many tasks done", score: 1 },
+        { label: "Clear essential progress", score: 2 }
+      ]
+    },
+    {
+      level: "Level 3 — Control",
+      text: "Your mind feels like:",
+      options: [
+        { label: "Constant noise", score: 0 },
+        { label: "Useful but unstable", score: 1 },
+        { label: "A calm tool", score: 2 }
+      ]
+    }
+  ];
 
-.qp-bars {
-  display: grid;
-  gap: 1rem;
-  margin-top: 1.2rem;
-}
+  let currentQuestion = 0;
+  let totalScore = 0;
 
-.qp-bar {
-  text-align: left;
-}
+  const levelLabel = document.getElementById("qp-level-label");
+  const questionCount = document.getElementById("qp-question-count");
+  const progressBar = document.getElementById("qp-progress-bar");
+  const questionText = document.getElementById("qp-question-text");
+  const optionsWrap = document.getElementById("qp-options");
+  const questionScreen = document.getElementById("qp-question-screen");
+  const resultScreen = document.getElementById("qp-result-screen");
 
-.qp-bar span {
-  display: block;
-  margin-bottom: .45rem;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: .92rem;
-  color: var(--muted);
-}
+  function renderQuestion() {
+    const q = questions[currentQuestion];
+    const progressPercent = ((currentQuestion) / questions.length) * 100;
 
-.qp-bar-track {
-  width: 100%;
-  height: 12px;
-  border-radius: 999px;
-  background: rgba(47,38,31,.08);
-  overflow: hidden;
-}
+    levelLabel.textContent = q.level;
+    questionCount.textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+    progressBar.style.width = `${progressPercent}%`;
+    questionText.textContent = q.text;
 
-.qp-bar-fill {
-  width: 0;
-  height: 100%;
-  border-radius: 999px;
-  transition: width .7s ease;
-}
+    optionsWrap.innerHTML = "";
 
-.qp-bar-reactivity {
-  background: linear-gradient(90deg, #7a2e2e 0%, #b24a4a 100%);
-}
-
-.qp-bar-quiet {
-  background: linear-gradient(90deg, #2f5f49 0%, #4f8f72 100%);
-}
-
-.qp-result-note {
-  margin: 1rem 0 0;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: .94rem;
-  line-height: 1.7;
-  color: var(--muted);
-}
-
-.qp-test-links {
-  margin-top: 1.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: .8rem;
-  justify-content: center;
-}
-
-.qp-test-reset-wrap {
-  margin-top: 1rem;
-}
-
-.qp-reset-btn {
-  background: transparent;
-  border: 1px solid var(--line);
-  color: var(--muted);
-  padding: .75rem 1rem;
-  border-radius: 999px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: .94rem;
-  cursor: pointer;
-  transition: background .2s ease, color .2s ease, transform .2s ease;
-}
-
-.qp-reset-btn:hover {
-  background: rgba(255,255,255,.7);
-  color: var(--ink);
-  transform: translateY(-1px);
-}
-
-@media (max-width: 760px) {
-  .qp-test-section {
-    padding: 2.2rem 0 1rem;
+    q.options.forEach((option) => {
+      const button = document.createElement("button");
+      button.className = "qp-btn qp-answer-btn";
+      button.textContent = option.label;
+      button.onclick = () => handleAnswer(option.score);
+      optionsWrap.appendChild(button);
+    });
   }
 
-  .qp-test-card {
-    padding: 1.3rem;
-    border-radius: 22px;
+  function handleAnswer(score) {
+    totalScore += score;
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+      renderQuestion();
+    } else {
+      showResult();
+    }
   }
 
-  .qp-progress-meta {
-    flex-direction: column;
-    gap: .35rem;
+  function showResult() {
+    questionScreen.classList.add("hidden");
+    resultScreen.classList.remove("hidden");
+    progressBar.style.width = "100%";
+    questionCount.textContent = `Completed`;
+    levelLabel.textContent = "Final Result";
+
+    const profileTitle = document.getElementById("qp-profile-title");
+    const profileText = document.getElementById("qp-profile-text");
+    const scoreValue = document.getElementById("qp-score-value");
+    const resultNote = document.getElementById("qp-result-note");
+    const barReactivity = document.getElementById("qp-bar-reactivity");
+    const barQuiet = document.getElementById("qp-bar-quiet");
+
+    scoreValue.textContent = totalScore;
+
+    const quietPercent = (totalScore / 14) * 100;
+    const reactivePercent = 100 - quietPercent;
+
+    barQuiet.style.width = `${quietPercent}%`;
+    barReactivity.style.width = `${reactivePercent}%`;
+
+    if (totalScore <= 4) {
+      profileTitle.textContent = "Scattered Soul";
+      profileText.textContent = "You live in reaction. The world sets your pace, and your attention gets pulled in too many directions at once.";
+      resultNote.textContent = "Quiet Power starts by reclaiming your attention before the world spends it for you.";
+    } else if (totalScore <= 9) {
+      profileTitle.textContent = "Focused Warrior";
+      profileText.textContent = "You already fight for focus, but it still costs you energy. You know what matters, yet noise still gets through.";
+      resultNote.textContent = "Your next step is not more effort. It is more clarity, more calm, and less friction.";
+    } else {
+      profileTitle.textContent = "Quiet Master";
+      profileText.textContent = "You move with control. Presence is your advantage, and you are less ruled by urgency, noise, or outside pressure.";
+      resultNote.textContent = "Quiet Power is already part of how you move. Now the game is depth, consistency, and leverage.";
+    }
   }
 
-  .qp-test-scenario {
-    font-size: 1.15rem;
+  function restartTest() {
+    currentQuestion = 0;
+    totalScore = 0;
+
+    questionScreen.classList.remove("hidden");
+    resultScreen.classList.add("hidden");
+
+    renderQuestion();
   }
 
-  .qp-profile-title {
-    font-size: 1.8rem;
-  }
+  renderQuestion();
+</script>
 
-  .qp-test-links {
-    flex-direction: column;
-  }
-
-  .qp-test-links a,
-  .qp-reset-btn {
-    width: 100%;
-  }
-}
+</body>
+</html>
