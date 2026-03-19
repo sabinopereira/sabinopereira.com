@@ -48,17 +48,17 @@
     </p>
 
     <div class="qp-test-actions">
-      <button class="qp-btn qp-btn-react" onclick="chooseOption('react')">
+      <button id="btn-react" class="qp-btn qp-btn-react" onclick="chooseOption('react')">
         React now
       </button>
 
-      <button class="qp-btn qp-btn-pause" onclick="chooseOption('pause')">
+      <button id="btn-pause" class="qp-btn qp-btn-pause" onclick="chooseOption('pause')">
         Pause first
       </button>
     </div>
 
     <p class="qp-choice-hint">
-      One choice gives relief. The other gives leverage.
+      One gives relief. The other gives control.
     </p>
 
     <div id="qp-result" class="qp-result hidden">
@@ -69,14 +69,14 @@
         <div class="qp-bar">
           <span>Reactivity</span>
           <div class="qp-bar-track">
-            <div class="qp-bar-fill react"></div>
+            <div id="bar-react" class="qp-bar-fill react"></div>
           </div>
         </div>
 
         <div class="qp-bar">
           <span>Control</span>
           <div class="qp-bar-track">
-            <div class="qp-bar-fill control"></div>
+            <div id="bar-control" class="qp-bar-fill control"></div>
           </div>
         </div>
       </div>
@@ -90,6 +90,12 @@
         <a href="/podcast.html" class="btn">Listen to the Podcast</a>
       </div>
 
+      <div class="qp-test-reset-wrap">
+        <button class="qp-reset-btn" onclick="resetTest()">
+          Try again
+        </button>
+      </div>
+
     </div>
 
   </div>
@@ -101,16 +107,47 @@ function chooseOption(choice) {
   const result = document.getElementById("qp-result");
   const text = document.getElementById("qp-result-text");
   const note = document.getElementById("qp-result-note");
+  const btnReact = document.getElementById("btn-react");
+  const btnPause = document.getElementById("btn-pause");
+  const barReact = document.getElementById("bar-react");
+  const barControl = document.getElementById("bar-control");
 
   result.classList.remove("hidden");
+
+  btnReact.classList.remove("is-selected");
+  btnPause.classList.remove("is-selected");
 
   if (choice === "react") {
     text.innerHTML = "You chose speed. It feels powerful in the moment, but often costs clarity.";
     note.innerHTML = "Most people choose immediate relief. Fewer choose distance and judgment.";
+    btnReact.classList.add("is-selected");
+    barReact.style.width = "68%";
+    barControl.style.width = "32%";
   } else {
     text.innerHTML = "You chose control. The pause creates space, and space creates leverage.";
     note.innerHTML = "Most people react fast. Fewer slow down enough to see clearly.";
+    btnPause.classList.add("is-selected");
+    barReact.style.width = "68%";
+    barControl.style.width = "32%";
   }
+}
+
+function resetTest() {
+  const result = document.getElementById("qp-result");
+  const text = document.getElementById("qp-result-text");
+  const note = document.getElementById("qp-result-note");
+  const btnReact = document.getElementById("btn-react");
+  const btnPause = document.getElementById("btn-pause");
+  const barReact = document.getElementById("bar-react");
+  const barControl = document.getElementById("bar-control");
+
+  result.classList.add("hidden");
+  text.innerHTML = "";
+  note.innerHTML = "Most people choose speed. Few choose control.";
+  btnReact.classList.remove("is-selected");
+  btnPause.classList.remove("is-selected");
+  barReact.style.width = "0";
+  barControl.style.width = "0";
 }
 </script>
 
