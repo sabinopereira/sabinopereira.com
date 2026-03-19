@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test — Quiet Power</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="branding-wrap">
+    <img src="/images/avatar.png" alt="Sabino Pereira" class="site-avatar">
+    <div>
+      <h1 class="branding-title">Sabino Pereira</h1>
+      <p class="branding-subtitle">QUIET POWER</p>
+    </div>
+  </div>
+
+  <nav class="site-nav">
+    <a href="/index.html">Home</a>
+    <a href="/ideas.html">Ideas</a>
+    <a href="/test.html" class="active">Test</a>
+  </nav>
+</header>
+
+<section class="qp-test-section">
+
+  <p class="page-kicker">Quiet Power</p>
+  <h2 class="page-title">Test your reaction.</h2>
+  <p class="page-text">
+    Most people react. Few stay in control.
+  </p>
+
+  <div class="qp-test-card">
+
+    <p class="qp-test-scenario">
+      You receive a message that triggers you.
+    </p>
+
+    <div class="qp-test-actions">
+      <button class="qp-btn" onclick="chooseOption('react')">
+        React immediately
+      </button>
+
+      <button class="qp-btn qp-btn-secondary" onclick="chooseOption('pause')">
+        Pause and respond later
+      </button>
+    </div>
+
+    <div id="qp-result" class="qp-result hidden">
+
+      <p id="qp-result-text"></p>
+
+      <div class="qp-bars">
+
+        <div class="qp-bar">
+          <span>Reactivity</span>
+          <div class="qp-bar-fill react"></div>
+        </div>
+
+        <div class="qp-bar">
+          <span>Control</span>
+          <div class="qp-bar-fill control"></div>
+        </div>
+
+      </div>
+
+      <p class="qp-result-note">
+        Most people choose speed. Few choose control.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+function chooseOption(choice) {
+  const result = document.getElementById("qp-result");
+  const text = document.getElementById("qp-result-text");
+
+  result.classList.remove("hidden");
+
+  if (choice === "react") {
+    text.innerHTML = "You chose speed. Cost: control.";
+  } else {
+    text.innerHTML = "You chose control. Result: leverage.";
+  }
+}
+</script>
+
+</body>
+</html>
