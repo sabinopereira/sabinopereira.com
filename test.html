@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Test — Quiet Power</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Measure your Quiet Power in 7 short questions. Discover whether you are reacting, filtering the noise, or owning the silence.">
+  <meta name="description" content="Measure your Quiet Power in a dynamic 7-question assessment. Discover how you react, filter the noise, and own the silence.">
   <meta name="author" content="Sabino Pereira">
   <link rel="canonical" href="https://sabinopereira.com/test.html">
   <link rel="icon" type="image/png" href="/images/avatar.png">
@@ -67,6 +67,12 @@
       <p class="qp-choice-hint" id="qp-level-subtitle">
         How the world hits you.
       </p>
+    </div>
+
+    <div id="qp-level-transition" class="qp-result hidden">
+      <p class="qp-result-label" id="qp-transition-label">Level 2 — Energy</p>
+      <h3 class="qp-profile-title" id="qp-transition-title">The Energy Filter</h3>
+      <p class="qp-profile-text" id="qp-transition-text">How you filter the noise.</p>
     </div>
 
     <div id="qp-question-screen">
@@ -150,81 +156,279 @@
 </main>
 
 <script>
-  const questions = [
+  const level1Bank = [
     {
-      level: "Level 1 — Reaction",
-      subtitle: "How the world hits you.",
-      text: "Your phone vibrates during an important conversation.",
+      q: "You send an important message. It gets seen but no reply.",
       options: [
-        { label: "Check it immediately", score: 0 },
-        { label: "Notice it, resist", score: 1 },
-        { label: "Don’t even register it", score: 2 }
+        { text: "You assume something is wrong", score: 0 },
+        { text: "You feel it but wait", score: 1 },
+        { text: "You move on without overthinking", score: 2 }
       ]
     },
     {
-      level: "Level 1 — Reaction",
-      subtitle: "How the world hits you.",
-      text: "A problem appears during a relaxed moment.",
+      q: "Someone takes credit for your idea in a meeting.",
       options: [
-        { label: "Stress instantly", score: 0 },
-        { label: "Act without thinking", score: 1 },
-        { label: "Pause before reacting", score: 2 }
+        { text: "You react immediately", score: 0 },
+        { text: "You stay quiet but frustrated", score: 1 },
+        { text: "You address it calmly later", score: 2 }
       ]
     },
     {
-      level: "Level 2 — Energy",
-      subtitle: "How you filter the noise.",
-      text: "You suddenly have a free afternoon. Your mind:",
+      q: "Flash sale on something you want but don’t need.",
       options: [
-        { label: "Feels uneasy and looks for noise to fill the space", score: 0 },
-        { label: "Looks for useful tasks so the time does not feel wasted", score: 1 },
-        { label: "Accepts the silence as strategic recovery", score: 2 }
+        { text: "You buy quickly", score: 0 },
+        { text: "You hesitate and overthink", score: 1 },
+        { text: "You walk away easily", score: 2 }
       ]
     },
     {
-      level: "Level 2 — Energy",
-      subtitle: "How you filter the noise.",
-      text: "Someone makes unfair criticism of your work or ideas. You:",
+      q: "You wake up with a small pain.",
       options: [
-        { label: "React defensively or feel the need to justify yourself", score: 0 },
-        { label: "Stay quiet, but your focus stays fragmented afterwards", score: 1 },
-        { label: "Check if there is truth in it and discard the rest without drama", score: 2 }
+        { text: "You Google worst-case scenarios", score: 0 },
+        { text: "You monitor it with concern", score: 1 },
+        { text: "You observe and continue your day", score: 2 }
       ]
     },
     {
-      level: "Level 3 — Control",
-      subtitle: "How you own the silence.",
-      text: "A viral trend appears while you are focused on a personal project. You:",
+      q: "Silence in a social setting.",
       options: [
-        { label: "Feel the urge to change direction so you do not fall behind", score: 0 },
-        { label: "Get curious and lose hours exploring it", score: 1 },
-        { label: "Stay your course, trusting that what matters is timeless", score: 2 }
+        { text: "You rush to fill it", score: 0 },
+        { text: "You feel awkward", score: 1 },
+        { text: "You let it exist naturally", score: 2 }
       ]
     },
     {
-      level: "Level 3 — Control",
-      subtitle: "How you own the silence.",
-      text: "A productive day, to you, is:",
+      q: "A driver cuts you off dangerously.",
       options: [
-        { label: "Being busy and in motion from morning to night", score: 0 },
-        { label: "Crossing off as many tasks as possible", score: 1 },
-        { label: "Moving the one thing that mattered most", score: 2 }
+        { text: "Immediate anger", score: 0 },
+        { text: "Short frustration", score: 1 },
+        { text: "You reset quickly", score: 2 }
       ]
     },
     {
-      level: "Level 3 — Control",
-      subtitle: "How you own the silence.",
-      text: "By the end of the day, your mind feels like:",
+      q: "You get negative feedback on your work.",
       options: [
-        { label: "A broken radio full of noise and static", score: 0 },
-        { label: "A useful tool, but overheated and running low", score: 1 },
-        { label: "A calm sanctuary, ready to switch off and recover", score: 2 }
+        { text: "You take it personally", score: 0 },
+        { text: "You defend your position", score: 1 },
+        { text: "You analyse it objectively", score: 2 }
+      ]
+    },
+    {
+      q: "An ‘URGENT’ email arrives.",
+      options: [
+        { text: "You drop everything", score: 0 },
+        { text: "You feel pressure", score: 1 },
+        { text: "You assess before reacting", score: 2 }
+      ]
+    },
+    {
+      q: "A friend cancels last minute.",
+      options: [
+        { text: "You feel disrespected", score: 0 },
+        { text: "You question it", score: 1 },
+        { text: "You adjust without drama", score: 2 }
+      ]
+    },
+    {
+      q: "You notice something wrong with your appearance in public.",
+      options: [
+        { text: "You become self-conscious", score: 0 },
+        { text: "You try to hide it", score: 1 },
+        { text: "You stay unaffected", score: 2 }
       ]
     }
   ];
 
+  const level2Bank = [
+    {
+      q: "You have 500€ extra.",
+      options: [
+        { text: "You spend it impulsively", score: 0 },
+        { text: "You split between fun and logic", score: 1 },
+        { text: "You invest it intentionally", score: 2 }
+      ]
+    },
+    {
+      q: "Your day has too many tasks.",
+      options: [
+        { text: "You try to do everything", score: 0 },
+        { text: "You do what feels urgent", score: 1 },
+        { text: "You pick what matters most", score: 2 }
+      ]
+    },
+    {
+      q: "You’re listening to someone important.",
+      options: [
+        { text: "You interrupt often", score: 0 },
+        { text: "You wait to speak", score: 1 },
+        { text: "You fully listen", score: 2 }
+      ]
+    },
+    {
+      q: "You eat when stressed.",
+      options: [
+        { text: "Without noticing", score: 0 },
+        { text: "You’re aware but continue", score: 1 },
+        { text: "You pause and choose consciously", score: 2 }
+      ]
+    },
+    {
+      q: "You’re mid-project and a new idea appears.",
+      options: [
+        { text: "You switch immediately", score: 0 },
+        { text: "You juggle both", score: 1 },
+        { text: "You finish before starting new", score: 2 }
+      ]
+    },
+    {
+      q: "You receive an invite you don’t want.",
+      options: [
+        { text: "You say yes anyway", score: 0 },
+        { text: "You hesitate", score: 1 },
+        { text: "You decline clearly", score: 2 }
+      ]
+    },
+    {
+      q: "You check your phone without notifications.",
+      options: [
+        { text: "Constantly", score: 0 },
+        { text: "Sometimes", score: 1 },
+        { text: "Rarely", score: 2 }
+      ]
+    },
+    {
+      q: "You feel tired but planned to train.",
+      options: [
+        { text: "You force it", score: 0 },
+        { text: "You feel guilty skipping", score: 1 },
+        { text: "You adjust intelligently", score: 2 }
+      ]
+    },
+    {
+      q: "You are working.",
+      options: [
+        { text: "Multiple tabs, constant switching", score: 0 },
+        { text: "Some focus, some distraction", score: 1 },
+        { text: "Deep focus block", score: 2 }
+      ]
+    },
+    {
+      q: "Someone asks for your time.",
+      options: [
+        { text: "You give it freely", score: 0 },
+        { text: "You feel pressured", score: 1 },
+        { text: "You protect your time", score: 2 }
+      ]
+    }
+  ];
+
+  const level3Bank = [
+    {
+      q: "If your job disappeared tomorrow...",
+      options: [
+        { text: "You would feel lost", score: 0 },
+        { text: "You would feel unstable", score: 1 },
+        { text: "Your identity stays intact", score: 2 }
+      ]
+    },
+    {
+      q: "When things go wrong at once...",
+      options: [
+        { text: "You feel overwhelmed", score: 0 },
+        { text: "You try to cope", score: 1 },
+        { text: "You stay centred", score: 2 }
+      ]
+    },
+    {
+      q: "You see someone succeeding ahead of you.",
+      options: [
+        { text: "You compare yourself", score: 0 },
+        { text: "You feel mixed emotions", score: 1 },
+        { text: "You stay focused on your path", score: 2 }
+      ]
+    },
+    {
+      q: "You fail at something important.",
+      options: [
+        { text: "You blame external factors", score: 0 },
+        { text: "You feel stuck", score: 1 },
+        { text: "You extract the lesson", score: 2 }
+      ]
+    },
+    {
+      q: "You are alone for a full weekend.",
+      options: [
+        { text: "You avoid it", score: 0 },
+        { text: "You distract yourself", score: 1 },
+        { text: "You enjoy it fully", score: 2 }
+      ]
+    },
+    {
+      q: "You make a long-term decision.",
+      options: [
+        { text: "Based on emotion", score: 0 },
+        { text: "Based on comfort", score: 1 },
+        { text: "Based on principles", score: 2 }
+      ]
+    },
+    {
+      q: "You face uncertainty about the future.",
+      options: [
+        { text: "You worry constantly", score: 0 },
+        { text: "You try to control outcomes", score: 1 },
+        { text: "You focus on what you can control", score: 2 }
+      ]
+    },
+    {
+      q: "You are in a disagreement.",
+      options: [
+        { text: "You try to win", score: 0 },
+        { text: "You defend your view", score: 1 },
+        { text: "You seek clarity", score: 2 }
+      ]
+    },
+    {
+      q: "You think about your time.",
+      options: [
+        { text: "You feel you don’t have enough", score: 0 },
+        { text: "You try to optimise everything", score: 1 },
+        { text: "You use it intentionally", score: 2 }
+      ]
+    },
+    {
+      q: "At the end of your life...",
+      options: [
+        { text: "You want recognition", score: 0 },
+        { text: "You want success", score: 1 },
+        { text: "You want inner peace", score: 2 }
+      ]
+    }
+  ];
+
+  const levelMeta = {
+    reaction: {
+      label: "Level 1 — Reaction",
+      subtitle: "How the world hits you.",
+      title: "The Initial Impact",
+      transitionText: "Noise arrives fast. What does it wake up in you?"
+    },
+    energy: {
+      label: "Level 2 — Energy",
+      subtitle: "How you filter the noise.",
+      title: "The Energy Filter",
+      transitionText: "Reaction is only the surface. Now we look at how you manage your attention."
+    },
+    control: {
+      label: "Level 3 — Control",
+      subtitle: "How you own the silence.",
+      title: "The Unshaken Mind",
+      transitionText: "This is where quiet stops being defence and becomes strategy."
+    }
+  };
+
   let currentQuestion = 0;
   let totalScore = 0;
+  let selectedQuestions = [];
 
   const levelLabel = document.getElementById("qp-level-label");
   const levelSubtitle = document.getElementById("qp-level-subtitle");
@@ -234,42 +438,107 @@
   const optionsWrap = document.getElementById("qp-options");
   const questionScreen = document.getElementById("qp-question-screen");
   const resultScreen = document.getElementById("qp-result-screen");
+  const transitionScreen = document.getElementById("qp-level-transition");
+  const transitionLabel = document.getElementById("qp-transition-label");
+  const transitionTitle = document.getElementById("qp-transition-title");
+  const transitionText = document.getElementById("qp-transition-text");
+
+  function shuffleArray(array) {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  function pickRandomQuestions(bank, count, levelKey) {
+    return shuffleArray(bank).slice(0, count).map(item => ({
+      levelKey,
+      levelLabel: levelMeta[levelKey].label,
+      levelSubtitle: levelMeta[levelKey].subtitle,
+      q: item.q,
+      options: shuffleArray(item.options)
+    }));
+  }
+
+  function buildTest() {
+    const reactionQuestions = pickRandomQuestions(level1Bank, 2, "reaction");
+    const energyQuestions = pickRandomQuestions(level2Bank, 2, "energy");
+    const controlQuestions = pickRandomQuestions(level3Bank, 3, "control");
+
+    selectedQuestions = [
+      ...reactionQuestions,
+      ...energyQuestions,
+      ...controlQuestions
+    ];
+  }
 
   function renderQuestion() {
-    const q = questions[currentQuestion];
-    const progressPercent = ((currentQuestion + 1) / questions.length) * 100;
+    const q = selectedQuestions[currentQuestion];
+    const progressPercent = ((currentQuestion + 1) / selectedQuestions.length) * 100;
 
-    levelLabel.textContent = q.level;
-    levelSubtitle.textContent = q.subtitle;
-    questionCount.textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+    levelLabel.textContent = q.levelLabel;
+    levelSubtitle.textContent = q.levelSubtitle;
+    questionCount.textContent = `Question ${currentQuestion + 1} of ${selectedQuestions.length}`;
     progressBar.style.width = `${progressPercent}%`;
-    questionText.textContent = q.text;
+    questionText.textContent = q.q;
 
     optionsWrap.innerHTML = "";
 
     q.options.forEach((option) => {
       const button = document.createElement("button");
       button.className = "qp-answer-btn";
-      button.textContent = option.label;
+      button.textContent = option.text;
       button.onclick = () => handleAnswer(option.score);
       optionsWrap.appendChild(button);
     });
+  }
+
+  function showLevelTransition(levelKey, callback) {
+    const meta = levelMeta[levelKey];
+
+    questionScreen.classList.add("hidden");
+    transitionScreen.classList.remove("hidden");
+
+    transitionLabel.textContent = meta.label;
+    transitionTitle.textContent = meta.title;
+    transitionText.textContent = meta.transitionText;
+
+    setTimeout(() => {
+      transitionScreen.classList.add("hidden");
+      questionScreen.classList.remove("hidden");
+      callback();
+    }, 1400);
   }
 
   function handleAnswer(score) {
     totalScore += score;
     currentQuestion++;
 
-    if (currentQuestion < questions.length) {
-      renderQuestion();
-    } else {
+    if (currentQuestion >= selectedQuestions.length) {
       showResult();
+      return;
     }
+
+    if (currentQuestion === 2) {
+      showLevelTransition("energy", renderQuestion);
+      return;
+    }
+
+    if (currentQuestion === 4) {
+      showLevelTransition("control", renderQuestion);
+      return;
+    }
+
+    renderQuestion();
   }
 
   function showResult() {
     questionScreen.classList.add("hidden");
+    transitionScreen.classList.add("hidden");
     resultScreen.classList.remove("hidden");
+
     progressBar.style.width = "100%";
     questionCount.textContent = "Completed";
     levelLabel.textContent = "Final Result";
@@ -309,8 +578,11 @@
     currentQuestion = 0;
     totalScore = 0;
 
+    buildTest();
+
     questionScreen.classList.remove("hidden");
     resultScreen.classList.add("hidden");
+    transitionScreen.classList.add("hidden");
 
     const barReactivity = document.getElementById("qp-bar-reactivity");
     const barQuiet = document.getElementById("qp-bar-quiet");
@@ -358,6 +630,7 @@
     }, 2000);
   }
 
+  buildTest();
   renderQuestion();
 </script>
 
