@@ -4,7 +4,20 @@
   <meta charset="UTF-8">
   <title>Test — Quiet Power</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Measure your Quiet Power in 7 short questions. Discover whether you are reacting, filtering the noise, or owning the silence.">
+  <meta name="author" content="Sabino Pereira">
+  <link rel="canonical" href="https://sabinopereira.com/test.html">
+  <link rel="icon" type="image/png" href="/images/avatar.png">
+  <link rel="apple-touch-icon" href="/images/avatar.png">
   <link rel="stylesheet" href="/style.css">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEVDEH8PGZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KEVDEH8PGZ');
+  </script>
 </head>
 
 <body>
@@ -14,26 +27,29 @@
     <img src="/images/avatar.png" alt="Sabino Pereira" class="site-avatar">
     <div>
       <h1 class="branding-title">Sabino Pereira</h1>
-      <p class="branding-subtitle">QUIET POWER</p>
+      <p class="branding-subtitle">Books · Design · Quiet Ideas</p>
     </div>
   </div>
 
   <nav class="site-nav">
     <a href="/index.html">Home</a>
-    <a href="/ideas.html">Ideas</a>
     <a href="/books.html">Books</a>
+    <a href="/ideas.html">Ideas</a>
     <a href="/podcast.html">Podcast</a>
     <a href="/about.html">About</a>
+    <a href="/shop.html">Shop</a>
     <a href="/contact.html">Contact</a>
     <a href="/test.html" class="active">Test</a>
   </nav>
 </header>
 
+<main>
+
 <section class="qp-test-section">
-  <p class="page-kicker">Quiet Power</p>
+  <p class="page-kicker">Quiet Power Assessment</p>
   <h2 class="page-title">Measure your Quiet Power.</h2>
   <p class="page-text">
-    7 short questions. One honest result.
+    7 short questions. One honest result. No noise, just signal.
   </p>
 
   <div class="qp-test-card">
@@ -43,13 +59,22 @@
         <span id="qp-level-label">Level 1 — Reaction</span>
         <span id="qp-question-count">Question 1 of 7</span>
       </div>
+
       <div class="qp-progress-track">
         <div id="qp-progress-bar" class="qp-progress-bar"></div>
       </div>
+
+      <p class="qp-choice-hint" id="qp-level-subtitle">
+        How the world hits you.
+      </p>
     </div>
 
     <div id="qp-question-screen">
       <p id="qp-question-text" class="qp-test-scenario"></p>
+
+      <p class="qp-test-instruction">
+        Choose what feels most true.
+      </p>
 
       <div id="qp-options" class="qp-test-actions"></div>
 
@@ -87,9 +112,31 @@
 
       <p id="qp-result-note" class="qp-result-note"></p>
 
+      <div class="qp-share-zone">
+        <p class="qp-share-text">Know someone who needs this?</p>
+        <button onclick="copyResult()" class="qp-share-btn">
+          <span id="copy-text">Copy Result & Link</span>
+        </button>
+      </div>
+
+      <div class="qp-newsletter-box">
+        <h4>Quiet Power Notes</h4>
+        <p>
+          Calm insights for a noisy world. Occasional emails on focus, clarity, and new ideas.
+        </p>
+        <p class="qp-newsletter-mini">
+          No noise. No spam. Just occasional signal.
+        </p>
+
+        <form action="#" method="post" class="qp-newsletter-form">
+          <input type="email" name="email" placeholder="Your email" required>
+          <button type="submit" class="qp-newsletter-btn">Join</button>
+        </form>
+      </div>
+
       <div class="qp-test-links">
-        <a href="/ideas.html" class="btn-outline">Explore the Ideas</a>
-        <a href="/podcast.html" class="btn">Listen to the Podcast</a>
+        <a href="/books.html" class="btn">Get the Quiet Power Book</a>
+        <a href="/podcast.html" class="btn-outline">Listen to Podcast</a>
       </div>
 
       <div class="qp-test-reset-wrap">
@@ -100,10 +147,13 @@
   </div>
 </section>
 
+</main>
+
 <script>
   const questions = [
     {
       level: "Level 1 — Reaction",
+      subtitle: "How the world hits you.",
       text: "Your phone vibrates during an important conversation.",
       options: [
         { label: "Check it immediately", score: 0 },
@@ -113,6 +163,7 @@
     },
     {
       level: "Level 1 — Reaction",
+      subtitle: "How the world hits you.",
       text: "A problem appears during a relaxed moment.",
       options: [
         { label: "Stress instantly", score: 0 },
@@ -122,47 +173,52 @@
     },
     {
       level: "Level 2 — Energy",
-      text: "You suddenly have free time.",
+      subtitle: "How you filter the noise.",
+      text: "You suddenly have a free afternoon. Your mind:",
       options: [
-        { label: "Fill it with noise", score: 0 },
-        { label: "Try to stay productive", score: 1 },
-        { label: "Accept the silence", score: 2 }
+        { label: "Feels uneasy and looks for noise to fill the space", score: 0 },
+        { label: "Looks for useful tasks so the time does not feel wasted", score: 1 },
+        { label: "Accepts the silence as strategic recovery", score: 2 }
       ]
     },
     {
       level: "Level 2 — Energy",
-      text: "Someone criticises you.",
+      subtitle: "How you filter the noise.",
+      text: "Someone makes unfair criticism of your work or ideas. You:",
       options: [
-        { label: "React immediately", score: 0 },
-        { label: "Think about it for hours", score: 1 },
-        { label: "Stay detached", score: 2 }
+        { label: "React defensively or feel the need to justify yourself", score: 0 },
+        { label: "Stay quiet, but your focus stays fragmented afterwards", score: 1 },
+        { label: "Check if there is truth in it and discard the rest without drama", score: 2 }
       ]
     },
     {
       level: "Level 3 — Control",
-      text: "A trend appears while you're building something.",
+      subtitle: "How you own the silence.",
+      text: "A viral trend appears while you are focused on a personal project. You:",
       options: [
-        { label: "Change direction", score: 0 },
-        { label: "Feel anxious", score: 1 },
-        { label: "Stay your course", score: 2 }
+        { label: "Feel the urge to change direction so you do not fall behind", score: 0 },
+        { label: "Get curious and lose hours exploring it", score: 1 },
+        { label: "Stay your course, trusting that what matters is timeless", score: 2 }
       ]
     },
     {
       level: "Level 3 — Control",
-      text: "A productive day is:",
+      subtitle: "How you own the silence.",
+      text: "A productive day, to you, is:",
       options: [
-        { label: "Non-stop activity", score: 0 },
-        { label: "Many tasks done", score: 1 },
-        { label: "Clear essential progress", score: 2 }
+        { label: "Being busy and in motion from morning to night", score: 0 },
+        { label: "Crossing off as many tasks as possible", score: 1 },
+        { label: "Moving the one thing that mattered most", score: 2 }
       ]
     },
     {
       level: "Level 3 — Control",
-      text: "Your mind feels like:",
+      subtitle: "How you own the silence.",
+      text: "By the end of the day, your mind feels like:",
       options: [
-        { label: "Constant noise", score: 0 },
-        { label: "Useful but unstable", score: 1 },
-        { label: "A calm tool", score: 2 }
+        { label: "A broken radio full of noise and static", score: 0 },
+        { label: "A useful tool, but overheated and running low", score: 1 },
+        { label: "A calm sanctuary, ready to switch off and recover", score: 2 }
       ]
     }
   ];
@@ -171,6 +227,7 @@
   let totalScore = 0;
 
   const levelLabel = document.getElementById("qp-level-label");
+  const levelSubtitle = document.getElementById("qp-level-subtitle");
   const questionCount = document.getElementById("qp-question-count");
   const progressBar = document.getElementById("qp-progress-bar");
   const questionText = document.getElementById("qp-question-text");
@@ -180,9 +237,10 @@
 
   function renderQuestion() {
     const q = questions[currentQuestion];
-    const progressPercent = ((currentQuestion) / questions.length) * 100;
+    const progressPercent = ((currentQuestion + 1) / questions.length) * 100;
 
     levelLabel.textContent = q.level;
+    levelSubtitle.textContent = q.subtitle;
     questionCount.textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
     progressBar.style.width = `${progressPercent}%`;
     questionText.textContent = q.text;
@@ -191,7 +249,7 @@
 
     q.options.forEach((option) => {
       const button = document.createElement("button");
-      button.className = "qp-btn qp-answer-btn";
+      button.className = "qp-answer-btn";
       button.textContent = option.label;
       button.onclick = () => handleAnswer(option.score);
       optionsWrap.appendChild(button);
@@ -213,8 +271,9 @@
     questionScreen.classList.add("hidden");
     resultScreen.classList.remove("hidden");
     progressBar.style.width = "100%";
-    questionCount.textContent = `Completed`;
+    questionCount.textContent = "Completed";
     levelLabel.textContent = "Final Result";
+    levelSubtitle.textContent = "You’ve moved through the 3 levels of Quiet Power.";
 
     const profileTitle = document.getElementById("qp-profile-title");
     const profileText = document.getElementById("qp-profile-text");
@@ -233,16 +292,16 @@
 
     if (totalScore <= 4) {
       profileTitle.textContent = "Scattered Soul";
-      profileText.textContent = "You live in reaction. The world sets your pace, and your attention gets pulled in too many directions at once.";
-      resultNote.textContent = "Quiet Power starts by reclaiming your attention before the world spends it for you.";
+      profileText.textContent = "You are living in high-reactivity mode. The world is spending your attention before you can use it.";
+      resultNote.textContent = "Discover how Quiet Power helps you reclaim your centre and stop the leak of mental energy.";
     } else if (totalScore <= 9) {
       profileTitle.textContent = "Focused Warrior";
-      profileText.textContent = "You already fight for focus, but it still costs you energy. You know what matters, yet noise still gets through.";
-      resultNote.textContent = "Your next step is not more effort. It is more clarity, more calm, and less friction.";
+      profileText.textContent = "You have the drive, but you are still fighting noise with effort instead of leverage.";
+      resultNote.textContent = "Quiet Power shows how to replace friction with clarity, and effort with structure.";
     } else {
       profileTitle.textContent = "Quiet Master";
-      profileText.textContent = "You move with control. Presence is your advantage, and you are less ruled by urgency, noise, or outside pressure.";
-      resultNote.textContent = "Quiet Power is already part of how you move. Now the game is depth, consistency, and leverage.";
+      profileText.textContent = "You operate with clarity and control. While others react, you choose.";
+      resultNote.textContent = "You’ve built the foundations. Quiet Power goes deeper into long-term focus, calm leverage, and unshaken strategy.";
     }
   }
 
@@ -253,7 +312,50 @@
     questionScreen.classList.remove("hidden");
     resultScreen.classList.add("hidden");
 
+    const barReactivity = document.getElementById("qp-bar-reactivity");
+    const barQuiet = document.getElementById("qp-bar-quiet");
+    const copyText = document.getElementById("copy-text");
+
+    barReactivity.style.width = "0";
+    barQuiet.style.width = "0";
+    copyText.textContent = "Copy Result & Link";
+
     renderQuestion();
+  }
+
+  function copyResult() {
+    const profile = document.getElementById("qp-profile-title").textContent;
+    const url = "https://sabinopereira.com/test.html";
+    const shareText = `I took the Quiet Power test and got: ${profile}.\nMeasure yours here: ${url}`;
+    const btnText = document.getElementById("copy-text");
+    const originalText = btnText.innerText;
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(shareText).then(() => {
+        btnText.innerText = "Copied to clipboard!";
+        setTimeout(() => {
+          btnText.innerText = originalText;
+        }, 2000);
+      }).catch(() => {
+        fallbackCopyText(shareText, btnText, originalText);
+      });
+    } else {
+      fallbackCopyText(shareText, btnText, originalText);
+    }
+  }
+
+  function fallbackCopyText(text, btnText, originalText) {
+    const tempInput = document.createElement("textarea");
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+
+    btnText.innerText = "Copied to clipboard!";
+    setTimeout(() => {
+      btnText.innerText = originalText;
+    }, 2000);
   }
 
   renderQuestion();
