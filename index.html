@@ -102,7 +102,7 @@
 
 
   <!-- PROBLEM -->
-  <section class="qp-block">
+  <section class="qp-block reveal">
 
     <div class="qp-block-inner">
 
@@ -121,7 +121,7 @@
 
 
   <!-- SHIFT -->
-  <section class="qp-block alt">
+  <section class="qp-block alt reveal">
 
     <div class="qp-block-inner">
 
@@ -140,7 +140,7 @@
 
 
   <!-- APPLICATION -->
-  <section class="qp-block">
+  <section class="qp-block reveal">
 
     <div class="qp-block-inner">
 
@@ -159,7 +159,7 @@
 
 
   <!-- TEST CTA -->
-  <section class="qp-test-apple">
+  <section class="qp-test-apple reveal">
 
     <div class="qp-test-inner">
 
@@ -181,7 +181,7 @@
 
 
   <!-- BOOK -->
-  <section class="featured-book apple-book">
+  <section class="featured-book apple-book reveal">
 
     <div class="featured-inner">
 
@@ -223,7 +223,7 @@
 
 
   <!-- IDEAS -->
-  <section class="ideas-section">
+  <section class="ideas-section reveal">
 
     <div class="section-head">
 
@@ -263,7 +263,7 @@
 
 
   <!-- FINAL CTA -->
-  <section class="contact-section apple-final">
+  <section class="contact-section apple-final reveal">
 
     <h3>
       Start with Quiet Power.
@@ -287,5 +287,30 @@
 
 </footer>
 
+  <script id="qp-header-scroll">
+    const header = document.querySelector('.site-header');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
+
+  <script id="qp-reveal">
+    const elements = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    elements.forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
