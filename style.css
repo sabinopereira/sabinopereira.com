@@ -537,3 +537,172 @@ main {
     width: 100%;
   }
 }
+/* =========================
+   APPLE STYLE UPGRADE
+========================= */
+
+/* HERO APPLE */
+.hero-apple {
+  text-align: center;
+  padding: 80px 40px;
+  background: linear-gradient(180deg, #ffffff 0%, #f5f5f2 100%);
+}
+
+.hero-apple .hero-title {
+  font-size: clamp(3rem, 7vw, 6rem);
+  letter-spacing: -0.02em;
+}
+
+.hero-apple .hero-lead {
+  font-size: 1.2rem;
+  color: var(--muted);
+  margin-top: 20px;
+}
+
+
+/* QUIET POWER BLOCKS */
+.qp-block {
+  text-align: center;
+  padding: 90px 40px;
+  background: var(--surface);
+  border-radius: 28px;
+}
+
+.qp-block.alt {
+  background: var(--surface-soft);
+}
+
+.qp-block-inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.qp-big {
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  margin: 0;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+.qp-text {
+  margin-top: 20px;
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+
+
+/* TEST SECTION (APPLE STYLE) */
+.qp-test-apple {
+  text-align: center;
+  padding: 80px 40px;
+  background: linear-gradient(180deg, #faf9f6 0%, #ece8dc 100%);
+  border-radius: 28px;
+}
+
+.qp-test-inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.qp-test-inner h3 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0;
+}
+
+.qp-test-inner p {
+  margin: 16px 0 0;
+  color: var(--muted);
+}
+
+
+/* BOOK APPLE STYLE */
+.apple-book .featured-inner {
+  align-items: center;
+}
+
+.apple-book .book-copy {
+  max-width: 520px;
+}
+
+.apple-book .book-tagline {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.05rem;
+}
+
+.apple-book img {
+  transform: scale(1);
+  transition: transform 0.4s ease;
+}
+
+.apple-book img:hover {
+  transform: scale(1.03);
+}
+
+
+/* FINAL SECTION */
+.apple-final {
+  padding: 80px 40px;
+}
+
+.apple-final h3 {
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+}
+
+
+/* BUTTON REFINEMENT */
+.btn {
+  letter-spacing: 0.02em;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-outline:hover {
+  background: #f0ede6;
+}
+
+
+/* SMOOTH SCROLL FEEL */
+section {
+  transition: all 0.4s ease;
+}
+
+
+/* SUBTLE FADE-IN (APPLE FEEL) */
+.qp-block,
+.hero-apple,
+.qp-test-apple,
+.apple-book,
+.apple-final {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.qp-block:nth-child(2) { animation-delay: 0.1s; }
+.qp-block:nth-child(3) { animation-delay: 0.2s; }
+.qp-block:nth-child(4) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* MOBILE TUNING */
+@media (max-width: 768px) {
+  .hero-apple,
+  .qp-block,
+  .qp-test-apple,
+  .apple-final {
+    padding: 60px 20px;
+  }
+
+  .qp-big {
+    font-size: 2rem;
+  }
+}
