@@ -706,3 +706,55 @@ section {
     font-size: 2rem;
   }
 }
+
+/* HEADER APPLE */
+
+.site-header {
+  position: sticky;
+  top: 12px;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+/* quando faz scroll */
+.site-header.scrolled {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-color: #d8d5cc;
+}
+
+/* SCROLL REVEAL (REAL APPLE FEEL) */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MICRO INTERACTIONS */
+
+.idea-card,
+.signal-card,
+.shop-card {
+  transition: all 0.25s ease;
+}
+
+.idea-card:hover,
+.signal-card:hover,
+.shop-card:hover {
+  transform: translateY(-4px) scale(1.01);
+}
+
+/* links mais premium */
+a {
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.7;
+}
