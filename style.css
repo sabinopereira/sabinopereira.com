@@ -508,11 +508,21 @@ main {
 }
 
 .books-collection .section-head {
-  margin-bottom: 32px;
+  margin-bottom: 42px;
 }
 
 .books-collection {
   margin-top: 38px;
+}
+
+.books-collection .section-title {
+  margin-bottom: 16px;
+}
+
+.books-collection .section-description {
+  margin-top: 0;
+  max-width: 34ch;
+  line-height: 1.65;
 }
 
 .books-grid {
@@ -543,14 +553,14 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 14px 10px 12px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.72);
   border: 1px solid rgba(229, 226, 219, 0.7);
 }
 
 .book-cover {
-  width: min(100%, 220px);
+  width: min(100%, 232px);
   border-radius: 18px;
   box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
 }
@@ -761,11 +771,11 @@ main {
   font-size: clamp(3rem, 7vw, 6rem);
   letter-spacing: -0.02em;
   line-height: 0.92;
-  max-width: 11ch;
+  max-width: 15ch;
 }
 
 .hero-apple .hero-lead {
-  max-width: 30ch;
+  max-width: 34ch;
   font-size: 1.2rem;
   color: var(--muted);
   margin: 0;
@@ -776,6 +786,27 @@ main {
   margin-top: 6px;
   gap: 14px;
   justify-content: center;
+}
+
+.qp-bridge {
+  margin-top: 18px;
+  padding: 46px 32px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+}
+
+.qp-bridge-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.qp-bridge-text {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  line-height: 1.5;
+  color: #2b2b2b;
 }
 
 
@@ -897,6 +928,7 @@ main {
 
 /* SUBTLE FADE-IN (APPLE FEEL) */
 .qp-block,
+.qp-bridge,
 .hero-apple,
 .qp-test-apple,
 .apple-book,
@@ -921,6 +953,7 @@ main {
 /* MOBILE TUNING */
 @media (max-width: 768px) {
   .hero-apple,
+  .qp-bridge,
   .qp-block,
   .qp-test-apple,
   .apple-final {
