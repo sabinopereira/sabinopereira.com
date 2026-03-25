@@ -748,7 +748,7 @@ main {
 /* HERO APPLE */
 .hero-apple {
   text-align: center;
-  padding: 60px 40px 56px;
+  padding: 52px 40px 48px;
   background: linear-gradient(180deg, #ffffff 0%, #faf9f6 100%);
 }
 
@@ -971,7 +971,7 @@ main {
   .qp-block,
   .qp-test-apple,
   .apple-final {
-    padding: 52px 20px;
+    padding: 46px 20px;
   }
 
   .qp-big {
