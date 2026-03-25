@@ -896,20 +896,21 @@ main {
 
 /* FINAL SECTION */
 .apple-final {
-  padding: 56px 40px;
-  background: rgba(255, 255, 255, 0.76);
-  box-shadow: 0 5px 16px rgba(15, 23, 42, 0.028);
+  margin-top: 18px;
+  padding: 42px 40px 40px;
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.022);
 }
 
 .apple-final h3 {
   max-width: 12ch;
   margin: 0 auto;
-  font-size: clamp(2rem, 3.4vw, 2.8rem);
-  line-height: 1.02;
+  font-size: clamp(1.75rem, 2.8vw, 2.3rem);
+  line-height: 1.04;
 }
 
 .apple-final .dual-actions {
-  margin-top: 16px;
+  margin-top: 14px;
 }
 
 
