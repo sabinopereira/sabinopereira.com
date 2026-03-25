@@ -381,8 +381,8 @@ main {
 
 .featured-inner {
   display: grid;
-  grid-template-columns: minmax(280px, 420px) minmax(0, 1fr);
-  gap: 34px;
+  grid-template-columns: minmax(250px, 360px) minmax(0, 1.1fr);
+  gap: 42px;
   align-items: center;
 }
 
@@ -392,7 +392,7 @@ main {
 }
 
 .featured-book-mockup {
-  width: min(100%, 400px);
+  width: min(100%, 340px);
   border-radius: 20px;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
 }
