@@ -67,13 +67,53 @@ a:hover { opacity: 0.7; }
 .branding-title { font-size: 1.1rem; }
 .branding-subtitle { display: none; } /* Limpeza visual no header */
 
-.site-nav { display: flex; gap: 16px; margin: 0; padding: 0; border: none; }
+.site-nav { display: flex; gap: 10px; margin: 0; padding: 0; border: none; }
 .site-nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 999px;
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--muted);
+  transition:
+    color 0.24s ease,
+    background-color 0.24s ease,
+    transform 0.24s ease;
 }
-.site-nav a.active, .site-nav a:hover { color: var(--text); }
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 6px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0;
+  transform: scaleX(0.6);
+  transform-origin: center;
+  transition:
+    opacity 0.24s ease,
+    transform 0.24s ease;
+}
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+}
+.site-nav a:hover::after,
+.site-nav a:focus-visible::after,
+.site-nav a.active::after {
+  opacity: 0.5;
+  transform: scaleX(1);
+}
+.site-nav a.active {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.38);
+}
 
 /* Page Intro / Hero */
 .page-intro {
