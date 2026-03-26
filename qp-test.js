@@ -1,18 +1,19 @@
 const QUESTIONS_PER_RUN = 7;
 
 const qpQuestions = [
+  // LEVEL 1 — REACTION
   {
     id: "L1-Q1",
     level: "reaction",
-    question: "Recebes uma crítica inesperada. O que fazes primeiro?",
+    question: "You receive unexpected criticism. What do you do first?",
     options: [
       {
-        label: "Respondo imediatamente para me defender",
+        label: "Reply immediately to defend yourself",
         score: 0,
         punchline: "Fast feels strong. It isn’t."
       },
       {
-        label: "Pauso e analiso antes de responder",
+        label: "Pause and process it before replying",
         score: 1,
         punchline: "Control starts where reaction ends."
       }
@@ -21,15 +22,15 @@ const qpQuestions = [
   {
     id: "L1-Q2",
     level: "reaction",
-    question: "Alguém ignora a tua mensagem. Reages como?",
+    question: "Someone leaves your message on read. How do you react?",
     options: [
       {
-        label: "Fico a ruminar e releio a conversa várias vezes",
+        label: "Keep checking and replaying the conversation in your head",
         score: 0,
         punchline: "Overthinking is just loud reaction."
       },
       {
-        label: "Sigo com o dia e respondo quando fizer sentido",
+        label: "Move on with your day and reply when it actually matters",
         score: 1,
         punchline: "Quiet power doesn’t chase attention."
       }
@@ -38,32 +39,34 @@ const qpQuestions = [
   {
     id: "L1-Q3",
     level: "reaction",
-    question: "Tens um dia cheio de tarefas. Como começas?",
+    question: "You have a packed day. How do you start?",
     options: [
       {
-        label: "Abro tudo ao mesmo tempo e faço o que grita mais alto",
+        label: "Open everything and tackle whatever screams the loudest",
         score: 0,
         punchline: "Urgency loves chaos. So does reactivity."
       },
       {
-        label: "Escolho uma tarefa chave e começo só por aí",
+        label: "Pick one key task and start only with that",
         score: 1,
         punchline: "Focus is the first move of control."
       }
     ]
   },
+
+  // LEVEL 2 — FILTER
   {
     id: "L2-Q1",
     level: "filter",
-    question: "Tens 20 notificações novas. O que fazes primeiro?",
+    question: "You see 20 new notifications. What’s your first move?",
     options: [
       {
-        label: "Abro tudo para não perder nada",
+        label: "Open everything so you don’t miss anything",
         score: 0,
         punchline: "If everything matters, nothing does."
       },
       {
-        label: "Ves só o que está ligado ao que é importante hoje",
+        label: "Only check what’s connected to today’s priorities",
         score: 1,
         punchline: "Filtering is choosing what deserves your mind."
       }
@@ -72,32 +75,34 @@ const qpQuestions = [
   {
     id: "L2-Q2",
     level: "filter",
-    question: "Recebes informação contraditória sobre uma decisão.",
+    question: "You get conflicting information about a decision.",
     options: [
       {
-        label: "Ficas preso a comparar tudo em detalhe",
+        label: "Get stuck comparing every detail before acting",
         score: 0,
         punchline: "Endless comparison is just fancy hesitation."
       },
       {
-        label: "Defines 1–2 critérios e decides com base nisso",
+        label: "Set 1–2 clear criteria and decide based on that",
         score: 1,
         punchline: "Clarity comes from simple rules, not more data."
       }
     ]
   },
+
+  // LEVEL 3 — CONTROL
   {
     id: "L3-Q1",
     level: "control",
-    question: "Planeaste 2 horas de foco, mas aparece distração.",
+    question: "You planned 2 hours of deep work. A distraction appears.",
     options: [
       {
-        label: "Respondes à distração e recomeças mais tarde",
+        label: "You follow the distraction and plan to restart later",
         score: 0,
         punchline: "Every interruption you accept trains the next one."
       },
       {
-        label: "Registas a distração e voltas ao plano original",
+        label: "You notice it, park it, and return to the plan",
         score: 1,
         punchline: "Control is keeping the plan when the world doesn’t."
       }
@@ -106,15 +111,15 @@ const qpQuestions = [
   {
     id: "L3-Q2",
     level: "control",
-    question: "Estás cansado, mas tinhas combinado algo contigo próprio.",
+    question: "You’re tired, but you had a commitment with yourself.",
     options: [
       {
-        label: "Adias outra vez e prometes que “amanhã é a sério”",
+        label: "You postpone again and promise that tomorrow is serious",
         score: 0,
         punchline: "Motivation talks. Control shows up."
       },
       {
-        label: "Fazes uma versão menor, mas cumpres o combinado",
+        label: "You do a smaller version, but keep the promise",
         score: 1,
         punchline: "Quiet power is consistency, not intensity."
       }
