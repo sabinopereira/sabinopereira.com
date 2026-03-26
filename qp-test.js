@@ -53,6 +53,40 @@ const qpQuestions = [
       }
     ]
   },
+  {
+    id: "L1-Q4",
+    level: "reaction",
+    question: "Plans change last minute and your schedule breaks. What happens?",
+    options: [
+      {
+        label: "You get annoyed and try to fix everything at once",
+        score: 0,
+        punchline: "When everything is urgent, nothing is under control."
+      },
+      {
+        label: "You pause, re-order what truly matters, and drop the rest",
+        score: 1,
+        punchline: "Quiet reaction is editing, not exploding."
+      }
+    ]
+  },
+  {
+    id: "L1-Q5",
+    level: "reaction",
+    question: "You see someone online doing “better” than you.",
+    options: [
+      {
+        label: "You spiral into comparison and scroll even more",
+        score: 0,
+        punchline: "Comparison is a loud way to lose your lane."
+      },
+      {
+        label: "You notice the feeling and return to your own work",
+        score: 1,
+        punchline: "Control is choosing your reference point."
+      }
+    ]
+  },
 
   // LEVEL 2 — FILTER
   {
@@ -89,6 +123,40 @@ const qpQuestions = [
       }
     ]
   },
+  {
+    id: "L2-Q3",
+    level: "filter",
+    question: "Your day has work, family, and random requests. How do you decide what to do first?",
+    options: [
+      {
+        label: "What feels most urgent in the moment",
+        score: 0,
+        punchline: "Urgency is a filter someone else controls."
+      },
+      {
+        label: "What moves a meaningful goal, even if no one is watching",
+        score: 1,
+        punchline: "Real priorities are often quiet."
+      }
+    ]
+  },
+  {
+    id: "L2-Q4",
+    level: "filter",
+    question: "You’re invited to yet another meeting or social event.",
+    options: [
+      {
+        label: "You say yes by default and figure it out later",
+        score: 0,
+        punchline: "Saying yes to everything is saying no to focus."
+      },
+      {
+        label: "You check if it fits your energy and priorities first",
+        score: 1,
+        punchline: "Filtering is protecting your future attention."
+      }
+    ]
+  },
 
   // LEVEL 3 — CONTROL
   {
@@ -122,6 +190,40 @@ const qpQuestions = [
         label: "You do a smaller version, but keep the promise",
         score: 1,
         punchline: "Quiet power is consistency, not intensity."
+      }
+    ]
+  },
+  {
+    id: "L3-Q3",
+    level: "control",
+    question: "You promised yourself to stay off your phone for an hour.",
+    options: [
+      {
+        label: "You break it “just this once” and unlock it anyway",
+        score: 0,
+        punchline: "Every exception teaches your brain the rule."
+      },
+      {
+        label: "You ride the urge without acting on it",
+        score: 1,
+        punchline: "Control is feeling the pull and not moving."
+      }
+    ]
+  },
+  {
+    id: "L3-Q4",
+    level: "control",
+    question: "You’ve failed at a habit multiple times.",
+    options: [
+      {
+        label: "You drop it and call yourself “not that kind of person”",
+        score: 0,
+        punchline: "Identity can be a quiet excuse to stay stuck."
+      },
+      {
+        label: "You simplify the habit and start again at a smaller scale",
+        score: 1,
+        punchline: "Quiet Power builds from small, repeatable wins."
       }
     ]
   }
