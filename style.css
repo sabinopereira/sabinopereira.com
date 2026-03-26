@@ -1238,6 +1238,70 @@ a:hover { opacity: 0.7; }
   opacity: 1;
 }
 
+.qp-home-hero {
+  max-width: 800px;
+  margin: 0 auto 24px;
+}
+
+.qp-tagline {
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #777;
+  margin-bottom: 6px;
+}
+
+.qp-home-hero h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.qp-hero-text {
+  max-width: 520px;
+  color: #555;
+  margin-bottom: 16px;
+}
+
+.qp-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.qp-home-assessment {
+  max-width: 800px;
+  margin: 24px auto;
+  border-radius: 16px;
+  border: 1px solid #e3e3e3;
+  background: #fafafa;
+  padding: 18px 20px;
+}
+
+.qp-home-assessment p {
+  max-width: 520px;
+  margin-bottom: 12px;
+}
+
+.qp-home-ideas {
+  max-width: 800px;
+  margin: 24px auto 32px;
+}
+
+.qp-home-ideas-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.qp-idea-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #777;
+  margin-bottom: 4px;
+}
+
 @media (max-width: 560px) {
   .book-card-inner {
     grid-template-columns: 1fr;
