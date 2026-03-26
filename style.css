@@ -477,6 +477,125 @@ a:hover { opacity: 0.7; }
   align-items: center;
 }
 
+.contact-body {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 1.5rem;
+  align-items: start;
+  margin-bottom: 3.5rem;
+}
+
+.contact-copy {
+  padding: 2.25rem;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(210, 210, 215, 0.9);
+  border-radius: 22px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.contact-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #999;
+  margin-bottom: 0.75rem;
+}
+
+.contact-copy h3 {
+  font-size: 1.6rem;
+  margin: 0 0 1rem;
+}
+
+.contact-copy p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 0;
+}
+
+.contact-reasons {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.contact-reasons ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: #555;
+  line-height: 1.9;
+}
+
+.contact-form-wrap {
+  background: #fff;
+  border: 1px solid rgba(210, 210, 215, 0.8);
+  border-radius: 22px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.contact-form label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid #d2d2d7;
+  border-radius: 14px;
+  padding: 0.9rem 1rem;
+  font: inherit;
+  background: #fff;
+  color: #111;
+  resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #999;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+}
+
+.contact-submit {
+  margin-top: 0.5rem;
+}
+
+.contact-closing {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 2.5rem;
+  border-top: 1px solid #eee;
+}
+
+.contact-closing p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #111;
+}
+
+.contact-cta {
+  display: flex;
+  justify-content: center;
+}
+
 .btn-secondary {
   display: inline-block;
   background: #fff;
@@ -604,7 +723,14 @@ a:hover { opacity: 0.7; }
   .about-columns {
     grid-template-columns: 1fr;
   }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
   .about-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+  .contact-cta {
     flex-direction: column;
     align-items: center;
   }
