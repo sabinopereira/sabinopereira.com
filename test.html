@@ -44,62 +44,60 @@
 </header>
 
 <main class="page-main">
-  <section class="page-section">
-    <h1>Quiet Power Assessment</h1>
-    <p>Measure your Quiet Power with 7 short questions. No performance. No noise. Just an honest signal.</p>
-    <p>Answer quickly, without overpensar. Choose what feels true, not what sounds good.</p>
-  </section>
+  <section class="page-section qp-hero">
+    <p class="qp-tagline">QUIET POWER ASSESSMENT</p>
+    <h1>How much control do you really have?</h1>
+    <p class="qp-hero-text">
+      7 quick choices. No theory. No performance. Just a clean signal of how you move under pressure.
+    </p>
+    <button type="button" class="btn-primary qp-start-btn">Start the test</button>
 
-  <section class="page-section">
-    <h2>Level 1 — Reaction</h2>
-    <p class="qp-level-subtitle">How the world hits you.</p>
-
-    <div class="qp-question-card">
-      <p class="qp-question-label">Question 1 of 7</p>
-      <p class="qp-question-text">Silence in a social setting. What do you usually do?</p>
-
-      <div class="qp-options">
-        <button type="button" class="qp-option">You rush to fill it</button>
-        <button type="button" class="qp-option">You feel awkward</button>
-        <button type="button" class="qp-option">You let it exist naturally</button>
-      </div>
-
-      <p class="qp-hint">Choose the answer that feels most true, not most flattering.</p>
+    <div class="qp-progress">
+      <div class="qp-progress-bar" id="qp-progress-bar"></div>
+      <span class="qp-progress-label">
+        Question <span id="qp-current">0</span> of <span id="qp-total">7</span>
+      </span>
     </div>
   </section>
 
-  <section class="page-section">
-    <h2>Your Quiet Power Profile</h2>
-    <p class="qp-score">Your score: <strong>__/14</strong></p>
+  <section class="page-section qp-test-area">
+    <div id="qp-question-container">
+      <!-- As perguntas vão aparecer aqui via JS -->
+    </div>
+  </section>
+
+  <section class="page-section qp-result-area qp-result-hidden" id="qp-result">
+    <h2>Your Quiet Power profile</h2>
+    <p class="qp-result-title" id="qp-result-title"></p>
+    <p class="qp-result-text" id="qp-result-text"></p>
 
     <div class="qp-result-grid">
       <div>
-        <h3>Reactivity</h3>
-        <p>How quickly you get pulled by noise, urgency, and other people’s reactions.</p>
+        <h3>Reaction</h3>
+        <p id="qp-reaction-score"></p>
       </div>
       <div>
-        <h3>Quiet Power</h3>
-        <p>How much calm, focus, and inner stability you keep under pressure.</p>
+        <h3>Filter</h3>
+        <p id="qp-filter-score"></p>
+      </div>
+      <div>
+        <h3>Control</h3>
+        <p id="qp-control-score"></p>
       </div>
     </div>
 
-    <p class="qp-share">Know someone who needs this?</p>
-    <button type="button" class="btn-secondary">Copy result & link</button>
-  </section>
-
-  <section class="page-section">
-    <h3>Quiet Power Notes</h3>
-    <p>Calm insights for a noisy world. Occasional emails on focus, clarity, and new ideas.</p>
-    <p>No noise. No spam. Just occasional signal.</p>
-
-    <form class="qp-notes-form">
-      <input type="email" name="email" placeholder="Your email" aria-label="Your email" required>
-      <button type="submit" class="btn-primary">Join</button>
-    </form>
+    <div class="qp-email-gate" id="qp-email-gate">
+      <h3>Want your full breakdown?</h3>
+      <p>Get your detailed Quiet Power profile by email: score, level breakdown, and how to move to the next tier.</p>
+      <form class="qp-notes-form">
+        <input type="email" name="email" placeholder="Your email" required>
+        <button type="submit" class="btn-primary">Send me my result</button>
+      </form>
+    </div>
 
     <div class="qp-links">
-      <a href="/quiet-power.html" class="btn-secondary">Get the Quiet Power Book</a>
-      <a href="/podcast.html" class="btn-secondary">Listen to Podcast</a>
+      <a href="/quiet-power.html" class="btn-secondary">Get the Quiet Power book</a>
+      <a href="/podcast.html" class="btn-secondary">Listen to the podcast</a>
     </div>
   </section>
 </main>
@@ -107,6 +105,8 @@
 <footer class="site-footer">
   <p>&copy; 2026 Sabino Pereira &mdash; Built with quiet ideas and steady work.</p>
 </footer>
+
+<script src="qp-test.js"></script>
 
 </body>
 </html>

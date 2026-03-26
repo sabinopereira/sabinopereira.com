@@ -949,6 +949,147 @@ a:hover { opacity: 0.7; }
   margin-top: 8px;
 }
 
+.qp-test-page {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.qp-hero {
+  text-align: left;
+}
+
+.qp-tagline {
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #777;
+  margin-bottom: 6px;
+}
+
+.qp-hero h1 {
+  font-size: 2.1rem;
+  margin-bottom: 8px;
+}
+
+.qp-hero-text {
+  max-width: 520px;
+  color: #555;
+  margin-bottom: 16px;
+}
+
+.qp-start-btn {
+  margin-bottom: 16px;
+}
+
+.qp-progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.qp-progress-bar {
+  flex: 1;
+  height: 4px;
+  border-radius: 999px;
+  background: #eee;
+  position: relative;
+  overflow: hidden;
+}
+
+.qp-progress-bar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: var(--qp-progress, 0%);
+  background: #111;
+  transition: width 0.25s ease-out;
+}
+
+.qp-progress-label {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.qp-test-area {
+  margin-top: 24px;
+}
+
+.qp-question-card {
+  padding: 18px 20px;
+  border-radius: 16px;
+  border: 1px solid #e3e3e3;
+  background: #fafafa;
+}
+
+.qp-question-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+.qp-question-text {
+  font-size: 1.05rem;
+  margin-bottom: 14px;
+}
+
+.qp-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.qp-option-btn {
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  padding: 10px 14px;
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.95rem;
+  transition: background 0.15s ease-out, border-color 0.15s ease-out;
+}
+
+.qp-option-btn:hover {
+  background: #f1f1f1;
+  border-color: #ccc;
+}
+
+.qp-option-btn span {
+  display: block;
+}
+
+.qp-option-punchline {
+  font-size: 0.8rem;
+  color: #777;
+  margin-top: 3px;
+}
+
+.qp-result-area {
+  margin-top: 32px;
+}
+
+.qp-result-hidden {
+  display: none;
+}
+
+.qp-result-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.qp-email-gate {
+  margin: 16px 0;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  background: #fbfbfb;
+}
+
 .page {
   max-width: 960px;
   margin: 0 auto;
