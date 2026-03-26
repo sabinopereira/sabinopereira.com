@@ -737,6 +737,103 @@ a:hover { opacity: 0.7; }
   font-weight: 600;
 }
 
+.page {
+  padding-bottom: 3rem;
+}
+
+.book-page-head {
+  max-width: 760px;
+  margin: 72px auto 1.5rem;
+  padding: 0 1.5rem;
+}
+
+.book-page-head h1 {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.05;
+  margin: 0 0 0.75rem;
+}
+
+.book-page-head .book-tag {
+  margin: 0;
+}
+
+.page-hero {
+  max-width: 1100px;
+  margin: 0 auto 3rem;
+  padding: 0 1.5rem;
+}
+
+.page-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) auto;
+  gap: 2rem;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(210, 210, 215, 0.9);
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.page-hero-text h1 {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.05;
+  margin: 0 0 1rem;
+}
+
+.page-hero-cover img {
+  display: block;
+  max-width: 260px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+}
+
+.page-section {
+  max-width: 760px;
+  margin: 0 auto 2.5rem;
+  padding: 0 1.5rem;
+}
+
+.page-section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.page-section p,
+.page-section li {
+  color: #444;
+  line-height: 1.8;
+}
+
+.page-section ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.two-column-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.small-note {
+  margin-top: 1rem;
+  font-size: 0.92rem;
+  color: #777;
+}
+
+.page-section--cta {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.page-section--cta .book-actions {
+  justify-content: center;
+}
+
 @media (min-width: 800px) {
   .books-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -876,6 +973,19 @@ a:hover { opacity: 0.7; }
   }
   .books-grid {
     grid-template-columns: 1fr;
+  }
+  .page-hero-inner {
+    grid-template-columns: 1fr;
+  }
+  .page-hero-cover {
+    order: -1;
+  }
+  .page-hero-cover img {
+    width: 180px;
+  }
+  .two-column-list {
+    grid-template-columns: 1fr;
+    gap: 0;
   }
   .about-cta {
     flex-direction: column;
