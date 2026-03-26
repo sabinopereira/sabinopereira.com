@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiet Power Workbook 1 — Reaction: How the World Hits You</title>
+  <meta name="description" content="Quiet Power Workbook 1 — Reaction: How the World Hits You. A short, focused workbook to notice your triggers, responses, and the way the world hits you every day.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <!-- o mesmo header/nav das outras páginas -->
+</header>
+
+<main class="page">
+
+  <section class="page-hero-intro">
+    <p class="book-tag">WORKBOOK 1</p>
+    <h1>Reaction: How the World Hits You</h1>
+    <p>
+      A short, focused Quiet Power workbook to help you notice what hits you, how you react,
+      and where you want to respond differently.
+    </p>
+  </section>
+
+  <section class="page-section">
+    <h2>What this workbook is for</h2>
+    <p>
+      This workbook focuses on the first level of the Quiet Power system:
+      control starts with what you let in, what you ignore, and what you choose to delay.
+    </p>
+    <p>
+      It helps you see that before you can control your actions, you need to control your inputs —
+      the signals, noise, and hits from the world that you allow to land.
+    </p>
+  </section>
+
+  <section class="page-section">
+    <h2>What’s inside</h2>
+    <ul>
+      <li>Simple daily pages to map what hit you today and how you reacted.</li>
+      <li>Prompts to separate noise from what really matters to you.</li>
+      <li>Space to design small, quiet adjustments to your reactions.</li>
+    </ul>
+  </section>
+
+  <section class="page-section page-section--cta">
+    <h2>Download the workbook</h2>
+    <p>
+      This workbook is free to download as a PDF. Print it, write on it,
+      and use it as a quiet check‑in with yourself when life gets loud.
+    </p>
+    <div class="book-actions">
+      <a href="/downloads/quiet-power-workbook-1.pdf" class="btn-primary" target="_blank">Download free PDF</a>
+      <a href="/quiet-power.html" class="btn-secondary">Back to Quiet Power</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <!-- o mesmo footer global -->
+</footer>
+
+</body>
+</html>

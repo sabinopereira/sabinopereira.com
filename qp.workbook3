@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiet Power Workbook 3 — CONTROL: Where Control Becomes Power</title>
+  <meta name="description" content="Quiet Power Workbook 3 — CONTROL: Where Control Becomes Power. The third level of the Quiet Power system: taking command of what matters and holding that line over time.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <!-- reuse your global header / nav -->
+</header>
+
+<main class="page">
+
+  <section class="page-hero-intro">
+    <p class="book-tag">WORKBOOK 3 · PREMIUM</p>
+    <h1>CONTROL: Where Control Becomes Power</h1>
+    <p>
+      The third level of the Quiet Power system. This is where you stop just reacting less,
+      and start defining what truly matters — then holding that line over time.
+    </p>
+  </section>
+
+  <section class="page-section">
+    <h2>What this workbook is for</h2>
+    <p>
+      Workbook 1 focused on reaction: how the world hits you.
+      Workbook 2 focused on filtering: what you let in, what you ignore, and what never enters your mental space.
+    </p>
+    <p>
+      Workbook 3 is about control as quiet command. It helps you decide your non‑negotiables,
+      protect your best hours, and build a life where your actions match what you say you care about.
+    </p>
+  </section>
+
+  <section class="page-section">
+    <h2>What’s inside</h2>
+    <ul>
+      <li>Pages to define what actually matters to you beyond noise and social pressure.</li>
+      <li>Exercises to design constraints, rules, and small systems that hold under stress.</li>
+      <li>Prompts to track when you break your own line — and how to recover without drama.</li>
+    </ul>
+  </section>
+
+  <section class="page-section">
+    <h2>How it connects to the system</h2>
+    <ul>
+      <li>Level 1 — Reaction: you see what hits you.</li>
+      <li>Level 2 — Filter: you choose what gets close.</li>
+      <li>Level 3 — Control: you take command of direction and consistency.</li>
+    </ul>
+  </section>
+
+  <section class="page-section page-section--cta">
+    <h2>Premium workbook</h2>
+    <p>
+      This is a premium Quiet Power workbook. It is designed to be used after Workbooks 1 and 2,
+      when you are ready to commit to a smaller, clearer set of priorities.
+    </p>
+    <div class="book-actions">
+      <!-- placeholder enquanto não há produto -->
+      <span class="badge-soon">Coming soon</span>
+      <a href="/quiet-power.html" class="btn-secondary">Back to Quiet Power</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <!-- reuse your global footer -->
+</footer>
+
+</body>
+</html>
