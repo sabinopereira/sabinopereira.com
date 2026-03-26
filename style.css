@@ -1301,17 +1301,17 @@ a:hover { opacity: 0.7; }
 }
 
 .qp-home-assessment {
-  max-width: 800px;
-  margin: 24px auto;
-  border-radius: 16px;
-  border: 1px solid #e3e3e3;
+  max-width: 760px;
+  margin: 0 auto 32px;
+  border-radius: 18px;
+  border: 1px solid #e5e5e5;
   background: #fafafa;
   padding: 18px 20px;
 }
 
 .qp-home-assessment p {
-  max-width: 520px;
-  margin-bottom: 12px;
+  max-width: 540px;
+  margin-bottom: 8px;
 }
 
 .qp-home-ideas {
