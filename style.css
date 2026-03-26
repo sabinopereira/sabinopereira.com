@@ -777,6 +777,16 @@ a:hover { opacity: 0.7; }
   margin-top: 0.5rem;
 }
 
+.books-page-card {
+  max-width: 720px;
+  margin: 40px auto;
+  padding: 24px 28px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+}
+
 .products-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
