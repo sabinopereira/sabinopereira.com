@@ -1315,15 +1315,22 @@ a:hover { opacity: 0.7; }
 }
 
 .qp-home-ideas {
-  max-width: 800px;
-  margin: 24px auto 32px;
+  max-width: 760px;
+  margin: 0 auto 40px;
 }
 
 .qp-home-ideas-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
-  margin: 16px 0;
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.qp-card {
+  border-radius: 16px;
+  border: 1px solid #e5e5e5;
+  background: #fafafa;
+  padding: 16px 18px;
 }
 
 .qp-idea-label {
