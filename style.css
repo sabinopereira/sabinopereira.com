@@ -1088,6 +1088,11 @@ a:hover { opacity: 0.7; }
   .book-card-inner {
     grid-template-columns: 1fr;
   }
+
+  .book-cover-img {
+    max-width: 150px;
+    margin: 0 auto 12px;
+  }
 }
 
 /* Call to Action (Teaser Card) */
