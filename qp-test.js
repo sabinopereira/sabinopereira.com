@@ -1,3 +1,5 @@
+const QUESTIONS_PER_RUN = 7;
+
 const qpQuestions = [
   {
     id: "L1-Q1",
@@ -120,95 +122,162 @@ const qpQuestions = [
   }
 ];
 
-const qpContainer = document.getElementById("qp-question-container");
-const qpResult = document.getElementById("qp-result");
-const qpProgressBar = document.getElementById("qp-progress-bar");
-const qpCurrent = document.getElementById("qp-current");
-const qpTotal = document.getElementById("qp-total");
-const qpStartBtn = document.querySelector(".qp-start-btn");
+let currentIndex = 0;
+let currentQuestions = [];
+let totalScore = 0;
+let reactionScore = 0;
+let filterScore = 0;
+let controlScore = 0;
 
-let qpIndex = 0;
-let qpScores = {
-  reaction: 0,
-  filter: 0,
-  control: 0
-};
+const startBtn = document.querySelector(".qp-start-btn");
+const questionContainer = document.getElementById("qp-question-container");
+const progressBar = document.getElementById("qp-progress-bar");
+const currentSpan = document.getElementById("qp-current");
+const totalSpan = document.getElementById("qp-total");
+const resultSection = document.getElementById("qp-result");
 
-qpTotal.textContent = String(qpQuestions.length);
-
-function qpSetProgress() {
-  const percent = (qpIndex / qpQuestions.length) * 100;
-  qpCurrent.textContent = String(Math.min(qpIndex, qpQuestions.length));
-  qpProgressBar.style.setProperty("--qp-progress", `${percent}%`);
-  qpProgressBar.style.setProperty("width", "100%");
-  qpProgressBar.dataset.progress = `${percent}%`;
+if (totalSpan) {
+  totalSpan.textContent = QUESTIONS_PER_RUN;
 }
 
-function qpRenderQuestion() {
-  const item = qpQuestions[qpIndex];
+function shuffle(array) {
+  return array
+    .map((item) => ({ sort: Math.random(), value: item }))
+    .sort((a, b) => a.sort - b.sort)
+    .map((item) => item.value);
+}
 
-  if (!item) {
-    qpShowResult();
+function setProgress() {
+  const progressPercent = currentQuestions.length
+    ? Math.round((currentIndex / currentQuestions.length) * 100)
+    : 0;
+
+  if (currentSpan) {
+    currentSpan.textContent = String(Math.min(currentIndex, QUESTIONS_PER_RUN));
+  }
+
+  if (progressBar) {
+    progressBar.style.setProperty("--qp-progress-value", `${progressPercent}%`);
+  }
+}
+
+function startTest() {
+  totalScore = 0;
+  reactionScore = 0;
+  filterScore = 0;
+  controlScore = 0;
+  currentIndex = 0;
+
+  currentQuestions = shuffle(qpQuestions).slice(0, QUESTIONS_PER_RUN);
+
+  resultSection.classList.add("qp-result-hidden");
+  setProgress();
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = currentQuestions[currentIndex];
+
+  if (!q) {
+    showResult();
     return;
   }
 
-  qpContainer.innerHTML = `
+  currentSpan.textContent = currentIndex + 1;
+  const progressPercent = ((currentIndex) / QUESTIONS_PER_RUN) * 100;
+  progressBar.style.setProperty("--qp-progress-value", `${progressPercent}%`);
+
+  const optionsHtml = shuffle(q.options)
+    .map(
+      (opt) => `
+      <button type="button" class="qp-option-btn" data-score="${opt.score}" data-level="${q.level}">
+        <span>${opt.label}</span>
+        <span class="qp-option-punchline">${opt.punchline}</span>
+      </button>
+    `
+    )
+    .join("");
+
+  questionContainer.innerHTML = `
     <div class="qp-question-card">
-      <p class="qp-question-label">${item.level.toUpperCase()} · Question ${qpIndex + 1} of ${qpQuestions.length}</p>
-      <p class="qp-question-text">${item.question}</p>
+      <p class="qp-question-label">${q.level.toUpperCase()} · Question ${currentIndex + 1} of ${currentQuestions.length}</p>
+      <p class="qp-question-text">${q.question}</p>
       <div class="qp-options">
-        ${item.options.map((option, optionIndex) => `
-          <button type="button" class="qp-option-btn" data-option="${optionIndex}">
-            <span>${option.label}</span>
-            <span class="qp-option-punchline">${option.punchline}</span>
-          </button>
-        `).join("")}
+        ${optionsHtml}
       </div>
     </div>
   `;
 
-  qpContainer.querySelectorAll(".qp-option-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      const selected = item.options[Number(button.dataset.option)];
-      qpScores[item.level] += selected.score;
-      qpIndex += 1;
-      qpSetProgress();
-      qpRenderQuestion();
-    });
+  document.querySelectorAll(".qp-option-btn").forEach((btn) => {
+    btn.addEventListener("click", () => handleAnswer(btn));
   });
 }
 
-function qpShowResult() {
-  const total = qpScores.reaction + qpScores.filter + qpScores.control;
-  let title = "Calm in progress";
-  let text = "You are building control, but pressure still moves parts of your system faster than it should.";
+function handleAnswer(button) {
+  const score = Number(button.dataset.score);
+  const level = button.dataset.level;
 
-  if (total >= 11) {
-    title = "Quiet Power is visible";
-    text = "You hold more calm, filtration, and internal control than most people under pressure.";
-  } else if (total <= 5) {
-    title = "Noise still gets in";
-    text = "Your reactions are still too available to pressure, urgency, and external noise.";
+  totalScore += score;
+  if (level === "reaction") reactionScore += score;
+  if (level === "filter") filterScore += score;
+  if (level === "control") controlScore += score;
+
+  currentIndex += 1;
+  setProgress();
+
+  if (currentIndex >= currentQuestions.length) {
+    showResult();
+  } else {
+    renderQuestion();
+  }
+}
+
+function showResult() {
+  resultSection.classList.remove("qp-result-hidden");
+  questionContainer.innerHTML = "";
+
+  const reactionMax = currentQuestions.filter((q) => q.level === "reaction").length;
+  const filterMax = currentQuestions.filter((q) => q.level === "filter").length;
+  const controlMax = currentQuestions.filter((q) => q.level === "control").length;
+
+  const reactionPct = reactionMax ? Math.round((reactionScore / reactionMax) * 100) : 0;
+  const filterPct = filterMax ? Math.round((filterScore / filterMax) * 100) : 0;
+  const controlPct = controlMax ? Math.round((controlScore / controlMax) * 100) : 0;
+
+  let title = "";
+  let text = "";
+
+  if (reactionPct >= 60 && filterPct < 60 && controlPct < 60) {
+    title = "You’re operating in reaction mode.";
+    text = "You move fast. But speed is not control. You’re reacting more than you think.";
+  } else if (reactionPct < 60 && filterPct >= 60 && controlPct >= 60) {
+    title = "You move on your own signal.";
+    text = "You choose when to act. Noise doesn’t own your attention anymore.";
+  } else {
+    title = "You see the patterns, but don’t own them yet.";
+    text = "You already notice the noise. Now you need structure, not more insight.";
   }
 
   document.getElementById("qp-result-title").textContent = title;
   document.getElementById("qp-result-text").textContent = text;
-  document.getElementById("qp-reaction-score").textContent = `${qpScores.reaction} / 3`;
-  document.getElementById("qp-filter-score").textContent = `${qpScores.filter} / 2`;
-  document.getElementById("qp-control-score").textContent = `${qpScores.control} / 2`;
 
-  qpContainer.innerHTML = "";
-  qpResult.classList.remove("qp-result-hidden");
-  qpCurrent.textContent = String(qpQuestions.length);
-  qpProgressBar.dataset.progress = "100%";
+  document.getElementById("qp-reaction-score").textContent =
+    `Reaction: ${reactionPct}% quiet, ${100 - reactionPct}% reactive`;
+  document.getElementById("qp-filter-score").textContent =
+    `Filter: ${filterPct}% clear, ${100 - filterPct}% noisy`;
+  document.getElementById("qp-control-score").textContent =
+    `Control: ${controlPct}% consistent, ${100 - controlPct}% fragile`;
+
+  if (progressBar) {
+    progressBar.style.setProperty("--qp-progress-value", "100%");
+  }
+  if (currentSpan) {
+    currentSpan.textContent = String(currentQuestions.length);
+  }
 }
 
-qpStartBtn.addEventListener("click", () => {
-  qpIndex = 0;
-  qpScores = { reaction: 0, filter: 0, control: 0 };
-  qpResult.classList.add("qp-result-hidden");
-  qpSetProgress();
-  qpRenderQuestion();
-});
+if (startBtn) {
+  startBtn.addEventListener("click", startTest);
+}
 
-qpSetProgress();
+setProgress();
