@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiet Power Workbook 2 — FILTER: How You Filter the Noise</title>
+  <meta name="description" content="Quiet Power Workbook 2 — FILTER: How You Filter the Noise. A workbook about deciding what stays, what goes, and what never gets into your mental space.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <!-- reuse your global header / nav -->
+</header>
+
+<main class="page">
+
+  <section class="page-hero-intro">
+    <p class="book-tag">WORKBOOK 2</p>
+    <h1>FILTER: How You Filter the Noise</h1>
+    <p>
+      A Quiet Power workbook about selection: deciding what stays, what goes,
+      and what never gets into your mental space in the first place.
+    </p>
+  </section>
+
+  <section class="page-section">
+    <h2>What this workbook is for</h2>
+    <p>
+      If Workbook 1 is about noticing your reactions, Workbook 2 is about the next level of the Quiet Power system:
+      selection. You cannot control everything that exists, but you can control what you let close.
+    </p>
+    <p>
+      This workbook helps you choose your inputs on purpose — what you keep, what you remove,
+      and what you stop allowing into your head, calendar, and attention.
+    </p>
+  </section>
+
+  <section class="page-section">
+    <h2>What’s inside</h2>
+    <ul>
+      <li>Pages to map the sources of noise in your day and what they cost you.</li>
+      <li>Prompts to decide what you will no longer track, answer, or carry.</li>
+      <li>Space to design simple filters for media, people, work, and routines.</li>
+    </ul>
+  </section>
+
+  <section class="page-section page-section--cta">
+    <h2>Download the workbook</h2>
+    <p>
+      This workbook is free to download as a PDF.
+      Use it next to Workbook 1 to move from reaction to deliberate selection.
+    </p>
+    <div class="book-actions">
+      <a href="/downloads/quiet-power-workbook-2.pdf" class="btn-primary" target="_blank">Download free PDF</a>
+      <a href="/quiet-power.html" class="btn-secondary">Back to Quiet Power</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <!-- reuse your global footer -->
+</footer>
+
+</body>
+</html>
