@@ -224,6 +224,80 @@ a:hover { opacity: 0.7; }
   margin-bottom: 1.2em;
 }
 
+.ideas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+
+.ideas-grid .idea-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  border: none;
+  margin-bottom: 0;
+}
+
+.ideas-grid .idea-card:hover {
+  transform: none;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.ideas-grid .idea-card summary {
+  list-style: none;
+}
+
+.ideas-grid .idea-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.idea-number {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #999;
+  margin-bottom: 0.5rem;
+}
+
+.ideas-grid .idea-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem 0;
+}
+
+.idea-preview {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0 0 1rem 0;
+}
+
+.idea-toggle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #111;
+}
+
+.idea-full {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #eee;
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.7;
+}
+
+.idea-full p {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
 /* Call to Action (Teaser Card) */
 .qp-teaser-section { margin-top: 60px; }
 
@@ -326,6 +400,9 @@ a:hover { opacity: 0.7; }
 
   /* Cards */
   .idea-card { padding: 32px 24px; }
+  .ideas-grid {
+    grid-template-columns: 1fr;
+  }
 
   /* Titulos */
   .page-title { font-size: 2.2rem; }
