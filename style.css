@@ -666,6 +666,12 @@ a:hover { opacity: 0.7; }
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
 }
 
+.book-cover {
+  max-width: 260px;
+  width: 100%;
+  display: block;
+}
+
 .book-cover--placeholder {
   width: 220px;
   max-width: 100%;
@@ -911,8 +917,8 @@ a:hover { opacity: 0.7; }
 .workbooks-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
-  margin-top: 24px;
+  gap: 16px;
+  margin-top: 16px;
 }
 
 .workbook-card {
@@ -920,7 +926,7 @@ a:hover { opacity: 0.7; }
   flex-direction: column;
   justify-content: space-between;
   min-height: 320px;
-  padding: 16px 18px;
+  padding: 12px 14px;
   border-radius: 12px;
   border: 1px solid #e0e0e0;
   background: #ffffff;
@@ -929,9 +935,10 @@ a:hover { opacity: 0.7; }
 }
 
 .workbook-card img {
-  width: 100%;
+  width: 70%;
+  max-width: 140px;
+  margin: 0 auto 12px;
   border-radius: 8px;
-  margin-bottom: 12px;
   display: block;
 }
 
