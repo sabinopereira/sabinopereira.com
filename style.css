@@ -870,6 +870,85 @@ a:hover { opacity: 0.7; }
   line-height: 1.7;
 }
 
+.qp-question-card {
+  margin-top: 16px;
+  padding: 16px 18px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+}
+
+.qp-question-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+.qp-question-text {
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.qp-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.qp-option {
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  background: #f7f7f7;
+  cursor: pointer;
+  text-align: left;
+}
+
+.qp-option:hover {
+  background: #eee;
+}
+
+.qp-hint {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.qp-score {
+  margin-bottom: 12px;
+}
+
+.qp-result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.qp-notes-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.qp-notes-form input[type="email"] {
+  flex: 1 1 220px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.qp-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
 .page {
   max-width: 960px;
   margin: 0 auto;
