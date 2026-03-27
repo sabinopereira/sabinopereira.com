@@ -1255,6 +1255,10 @@ body > .qp-hero p {
   margin: 0 0 1rem;
 }
 
+body > .qp-hero h1 {
+  color: #fff;
+}
+
 body > .qp-hero a {
   color: #fff;
   text-decoration: underline;
