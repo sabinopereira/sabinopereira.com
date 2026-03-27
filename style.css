@@ -1227,6 +1227,27 @@ body > .qp-hero {
 body > .qp-hero .qp-hero-inner {
   max-width: 900px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+body > .qp-hero .qp-hero-cover {
+  display: block;
+}
+
+body > .qp-hero .qp-hero-cover img {
+  display: block;
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+}
+
+body > .qp-hero .qp-hero-copy {
+  min-width: 0;
 }
 
 body > .qp-hero h1,
@@ -1247,6 +1268,16 @@ body > .qp-hero .qp-button {
   border-radius: 999px;
   font-weight: 600;
   text-decoration: none;
+}
+
+@media (max-width: 720px) {
+  body > .qp-hero .qp-hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  body > .qp-hero .qp-hero-cover img {
+    width: 160px;
+  }
 }
 
 @media (min-width: 800px) {
