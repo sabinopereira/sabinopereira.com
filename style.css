@@ -1218,6 +1218,37 @@ a:hover { opacity: 0.7; }
   margin: 0 0 1rem;
 }
 
+body > .qp-hero {
+  background-color: #000;
+  color: #fff;
+  padding: 3rem 1.5rem;
+}
+
+body > .qp-hero .qp-hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+body > .qp-hero h1,
+body > .qp-hero p {
+  margin: 0 0 1rem;
+}
+
+body > .qp-hero a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+body > .qp-hero .qp-button {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  background-color: #fff;
+  color: #000;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
 @media (min-width: 800px) {
   .books-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
