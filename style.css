@@ -679,6 +679,11 @@ body {
   box-shadow: none;
 }
 
+.monastery-subpage .idea-card {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(231, 225, 210, 0.16);
+}
+
 .monastery-subpage .idea-card,
 .monastery-subpage .podcast-card,
 .monastery-subpage .book-card,
@@ -711,17 +716,21 @@ body {
   color: #ddd4c1;
 }
 
+.monastery-subpage .idea-title {
+  color: #f6efdf;
+}
+
 .monastery-subpage .idea-toggle {
   color: #efe7d5;
 }
 
 .monastery-subpage .idea-full {
   border-top: 1px solid rgba(231, 225, 210, 0.12);
-  color: #d9d1c2;
+  color: #e1d9ca;
 }
 
 .monastery-subpage .idea-full p {
-  color: #d9d1c2;
+  color: #e1d9ca;
 }
 
 .monastery-subpage input,
