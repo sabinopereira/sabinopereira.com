@@ -56,32 +56,52 @@ a:hover { opacity: 0.7; }
   justify-content: space-between;
   align-items: center;
   gap: 24px;
-  padding: 18px 24px;
+  padding: 18px 28px;
   background: #fff;
   border-bottom: 1px solid #f0f0f0;
 }
 
-.brand {
+.left {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.brand img {
-  width: 36px;
-  height: 36px;
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar {
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
 }
 
-.brand-name {
+.name {
   font-size: 1rem;
   font-weight: 600;
+  line-height: 1.2;
   color: var(--text);
+}
+
+.subnav {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 2px;
+  letter-spacing: 0.3px;
+  line-height: 1.3;
+  opacity: 0.85;
+}
+
+.subnav strong {
+  color: #000;
+  font-weight: 500;
 }
 
 .nav {
   display: flex;
-  gap: 24px;
+  gap: 26px;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -102,39 +122,6 @@ a:hover { opacity: 0.7; }
   font-weight: 600;
   border-bottom: 1px solid #000;
   padding-bottom: 4px;
-}
-
-.social {
-  display: flex;
-  gap: 16px;
-  padding: 8px 24px 0;
-  margin-top: 8px;
-  font-size: 0.85rem;
-}
-
-.social a {
-  color: #888;
-  position: relative;
-}
-
-.social a:hover {
-  color: #000;
-  opacity: 1;
-}
-
-.social a::after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 1px;
-  left: 0;
-  bottom: -2px;
-  background: #000;
-  transition: width 0.2s ease;
-}
-
-.social a:hover::after {
-  width: 100%;
 }
 
 /* Sticky Header */
@@ -1223,6 +1210,10 @@ a:hover { opacity: 0.7; }
   margin-top: 80px;
 }
 
+section {
+  margin-top: 80px;
+}
+
 .page-section h2 {
   margin-bottom: 0.7rem;
 }
@@ -1603,6 +1594,10 @@ body > .qp-hero .qp-button {
   margin: 120px auto 56px;
 }
 
+.risk-section {
+  margin-top: 120px;
+}
+
 .qp-home-foundation h2 {
   margin-bottom: 18px;
 }
@@ -1617,7 +1612,7 @@ body > .qp-hero .qp-button {
   line-height: 1.6;
 }
 
-.qp-home-foundation h2:last-of-type {
+.foundation {
   margin-top: 60px;
 }
 
@@ -1728,27 +1723,38 @@ body > .qp-hero .qp-button {
 }
 
 /* Footer */
-.site-footer {
-  text-align: center;
-  padding: 60px 20px;
+.footer {
+  margin-top: 120px;
+  padding: 40px 0;
+  font-size: 0.85rem;
+  color: #777;
   border-top: 1px solid var(--line);
-  margin-top: 40px;
   background: #fff;
 }
 
-.site-footer h2 { font-size: 1.2rem; margin-bottom: 12px; }
-.site-footer p { font-size: 0.9rem; color: var(--muted); }
-.site-footer-links {
-  margin-bottom: 10px;
+.footer-social {
+  margin-bottom: 16px;
 }
 
-.site-footer-links a {
-  color: #666;
-  margin: 0 10px;
-  font-size: 0.92rem;
+.footer-social a {
+  margin-right: 16px;
+  color: #888;
 }
 
-.site-footer-links a:hover {
+.footer-links {
+  margin-bottom: 16px;
+}
+
+.footer-links a {
+  margin-right: 16px;
+  color: #888;
+}
+
+.footer-copy {
+  color: #777;
+}
+
+.footer a:hover {
   color: #000;
   opacity: 1;
 }
@@ -1766,12 +1772,6 @@ body > .qp-hero .qp-button {
 
   .nav {
     gap: 14px 18px;
-  }
-
-  .social {
-    flex-wrap: wrap;
-    gap: 10px 14px;
-    padding: 8px 18px 0;
   }
 
   .site-header {

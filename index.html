@@ -30,9 +30,14 @@
 <body>
 
 <header class="header">
-  <div class="brand">
-    <img src="/images/avatar.png" alt="Sabino Pereira">
-    <span class="brand-name">Sabino Pereira</span>
+  <div class="left">
+    <img src="/images/avatar.png" alt="Sabino Pereira" class="avatar">
+    <div class="brand-text">
+      <span class="name">Sabino Pereira</span>
+      <div class="subnav">
+        <strong>Quiet Power</strong> &mdash; Calm. Focused. Unshaken.
+      </div>
+    </div>
   </div>
 
   <nav class="nav">
@@ -43,12 +48,6 @@
     <a href="/shop.html">Shop</a>
   </nav>
 </header>
-
-<div class="social">
-  <a href="https://www.instagram.com/my_quiet_power/" target="_blank" rel="noopener">Instagram</a>
-  <a href="https://www.youtube.com/@SabinoQuietPower" target="_blank" rel="noopener">YouTube</a>
-  <a href="https://open.spotify.com/show/1CVJWxfqOOeH0p9ZmGHNVz" target="_blank" rel="noopener">Podcast</a>
-</div>
 
 <main class="page-main">
 
@@ -167,7 +166,7 @@
     </div>
   </section>
 
-  <section class="page-section qp-home-foundation">
+  <section class="page-section qp-home-foundation risk-section">
     <h2>THE RISK OF QUIET POWER</h2>
     <p>
       If misunderstood, Quiet Power becomes distance.
@@ -179,7 +178,7 @@
       And silence… is not always strength.
     </p>
 
-    <h2>FOUNDATION</h2>
+    <h2 class="foundation">FOUNDATION</h2>
     <p>
       You don’t control everything.
     </p>
@@ -205,23 +204,34 @@
 
 </main>
 
-<footer class="site-footer">
-  <p class="site-footer-links">
+<footer class="footer">
+  <div class="footer-social">
+    <a href="https://www.instagram.com/my_quiet_power/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.youtube.com/@SabinoQuietPower" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://open.spotify.com/show/1CVJWxfqOOeH0p9ZmGHNVz" target="_blank" rel="noopener">Podcast</a>
+  </div>
+
+  <div class="footer-links">
     <a href="/about.html">About</a>
     <a href="/contact.html">Contact</a>
+  </div>
+
+  <p class="footer-copy">
+    &copy; 2026 Sabino Pereira &mdash; Built with quiet ideas and steady work.
   </p>
-  <p>&copy; 2026 Sabino Pereira &mdash; Built with quiet ideas and steady work.</p>
 </footer>
 
 <script>
-  const header = document.querySelector('.site-header');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });
+  const header = document.querySelector('.header');
+  if (header) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  }
   const elements = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
