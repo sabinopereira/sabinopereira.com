@@ -92,5 +92,82 @@
   <p>&copy; 2026 Sabino Pereira &mdash; Built with quiet ideas and steady work.</p>
 </footer>
 
+<script>
+  function buildShareLinks(title, url) {
+    const text = `${title} — ${url}`;
+    return {
+      x: `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`,
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+      whatsapp: `https://wa.me/?text=${encodeURIComponent(text)}`,
+      copy: text
+    };
+  }
+
+  const booksToShare = [
+    {
+      selector: ".book-card:nth-of-type(1)",
+      label: "Share this book",
+      title: "Quiet Power by Sabino Pereira",
+      url: "https://sabinopereira.com/quiet-power.html"
+    },
+    {
+      selector: ".book-card:nth-of-type(2)",
+      label: "Share this book",
+      title: "Livro de Reclamações para o Mundo by Sabino Pereira",
+      url: "https://sabinopereira.com/livro-reclamacao.html"
+    }
+  ];
+
+  booksToShare.forEach((item) => {
+    const card = document.querySelector(item.selector);
+
+    if (!card) {
+      return;
+    }
+
+    const share = document.createElement("div");
+    share.className = "share-inline";
+    share.innerHTML = `
+      <span class="share-inline-label">${item.label}</span>
+      <div class="share-inline-actions">
+        <a href="#" class="share-inline-link" data-share="x">X</a>
+        <a href="#" class="share-inline-link" data-share="linkedin">LinkedIn</a>
+        <a href="#" class="share-inline-link" data-share="whatsapp">WhatsApp</a>
+        <button type="button" class="share-inline-link" data-share="copy">Copy link</button>
+      </div>
+    `;
+
+    const links = buildShareLinks(item.title, item.url);
+
+    share.querySelectorAll("[data-share]").forEach((control) => {
+      const type = control.dataset.share;
+
+      if (type === "copy") {
+        control.addEventListener("click", async () => {
+          try {
+            await navigator.clipboard.writeText(links.copy);
+            control.textContent = "Copied";
+            window.setTimeout(() => {
+              control.textContent = "Copy link";
+            }, 1400);
+          } catch (error) {
+            control.textContent = "Copy failed";
+            window.setTimeout(() => {
+              control.textContent = "Copy link";
+            }, 1400);
+          }
+        });
+        return;
+      }
+
+      control.href = links[type];
+      control.target = "_blank";
+      control.rel = "noopener";
+    });
+
+    card.appendChild(share);
+  });
+</script>
+
 </body>
 </html>
