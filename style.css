@@ -802,6 +802,39 @@ body {
   color: #fff8ec;
 }
 
+.monastery-subpage .podcast-grid,
+.monastery-subpage .products-grid,
+.monastery-subpage .contact-body {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px 48px;
+}
+
+.monastery-subpage .podcast-footer-note,
+.monastery-subpage .contact-closing,
+.monastery-subpage .page-footer-note {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.monastery-subpage .page-hero-intro .page-kicker {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.monastery-subpage .podcast-card--muted {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.monastery-subpage .contact-closing {
+  padding-top: 18px;
+}
+
+.monastery-subpage .contact-closing p {
+  color: #f3ecdc;
+}
+
 @media (max-width: 768px) {
   .monastery-subpage .site-header {
     flex-direction: column;
