@@ -988,6 +988,215 @@ body {
   flex-wrap: wrap;
 }
 
+.knowledge-body {
+  max-width: none;
+  margin: 0;
+  background: #f3f4f1;
+  color: #171917;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+}
+
+.knowledge-page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 28px 24px 72px;
+}
+
+.knowledge-header,
+.knowledge-grid,
+.knowledge-stack,
+.knowledge-store,
+.knowledge-footer {
+  margin-top: 40px;
+}
+
+.knowledge-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px;
+  align-items: end;
+}
+
+.knowledge-kicker,
+.knowledge-label {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.73rem;
+  color: #7b8078;
+  margin-bottom: 12px;
+}
+
+.knowledge-header h1,
+.knowledge-card h2,
+.knowledge-card h3,
+.knowledge-stack h3,
+.knowledge-store h3 {
+  color: #171917;
+  line-height: 1.08;
+}
+
+.knowledge-header h1 {
+  font-size: clamp(2.9rem, 6vw, 4.8rem);
+  max-width: 640px;
+}
+
+.knowledge-intro {
+  max-width: 560px;
+  color: #5e645d;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  margin-top: 14px;
+}
+
+.knowledge-nav {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.knowledge-nav a,
+.knowledge-link,
+.knowledge-footer-links a {
+  color: #232722;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.knowledge-nav a:hover,
+.knowledge-link:hover,
+.knowledge-footer-links a:hover {
+  border-color: currentColor;
+  opacity: 1;
+}
+
+.knowledge-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.knowledge-grid-hero {
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+}
+
+.knowledge-grid-core {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.knowledge-grid-stack,
+.knowledge-grid-store {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.knowledge-card {
+  padding: 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(23, 25, 23, 0.08);
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 0 10px 24px rgba(26, 31, 26, 0.04);
+}
+
+.knowledge-card p {
+  color: #5c625b;
+  line-height: 1.65;
+}
+
+.knowledge-subtitle {
+  color: #6e736c;
+  margin: 8px 0 16px;
+}
+
+.knowledge-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.knowledge-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+
+.knowledge-btn-primary {
+  background: #171917;
+  color: #f3f4f1;
+}
+
+.knowledge-btn-primary:hover {
+  background: #000;
+  opacity: 1;
+}
+
+.knowledge-btn-secondary {
+  background: #ecefea;
+  color: #171917;
+}
+
+.knowledge-btn-secondary:hover {
+  background: #e4e8e2;
+  opacity: 1;
+}
+
+.knowledge-card-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.knowledge-card-cover img {
+  width: 100%;
+  max-width: 280px;
+  display: block;
+  border-radius: 14px;
+  box-shadow: 0 20px 44px rgba(20, 24, 20, 0.12);
+}
+
+.knowledge-stack-head,
+.knowledge-store-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.knowledge-card h4 {
+  margin: 0 0 8px;
+  font-size: 1.08rem;
+  color: #171917;
+}
+
+.knowledge-product-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 16px;
+}
+
+.knowledge-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding-top: 22px;
+  border-top: 1px solid rgba(23, 25, 23, 0.08);
+  color: #6d726b;
+}
+
+.knowledge-footer-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
 @media (max-width: 720px) {
   .monastery-page {
     padding: 28px 18px 64px;
