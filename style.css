@@ -1410,6 +1410,13 @@ body > .qp-hero .qp-button {
   margin-top: 14px;
 }
 
+.qp-hero-micro {
+  width: 100%;
+  margin: 0 0 6px;
+  font-size: 1.02rem;
+  color: #1d1d1f;
+}
+
 .btn-ghost {
   border-radius: 999px;
   border: 1px solid #ddd;
@@ -1438,6 +1445,20 @@ body > .qp-hero .qp-button {
 .qp-home-assessment p {
   max-width: 540px;
   margin-bottom: 8px;
+}
+
+.qp-home-real-life {
+  max-width: 760px;
+  margin: 0 auto 44px;
+}
+
+.qp-home-real-life h2 {
+  margin-bottom: 18px;
+}
+
+.qp-home-real-life p {
+  margin-bottom: 18px;
+  max-width: 540px;
 }
 
 .qp-home-ideas {
