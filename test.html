@@ -44,67 +44,48 @@
 
 <main class="page-main">
   <section class="page-section qp-assessment-shell">
-    <div class="qp-intro-screen" id="qp-intro-screen">
-      <p class="qp-tagline">QUIET POWER ASSESSMENT</p>
+    <div class="intro fade" id="qp-intro-screen">
       <h1>Quiet Power Assessment</h1>
-      <p class="qp-hero-text">Measure how you react, filter, and decide.</p>
-      <p class="qp-assessment-intro-copy">
+      <p class="subtitle">Measure how you react, filter, and decide.</p>
+      <p class="intro-text">
         A short test to measure how you operate under pressure.
       </p>
-      <p class="qp-assessment-intro-copy">
+      <p class="intro-text">
         Most people think they’re in control.
         This shows you where you actually are.
       </p>
-      <ul class="qp-assessment-meta">
+      <ul class="meta">
         <li>7 questions</li>
-        <li>Takes under 2 minutes</li>
+        <li>Under 2 minutes</li>
         <li>No right answers</li>
       </ul>
-      <button type="button" class="btn-primary qp-start-btn">Start the Test</button>
-    </div>
-
-    <div class="qp-progress qp-progress-hidden" id="qp-progress">
-      <div class="qp-progress-bar" id="qp-progress-bar"></div>
-      <span class="qp-progress-label">
-        Question <span id="qp-current">1</span> of <span id="qp-total">7</span>
-      </span>
+      <button type="button" class="start-btn qp-start-btn">Start the Test</button>
     </div>
 
     <section class="page-section qp-test-area qp-test-hidden" id="qp-test-area">
       <div id="qp-question-container"></div>
-      <p class="qp-answer-feedback qp-answer-feedback-hidden" id="qp-answer-feedback"></p>
     </section>
 
-    <section class="page-section qp-result-area qp-result-hidden" id="qp-result">
-      <p class="qp-tagline">YOUR RESULT</p>
-      <h2>Your Quiet Power Profile: <span id="qp-result-title"></span></h2>
+    <section class="result fade qp-result-hidden" id="qp-result">
+      <h2>Your Quiet Power Profile</h2>
+      <p class="result-type" id="qp-result-title"></p>
+      <p class="result-text" id="qp-result-text"></p>
+      <p class="result-next" id="qp-result-next"></p>
 
-      <div class="qp-result-grid">
-        <div>
-          <h3>Reaction</h3>
-          <p id="qp-reaction-score"></p>
-        </div>
-        <div>
-          <h3>Filter</h3>
-          <p id="qp-filter-score"></p>
-        </div>
-        <div>
-          <h3>Control</h3>
-          <p id="qp-control-score"></p>
-        </div>
+      <div class="scores">
+        <p>Reaction: <span id="qp-reaction-score"></span></p>
+        <p>Filter: <span id="qp-filter-score"></span></p>
+        <p>Control: <span id="qp-control-score"></span></p>
       </div>
 
-      <p class="qp-result-text" id="qp-result-text"></p>
-      <p class="qp-result-next" id="qp-result-next"></p>
-
-      <p class="qp-result-bridge">
+      <p class="result-bridge">
         This is how you operate today.
         Quiet Power is how you improve it.
       </p>
 
-      <div class="qp-links">
-        <a href="https://amzn.eu/d/0aqOJyCI" class="btn-primary" target="_blank" rel="noopener">Get the Book</a>
-        <a href="/qpworkbook1" class="btn-secondary">Apply It Now</a>
+      <div class="result-cta">
+        <a href="https://amzn.eu/d/0aqOJyCI" target="_blank" rel="noopener">Get the Book</a>
+        <a href="/qpworkbook1" class="secondary">Apply It Now</a>
       </div>
     </section>
   </section>

@@ -89,14 +89,9 @@ let scores = {
 };
 
 const introScreen = document.getElementById("qp-intro-screen");
-const progressWrap = document.getElementById("qp-progress");
-const progressBar = document.getElementById("qp-progress-bar");
-const currentLabel = document.getElementById("qp-current");
-const totalLabel = document.getElementById("qp-total");
 const startBtn = document.querySelector(".qp-start-btn");
 const testArea = document.getElementById("qp-test-area");
 const questionContainer = document.getElementById("qp-question-container");
-const answerFeedback = document.getElementById("qp-answer-feedback");
 const resultSection = document.getElementById("qp-result");
 const resultTitle = document.getElementById("qp-result-title");
 const resultText = document.getElementById("qp-result-text");
@@ -105,30 +100,13 @@ const reactionScore = document.getElementById("qp-reaction-score");
 const filterScore = document.getElementById("qp-filter-score");
 const controlScore = document.getElementById("qp-control-score");
 
-if (totalLabel) {
-  totalLabel.textContent = String(qpQuestions.length);
-}
-
 function resetAssessment() {
   currentIndex = 0;
   scores = { reaction: 0, filter: 0, control: 0 };
   resultSection.classList.add("qp-result-hidden");
   introScreen.classList.add("qp-intro-hidden");
-  progressWrap.classList.remove("qp-progress-hidden");
   testArea.classList.remove("qp-test-hidden");
-  updateProgress();
   renderQuestion();
-}
-
-function updateProgress() {
-  if (currentLabel) {
-    currentLabel.textContent = String(currentIndex + 1);
-  }
-
-  if (progressBar) {
-    const value = (currentIndex / qpQuestions.length) * 100;
-    progressBar.style.setProperty("--qp-progress-value", `${value}%`);
-  }
 }
 
 function renderQuestion() {
@@ -139,21 +117,22 @@ function renderQuestion() {
     return;
   }
 
-  updateProgress();
-  answerFeedback.classList.add("qp-answer-feedback-hidden");
-  answerFeedback.textContent = "";
+  const progressValue = ((currentIndex + 1) / qpQuestions.length) * 100;
 
   questionContainer.innerHTML = `
-    <div class="qp-question-card">
-      <p class="qp-question-label">Question ${currentIndex + 1} of ${qpQuestions.length}</p>
-      <h2 class="qp-question-text">${currentQuestion.question}</h2>
-      <div class="qp-options">
+    <div class="test-wrap fade">
+      <div class="progress">
+        <div class="progress-bar" style="width: ${progressValue}%"></div>
+      </div>
+      <p class="step">Question ${currentIndex + 1} of ${qpQuestions.length}</p>
+      <h2 class="question">${currentQuestion.question}</h2>
+      <div class="answers">
         ${currentQuestion.options
           .map(
             (option) => `
-              <button type="button" class="qp-option-btn" data-trait="${option.trait}" data-feedback="${option.feedback}">
-                <span class="qp-option-key">${option.key}</span>
-                <span class="qp-option-copy">${option.text}</span>
+              <button type="button" class="answer" data-trait="${option.trait}" data-feedback="${option.feedback}">
+                ${option.text}
+                <span>${option.feedback}</span>
               </button>
             `
           )
@@ -162,24 +141,20 @@ function renderQuestion() {
     </div>
   `;
 
-  document.querySelectorAll(".qp-option-btn").forEach((button) => {
+  document.querySelectorAll(".answer").forEach((button) => {
     button.addEventListener("click", () => handleAnswer(button));
   });
 }
 
 function handleAnswer(button) {
   const trait = button.dataset.trait;
-  const feedback = button.dataset.feedback;
   scores[trait] += 1;
 
-  answerFeedback.textContent = feedback;
-  answerFeedback.classList.remove("qp-answer-feedback-hidden");
-
-  document.querySelectorAll(".qp-option-btn").forEach((option) => {
+  document.querySelectorAll(".answer").forEach((option) => {
     option.disabled = true;
-    option.classList.remove("is-selected");
+    option.classList.remove("selected");
   });
-  button.classList.add("is-selected");
+  button.classList.add("selected");
 
   window.setTimeout(() => {
     currentIndex += 1;
@@ -202,8 +177,6 @@ function getProfile() {
 function showResults() {
   const profile = getProfile();
 
-  progressBar.style.setProperty("--qp-progress-value", "100%");
-  progressWrap.classList.add("qp-progress-hidden");
   testArea.classList.add("qp-test-hidden");
   resultSection.classList.remove("qp-result-hidden");
 
