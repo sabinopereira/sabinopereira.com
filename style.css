@@ -1818,6 +1818,77 @@ body > .qp-hero .qp-button {
   opacity: 1;
 }
 
+.qp-book-main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+.landing {
+  margin-top: 60px;
+}
+
+.landing .tagline {
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.landing .hero-text {
+  margin-bottom: 16px;
+  color: #333336;
+  line-height: 1.6;
+}
+
+.landing .cta-main {
+  margin-top: 20px;
+}
+
+.landing .btn-primary,
+.final-cta .btn-primary {
+  background: #000;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.landing .btn-primary:hover,
+.final-cta .btn-primary:hover {
+  background: #111;
+  opacity: 1;
+}
+
+.landing .btn-secondary {
+  text-decoration: underline;
+  color: #000;
+}
+
+.landing .btn-secondary:hover {
+  color: #000;
+  opacity: 1;
+}
+
+.qp-book-main section {
+  margin-top: 80px;
+}
+
+.solution ul {
+  padding-left: 1.1rem;
+  color: #333336;
+  line-height: 1.8;
+}
+
+.solution li {
+  margin-bottom: 0.5rem;
+}
+
+.final-cta .small {
+  margin-top: 18px;
+  font-size: 0.92rem;
+  color: #666;
+}
+
 /* =========================================
    MOBILE OPTIMIZATION
    ========================================= */
