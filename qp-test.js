@@ -152,11 +152,15 @@ const shareCopy = document.getElementById("qp-share-copy");
 function buildShareState(profile) {
   const url = "https://sabinopereira.com/test.html";
   const text = `I got "${profile.name}" on the Quiet Power Assessment. Take the test: ${url}`;
+  const links = window.ShareUtils
+    ? window.ShareUtils.buildShareLinks(`I got "${profile.name}" on the Quiet Power Assessment`, url)
+    : null;
+
   return {
     text,
-    x: `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`,
-    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
-    whatsapp: `https://wa.me/?text=${encodeURIComponent(text)}`
+    x: links ? links.x : `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`,
+    linkedin: links ? links.linkedin : `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+    whatsapp: links ? links.whatsapp : `https://wa.me/?text=${encodeURIComponent(text)}`
   };
 }
 
@@ -304,20 +308,24 @@ if (restartBtn) {
 }
 
 if (shareCopy) {
-  shareCopy.addEventListener("click", async () => {
-    const text = shareCopy.dataset.copyText || "https://sabinopereira.com/test.html";
+  if (window.ShareUtils) {
+    window.ShareUtils.wireShareControls(resultSection, buildShareState(profiles.reaction));
+  } else {
+    shareCopy.addEventListener("click", async () => {
+      const text = shareCopy.dataset.copyText || "https://sabinopereira.com/test.html";
 
-    try {
-      await navigator.clipboard.writeText(text);
-      shareCopy.textContent = "Copied";
-      window.setTimeout(() => {
-        shareCopy.textContent = "Copy link";
-      }, 1400);
-    } catch (error) {
-      shareCopy.textContent = "Copy failed";
-      window.setTimeout(() => {
-        shareCopy.textContent = "Copy link";
-      }, 1400);
-    }
-  });
+      try {
+        await navigator.clipboard.writeText(text);
+        shareCopy.textContent = "Copied";
+        window.setTimeout(() => {
+          shareCopy.textContent = "Copy link";
+        }, 1400);
+      } catch (error) {
+        shareCopy.textContent = "Copy failed";
+        window.setTimeout(() => {
+          shareCopy.textContent = "Copy link";
+        }, 1400);
+      }
+    });
+  }
 }
