@@ -616,6 +616,11 @@ body {
   color: #c9c1b2;
 }
 
+.monastery-subpage .page-intro .page-subtitle {
+  max-width: 620px;
+  margin-top: 14px;
+}
+
 .monastery-subpage .page-section p,
 .monastery-subpage .page-section li,
 .monastery-subpage p,
@@ -736,6 +741,65 @@ body {
 .monastery-subpage .site-footer a:hover {
   color: #fff8ec;
   opacity: 1;
+}
+
+.monastery-subpage .qp-book-main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+.monastery-subpage .qp-summary-panel {
+  padding: 32px;
+  border-radius: 18px;
+  border: 1px solid rgba(231, 225, 210, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.monastery-subpage .qp-summary-panel h2 + ul {
+  margin-top: 14px;
+}
+
+.monastery-subpage .qp-summary-panel h2:not(:first-child) {
+  margin-top: 28px;
+}
+
+.monastery-subpage .qp-summary-panel ul {
+  padding-left: 1.1rem;
+  line-height: 1.9;
+}
+
+.monastery-subpage .qp-hero-copy .page-kicker {
+  margin-bottom: 10px;
+}
+
+.monastery-subpage .final-cta.small,
+.monastery-subpage .final-cta .small {
+  color: #9f9888;
+}
+
+.monastery-subpage .ideas-grid {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+}
+
+.monastery-subpage .about-body {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+.monastery-subpage .about-closing {
+  border-top-color: rgba(231, 225, 210, 0.12);
+}
+
+.monastery-subpage .about-closing p {
+  color: #f3ecdc;
+}
+
+.monastery-subpage .about-card a {
+  color: #fff8ec;
 }
 
 @media (max-width: 768px) {
