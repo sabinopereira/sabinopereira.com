@@ -707,6 +707,23 @@ body {
   color: #c9c1b2;
 }
 
+.monastery-subpage .idea-preview {
+  color: #ddd4c1;
+}
+
+.monastery-subpage .idea-toggle {
+  color: #efe7d5;
+}
+
+.monastery-subpage .idea-full {
+  border-top: 1px solid rgba(231, 225, 210, 0.12);
+  color: #d9d1c2;
+}
+
+.monastery-subpage .idea-full p {
+  color: #d9d1c2;
+}
+
 .monastery-subpage input,
 .monastery-subpage textarea {
   background: rgba(255, 255, 255, 0.04);
@@ -745,6 +762,19 @@ body {
 .monastery-subpage .btn-secondary:hover {
   color: #fff8ec;
   opacity: 1;
+}
+
+.monastery-subpage .page-intro .btn-secondary {
+  color: #efe7d5;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(239, 231, 213, 0.7);
+  padding: 0 0 3px;
+}
+
+.monastery-subpage .page-intro .btn-secondary:hover {
+  color: #fff3db;
+  background: transparent;
+  border-color: currentColor;
 }
 
 .monastery-subpage .site-footer {
