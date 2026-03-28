@@ -296,6 +296,247 @@ body {
   color: #6e614f;
 }
 
+.monastery-body {
+  max-width: none;
+  margin: 0;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 30%),
+    linear-gradient(180deg, #0f1110 0%, #141715 100%);
+  color: #e7e1d2;
+  font-family: "Times New Roman", Georgia, serif;
+}
+
+.monastery-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 36px 24px 80px;
+}
+
+.monastery-header,
+.monastery-hero,
+.monastery-book,
+.monastery-grid,
+.monastery-store,
+.monastery-footer {
+  margin-top: 72px;
+}
+
+.monastery-header {
+  margin-top: 12px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(231, 225, 210, 0.14);
+}
+
+.monastery-kicker,
+.monastery-label {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.75rem;
+  color: #9f9888;
+  margin-bottom: 12px;
+}
+
+.monastery-header h1,
+.monastery-hero h2 {
+  color: #f3ecdc;
+  line-height: 1.05;
+}
+
+.monastery-header h1 {
+  font-size: clamp(3.2rem, 7vw, 5.6rem);
+  max-width: 700px;
+}
+
+.monastery-intro {
+  max-width: 520px;
+  margin-top: 18px;
+  color: #bcb5a6;
+  font-size: 1.16rem;
+  line-height: 1.6;
+}
+
+.monastery-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 34px;
+}
+
+.monastery-nav a,
+.monastery-panel a,
+.monastery-store-card a,
+.monastery-footer-links a {
+  color: #ddd4c1;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.monastery-nav a:hover,
+.monastery-panel a:hover,
+.monastery-store-card a:hover,
+.monastery-footer-links a:hover {
+  color: #fff8ec;
+  border-color: currentColor;
+  opacity: 1;
+}
+
+.monastery-hero {
+  max-width: 620px;
+}
+
+.monastery-hero h2 {
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  margin-bottom: 16px;
+}
+
+.monastery-hero-text,
+.monastery-note,
+.monastery-panel p {
+  color: #c9c1b2;
+  line-height: 1.7;
+}
+
+.monastery-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.monastery-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+  font-size: 0.95rem;
+}
+
+.monastery-btn-primary {
+  background: #efe7d5;
+  color: #161715;
+}
+
+.monastery-btn-primary:hover {
+  background: #fff3db;
+  color: #111;
+  opacity: 1;
+}
+
+.monastery-btn-secondary {
+  color: #ddd4c1;
+  border: 1px solid rgba(231, 225, 210, 0.22);
+}
+
+.monastery-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.06);
+  opacity: 1;
+}
+
+.monastery-book {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
+  gap: 34px;
+  align-items: start;
+  padding-top: 12px;
+}
+
+.monastery-book-cover img {
+  width: 100%;
+  max-width: 260px;
+  display: block;
+  border-radius: 6px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
+}
+
+.monastery-list {
+  margin: 0;
+  padding-left: 1rem;
+  color: #e6ddcd;
+  line-height: 1.9;
+}
+
+.monastery-note {
+  margin-top: 20px;
+  max-width: 420px;
+}
+
+.monastery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.monastery-panel,
+.monastery-store-card {
+  padding: 22px;
+  border: 1px solid rgba(231, 225, 210, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.monastery-panel h3,
+.monastery-store-card h3 {
+  color: #f2eadb;
+  font-size: 1.45rem;
+  margin-bottom: 10px;
+}
+
+.monastery-store-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.monastery-store-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  filter: saturate(0.8) brightness(0.94);
+}
+
+.monastery-footer {
+  padding-top: 26px;
+  border-top: 1px solid rgba(231, 225, 210, 0.12);
+}
+
+.monastery-footer p {
+  color: #bdb5a6;
+  margin-bottom: 14px;
+}
+
+.monastery-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+@media (max-width: 720px) {
+  .monastery-page {
+    padding: 28px 18px 64px;
+  }
+
+  .monastery-book,
+  .monastery-grid,
+  .monastery-store-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .monastery-header h1 {
+    font-size: 2.8rem;
+  }
+
+  .monastery-hero h2 {
+    font-size: 2.3rem;
+  }
+}
+
 @media (max-width: 720px) {
   .home-book-grid {
     grid-template-columns: 1fr;
