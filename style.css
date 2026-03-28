@@ -22,7 +22,8 @@
 html { scroll-behavior: smooth; }
 
 body {
-  margin: 0;
+  margin: 0 auto;
+  max-width: 720px;
   background-color: var(--bg);
   color: var(--text);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
@@ -1137,6 +1138,10 @@ a:hover { opacity: 0.7; }
   margin-bottom: 2.5rem;
 }
 
+.page-section + .page-section {
+  margin-top: 80px;
+}
+
 .page-section h2 {
   margin-bottom: 0.7rem;
 }
@@ -1381,16 +1386,20 @@ body > .qp-hero .qp-button {
 }
 
 .qp-home-hero h1 {
-  font-size: clamp(2.9rem, 5vw, 3.55rem);
-  line-height: 1.04;
-  margin-bottom: 18px;
+  font-size: 2.6rem;
+  line-height: 1.08;
+  margin-bottom: 1.2rem;
 }
 
 .qp-hero-text {
   font-size: 1.02rem;
   color: #555;
   margin-bottom: 14px;
-  line-height: 1.58;
+  line-height: 1.4;
+}
+
+.qp-home-hero .qp-hero-text:first-of-type {
+  font-size: 1.2rem;
 }
 
 .qp-hero-break {
@@ -1427,9 +1436,11 @@ body > .qp-hero .qp-button {
   align-items: center;
   justify-content: center;
   min-height: 46px;
-  padding: 0.75rem 1.3rem;
-  background: #f2efe8;
+  padding: 12px 22px;
+  margin-top: 20px;
+  background: #f5f5f5;
   border: 1px solid rgba(29, 29, 31, 0.12);
+  border-radius: 8px;
   box-shadow: 0 8px 20px rgba(17, 17, 17, 0.04);
   transition: background-color 0.24s ease, border-color 0.24s ease, transform 0.24s ease, box-shadow 0.24s ease, opacity 0.24s ease;
 }
@@ -1443,7 +1454,7 @@ body > .qp-hero .qp-button {
 .qp-home-hero .btn-ghost:hover,
 .qp-home-assessment .btn-secondary:hover,
 .qp-home-ideas .btn-ghost:hover {
-  background: #ebe6db;
+  background: #eaeaea;
   border-color: rgba(29, 29, 31, 0.18);
   box-shadow: 0 12px 28px rgba(17, 17, 17, 0.06);
   transform: translateY(-1px);
@@ -1491,7 +1502,7 @@ body > .qp-hero .qp-button {
 }
 
 .qp-home-real-life p {
-  margin-bottom: 20px;
+  margin-bottom: 28px;
   max-width: 540px;
   line-height: 1.58;
   padding: 18px 20px;
@@ -1501,9 +1512,14 @@ body > .qp-hero .qp-button {
   box-shadow: 0 8px 24px rgba(17, 17, 17, 0.03);
 }
 
+.qp-home-real-life strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
 .qp-home-foundation {
   max-width: 760px;
-  margin: 132px auto 56px;
+  margin: 120px auto 56px;
 }
 
 .qp-home-foundation h2 {
@@ -1517,21 +1533,21 @@ body > .qp-hero .qp-button {
 .qp-home-foundation p {
   margin-bottom: 20px;
   max-width: 540px;
-  line-height: 1.58;
+  line-height: 1.6;
 }
 
 .qp-home-foundation h2:last-of-type {
-  margin-top: 78px;
+  margin-top: 60px;
 }
 
 .qp-home-ideas {
   max-width: 760px;
-  margin: 0 auto 56px;
+  margin: 100px auto 56px;
 }
 
 .qp-home-ideas h2 {
   font-size: clamp(2rem, 3vw, 2.35rem);
-  margin-bottom: 12px;
+  margin-bottom: 30px;
 }
 
 .qp-home-ideas > p {
@@ -1542,7 +1558,7 @@ body > .qp-hero .qp-button {
 .qp-home-ideas-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 22px;
+  gap: 40px;
   margin-top: 22px;
 }
 
