@@ -47,113 +47,104 @@ h1, h2, h3 {
 a { text-decoration: none; transition: all 0.2s ease; }
 a:hover { opacity: 0.7; }
 
-/* Sticky Header (The Glass Pill) */
+/* Sticky Header */
 .site-header {
   position: sticky;
-  top: 16px;
+  top: 0;
   z-index: 1000;
-  width: min(1000px, calc(100% - 32px));
+  width: 100%;
   margin: 0 auto;
-  padding: 12px 24px;
-  background: var(--surface-transparent);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 999px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+  padding: 18px 24px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid #f0f0f0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 24px;
 }
 
 .branding-wrap {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  min-width: 0;
+}
+
+.branding-wrap > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .site-avatar {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-} /* Menor no header */
+}
 
-.branding-title { font-size: 1.1rem; }
+.branding-title {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
 .branding-subtitle { display: none; } /* Limpeza visual no header */
 
 .site-nav {
   display: flex;
-  gap: 10px;
+  gap: 22px;
   margin: 0;
   padding: 0;
   border: none;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .site-nav a {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  min-height: 36px;
-  padding: 0 12px;
-  border-radius: 999px;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 500;
-  color: var(--muted);
-  transition: color 0.24s ease, background-color 0.24s ease, transform 0.24s ease;
-}
-
-.site-nav a::after {
-  content: "";
-  position: absolute;
-  left: 12px;
-  right: 12px;
-  bottom: 6px;
-  height: 1px;
-  background: currentColor;
-  opacity: 0;
-  transform: scaleX(0.6);
-  transform-origin: center;
-  transition: opacity 0.24s ease, transform 0.24s ease;
+  color: #444;
+  padding: 0;
+  min-height: auto;
+  border-radius: 0;
+  background: transparent;
+  transition: color 0.2s ease;
 }
 
 .site-nav a:hover,
 .site-nav a:focus-visible {
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.5);
-  transform: translateY(-1px);
-}
-
-.site-nav a:hover::after,
-.site-nav a:focus-visible::after,
-.site-nav a.active::after {
-  opacity: 0.5;
-  transform: scaleX(1);
+  color: #000;
+  background: transparent;
+  transform: none;
 }
 
 .site-nav a.active {
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.38);
+  color: #000;
+  font-weight: 600;
 }
 
 /* Social links in header (home only) */
-.qp-social { margin-top: 2px; }
+.qp-social { margin-top: 6px; }
 .qp-social-label { display: none; }
 .qp-social-links {
   display: flex;
-  gap: 8px;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 .qp-social-links a {
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   font-weight: 500;
-  color: var(--muted);
-  padding: 2px 8px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  transition: all 0.2s ease;
+  color: #888;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  transition: color 0.2s ease;
 }
 .qp-social-links a:hover {
-  color: var(--text);
-  background: rgba(0,0,0,0.04);
+  color: #000;
+  background: transparent;
   opacity: 1;
 }
 
@@ -1657,45 +1648,52 @@ body > .qp-hero .qp-button {
 
 .site-footer h2 { font-size: 1.2rem; margin-bottom: 12px; }
 .site-footer p { font-size: 0.9rem; color: var(--muted); }
+.site-footer-links {
+  margin-bottom: 10px;
+}
+
+.site-footer-links a {
+  color: #666;
+  margin: 0 10px;
+  font-size: 0.92rem;
+}
+
+.site-footer-links a:hover {
+  color: #000;
+  opacity: 1;
+}
 
 /* =========================================
    MOBILE OPTIMIZATION
    ========================================= */
 @media (max-width: 768px) {
 
-  /* Header: empilha em coluna */
   .site-header {
-    width: calc(100% - 24px);
-    top: 12px;
+    width: 100%;
+    top: 0;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
-    border-radius: 20px;
-    padding: 14px 18px;
+    gap: 14px;
+    padding: 16px 18px;
   }
 
-  /* Branding */
   .branding-wrap {
     width: 100%;
     justify-content: flex-start;
   }
 
-  /* Social links visiveis no mobile */
-  .branding-subtitle { display: block; font-size: 0.75rem; color: var(--muted); margin: 2px 0 0; }
+  .branding-subtitle { display: none; }
   .qp-social-links { flex-wrap: wrap; gap: 6px; margin-top: 4px; }
 
-  /* Menu: wrap para nao sair do ecra */
   .site-nav {
     width: 100%;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 14px 18px;
+    justify-content: flex-start;
   }
 
-  /* Links do menu: mais compactos */
   .site-nav a {
-    font-size: 0.78rem;
-    padding: 0 10px;
-    min-height: 30px;
+    font-size: 0.88rem;
   }
 
   /* Cards */
