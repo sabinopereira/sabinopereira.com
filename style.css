@@ -316,9 +316,8 @@ body {
 .monastery-hero,
 .monastery-book,
 .monastery-grid,
-.monastery-store,
 .monastery-footer {
-  margin-top: 72px;
+  margin-top: 108px;
 }
 
 .monastery-header {
@@ -364,7 +363,6 @@ body {
 
 .monastery-nav a,
 .monastery-panel a,
-.monastery-store-card a,
 .monastery-footer-links a {
   color: #ddd4c1;
   text-decoration: none;
@@ -374,7 +372,6 @@ body {
 
 .monastery-nav a:hover,
 .monastery-panel a:hover,
-.monastery-store-card a:hover,
 .monastery-footer-links a:hover {
   color: #fff8ec;
   border-color: currentColor;
@@ -471,34 +468,17 @@ body {
   gap: 18px;
 }
 
-.monastery-panel,
-.monastery-store-card {
+.monastery-panel {
   padding: 22px;
   border: 1px solid rgba(231, 225, 210, 0.12);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.02);
 }
 
-.monastery-panel h3,
-.monastery-store-card h3 {
+.monastery-panel h3 {
   color: #f2eadb;
   font-size: 1.45rem;
   margin-bottom: 10px;
-}
-
-.monastery-store-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.monastery-store-card img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 14px;
-  filter: saturate(0.8) brightness(0.94);
 }
 
 .monastery-footer {
