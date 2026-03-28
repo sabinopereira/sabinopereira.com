@@ -249,6 +249,20 @@ a:hover { opacity: 0.7; }
   margin: 0 auto;
 }
 
+.cta-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.decision-line {
+  margin: 14px auto 0;
+  font-size: 0.95rem;
+  color: #666;
+}
+
 .page-subtitle {
   font-size: 1.15rem;
   color: var(--muted);
@@ -1254,7 +1268,7 @@ section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 16px;
-  margin-top: 16px;
+  margin-top: 40px;
 }
 
 .workbook-card {
@@ -1280,7 +1294,7 @@ section {
 
 .workbook-card h3 {
   font-size: 1rem;
-  margin: 0 0 0.6rem;
+  margin: 0 0 6px;
 }
 
 .workbook-card p {
@@ -1397,6 +1411,15 @@ body > .qp-hero .qp-button {
   text-decoration: none;
 }
 
+.trust {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #d6d6db;
+}
+
 @media (max-width: 720px) {
   body > .qp-hero .qp-hero-inner {
     grid-template-columns: 1fr;
@@ -1438,9 +1461,55 @@ body > .qp-hero .qp-button {
   opacity: 1;
 }
 
+.page-intro .btn-primary,
+.final-cta .btn-primary,
+.qp-assessment-cta .btn-primary {
+  background: #000;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-right: 12px;
+}
+
+.page-intro .btn-primary:hover,
+.final-cta .btn-primary:hover,
+.qp-assessment-cta .btn-primary:hover {
+  background: #111;
+  opacity: 1;
+}
+
+.page-intro .btn-secondary {
+  color: #000;
+  text-decoration: underline;
+  border: 0;
+  background: transparent;
+  padding: 12px 0;
+}
+
+.page-intro .btn-secondary:hover {
+  background: transparent;
+}
+
 .qp-home-hero {
   max-width: 760px;
   margin: 48px auto 52px;
+}
+
+.final-cta {
+  margin-top: 56px;
+  padding: 32px;
+  border-radius: 16px;
+  background: #f5f5f7;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+}
+
+.final-cta p {
+  max-width: 420px;
+  margin: 0 auto 18px;
+  color: #333336;
+  line-height: 1.6;
 }
 
 .qp-tagline {
