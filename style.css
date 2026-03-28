@@ -777,13 +777,20 @@ body {
   color: #efe7d5;
   text-decoration: none;
   border-bottom: 1px solid rgba(239, 231, 213, 0.7);
-  padding: 0 0 3px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(231, 225, 210, 0.22);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .monastery-subpage .page-intro .btn-secondary:hover {
   color: #fff3db;
   background: transparent;
-  border-color: currentColor;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(239, 231, 213, 0.42);
 }
 
 .monastery-subpage .site-footer {
@@ -3295,18 +3302,23 @@ body > .qp-hero .qp-button {
 
 .monastery-subpage .page-intro .cta-main {
   justify-content: flex-start;
+  align-items: center;
 }
 
 .monastery-subpage .page-intro .btn-secondary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   min-height: 44px;
   padding: 0 16px;
+  line-height: 1;
   border-radius: 999px;
   border: 1px solid rgba(231, 225, 210, 0.22);
   color: #efe7d5;
   text-decoration: none;
   background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(231, 225, 210, 0.22);
+  white-space: nowrap;
 }
 
 .monastery-subpage .page-intro .btn-secondary:hover {
