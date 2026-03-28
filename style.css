@@ -517,6 +517,254 @@ body {
   gap: 16px;
 }
 
+.monastery-subpage {
+  max-width: none;
+  margin: 0;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.06), transparent 28%),
+    linear-gradient(180deg, #0f1110 0%, #141715 100%);
+  color: #e7e1d2;
+  font-family: "Times New Roman", Georgia, serif;
+}
+
+.monastery-subpage .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  margin: 0;
+  padding: 18px 24px;
+  background: rgba(15, 17, 16, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(231, 225, 210, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.monastery-subpage .branding-wrap {
+  gap: 12px;
+}
+
+.monastery-subpage .site-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+
+.monastery-subpage .branding-title {
+  color: #f3ecdc;
+  font-size: 1rem;
+}
+
+.monastery-subpage .branding-subtitle {
+  display: block;
+  color: #8f887a;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+.monastery-subpage .site-nav {
+  gap: 18px;
+}
+
+.monastery-subpage .site-nav a {
+  color: #cfc6b6;
+  font-size: 0.92rem;
+}
+
+.monastery-subpage .site-nav a:hover,
+.monastery-subpage .site-nav a:focus-visible,
+.monastery-subpage .site-nav a.active {
+  color: #fff8ec;
+  opacity: 1;
+}
+
+.monastery-subpage .page-main,
+.monastery-subpage .page,
+.monastery-subpage main:not(.monastery-page):not(.knowledge-page):not(.editorial-page):not(.premium-page):not(.home-classic) {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+}
+
+.monastery-subpage .page-intro,
+.monastery-subpage .page-hero-intro {
+  max-width: 860px;
+  margin: 56px auto 28px;
+  padding: 0;
+  text-align: left;
+}
+
+.monastery-subpage .page-kicker {
+  color: #988f80;
+}
+
+.monastery-subpage .page-title,
+.monastery-subpage .page-hero-intro h1,
+.monastery-subpage .page-intro h1 {
+  color: #f3ecdc;
+}
+
+.monastery-subpage .page-text,
+.monastery-subpage .page-subtitle,
+.monastery-subpage .page-hero-intro p {
+  color: #c9c1b2;
+}
+
+.monastery-subpage .page-section p,
+.monastery-subpage .page-section li,
+.monastery-subpage p,
+.monastery-subpage li {
+  color: #c9c1b2;
+}
+
+.monastery-subpage .page-section h1,
+.monastery-subpage .page-section h2,
+.monastery-subpage .page-section h3,
+.monastery-subpage h1,
+.monastery-subpage h2,
+.monastery-subpage h3,
+.monastery-subpage h4 {
+  color: #f3ecdc;
+}
+
+.monastery-subpage .idea-card,
+.monastery-subpage .podcast-card,
+.monastery-subpage .product-card,
+.monastery-subpage .book-card,
+.monastery-subpage .about-text,
+.monastery-subpage .about-card,
+.monastery-subpage .contact-copy,
+.monastery-subpage .contact-form-wrap,
+.monastery-subpage .qp-assessment-cta,
+.monastery-subpage .qp-question-card,
+.monastery-subpage .result,
+.monastery-subpage .intro,
+.monastery-subpage .qp-teaser-card,
+.monastery-subpage .page-footer-note {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(231, 225, 210, 0.1);
+  box-shadow: none;
+}
+
+.monastery-subpage .idea-card,
+.monastery-subpage .podcast-card,
+.monastery-subpage .book-card,
+.monastery-subpage .about-text,
+.monastery-subpage .about-card,
+.monastery-subpage .contact-copy,
+.monastery-subpage .contact-form-wrap,
+.monastery-subpage .page-footer-note {
+  color: #c9c1b2;
+}
+
+.monastery-subpage .product-card,
+.monastery-subpage .book-card,
+.monastery-subpage .about-card,
+.monastery-subpage .podcast-card {
+  border-radius: 18px;
+}
+
+.monastery-subpage .idea-preview,
+.monastery-subpage .podcast-desc,
+.monastery-subpage .product-description,
+.monastery-subpage .book-card p,
+.monastery-subpage .about-card p,
+.monastery-subpage .contact-copy p,
+.monastery-subpage .contact-copy li {
+  color: #c9c1b2;
+}
+
+.monastery-subpage input,
+.monastery-subpage textarea {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(231, 225, 210, 0.14);
+  color: #f2eadb;
+}
+
+.monastery-subpage label {
+  color: #ddd4c1;
+}
+
+.monastery-subpage .btn-primary,
+.monastery-subpage .btn,
+.monastery-subpage .contact-submit,
+.monastery-subpage .start-btn {
+  background: #efe7d5;
+  color: #161715;
+}
+
+.monastery-subpage .btn-primary:hover,
+.monastery-subpage .btn:hover,
+.monastery-subpage .contact-submit:hover,
+.monastery-subpage .start-btn:hover {
+  background: #fff3db;
+  color: #111;
+  opacity: 1;
+}
+
+.monastery-subpage .btn-secondary,
+.monastery-subpage .knowledge-link,
+.monastery-subpage .result-cta .secondary {
+  color: #ddd4c1;
+  border-color: rgba(231, 225, 210, 0.22);
+}
+
+.monastery-subpage .btn-secondary:hover {
+  color: #fff8ec;
+  opacity: 1;
+}
+
+.monastery-subpage .site-footer {
+  margin-top: 56px;
+  padding: 28px 24px 40px;
+  text-align: left;
+  border-top: 1px solid rgba(231, 225, 210, 0.12);
+  background: transparent;
+}
+
+.monastery-subpage .site-footer p,
+.monastery-subpage .site-footer a {
+  color: #9f9888;
+}
+
+.monastery-subpage .site-footer a:hover {
+  color: #fff8ec;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .monastery-subpage .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 18px;
+  }
+
+  .monastery-subpage .site-nav {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 12px 16px;
+    justify-content: flex-start;
+  }
+
+  .monastery-subpage .page-main,
+  .monastery-subpage .page,
+  .monastery-subpage main:not(.monastery-page):not(.knowledge-page):not(.editorial-page):not(.premium-page):not(.home-classic) {
+    padding: 24px 18px 64px;
+  }
+
+  .monastery-subpage .page-intro,
+  .monastery-subpage .page-hero-intro {
+    margin-top: 40px;
+  }
+}
+
 .editorial-body {
   max-width: none;
   margin: 0;
