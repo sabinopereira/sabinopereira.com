@@ -2,57 +2,57 @@ const qpQuestions = [
   {
     question: "You receive an urgent message while focused.",
     options: [
-      { key: "A", text: "I reply immediately", trait: "reaction", feedback: "Fast reaction" },
-      { key: "B", text: "I pause, but feel pulled to respond", trait: "filter", feedback: "Partial control" },
-      { key: "C", text: "I finish what I’m doing, then decide", trait: "control", feedback: "Controlled response" }
+      { key: "A", text: "I reply immediately", trait: "reaction" },
+      { key: "B", text: "I pause, but feel pulled to respond", trait: "filter" },
+      { key: "C", text: "I finish what I’m doing, then decide", trait: "control" }
     ]
   },
   {
     question: "Your day gets disrupted unexpectedly.",
     options: [
-      { key: "A", text: "I react and adjust on the fly", trait: "reaction", feedback: "Fast reaction" },
-      { key: "B", text: "I try to reorganize quickly", trait: "filter", feedback: "Partial control" },
-      { key: "C", text: "I step back and reset priorities", trait: "control", feedback: "Controlled response" }
+      { key: "A", text: "I react and adjust on the fly", trait: "reaction" },
+      { key: "B", text: "I try to reorganize quickly", trait: "filter" },
+      { key: "C", text: "I step back and reset priorities", trait: "control" }
     ]
   },
   {
     question: "Someone challenges your opinion.",
     options: [
-      { key: "A", text: "I respond instantly", trait: "reaction", feedback: "Fast reaction" },
-      { key: "B", text: "I defend but try to stay calm", trait: "filter", feedback: "Partial control" },
-      { key: "C", text: "I pause and choose if it’s worth engaging", trait: "control", feedback: "Controlled response" }
+      { key: "A", text: "I respond instantly", trait: "reaction" },
+      { key: "B", text: "I defend but try to stay calm", trait: "filter" },
+      { key: "C", text: "I pause and choose if it’s worth engaging", trait: "control" }
     ]
   },
   {
     question: "You have too many things to do.",
     options: [
-      { key: "A", text: "I jump between tasks", trait: "reaction", feedback: "Fast reaction" },
-      { key: "B", text: "I try to organize but get distracted", trait: "filter", feedback: "Partial control" },
-      { key: "C", text: "I choose what matters and ignore the rest", trait: "control", feedback: "Controlled response" }
+      { key: "A", text: "I jump between tasks", trait: "reaction" },
+      { key: "B", text: "I try to organize but get distracted", trait: "filter" },
+      { key: "C", text: "I choose what matters and ignore the rest", trait: "control" }
     ]
   },
   {
     question: "You feel pressure to decide fast.",
     options: [
-      { key: "A", text: "I decide quickly to move on", trait: "reaction", feedback: "Fast reaction" },
-      { key: "B", text: "I hesitate but still rush", trait: "filter", feedback: "Partial control" },
-      { key: "C", text: "I slow down and think clearly", trait: "control", feedback: "Controlled response" }
+      { key: "A", text: "I decide quickly to move on", trait: "reaction" },
+      { key: "B", text: "I hesitate but still rush", trait: "filter" },
+      { key: "C", text: "I slow down and think clearly", trait: "control" }
     ]
   },
   {
     question: "You consume information (news, social, etc.)",
     options: [
-      { key: "A", text: "I check frequently", trait: "reaction", feedback: "Fast reaction" },
-      { key: "B", text: "I try to limit but still consume", trait: "filter", feedback: "Partial control" },
-      { key: "C", text: "I filter aggressively and ignore most", trait: "control", feedback: "Controlled response" }
+      { key: "A", text: "I check frequently", trait: "reaction" },
+      { key: "B", text: "I try to limit but still consume", trait: "filter" },
+      { key: "C", text: "I filter aggressively and ignore most", trait: "control" }
     ]
   },
   {
     question: "You want to improve your life.",
     options: [
-      { key: "A", text: "I try new things often", trait: "reaction", feedback: "Fast reaction" },
-      { key: "B", text: "I follow ideas but inconsistently", trait: "filter", feedback: "Partial control" },
-      { key: "C", text: "I build systems and stick to them", trait: "control", feedback: "Controlled response" }
+      { key: "A", text: "I try new things often", trait: "reaction" },
+      { key: "B", text: "I follow ideas but inconsistently", trait: "filter" },
+      { key: "C", text: "I build systems and stick to them", trait: "control" }
     ]
   }
 ];
@@ -63,21 +63,63 @@ const profiles = {
     description:
       "You operate in reaction mode.\n\nFast responses.\nLow filtering.\nConstant adjustment.\n\nYou are active — but not always in control.",
     nextStep:
-      "Next step: Start with awareness. Then reduce unnecessary reactions."
+      "Next step: Start with awareness. Then reduce unnecessary reactions.",
+    ctaLabel: "Open Workbook 1",
+    ctaHref: "/qpworkbook1"
   },
   filter: {
     name: "Aware but Unstable",
     description:
       "You are starting to filter the noise.\n\nBut consistency is not yet stable.\n\nYou see what matters.\nYou just don’t always act on it.",
     nextStep:
-      "Next step: Strengthen your decisions. Reduce hesitation."
+      "Next step: Strengthen your decisions. Reduce hesitation.",
+    ctaLabel: "Open Workbook 2",
+    ctaHref: "/qp.workbook2"
   },
   control: {
     name: "Quiet Operator",
     description:
       "You operate with control.\n\nYou choose before reacting.\nYou filter what matters.\nYou move with intention.\n\nYou are building Quiet Power.",
     nextStep:
-      "Next step: Maintain consistency. Build long-term systems."
+      "Next step: Maintain consistency. Build long-term systems.",
+    ctaLabel: "Open Workbook 3",
+    ctaHref: "/qp.workbook3"
+  },
+  reactionFilter: {
+    name: "Between Reaction and Filter",
+    description:
+      "You notice more than a fully reactive person, but your responses are still inconsistent.\n\nYou are not fully lost in noise.\nYou are also not reliably in control yet.",
+    nextStep:
+      "Next step: Build awareness first, then practise filtering what gets your energy.",
+    ctaLabel: "Open Workbook 1",
+    ctaHref: "/qpworkbook1"
+  },
+  filterControl: {
+    name: "Between Filter and Control",
+    description:
+      "You already filter better than most people.\n\nThe next step is steadiness.\nYou do many things with intention, but your control is not fully consistent yet.",
+    nextStep:
+      "Next step: Turn selective awareness into durable control.",
+    ctaLabel: "Open Workbook 2",
+    ctaHref: "/qp.workbook2"
+  },
+  reactionControl: {
+    name: "Split Between Reaction and Control",
+    description:
+      "You show moments of strong control, but they alternate with reactive patterns.\n\nThat usually means your system is not stable yet.",
+    nextStep:
+      "Next step: Reduce volatility so control becomes your default, not your best day.",
+    ctaLabel: "Open Workbook 1",
+    ctaHref: "/qpworkbook1"
+  },
+  balanced: {
+    name: "Balanced but Undefined",
+    description:
+      "Your answers are spread evenly across reaction, filtering, and control.\n\nThat suggests flexibility, but also a pattern that is not stable enough to read as one clear operating mode.",
+    nextStep:
+      "Next step: Start with awareness and identify which pattern shows up most often in real life.",
+    ctaLabel: "Open Workbook 1",
+    ctaHref: "/qpworkbook1"
   }
 };
 
@@ -99,6 +141,8 @@ const resultNext = document.getElementById("qp-result-next");
 const reactionScore = document.getElementById("qp-reaction-score");
 const filterScore = document.getElementById("qp-filter-score");
 const controlScore = document.getElementById("qp-control-score");
+const resultCta = document.getElementById("qp-result-cta");
+const restartBtn = document.getElementById("qp-restart-btn");
 
 function resetAssessment() {
   currentIndex = 0;
@@ -129,10 +173,10 @@ function renderQuestion() {
       <div class="answers">
         ${currentQuestion.options
           .map(
-            (option) => `
-              <button type="button" class="answer" data-trait="${option.trait}" data-feedback="${option.feedback}">
-                ${option.text}
-                <span>${option.feedback}</span>
+            (option, index) => `
+              <button type="button" class="answer" data-trait="${option.trait}">
+                <span class="answer-key">${String.fromCharCode(65 + index)}</span>
+                <span class="answer-copy">${option.text}</span>
               </button>
             `
           )
@@ -163,15 +207,30 @@ function handleAnswer(button) {
 }
 
 function getProfile() {
-  if (scores.control >= scores.filter && scores.control >= scores.reaction) {
-    return profiles.control;
+  const ranking = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+  const topScore = ranking[0][1];
+  const leaders = ranking.filter(([, score]) => score === topScore).map(([trait]) => trait);
+
+  if (leaders.length === 1) {
+    return profiles[leaders[0]];
   }
 
-  if (scores.filter >= scores.reaction && scores.filter >= scores.control) {
-    return profiles.filter;
+  if (leaders.length === 3) {
+    return profiles.balanced;
   }
 
-  return profiles.reaction;
+  const tieKey = [...leaders].sort().join("-");
+  const tieMap = {
+    "control-filter": profiles.filterControl,
+    "control-reaction": profiles.reactionControl,
+    "filter-reaction": profiles.reactionFilter
+  };
+
+  if (tieMap[tieKey]) {
+    return tieMap[tieKey];
+  }
+
+  return profiles.balanced;
 }
 
 function showResults() {
@@ -186,8 +245,17 @@ function showResults() {
   reactionScore.textContent = String(scores.reaction);
   filterScore.textContent = String(scores.filter);
   controlScore.textContent = String(scores.control);
+
+  if (resultCta) {
+    resultCta.textContent = profile.ctaLabel;
+    resultCta.href = profile.ctaHref;
+  }
 }
 
 if (startBtn) {
   startBtn.addEventListener("click", resetAssessment);
+}
+
+if (restartBtn) {
+  restartBtn.addEventListener("click", resetAssessment);
 }

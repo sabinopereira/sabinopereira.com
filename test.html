@@ -44,8 +44,15 @@
 
 <main class="page-main">
   <section class="page-section qp-assessment-shell">
+    <div class="qp-assessment-introband">
+      <p class="qp-assessment-kicker">Quiet Power Assessment</p>
+      <h1>See how you operate when pressure lands.</h1>
+      <p class="qp-assessment-lead">
+        A sharper reading of your current pattern across reaction, filtering, and control.
+      </p>
+    </div>
+
     <div class="intro fade" id="qp-intro-screen">
-      <h1>Quiet Power Assessment</h1>
       <p class="subtitle">Measure how you react, filter, and decide.</p>
       <p class="intro-text">
         A short test to measure how you operate under pressure.
@@ -55,11 +62,14 @@
         This shows you where you actually are.
       </p>
       <ul class="meta">
-        <li>7 questions</li>
-        <li>Under 2 minutes</li>
-        <li>No right answers</li>
+        <li><strong>7</strong><span>questions</span></li>
+        <li><strong>2 min</strong><span>or less</span></li>
+        <li><strong>Neutral</strong><span>no right answers</span></li>
       </ul>
-      <button type="button" class="start-btn qp-start-btn">Start the Test</button>
+      <div class="qp-assessment-actions">
+        <button type="button" class="start-btn qp-start-btn">Start the Test</button>
+        <p class="qp-assessment-note">Best taken quickly and honestly.</p>
+      </div>
     </div>
 
     <section class="page-section qp-test-area qp-test-hidden" id="qp-test-area">
@@ -73,9 +83,9 @@
       <p class="result-next" id="qp-result-next"></p>
 
       <div class="scores">
-        <p>Reaction: <span id="qp-reaction-score"></span></p>
-        <p>Filter: <span id="qp-filter-score"></span></p>
-        <p>Control: <span id="qp-control-score"></span></p>
+        <p><span class="score-label">Reaction</span><span class="score-value" id="qp-reaction-score"></span></p>
+        <p><span class="score-label">Filter</span><span class="score-value" id="qp-filter-score"></span></p>
+        <p><span class="score-label">Control</span><span class="score-value" id="qp-control-score"></span></p>
       </div>
 
       <p class="result-bridge">
@@ -85,7 +95,8 @@
 
       <div class="result-cta">
         <a href="https://amzn.eu/d/0aqOJyCI" target="_blank" rel="noopener">Get the Book</a>
-        <a href="/qpworkbook1" class="secondary">Apply It Now</a>
+        <a href="/qpworkbook1" class="secondary" id="qp-result-cta">Apply It Now</a>
+        <button type="button" class="secondary" id="qp-restart-btn">Retake test</button>
       </div>
     </section>
   </section>
