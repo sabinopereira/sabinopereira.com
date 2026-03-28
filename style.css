@@ -32,6 +32,216 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.home-classic-body {
+  max-width: none;
+  margin: 0;
+  background:
+    radial-gradient(circle at top center, rgba(246, 228, 167, 0.55), transparent 28%),
+    radial-gradient(circle at bottom center, rgba(246, 228, 167, 0.42), transparent 24%),
+    linear-gradient(180deg, #f8f2df 0%, #f6efd8 100%);
+  color: #3c342a;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.home-classic {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 28px 24px 48px;
+}
+
+.home-classic-header {
+  text-align: center;
+  padding: 18px 0 22px;
+  border-bottom: 1px solid rgba(123, 102, 68, 0.18);
+}
+
+.home-classic-header h1 {
+  font-size: clamp(2.8rem, 6vw, 4rem);
+  font-weight: 700;
+  color: #6b5b46;
+  margin-bottom: 6px;
+}
+
+.home-classic-link {
+  font-size: 0.9rem;
+  color: #8b7b67;
+  margin-bottom: 2px;
+}
+
+.home-classic-header p {
+  margin: 0 0 8px;
+}
+
+.home-classic-header a {
+  color: #4f4538;
+  text-decoration: underline;
+}
+
+.home-classic-intro {
+  margin-top: 18px;
+  font-size: 1.15rem;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.home-classic-nav {
+  margin-top: 24px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(123, 102, 68, 0.14);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+}
+
+.home-classic-nav a,
+.home-classic-nav span {
+  color: #544839;
+  font-size: 1rem;
+}
+
+.home-book-feature,
+.home-essays,
+.home-products {
+  margin-top: 26px;
+}
+
+.home-section-label {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #4b3f31;
+}
+
+.home-book-feature h2 {
+  font-size: clamp(2.4rem, 5vw, 3.5rem);
+  line-height: 1;
+  margin-bottom: 8px;
+  color: #2f241a;
+}
+
+.home-book-tagline {
+  font-size: 1.15rem;
+  margin-bottom: 14px;
+}
+
+.home-book-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.home-book-cover img {
+  width: 100%;
+  max-width: 240px;
+  display: block;
+  border-radius: 4px;
+  box-shadow: 0 10px 22px rgba(70, 55, 35, 0.18);
+}
+
+.home-book-summary h3 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  color: #3f3327;
+}
+
+.home-book-summary p {
+  font-size: 1rem;
+  line-height: 1.45;
+  margin-bottom: 14px;
+}
+
+.home-shop-btn {
+  display: inline-block;
+  min-width: 172px;
+  padding: 10px 18px;
+  border: 1px solid #8d795b;
+  border-radius: 6px;
+  background: rgba(255, 248, 233, 0.72);
+  color: #3b3024;
+  text-align: center;
+  text-decoration: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+  font-weight: 600;
+  box-shadow: 0 2px 0 rgba(61, 47, 30, 0.08);
+}
+
+.home-shop-btn:hover {
+  background: rgba(255, 244, 220, 0.98);
+  color: #2c241b;
+  opacity: 1;
+}
+
+.home-essays p,
+.home-essays a {
+  color: #3c342a;
+  font-size: 1rem;
+}
+
+.home-product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.home-product-card {
+  padding: 8px;
+  border: 1px solid rgba(125, 106, 77, 0.24);
+  border-radius: 8px;
+  background: rgba(255, 250, 240, 0.78);
+  box-shadow: 0 6px 14px rgba(94, 76, 47, 0.08);
+}
+
+.home-product-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.home-product-card h3 {
+  font-size: 1rem;
+  line-height: 1.2;
+  margin-bottom: 4px;
+  color: #3d3226;
+}
+
+.home-product-card p {
+  margin-bottom: 10px;
+  color: #554839;
+}
+
+.home-product-card .home-shop-btn {
+  width: 100%;
+  min-width: 0;
+  padding: 8px 12px;
+}
+
+.home-classic-footer {
+  padding: 18px 24px 36px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #6e614f;
+}
+
+@media (max-width: 720px) {
+  .home-book-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-book-cover img {
+    max-width: 180px;
+  }
+
+  .home-product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Typography Hierarchy */
 h1, h2, h3, h4 {
   color: var(--text);
