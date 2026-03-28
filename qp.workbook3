@@ -5,27 +5,63 @@
   <title>Quiet Power Workbook 3 — CONTROL: Where Control Becomes Power</title>
   <meta name="description" content="Quiet Power Workbook 3 — CONTROL: Where Control Becomes Power. The third level of the Quiet Power system: taking command of what matters and holding that line over time.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/styles.css">
+  <meta name="author" content="Sabino Pereira">
+  <link rel="canonical" href="https://sabinopereira.com/qp.workbook3">
+  <link rel="icon" type="image/png" href="/images/avatar.png">
+  <link rel="apple-touch-icon" href="/images/avatar.png">
+  <link rel="stylesheet" href="/style.css?v=2">
 </head>
-<body>
+<body class="monastery-subpage">
 
 <header class="site-header">
-  <!-- reuse your global header / nav -->
+  <div class="branding-wrap">
+    <img src="/images/avatar.png" alt="Sabino Pereira" class="site-avatar">
+    <div>
+      <h1 class="branding-title">Sabino Pereira</h1>
+      <p class="branding-subtitle">BOOKS · DESIGN · QUIET IDEAS</p>
+    </div>
+  </div>
+  <nav class="site-nav">
+    <a href="/index.html">Home</a>
+    <a href="/quiet-power.html" class="active">Quiet Power</a>
+    <a href="/ideas.html">Ideas</a>
+    <a href="/books.html">Books</a>
+    <a href="/podcast.html">Podcast</a>
+    <a href="/shop.html">Shop</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
 </header>
 
-<main class="page">
+<section class="page-intro">
+  <p class="page-kicker">Workbook 3 · Available Now</p>
+  <h2 class="page-title">Control</h2>
+  <p class="page-text">Where control becomes power.</p>
+  <p class="page-subtitle">The third level of the Quiet Power system for defining what matters, protecting it, and holding that line over time.</p>
+  <div class="cta-main">
+    <a href="https://quiet-power-shop.fourthwall.com/products/workbook-3-control-quiet-power-system" class="btn-primary" target="_blank" rel="noopener">Buy Workbook 3</a>
+    <a href="/quiet-power.html" class="btn-secondary">Back to Quiet Power</a>
+  </div>
+</section>
 
-  <section class="page-hero-intro">
-    <p class="book-tag">WORKBOOK 3 · PREMIUM</p>
-    <h1>CONTROL: Where Control Becomes Power</h1>
-    <p>
-      The third level of the Quiet Power system. This is where you stop just reacting less,
-      and start defining what truly matters — then holding that line over time.
-    </p>
+<main class="qp-book-main">
+  <section class="qp-hero">
+    <div class="qp-hero-inner">
+      <div class="qp-hero-cover">
+        <img src="/images/qpworkbook3.png" alt="Quiet Power Workbook 3 cover: Control">
+      </div>
+
+      <div class="qp-hero-copy">
+        <p class="page-kicker">What It Is</p>
+        <p>Workbook 3 is where Quiet Power becomes structure you can hold.</p>
+        <p>It moves beyond awareness and filtering into clear standards, protected time, and deliberate consistency.</p>
+        <p>This is for the moment when you are ready to define your line and stop negotiating with noise.</p>
+      </div>
+    </div>
   </section>
 
-  <section class="page-section">
-    <h2>What this workbook is for</h2>
+  <section class="page-section qp-summary-panel">
+    <h2>What This Workbook Is For</h2>
     <p>
       Workbook 1 focused on reaction: how the world hits you.
       Workbook 2 focused on filtering: what you let in, what you ignore, and what never enters your mental space.
@@ -34,19 +70,15 @@
       Workbook 3 is about control as quiet command. It helps you decide your non‑negotiables,
       protect your best hours, and build a life where your actions match what you say you care about.
     </p>
-  </section>
 
-  <section class="page-section">
-    <h2>What’s inside</h2>
+    <h2>What's Inside</h2>
     <ul>
       <li>Pages to define what actually matters to you beyond noise and social pressure.</li>
       <li>Exercises to design constraints, rules, and small systems that hold under stress.</li>
       <li>Prompts to track when you break your own line — and how to recover without drama.</li>
     </ul>
-  </section>
 
-  <section class="page-section">
-    <h2>How it connects to the system</h2>
+    <h2>How It Connects to the System</h2>
     <ul>
       <li>Level 1 — Reaction: you see what hits you.</li>
       <li>Level 2 — Filter: you choose what gets close.</li>
@@ -55,22 +87,25 @@
   </section>
 
   <section class="page-section page-section--cta">
-    <h2>Premium workbook</h2>
+    <h2>Get the Workbook</h2>
     <p>
-      This is a premium Quiet Power workbook. It is designed to be used after Workbooks 1 and 2,
-      when you are ready to commit to a smaller, clearer set of priorities.
+      Workbook 3 is for people ready to move from noticing and filtering into steady command.
+      Use it when you want your priorities, behaviour, and time protection to start matching.
     </p>
     <div class="book-actions">
-      <!-- placeholder enquanto não há produto -->
-      <span class="badge-soon">Coming soon</span>
+      <a href="https://quiet-power-shop.fourthwall.com/products/workbook-3-control-quiet-power-system" class="btn-primary" target="_blank" rel="noopener">Buy Workbook 3</a>
       <a href="/quiet-power.html" class="btn-secondary">Back to Quiet Power</a>
     </div>
   </section>
-
 </main>
 
 <footer class="site-footer">
-  <!-- reuse your global footer -->
+  <p>&copy; 2026 Sabino Pereira &mdash; Built with quiet ideas and steady work.</p>
+  <p style="margin-top: 8px;">
+    <a href="https://open.spotify.com/show/1CVJWxfqOOeH0p9ZmGHNVz" target="_blank" rel="noopener">Podcast</a> &nbsp;·&nbsp;
+    <a href="https://www.youtube.com/@SabinoQuietPower" target="_blank" rel="noopener">YouTube</a> &nbsp;·&nbsp;
+    <a href="https://www.instagram.com/my_quiet_power/" target="_blank" rel="noopener">Instagram</a>
+  </p>
 </footer>
 
 </body>

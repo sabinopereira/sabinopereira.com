@@ -64,8 +64,8 @@ const profiles = {
       "You operate in reaction mode.\n\nFast responses.\nLow filtering.\nConstant adjustment.\n\nYou are active — but not always in control.",
     nextStep:
       "Next step: Start with awareness. Then reduce unnecessary reactions.",
-    ctaLabel: "Open Workbook 1",
-    ctaHref: "/qpworkbook1"
+    ctaLabel: "Buy Workbook 1",
+    ctaHref: "https://quiet-power-shop.fourthwall.com/products/workbook-1-reaction-quiet-power-system"
   },
   filter: {
     name: "Aware but Unstable",
@@ -73,8 +73,8 @@ const profiles = {
       "You are starting to filter the noise.\n\nBut consistency is not yet stable.\n\nYou see what matters.\nYou just don’t always act on it.",
     nextStep:
       "Next step: Strengthen your decisions. Reduce hesitation.",
-    ctaLabel: "Open Workbook 2",
-    ctaHref: "/qp.workbook2"
+    ctaLabel: "Buy Workbook 2",
+    ctaHref: "https://quiet-power-shop.fourthwall.com/products/workbook-2-filter-quiet-power-system"
   },
   control: {
     name: "Quiet Operator",
@@ -82,8 +82,8 @@ const profiles = {
       "You operate with control.\n\nYou choose before reacting.\nYou filter what matters.\nYou move with intention.\n\nYou are building Quiet Power.",
     nextStep:
       "Next step: Maintain consistency. Build long-term systems.",
-    ctaLabel: "Open Workbook 3",
-    ctaHref: "/qp.workbook3"
+    ctaLabel: "Buy Workbook 3",
+    ctaHref: "https://quiet-power-shop.fourthwall.com/products/workbook-3-control-quiet-power-system"
   },
   reactionFilter: {
     name: "Between Reaction and Filter",
@@ -91,8 +91,8 @@ const profiles = {
       "You notice more than a fully reactive person, but your responses are still inconsistent.\n\nYou are not fully lost in noise.\nYou are also not reliably in control yet.",
     nextStep:
       "Next step: Build awareness first, then practise filtering what gets your energy.",
-    ctaLabel: "Open Workbook 1",
-    ctaHref: "/qpworkbook1"
+    ctaLabel: "Buy Workbook 1",
+    ctaHref: "https://quiet-power-shop.fourthwall.com/products/workbook-1-reaction-quiet-power-system"
   },
   filterControl: {
     name: "Between Filter and Control",
@@ -100,8 +100,8 @@ const profiles = {
       "You already filter better than most people.\n\nThe next step is steadiness.\nYou do many things with intention, but your control is not fully consistent yet.",
     nextStep:
       "Next step: Turn selective awareness into durable control.",
-    ctaLabel: "Open Workbook 2",
-    ctaHref: "/qp.workbook2"
+    ctaLabel: "Buy Workbook 2",
+    ctaHref: "https://quiet-power-shop.fourthwall.com/products/workbook-2-filter-quiet-power-system"
   },
   reactionControl: {
     name: "Split Between Reaction and Control",
@@ -109,8 +109,8 @@ const profiles = {
       "You show moments of strong control, but they alternate with reactive patterns.\n\nThat usually means your system is not stable yet.",
     nextStep:
       "Next step: Reduce volatility so control becomes your default, not your best day.",
-    ctaLabel: "Open Workbook 1",
-    ctaHref: "/qpworkbook1"
+    ctaLabel: "Buy Workbook 1",
+    ctaHref: "https://quiet-power-shop.fourthwall.com/products/workbook-1-reaction-quiet-power-system"
   },
   balanced: {
     name: "Balanced but Undefined",
@@ -118,8 +118,8 @@ const profiles = {
       "Your answers are spread evenly across reaction, filtering, and control.\n\nThat suggests flexibility, but also a pattern that is not stable enough to read as one clear operating mode.",
     nextStep:
       "Next step: Start with awareness and identify which pattern shows up most often in real life.",
-    ctaLabel: "Open Workbook 1",
-    ctaHref: "/qpworkbook1"
+    ctaLabel: "Buy Workbook 1",
+    ctaHref: "https://quiet-power-shop.fourthwall.com/products/workbook-1-reaction-quiet-power-system"
   }
 };
 

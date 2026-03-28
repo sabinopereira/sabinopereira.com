@@ -5,27 +5,63 @@
   <title>Quiet Power Workbook 2 — FILTER: How You Filter the Noise</title>
   <meta name="description" content="Quiet Power Workbook 2 — FILTER: How You Filter the Noise. A workbook about deciding what stays, what goes, and what never gets into your mental space.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/styles.css">
+  <meta name="author" content="Sabino Pereira">
+  <link rel="canonical" href="https://sabinopereira.com/qp.workbook2">
+  <link rel="icon" type="image/png" href="/images/avatar.png">
+  <link rel="apple-touch-icon" href="/images/avatar.png">
+  <link rel="stylesheet" href="/style.css?v=2">
 </head>
-<body>
+<body class="monastery-subpage">
 
 <header class="site-header">
-  <!-- reuse your global header / nav -->
+  <div class="branding-wrap">
+    <img src="/images/avatar.png" alt="Sabino Pereira" class="site-avatar">
+    <div>
+      <h1 class="branding-title">Sabino Pereira</h1>
+      <p class="branding-subtitle">BOOKS · DESIGN · QUIET IDEAS</p>
+    </div>
+  </div>
+  <nav class="site-nav">
+    <a href="/index.html">Home</a>
+    <a href="/quiet-power.html" class="active">Quiet Power</a>
+    <a href="/ideas.html">Ideas</a>
+    <a href="/books.html">Books</a>
+    <a href="/podcast.html">Podcast</a>
+    <a href="/shop.html">Shop</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
 </header>
 
-<main class="page">
+<section class="page-intro">
+  <p class="page-kicker">Workbook 2 · Available Now</p>
+  <h2 class="page-title">Filter</h2>
+  <p class="page-text">How you filter the noise.</p>
+  <p class="page-subtitle">The second level of the Quiet Power system for deciding what stays, what goes, and what never gets close.</p>
+  <div class="cta-main">
+    <a href="https://quiet-power-shop.fourthwall.com/products/workbook-2-filter-quiet-power-system" class="btn-primary" target="_blank" rel="noopener">Buy Workbook 2</a>
+    <a href="/quiet-power.html" class="btn-secondary">Back to Quiet Power</a>
+  </div>
+</section>
 
-  <section class="page-hero-intro">
-    <p class="book-tag">WORKBOOK 2</p>
-    <h1>FILTER: How You Filter the Noise</h1>
-    <p>
-      A Quiet Power workbook about selection: deciding what stays, what goes,
-      and what never gets into your mental space in the first place.
-    </p>
+<main class="qp-book-main">
+  <section class="qp-hero">
+    <div class="qp-hero-inner">
+      <div class="qp-hero-cover">
+        <img src="/images/qpworkbook2.PNG" alt="Quiet Power Workbook 2 cover: Filter">
+      </div>
+
+      <div class="qp-hero-copy">
+        <p class="page-kicker">What It Is</p>
+        <p>Workbook 2 is about deliberate selection.</p>
+        <p>It helps you decide what gets your attention, what drains it, and what should never be allowed into your mental space in the first place.</p>
+        <p>This is where awareness becomes boundaries.</p>
+      </div>
+    </div>
   </section>
 
-  <section class="page-section">
-    <h2>What this workbook is for</h2>
+  <section class="page-section qp-summary-panel">
+    <h2>What This Workbook Is For</h2>
     <p>
       If Workbook 1 is about noticing your reactions, Workbook 2 is about the next level of the Quiet Power system:
       selection. You cannot control everything that exists, but you can control what you let close.
@@ -34,10 +70,8 @@
       This workbook helps you choose your inputs on purpose — what you keep, what you remove,
       and what you stop allowing into your head, calendar, and attention.
     </p>
-  </section>
 
-  <section class="page-section">
-    <h2>What’s inside</h2>
+    <h2>What's Inside</h2>
     <ul>
       <li>Pages to map the sources of noise in your day and what they cost you.</li>
       <li>Prompts to decide what you will no longer track, answer, or carry.</li>
@@ -46,21 +80,25 @@
   </section>
 
   <section class="page-section page-section--cta">
-    <h2>Download the workbook</h2>
+    <h2>Get the Workbook</h2>
     <p>
-      This workbook is free to download as a PDF.
-      Use it next to Workbook 1 to move from reaction to deliberate selection.
+      Workbook 2 is available in the Quiet Power shop.
+      Use it after Workbook 1 to move from noticing your patterns to deliberately deciding what gets near you.
     </p>
     <div class="book-actions">
-      <a href="/downloads/quiet-power-workbook-2.pdf" class="btn-primary" target="_blank">Download free PDF</a>
+      <a href="https://quiet-power-shop.fourthwall.com/products/workbook-2-filter-quiet-power-system" class="btn-primary" target="_blank" rel="noopener">Buy Workbook 2</a>
       <a href="/quiet-power.html" class="btn-secondary">Back to Quiet Power</a>
     </div>
   </section>
-
 </main>
 
 <footer class="site-footer">
-  <!-- reuse your global footer -->
+  <p>&copy; 2026 Sabino Pereira &mdash; Built with quiet ideas and steady work.</p>
+  <p style="margin-top: 8px;">
+    <a href="https://open.spotify.com/show/1CVJWxfqOOeH0p9ZmGHNVz" target="_blank" rel="noopener">Podcast</a> &nbsp;·&nbsp;
+    <a href="https://www.youtube.com/@SabinoQuietPower" target="_blank" rel="noopener">YouTube</a> &nbsp;·&nbsp;
+    <a href="https://www.instagram.com/my_quiet_power/" target="_blank" rel="noopener">Instagram</a>
+  </p>
 </footer>
 
 </body>

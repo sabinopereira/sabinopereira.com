@@ -824,6 +824,24 @@ body {
   background: rgba(255, 255, 255, 0.03);
 }
 
+.monastery-subpage .qp-bundle-panel {
+  margin-top: 28px;
+  padding: 32px;
+  border-radius: 22px;
+  border: 1px solid rgba(239, 231, 213, 0.16);
+  background:
+    radial-gradient(circle at top right, rgba(239, 231, 213, 0.12), transparent 30%),
+    rgba(255, 255, 255, 0.04);
+}
+
+.monastery-subpage .qp-bundle-panel p {
+  max-width: 660px;
+}
+
+.monastery-subpage .qp-bundle-panel .cta-main {
+  margin-top: 18px;
+}
+
 .monastery-subpage .qp-summary-panel h2 + ul {
   margin-top: 14px;
 }
