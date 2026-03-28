@@ -1461,6 +1461,28 @@ body > .qp-hero .qp-button {
   max-width: 540px;
 }
 
+.qp-home-foundation {
+  max-width: 760px;
+  margin: 0 auto 44px;
+}
+
+.qp-home-foundation h2 {
+  margin-bottom: 18px;
+}
+
+.qp-home-foundation h2 + p {
+  margin-top: 0;
+}
+
+.qp-home-foundation p {
+  margin-bottom: 18px;
+  max-width: 540px;
+}
+
+.qp-home-foundation h2:last-of-type {
+  margin-top: 30px;
+}
+
 .qp-home-ideas {
   max-width: 760px;
   margin: 0 auto 40px;
