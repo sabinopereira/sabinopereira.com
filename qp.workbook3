@@ -16,6 +16,27 @@
   <meta name="twitter:title" content="Quiet Power Workbook 3 — Control: Where Control Becomes Power">
   <meta name="twitter:description" content="Buy Workbook 3 — Control, the Quiet Power workbook for defining what matters, protecting it, and holding that line over time.">
   <meta name="twitter:image" content="https://sabinopereira.com/images/qpworkbook3.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEVDEH8PGZ"></script>
+  <script src="/analytics.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Quiet Power Workbook 3 — Control",
+      "url": "https://sabinopereira.com/qp.workbook3",
+      "image": "https://sabinopereira.com/images/qpworkbook3.png",
+      "description": "A Quiet Power workbook for defining what matters, protecting it, and holding that line over time.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Quiet Power"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://quiet-power-shop.fourthwall.com/products/workbook-3-control-quiet-power-system",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  </script>
   <link rel="icon" type="image/png" href="/images/avatar.png">
   <link rel="apple-touch-icon" href="/images/avatar.png">
   <link rel="stylesheet" href="/style.css?v=2">

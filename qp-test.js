@@ -148,6 +148,14 @@ const shareX = document.getElementById("qp-share-x");
 const shareLinkedIn = document.getElementById("qp-share-linkedin");
 const shareWhatsApp = document.getElementById("qp-share-whatsapp");
 const shareCopy = document.getElementById("qp-share-copy");
+const bookCta = document.getElementById("qp-book-cta");
+const bundleCta = document.getElementById("qp-bundle-cta");
+
+function trackEvent(name, params = {}) {
+  if (typeof window.trackEvent === "function") {
+    window.trackEvent(name, params);
+  }
+}
 
 function buildShareState(profile) {
   const url = "https://sabinopereira.com/test.html";
@@ -195,6 +203,9 @@ function resetAssessment() {
   resultSection.classList.add("qp-result-hidden");
   introScreen.classList.add("qp-intro-hidden");
   testArea.classList.remove("qp-test-hidden");
+  trackEvent("test_start", {
+    page_path: window.location.pathname
+  });
   renderQuestion();
 }
 
@@ -238,6 +249,10 @@ function renderQuestion() {
 function handleAnswer(button) {
   const trait = button.dataset.trait;
   scores[trait] += 1;
+  trackEvent("test_answer", {
+    question_number: currentIndex + 1,
+    selected_trait: trait
+  });
 
   document.querySelectorAll(".answer").forEach((option) => {
     option.disabled = true;
@@ -297,6 +312,12 @@ function showResults() {
   }
 
   updateShareLinks(profile);
+  trackEvent("test_complete", {
+    profile: profile.name,
+    reaction_score: scores.reaction,
+    filter_score: scores.filter,
+    control_score: scores.control
+  });
 }
 
 if (startBtn) {
@@ -304,14 +325,69 @@ if (startBtn) {
 }
 
 if (restartBtn) {
-  restartBtn.addEventListener("click", resetAssessment);
+  restartBtn.addEventListener("click", () => {
+    trackEvent("test_restart", {
+      page_path: window.location.pathname
+    });
+    resetAssessment();
+  });
+}
+
+if (bookCta) {
+  bookCta.addEventListener("click", () => {
+    trackEvent("test_result_cta_click", {
+      cta_type: "book",
+      destination: bookCta.href
+    });
+  });
+}
+
+if (resultCta) {
+  resultCta.addEventListener("click", () => {
+    trackEvent("test_result_cta_click", {
+      cta_type: "workbook",
+      destination: resultCta.href,
+      cta_label: resultCta.textContent.trim()
+    });
+  });
+}
+
+if (bundleCta) {
+  bundleCta.addEventListener("click", () => {
+    trackEvent("test_result_cta_click", {
+      cta_type: "bundle",
+      destination: bundleCta.href
+    });
+  });
+}
+
+if (shareX) {
+  shareX.addEventListener("click", () => {
+    trackEvent("test_share_click", { platform: "x" });
+  });
+}
+
+if (shareLinkedIn) {
+  shareLinkedIn.addEventListener("click", () => {
+    trackEvent("test_share_click", { platform: "linkedin" });
+  });
+}
+
+if (shareWhatsApp) {
+  shareWhatsApp.addEventListener("click", () => {
+    trackEvent("test_share_click", { platform: "whatsapp" });
+  });
 }
 
 if (shareCopy) {
   if (window.ShareUtils) {
     window.ShareUtils.wireShareControls(resultSection, buildShareState(profiles.reaction));
+    shareCopy.addEventListener("click", () => {
+      trackEvent("test_share_click", { platform: "copy_link" });
+    });
   } else {
     shareCopy.addEventListener("click", async () => {
+      trackEvent("test_share_click", { platform: "copy_link" });
       const text = shareCopy.dataset.copyText || "https://sabinopereira.com/test.html";
 
       try {
