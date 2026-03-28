@@ -2013,12 +2013,12 @@ a:hover { opacity: 0.7; }
 }
 
 .ideas-grid .idea-card {
-  background: #fff;
+  background: #000;
   border-radius: 16px;
   padding: 2rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   margin-bottom: 0;
 }
 
@@ -2047,33 +2047,34 @@ a:hover { opacity: 0.7; }
 .ideas-grid .idea-title {
   font-size: 1.2rem;
   font-weight: 700;
+  color: #f5f1e8;
   margin: 0 0 0.75rem 0;
 }
 
 .idea-preview {
   font-size: 0.95rem;
-  color: #555;
+  color: rgba(245, 241, 232, 0.78);
   margin: 0 0 1rem 0;
 }
 
 .idea-toggle {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #111;
+  color: #f5f1e8;
 }
 
 .idea-full {
   margin-top: 1.25rem;
   padding-top: 1.25rem;
-  border-top: 1px solid #eee;
+  border-top: 1px solid rgba(245, 241, 232, 0.16);
   font-size: 0.95rem;
-  color: #444;
+  color: rgba(245, 241, 232, 0.84);
   line-height: 1.7;
 }
 
 .idea-full p {
   font-size: 0.95rem;
-  color: #444;
+  color: rgba(245, 241, 232, 0.84);
   margin-bottom: 1rem;
 }
 
