@@ -47,6 +47,7 @@ body {
   max-width: 760px;
   margin: 0 auto;
   padding: 28px 24px 48px;
+  line-height: 1.5;
 }
 
 .home-classic-header {
@@ -60,6 +61,7 @@ body {
   font-weight: 700;
   color: #6b5b46;
   margin-bottom: 6px;
+  line-height: 1.2;
 }
 
 .home-classic-header p {
@@ -76,6 +78,12 @@ body {
   font-size: 1.15rem;
   line-height: 1.35;
   font-weight: 600;
+}
+
+.subline {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 6px;
 }
 
 .home-classic-nav {
@@ -95,10 +103,8 @@ body {
   font-size: 1rem;
 }
 
-.home-book-feature,
-.home-essays,
-.home-products {
-  margin-top: 26px;
+.home-classic section {
+  margin-top: 80px;
 }
 
 .home-section-label {
@@ -147,6 +153,62 @@ body {
   margin-bottom: 14px;
 }
 
+.btn-primary {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 12px 22px;
+  background: #111;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+}
+
+.btn-primary:hover {
+  background: #000;
+  opacity: 1;
+}
+
+.btn-secondary {
+  display: inline-block;
+  margin-top: 8px;
+  color: #000;
+  text-decoration: underline;
+  font-size: 0.9rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+}
+
+.btn-secondary:hover {
+  color: #000;
+  opacity: 1;
+}
+
+.micro-decision {
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.test-section {
+  margin-top: 90px;
+  padding: 30px;
+  background: #f7f5f2;
+  border-radius: 10px;
+  border: 1px solid rgba(125, 106, 77, 0.14);
+}
+
+.test-section h2 {
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.test-section .sub {
+  color: #777;
+  font-size: 0.9rem;
+}
+
 .home-shop-btn {
   display: inline-block;
   min-width: 172px;
@@ -174,21 +236,30 @@ body {
   font-size: 1rem;
 }
 
+.home-essays h2,
+.home-products h2,
+.test-section h2 {
+  line-height: 1.2;
+}
+
 .home-product-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
 }
 
-.home-product-card {
+.home-product-card,
+.product-card {
   padding: 8px;
   border: 1px solid rgba(125, 106, 77, 0.24);
   border-radius: 8px;
   background: rgba(255, 250, 240, 0.78);
   box-shadow: 0 6px 14px rgba(94, 76, 47, 0.08);
+  margin-top: 20px;
 }
 
-.home-product-card img {
+.home-product-card img,
+.product-card img {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
@@ -209,10 +280,13 @@ body {
   color: #554839;
 }
 
-.home-product-card .home-shop-btn {
+.home-product-card .home-shop-btn,
+.product-card a {
   width: 100%;
   min-width: 0;
   padding: 8px 12px;
+  display: inline-block;
+  margin-top: 8px;
 }
 
 .home-classic-footer {
