@@ -1,390 +1,220 @@
-const QUESTIONS_PER_RUN = 7;
-
 const qpQuestions = [
-  // LEVEL 1 — REACTION
   {
-    id: "L1-Q1",
-    level: "reaction",
-    question: "You receive unexpected criticism. What do you do first?",
+    question: "You receive an urgent message while focused.",
     options: [
-      {
-        label: "Reply immediately to defend yourself",
-        score: 0,
-        punchline: "Fast feels strong. It isn’t."
-      },
-      {
-        label: "Pause and process it before replying",
-        score: 1,
-        punchline: "Control starts where reaction ends."
-      }
+      { key: "A", text: "I reply immediately", trait: "reaction", feedback: "Fast reaction" },
+      { key: "B", text: "I pause, but feel pulled to respond", trait: "filter", feedback: "Partial control" },
+      { key: "C", text: "I finish what I’m doing, then decide", trait: "control", feedback: "Controlled response" }
     ]
   },
   {
-    id: "L1-Q2",
-    level: "reaction",
-    question: "Someone leaves your message on read. How do you react?",
+    question: "Your day gets disrupted unexpectedly.",
     options: [
-      {
-        label: "Keep checking and replaying the conversation in your head",
-        score: 0,
-        punchline: "Overthinking is just loud reaction."
-      },
-      {
-        label: "Move on with your day and reply when it actually matters",
-        score: 1,
-        punchline: "Quiet power doesn’t chase attention."
-      }
+      { key: "A", text: "I react and adjust on the fly", trait: "reaction", feedback: "Fast reaction" },
+      { key: "B", text: "I try to reorganize quickly", trait: "filter", feedback: "Partial control" },
+      { key: "C", text: "I step back and reset priorities", trait: "control", feedback: "Controlled response" }
     ]
   },
   {
-    id: "L1-Q3",
-    level: "reaction",
-    question: "You have a packed day. How do you start?",
+    question: "Someone challenges your opinion.",
     options: [
-      {
-        label: "Open everything and tackle whatever screams the loudest",
-        score: 0,
-        punchline: "Urgency loves chaos. So does reactivity."
-      },
-      {
-        label: "Pick one key task and start only with that",
-        score: 1,
-        punchline: "Focus is the first move of control."
-      }
+      { key: "A", text: "I respond instantly", trait: "reaction", feedback: "Fast reaction" },
+      { key: "B", text: "I defend but try to stay calm", trait: "filter", feedback: "Partial control" },
+      { key: "C", text: "I pause and choose if it’s worth engaging", trait: "control", feedback: "Controlled response" }
     ]
   },
   {
-    id: "L1-Q4",
-    level: "reaction",
-    question: "Plans change last minute and your schedule breaks. What happens?",
+    question: "You have too many things to do.",
     options: [
-      {
-        label: "You get annoyed and try to fix everything at once",
-        score: 0,
-        punchline: "When everything is urgent, nothing is under control."
-      },
-      {
-        label: "You pause, re-order what truly matters, and drop the rest",
-        score: 1,
-        punchline: "Quiet reaction is editing, not exploding."
-      }
+      { key: "A", text: "I jump between tasks", trait: "reaction", feedback: "Fast reaction" },
+      { key: "B", text: "I try to organize but get distracted", trait: "filter", feedback: "Partial control" },
+      { key: "C", text: "I choose what matters and ignore the rest", trait: "control", feedback: "Controlled response" }
     ]
   },
   {
-    id: "L1-Q5",
-    level: "reaction",
-    question: "You see someone online doing “better” than you.",
+    question: "You feel pressure to decide fast.",
     options: [
-      {
-        label: "You spiral into comparison and scroll even more",
-        score: 0,
-        punchline: "Comparison is a loud way to lose your lane."
-      },
-      {
-        label: "You notice the feeling and return to your own work",
-        score: 1,
-        punchline: "Control is choosing your reference point."
-      }
-    ]
-  },
-
-  // LEVEL 2 — FILTER
-  {
-    id: "L2-Q1",
-    level: "filter",
-    question: "You see 20 new notifications. What’s your first move?",
-    options: [
-      {
-        label: "Open everything so you don’t miss anything",
-        score: 0,
-        punchline: "If everything matters, nothing does."
-      },
-      {
-        label: "Only check what’s connected to today’s priorities",
-        score: 1,
-        punchline: "Filtering is choosing what deserves your mind."
-      }
+      { key: "A", text: "I decide quickly to move on", trait: "reaction", feedback: "Fast reaction" },
+      { key: "B", text: "I hesitate but still rush", trait: "filter", feedback: "Partial control" },
+      { key: "C", text: "I slow down and think clearly", trait: "control", feedback: "Controlled response" }
     ]
   },
   {
-    id: "L2-Q2",
-    level: "filter",
-    question: "You get conflicting information about a decision.",
+    question: "You consume information (news, social, etc.)",
     options: [
-      {
-        label: "Get stuck comparing every detail before acting",
-        score: 0,
-        punchline: "Endless comparison is just fancy hesitation."
-      },
-      {
-        label: "Set 1–2 clear criteria and decide based on that",
-        score: 1,
-        punchline: "Clarity comes from simple rules, not more data."
-      }
+      { key: "A", text: "I check frequently", trait: "reaction", feedback: "Fast reaction" },
+      { key: "B", text: "I try to limit but still consume", trait: "filter", feedback: "Partial control" },
+      { key: "C", text: "I filter aggressively and ignore most", trait: "control", feedback: "Controlled response" }
     ]
   },
   {
-    id: "L2-Q3",
-    level: "filter",
-    question: "Your day has work, family, and random requests. How do you decide what to do first?",
+    question: "You want to improve your life.",
     options: [
-      {
-        label: "What feels most urgent in the moment",
-        score: 0,
-        punchline: "Urgency is a filter someone else controls."
-      },
-      {
-        label: "What moves a meaningful goal, even if no one is watching",
-        score: 1,
-        punchline: "Real priorities are often quiet."
-      }
-    ]
-  },
-  {
-    id: "L2-Q4",
-    level: "filter",
-    question: "You’re invited to yet another meeting or social event.",
-    options: [
-      {
-        label: "You say yes by default and figure it out later",
-        score: 0,
-        punchline: "Saying yes to everything is saying no to focus."
-      },
-      {
-        label: "You check if it fits your energy and priorities first",
-        score: 1,
-        punchline: "Filtering is protecting your future attention."
-      }
-    ]
-  },
-
-  // LEVEL 3 — CONTROL
-  {
-    id: "L3-Q1",
-    level: "control",
-    question: "You planned 2 hours of deep work. A distraction appears.",
-    options: [
-      {
-        label: "You follow the distraction and plan to restart later",
-        score: 0,
-        punchline: "Every interruption you accept trains the next one."
-      },
-      {
-        label: "You notice it, park it, and return to the plan",
-        score: 1,
-        punchline: "Control is keeping the plan when the world doesn’t."
-      }
-    ]
-  },
-  {
-    id: "L3-Q2",
-    level: "control",
-    question: "You’re tired, but you had a commitment with yourself.",
-    options: [
-      {
-        label: "You postpone again and promise that tomorrow is serious",
-        score: 0,
-        punchline: "Motivation talks. Control shows up."
-      },
-      {
-        label: "You do a smaller version, but keep the promise",
-        score: 1,
-        punchline: "Quiet power is consistency, not intensity."
-      }
-    ]
-  },
-  {
-    id: "L3-Q3",
-    level: "control",
-    question: "You promised yourself to stay off your phone for an hour.",
-    options: [
-      {
-        label: "You break it “just this once” and unlock it anyway",
-        score: 0,
-        punchline: "Every exception teaches your brain the rule."
-      },
-      {
-        label: "You ride the urge without acting on it",
-        score: 1,
-        punchline: "Control is feeling the pull and not moving."
-      }
-    ]
-  },
-  {
-    id: "L3-Q4",
-    level: "control",
-    question: "You’ve failed at a habit multiple times.",
-    options: [
-      {
-        label: "You drop it and call yourself “not that kind of person”",
-        score: 0,
-        punchline: "Identity can be a quiet excuse to stay stuck."
-      },
-      {
-        label: "You simplify the habit and start again at a smaller scale",
-        score: 1,
-        punchline: "Quiet Power builds from small, repeatable wins."
-      }
+      { key: "A", text: "I try new things often", trait: "reaction", feedback: "Fast reaction" },
+      { key: "B", text: "I follow ideas but inconsistently", trait: "filter", feedback: "Partial control" },
+      { key: "C", text: "I build systems and stick to them", trait: "control", feedback: "Controlled response" }
     ]
   }
 ];
 
+const profiles = {
+  reaction: {
+    name: "Reactive Mode",
+    description:
+      "You operate in reaction mode.\n\nFast responses.\nLow filtering.\nConstant adjustment.\n\nYou are active — but not always in control.",
+    nextStep:
+      "Next step: Start with awareness. Then reduce unnecessary reactions."
+  },
+  filter: {
+    name: "Aware but Unstable",
+    description:
+      "You are starting to filter the noise.\n\nBut consistency is not yet stable.\n\nYou see what matters.\nYou just don’t always act on it.",
+    nextStep:
+      "Next step: Strengthen your decisions. Reduce hesitation."
+  },
+  control: {
+    name: "Quiet Operator",
+    description:
+      "You operate with control.\n\nYou choose before reacting.\nYou filter what matters.\nYou move with intention.\n\nYou are building Quiet Power.",
+    nextStep:
+      "Next step: Maintain consistency. Build long-term systems."
+  }
+};
+
 let currentIndex = 0;
-let currentQuestions = [];
-let totalScore = 0;
-let reactionScore = 0;
-let filterScore = 0;
-let controlScore = 0;
+let scores = {
+  reaction: 0,
+  filter: 0,
+  control: 0
+};
 
-const startBtn = document.querySelector(".qp-start-btn");
-const questionContainer = document.getElementById("qp-question-container");
+const introScreen = document.getElementById("qp-intro-screen");
+const progressWrap = document.getElementById("qp-progress");
 const progressBar = document.getElementById("qp-progress-bar");
-const currentSpan = document.getElementById("qp-current");
-const totalSpan = document.getElementById("qp-total");
+const currentLabel = document.getElementById("qp-current");
+const totalLabel = document.getElementById("qp-total");
+const startBtn = document.querySelector(".qp-start-btn");
+const testArea = document.getElementById("qp-test-area");
+const questionContainer = document.getElementById("qp-question-container");
+const answerFeedback = document.getElementById("qp-answer-feedback");
 const resultSection = document.getElementById("qp-result");
+const resultTitle = document.getElementById("qp-result-title");
+const resultText = document.getElementById("qp-result-text");
+const resultNext = document.getElementById("qp-result-next");
+const reactionScore = document.getElementById("qp-reaction-score");
+const filterScore = document.getElementById("qp-filter-score");
+const controlScore = document.getElementById("qp-control-score");
 
-if (totalSpan) {
-  totalSpan.textContent = QUESTIONS_PER_RUN;
+if (totalLabel) {
+  totalLabel.textContent = String(qpQuestions.length);
 }
 
-function shuffle(array) {
-  return array
-    .map((item) => ({ sort: Math.random(), value: item }))
-    .sort((a, b) => a.sort - b.sort)
-    .map((item) => item.value);
-}
-
-function setProgress() {
-  const progressPercent = currentQuestions.length
-    ? Math.round((currentIndex / currentQuestions.length) * 100)
-    : 0;
-
-  if (currentSpan) {
-    currentSpan.textContent = String(Math.min(currentIndex, QUESTIONS_PER_RUN));
-  }
-
-  if (progressBar) {
-    progressBar.style.setProperty("--qp-progress-value", `${progressPercent}%`);
-  }
-}
-
-function startTest() {
-  totalScore = 0;
-  reactionScore = 0;
-  filterScore = 0;
-  controlScore = 0;
+function resetAssessment() {
   currentIndex = 0;
-
-  currentQuestions = shuffle(qpQuestions).slice(0, QUESTIONS_PER_RUN);
-
+  scores = { reaction: 0, filter: 0, control: 0 };
   resultSection.classList.add("qp-result-hidden");
-  setProgress();
+  introScreen.classList.add("qp-intro-hidden");
+  progressWrap.classList.remove("qp-progress-hidden");
+  testArea.classList.remove("qp-test-hidden");
+  updateProgress();
   renderQuestion();
 }
 
-function renderQuestion() {
-  const q = currentQuestions[currentIndex];
+function updateProgress() {
+  if (currentLabel) {
+    currentLabel.textContent = String(currentIndex + 1);
+  }
 
-  if (!q) {
-    showResult();
+  if (progressBar) {
+    const value = (currentIndex / qpQuestions.length) * 100;
+    progressBar.style.setProperty("--qp-progress-value", `${value}%`);
+  }
+}
+
+function renderQuestion() {
+  const currentQuestion = qpQuestions[currentIndex];
+
+  if (!currentQuestion) {
+    showResults();
     return;
   }
 
-  currentSpan.textContent = currentIndex + 1;
-  const progressPercent = ((currentIndex) / QUESTIONS_PER_RUN) * 100;
-  progressBar.style.setProperty("--qp-progress-value", `${progressPercent}%`);
-
-  const optionsHtml = shuffle(q.options)
-    .map(
-      (opt) => `
-      <button type="button" class="qp-option-btn" data-score="${opt.score}" data-level="${q.level}">
-        <span>${opt.label}</span>
-        <span class="qp-option-punchline">${opt.punchline}</span>
-      </button>
-    `
-    )
-    .join("");
+  updateProgress();
+  answerFeedback.classList.add("qp-answer-feedback-hidden");
+  answerFeedback.textContent = "";
 
   questionContainer.innerHTML = `
     <div class="qp-question-card">
-      <p class="qp-question-label">${q.level.toUpperCase()} · Question ${currentIndex + 1} of ${currentQuestions.length}</p>
-      <p class="qp-question-text">${q.question}</p>
+      <p class="qp-question-label">Question ${currentIndex + 1} of ${qpQuestions.length}</p>
+      <h2 class="qp-question-text">${currentQuestion.question}</h2>
       <div class="qp-options">
-        ${optionsHtml}
+        ${currentQuestion.options
+          .map(
+            (option) => `
+              <button type="button" class="qp-option-btn" data-trait="${option.trait}" data-feedback="${option.feedback}">
+                <span class="qp-option-key">${option.key}</span>
+                <span class="qp-option-copy">${option.text}</span>
+              </button>
+            `
+          )
+          .join("")}
       </div>
     </div>
   `;
 
-  document.querySelectorAll(".qp-option-btn").forEach((btn) => {
-    btn.addEventListener("click", () => handleAnswer(btn));
+  document.querySelectorAll(".qp-option-btn").forEach((button) => {
+    button.addEventListener("click", () => handleAnswer(button));
   });
 }
 
 function handleAnswer(button) {
-  const score = Number(button.dataset.score);
-  const level = button.dataset.level;
+  const trait = button.dataset.trait;
+  const feedback = button.dataset.feedback;
+  scores[trait] += 1;
 
-  totalScore += score;
-  if (level === "reaction") reactionScore += score;
-  if (level === "filter") filterScore += score;
-  if (level === "control") controlScore += score;
+  answerFeedback.textContent = feedback;
+  answerFeedback.classList.remove("qp-answer-feedback-hidden");
 
-  currentIndex += 1;
-  setProgress();
+  document.querySelectorAll(".qp-option-btn").forEach((option) => {
+    option.disabled = true;
+    option.classList.remove("is-selected");
+  });
+  button.classList.add("is-selected");
 
-  if (currentIndex >= currentQuestions.length) {
-    showResult();
-  } else {
+  window.setTimeout(() => {
+    currentIndex += 1;
     renderQuestion();
-  }
+  }, 550);
 }
 
-function showResult() {
+function getProfile() {
+  if (scores.control >= scores.filter && scores.control >= scores.reaction) {
+    return profiles.control;
+  }
+
+  if (scores.filter >= scores.reaction && scores.filter >= scores.control) {
+    return profiles.filter;
+  }
+
+  return profiles.reaction;
+}
+
+function showResults() {
+  const profile = getProfile();
+
+  progressBar.style.setProperty("--qp-progress-value", "100%");
+  progressWrap.classList.add("qp-progress-hidden");
+  testArea.classList.add("qp-test-hidden");
   resultSection.classList.remove("qp-result-hidden");
-  questionContainer.innerHTML = "";
 
-  const reactionMax = currentQuestions.filter((q) => q.level === "reaction").length;
-  const filterMax = currentQuestions.filter((q) => q.level === "filter").length;
-  const controlMax = currentQuestions.filter((q) => q.level === "control").length;
-
-  const reactionPct = reactionMax ? Math.round((reactionScore / reactionMax) * 100) : 0;
-  const filterPct = filterMax ? Math.round((filterScore / filterMax) * 100) : 0;
-  const controlPct = controlMax ? Math.round((controlScore / controlMax) * 100) : 0;
-
-  let title = "";
-  let text = "";
-
-  if (reactionPct >= 60 && filterPct < 60 && controlPct < 60) {
-    title = "You’re operating in reaction mode.";
-    text = "You move fast. But speed is not control. You’re reacting more than you think.";
-  } else if (reactionPct < 60 && filterPct >= 60 && controlPct >= 60) {
-    title = "You move on your own signal.";
-    text = "You choose when to act. Noise doesn’t own your attention anymore.";
-  } else {
-    title = "You see the patterns, but don’t own them yet.";
-    text = "You already notice the noise. Now you need structure, not more insight.";
-  }
-
-  document.getElementById("qp-result-title").textContent = title;
-  document.getElementById("qp-result-text").textContent = text;
-
-  document.getElementById("qp-reaction-score").textContent =
-    `Reaction: ${reactionPct}% quiet, ${100 - reactionPct}% reactive`;
-  document.getElementById("qp-filter-score").textContent =
-    `Filter: ${filterPct}% clear, ${100 - filterPct}% noisy`;
-  document.getElementById("qp-control-score").textContent =
-    `Control: ${controlPct}% consistent, ${100 - controlPct}% fragile`;
-
-  if (progressBar) {
-    progressBar.style.setProperty("--qp-progress-value", "100%");
-  }
-  if (currentSpan) {
-    currentSpan.textContent = String(currentQuestions.length);
-  }
+  resultTitle.textContent = profile.name;
+  resultText.innerHTML = profile.description.replace(/\n/g, "<br>");
+  resultNext.textContent = profile.nextStep;
+  reactionScore.textContent = String(scores.reaction);
+  filterScore.textContent = String(scores.filter);
+  controlScore.textContent = String(scores.control);
 }
 
 if (startBtn) {
-  startBtn.addEventListener("click", startTest);
+  startBtn.addEventListener("click", resetAssessment);
 }
-
-setProgress();
