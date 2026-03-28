@@ -2052,14 +2052,14 @@ a:hover { opacity: 0.7; }
 
 .idea-preview {
   font-size: 0.95rem;
-  color: #555;
+  color: #000;
   margin: 0 0 1rem 0;
 }
 
 .idea-toggle {
   font-size: 0.85rem;
-  font-weight: 600;
-  color: #111;
+  font-weight: 700;
+     color: #000;
 }
 
 .idea-full {
@@ -2067,13 +2067,13 @@ a:hover { opacity: 0.7; }
   padding-top: 1.25rem;
   border-top: 1px solid #eee;
   font-size: 0.95rem;
-  color: #444;
+  color: #000;
   line-height: 1.7;
 }
 
 .idea-full p {
   font-size: 0.95rem;
-  color: #444;
+  color: #000;
   margin-bottom: 1rem;
 }
 
