@@ -1926,6 +1926,18 @@ a:hover { opacity: 0.7; }
   color: #666;
 }
 
+.decision-line p {
+  margin: 0;
+}
+
+.decision-line-lead {
+  font-weight: 600;
+}
+
+.decision-line-alt {
+  margin-top: 6px;
+}
+
 .page-subtitle {
   font-size: 1.15rem;
   color: var(--muted);
@@ -3270,6 +3282,42 @@ body > .qp-hero .qp-button {
 
 .page-intro .btn-secondary:hover {
   background: transparent;
+}
+
+.monastery-subpage .page-intro .cta-main {
+  justify-content: flex-start;
+}
+
+.monastery-subpage .page-intro .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(231, 225, 210, 0.22);
+  color: #efe7d5;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.monastery-subpage .page-intro .btn-secondary:hover {
+  color: #fff3db;
+  border-color: rgba(239, 231, 213, 0.42);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.monastery-subpage .page-intro .decision-line {
+  margin: 18px 0 0;
+  max-width: 520px;
+  color: #bcb5a6;
+}
+
+.monastery-subpage .page-intro .decision-line-lead {
+  color: #efe7d5;
+}
+
+.monastery-subpage .page-intro .decision-line-alt {
+  color: #bcb5a6;
 }
 
 .qp-home-hero {
