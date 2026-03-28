@@ -1390,6 +1390,7 @@ body > .qp-hero .qp-button {
   font-size: 1.02rem;
   color: #555;
   margin-bottom: 14px;
+  line-height: 1.58;
 }
 
 .qp-hero-break {
@@ -1415,6 +1416,7 @@ body > .qp-hero .qp-button {
   margin: 0 0 6px;
   font-size: 1.02rem;
   color: #1d1d1f;
+  line-height: 1.58;
 }
 
 .btn-ghost {
@@ -1444,12 +1446,13 @@ body > .qp-hero .qp-button {
 
 .qp-home-assessment p {
   max-width: 540px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  line-height: 1.58;
 }
 
 .qp-home-real-life {
   max-width: 760px;
-  margin: 0 auto 44px;
+  margin: 76px auto 44px;
 }
 
 .qp-home-real-life h2 {
@@ -1459,11 +1462,12 @@ body > .qp-hero .qp-button {
 .qp-home-real-life p {
   margin-bottom: 18px;
   max-width: 540px;
+  line-height: 1.58;
 }
 
 .qp-home-foundation {
   max-width: 760px;
-  margin: 0 auto 44px;
+  margin: 104px auto 44px;
 }
 
 .qp-home-foundation h2 {
@@ -1477,10 +1481,11 @@ body > .qp-hero .qp-button {
 .qp-home-foundation p {
   margin-bottom: 18px;
   max-width: 540px;
+  line-height: 1.58;
 }
 
 .qp-home-foundation h2:last-of-type {
-  margin-top: 30px;
+  margin-top: 64px;
 }
 
 .qp-home-ideas {
