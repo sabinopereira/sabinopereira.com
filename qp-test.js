@@ -143,6 +143,47 @@ const filterScore = document.getElementById("qp-filter-score");
 const controlScore = document.getElementById("qp-control-score");
 const resultCta = document.getElementById("qp-result-cta");
 const restartBtn = document.getElementById("qp-restart-btn");
+const shareText = document.getElementById("qp-share-text");
+const shareX = document.getElementById("qp-share-x");
+const shareLinkedIn = document.getElementById("qp-share-linkedin");
+const shareWhatsApp = document.getElementById("qp-share-whatsapp");
+const shareCopy = document.getElementById("qp-share-copy");
+
+function buildShareState(profile) {
+  const url = "https://sabinopereira.com/test.html";
+  const text = `I got "${profile.name}" on the Quiet Power Assessment. Take the test: ${url}`;
+  return {
+    text,
+    x: `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`,
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+    whatsapp: `https://wa.me/?text=${encodeURIComponent(text)}`
+  };
+}
+
+function updateShareLinks(profile) {
+  const shareState = buildShareState(profile);
+
+  if (shareText) {
+    shareText.textContent = `I got "${profile.name}" on the Quiet Power Assessment. Share it or invite someone else to take the test.`;
+  }
+
+  if (shareX) {
+    shareX.href = shareState.x;
+  }
+
+  if (shareLinkedIn) {
+    shareLinkedIn.href = shareState.linkedin;
+  }
+
+  if (shareWhatsApp) {
+    shareWhatsApp.href = shareState.whatsapp;
+  }
+
+  if (shareCopy) {
+    shareCopy.dataset.copyText = shareState.text;
+    shareCopy.textContent = "Copy link";
+  }
+}
 
 function resetAssessment() {
   currentIndex = 0;
@@ -250,6 +291,8 @@ function showResults() {
     resultCta.textContent = profile.ctaLabel;
     resultCta.href = profile.ctaHref;
   }
+
+  updateShareLinks(profile);
 }
 
 if (startBtn) {
@@ -258,4 +301,23 @@ if (startBtn) {
 
 if (restartBtn) {
   restartBtn.addEventListener("click", resetAssessment);
+}
+
+if (shareCopy) {
+  shareCopy.addEventListener("click", async () => {
+    const text = shareCopy.dataset.copyText || "https://sabinopereira.com/test.html";
+
+    try {
+      await navigator.clipboard.writeText(text);
+      shareCopy.textContent = "Copied";
+      window.setTimeout(() => {
+        shareCopy.textContent = "Copy link";
+      }, 1400);
+    } catch (error) {
+      shareCopy.textContent = "Copy failed";
+      window.setTimeout(() => {
+        shareCopy.textContent = "Copy link";
+      }, 1400);
+    }
+  });
 }

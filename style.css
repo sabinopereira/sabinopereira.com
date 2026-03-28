@@ -3151,6 +3151,56 @@ a:hover { opacity: 0.7; }
   background: transparent;
 }
 
+.result-share {
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(231, 225, 210, 0.12);
+}
+
+.result-share-title {
+  margin: 0 0 8px;
+  color: #f3ecdc;
+  font-size: 1rem;
+}
+
+.result-share-text {
+  margin: 0;
+  color: #a79e8d;
+  max-width: 40rem;
+}
+
+.result-share-actions {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.share-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(231, 225, 210, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  color: #efe7d5;
+  text-decoration: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+.share-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff7ea;
+  opacity: 1;
+}
+
+.share-copy {
+  appearance: none;
+}
+
 .fade {
   animation: fadeIn 0.2s ease;
 }
