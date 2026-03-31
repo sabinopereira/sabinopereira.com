@@ -329,9 +329,9 @@ body {
 .monastery-kicker,
 .monastery-label {
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   font-size: 0.75rem;
-  color: #85745f;
+  color: #6f725c;
   margin-bottom: 12px;
 }
 
@@ -377,12 +377,33 @@ body {
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
+.monastery-nav a {
+  position: relative;
+}
+
+.monastery-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background: rgba(111, 114, 92, 0.55);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
 .monastery-nav a:hover,
 .monastery-panel a:hover,
 .monastery-footer-links a:hover {
   color: #1f1914;
   border-color: currentColor;
   opacity: 1;
+}
+
+.monastery-nav a:hover::after {
+  transform: scaleX(1);
 }
 
 .monastery-hero {
@@ -421,24 +442,24 @@ body {
 }
 
 .monastery-btn-primary {
-  background: #231d17;
+  background: #35382c;
   color: #f7f2e8;
 }
 
 .monastery-btn-primary:hover {
-  background: #3a2f24;
+  background: #424638;
   color: #fffaf2;
   opacity: 1;
 }
 
 .monastery-btn-secondary {
   color: #4e4337;
-  border: 1px solid rgba(76, 63, 46, 0.18);
-  background: rgba(255, 255, 255, 0.48);
+  border: 1px solid rgba(111, 114, 92, 0.18);
+  background: rgba(255, 255, 255, 0.56);
 }
 
 .monastery-btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.76);
+  background: rgba(255, 255, 255, 0.82);
   opacity: 1;
 }
 
@@ -489,7 +510,7 @@ body {
   border: 1px solid rgba(76, 63, 46, 0.12);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.56);
-  box-shadow: 0 14px 34px rgba(73, 59, 43, 0.06);
+  box-shadow: 0 8px 22px rgba(73, 59, 43, 0.045);
 }
 
 .monastery-panel h3 {
@@ -499,7 +520,7 @@ body {
 }
 
 .monastery-panel-manifesto {
-  background: rgba(255, 255, 255, 0.68);
+  background: rgba(250, 249, 244, 0.82);
 }
 
 .monastery-panel-note {
@@ -569,7 +590,7 @@ body {
 
 .monastery-subpage .branding-subtitle {
   display: block;
-  color: #85745f;
+  color: #6f725c;
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -583,6 +604,7 @@ body {
 .monastery-subpage .site-nav a {
   color: #5a4d40;
   font-size: 0.92rem;
+  position: relative;
 }
 
 .monastery-subpage .site-nav a:hover,
@@ -590,6 +612,24 @@ body {
 .monastery-subpage .site-nav a.active {
   color: #1f1914;
   opacity: 1;
+}
+
+.monastery-subpage .site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background: rgba(111, 114, 92, 0.55);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.monastery-subpage .site-nav a:hover::after,
+.monastery-subpage .site-nav a.active::after {
+  transform: scaleX(1);
 }
 
 .monastery-subpage .page-main,
@@ -609,7 +649,7 @@ body {
 }
 
 .monastery-subpage .page-kicker {
-  color: #85745f;
+  color: #6f725c;
 }
 
 .monastery-subpage .page-title,
@@ -734,7 +774,7 @@ body {
 .monastery-subpage .btn,
 .monastery-subpage .contact-submit,
 .monastery-subpage .start-btn {
-  background: #231d17;
+  background: #35382c;
   color: #f7f2e8;
 }
 
@@ -742,7 +782,7 @@ body {
 .monastery-subpage .btn:hover,
 .monastery-subpage .contact-submit:hover,
 .monastery-subpage .start-btn:hover {
-  background: #3a2f24;
+  background: #424638;
   color: #fffaf2;
   opacity: 1;
 }
@@ -751,7 +791,7 @@ body {
 .monastery-subpage .knowledge-link,
 .monastery-subpage .result-cta .secondary {
   color: #4e4337;
-  border-color: rgba(76, 63, 46, 0.18);
+  border-color: rgba(111, 114, 92, 0.18);
 }
 
 .monastery-subpage .btn-secondary:hover {
@@ -3606,18 +3646,18 @@ body > .qp-hero .qp-button {
   padding: 0 16px;
   line-height: 1;
   border-radius: 999px;
-  border: 1px solid rgba(76, 63, 46, 0.16);
+  border: 1px solid rgba(111, 114, 92, 0.18);
   color: #4e4337;
   text-decoration: none;
-  background: rgba(255, 255, 255, 0.62);
-  border-bottom: 1px solid rgba(76, 63, 46, 0.16);
+  background: rgba(255, 255, 255, 0.68);
+  border-bottom: 1px solid rgba(111, 114, 92, 0.18);
   white-space: nowrap;
 }
 
 .monastery-subpage .page-intro .btn-secondary:hover {
   color: #231d17;
-  border-color: rgba(76, 63, 46, 0.26);
-  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(111, 114, 92, 0.28);
+  background: rgba(255, 255, 255, 0.94);
 }
 
 .monastery-subpage .page-intro .decision-line {
@@ -3627,7 +3667,7 @@ body > .qp-hero .qp-button {
 }
 
 .monastery-subpage .page-intro .decision-line-lead {
-  color: #3d3329;
+  color: #4d5340;
 }
 
 .monastery-subpage .page-intro .decision-line-alt {
@@ -3654,7 +3694,7 @@ body > .qp-hero .qp-button {
 
 .library-label {
   margin: 0 0 10px;
-  color: #85745f;
+  color: #6f725c;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
@@ -3731,7 +3771,7 @@ body > .qp-hero .qp-button {
 .monastery-subpage .book-cover-img {
   margin: 0 auto 18px;
   border-radius: 10px;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 24px rgba(73, 59, 43, 0.12);
 }
 
 .monastery-subpage .book-actions {
@@ -3744,7 +3784,7 @@ body > .qp-hero .qp-button {
 
 .monastery-subpage .idea-number {
   margin-bottom: 0.85rem;
-  color: #9f9888;
+  color: #6f725c;
 }
 
 .monastery-subpage .idea-card summary {
