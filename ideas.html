@@ -76,7 +76,7 @@
       <span class="idea-number">QUIET THOUGHT</span>
       <h2 class="idea-title">Can Wars Ever Truly End?</h2>
       <p class="idea-preview">Wars are still here. They just look different.</p>
-      <span class="idea-toggle">Read more ↓</span>
+      <span class="idea-toggle">Open thought</span>
     </summary>
     <div class="idea-full">
       <p>Wars are still here.</p>
@@ -180,6 +180,7 @@
   document.querySelectorAll(".idea-card").forEach((card, index) => {
     const title = card.querySelector(".idea-title")?.textContent?.trim();
     const body = card.querySelector(".idea-full");
+    const toggleLabel = card.querySelector(".idea-toggle");
 
     if (!title || !body) {
       return;
@@ -193,6 +194,15 @@
     window.ShareUtils.wireShareControls(share, links);
 
     body.appendChild(share);
+
+    if (toggleLabel) {
+      const syncToggleLabel = () => {
+        toggleLabel.textContent = card.open ? "Close thought" : "Open thought";
+      };
+
+      syncToggleLabel();
+      card.addEventListener("toggle", syncToggleLabel);
+    }
   });
 </script>
 
