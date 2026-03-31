@@ -385,23 +385,18 @@ body {
 
 .monastery-nav a {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  min-height: 38px;
-  padding: 0 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(111, 114, 92, 0.16);
-  background: rgba(255, 255, 255, 0.46);
+  display: inline-block;
+  padding-bottom: 6px;
 }
 
 .monastery-nav a::after {
   content: "";
   position: absolute;
-  left: 12px;
-  right: 12px;
-  bottom: 9px;
+  left: 0;
+  right: 0;
+  bottom: 0;
   height: 1px;
-  background: rgba(111, 114, 92, 0.55);
+  background: rgba(111, 114, 92, 0.6);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.2s ease;
@@ -416,8 +411,7 @@ body {
 }
 
 .monastery-nav a:hover {
-  background: rgba(255, 255, 255, 0.76);
-  border-color: rgba(111, 114, 92, 0.26);
+  color: #1f1914;
 }
 
 .monastery-nav a:hover::after {
