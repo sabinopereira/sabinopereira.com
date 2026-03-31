@@ -2109,18 +2109,18 @@ a:hover { opacity: 0.7; }
 }
 
 .ideas-grid .idea-card {
-  background: #000;
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  padding: 1.4rem;
+  box-shadow: none;
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(76, 63, 46, 0.08);
   margin-bottom: 0;
 }
 
 .ideas-grid .idea-card:hover {
   transform: none;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: none;
 }
 
 .ideas-grid .idea-card summary {
@@ -2136,41 +2136,41 @@ a:hover { opacity: 0.7; }
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: #999;
+  color: #6f725c;
   margin-bottom: 0.5rem;
 }
 
 .ideas-grid .idea-title {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #f5f1e8;
+  color: #231d17;
   margin: 0 0 0.75rem 0;
 }
 
 .idea-preview {
   font-size: 0.95rem;
-  color: rgba(245, 241, 232, 0.78);
+  color: #4f4338;
   margin: 0 0 1rem 0;
 }
 
 .idea-toggle {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #f5f1e8;
+  color: #3d3329;
 }
 
 .idea-full {
   margin-top: 1.25rem;
   padding-top: 1.25rem;
-  border-top: 1px solid rgba(245, 241, 232, 0.16);
+  border-top: 1px solid rgba(76, 63, 46, 0.08);
   font-size: 0.95rem;
-  color: rgba(245, 241, 232, 0.84);
+  color: #4e4338;
   line-height: 1.7;
 }
 
 .idea-full p {
   font-size: 0.95rem;
-  color: rgba(245, 241, 232, 0.84);
+  color: #4e4338;
   margin-bottom: 1rem;
 }
 
