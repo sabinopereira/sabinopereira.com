@@ -352,6 +352,9 @@ body {
   color: #5c5043;
   font-size: 1.16rem;
   line-height: 1.6;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.34);
 }
 
 .monastery-intro-secondary {
@@ -359,6 +362,9 @@ body {
   margin-top: 10px;
   color: #85745f;
   font-size: 1rem;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.28);
 }
 
 .monastery-nav {
@@ -432,6 +438,19 @@ body {
 .monastery-panel p {
   color: #5f5448;
   line-height: 1.7;
+}
+
+.monastery-hero-text,
+.monastery-panel p {
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.monastery-note {
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.24);
 }
 
 .monastery-actions {
@@ -674,6 +693,18 @@ body {
 .monastery-subpage .page-subtitle,
 .monastery-subpage .page-hero-intro p {
   color: #5f5448;
+}
+
+.monastery-subpage .page-text,
+.monastery-subpage .page-subtitle,
+.monastery-subpage .page-intro .decision-line,
+.monastery-subpage .page-hero-intro p,
+.library-feature p,
+.library-section-head p,
+.thoughts-note p {
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.32);
 }
 
 .monastery-subpage .page-intro .page-subtitle {
