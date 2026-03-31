@@ -2109,22 +2109,20 @@ a:hover { opacity: 0.7; }
   margin-bottom: 0;
 }
 
-.ideas-grid .idea-card[open] {
-  padding: 1.4rem;
-}
-
 .ideas-grid .idea-card:hover {
   transform: none;
   box-shadow: none;
 }
 
-.ideas-grid .idea-card summary {
-  list-style: none;
+.idea-summary {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
   cursor: pointer;
-}
-
-.ideas-grid .idea-card summary::-webkit-details-marker {
-  display: none;
+  font: inherit;
 }
 
 .idea-number {
@@ -2166,7 +2164,7 @@ a:hover { opacity: 0.7; }
   border-radius: 10px;
 }
 
-.idea-card[open] .idea-full {
+.idea-card.is-open .idea-full {
   margin-top: 1rem;
 }
 
@@ -2194,7 +2192,7 @@ a:hover { opacity: 0.7; }
   color: #4d5340;
 }
 
-.idea-card[open] .idea-toggle {
+.idea-card.is-open .idea-toggle {
   opacity: 0.75;
 }
 
@@ -3767,7 +3765,7 @@ section {
   letter-spacing: 0.16em;
 }
 
-.monastery-subpage .idea-card summary {
+.monastery-subpage .idea-card .idea-summary {
   min-height: auto;
 }
 

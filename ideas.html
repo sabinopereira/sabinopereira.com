@@ -71,14 +71,14 @@
 
 <section class="ideas-grid">
 
-  <details class="idea-card">
-    <summary>
+  <article class="idea-card">
+    <button type="button" class="idea-summary" aria-expanded="false">
       <span class="idea-number">QUIET THOUGHT</span>
       <h2 class="idea-title">What is Quiet Power?</h2>
       <p class="idea-preview">Quiet Power is controlled strength.</p>
       <span class="idea-toggle">Open thought</span>
-    </summary>
-    <div class="idea-full">
+    </button>
+    <div class="idea-full" hidden>
       <p>Quiet Power is controlled strength.</p>
       <p>It is the ability to stay calm, think clearly, and act with intention, especially when everything around you is pushing for noise, speed, and reaction.</p>
       <p>It is not about being silent. It is about not being controlled.</p>
@@ -127,16 +127,16 @@
       <p>Unshaken is not emotionless. It is disciplined.</p>
       <p>Quiet Power — Calm. Focused. Unshaken.</p>
     </div>
-  </details>
+  </article>
 
-  <details class="idea-card">
-    <summary>
+  <article class="idea-card">
+    <button type="button" class="idea-summary" aria-expanded="false">
       <span class="idea-number">QUIET THOUGHT</span>
       <h2 class="idea-title">Can Wars Ever Truly End?</h2>
       <p class="idea-preview">Wars are still here. They just look different.</p>
       <span class="idea-toggle">Open thought</span>
-    </summary>
-    <div class="idea-full">
+    </button>
+    <div class="idea-full" hidden>
       <p>Wars are still here.</p>
       <p>They just look different.</p>
       <p>Some are fought with weapons. Others with money. Influence. Control.</p>
@@ -222,16 +222,16 @@
       <p>Quiet Power.</p>
       <p>Calm. Focused. Unshaken.</p>
     </div>
-  </details>
+  </article>
 
-  <details class="idea-card">
-    <summary>
+  <article class="idea-card">
+    <button type="button" class="idea-summary" aria-expanded="false">
       <span class="idea-number">QUIET THOUGHT</span>
       <h2 class="idea-title">While You Wait, They Build</h2>
       <p class="idea-preview">The world did not pause for your opinion. It moved. Quietly.</p>
       <span class="idea-toggle">Open thought</span>
-    </summary>
-    <div class="idea-full">
+    </button>
+    <div class="idea-full" hidden>
       <p>You do not like Artificial Intelligence. Or you have never tried it.</p>
       <p>That is fine. It is perfectly normal.</p>
       <p>The truth is, most people avoid AI not because they lack ability, but because of a silent anxiety about the unknown.</p>
@@ -257,7 +257,7 @@
       <p>People always ignore the shift until the shift ignores them back.</p>
       <p>What are you waiting for?</p>
     </div>
-  </details>
+  </article>
 
 </section>
 </main>
@@ -274,6 +274,7 @@
     const title = card.querySelector(".idea-title")?.textContent?.trim();
     const body = card.querySelector(".idea-full");
     const toggleLabel = card.querySelector(".idea-toggle");
+    const summaryButton = card.querySelector(".idea-summary");
 
     if (!title || !body) {
       return;
@@ -288,13 +289,19 @@
 
     body.appendChild(share);
 
-    if (toggleLabel) {
+    if (toggleLabel && summaryButton) {
       const syncToggleLabel = () => {
-        toggleLabel.textContent = card.open ? "Close thought" : "Open thought";
+        const isOpen = !body.hidden;
+        toggleLabel.textContent = isOpen ? "Close thought" : "Open thought";
+        summaryButton.setAttribute("aria-expanded", String(isOpen));
+        card.classList.toggle("is-open", isOpen);
       };
 
       syncToggleLabel();
-      card.addEventListener("toggle", syncToggleLabel);
+      summaryButton.addEventListener("click", () => {
+        body.hidden = !body.hidden;
+        syncToggleLabel();
+      });
     }
   });
 </script>
