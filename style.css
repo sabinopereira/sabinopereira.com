@@ -743,7 +743,7 @@ body {
 }
 
 .monastery-subpage .idea-card {
-  background: rgba(255, 255, 255, 0.66);
+  background: rgba(255, 255, 255, 0.5);
   border-color: rgba(76, 63, 46, 0.12);
 }
 
@@ -3729,6 +3729,7 @@ section {
 .monastery-subpage .idea-number {
   margin-bottom: 0.85rem;
   color: #6f725c;
+  letter-spacing: 0.16em;
 }
 
 .monastery-subpage .idea-card summary {
