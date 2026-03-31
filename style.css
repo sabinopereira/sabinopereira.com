@@ -2118,6 +2118,11 @@ a:hover { opacity: 0.7; }
   margin-bottom: 0;
 }
 
+.ideas-grid .idea-card[open] {
+  grid-column: 1 / -1;
+  padding: 1.5rem;
+}
+
 .ideas-grid .idea-card:hover {
   transform: none;
   box-shadow: none;
@@ -2161,17 +2166,23 @@ a:hover { opacity: 0.7; }
 
 .idea-full {
   margin-top: 1.25rem;
-  padding-top: 1.25rem;
+  padding: 1.25rem 1.3rem;
   border-top: 1px solid rgba(76, 63, 46, 0.08);
   font-size: 0.95rem;
   color: #4e4338;
   line-height: 1.7;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
 }
 
 .idea-full p {
   font-size: 0.95rem;
   color: #4e4338;
   margin-bottom: 1rem;
+}
+
+.idea-card[open] .idea-toggle {
+  opacity: 0.75;
 }
 
 .podcast-grid {
