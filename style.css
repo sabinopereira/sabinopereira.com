@@ -322,8 +322,8 @@ body {
 
 .monastery-header {
   margin-top: 12px;
-  padding-bottom: 28px;
-  border-bottom: 1px solid rgba(76, 63, 46, 0.14);
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(76, 63, 46, 0.1);
 }
 
 .monastery-kicker,
@@ -425,20 +425,20 @@ body {
 .monastery-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 28px;
+  gap: 12px;
+  margin-top: 24px;
 }
 
 .monastery-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 46px;
-  padding: 0 18px;
+  min-height: 44px;
+  padding: 0 16px;
   border-radius: 999px;
   text-decoration: none;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
 }
 
 .monastery-btn-primary {
@@ -466,7 +466,7 @@ body {
 .monastery-book {
   display: grid;
   grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
-  gap: 34px;
+  gap: 28px;
   align-items: start;
   padding-top: 12px;
 }
@@ -475,8 +475,8 @@ body {
   width: 100%;
   max-width: 260px;
   display: block;
-  border-radius: 6px;
-  box-shadow: 0 22px 46px rgba(73, 59, 43, 0.18);
+  border-radius: 4px;
+  box-shadow: 0 16px 30px rgba(73, 59, 43, 0.12);
 }
 
 .monastery-list {
@@ -494,7 +494,7 @@ body {
 .monastery-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  gap: 16px;
 }
 
 .monastery-grid-wide {
@@ -506,11 +506,11 @@ body {
 }
 
 .monastery-panel {
-  padding: 22px;
-  border: 1px solid rgba(76, 63, 46, 0.12);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.56);
-  box-shadow: 0 8px 22px rgba(73, 59, 43, 0.045);
+  padding: 20px;
+  border: 1px solid rgba(76, 63, 46, 0.08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.46);
+  box-shadow: 0 4px 12px rgba(73, 59, 43, 0.03);
 }
 
 .monastery-panel h3 {
@@ -520,7 +520,7 @@ body {
 }
 
 .monastery-panel-manifesto {
-  background: rgba(250, 249, 244, 0.82);
+  background: rgba(251, 249, 244, 0.72);
 }
 
 .monastery-panel-note {
@@ -532,7 +532,7 @@ body {
 
 .monastery-footer {
   padding-top: 26px;
-  border-top: 1px solid rgba(76, 63, 46, 0.12);
+  border-top: 1px solid rgba(76, 63, 46, 0.1);
 }
 
 .monastery-footer p {
@@ -562,11 +562,11 @@ body {
   z-index: 1000;
   width: 100%;
   margin: 0;
-  padding: 18px 24px;
-  background: rgba(247, 242, 232, 0.9);
+  padding: 15px 24px;
+  background: rgba(247, 242, 232, 0.86);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(76, 63, 46, 0.1);
+  border-bottom: 1px solid rgba(76, 63, 46, 0.08);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -637,13 +637,13 @@ body {
 .monastery-subpage main:not(.monastery-page):not(.knowledge-page):not(.editorial-page):not(.premium-page):not(.home-classic) {
   max-width: 1040px;
   margin: 0 auto;
-  padding: 32px 24px 80px;
+  padding: 28px 24px 72px;
 }
 
 .monastery-subpage .page-intro,
 .monastery-subpage .page-hero-intro {
   max-width: 860px;
-  margin: 56px auto 28px;
+  margin: 48px auto 24px;
   padding: 0;
   text-align: left;
 }
@@ -700,8 +700,8 @@ body {
 .monastery-subpage .intro,
 .monastery-subpage .qp-teaser-card,
 .monastery-subpage .page-footer-note {
-  background: rgba(255, 255, 255, 0.58);
-  border: 1px solid rgba(76, 63, 46, 0.1);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(76, 63, 46, 0.08);
   box-shadow: none;
 }
 
@@ -725,7 +725,7 @@ body {
 .monastery-subpage .book-card,
 .monastery-subpage .about-card,
 .monastery-subpage .podcast-card {
-  border-radius: 18px;
+  border-radius: 12px;
 }
 
 .monastery-subpage .idea-preview,
@@ -3642,7 +3642,7 @@ body > .qp-hero .qp-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
+  min-height: 42px;
   padding: 0 16px;
   line-height: 1;
   border-radius: 999px;
@@ -3682,14 +3682,14 @@ body > .qp-hero .qp-button {
 .library-feature {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(220px, 0.8fr);
-  gap: 28px;
+  gap: 24px;
   align-items: center;
-  padding: 28px;
-  border-radius: 24px;
-  border: 1px solid rgba(76, 63, 46, 0.12);
+  padding: 24px;
+  border-radius: 14px;
+  border: 1px solid rgba(76, 63, 46, 0.08);
   background:
-    radial-gradient(circle at top right, rgba(205, 190, 160, 0.16), transparent 28%),
-    rgba(255, 255, 255, 0.62);
+    radial-gradient(circle at top right, rgba(205, 190, 160, 0.12), transparent 28%),
+    rgba(255, 255, 255, 0.54);
 }
 
 .library-label {
@@ -3723,8 +3723,8 @@ body > .qp-hero .qp-button {
   width: 100%;
   max-width: 250px;
   margin: 0;
-  border-radius: 10px;
-  box-shadow: 0 18px 44px rgba(73, 59, 43, 0.16);
+  border-radius: 6px;
+  box-shadow: 0 14px 24px rgba(73, 59, 43, 0.1);
 }
 
 .library-section-head {
@@ -3738,14 +3738,14 @@ body > .qp-hero .qp-button {
   padding: 0 24px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
+  gap: 16px;
 }
 
 .thoughts-note-copy {
-  padding: 22px 24px;
-  border-radius: 18px;
-  border: 1px solid rgba(76, 63, 46, 0.1);
-  background: rgba(255, 255, 255, 0.58);
+  padding: 20px 22px;
+  border-radius: 12px;
+  border: 1px solid rgba(76, 63, 46, 0.08);
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .monastery-subpage .books-grid {
@@ -3753,9 +3753,9 @@ body > .qp-hero .qp-button {
 }
 
 .monastery-subpage .book-card {
-  padding: 22px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.58);
+  padding: 20px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .monastery-subpage .book-card h2 {
@@ -3770,8 +3770,8 @@ body > .qp-hero .qp-button {
 
 .monastery-subpage .book-cover-img {
   margin: 0 auto 18px;
-  border-radius: 10px;
-  box-shadow: 0 12px 24px rgba(73, 59, 43, 0.12);
+  border-radius: 6px;
+  box-shadow: 0 10px 20px rgba(73, 59, 43, 0.08);
 }
 
 .monastery-subpage .book-actions {
@@ -3779,7 +3779,7 @@ body > .qp-hero .qp-button {
 }
 
 .monastery-subpage .idea-card {
-  padding: 26px 24px;
+  padding: 22px 20px;
 }
 
 .monastery-subpage .idea-number {
