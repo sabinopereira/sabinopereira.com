@@ -3663,6 +3663,130 @@ body > .qp-hero .qp-button {
   color: #bcb5a6;
 }
 
+.monastery-subpage .page-intro--library,
+.monastery-subpage .page-intro--thoughts {
+  margin-bottom: 10px;
+}
+
+.library-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(220px, 0.8fr);
+  gap: 28px;
+  align-items: center;
+  padding: 28px;
+  border-radius: 24px;
+  border: 1px solid rgba(239, 231, 213, 0.14);
+  background:
+    radial-gradient(circle at top right, rgba(239, 231, 213, 0.08), transparent 28%),
+    rgba(255, 255, 255, 0.03);
+}
+
+.library-label {
+  margin: 0 0 10px;
+  color: #9f9888;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.library-feature h2,
+.library-section-head h2,
+.thoughts-note h2 {
+  margin: 0 0 12px;
+  color: #f3ecdc;
+}
+
+.library-feature p,
+.library-section-head p,
+.thoughts-note p {
+  color: #c9c1b2;
+  line-height: 1.75;
+}
+
+.library-feature-cover {
+  display: flex;
+  justify-content: center;
+}
+
+.library-feature-cover img {
+  width: 100%;
+  max-width: 250px;
+  margin: 0;
+  border-radius: 10px;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
+}
+
+.library-section-head {
+  max-width: 720px;
+  margin-bottom: 28px;
+}
+
+.thoughts-note {
+  max-width: 1120px;
+  margin: 0 auto 28px;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.thoughts-note-copy {
+  padding: 22px 24px;
+  border-radius: 18px;
+  border: 1px solid rgba(231, 225, 210, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.monastery-subpage .books-grid {
+  gap: 22px;
+}
+
+.monastery-subpage .book-card {
+  padding: 22px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.monastery-subpage .book-card h2 {
+  line-height: 1.15;
+  margin: 0 0 10px;
+}
+
+.monastery-subpage .book-meta {
+  margin-bottom: 8px;
+  color: #9f9888;
+}
+
+.monastery-subpage .book-cover-img {
+  margin: 0 auto 18px;
+  border-radius: 10px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+}
+
+.monastery-subpage .book-actions {
+  margin-top: 16px;
+}
+
+.monastery-subpage .idea-card {
+  padding: 26px 24px;
+}
+
+.monastery-subpage .idea-number {
+  margin-bottom: 0.85rem;
+  color: #9f9888;
+}
+
+.monastery-subpage .idea-card summary {
+  min-height: 100%;
+}
+
+@media (max-width: 900px) {
+  .library-feature,
+  .thoughts-note {
+    grid-template-columns: 1fr;
+  }
+}
+
 .qp-home-hero {
   max-width: 760px;
   margin: 48px auto 52px;
