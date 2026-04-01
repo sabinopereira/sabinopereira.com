@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{THOUGHT_TITLE}} | Quiet Thought — Sabino Pereira</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{META_DESCRIPTION}}">
+  <meta name="author" content="Sabino Pereira">
+  <link rel="canonical" href="https://sabinopereira.com/{{PAGE_SLUG}}.html">
+  <meta property="og:title" content="{{THOUGHT_TITLE}} | Quiet Thought">
+  <meta property="og:description" content="{{OG_DESCRIPTION}}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://sabinopereira.com/{{PAGE_SLUG}}.html">
+  <meta property="og:image" content="https://sabinopereira.com/images/quiet-power-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{THOUGHT_TITLE}} | Quiet Thought">
+  <meta name="twitter:description" content="{{OG_DESCRIPTION}}">
+  <meta name="twitter:image" content="https://sabinopereira.com/images/quiet-power-cover.jpg">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEVDEH8PGZ"></script>
+  <script src="/analytics.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "{{THOUGHT_TITLE}}",
+      "description": "{{META_DESCRIPTION}}",
+      "author": {
+        "@type": "Person",
+        "name": "Sabino Pereira"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Sabino Pereira"
+      },
+      "mainEntityOfPage": "https://sabinopereira.com/{{PAGE_SLUG}}.html",
+      "image": "https://sabinopereira.com/images/quiet-power-cover.jpg"
+    }
+  </script>
+  <link rel="icon" type="image/png" href="/images/avatar.png">
+  <link rel="apple-touch-icon" href="/images/avatar.png">
+  <link rel="stylesheet" href="/style.css?v=2">
+</head>
+
+<body class="monastery-subpage">
+
+<header class="site-header">
+  <div class="branding-wrap">
+    <img src="/images/avatar.png" alt="Sabino Pereira" class="site-avatar">
+    <div>
+      <h1 class="branding-title">Sabino Pereira</h1>
+      <p class="branding-subtitle">BOOKS · DESIGN · QUIET THOUGHTS</p>
+    </div>
+  </div>
+
+  <nav class="site-nav">
+    <a href="/index.html">Home</a>
+    <a href="/quiet-power.html">Quiet Power</a>
+    <a href="/books.html">Books</a>
+    <a href="/ideas.html" class="active">Thoughts</a>
+    <a href="/podcast.html">Podcast</a>
+    <a href="/shop.html">Shop</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="page-intro page-intro--thoughts">
+  <p class="page-kicker">Quiet Thought</p>
+  <h2 class="page-title">{{THOUGHT_TITLE}}</h2>
+  <p class="page-text">
+    {{THOUGHT_HOOK}}
+  </p>
+  <p class="page-subtitle">{{THOUGHT_SUBTITLE}}</p>
+</section>
+
+<main class="thought-article-shell">
+  <div class="thought-article-top">
+    <a href="/ideas.html" class="thought-backlink">Back to Quiet Thoughts</a>
+    <a href="/quiet-power.html" class="thought-backlink">{{SECONDARY_LINK_LABEL}}</a>
+  </div>
+
+  <article class="thought-article">
+    <p>{{OPENING_PARAGRAPH}}</p>
+    <p>{{BODY_PARAGRAPH_2}}</p>
+    <p>{{BODY_PARAGRAPH_3}}</p>
+
+    <h3>{{SECTION_TITLE}}</h3>
+    <p>{{SECTION_PARAGRAPH_1}}</p>
+    <p>{{SECTION_PARAGRAPH_2}}</p>
+
+    <div id="thought-share"></div>
+  </article>
+
+  <section class="thought-next-grid">
+    <div class="thought-next-card">
+      <p class="library-label">Read Next</p>
+      <h3>{{NEXT_TITLE}}</h3>
+      <p>{{NEXT_DESCRIPTION}}</p>
+      <a href="{{NEXT_URL}}" class="idea-read-link">Read article</a>
+    </div>
+    <div class="thought-next-card">
+      <p class="library-label">Related</p>
+      <h3>{{RELATED_TITLE}}</h3>
+      <p>{{RELATED_DESCRIPTION}}</p>
+      <a href="{{RELATED_URL}}" class="idea-read-link">{{RELATED_CTA}}</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <h2>Quiet thoughts in a loud world.</h2>
+  <p>Quiet Thoughts connect with the same themes behind Quiet Power, the podcast, and future books.</p>
+  <p>&copy; 2026 Sabino Pereira &mdash; Built with quiet thoughts and steady work.</p>
+</footer>
+
+<script src="/share-utils.js"></script>
+<script>
+  const share = document.getElementById("thought-share");
+  if (share && window.ShareUtils) {
+    share.appendChild(window.ShareUtils.createInlineShareBlock("Share this thought"));
+    window.ShareUtils.wireShareControls(share, window.ShareUtils.buildShareLinks(
+      "Quiet Thought — {{THOUGHT_TITLE}}",
+      "https://sabinopereira.com/{{PAGE_SLUG}}.html"
+    ));
+  }
+</script>
+
+</body>
+</html>
