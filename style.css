@@ -2219,6 +2219,13 @@ a:hover { opacity: 0.7; }
   margin: 0 0 18px;
 }
 
+.thought-meta-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
 .thought-backlink {
   display: inline-flex;
   align-items: center;
