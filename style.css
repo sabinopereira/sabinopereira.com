@@ -300,8 +300,9 @@ body {
   max-width: none;
   margin: 0;
   background:
-    radial-gradient(circle at top, rgba(214, 198, 166, 0.18), transparent 28%),
-    linear-gradient(180deg, #f7f2e8 0%, #f2ece1 100%);
+    radial-gradient(circle at top right, rgba(147, 170, 188, 0.18), transparent 26%),
+    radial-gradient(circle at top, rgba(214, 198, 166, 0.16), transparent 30%),
+    linear-gradient(180deg, #f6f2ea 0%, #edf1f3 100%);
   color: #2e2a25;
   font-family: "Times New Roman", Georgia, serif;
 }
@@ -474,8 +475,9 @@ body {
 
 .monastery-start-card-primary {
   background:
-    radial-gradient(circle at top right, rgba(205, 190, 160, 0.12), transparent 34%),
-    rgba(251, 249, 244, 0.76);
+    radial-gradient(circle at top right, rgba(148, 170, 190, 0.18), transparent 34%),
+    radial-gradient(circle at bottom left, rgba(205, 190, 160, 0.12), transparent 36%),
+    rgba(248, 248, 245, 0.82);
 }
 
 .monastery-start-card h3 {
@@ -624,8 +626,9 @@ body {
   max-width: none;
   margin: 0;
   background:
-    radial-gradient(circle at top, rgba(214, 198, 166, 0.14), transparent 26%),
-    linear-gradient(180deg, #f7f2e8 0%, #f2ece1 100%);
+    radial-gradient(circle at top right, rgba(145, 168, 188, 0.16), transparent 24%),
+    radial-gradient(circle at top, rgba(214, 198, 166, 0.12), transparent 28%),
+    linear-gradient(180deg, #f6f2ea 0%, #eef1f4 100%);
   color: #2e2a25;
   font-family: "Times New Roman", Georgia, serif;
 }
@@ -637,7 +640,7 @@ body {
   width: 100%;
   margin: 0;
   padding: 15px 24px;
-  background: rgba(247, 242, 232, 0.86);
+  background: rgba(241, 241, 238, 0.84);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(76, 63, 46, 0.08);
@@ -4032,8 +4035,9 @@ section {
   border-radius: 18px;
   border: 1px solid rgba(76, 63, 46, 0.08);
   background:
-    radial-gradient(circle at top right, rgba(205, 190, 160, 0.12), transparent 34%),
-    rgba(255, 255, 255, 0.56);
+    radial-gradient(circle at top right, rgba(144, 168, 188, 0.18), transparent 34%),
+    radial-gradient(circle at bottom left, rgba(205, 190, 160, 0.12), transparent 38%),
+    rgba(255, 255, 255, 0.6);
 }
 
 .thoughts-feature-copy h2,
