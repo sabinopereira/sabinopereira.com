@@ -283,7 +283,7 @@
     }
 
     const id = `quiet-idea-${String(index + 1).padStart(2, "0")}`;
-    const url = `https://sabinopereira.com/ideas.html#${id}`;
+    const shareUrl = `https://sabinopereira.com/ideas.html?thought=${id}#${id}`;
     card.id = id;
 
     const shareButton = document.createElement("button");
@@ -299,7 +299,7 @@
           await navigator.share({
             title: shareTitle,
             text: title,
-            url
+            url: shareUrl
           });
           return;
         } catch (error) {
@@ -316,7 +316,7 @@
       const originalText = shareButton.textContent;
 
       try {
-        await navigator.clipboard.writeText(url);
+        await navigator.clipboard.writeText(shareUrl);
         shareButton.textContent = "Link copied";
       } catch (error) {
         shareButton.textContent = "Copy failed";
@@ -330,7 +330,7 @@
     summaryButton?.insertAdjacentElement("afterend", shareButton);
 
     const share = window.ShareUtils.createInlineShareBlock("Share this thought");
-    const links = window.ShareUtils.buildShareLinks(`Quiet Thought — ${title}`, url);
+    const links = window.ShareUtils.buildShareLinks(`Quiet Thought — ${title}`, shareUrl);
     window.ShareUtils.wireShareControls(share, links);
 
     body.appendChild(share);
@@ -362,13 +362,14 @@
   });
 
   function openThoughtFromHash() {
+    const params = new URLSearchParams(window.location.search);
+    const thoughtParam = params.get("thought");
     const hash = window.location.hash;
+    const targetId = thoughtParam || (hash.length > 1 ? decodeURIComponent(hash.slice(1)) : "");
 
-    if (!hash || hash.length <= 1) {
+    if (!targetId) {
       return;
     }
-
-    const targetId = decodeURIComponent(hash.slice(1));
     let matchedCard = null;
 
     ideaCards.forEach((entry) => {
