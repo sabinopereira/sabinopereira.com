@@ -2272,6 +2272,26 @@ a:hover { opacity: 0.7; }
   font-size: 1rem;
 }
 
+.thought-audio-block {
+  margin: 2rem 0 0;
+  padding: 20px 22px;
+  border-radius: 14px;
+  border: 1px solid rgba(76, 63, 46, 0.08);
+  background: rgba(255, 255, 255, 0.52);
+}
+
+.thought-audio-block h3 {
+  margin-top: 0;
+}
+
+.thought-audio-block p:last-child {
+  margin-bottom: 0;
+}
+
+.thought-audio-embed {
+  margin: 14px 0 16px;
+}
+
 .thought-next-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
