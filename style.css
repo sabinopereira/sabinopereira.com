@@ -300,9 +300,10 @@ body {
   max-width: none;
   margin: 0;
   background:
-    radial-gradient(circle at top right, rgba(147, 170, 188, 0.18), transparent 26%),
-    radial-gradient(circle at top, rgba(214, 198, 166, 0.16), transparent 30%),
-    linear-gradient(180deg, #f6f2ea 0%, #edf1f3 100%);
+    radial-gradient(circle at top right, rgba(123, 151, 178, 0.28), transparent 24%),
+    radial-gradient(circle at top left, rgba(183, 201, 218, 0.2), transparent 30%),
+    radial-gradient(circle at top, rgba(214, 198, 166, 0.12), transparent 34%),
+    linear-gradient(180deg, #f4f0ea 0%, #e2eaef 100%);
   color: #2e2a25;
   font-family: "Times New Roman", Georgia, serif;
 }
@@ -475,9 +476,9 @@ body {
 
 .monastery-start-card-primary {
   background:
-    radial-gradient(circle at top right, rgba(148, 170, 190, 0.18), transparent 34%),
-    radial-gradient(circle at bottom left, rgba(205, 190, 160, 0.12), transparent 36%),
-    rgba(248, 248, 245, 0.82);
+    radial-gradient(circle at top right, rgba(124, 151, 176, 0.26), transparent 34%),
+    radial-gradient(circle at bottom left, rgba(205, 190, 160, 0.1), transparent 40%),
+    rgba(245, 247, 247, 0.88);
 }
 
 .monastery-start-card h3 {
@@ -626,9 +627,10 @@ body {
   max-width: none;
   margin: 0;
   background:
-    radial-gradient(circle at top right, rgba(145, 168, 188, 0.16), transparent 24%),
-    radial-gradient(circle at top, rgba(214, 198, 166, 0.12), transparent 28%),
-    linear-gradient(180deg, #f6f2ea 0%, #eef1f4 100%);
+    radial-gradient(circle at top right, rgba(120, 149, 176, 0.24), transparent 22%),
+    radial-gradient(circle at top left, rgba(186, 203, 219, 0.16), transparent 28%),
+    radial-gradient(circle at top, rgba(214, 198, 166, 0.1), transparent 32%),
+    linear-gradient(180deg, #f4f0ea 0%, #e4ebef 100%);
   color: #2e2a25;
   font-family: "Times New Roman", Georgia, serif;
 }
@@ -640,7 +642,7 @@ body {
   width: 100%;
   margin: 0;
   padding: 15px 24px;
-  background: rgba(241, 241, 238, 0.84);
+  background: rgba(234, 238, 240, 0.84);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(76, 63, 46, 0.08);
@@ -4035,9 +4037,9 @@ section {
   border-radius: 18px;
   border: 1px solid rgba(76, 63, 46, 0.08);
   background:
-    radial-gradient(circle at top right, rgba(144, 168, 188, 0.18), transparent 34%),
-    radial-gradient(circle at bottom left, rgba(205, 190, 160, 0.12), transparent 38%),
-    rgba(255, 255, 255, 0.6);
+    radial-gradient(circle at top right, rgba(118, 146, 173, 0.24), transparent 34%),
+    radial-gradient(circle at bottom left, rgba(205, 190, 160, 0.1), transparent 40%),
+    rgba(248, 249, 248, 0.68);
 }
 
 .thoughts-feature-copy h2,
