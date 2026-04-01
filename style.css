@@ -454,6 +454,36 @@ body {
   margin-top: 24px;
 }
 
+.monastery-actions-tight {
+  margin-top: 18px;
+}
+
+.monastery-start {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+  gap: 16px;
+}
+
+.monastery-start-card {
+  padding: 22px;
+  border: 1px solid rgba(76, 63, 46, 0.08);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.46);
+  box-shadow: 0 4px 12px rgba(73, 59, 43, 0.03);
+}
+
+.monastery-start-card-primary {
+  background:
+    radial-gradient(circle at top right, rgba(205, 190, 160, 0.12), transparent 34%),
+    rgba(251, 249, 244, 0.76);
+}
+
+.monastery-start-card h3 {
+  color: #231d17;
+  font-size: 1.65rem;
+  margin-bottom: 10px;
+}
+
 .monastery-btn {
   display: inline-flex;
   align-items: center;
@@ -542,6 +572,25 @@ body {
   color: #231d17;
   font-size: 1.45rem;
   margin-bottom: 10px;
+}
+
+.monastery-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 16px;
+}
+
+.monastery-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(111, 114, 92, 0.14);
+  color: #5b584d;
+  font-size: 0.82rem;
 }
 
 .monastery-panel-manifesto {
@@ -1704,6 +1753,7 @@ body {
 
   .monastery-book,
   .monastery-grid,
+  .monastery-start,
   .monastery-store-grid {
     grid-template-columns: 1fr;
   }
