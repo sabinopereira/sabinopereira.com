@@ -123,285 +123,326 @@ const profiles = {
   }
 };
 
-let currentIndex = 0;
-let scores = {
-  reaction: 0,
-  filter: 0,
-  control: 0
-};
-
-const introScreen = document.getElementById("qp-intro-screen");
-const startBtn = document.querySelector(".qp-start-btn");
-const testArea = document.getElementById("qp-test-area");
-const questionContainer = document.getElementById("qp-question-container");
-const resultSection = document.getElementById("qp-result");
-const resultTitle = document.getElementById("qp-result-title");
-const resultText = document.getElementById("qp-result-text");
-const resultNext = document.getElementById("qp-result-next");
-const reactionScore = document.getElementById("qp-reaction-score");
-const filterScore = document.getElementById("qp-filter-score");
-const controlScore = document.getElementById("qp-control-score");
-const resultCta = document.getElementById("qp-result-cta");
-const restartBtn = document.getElementById("qp-restart-btn");
-const shareText = document.getElementById("qp-share-text");
-const shareX = document.getElementById("qp-share-x");
-const shareLinkedIn = document.getElementById("qp-share-linkedin");
-const shareWhatsApp = document.getElementById("qp-share-whatsapp");
-const shareCopy = document.getElementById("qp-share-copy");
-const bookCta = document.getElementById("qp-book-cta");
-const bundleCta = document.getElementById("qp-bundle-cta");
-
-function trackEvent(name, params = {}) {
-  if (typeof window.trackEvent === "function") {
-    window.trackEvent(name, params);
-  }
-}
-
-function buildShareState(profile) {
-  const url = "https://sabinopereira.com/test.html";
-  const text = `I got "${profile.name}" on the Quiet Power Assessment. Take the test: ${url}`;
-  const links = window.ShareUtils
-    ? window.ShareUtils.buildShareLinks(`I got "${profile.name}" on the Quiet Power Assessment`, url)
-    : null;
-
-  return {
-    text,
-    x: links ? links.x : `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`,
-    linkedin: links ? links.linkedin : `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
-    whatsapp: links ? links.whatsapp : `https://wa.me/?text=${encodeURIComponent(text)}`
+function initQuietPowerAssessment() {
+  let currentIndex = 0;
+  let scores = {
+    reaction: 0,
+    filter: 0,
+    control: 0
   };
-}
 
-function updateShareLinks(profile) {
-  const shareState = buildShareState(profile);
+  const introScreen = document.getElementById("qp-intro-screen");
+  const startBtn = document.querySelector(".qp-start-btn");
+  const testArea = document.getElementById("qp-test-area");
+  const questionContainer = document.getElementById("qp-question-container");
+  const resultSection = document.getElementById("qp-result");
+  const resultTitle = document.getElementById("qp-result-title");
+  const resultText = document.getElementById("qp-result-text");
+  const resultNext = document.getElementById("qp-result-next");
+  const reactionScore = document.getElementById("qp-reaction-score");
+  const filterScore = document.getElementById("qp-filter-score");
+  const controlScore = document.getElementById("qp-control-score");
+  const resultCta = document.getElementById("qp-result-cta");
+  const restartBtn = document.getElementById("qp-restart-btn");
+  const shareText = document.getElementById("qp-share-text");
+  const shareX = document.getElementById("qp-share-x");
+  const shareLinkedIn = document.getElementById("qp-share-linkedin");
+  const shareWhatsApp = document.getElementById("qp-share-whatsapp");
+  const shareCopy = document.getElementById("qp-share-copy");
+  const bookCta = document.getElementById("qp-book-cta");
+  const bundleCta = document.getElementById("qp-bundle-cta");
 
-  if (shareText) {
-    shareText.textContent = `I got "${profile.name}" on the Quiet Power Assessment. Share it or invite someone else to take the test.`;
-  }
-
-  if (shareX) {
-    shareX.href = shareState.x;
-  }
-
-  if (shareLinkedIn) {
-    shareLinkedIn.href = shareState.linkedin;
-  }
-
-  if (shareWhatsApp) {
-    shareWhatsApp.href = shareState.whatsapp;
-  }
-
-  if (shareCopy) {
-    shareCopy.dataset.copyText = shareState.text;
-    shareCopy.textContent = "Copy link";
-  }
-}
-
-function resetAssessment() {
-  currentIndex = 0;
-  scores = { reaction: 0, filter: 0, control: 0 };
-  resultSection.classList.add("qp-result-hidden");
-  introScreen.classList.add("qp-intro-hidden");
-  testArea.classList.remove("qp-test-hidden");
-  trackEvent("test_start", {
-    page_path: window.location.pathname
-  });
-  renderQuestion();
-}
-
-function renderQuestion() {
-  const currentQuestion = qpQuestions[currentIndex];
-
-  if (!currentQuestion) {
-    showResults();
+  if (!startBtn || !introScreen || !testArea || !questionContainer || !resultSection) {
     return;
   }
 
-  const progressValue = ((currentIndex + 1) / qpQuestions.length) * 100;
-
-  questionContainer.innerHTML = `
-    <div class="test-wrap fade">
-      <div class="progress">
-        <div class="progress-bar" style="width: ${progressValue}%"></div>
-      </div>
-      <p class="step">Question ${currentIndex + 1} of ${qpQuestions.length}</p>
-      <h2 class="question">${currentQuestion.question}</h2>
-      <div class="answers">
-        ${currentQuestion.options
-          .map(
-            (option, index) => `
-              <button type="button" class="answer" data-trait="${option.trait}">
-                <span class="answer-key">${String.fromCharCode(65 + index)}</span>
-                <span class="answer-copy">${option.text}</span>
-              </button>
-            `
-          )
-          .join("")}
-      </div>
-    </div>
-  `;
-
-  document.querySelectorAll(".answer").forEach((button) => {
-    button.addEventListener("click", () => handleAnswer(button));
-  });
-}
-
-function handleAnswer(button) {
-  const trait = button.dataset.trait;
-  scores[trait] += 1;
-  trackEvent("test_answer", {
-    question_number: currentIndex + 1,
-    selected_trait: trait
-  });
-
-  document.querySelectorAll(".answer").forEach((option) => {
-    option.disabled = true;
-    option.classList.remove("selected");
-  });
-  button.classList.add("selected");
-
-  window.setTimeout(() => {
-    currentIndex += 1;
-    renderQuestion();
-  }, 550);
-}
-
-function getProfile() {
-  const ranking = Object.entries(scores).sort((a, b) => b[1] - a[1]);
-  const topScore = ranking[0][1];
-  const leaders = ranking.filter(([, score]) => score === topScore).map(([trait]) => trait);
-
-  if (leaders.length === 1) {
-    return profiles[leaders[0]];
+  function trackEvent(name, params = {}) {
+    if (typeof window.trackEvent === "function") {
+      window.trackEvent(name, params);
+    }
   }
 
-  if (leaders.length === 3) {
+  function buildShareState(profile) {
+    const url = "https://sabinopereira.com/test.html";
+    const text = `I got "${profile.name}" on the Quiet Power Assessment. Take the test: ${url}`;
+    const links = window.ShareUtils
+      ? window.ShareUtils.buildShareLinks(`I got "${profile.name}" on the Quiet Power Assessment`, url)
+      : null;
+
+    return {
+      text,
+      x: links ? links.x : `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`,
+      linkedin: links ? links.linkedin : `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+      whatsapp: links ? links.whatsapp : `https://wa.me/?text=${encodeURIComponent(text)}`
+    };
+  }
+
+  function updateShareLinks(profile) {
+    const shareState = buildShareState(profile);
+
+    if (shareText) {
+      shareText.textContent = `I got "${profile.name}" on the Quiet Power Assessment. Share it or invite someone else to take the test.`;
+    }
+
+    if (shareX) {
+      shareX.href = shareState.x;
+    }
+
+    if (shareLinkedIn) {
+      shareLinkedIn.href = shareState.linkedin;
+    }
+
+    if (shareWhatsApp) {
+      shareWhatsApp.href = shareState.whatsapp;
+    }
+
+    if (shareCopy) {
+      shareCopy.dataset.copyText = shareState.text;
+      shareCopy.textContent = "Copy link";
+    }
+  }
+
+  function renderQuestion() {
+    const currentQuestion = qpQuestions[currentIndex];
+
+    if (!currentQuestion) {
+      showResults();
+      return;
+    }
+
+    const progressValue = ((currentIndex + 1) / qpQuestions.length) * 100;
+
+    questionContainer.innerHTML = `
+      <div class="test-wrap fade">
+        <div class="progress">
+          <div class="progress-bar" style="width: ${progressValue}%"></div>
+        </div>
+        <p class="step">Question ${currentIndex + 1} of ${qpQuestions.length}</p>
+        <h2 class="question">${currentQuestion.question}</h2>
+        <div class="answers">
+          ${currentQuestion.options
+            .map(
+              (option, index) => `
+                <button type="button" class="answer" data-trait="${option.trait}">
+                  <span class="answer-key">${String.fromCharCode(65 + index)}</span>
+                  <span class="answer-copy">${option.text}</span>
+                </button>
+              `
+            )
+            .join("")}
+        </div>
+      </div>
+    `;
+  }
+
+  function resetAssessment() {
+    currentIndex = 0;
+    scores = { reaction: 0, filter: 0, control: 0 };
+    questionContainer.innerHTML = "";
+    resultSection.classList.add("qp-result-hidden");
+    introScreen.classList.add("qp-intro-hidden");
+    testArea.classList.remove("qp-test-hidden");
+    testArea.hidden = false;
+    trackEvent("test_start", {
+      page_path: window.location.pathname
+    });
+    renderQuestion();
+  }
+
+  function handleAnswer(button) {
+    const trait = button.dataset.trait;
+
+    if (!trait || !(trait in scores)) {
+      return;
+    }
+
+    scores[trait] += 1;
+    trackEvent("test_answer", {
+      question_number: currentIndex + 1,
+      selected_trait: trait
+    });
+
+    questionContainer.querySelectorAll(".answer").forEach((option) => {
+      option.disabled = true;
+      option.classList.remove("selected");
+    });
+
+    button.classList.add("selected");
+
+    window.setTimeout(() => {
+      currentIndex += 1;
+      renderQuestion();
+    }, 550);
+  }
+
+  function getProfile() {
+    const ranking = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+    const topScore = ranking[0][1];
+    const leaders = ranking.filter(([, score]) => score === topScore).map(([trait]) => trait);
+
+    if (leaders.length === 1) {
+      return profiles[leaders[0]];
+    }
+
+    if (leaders.length === 3) {
+      return profiles.balanced;
+    }
+
+    const tieKey = [...leaders].sort().join("-");
+    const tieMap = {
+      "control-filter": profiles.filterControl,
+      "control-reaction": profiles.reactionControl,
+      "filter-reaction": profiles.reactionFilter
+    };
+
+    if (tieMap[tieKey]) {
+      return tieMap[tieKey];
+    }
+
     return profiles.balanced;
   }
 
-  const tieKey = [...leaders].sort().join("-");
-  const tieMap = {
-    "control-filter": profiles.filterControl,
-    "control-reaction": profiles.reactionControl,
-    "filter-reaction": profiles.reactionFilter
-  };
+  function showResults() {
+    const profile = getProfile();
 
-  if (tieMap[tieKey]) {
-    return tieMap[tieKey];
+    testArea.classList.add("qp-test-hidden");
+    resultSection.classList.remove("qp-result-hidden");
+
+    if (resultTitle) {
+      resultTitle.textContent = profile.name;
+    }
+
+    if (resultText) {
+      resultText.innerHTML = profile.description.replace(/\n/g, "<br>");
+    }
+
+    if (resultNext) {
+      resultNext.textContent = profile.nextStep;
+    }
+
+    if (reactionScore) {
+      reactionScore.textContent = String(scores.reaction);
+    }
+
+    if (filterScore) {
+      filterScore.textContent = String(scores.filter);
+    }
+
+    if (controlScore) {
+      controlScore.textContent = String(scores.control);
+    }
+
+    if (resultCta) {
+      resultCta.textContent = profile.ctaLabel;
+      resultCta.href = profile.ctaHref;
+    }
+
+    updateShareLinks(profile);
+    trackEvent("test_complete", {
+      profile: profile.name,
+      reaction_score: scores.reaction,
+      filter_score: scores.filter,
+      control_score: scores.control
+    });
   }
 
-  return profiles.balanced;
-}
+  startBtn.addEventListener("click", resetAssessment);
 
-function showResults() {
-  const profile = getProfile();
+  questionContainer.addEventListener("click", (event) => {
+    const button = event.target.closest(".answer");
 
-  testArea.classList.add("qp-test-hidden");
-  resultSection.classList.remove("qp-result-hidden");
+    if (!button || button.disabled) {
+      return;
+    }
 
-  resultTitle.textContent = profile.name;
-  resultText.innerHTML = profile.description.replace(/\n/g, "<br>");
-  resultNext.textContent = profile.nextStep;
-  reactionScore.textContent = String(scores.reaction);
-  filterScore.textContent = String(scores.filter);
-  controlScore.textContent = String(scores.control);
+    handleAnswer(button);
+  });
+
+  if (restartBtn) {
+    restartBtn.addEventListener("click", () => {
+      trackEvent("test_restart", {
+        page_path: window.location.pathname
+      });
+      resetAssessment();
+    });
+  }
+
+  if (bookCta) {
+    bookCta.addEventListener("click", () => {
+      trackEvent("test_result_cta_click", {
+        cta_type: "book",
+        destination: bookCta.href
+      });
+    });
+  }
 
   if (resultCta) {
-    resultCta.textContent = profile.ctaLabel;
-    resultCta.href = profile.ctaHref;
-  }
-
-  updateShareLinks(profile);
-  trackEvent("test_complete", {
-    profile: profile.name,
-    reaction_score: scores.reaction,
-    filter_score: scores.filter,
-    control_score: scores.control
-  });
-}
-
-if (startBtn) {
-  startBtn.addEventListener("click", resetAssessment);
-}
-
-if (restartBtn) {
-  restartBtn.addEventListener("click", () => {
-    trackEvent("test_restart", {
-      page_path: window.location.pathname
-    });
-    resetAssessment();
-  });
-}
-
-if (bookCta) {
-  bookCta.addEventListener("click", () => {
-    trackEvent("test_result_cta_click", {
-      cta_type: "book",
-      destination: bookCta.href
-    });
-  });
-}
-
-if (resultCta) {
-  resultCta.addEventListener("click", () => {
-    trackEvent("test_result_cta_click", {
-      cta_type: "workbook",
-      destination: resultCta.href,
-      cta_label: resultCta.textContent.trim()
-    });
-  });
-}
-
-if (bundleCta) {
-  bundleCta.addEventListener("click", () => {
-    trackEvent("test_result_cta_click", {
-      cta_type: "bundle",
-      destination: bundleCta.href
-    });
-  });
-}
-
-if (shareX) {
-  shareX.addEventListener("click", () => {
-    trackEvent("test_share_click", { platform: "x" });
-  });
-}
-
-if (shareLinkedIn) {
-  shareLinkedIn.addEventListener("click", () => {
-    trackEvent("test_share_click", { platform: "linkedin" });
-  });
-}
-
-if (shareWhatsApp) {
-  shareWhatsApp.addEventListener("click", () => {
-    trackEvent("test_share_click", { platform: "whatsapp" });
-  });
-}
-
-if (shareCopy) {
-  if (window.ShareUtils) {
-    window.ShareUtils.wireShareControls(resultSection, buildShareState(profiles.reaction));
-    shareCopy.addEventListener("click", () => {
-      trackEvent("test_share_click", { platform: "copy_link" });
-    });
-  } else {
-    shareCopy.addEventListener("click", async () => {
-      trackEvent("test_share_click", { platform: "copy_link" });
-      const text = shareCopy.dataset.copyText || "https://sabinopereira.com/test.html";
-
-      try {
-        await navigator.clipboard.writeText(text);
-        shareCopy.textContent = "Copied";
-        window.setTimeout(() => {
-          shareCopy.textContent = "Copy link";
-        }, 1400);
-      } catch (error) {
-        shareCopy.textContent = "Copy failed";
-        window.setTimeout(() => {
-          shareCopy.textContent = "Copy link";
-        }, 1400);
-      }
+    resultCta.addEventListener("click", () => {
+      trackEvent("test_result_cta_click", {
+        cta_type: "workbook",
+        destination: resultCta.href,
+        cta_label: resultCta.textContent.trim()
+      });
     });
   }
+
+  if (bundleCta) {
+    bundleCta.addEventListener("click", () => {
+      trackEvent("test_result_cta_click", {
+        cta_type: "bundle",
+        destination: bundleCta.href
+      });
+    });
+  }
+
+  if (shareX) {
+    shareX.addEventListener("click", () => {
+      trackEvent("test_share_click", { platform: "x" });
+    });
+  }
+
+  if (shareLinkedIn) {
+    shareLinkedIn.addEventListener("click", () => {
+      trackEvent("test_share_click", { platform: "linkedin" });
+    });
+  }
+
+  if (shareWhatsApp) {
+    shareWhatsApp.addEventListener("click", () => {
+      trackEvent("test_share_click", { platform: "whatsapp" });
+    });
+  }
+
+  if (shareCopy) {
+    if (window.ShareUtils) {
+      window.ShareUtils.wireShareControls(resultSection, buildShareState(profiles.reaction));
+      shareCopy.addEventListener("click", () => {
+        trackEvent("test_share_click", { platform: "copy_link" });
+      });
+    } else {
+      shareCopy.addEventListener("click", async () => {
+        trackEvent("test_share_click", { platform: "copy_link" });
+        const text = shareCopy.dataset.copyText || "https://sabinopereira.com/test.html";
+
+        try {
+          await navigator.clipboard.writeText(text);
+          shareCopy.textContent = "Copied";
+          window.setTimeout(() => {
+            shareCopy.textContent = "Copy link";
+          }, 1400);
+        } catch (error) {
+          shareCopy.textContent = "Copy failed";
+          window.setTimeout(() => {
+            shareCopy.textContent = "Copy link";
+          }, 1400);
+        }
+      });
+    }
+  }
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initQuietPowerAssessment);
+} else {
+  initQuietPowerAssessment();
 }
