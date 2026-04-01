@@ -2403,6 +2403,69 @@ a:hover { opacity: 0.7; }
   flex-grow: 1;
 }
 
+.podcast-featured,
+.podcast-section-head {
+  max-width: 1120px;
+  margin: 0 auto 28px;
+  padding: 0 24px;
+}
+
+.podcast-feature-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+  gap: 18px;
+  padding: 24px;
+  border-radius: 18px;
+  border: 1px solid rgba(76, 63, 46, 0.08);
+  background:
+    radial-gradient(circle at top right, rgba(205, 190, 160, 0.12), transparent 34%),
+    rgba(255, 255, 255, 0.56);
+}
+
+.podcast-feature-copy h2,
+.podcast-section-head h2 {
+  margin: 0 0 12px;
+  color: #231d17;
+}
+
+.podcast-feature-copy p,
+.podcast-section-head p,
+.podcast-feature-side li {
+  color: #5f5448;
+  line-height: 1.75;
+}
+
+.podcast-feature-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 18px;
+}
+
+.podcast-feature-meta span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(111, 114, 92, 0.14);
+  color: #5b584d;
+  font-size: 0.82rem;
+}
+
+.podcast-feature-side {
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(76, 63, 46, 0.06);
+}
+
+.podcast-section-head {
+  display: flex;
+  align-items: end;
+}
+
 .share-inline {
   margin-top: 18px;
   padding-top: 16px;
@@ -3896,6 +3959,103 @@ section {
   background: rgba(255, 255, 255, 0.5);
 }
 
+.thoughts-featured,
+.thoughts-section-head,
+.thoughts-bottom-grid {
+  max-width: 1120px;
+  margin: 0 auto 28px;
+  padding: 0 24px;
+}
+
+.thoughts-feature-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+  gap: 18px;
+  padding: 24px;
+  border-radius: 18px;
+  border: 1px solid rgba(76, 63, 46, 0.08);
+  background:
+    radial-gradient(circle at top right, rgba(205, 190, 160, 0.12), transparent 34%),
+    rgba(255, 255, 255, 0.56);
+}
+
+.thoughts-feature-copy h2,
+.thoughts-section-head h2,
+.thoughts-bottom-card h3 {
+  margin: 0 0 12px;
+  color: #231d17;
+}
+
+.thoughts-feature-copy p,
+.thoughts-section-head p,
+.thoughts-bottom-card p,
+.thoughts-feature-list li {
+  color: #5f5448;
+  line-height: 1.75;
+}
+
+.thoughts-feature-meta,
+.idea-quick-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.thoughts-feature-meta {
+  margin: 16px 0 18px;
+}
+
+.thoughts-feature-meta span,
+.idea-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(111, 114, 92, 0.14);
+  color: #5b584d;
+  font-size: 0.82rem;
+}
+
+.thoughts-feature-side {
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(76, 63, 46, 0.06);
+}
+
+.thoughts-feature-list {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.thoughts-feature-list li {
+  margin-bottom: 0.75rem;
+}
+
+.thoughts-section-head {
+  display: flex;
+  align-items: end;
+}
+
+.idea-quick-meta {
+  margin-top: 14px;
+}
+
+.thoughts-bottom-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.thoughts-bottom-card {
+  padding: 20px 22px;
+  border-radius: 14px;
+  border: 1px solid rgba(76, 63, 46, 0.08);
+  background: rgba(255, 255, 255, 0.5);
+}
+
 .monastery-subpage .books-grid {
   gap: 22px;
 }
@@ -3942,7 +4102,9 @@ section {
 
 @media (max-width: 900px) {
   .library-feature,
-  .thoughts-note {
+  .thoughts-note,
+  .thoughts-feature-card,
+  .thoughts-bottom-grid {
     grid-template-columns: 1fr;
   }
 }
