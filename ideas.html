@@ -7,11 +7,46 @@
   <meta name="description" content="Quiet Thoughts by Sabino Pereira — short reflections on calm thinking, incentives, contradiction, discipline, standards, and modern life.">
   <meta name="author" content="Sabino Pereira">
   <link rel="canonical" href="https://sabinopereira.com/ideas.html">
+  <meta property="og:title" content="Quiet Thoughts — Sabino Pereira">
+  <meta property="og:description" content="Short reflections on calm thinking, incentives, contradiction, discipline, standards, and modern life.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sabinopereira.com/ideas.html">
+  <meta property="og:image" content="https://sabinopereira.com/images/quiet-power-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Quiet Thoughts — Sabino Pereira">
+  <meta name="twitter:description" content="Short reflections on calm thinking, incentives, contradiction, discipline, standards, and modern life.">
+  <meta name="twitter:image" content="https://sabinopereira.com/images/quiet-power-cover.jpg">
   <link rel="icon" type="image/png" href="/images/avatar.png">
   <link rel="apple-touch-icon" href="/images/avatar.png">
   <link rel="stylesheet" href="/style.css?v=2">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEVDEH8PGZ"></script>
   <script src="/analytics.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Quiet Thoughts",
+      "url": "https://sabinopereira.com/ideas.html",
+      "description": "Short reflections on calm thinking, incentives, contradiction, discipline, standards, and modern life.",
+      "hasPart": [
+        {
+          "@type": "Article",
+          "headline": "What is Quiet Power?",
+          "url": "https://sabinopereira.com/quiet-thought-what-is-quiet-power.html"
+        },
+        {
+          "@type": "Article",
+          "headline": "Can Wars Ever Truly End?",
+          "url": "https://sabinopereira.com/quiet-thought-can-wars-ever-truly-end.html"
+        },
+        {
+          "@type": "Article",
+          "headline": "While You Wait, They Build",
+          "url": "https://sabinopereira.com/quiet-thought-while-you-wait-they-build.html"
+        }
+      ]
+    }
+  </script>
 </head>
 
 <body class="monastery-subpage">
@@ -71,13 +106,16 @@
 
 <section class="ideas-grid">
 
-  <article class="idea-card">
+  <article class="idea-card" data-page-url="https://sabinopereira.com/quiet-thought-what-is-quiet-power.html">
     <button type="button" class="idea-summary" aria-expanded="false">
       <span class="idea-number">QUIET THOUGHT</span>
       <h2 class="idea-title">What is Quiet Power?</h2>
       <p class="idea-preview">Quiet Power is controlled strength.</p>
       <span class="idea-toggle">Open thought</span>
     </button>
+    <div class="idea-card-actions">
+      <a href="/quiet-thought-what-is-quiet-power.html" class="idea-read-link">Read article</a>
+    </div>
     <div class="idea-full" hidden>
       <p>Quiet Power is controlled strength.</p>
       <p>It is the ability to stay calm, think clearly, and act with intention, especially when everything around you is pushing for noise, speed, and reaction.</p>
@@ -129,13 +167,16 @@
     </div>
   </article>
 
-  <article class="idea-card">
+  <article class="idea-card" data-page-url="https://sabinopereira.com/quiet-thought-can-wars-ever-truly-end.html">
     <button type="button" class="idea-summary" aria-expanded="false">
       <span class="idea-number">QUIET THOUGHT</span>
       <h2 class="idea-title">Can Wars Ever Truly End?</h2>
       <p class="idea-preview">Wars are still here. They just look different.</p>
       <span class="idea-toggle">Open thought</span>
     </button>
+    <div class="idea-card-actions">
+      <a href="/quiet-thought-can-wars-ever-truly-end.html" class="idea-read-link">Read article</a>
+    </div>
     <div class="idea-full" hidden>
       <p>Wars are still here.</p>
       <p>They just look different.</p>
@@ -224,13 +265,16 @@
     </div>
   </article>
 
-  <article class="idea-card">
+  <article class="idea-card" data-page-url="https://sabinopereira.com/quiet-thought-while-you-wait-they-build.html">
     <button type="button" class="idea-summary" aria-expanded="false">
       <span class="idea-number">QUIET THOUGHT</span>
       <h2 class="idea-title">While You Wait, They Build</h2>
       <p class="idea-preview">The world did not pause for your opinion. It moved. Quietly.</p>
       <span class="idea-toggle">Open thought</span>
     </button>
+    <div class="idea-card-actions">
+      <a href="/quiet-thought-while-you-wait-they-build.html" class="idea-read-link">Read article</a>
+    </div>
     <div class="idea-full" hidden>
       <p>You do not like Artificial Intelligence. Or you have never tried it.</p>
       <p>That is fine. It is perfectly normal.</p>
@@ -283,7 +327,8 @@
     }
 
     const id = `quiet-idea-${String(index + 1).padStart(2, "0")}`;
-    const shareUrl = `https://sabinopereira.com/ideas.html?thought=${id}#${id}`;
+    const shareUrl = card.dataset.pageUrl || `https://sabinopereira.com/ideas.html?thought=${id}#${id}`;
+    const actions = card.querySelector(".idea-card-actions");
     card.id = id;
 
     const shareButton = document.createElement("button");
@@ -327,7 +372,11 @@
       }, 1400);
     });
 
-    summaryButton?.insertAdjacentElement("afterend", shareButton);
+    if (actions) {
+      actions.appendChild(shareButton);
+    } else {
+      summaryButton?.insertAdjacentElement("afterend", shareButton);
+    }
 
     const share = window.ShareUtils.createInlineShareBlock("Share this thought");
     const links = window.ShareUtils.buildShareLinks(`Quiet Thought — ${title}`, shareUrl);
