@@ -270,6 +270,8 @@
 
 <script src="/share-utils.js"></script>
 <script>
+  const ideaCards = [];
+
   document.querySelectorAll(".idea-card").forEach((card, index) => {
     const title = card.querySelector(".idea-title")?.textContent?.trim();
     const body = card.querySelector(".idea-full");
@@ -333,21 +335,59 @@
 
     body.appendChild(share);
 
-    if (toggleLabel && summaryButton) {
-      const syncToggleLabel = () => {
-        const isOpen = !body.hidden;
+    const syncToggleLabel = () => {
+      const isOpen = !body.hidden;
+      if (toggleLabel) {
         toggleLabel.textContent = isOpen ? "Close thought" : "Open thought";
+      }
+      if (summaryButton) {
         summaryButton.setAttribute("aria-expanded", String(isOpen));
-        card.classList.toggle("is-open", isOpen);
-      };
+      }
+      card.classList.toggle("is-open", isOpen);
+    };
 
+    const setOpen = (isOpen) => {
+      body.hidden = !isOpen;
+      syncToggleLabel();
+    };
+
+    ideaCards.push({ card, body, setOpen });
+
+    if (toggleLabel && summaryButton) {
       syncToggleLabel();
       summaryButton.addEventListener("click", () => {
-        body.hidden = !body.hidden;
-        syncToggleLabel();
+        setOpen(body.hidden);
       });
     }
   });
+
+  function openThoughtFromHash() {
+    const hash = window.location.hash;
+
+    if (!hash || hash.length <= 1) {
+      return;
+    }
+
+    const targetId = decodeURIComponent(hash.slice(1));
+    let matchedCard = null;
+
+    ideaCards.forEach((entry) => {
+      const isMatch = entry.card.id === targetId;
+      entry.setOpen(isMatch);
+      if (isMatch) {
+        matchedCard = entry.card;
+      }
+    });
+
+    if (matchedCard) {
+      window.setTimeout(() => {
+        matchedCard.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 80);
+    }
+  }
+
+  openThoughtFromHash();
+  window.addEventListener("hashchange", openThoughtFromHash);
 </script>
 
 </body>
