@@ -281,10 +281,54 @@
     }
 
     const id = `quiet-idea-${String(index + 1).padStart(2, "0")}`;
+    const url = `https://sabinopereira.com/ideas.html#${id}`;
     card.id = id;
 
+    const shareButton = document.createElement("button");
+    shareButton.type = "button";
+    shareButton.className = "idea-share-btn";
+    shareButton.textContent = "Share thought";
+
+    shareButton.addEventListener("click", async () => {
+      const shareTitle = `Quiet Thought — ${title}`;
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: shareTitle,
+            text: title,
+            url
+          });
+          return;
+        } catch (error) {
+          if (error && error.name === "AbortError") {
+            return;
+          }
+        }
+      }
+
+      if (!navigator.clipboard) {
+        return;
+      }
+
+      const originalText = shareButton.textContent;
+
+      try {
+        await navigator.clipboard.writeText(url);
+        shareButton.textContent = "Link copied";
+      } catch (error) {
+        shareButton.textContent = "Copy failed";
+      }
+
+      window.setTimeout(() => {
+        shareButton.textContent = originalText;
+      }, 1400);
+    });
+
+    summaryButton?.insertAdjacentElement("afterend", shareButton);
+
     const share = window.ShareUtils.createInlineShareBlock("Share this thought");
-    const links = window.ShareUtils.buildShareLinks(`Quiet Thought — ${title}`, `https://sabinopereira.com/ideas.html#${id}`);
+    const links = window.ShareUtils.buildShareLinks(`Quiet Thought — ${title}`, url);
     window.ShareUtils.wireShareControls(share, links);
 
     body.appendChild(share);
