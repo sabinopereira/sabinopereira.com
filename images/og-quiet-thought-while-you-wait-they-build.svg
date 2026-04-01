@@ -1,0 +1,27 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#EEE5D9"/>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1014" cy="128" r="176" fill="#D1C0A7" fill-opacity="0.52"/>
+  <circle cx="1118" cy="523" r="170" fill="#A6AA8D" fill-opacity="0.28"/>
+  <circle cx="174" cy="94" r="88" fill="#FAF6EF" fill-opacity="0.82"/>
+  <rect x="62" y="58" width="1076" height="514" rx="28" fill="#FBF7F0" fill-opacity="0.72" stroke="#7D786C" stroke-opacity="0.16"/>
+  <rect x="98" y="98" width="168" height="36" rx="18" fill="#384032"/>
+  <text x="182" y="121" text-anchor="middle" fill="#F8F2E7" font-family="Georgia, 'Times New Roman', serif" font-size="16" letter-spacing="3">QUIET THOUGHT</text>
+  <text x="98" y="198" fill="#241E18" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700">While You Wait,</text>
+  <text x="98" y="267" fill="#241E18" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700">They Build</text>
+  <text x="98" y="348" fill="#5A5146" font-family="Arial, Helvetica, sans-serif" font-size="27">AI, hesitation, timing, and the cost of delay.</text>
+  <text x="98" y="430" fill="#3F4637" font-family="Arial, Helvetica, sans-serif" font-size="22" letter-spacing="1.1">THE WORLD MOVED. QUIETLY.</text>
+  <text x="98" y="523" fill="#8A7D6A" font-family="Arial, Helvetica, sans-serif" font-size="20">Sabino Pereira</text>
+  <rect x="733" y="169" width="274" height="182" rx="20" fill="#E7D8C0" fill-opacity="0.84"/>
+  <rect x="772" y="208" width="84" height="104" rx="14" fill="#3A4032"/>
+  <rect x="879" y="195" width="89" height="18" rx="9" fill="#807663" fill-opacity="0.62"/>
+  <rect x="879" y="230" width="110" height="18" rx="9" fill="#807663" fill-opacity="0.42"/>
+  <rect x="879" y="265" width="95" height="18" rx="9" fill="#807663" fill-opacity="0.3"/>
+  <path d="M744 422C808 390 879 374 957 374C1001 374 1043 379 1083 390" stroke="#394032" stroke-opacity="0.34" stroke-width="3"/>
+  <defs>
+    <linearGradient id="bg" x1="98" y1="39" x2="1114" y2="605" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4EDE3"/>
+      <stop offset="1" stop-color="#E2D0B7"/>
+    </linearGradient>
+  </defs>
+</svg>

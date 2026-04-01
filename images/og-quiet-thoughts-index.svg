@@ -1,0 +1,25 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#EEE4D6"/>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1041" cy="126" r="188" fill="#CFBFA8" fill-opacity="0.5"/>
+  <circle cx="1092" cy="514" r="172" fill="#A1A58A" fill-opacity="0.24"/>
+  <rect x="62" y="58" width="1076" height="514" rx="28" fill="#FBF7F0" fill-opacity="0.72" stroke="#7D786C" stroke-opacity="0.16"/>
+  <rect x="98" y="98" width="184" height="36" rx="18" fill="#384032"/>
+  <text x="190" y="121" text-anchor="middle" fill="#F8F2E7" font-family="Georgia, 'Times New Roman', serif" font-size="16" letter-spacing="3">SABINO PEREIRA</text>
+  <text x="98" y="208" fill="#241E18" font-family="Georgia, 'Times New Roman', serif" font-size="68" font-weight="700">Quiet Thoughts</text>
+  <text x="98" y="286" fill="#5A5146" font-family="Arial, Helvetica, sans-serif" font-size="29">Short thoughts. Clear signals.</text>
+  <text x="98" y="364" fill="#3F4637" font-family="Arial, Helvetica, sans-serif" font-size="22" letter-spacing="1.2">CALM THINKING. STANDARDS. CONTRADICTION. BEHAVIOUR.</text>
+  <text x="98" y="523" fill="#8A7D6A" font-family="Arial, Helvetica, sans-serif" font-size="20">A growing collection of short editorial pieces.</text>
+  <rect x="743" y="181" width="280" height="86" rx="18" fill="#EDE2D0"/>
+  <rect x="777" y="214" width="162" height="12" rx="6" fill="#6D665B" fill-opacity="0.68"/>
+  <rect x="777" y="239" width="207" height="12" rx="6" fill="#6D665B" fill-opacity="0.34"/>
+  <rect x="705" y="286" width="318" height="92" rx="18" fill="#E6D7BE"/>
+  <rect x="739" y="322" width="194" height="12" rx="6" fill="#5A5F4F" fill-opacity="0.66"/>
+  <rect x="739" y="347" width="231" height="12" rx="6" fill="#5A5F4F" fill-opacity="0.32"/>
+  <defs>
+    <linearGradient id="bg" x1="105" y1="33" x2="1111" y2="607" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5EEE4"/>
+      <stop offset="1" stop-color="#E0CEB4"/>
+    </linearGradient>
+  </defs>
+</svg>

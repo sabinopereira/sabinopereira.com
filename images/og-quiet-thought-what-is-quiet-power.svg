@@ -1,0 +1,24 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#EEE3D3"/>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1015" cy="122" r="186" fill="#D7C8AC" fill-opacity="0.55"/>
+  <circle cx="1085" cy="516" r="154" fill="#C2B190" fill-opacity="0.38"/>
+  <circle cx="168" cy="86" r="108" fill="#F6F0E7" fill-opacity="0.78"/>
+  <rect x="62" y="58" width="1076" height="514" rx="28" fill="#FBF7F0" fill-opacity="0.72" stroke="#7D786C" stroke-opacity="0.16"/>
+  <rect x="98" y="98" width="168" height="36" rx="18" fill="#384032"/>
+  <text x="182" y="121" text-anchor="middle" fill="#F8F2E7" font-family="Georgia, 'Times New Roman', serif" font-size="16" letter-spacing="3">QUIET THOUGHT</text>
+  <text x="98" y="213" fill="#241E18" font-family="Georgia, 'Times New Roman', serif" font-size="66" font-weight="700">What Is</text>
+  <text x="98" y="288" fill="#241E18" font-family="Georgia, 'Times New Roman', serif" font-size="66" font-weight="700">Quiet Power?</text>
+  <text x="98" y="370" fill="#5A5146" font-family="Arial, Helvetica, sans-serif" font-size="28">Controlled strength in a noisy world.</text>
+  <text x="98" y="445" fill="#3F4637" font-family="Arial, Helvetica, sans-serif" font-size="22" letter-spacing="1.4">CALM. FOCUSED. UNSHAKEN.</text>
+  <text x="98" y="523" fill="#8A7D6A" font-family="Arial, Helvetica, sans-serif" font-size="20">Sabino Pereira</text>
+  <path d="M810 171C860 145 919 132 984 132C1001 132 1018 133 1034 136V420C1016 424 998 426 979 426C909 426 849 414 798 390C748 366 709 333 683 292C709 248 751 208 810 171Z" fill="#D9C39A" fill-opacity="0.85"/>
+  <path d="M711 292C744 332 804 352 892 352C947 352 999 343 1049 326" stroke="#3A4032" stroke-opacity="0.45" stroke-width="3"/>
+  <path d="M736 250C771 277 820 291 883 291C937 291 991 281 1044 261" stroke="#3A4032" stroke-opacity="0.32" stroke-width="3"/>
+  <defs>
+    <linearGradient id="bg" x1="120" y1="42" x2="1107" y2="604" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F3ECE1"/>
+      <stop offset="1" stop-color="#E5D5BC"/>
+    </linearGradient>
+  </defs>
+</svg>
