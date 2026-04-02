@@ -754,6 +754,12 @@ body {
   gap: 16px;
 }
 
+.monastery-subpage .site-header--pill {
+  border-radius: 24px;
+  border-bottom: 1px solid rgba(233, 222, 198, 0.24);
+  margin-bottom: 18px;
+}
+
 .monastery-subpage .branding-wrap {
   display: flex;
   align-items: center;
@@ -841,6 +847,14 @@ body {
   border-top: 0;
   border-radius: 0;
   box-shadow: 0 24px 60px rgba(8, 21, 25, 0.32);
+}
+
+.monastery-subpage .page-intro--about {
+  margin-top: 0;
+  border-top: 1px solid rgba(233, 222, 198, 0.24);
+  border-bottom: 1px solid rgba(233, 222, 198, 0.24);
+  border-radius: 24px;
+  padding: 34px 28px 28px;
 }
 
 .monastery-subpage .page-intro--library {
@@ -1198,7 +1212,7 @@ body {
 
 .monastery-subpage .about-body {
   max-width: 980px;
-  margin: 0 auto 0;
+  margin: 18px auto 0;
   padding: 0 24px 80px;
   background: transparent;
   border: 0;
@@ -4495,12 +4509,10 @@ section {
 
 .books-shelf {
   margin-top: 26px;
-  padding: 18px 12px 14px;
+  padding: 14px;
   border-radius: 24px;
   background:
-    radial-gradient(circle at left center, rgba(72, 112, 121, 0.22), transparent 30%),
-    radial-gradient(circle at right top, rgba(119, 156, 164, 0.14), transparent 28%),
-    linear-gradient(180deg, rgba(28, 61, 69, 0.18) 0%, rgba(28, 61, 69, 0.08) 100%);
+    linear-gradient(180deg, rgba(35, 68, 76, 0.3) 0%, rgba(28, 61, 69, 0.2) 100%);
 }
 
 .book-object-stage {
@@ -4517,20 +4529,20 @@ section {
 }
 
 .monastery-subpage .books-shelf .books-grid {
-  gap: 20px;
+  gap: 18px;
 }
 
 .monastery-subpage .books-shelf .book-card {
   background:
     linear-gradient(180deg, rgba(246, 241, 231, 0.94) 0%, rgba(241, 235, 224, 0.9) 100%);
   border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 10px 24px rgba(13, 27, 31, 0.08);
+  box-shadow: 0 8px 18px rgba(13, 27, 31, 0.07);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
 }
 
 .monastery-subpage .books-shelf .book-card:hover {
-  box-shadow: 0 14px 28px rgba(13, 27, 31, 0.1);
+  box-shadow: 0 10px 22px rgba(13, 27, 31, 0.09);
 }
 
 .monastery-subpage .books-shelf .book-card::before {
@@ -4540,13 +4552,17 @@ section {
   border-radius: inherit;
   pointer-events: none;
   background:
-    radial-gradient(circle at left top, rgba(107, 145, 154, 0.1), transparent 26%),
-    radial-gradient(circle at right bottom, rgba(31, 64, 72, 0.06), transparent 32%);
+    radial-gradient(circle at left top, rgba(107, 145, 154, 0.08), transparent 24%),
+    radial-gradient(circle at right bottom, rgba(31, 64, 72, 0.05), transparent 30%);
 }
 
 .monastery-subpage .books-shelf .book-card {
   position: relative;
   overflow: hidden;
+}
+
+.monastery-subpage .books-shelf .book-card + .book-card {
+  margin-top: 4px;
 }
 
 .monastery-subpage .idea-card {
@@ -4610,7 +4626,7 @@ section {
   }
 
   .books-shelf {
-    padding: 14px 10px 10px;
+    padding: 12px 10px;
   }
 }
 
