@@ -1152,6 +1152,31 @@ body {
   margin: 0 0 14px;
 }
 
+.monastery-subpage .qp-intro-pill {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 26px 24px 22px;
+  border-radius: 26px;
+  background: linear-gradient(180deg, rgba(246, 241, 231, 0.94) 0%, rgba(241, 235, 224, 0.9) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 24px rgba(13, 27, 31, 0.08);
+}
+
+.monastery-subpage .qp-intro-pill .page-kicker,
+.monastery-subpage .qp-intro-pill .page-title,
+.monastery-subpage .qp-intro-pill .page-text,
+.monastery-subpage .qp-intro-pill .page-subtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.monastery-subpage .qp-intro-pill .page-text,
+.monastery-subpage .qp-intro-pill .page-subtitle {
+  background: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .monastery-subpage .qp-inline-actions {
   display: flex;
   flex-wrap: wrap;
@@ -4320,6 +4345,11 @@ section {
   .monastery-subpage .qp-overview-grid,
   .workbooks-grid {
     grid-template-columns: 1fr;
+  }
+
+  .monastery-subpage .qp-intro-pill {
+    padding: 22px 18px 18px;
+    border-radius: 22px;
   }
 
   .intro,
