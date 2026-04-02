@@ -77,12 +77,34 @@ body {
   text-decoration: underline;
 }
 
+.home-classic-domain {
+  margin-top: 2px;
+  font-size: 0.98rem;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+}
+
+.home-classic-domain a {
+  color: #6d6154;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(109, 97, 84, 0.34);
+}
+
+.home-classic-domain a:hover {
+  color: #43382d;
+  border-color: currentColor;
+  opacity: 1;
+}
+
 .home-classic-intro {
-  margin-top: 18px;
-  font-size: 1.2rem;
-  line-height: 1.35;
+  margin-top: 20px;
+  font-size: 1.28rem;
+  line-height: 1.32;
   font-weight: 600;
   color: #362e27;
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .subline {
@@ -92,20 +114,31 @@ body {
 }
 
 .home-classic-nav {
-  margin-top: 24px;
-  padding-top: 14px;
+  margin-top: 28px;
+  padding-top: 18px;
   border-top: 1px solid rgba(94, 81, 64, 0.12);
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
 }
 
-.home-classic-nav a,
-.home-classic-nav span {
+.home-classic-nav a {
   color: #4f4438;
-  font-size: 1rem;
+  font-size: 0.98rem;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 250, 240, 0.46);
+  border: 1px solid rgba(94, 81, 64, 0.1);
+}
+
+.home-classic-nav a:hover {
+  color: #2f261d;
+  background: rgba(255, 250, 240, 0.78);
+  border-color: rgba(94, 81, 64, 0.18);
+  opacity: 1;
 }
 
 .home-classic section {
