@@ -907,7 +907,7 @@ body {
 }
 
 .shop-shelf {
-  padding: 18px 14px;
+  padding: 16px;
   margin-bottom: 2.5rem;
 }
 
@@ -1251,6 +1251,12 @@ body {
 .monastery-subpage .podcast-grid.podcast-shelf,
 .monastery-subpage .products-grid.shop-shelf {
   padding: 18px 14px;
+}
+
+.monastery-subpage .products-grid.shop-shelf {
+  max-width: 920px;
+  gap: 22px;
+  padding: 16px;
 }
 
 .monastery-subpage .contact-body,
@@ -3453,6 +3459,13 @@ a:hover { opacity: 0.7; }
   }
 }
 
+@media (min-width: 900px) {
+  .monastery-subpage .products-grid.shop-shelf {
+    grid-template-columns: repeat(2, minmax(0, 420px));
+    justify-content: center;
+  }
+}
+
 .product-card {
   border: 1px solid rgba(76, 63, 46, 0.08);
   border-radius: 12px;
@@ -3506,6 +3519,8 @@ a:hover { opacity: 0.7; }
   box-shadow: 0 10px 24px rgba(13, 27, 31, 0.08);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
+  padding: 0.95rem;
+  border-radius: 18px;
 }
 
 .monastery-subpage .product-card--feature {
@@ -3525,6 +3540,21 @@ a:hover { opacity: 0.7; }
 .monastery-subpage .product-card h2 {
   margin: 0 0 0.5rem;
   color: #231d17;
+}
+
+.monastery-subpage .product-card .product-media img {
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .monastery-subpage .products-grid.shop-shelf {
+    gap: 16px;
+    padding: 12px;
+  }
+
+  .monastery-subpage .product-card {
+    padding: 0.85rem;
+  }
 }
 
 .qp-question-card {
