@@ -4339,7 +4339,12 @@ section {
 
 .books-shelf {
   margin-top: 26px;
-  padding: 8px 0 8px;
+  padding: 22px 14px 18px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at left center, rgba(72, 112, 121, 0.22), transparent 30%),
+    radial-gradient(circle at right top, rgba(119, 156, 164, 0.14), transparent 28%),
+    linear-gradient(180deg, rgba(28, 61, 69, 0.18) 0%, rgba(28, 61, 69, 0.08) 100%);
 }
 
 .book-object-stage {
@@ -4353,6 +4358,39 @@ section {
   background: transparent;
   border: 0;
   box-shadow: none;
+}
+
+.monastery-subpage .books-shelf .books-grid {
+  gap: 26px;
+}
+
+.monastery-subpage .books-shelf .book-card {
+  background:
+    linear-gradient(180deg, rgba(246, 241, 231, 0.94) 0%, rgba(241, 235, 224, 0.9) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 10px 24px rgba(13, 27, 31, 0.08);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.monastery-subpage .books-shelf .book-card:hover {
+  box-shadow: 0 14px 28px rgba(13, 27, 31, 0.1);
+}
+
+.monastery-subpage .books-shelf .book-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at left top, rgba(107, 145, 154, 0.1), transparent 26%),
+    radial-gradient(circle at right bottom, rgba(31, 64, 72, 0.06), transparent 32%);
+}
+
+.monastery-subpage .books-shelf .book-card {
+  position: relative;
+  overflow: hidden;
 }
 
 .monastery-subpage .idea-card {
