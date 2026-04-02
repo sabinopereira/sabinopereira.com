@@ -4168,19 +4168,6 @@ section {
   margin-bottom: 2px;
 }
 
-.library-feature {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(220px, 0.8fr);
-  gap: 24px;
-  align-items: center;
-  padding: 24px;
-  border-radius: 14px;
-  border: 1px solid rgba(76, 63, 46, 0.08);
-  background:
-    radial-gradient(circle at top right, rgba(205, 190, 160, 0.12), transparent 28%),
-    rgba(255, 255, 255, 0.54);
-}
-
 .library-label {
   margin: 0 0 10px;
   color: #6f725c;
@@ -4189,29 +4176,14 @@ section {
   letter-spacing: 0.14em;
 }
 
-.library-feature h2,
 .library-section-head h2 {
   margin: 0 0 12px;
   color: #231d17;
 }
 
-.library-feature p,
 .library-section-head p {
   color: #5f5448;
   line-height: 1.75;
-}
-
-.library-feature-cover {
-  display: flex;
-  justify-content: center;
-}
-
-.library-feature-cover img {
-  width: 100%;
-  max-width: 250px;
-  margin: 0;
-  border-radius: 6px;
-  box-shadow: 0 14px 24px rgba(73, 59, 43, 0.1);
 }
 
 .library-section-head {
@@ -4310,13 +4282,16 @@ section {
 }
 
 .monastery-subpage .books-grid {
-  gap: 22px;
+  gap: 34px;
+  padding-top: 10px;
 }
 
 .monastery-subpage .book-card {
-  padding: 20px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.5);
+  padding: 22px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.46);
+  border: 1px solid rgba(76, 63, 46, 0.08);
+  box-shadow: 0 14px 28px rgba(17, 28, 32, 0.08);
 }
 
 .monastery-subpage .book-card h2 {
@@ -4330,13 +4305,38 @@ section {
 }
 
 .monastery-subpage .book-cover-img {
-  margin: 0 auto 18px;
+  margin: 0 auto;
   border-radius: 6px;
-  box-shadow: 0 10px 20px rgba(73, 59, 43, 0.08);
+  box-shadow:
+    -14px 16px 28px rgba(58, 44, 30, 0.12),
+    22px 24px 38px rgba(55, 42, 29, 0.24);
+  transform: perspective(1200px) rotateY(-14deg) rotateX(2deg);
+  transform-origin: center left;
 }
 
 .monastery-subpage .book-actions {
   margin-top: 16px;
+}
+
+.books-shelf {
+  margin-top: 18px;
+}
+
+.book-object-stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 360px;
+  margin-bottom: 18px;
+  padding: 24px 18px;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.58), transparent 28%),
+    linear-gradient(180deg, rgba(239, 230, 213, 0.98) 0%, rgba(226, 212, 191, 0.94) 100%);
+  border: 1px solid rgba(125, 106, 77, 0.16);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 18px 34px rgba(48, 36, 25, 0.14);
 }
 
 .monastery-subpage .idea-card {
@@ -4354,11 +4354,22 @@ section {
 }
 
 @media (max-width: 900px) {
-  .library-feature,
   .podcast-feature-card,
   .thoughts-feature-card,
   .thoughts-bottom-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .book-object-stage {
+    min-height: auto;
+    padding: 22px 16px;
+  }
+
+  .monastery-subpage .book-cover-img {
+    max-width: 190px;
+    transform: perspective(1000px) rotateY(-10deg) rotateX(1deg);
   }
 }
 
