@@ -734,16 +734,19 @@ body {
 }
 
 .monastery-subpage .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  width: 100%;
-  margin: 0;
+  position: relative;
+  top: auto;
+  z-index: 1;
+  width: min(980px, calc(100% - 48px));
+  margin: 28px auto 0;
   padding: 18px 24px 20px;
-  background: rgba(241, 235, 223, 0.9);
+  background: rgba(244, 238, 226, 0.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(76, 63, 46, 0.08);
+  border: 1px solid rgba(233, 222, 198, 0.24);
+  border-radius: 18px 18px 0 0;
+  border-bottom: 0;
+  box-shadow: 0 24px 60px rgba(8, 21, 25, 0.32);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -829,13 +832,14 @@ body {
 .monastery-subpage .page-intro,
 .monastery-subpage .page-hero-intro {
   max-width: 980px;
-  margin: 36px auto 0;
+  margin: 0 auto 0;
   padding: 30px 28px 10px;
   text-align: center;
   background: rgba(244, 238, 226, 0.92);
   border: 1px solid rgba(233, 222, 198, 0.24);
   border-bottom: 0;
-  border-radius: 18px 18px 0 0;
+  border-top: 0;
+  border-radius: 0;
   box-shadow: 0 24px 60px rgba(8, 21, 25, 0.32);
 }
 
@@ -1199,6 +1203,8 @@ body {
     align-items: center;
     gap: 14px;
     padding: 16px 18px;
+    width: calc(100% - 24px);
+    margin-top: 18px;
   }
 
   .monastery-subpage .site-nav {
@@ -1216,7 +1222,7 @@ body {
 
   .monastery-subpage .page-intro,
   .monastery-subpage .page-hero-intro {
-    margin-top: 20px;
+    margin-top: 0;
     padding: 24px 18px 8px;
   }
 }
