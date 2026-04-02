@@ -849,8 +849,7 @@ body {
 .monastery-subpage .page-intro .decision-line,
 .monastery-subpage .page-hero-intro p,
 .library-feature p,
-.library-section-head p,
-.thoughts-note p {
+.library-section-head p {
   padding: 12px 14px;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.32);
@@ -4153,15 +4152,13 @@ section {
 }
 
 .library-feature h2,
-.library-section-head h2,
-.thoughts-note h2 {
+.library-section-head h2 {
   margin: 0 0 12px;
   color: #231d17;
 }
 
 .library-feature p,
-.library-section-head p,
-.thoughts-note p {
+.library-section-head p {
   color: #5f5448;
   line-height: 1.75;
 }
@@ -4184,22 +4181,6 @@ section {
   margin-bottom: 28px;
 }
 
-.thoughts-note {
-  max-width: 1120px;
-  margin: 0 auto 28px;
-  padding: 0 24px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.thoughts-note-copy {
-  padding: 20px 22px;
-  border-radius: 12px;
-  border: 1px solid rgba(76, 63, 46, 0.08);
-  background: rgba(255, 255, 255, 0.5);
-}
-
 .thoughts-featured,
 .thoughts-section-head,
 .thoughts-bottom-grid {
@@ -4212,8 +4193,8 @@ section {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
   gap: 18px;
-  padding: 24px;
-  border-radius: 18px;
+  padding: 22px;
+  border-radius: 16px;
   border: 1px solid rgba(76, 63, 46, 0.08);
   background:
     radial-gradient(circle at top right, rgba(118, 146, 173, 0.24), transparent 34%),
@@ -4231,7 +4212,7 @@ section {
 .thoughts-feature-copy p,
 .thoughts-section-head p,
 .thoughts-bottom-card p,
-.thoughts-feature-list li {
+.thoughts-feature-side p {
   color: #5f5448;
   line-height: 1.75;
 }
@@ -4267,18 +4248,10 @@ section {
   border: 1px solid rgba(76, 63, 46, 0.06);
 }
 
-.thoughts-feature-list {
-  margin: 0;
-  padding-left: 1.1rem;
-}
-
-.thoughts-feature-list li {
-  margin-bottom: 0.75rem;
-}
-
 .thoughts-section-head {
   display: flex;
   align-items: end;
+  margin-bottom: 18px;
 }
 
 .idea-quick-meta {
@@ -4345,7 +4318,6 @@ section {
 @media (max-width: 900px) {
   .library-feature,
   .podcast-feature-card,
-  .thoughts-note,
   .thoughts-feature-card,
   .thoughts-bottom-grid {
     grid-template-columns: 1fr;
