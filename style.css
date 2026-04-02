@@ -726,11 +726,10 @@ body {
   max-width: none;
   margin: 0;
   background:
-    radial-gradient(circle at top right, rgba(120, 149, 176, 0.24), transparent 22%),
-    radial-gradient(circle at top left, rgba(186, 203, 219, 0.16), transparent 28%),
-    radial-gradient(circle at top, rgba(214, 198, 166, 0.1), transparent 32%),
-    linear-gradient(180deg, #f4f0ea 0%, #e4ebef 100%);
-  color: #2e2a25;
+    radial-gradient(circle at top center, rgba(121, 165, 173, 0.16), transparent 26%),
+    radial-gradient(circle at bottom right, rgba(77, 114, 122, 0.18), transparent 30%),
+    linear-gradient(180deg, #17353d 0%, #21434c 46%, #1a3b43 100%);
+  color: #eadfcd;
   font-family: "Times New Roman", Georgia, serif;
 }
 
@@ -741,7 +740,7 @@ body {
   width: 100%;
   margin: 0;
   padding: 18px 24px 20px;
-  background: rgba(233, 238, 240, 0.88);
+  background: rgba(241, 235, 223, 0.9);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(76, 63, 46, 0.08);
@@ -816,16 +815,25 @@ body {
 .monastery-subpage .page,
 .monastery-subpage main:not(.monastery-page):not(.knowledge-page):not(.editorial-page):not(.premium-page):not(.home-classic) {
   max-width: 1040px;
-  margin: 0 auto;
+  margin: 28px auto 0;
   padding: 28px 24px 72px;
+  background: rgba(244, 238, 226, 0.92);
+  border: 1px solid rgba(233, 222, 198, 0.24);
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(8, 21, 25, 0.32);
 }
 
 .monastery-subpage .page-intro,
 .monastery-subpage .page-hero-intro {
   max-width: 860px;
-  margin: 52px auto 28px;
-  padding: 0;
+  margin: 28px auto 0;
+  padding: 30px 28px 10px;
   text-align: center;
+  background: rgba(244, 238, 226, 0.92);
+  border: 1px solid rgba(233, 222, 198, 0.24);
+  border-bottom: 0;
+  border-radius: 18px 18px 0 0;
+  box-shadow: 0 24px 60px rgba(8, 21, 25, 0.32);
 }
 
 .monastery-subpage .page-kicker {
@@ -1185,7 +1193,8 @@ body {
 
   .monastery-subpage .page-intro,
   .monastery-subpage .page-hero-intro {
-    margin-top: 40px;
+    margin-top: 20px;
+    padding: 24px 18px 8px;
   }
 }
 
