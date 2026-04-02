@@ -1121,13 +1121,12 @@ body {
 
 .monastery-subpage .qp-book-main {
   max-width: 980px;
-  margin: 0 auto 0;
+  margin: 18px auto 0;
   padding: 0 24px 72px;
-  background: rgba(244, 238, 226, 0.92);
-  border: 1px solid rgba(233, 222, 198, 0.24);
-  border-top: 0;
-  border-radius: 0 0 18px 18px;
-  box-shadow: 0 24px 60px rgba(8, 21, 25, 0.32);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .monastery-subpage .qp-feature-grid {
@@ -1149,21 +1148,38 @@ body {
   margin-top: 0;
 }
 
+.monastery-subpage .qp-feature-copy h2 {
+  margin: 0 0 14px;
+}
+
+.monastery-subpage .qp-inline-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.monastery-subpage .qp-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
 .monastery-subpage .qp-summary-panel {
   padding: 24px;
-  border-radius: 12px;
-  border: 1px solid rgba(76, 63, 46, 0.08);
-  background: rgba(255, 255, 255, 0.5);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: linear-gradient(180deg, rgba(246, 241, 231, 0.94) 0%, rgba(241, 235, 224, 0.9) 100%);
+  box-shadow: 0 10px 24px rgba(13, 27, 31, 0.08);
 }
 
 .monastery-subpage .qp-bundle-panel {
   margin-top: 28px;
   padding: 24px;
-  border-radius: 12px;
-  border: 1px solid rgba(76, 63, 46, 0.08);
-  background:
-    radial-gradient(circle at top right, rgba(205, 190, 160, 0.1), transparent 30%),
-    rgba(255, 255, 255, 0.52);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: linear-gradient(180deg, rgba(246, 241, 231, 0.94) 0%, rgba(241, 235, 224, 0.9) 100%);
+  box-shadow: 0 10px 24px rgba(13, 27, 31, 0.08);
 }
 
 .monastery-subpage .qp-bundle-panel p {
@@ -1198,9 +1214,15 @@ body {
 
 .monastery-subpage .qp-workbooks-panel {
   padding: 24px;
-  border-radius: 12px;
-  border: 1px solid rgba(76, 63, 46, 0.08);
-  background: rgba(255, 255, 255, 0.5);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: linear-gradient(180deg, rgba(246, 241, 231, 0.94) 0%, rgba(241, 235, 224, 0.9) 100%);
+  box-shadow: 0 10px 24px rgba(13, 27, 31, 0.08);
+}
+
+.monastery-subpage .qp-summary-note {
+  margin-top: 14px;
+  color: #85745f;
 }
 
 .monastery-subpage .qp-hero-copy .page-kicker {
@@ -4295,6 +4317,7 @@ section {
 
 @media (max-width: 720px) {
   .monastery-subpage .qp-feature-grid,
+  .monastery-subpage .qp-overview-grid,
   .workbooks-grid {
     grid-template-columns: 1fr;
   }
