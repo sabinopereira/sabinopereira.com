@@ -866,6 +866,49 @@ body {
   padding-top: 0;
 }
 
+.podcast-shelf,
+.shop-shelf,
+.about-shelf {
+  background:
+    radial-gradient(circle at left center, rgba(72, 112, 121, 0.22), transparent 30%),
+    radial-gradient(circle at right top, rgba(119, 156, 164, 0.14), transparent 28%),
+    linear-gradient(180deg, rgba(28, 61, 69, 0.18) 0%, rgba(28, 61, 69, 0.08) 100%);
+  border-radius: 24px;
+}
+
+.podcast-shelf {
+  padding: 18px 14px;
+}
+
+.podcast-shelf--thin {
+  padding: 0;
+  background: transparent;
+}
+
+.shop-shelf {
+  padding: 18px 14px;
+  margin-bottom: 2.5rem;
+}
+
+.about-shelf {
+  padding: 18px;
+  margin-bottom: 28px;
+}
+
+.about-shelf--thin {
+  margin-bottom: 0;
+}
+
+.monastery-subpage .podcast-page-main,
+.monastery-subpage .shop-page-main,
+.monastery-subpage .about-page-main {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+  padding-top: 0;
+}
+
 .monastery-subpage .page-kicker {
   color: #6f725c;
 }
@@ -1158,11 +1201,10 @@ body {
   max-width: 980px;
   margin: 0 auto 0;
   padding: 0 24px 80px;
-  background: rgba(244, 238, 226, 0.92);
-  border: 1px solid rgba(233, 222, 198, 0.24);
-  border-top: 0;
-  border-radius: 0 0 18px 18px;
-  box-shadow: 0 24px 60px rgba(8, 21, 25, 0.32);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .monastery-subpage .about-closing {
@@ -1185,6 +1227,11 @@ body {
   padding: 0 24px 48px;
 }
 
+.monastery-subpage .podcast-grid.podcast-shelf,
+.monastery-subpage .products-grid.shop-shelf {
+  padding: 18px 14px;
+}
+
 .monastery-subpage .contact-body,
 .monastery-subpage .thought-article-shell {
   max-width: 980px;
@@ -1201,6 +1248,11 @@ body {
   max-width: 860px;
   margin: 0 auto;
   padding: 0 24px;
+}
+
+.monastery-subpage .shop-footer-note {
+  max-width: 760px;
+  padding-bottom: 24px;
 }
 
 .monastery-subpage .page-hero-intro .page-kicker {
