@@ -850,6 +850,14 @@ body {
     rgba(244, 238, 226, 0.92);
 }
 
+.monastery-subpage .books-page-main {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+  padding-top: 0;
+}
+
 .monastery-subpage .page-kicker {
   color: #6f725c;
 }
@@ -4290,7 +4298,7 @@ section {
 
 .monastery-subpage .books-grid {
   gap: 34px;
-  padding-top: 10px;
+  padding-top: 6px;
 }
 
 .monastery-subpage .book-card {
@@ -4298,7 +4306,7 @@ section {
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.46);
   border: 1px solid rgba(76, 63, 46, 0.08);
-  box-shadow: 0 14px 28px rgba(17, 28, 32, 0.08);
+  box-shadow: 0 18px 34px rgba(9, 23, 27, 0.18);
 }
 
 .monastery-subpage .book-card h2 {
@@ -4330,25 +4338,21 @@ section {
 }
 
 .books-shelf {
-  margin-top: 18px;
+  margin-top: 26px;
+  padding: 8px 0 8px;
 }
 
 .book-object-stage {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 360px;
+  min-height: 300px;
   margin-bottom: 18px;
-  padding: 24px 18px;
-  border-radius: 18px;
-  background:
-    radial-gradient(circle at top left, rgba(144, 183, 190, 0.2), transparent 28%),
-    radial-gradient(circle at bottom right, rgba(35, 71, 80, 0.2), transparent 34%),
-    linear-gradient(180deg, rgba(31, 64, 72, 0.94) 0%, rgba(25, 54, 61, 0.98) 100%);
-  border: 1px solid rgba(125, 171, 181, 0.16);
-  box-shadow:
-    inset 0 1px 0 rgba(201, 226, 230, 0.18),
-    0 18px 34px rgba(9, 23, 27, 0.24);
+  padding: 12px 10px;
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
 }
 
 .monastery-subpage .idea-card {
