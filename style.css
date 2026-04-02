@@ -4322,6 +4322,7 @@ section {
 .monastery-subpage .book-cover-img {
   margin: 0 auto;
   border-radius: 6px;
+  max-width: 182px;
   box-shadow:
     -14px 16px 28px rgba(58, 44, 30, 0.12),
     22px 24px 38px rgba(55, 42, 29, 0.24);
@@ -4331,10 +4332,6 @@ section {
 
 .monastery-subpage .book-actions {
   margin-top: 16px;
-}
-
-.monastery-subpage .book-cover-img {
-  max-width: 205px;
 }
 
 .books-shelf {
