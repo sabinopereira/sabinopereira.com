@@ -881,8 +881,7 @@ body {
 }
 
 .podcast-shelf--thin {
-  padding: 0;
-  background: transparent;
+  padding: 12px 10px;
 }
 
 .shop-shelf {
@@ -2728,6 +2727,12 @@ a:hover { opacity: 0.7; }
   padding: 0 24px;
 }
 
+.monastery-subpage .podcast-featured.podcast-shelf {
+  max-width: 980px;
+  margin: 22px auto 26px;
+  padding: 18px 14px;
+}
+
 .podcast-feature-card {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
@@ -2782,6 +2787,15 @@ a:hover { opacity: 0.7; }
 .podcast-section-head {
   display: flex;
   align-items: end;
+}
+
+.monastery-subpage .podcast-section-head {
+  max-width: 760px;
+  margin-bottom: 16px;
+}
+
+.monastery-subpage .podcast-section-head p {
+  margin-bottom: 0;
 }
 
 .share-inline {
@@ -2876,6 +2890,18 @@ a:hover { opacity: 0.7; }
   font-size: 0.95rem;
 }
 
+.monastery-subpage .podcast-card {
+  background: linear-gradient(180deg, rgba(246, 241, 231, 0.94) 0%, rgba(241, 235, 224, 0.9) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 10px 24px rgba(13, 27, 31, 0.08);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.monastery-subpage .podcast-card--muted {
+  background: linear-gradient(180deg, rgba(239, 234, 223, 0.82) 0%, rgba(235, 229, 218, 0.76) 100%);
+}
+
 .about-body {
   max-width: 1100px;
   margin: 0 auto;
@@ -2962,6 +2988,65 @@ a:hover { opacity: 0.7; }
   text-align: center;
   padding-top: 2.5rem;
   border-top: 1px solid #eee;
+}
+
+.monastery-subpage .about-text.about-shelf {
+  max-width: 820px;
+  background:
+    radial-gradient(circle at left center, rgba(72, 112, 121, 0.2), transparent 34%),
+    radial-gradient(circle at right top, rgba(119, 156, 164, 0.12), transparent 26%),
+    linear-gradient(180deg, rgba(28, 61, 69, 0.14) 0%, rgba(28, 61, 69, 0.08) 100%);
+  border: 0;
+  box-shadow: none;
+  border-radius: 24px;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.monastery-subpage .about-text.about-shelf p {
+  margin: 0;
+}
+
+.monastery-subpage .about-text.about-shelf p + p {
+  margin-top: 1rem;
+}
+
+.monastery-subpage .about-text.about-shelf p {
+  padding: 22px 24px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(246, 241, 231, 0.94) 0%, rgba(241, 235, 224, 0.9) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 10px 24px rgba(13, 27, 31, 0.08);
+}
+
+.monastery-subpage .about-columns.about-shelf {
+  border-radius: 24px;
+}
+
+.monastery-subpage .about-columns.about-shelf .about-card {
+  background: linear-gradient(180deg, rgba(246, 241, 231, 0.94) 0%, rgba(241, 235, 224, 0.9) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 10px 24px rgba(13, 27, 31, 0.08);
+}
+
+.monastery-subpage .about-closing.about-shelf {
+  max-width: 760px;
+  border-top: 0;
+  border-radius: 24px;
+  padding: 18px;
+}
+
+.monastery-subpage .about-closing-card {
+  padding: 24px 26px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(246, 241, 231, 0.94) 0%, rgba(241, 235, 224, 0.9) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 10px 24px rgba(13, 27, 31, 0.08);
+}
+
+.monastery-subpage .about-closing-card .about-cta {
+  margin-top: 18px;
 }
 
 .about-closing p {
@@ -3379,8 +3464,20 @@ a:hover { opacity: 0.7; }
   margin-bottom: 4rem;
 }
 
+.monastery-subpage .shop-section-head h2 {
+  margin-bottom: 0;
+}
+
+.monastery-subpage .product-card {
+  background: linear-gradient(180deg, rgba(246, 241, 231, 0.94) 0%, rgba(241, 235, 224, 0.9) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 10px 24px rgba(13, 27, 31, 0.08);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
 .monastery-subpage .product-card--feature {
-  background: rgba(255, 255, 255, 0.46);
+  background: linear-gradient(180deg, rgba(246, 241, 231, 0.94) 0%, rgba(241, 235, 224, 0.9) 100%);
 }
 
 .monastery-subpage .product-card--feature .product-card-inner {
