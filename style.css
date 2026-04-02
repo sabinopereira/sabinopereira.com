@@ -814,7 +814,7 @@ body {
 .monastery-subpage .page-main,
 .monastery-subpage .page,
 .monastery-subpage main:not(.monastery-page):not(.knowledge-page):not(.editorial-page):not(.premium-page):not(.home-classic) {
-  max-width: 1040px;
+  max-width: 980px;
   margin: 0 auto 0;
   padding: 28px 24px 72px;
   background: rgba(244, 238, 226, 0.92);
@@ -828,8 +828,8 @@ body {
 
 .monastery-subpage .page-intro,
 .monastery-subpage .page-hero-intro {
-  max-width: 1040px;
-  margin: 24px auto 0;
+  max-width: 980px;
+  margin: 36px auto 0;
   padding: 30px 28px 10px;
   text-align: center;
   background: rgba(244, 238, 226, 0.92);
@@ -1029,7 +1029,7 @@ body {
 }
 
 .monastery-subpage .qp-book-main {
-  max-width: 1040px;
+  max-width: 980px;
   margin: 0 auto 0;
   padding: 0 24px 72px;
   background: rgba(244, 238, 226, 0.92);
@@ -1128,7 +1128,7 @@ body {
 }
 
 .monastery-subpage .about-body {
-  max-width: 1040px;
+  max-width: 980px;
   margin: 0 auto 0;
   padding: 0 24px 80px;
   background: rgba(244, 238, 226, 0.92);
@@ -1153,13 +1153,14 @@ body {
 .monastery-subpage .podcast-grid,
 .monastery-subpage .products-grid,
 .monastery-subpage .contact-body {
-  max-width: 1040px;
+  max-width: 980px;
   margin: 0 auto 0;
   padding: 0 24px 48px;
 }
 
 .monastery-subpage .contact-body,
 .monastery-subpage .thought-article-shell {
+  max-width: 980px;
   background: rgba(244, 238, 226, 0.92);
   border: 1px solid rgba(233, 222, 198, 0.24);
   border-top: 0;
