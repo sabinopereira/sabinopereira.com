@@ -815,18 +815,21 @@ body {
 .monastery-subpage .page,
 .monastery-subpage main:not(.monastery-page):not(.knowledge-page):not(.editorial-page):not(.premium-page):not(.home-classic) {
   max-width: 1040px;
-  margin: 28px auto 0;
+  margin: 0 auto 0;
   padding: 28px 24px 72px;
   background: rgba(244, 238, 226, 0.92);
   border: 1px solid rgba(233, 222, 198, 0.24);
+  border-top: 0;
   border-radius: 18px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   box-shadow: 0 24px 60px rgba(8, 21, 25, 0.32);
 }
 
 .monastery-subpage .page-intro,
 .monastery-subpage .page-hero-intro {
-  max-width: 860px;
-  margin: 28px auto 0;
+  max-width: 1040px;
+  margin: 24px auto 0;
   padding: 30px 28px 10px;
   text-align: center;
   background: rgba(244, 238, 226, 0.92);
@@ -1026,9 +1029,14 @@ body {
 }
 
 .monastery-subpage .qp-book-main {
-  max-width: 860px;
-  margin: 0 auto;
+  max-width: 1040px;
+  margin: 0 auto 0;
   padding: 0 24px 72px;
+  background: rgba(244, 238, 226, 0.92);
+  border: 1px solid rgba(233, 222, 198, 0.24);
+  border-top: 0;
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 24px 60px rgba(8, 21, 25, 0.32);
 }
 
 .monastery-subpage .qp-feature-grid {
@@ -1120,9 +1128,14 @@ body {
 }
 
 .monastery-subpage .about-body {
-  max-width: 1120px;
-  margin: 0 auto;
+  max-width: 1040px;
+  margin: 0 auto 0;
   padding: 0 24px 80px;
+  background: rgba(244, 238, 226, 0.92);
+  border: 1px solid rgba(233, 222, 198, 0.24);
+  border-top: 0;
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 24px 60px rgba(8, 21, 25, 0.32);
 }
 
 .monastery-subpage .about-closing {
@@ -1140,9 +1153,18 @@ body {
 .monastery-subpage .podcast-grid,
 .monastery-subpage .products-grid,
 .monastery-subpage .contact-body {
-  max-width: 1120px;
-  margin: 0 auto;
+  max-width: 1040px;
+  margin: 0 auto 0;
   padding: 0 24px 48px;
+}
+
+.monastery-subpage .contact-body,
+.monastery-subpage .thought-article-shell {
+  background: rgba(244, 238, 226, 0.92);
+  border: 1px solid rgba(233, 222, 198, 0.24);
+  border-top: 0;
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 24px 60px rgba(8, 21, 25, 0.32);
 }
 
 .monastery-subpage .podcast-footer-note,
