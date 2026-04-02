@@ -1096,7 +1096,7 @@ body {
 .monastery-subpage .site-footer {
   margin-top: 56px;
   padding: 28px 24px 40px;
-  text-align: left;
+  text-align: center;
   border-top: 1px solid rgba(76, 63, 46, 0.12);
   background: transparent;
 }
@@ -1295,6 +1295,10 @@ body {
     margin-top: 18px;
   }
 
+  .monastery-subpage .site-header--pill {
+    margin-bottom: 14px;
+  }
+
   .monastery-subpage .site-nav {
     width: 100%;
     flex-wrap: wrap;
@@ -1312,6 +1316,11 @@ body {
   .monastery-subpage .page-hero-intro {
     margin-top: 0;
     padding: 24px 18px 8px;
+  }
+
+  .monastery-subpage .page-intro--about {
+    margin-top: 0;
+    padding: 28px 18px 22px;
   }
 }
 
