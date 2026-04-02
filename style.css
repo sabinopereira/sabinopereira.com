@@ -60,11 +60,28 @@ body {
   border-bottom: 1px solid rgba(94, 81, 64, 0.14);
 }
 
+.home-classic-signature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.home-classic-avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: block;
+  border: 1px solid rgba(94, 81, 64, 0.2);
+  box-shadow: 0 8px 18px rgba(55, 42, 29, 0.12);
+  object-fit: cover;
+}
+
 .home-classic-header h1 {
   font-size: clamp(2.8rem, 6vw, 4rem);
   font-weight: 700;
   color: #5c4f3f;
-  margin-bottom: 6px;
+  margin-bottom: 0;
   line-height: 1.2;
 }
 
@@ -78,7 +95,7 @@ body {
 }
 
 .home-classic-domain {
-  margin-top: 2px;
+  margin-top: 10px;
   font-size: 0.98rem;
   letter-spacing: 0.06em;
   text-transform: lowercase;
@@ -102,7 +119,7 @@ body {
   line-height: 1.32;
   font-weight: 600;
   color: #362e27;
-  max-width: 620px;
+  max-width: 520px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -334,6 +351,21 @@ body {
   text-align: center;
   font-size: 0.85rem;
   color: rgba(236, 223, 205, 0.72);
+}
+
+.home-classic-footer-signature {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.home-classic-footer-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: block;
+  object-fit: cover;
+  border: 1px solid rgba(236, 223, 205, 0.26);
 }
 
 .monastery-body {
