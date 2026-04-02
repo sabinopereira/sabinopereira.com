@@ -4456,12 +4456,12 @@ section {
 }
 
 .monastery-subpage .books-grid {
-  gap: 34px;
-  padding-top: 6px;
+  gap: 26px;
+  padding-top: 2px;
 }
 
 .monastery-subpage .book-card {
-  padding: 22px;
+  padding: 18px;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.46);
   border: 1px solid rgba(76, 63, 46, 0.08);
@@ -4481,10 +4481,10 @@ section {
 .monastery-subpage .book-cover-img {
   margin: 0 auto;
   border-radius: 6px;
-  max-width: 182px;
+  max-width: 154px;
   box-shadow:
-    -14px 16px 28px rgba(58, 44, 30, 0.12),
-    22px 24px 38px rgba(55, 42, 29, 0.24);
+    -12px 14px 24px rgba(58, 44, 30, 0.1),
+    18px 20px 30px rgba(55, 42, 29, 0.2);
   transform: perspective(1200px) rotateY(-14deg) rotateX(2deg);
   transform-origin: center left;
 }
@@ -4495,7 +4495,7 @@ section {
 
 .books-shelf {
   margin-top: 26px;
-  padding: 22px 14px 18px;
+  padding: 18px 12px 14px;
   border-radius: 24px;
   background:
     radial-gradient(circle at left center, rgba(72, 112, 121, 0.22), transparent 30%),
@@ -4507,9 +4507,9 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 300px;
-  margin-bottom: 18px;
-  padding: 12px 10px;
+  min-height: 248px;
+  margin-bottom: 14px;
+  padding: 8px 8px;
   border-radius: 0;
   background: transparent;
   border: 0;
@@ -4517,7 +4517,7 @@ section {
 }
 
 .monastery-subpage .books-shelf .books-grid {
-  gap: 26px;
+  gap: 20px;
 }
 
 .monastery-subpage .books-shelf .book-card {
@@ -4597,12 +4597,20 @@ section {
 @media (max-width: 720px) {
   .book-object-stage {
     min-height: auto;
-    padding: 22px 16px;
+    padding: 10px 6px 6px;
   }
 
   .monastery-subpage .book-cover-img {
-    max-width: 190px;
-    transform: perspective(1000px) rotateY(-10deg) rotateX(1deg);
+    max-width: 136px;
+    transform: perspective(900px) rotateY(-9deg) rotateX(1deg);
+  }
+
+  .monastery-subpage .book-card {
+    padding: 16px;
+  }
+
+  .books-shelf {
+    padding: 14px 10px 10px;
   }
 }
 
@@ -4846,8 +4854,9 @@ section {
     grid-template-columns: 1fr;
   }
 
+  .monastery-subpage .book-cover-img,
   .book-cover-img {
-    max-width: 150px;
+    max-width: 124px;
     margin: 0 auto 12px;
   }
 }
