@@ -1253,6 +1253,12 @@ body {
   padding: 18px 14px;
 }
 
+.monastery-subpage .podcast-grid.podcast-shelf {
+  max-width: 920px;
+  gap: 22px;
+  padding: 16px;
+}
+
 .monastery-subpage .products-grid.shop-shelf {
   max-width: 920px;
   gap: 22px;
@@ -2766,9 +2772,9 @@ a:hover { opacity: 0.7; }
 }
 
 .monastery-subpage .podcast-featured.podcast-shelf {
-  max-width: 980px;
+  max-width: 920px;
   margin: 22px auto 26px;
-  padding: 18px 14px;
+  padding: 16px;
 }
 
 .podcast-feature-card {
@@ -2934,6 +2940,7 @@ a:hover { opacity: 0.7; }
   box-shadow: 0 10px 24px rgba(13, 27, 31, 0.08);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
+  border-radius: 18px;
 }
 
 .monastery-subpage .podcast-card--muted {
@@ -4433,6 +4440,10 @@ section {
   padding: 0 24px;
 }
 
+.monastery-subpage .thoughts-featured {
+  max-width: 920px;
+}
+
 .thoughts-feature-card {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
@@ -4619,7 +4630,7 @@ section {
 
 .thoughts-shelf {
   margin-top: 18px;
-  padding: 22px 14px 18px;
+  padding: 16px;
   border-radius: 24px;
   background:
     radial-gradient(circle at left center, rgba(72, 112, 121, 0.22), transparent 30%),
@@ -4634,10 +4645,13 @@ section {
   box-shadow: 0 10px 24px rgba(13, 27, 31, 0.08);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
+  border-radius: 18px;
 }
 
 .monastery-subpage .thoughts-shelf .ideas-grid {
   margin-top: 0;
+  max-width: 920px;
+  gap: 22px;
 }
 
 .monastery-subpage .idea-number {
@@ -4675,6 +4689,17 @@ section {
 
   .books-shelf {
     padding: 12px 10px;
+  }
+
+  .monastery-subpage .podcast-featured.podcast-shelf,
+  .monastery-subpage .podcast-grid.podcast-shelf,
+  .monastery-subpage .thoughts-shelf {
+    padding: 12px;
+  }
+
+  .monastery-subpage .podcast-grid.podcast-shelf,
+  .monastery-subpage .thoughts-shelf .ideas-grid {
+    gap: 16px;
   }
 }
 
