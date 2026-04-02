@@ -316,10 +316,10 @@ body {
 
 .monastery-header,
 .monastery-hero,
-.monastery-book,
-.monastery-grid,
+.monastery-paths,
+.monastery-feature-strip,
 .monastery-footer {
-  margin-top: 108px;
+  margin-top: 96px;
 }
 
 .monastery-header {
@@ -349,7 +349,7 @@ body {
 }
 
 .monastery-intro {
-  max-width: 520px;
+  max-width: 620px;
   margin-top: 18px;
   color: #5c5043;
   font-size: 1.16rem;
@@ -377,7 +377,8 @@ body {
 }
 
 .monastery-nav a,
-.monastery-panel a,
+.monastery-path-card a,
+.monastery-feature-panel a,
 .monastery-footer-links a {
   color: #4e4337;
   text-decoration: none;
@@ -405,7 +406,8 @@ body {
 }
 
 .monastery-nav a:hover,
-.monastery-panel a:hover,
+.monastery-path-card a:hover,
+.monastery-feature-panel a:hover,
 .monastery-footer-links a:hover {
   color: #1f1914;
   border-color: currentColor;
@@ -421,23 +423,25 @@ body {
 }
 
 .monastery-hero {
-  max-width: 620px;
+  max-width: 700px;
 }
 
 .monastery-hero h2 {
-  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  font-size: clamp(2.5rem, 4.8vw, 3.9rem);
   margin-bottom: 16px;
 }
 
 .monastery-hero-text,
 .monastery-note,
-.monastery-panel p {
+.monastery-path-card p,
+.monastery-feature-panel p {
   color: #5f5448;
   line-height: 1.7;
 }
 
 .monastery-hero-text,
-.monastery-panel p {
+.monastery-path-card p,
+.monastery-feature-panel p {
   padding: 12px 14px;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.3);
@@ -460,13 +464,13 @@ body {
   margin-top: 18px;
 }
 
-.monastery-start {
+.monastery-paths {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
 }
 
-.monastery-start-card {
+.monastery-path-card {
   padding: 22px;
   border: 1px solid rgba(76, 63, 46, 0.08);
   border-radius: 16px;
@@ -474,14 +478,15 @@ body {
   box-shadow: 0 4px 12px rgba(73, 59, 43, 0.03);
 }
 
-.monastery-start-card-primary {
+.monastery-path-card-primary {
   background:
     radial-gradient(circle at top right, rgba(124, 151, 176, 0.26), transparent 34%),
     radial-gradient(circle at bottom left, rgba(205, 190, 160, 0.1), transparent 40%),
     rgba(245, 247, 247, 0.88);
 }
 
-.monastery-start-card h3 {
+.monastery-path-card h3,
+.monastery-feature-panel h3 {
   color: #231d17;
   font-size: 1.65rem;
   margin-bottom: 10px;
@@ -521,60 +526,19 @@ body {
   opacity: 1;
 }
 
-.monastery-book {
+.monastery-feature-strip {
   display: grid;
-  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
-  gap: 28px;
-  align-items: start;
-  padding-top: 12px;
-}
-
-.monastery-book-cover img {
-  width: 100%;
-  max-width: 260px;
-  display: block;
-  border-radius: 4px;
-  box-shadow: 0 16px 30px rgba(73, 59, 43, 0.12);
-}
-
-.monastery-list {
-  margin: 0;
-  padding-left: 1rem;
-  color: #43382e;
-  line-height: 1.9;
-}
-
-.monastery-note {
-  margin-top: 20px;
-  max-width: 420px;
-}
-
-.monastery-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1.05fr 1.15fr 1fr;
   gap: 16px;
 }
 
-.monastery-grid-wide {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.monastery-grid-wide .monastery-panel {
-  min-height: 100%;
-}
-
-.monastery-panel {
+.monastery-feature-panel {
   padding: 20px;
+  min-height: 100%;
   border: 1px solid rgba(76, 63, 46, 0.08);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.46);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.48);
   box-shadow: 0 4px 12px rgba(73, 59, 43, 0.03);
-}
-
-.monastery-panel h3 {
-  color: #231d17;
-  font-size: 1.45rem;
-  margin-bottom: 10px;
 }
 
 .monastery-chip-row {
@@ -594,17 +558,6 @@ body {
   border: 1px solid rgba(111, 114, 92, 0.14);
   color: #5b584d;
   font-size: 0.82rem;
-}
-
-.monastery-panel-manifesto {
-  background: rgba(251, 249, 244, 0.72);
-}
-
-.monastery-panel-note {
-  color: #85745f;
-  font-size: 0.92rem;
-  margin-top: 12px;
-  margin-bottom: 18px;
 }
 
 .monastery-footer {
@@ -1756,9 +1709,8 @@ body {
     padding: 28px 18px 64px;
   }
 
-  .monastery-book,
-  .monastery-grid,
-  .monastery-start,
+  .monastery-paths,
+  .monastery-feature-strip,
   .monastery-store-grid {
     grid-template-columns: 1fr;
   }
@@ -1769,6 +1721,10 @@ body {
 
   .monastery-hero h2 {
     font-size: 2.3rem;
+  }
+
+  .monastery-nav {
+    gap: 14px;
   }
 
   .editorial-page {
