@@ -140,7 +140,7 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 8px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
 }
 
@@ -148,21 +148,32 @@ body {
   color: #4f4438;
   font-size: 0.98rem;
   text-decoration: none;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: rgba(255, 250, 240, 0.46);
-  border: 1px solid rgba(94, 81, 64, 0.1);
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .home-classic-nav a:hover {
   color: #2f261d;
-  background: rgba(255, 250, 240, 0.78);
-  border-color: rgba(94, 81, 64, 0.18);
+  background: rgba(255, 250, 240, 0.54);
+  border-color: rgba(94, 81, 64, 0.12);
+  box-shadow: 0 6px 14px rgba(60, 47, 34, 0.08);
   opacity: 1;
+}
+
+.home-classic-separator {
+  color: rgba(94, 81, 64, 0.55);
+  padding: 4px 2px;
 }
 
 .home-classic section {
   margin-top: 64px;
+}
+
+.home-book-feature {
+  margin-top: 52px;
 }
 
 .home-section-label {
@@ -237,6 +248,10 @@ body {
   line-height: 1.45;
   margin-bottom: 14px;
   color: #342c25;
+}
+
+.home-book-summary .btn-secondary {
+  margin-left: 10px;
 }
 
 .btn-primary {
