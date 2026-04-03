@@ -115,6 +115,29 @@ button {
   max-width: 32rem;
 }
 
+.game-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  color: rgba(248, 250, 252, 0.82);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.game-back-link::before {
+  content: "<";
+  color: var(--accent);
+}
+
+.game-back-link:hover,
+.game-back-link:focus-visible {
+  color: var(--text);
+  outline: none;
+}
+
 .eyebrow,
 .customer-label,
 .hud-label {
