@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiet Power Cafe</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <section class="game-frame">
+      <header class="game-topbar">
+        <div>
+          <p class="eyebrow">Quiet Power Cafe</p>
+          <h1>Serve calm. Ignore noise.</h1>
+        </div>
+        <div class="hud">
+          <div class="hud-card">
+            <span class="hud-label">Score</span>
+            <strong id="score">0</strong>
+          </div>
+          <div class="hud-card">
+            <span class="hud-label">Time Left</span>
+            <strong id="game-time">60s</strong>
+          </div>
+        </div>
+      </header>
+
+      <section class="game-stage">
+        <div id="game-screen" class="customer-card is-visible" aria-live="polite">
+          <div class="customer-head">
+            <div>
+              <p class="customer-label">Current Customer</p>
+              <h2 id="scenario-title">Ready to open the cafe?</h2>
+            </div>
+            <span id="decision-time" class="decision-time">8s</span>
+          </div>
+
+          <div class="timer-track" aria-hidden="true">
+            <div id="timer-bar" class="timer-bar"></div>
+          </div>
+
+          <p id="scenario-description" class="scenario-description">
+            Keep the room steady. Choose the calmest response before the moment passes.
+          </p>
+
+          <div id="choices" class="choices">
+            <button class="choice-btn" id="start-button" type="button">Start Service</button>
+          </div>
+
+          <p id="feedback" class="feedback">A quieter shift begins with one good decision.</p>
+        </div>
+
+        <div id="game-over" class="game-over hidden" aria-live="polite">
+          <p class="eyebrow">Shift Complete</p>
+          <h2>Game Over</h2>
+          <p class="game-over-copy">Your final score:</p>
+          <p id="final-score" class="final-score">0</p>
+          <button id="restart-button" class="restart-btn" type="button">Restart Shift</button>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
