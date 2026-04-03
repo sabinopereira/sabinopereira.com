@@ -354,6 +354,12 @@ body {
   box-shadow: 0 12px 24px rgba(94, 76, 47, 0.08);
 }
 
+.home-game-card {
+  background:
+    radial-gradient(circle at top left, rgba(125, 211, 168, 0.18), transparent 28%),
+    rgba(255, 250, 240, 0.64);
+}
+
 .home-essay-card h2 {
   margin-bottom: 8px;
 }
