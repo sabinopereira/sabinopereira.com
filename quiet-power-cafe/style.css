@@ -385,13 +385,6 @@ button {
   text-decoration: none;
 }
 
-.end-cta-link--secondary {
-  width: auto;
-  min-width: 180px;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.06);
-}
-
 .hidden {
   display: none;
 }
