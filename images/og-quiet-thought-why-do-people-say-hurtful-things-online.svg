@@ -1,0 +1,28 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#EEE3D3"/>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1015" cy="122" r="186" fill="#D7C8AC" fill-opacity="0.55"/>
+  <circle cx="1085" cy="516" r="154" fill="#C2B190" fill-opacity="0.38"/>
+  <circle cx="168" cy="86" r="108" fill="#F6F0E7" fill-opacity="0.78"/>
+  <rect x="62" y="58" width="1076" height="514" rx="28" fill="#FBF7F0" fill-opacity="0.72" stroke="#7D786C" stroke-opacity="0.16"/>
+  <rect x="98" y="98" width="168" height="36" rx="18" fill="#384032"/>
+  <text x="182" y="121" text-anchor="middle" fill="#F8F2E7" font-family="Georgia, 'Times New Roman', serif" font-size="16" letter-spacing="3">QUIET THOUGHT</text>
+  <text x="98" y="188" fill="#241E18" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="700">Why Do People Say</text>
+  <text x="98" y="248" fill="#241E18" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="700">Hurtful Things</text>
+  <text x="98" y="308" fill="#241E18" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="700">Online?</text>
+  <text x="98" y="388" fill="#5A5146" font-family="Arial, Helvetica, sans-serif" font-size="27">Read it clearly before you carry it.</text>
+  <text x="98" y="450" fill="#3F4637" font-family="Arial, Helvetica, sans-serif" font-size="22" letter-spacing="1.2">ONLINE BEHAVIOR. BOUNDARIES. CLARITY.</text>
+  <text x="98" y="523" fill="#8A7D6A" font-family="Arial, Helvetica, sans-serif" font-size="20">Sabino Pereira</text>
+  <path d="M790 155C846 135 908 125 977 125C1000 125 1024 126 1047 129V446C1024 449 1000 451 975 451C903 451 840 442 786 423C733 404 692 374 664 333C688 273 730 214 790 155Z" fill="#D9C39A" fill-opacity="0.88"/>
+  <path d="M720 258C759 292 816 311 891 311C948 311 1001 301 1052 282" stroke="#3A4032" stroke-opacity="0.34" stroke-width="3"/>
+  <path d="M708 340C753 371 814 388 893 388C951 388 1005 378 1057 358" stroke="#3A4032" stroke-opacity="0.42" stroke-width="3"/>
+  <circle cx="878" cy="272" r="14" fill="#3A4032" fill-opacity="0.24"/>
+  <circle cx="932" cy="238" r="9" fill="#3A4032" fill-opacity="0.18"/>
+  <circle cx="970" cy="296" r="11" fill="#3A4032" fill-opacity="0.21"/>
+  <defs>
+    <linearGradient id="bg" x1="120" y1="42" x2="1107" y2="604" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F3ECE1"/>
+      <stop offset="1" stop-color="#E5D5BC"/>
+    </linearGradient>
+  </defs>
+</svg>
