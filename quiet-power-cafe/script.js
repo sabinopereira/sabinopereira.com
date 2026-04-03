@@ -270,7 +270,7 @@ function resolveIdentity() {
       ],
       ctas: {
         primary: { label: "Understand this deeper", href: "/quiet-power.html" },
-        secondary: { label: "Improve your control", href: "/podcast-quiet-power.html" }
+        secondary: { label: "Start fixing it", href: "/podcast-quiet-power.html" }
       }
     },
     {
@@ -282,7 +282,7 @@ function resolveIdentity() {
       ],
       ctas: {
         primary: { label: "Understand this deeper", href: "/quiet-power.html" },
-        secondary: { label: "Improve your control", href: "/test.html" }
+        secondary: { label: "Start fixing it", href: "/test.html" }
       }
     },
     {
@@ -294,7 +294,7 @@ function resolveIdentity() {
       ],
       ctas: {
         primary: { label: "Understand this deeper", href: "/quiet-power.html" },
-        secondary: { label: "Improve your control", href: "/ideas.html" }
+        secondary: { label: "Start fixing it", href: "/ideas.html" }
       }
     },
     {
@@ -306,7 +306,7 @@ function resolveIdentity() {
       ],
       ctas: {
         primary: { label: "Understand this deeper", href: "/quiet-thought-what-is-quiet-power.html" },
-        secondary: { label: "Improve your control", href: "/test.html" }
+        secondary: { label: "Start fixing it", href: "/test.html" }
       }
     },
     {
@@ -318,7 +318,7 @@ function resolveIdentity() {
       ],
       ctas: {
         primary: { label: "Understand this deeper", href: "/quiet-thought-while-you-wait-they-build.html" },
-        secondary: { label: "Improve your control", href: "/podcast-observational.html" }
+        secondary: { label: "Start fixing it", href: "/podcast-observational.html" }
       }
     }
   ];

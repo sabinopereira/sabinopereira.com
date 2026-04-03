@@ -351,6 +351,14 @@ button {
   color: var(--muted);
 }
 
+.conversion-line {
+  max-width: 26ch;
+  margin: 16px auto 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
 .final-score {
   margin: 0 0 24px;
   font-size: clamp(3.5rem, 8vw, 5rem);
