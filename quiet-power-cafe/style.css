@@ -321,7 +321,33 @@ button {
 }
 
 .game-over-copy {
-  margin: 12px 0 8px;
+  margin: 16px 0 8px;
+  color: var(--muted);
+}
+
+.identity-label {
+  margin: 18px 0 6px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.identity-title {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+}
+
+.identity-line {
+  max-width: 24ch;
+  margin: 12px auto 0;
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.identity-line--muted {
   color: var(--muted);
 }
 

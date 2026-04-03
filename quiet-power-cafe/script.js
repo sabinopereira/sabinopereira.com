@@ -180,6 +180,9 @@ const feedbackEl = document.getElementById("feedback");
 const gameScreenEl = document.getElementById("game-screen");
 const gameOverEl = document.getElementById("game-over");
 const finalScoreEl = document.getElementById("final-score");
+const identityTitleEl = document.getElementById("identity-title");
+const identityLineOneEl = document.getElementById("identity-line-one");
+const identityLineTwoEl = document.getElementById("identity-line-two");
 const restartButtonEl = document.getElementById("restart-button");
 const startButtonEl = document.getElementById("start-button");
 const soundToggleEl = document.getElementById("sound-toggle");
@@ -243,6 +246,68 @@ function applyMetricsChange(change = {}, meta = {}) {
   });
 
   persistBehavioralState();
+}
+
+function resolveIdentity() {
+  const metrics = behavioralMetrics || createEmptyMetrics();
+  const profileScore = {
+    calmStrategist: (metrics.focus * 2) + (metrics.discipline * 2) - metrics.impulsivity - metrics.emotionalReactivity,
+    reactiveOperator: (metrics.impulsivity * 2) + (metrics.emotionalReactivity * 2) - metrics.focus - metrics.discipline,
+    disciplinedBuilder: (metrics.discipline * 2) + metrics.focus - metrics.impulsivity,
+    emotionalResponder: (metrics.emotionalReactivity * 2) + metrics.impulsivity - metrics.discipline,
+    distractedDrifter: metrics.impulsivity + Math.max(0, -metrics.focus) + Math.max(0, -metrics.discipline)
+  };
+
+  const profiles = [
+    {
+      key: "calmStrategist",
+      title: "The Calm Strategist",
+      lines: [
+        "You slow the room down before it drags you.",
+        "Composure is not delay. It is selective force."
+      ]
+    },
+    {
+      key: "reactiveOperator",
+      title: "The Reactive Operator",
+      lines: [
+        "You move fast. Too fast.",
+        "Speed feels like control. It isn't."
+      ]
+    },
+    {
+      key: "disciplinedBuilder",
+      title: "The Disciplined Builder",
+      lines: [
+        "You trust repeatable standards more than passing mood.",
+        "Your strength is not intensity. It is consistency."
+      ]
+    },
+    {
+      key: "emotionalResponder",
+      title: "The Emotional Responder",
+      lines: [
+        "The room gets inside you too quickly.",
+        "The first feeling arrives before the better decision does."
+      ]
+    },
+    {
+      key: "distractedDrifter",
+      title: "The Distracted Drifter",
+      lines: [
+        "Attention keeps leaving the table before the work is done.",
+        "Noise is not defeating you loudly. It is defeating you in fragments."
+      ]
+    }
+  ];
+
+  return profiles.reduce((best, profile) => {
+    const candidateScore = profileScore[profile.key];
+    if (!best || candidateScore > best.score) {
+      return { ...profile, score: candidateScore };
+    }
+    return best;
+  }, null);
 }
 
 function shuffle(array) {
@@ -530,6 +595,12 @@ function endGame() {
   gameScreenEl.classList.add("hidden");
   gameOverEl.classList.remove("hidden");
   finalScoreEl.textContent = String(score);
+  const identity = resolveIdentity();
+  if (identity) {
+    identityTitleEl.textContent = identity.title;
+    identityLineOneEl.textContent = identity.lines[0];
+    identityLineTwoEl.textContent = identity.lines[1];
+  }
   playEndSound();
 }
 
