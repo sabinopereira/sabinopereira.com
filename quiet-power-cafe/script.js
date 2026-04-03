@@ -1,171 +1,63 @@
 const scenarios = [
   {
-    title: "Check your phone",
-    description: "A customer taps the counter and whispers that your phone just lit up again.",
-    choices: [
-      {
-        text: "Leave it face down and finish the current task",
-        correct: true,
-        metrics: { focus: 2, impulsivity: -1, emotionalReactivity: 0, discipline: 2 }
-      },
-      {
-        text: "Check it quickly while no one is looking",
-        correct: false,
-        metrics: { focus: -1, impulsivity: 2, emotionalReactivity: 0, discipline: -1 }
-      },
-      {
-        text: "Unlock it and scroll for a minute",
-        correct: false,
-        metrics: { focus: -2, impulsivity: 3, emotionalReactivity: 0, discipline: -2 }
-      }
-    ]
+    title: "Notification Pull",
+    text: "Your phone lights up while you're focused.",
+    choices: ["Check it quickly", "Ignore and continue working", "Pick it up but don't open anything"],
+    correctAnswerIndex: 1
   },
   {
-    title: "Reply instantly to message",
-    description: "A regular insists that every message must be answered right now.",
-    choices: [
-      {
-        text: "Queue the reply for your next communication block",
-        correct: true,
-        metrics: { focus: 2, impulsivity: -1, emotionalReactivity: -1, discipline: 2 }
-      },
-      {
-        text: "Answer immediately so it stops bothering you",
-        correct: false,
-        metrics: { focus: -1, impulsivity: 2, emotionalReactivity: 1, discipline: -1 }
-      },
-      {
-        text: "Open the chat and over-explain everything",
-        correct: false,
-        metrics: { focus: -2, impulsivity: 1, emotionalReactivity: 2, discipline: -1 }
-      }
-    ]
+    title: "Instant Reply Trap",
+    text: "Someone messages you. It feels urgent.",
+    choices: ["Reply immediately", "Finish your task first", "Send a quick short reply"],
+    correctAnswerIndex: 1
   },
   {
-    title: "Scroll social media",
-    description: "The room gets quiet. The easiest move would be to fill the gap with noise.",
-    choices: [
-      {
-        text: "Stay with the pause and return to the task in front of you",
-        correct: true,
-        metrics: { focus: 2, impulsivity: -1, emotionalReactivity: -1, discipline: 2 }
-      },
-      {
-        text: "Scroll for inspiration until something useful appears",
-        correct: false,
-        metrics: { focus: -1, impulsivity: 2, emotionalReactivity: 0, discipline: -1 }
-      },
-      {
-        text: "Hop across three apps to wake your brain up",
-        correct: false,
-        metrics: { focus: -2, impulsivity: 3, emotionalReactivity: 1, discipline: -2 }
-      }
-    ]
+    title: "Boredom Drift",
+    text: "You feel bored in the middle of a task.",
+    choices: ["Switch to something easier", "Push through the discomfort", "Take a random break"],
+    correctAnswerIndex: 1
   },
   {
-    title: "Stay focused on task",
-    description: "A difficult task is in front of you, and a more entertaining one is calling from the side.",
-    choices: [
-      {
-        text: "Keep the hard task open and take the next clear step",
-        correct: true,
-        metrics: { focus: 3, impulsivity: -1, emotionalReactivity: 0, discipline: 2 }
-      },
-      {
-        text: "Switch tasks so you can feel productive faster",
-        correct: false,
-        metrics: { focus: -2, impulsivity: 2, emotionalReactivity: 0, discipline: -1 }
-      },
-      {
-        text: "Rearrange your desk before deciding what to do",
-        correct: false,
-        metrics: { focus: -1, impulsivity: 1, emotionalReactivity: 0, discipline: -2 }
-      }
-    ]
+    title: "Emotional Trigger",
+    text: "Someone says something that annoys you.",
+    choices: ["Respond immediately", "Pause before reacting", "Respond sarcastically"],
+    correctAnswerIndex: 1
   },
   {
-    title: "Overthink decision",
-    description: "A customer asks for certainty when the real need is a good-enough next move.",
-    choices: [
-      {
-        text: "Choose the strongest available option and move",
-        correct: true,
-        metrics: { focus: 2, impulsivity: -1, emotionalReactivity: -1, discipline: 2 }
-      },
-      {
-        text: "Keep comparing every option until you feel perfect",
-        correct: false,
-        metrics: { focus: -1, impulsivity: -1, emotionalReactivity: 1, discipline: -1 }
-      },
-      {
-        text: "Ask three more people before deciding anything",
-        correct: false,
-        metrics: { focus: -1, impulsivity: 0, emotionalReactivity: 1, discipline: -1 }
-      }
-    ]
+    title: "Overthinking Loop",
+    text: "You're unsure about a decision.",
+    choices: ["Keep thinking more", "Make a decision with available info", "Ask others before deciding"],
+    correctAnswerIndex: 1
   },
   {
-    title: "React emotionally",
-    description: "Someone brings a sharp comment to the counter and waits for a quick reaction.",
-    choices: [
-      {
-        text: "Pause, breathe, and respond after the first emotion passes",
-        correct: true,
-        metrics: { focus: 1, impulsivity: -1, emotionalReactivity: -2, discipline: 2 }
-      },
-      {
-        text: "Answer with the same tone immediately",
-        correct: false,
-        metrics: { focus: -1, impulsivity: 2, emotionalReactivity: 3, discipline: -1 }
-      },
-      {
-        text: "Replay the comment in your head and spiral",
-        correct: false,
-        metrics: { focus: -2, impulsivity: 0, emotionalReactivity: 2, discipline: -2 }
-      }
-    ]
+    title: "Easy Escape",
+    text: "You think about watching something instead of working.",
+    choices: ["Start watching", "Stay on task", "Watch just one short video"],
+    correctAnswerIndex: 1
   },
   {
-    title: "Someone interrupts you",
-    description: "A noisy customer arrives while you are in the middle of something important.",
-    choices: [
-      {
-        text: "Acknowledge it briefly and protect the current block",
-        correct: true,
-        metrics: { focus: 2, impulsivity: -1, emotionalReactivity: -1, discipline: 2 }
-      },
-      {
-        text: "Drop everything because the interruption feels urgent",
-        correct: false,
-        metrics: { focus: -2, impulsivity: 2, emotionalReactivity: 1, discipline: -1 }
-      },
-      {
-        text: "Complain internally while doing neither thing well",
-        correct: false,
-        metrics: { focus: -2, impulsivity: 0, emotionalReactivity: 2, discipline: -2 }
-      }
-    ]
+    title: "Pressure Spike",
+    text: "You have too many things to do.",
+    choices: ["Try to do everything fast", "Prioritize one thing and start", "Jump between tasks"],
+    correctAnswerIndex: 1
   },
   {
-    title: "You feel bored",
-    description: "The work feels slow. A customer offers novelty instead of depth.",
-    choices: [
-      {
-        text: "Stay with the task long enough for depth to return",
-        correct: true,
-        metrics: { focus: 2, impulsivity: -1, emotionalReactivity: -1, discipline: 2 }
-      },
-      {
-        text: "Open tabs until something exciting appears",
-        correct: false,
-        metrics: { focus: -2, impulsivity: 3, emotionalReactivity: 0, discipline: -2 }
-      },
-      {
-        text: "Quit the task because boredom means it is wrong",
-        correct: false,
-        metrics: { focus: -2, impulsivity: 2, emotionalReactivity: 1, discipline: -2 }
-      }
-    ]
+    title: "Mental Fatigue",
+    text: "You feel mentally tired.",
+    choices: ["Stop everything", "Slow down but continue", "Switch to something random"],
+    correctAnswerIndex: 1
+  },
+  {
+    title: "Social Distraction",
+    text: "Someone starts talking to you while you work.",
+    choices: ["Fully engage", "Politely delay the conversation", "Half listen while working"],
+    correctAnswerIndex: 1
+  },
+  {
+    title: "False Urgency",
+    text: "A task suddenly feels urgent.",
+    choices: ["Drop everything and do it", "Evaluate if it truly matters first", "Start it while doing other things"],
+    correctAnswerIndex: 1
   }
 ];
 
@@ -211,7 +103,6 @@ function createEmptyMetrics() {
   return {
     focus: 0,
     impulsivity: 0,
-    emotionalReactivity: 0,
     discipline: 0
   };
 }
@@ -248,6 +139,32 @@ function applyMetricsChange(change = {}, meta = {}) {
   });
 
   persistBehavioralState();
+}
+
+function getChoiceMetrics(scenario, choiceIndex) {
+  if (choiceIndex === scenario.correctAnswerIndex) {
+    return { focus: 2, impulsivity: -1, discipline: 2 };
+  }
+
+  const choiceText = scenario.choices[choiceIndex].toLowerCase();
+  const acceptableButNotIdeal = [
+    "pick it up but don't open anything",
+    "send a quick short reply",
+    "take a random break",
+    "respond sarcastically",
+    "ask others before deciding",
+    "watch just one short video",
+    "jump between tasks",
+    "switch to something random",
+    "half listen while working",
+    "start it while doing other things"
+  ];
+
+  if (acceptableButNotIdeal.includes(choiceText)) {
+    return { focus: -1, impulsivity: 1, discipline: -1 };
+  }
+
+  return { focus: -2, impulsivity: 2, discipline: -2 };
 }
 
 function resolveIdentity() {
@@ -445,7 +362,7 @@ function renderScenario(scenario) {
   decisionTimeRemaining = getScenarioTime();
 
   scenarioTitleEl.textContent = scenario.title;
-  scenarioDescriptionEl.textContent = scenario.description;
+  scenarioDescriptionEl.textContent = scenario.text;
   decisionTimeEl.textContent = `${Math.ceil(decisionTimeRemaining)}s`;
   timerBarEl.style.transform = "scaleX(1)";
   timerBarEl.classList.remove("is-low");
@@ -460,7 +377,11 @@ function renderScenario(scenario) {
 
   choicesEl.innerHTML = "";
 
-  shuffle(scenario.choices).forEach((choice) => {
+  const shuffledChoices = shuffle(
+    scenario.choices.map((text, index) => ({ text, index }))
+  );
+
+  shuffledChoices.forEach((choice) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "choice-btn";
@@ -526,7 +447,10 @@ function handleChoice(choice) {
     clickedButton.classList.add("is-selected");
   }
 
-  if (choice.correct) {
+  const isCorrect = choice.index === currentScenario.correctAnswerIndex;
+  const metricsChange = getChoiceMetrics(currentScenario, choice.index);
+
+  if (isCorrect) {
     score += 10;
     updateScore();
     setFeedback("+10 Calm choice. The room stays steady.");
@@ -544,8 +468,8 @@ function handleChoice(choice) {
     navigator.vibrate?.([24, 40, 24]);
   }
 
-  applyMetricsChange(choice.metrics, {
-    outcome: choice.correct ? "correct" : "wrong",
+  applyMetricsChange(metricsChange, {
+    outcome: isCorrect ? "correct" : "wrong",
     choice: choice.text
   });
 
@@ -564,7 +488,7 @@ function handleTimeout() {
   setCardState("is-danger");
   playErrorSound();
   applyMetricsChange(
-    { focus: -1, impulsivity: 0, emotionalReactivity: 1, discipline: -1 },
+    { focus: -1, impulsivity: 0, discipline: -1 },
     { outcome: "timeout" }
   );
   scheduleNextScenario();
