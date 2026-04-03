@@ -402,8 +402,8 @@ function resolveIdentity() {
     return {
       title: "The Calm Strategist",
       lines: [
-        "You don't rush. You don't react. You decide.",
-        "You don't chase control. You operate from it."
+        "You don't rush.",
+        "You decide."
       ],
       cta: { label: "Improve your Quiet Power", href: "/quiet-power.html" }
     };
@@ -413,8 +413,8 @@ function resolveIdentity() {
     return {
       title: "The Reactive Operator",
       lines: [
-        "You move fast. Too fast. You react before you think.",
-        "You don't lack effort. You lack pause."
+        "You move fast.",
+        "Too fast."
       ],
       cta: { label: "Improve your Quiet Power", href: "/test.html" }
     };
@@ -424,8 +424,8 @@ function resolveIdentity() {
     return {
       title: "The Distracted Drifter",
       lines: [
-        "You don't choose. You drift. Small distractions keep pulling you away.",
-        "You're not lost. You're just not deciding."
+        "You don't choose.",
+        "You drift."
       ],
       cta: { label: "Improve your Quiet Power", href: "/quiet-thought-while-you-wait-they-build.html" }
     };
@@ -434,8 +434,8 @@ function resolveIdentity() {
   return {
     title: "The Controlled Performer",
     lines: [
-      "You handle pressure well. You stay composed.",
-      "You're close. Now refine it."
+      "You stay composed.",
+      "Refine it."
     ],
     cta: { label: "Improve your Quiet Power", href: "/quiet-power.html" }
   };
@@ -972,7 +972,7 @@ function resetGameState() {
   decisionTimeEl.textContent = `${START_DECISION_TIME}s`;
   timerBarEl.style.transform = "scaleX(1)";
   scenarioTitleEl.textContent = "Quiet Power Cafe";
-  scenarioDescriptionEl.textContent = "Serve calm choices under pressure before the shift ends.";
+  scenarioDescriptionEl.textContent = "A real-time test of pressure, attention, and control.";
   setFeedback("Stay focused. One customer at a time.", "neutral");
   insightFeedbackEl.textContent = "";
   insightFeedbackEl.classList.remove("is-visible");
