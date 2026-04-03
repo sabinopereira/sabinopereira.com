@@ -186,6 +186,7 @@ const identityLineTwoEl = document.getElementById("identity-line-two");
 const ecosystemPrimaryEl = document.getElementById("ecosystem-primary");
 const restartButtonEl = document.getElementById("restart-button");
 const startButtonEl = document.getElementById("start-button");
+const shareResultButtonEl = document.getElementById("share-result-button");
 const soundToggleEl = document.getElementById("sound-toggle");
 const soundStatusEl = document.getElementById("sound-status");
 
@@ -251,59 +252,49 @@ function applyMetricsChange(change = {}, meta = {}) {
 
 function resolveIdentity() {
   const metrics = behavioralMetrics || createEmptyMetrics();
-  const profileScore = {
-    calmStrategist: (metrics.focus * 2) + (metrics.discipline * 2) - metrics.impulsivity - metrics.emotionalReactivity,
-    reactiveOperator: (metrics.impulsivity * 2) + (metrics.emotionalReactivity * 2) - metrics.focus - metrics.discipline,
-    disciplinedBuilder: (metrics.discipline * 2) + metrics.focus - metrics.impulsivity,
-    emotionalResponder: (metrics.emotionalReactivity * 2) + metrics.impulsivity - metrics.discipline
-  };
+  const distraction = Math.max(0, -metrics.focus) + Math.max(0, -metrics.discipline) + Math.max(0, metrics.impulsivity - 2);
 
-  const profiles = [
-    {
-      key: "calmStrategist",
+  if (metrics.focus >= 8 && metrics.discipline >= 8 && metrics.impulsivity <= 2) {
+    return {
       title: "The Calm Strategist",
       lines: [
-        "You slow the room down before it drags you.",
-        "Composure is not delay. It is selective force."
+        "You don't rush. You don't react. You decide.",
+        "You don't chase control. You operate from it."
       ],
-      cta: { label: "Start fixing it", href: "/quiet-power.html" }
-    },
-    {
-      key: "reactiveOperator",
+      cta: { label: "Improve your Quiet Power", href: "/quiet-power.html" }
+    };
+  }
+
+  if (metrics.impulsivity >= 8) {
+    return {
       title: "The Reactive Operator",
       lines: [
-        "You move fast. Too fast.",
-        "Speed feels like control. It isn't."
+        "You move fast. Too fast. You react before you think.",
+        "You don't lack effort. You lack pause."
       ],
-      cta: { label: "Start fixing it", href: "/test.html" }
-    },
-    {
-      key: "disciplinedBuilder",
-      title: "The Disciplined Builder",
-      lines: [
-        "You trust repeatable standards more than passing mood.",
-        "Your strength is not intensity. It is consistency."
-      ],
-      cta: { label: "Start fixing it", href: "/quiet-power.html" }
-    },
-    {
-      key: "emotionalResponder",
-      title: "The Emotional Responder",
-      lines: [
-        "The room gets inside you too quickly.",
-        "The first feeling arrives before the better decision does."
-      ],
-      cta: { label: "Start fixing it", href: "/quiet-thought-what-is-quiet-power.html" }
-    }
-  ];
+      cta: { label: "Improve your Quiet Power", href: "/test.html" }
+    };
+  }
 
-  return profiles.reduce((best, profile) => {
-    const candidateScore = profileScore[profile.key];
-    if (!best || candidateScore > best.score) {
-      return { ...profile, score: candidateScore };
-    }
-    return best;
-  }, null);
+  if (distraction >= 8) {
+    return {
+      title: "The Distracted Drifter",
+      lines: [
+        "You don't choose. You drift. Small distractions keep pulling you away.",
+        "You're not lost. You're just not deciding."
+      ],
+      cta: { label: "Improve your Quiet Power", href: "/quiet-thought-while-you-wait-they-build.html" }
+    };
+  }
+
+  return {
+    title: "The Controlled Performer",
+    lines: [
+      "You handle pressure well. You stay composed.",
+      "You're close. Now refine it."
+    ],
+    cta: { label: "Improve your Quiet Power", href: "/quiet-power.html" }
+  };
 }
 
 function shuffle(array) {
@@ -653,5 +644,35 @@ soundToggleEl.addEventListener("click", () => {
   setSoundEnabled(!soundEnabled);
   if (soundEnabled) {
     playStartSound();
+  }
+});
+shareResultButtonEl.addEventListener("click", async () => {
+  const text = `${identityTitleEl.textContent} — ${identityLineOneEl.textContent} ${identityLineTwoEl.textContent}`;
+  const url = `${window.location.origin}/quiet-power-cafe/`;
+
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: `Quiet Power Cafe — ${identityTitleEl.textContent}`,
+        text,
+        url
+      });
+      return;
+    } catch (_) {
+      // Fallback to clipboard.
+    }
+  }
+
+  try {
+    await navigator.clipboard.writeText(`${text} ${url}`);
+    shareResultButtonEl.textContent = "Result copied";
+    window.setTimeout(() => {
+      shareResultButtonEl.textContent = "Share your result";
+    }, 1400);
+  } catch (_) {
+    shareResultButtonEl.textContent = "Share unavailable";
+    window.setTimeout(() => {
+      shareResultButtonEl.textContent = "Share your result";
+    }, 1400);
   }
 });
