@@ -2580,18 +2580,21 @@ a:hover { opacity: 0.7; }
   min-height: 40px;
   padding: 0 15px;
   border-radius: 999px;
-  border: 1px solid rgba(111, 114, 92, 0.18);
-  background: rgba(255, 255, 255, 0.62);
-  color: #4e4337;
+  border: 1px solid rgba(84, 73, 60, 0.22);
+  background: rgba(249, 244, 235, 0.94);
+  color: #2c241d;
   font: inherit;
   font-size: 0.92rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+  box-shadow: 0 6px 14px rgba(13, 27, 31, 0.06);
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
 }
 
 .idea-share-btn:hover {
-  background: rgba(255, 255, 255, 0.82);
-  border-color: rgba(111, 114, 92, 0.28);
+  background: rgba(255, 250, 243, 1);
+  border-color: rgba(84, 73, 60, 0.34);
+  color: #1f1914;
   transform: translateY(-1px);
 }
 
@@ -2898,7 +2901,7 @@ a:hover { opacity: 0.7; }
 .share-inline-label {
   display: block;
   margin-bottom: 10px;
-  color: #a79e8d;
+  color: #6f6254;
   font-size: 0.78rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -2917,16 +2920,20 @@ a:hover { opacity: 0.7; }
   min-height: 38px;
   padding: 0 14px;
   border-radius: 999px;
-  border: 1px solid rgba(231, 225, 210, 0.14);
-  background: rgba(255, 255, 255, 0.04);
-  color: inherit;
+  border: 1px solid rgba(84, 73, 60, 0.2);
+  background: rgba(249, 244, 235, 0.94);
+  color: #2c241d;
   text-decoration: none;
   font: inherit;
+  font-weight: 600;
   cursor: pointer;
+  box-shadow: 0 6px 14px rgba(13, 27, 31, 0.06);
 }
 
 .share-inline-link:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 250, 243, 1);
+  border-color: rgba(84, 73, 60, 0.32);
+  color: #1f1914;
   opacity: 1;
 }
 
@@ -4120,17 +4127,20 @@ a:hover { opacity: 0.7; }
   min-height: 42px;
   padding: 0 16px;
   border-radius: 999px;
-  border: 1px solid rgba(231, 225, 210, 0.16);
-  background: rgba(255, 255, 255, 0.04);
-  color: #efe7d5;
+  border: 1px solid rgba(84, 73, 60, 0.24);
+  background: rgba(249, 244, 235, 0.94);
+  color: #2c241d;
   text-decoration: none;
   font: inherit;
+  font-weight: 600;
   cursor: pointer;
+  box-shadow: 0 6px 14px rgba(13, 27, 31, 0.06);
 }
 
 .share-link:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff7ea;
+  background: rgba(255, 250, 243, 1);
+  border-color: rgba(84, 73, 60, 0.34);
+  color: #1f1914;
   opacity: 1;
 }
 
