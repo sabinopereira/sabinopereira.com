@@ -183,6 +183,8 @@ const finalScoreEl = document.getElementById("final-score");
 const identityTitleEl = document.getElementById("identity-title");
 const identityLineOneEl = document.getElementById("identity-line-one");
 const identityLineTwoEl = document.getElementById("identity-line-two");
+const ecosystemPrimaryEl = document.getElementById("ecosystem-primary");
+const ecosystemSecondaryEl = document.getElementById("ecosystem-secondary");
 const restartButtonEl = document.getElementById("restart-button");
 const startButtonEl = document.getElementById("start-button");
 const soundToggleEl = document.getElementById("sound-toggle");
@@ -265,7 +267,11 @@ function resolveIdentity() {
       lines: [
         "You slow the room down before it drags you.",
         "Composure is not delay. It is selective force."
-      ]
+      ],
+      ctas: {
+        primary: { label: "Understand this deeper", href: "/quiet-power.html" },
+        secondary: { label: "Improve your control", href: "/podcast-quiet-power.html" }
+      }
     },
     {
       key: "reactiveOperator",
@@ -273,7 +279,11 @@ function resolveIdentity() {
       lines: [
         "You move fast. Too fast.",
         "Speed feels like control. It isn't."
-      ]
+      ],
+      ctas: {
+        primary: { label: "Understand this deeper", href: "/quiet-power.html" },
+        secondary: { label: "Improve your control", href: "/test.html" }
+      }
     },
     {
       key: "disciplinedBuilder",
@@ -281,7 +291,11 @@ function resolveIdentity() {
       lines: [
         "You trust repeatable standards more than passing mood.",
         "Your strength is not intensity. It is consistency."
-      ]
+      ],
+      ctas: {
+        primary: { label: "Understand this deeper", href: "/quiet-power.html" },
+        secondary: { label: "Improve your control", href: "/ideas.html" }
+      }
     },
     {
       key: "emotionalResponder",
@@ -289,7 +303,11 @@ function resolveIdentity() {
       lines: [
         "The room gets inside you too quickly.",
         "The first feeling arrives before the better decision does."
-      ]
+      ],
+      ctas: {
+        primary: { label: "Understand this deeper", href: "/quiet-thought-what-is-quiet-power.html" },
+        secondary: { label: "Improve your control", href: "/test.html" }
+      }
     },
     {
       key: "distractedDrifter",
@@ -297,7 +315,11 @@ function resolveIdentity() {
       lines: [
         "Attention keeps leaving the table before the work is done.",
         "Noise is not defeating you loudly. It is defeating you in fragments."
-      ]
+      ],
+      ctas: {
+        primary: { label: "Understand this deeper", href: "/quiet-thought-while-you-wait-they-build.html" },
+        secondary: { label: "Improve your control", href: "/podcast-observational.html" }
+      }
     }
   ];
 
@@ -600,6 +622,10 @@ function endGame() {
     identityTitleEl.textContent = identity.title;
     identityLineOneEl.textContent = identity.lines[0];
     identityLineTwoEl.textContent = identity.lines[1];
+    ecosystemPrimaryEl.textContent = identity.ctas.primary.label;
+    ecosystemPrimaryEl.href = identity.ctas.primary.href;
+    ecosystemSecondaryEl.textContent = identity.ctas.secondary.label;
+    ecosystemSecondaryEl.href = identity.ctas.secondary.href;
   }
   playEndSound();
 }
