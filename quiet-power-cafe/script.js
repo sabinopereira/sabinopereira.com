@@ -88,8 +88,8 @@ const restartButtonEl = document.getElementById("restart-button");
 const startButtonEl = document.getElementById("start-button");
 
 const GAME_DURATION = 60;
-const START_DECISION_TIME = 8;
-const MIN_DECISION_TIME = 5;
+const START_DECISION_TIME = 10;
+const MIN_DECISION_TIME = 7;
 
 let score = 0;
 let gameTimeRemaining = GAME_DURATION;
