@@ -894,7 +894,6 @@ body {
   padding-top: 0;
 }
 
-.podcast-shelf,
 .shop-shelf,
 .about-shelf {
   background:
@@ -902,14 +901,6 @@ body {
     radial-gradient(circle at right top, rgba(119, 156, 164, 0.14), transparent 28%),
     linear-gradient(180deg, rgba(28, 61, 69, 0.18) 0%, rgba(28, 61, 69, 0.08) 100%);
   border-radius: 24px;
-}
-
-.podcast-shelf {
-  padding: 18px 14px;
-}
-
-.podcast-shelf--thin {
-  padding: 12px 10px;
 }
 
 .shop-shelf {
@@ -926,7 +917,6 @@ body {
   margin-bottom: 0;
 }
 
-.monastery-subpage .podcast-page-main,
 .monastery-subpage .shop-page-main,
 .monastery-subpage .about-page-main {
   background: transparent;
@@ -995,7 +985,6 @@ body {
 }
 
 .monastery-subpage .idea-card,
-.monastery-subpage .podcast-card,
 .monastery-subpage .product-card,
 .monastery-subpage .book-card,
 .monastery-subpage .about-text,
@@ -1019,7 +1008,6 @@ body {
 }
 
 .monastery-subpage .idea-card,
-.monastery-subpage .podcast-card,
 .monastery-subpage .book-card,
 .monastery-subpage .about-text,
 .monastery-subpage .about-card,
@@ -1032,12 +1020,11 @@ body {
 .monastery-subpage .product-card,
 .monastery-subpage .book-card,
 .monastery-subpage .about-card,
-.monastery-subpage .podcast-card {
+.monastery-subpage .about-card {
   border-radius: 12px;
 }
 
 .monastery-subpage .idea-preview,
-.monastery-subpage .podcast-desc,
 .monastery-subpage .product-description,
 .monastery-subpage .book-card p,
 .monastery-subpage .about-card p,
@@ -1293,7 +1280,6 @@ body {
   color: #231d17;
 }
 
-.monastery-subpage .podcast-grid,
 .monastery-subpage .products-grid,
 .monastery-subpage .contact-body {
   max-width: 980px;
@@ -1301,15 +1287,8 @@ body {
   padding: 0 24px 48px;
 }
 
-.monastery-subpage .podcast-grid.podcast-shelf,
 .monastery-subpage .products-grid.shop-shelf {
   padding: 18px 14px;
-}
-
-.monastery-subpage .podcast-grid.podcast-shelf {
-  max-width: 920px;
-  gap: 22px;
-  padding: 16px;
 }
 
 .monastery-subpage .products-grid.shop-shelf {
@@ -1328,7 +1307,6 @@ body {
   box-shadow: 0 24px 60px rgba(8, 21, 25, 0.32);
 }
 
-.monastery-subpage .podcast-footer-note,
 .monastery-subpage .contact-closing,
 .monastery-subpage .page-footer-note {
   max-width: 860px;
@@ -1344,10 +1322,6 @@ body {
 .monastery-subpage .page-hero-intro .page-kicker {
   display: block;
   margin-bottom: 12px;
-}
-
-.monastery-subpage .podcast-card--muted {
-  background: rgba(130, 112, 89, 0.08);
 }
 
 .monastery-subpage .contact-closing {
@@ -2776,128 +2750,6 @@ a:hover { opacity: 0.7; }
   opacity: 0.75;
 }
 
-.podcast-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  max-width: 1100px;
-  margin: 3rem auto;
-  padding: 0 1.5rem;
-}
-
-.podcast-card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.podcast-card--muted {
-  background: #f5f5f5;
-  box-shadow: none;
-}
-
-.podcast-label {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: #999;
-}
-
-.podcast-title {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin: 0;
-}
-
-.podcast-desc {
-  font-size: 0.95rem;
-  color: #555;
-  line-height: 1.6;
-  flex-grow: 1;
-}
-
-.podcast-featured,
-.podcast-section-head {
-  max-width: 1120px;
-  margin: 0 auto 28px;
-  padding: 0 24px;
-}
-
-.monastery-subpage .podcast-featured.podcast-shelf {
-  max-width: 920px;
-  margin: 22px auto 26px;
-  padding: 16px;
-}
-
-.podcast-feature-card {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
-  gap: 18px;
-  padding: 24px;
-  border-radius: 18px;
-  border: 1px solid rgba(76, 63, 46, 0.08);
-  background:
-    radial-gradient(circle at top right, rgba(205, 190, 160, 0.12), transparent 34%),
-    rgba(255, 255, 255, 0.56);
-}
-
-.podcast-feature-copy h2,
-.podcast-section-head h2 {
-  margin: 0 0 12px;
-  color: #231d17;
-}
-
-.podcast-feature-copy p,
-.podcast-section-head p,
-.podcast-feature-side li {
-  color: #5f5448;
-  line-height: 1.75;
-}
-
-.podcast-feature-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 16px 0 18px;
-}
-
-.podcast-feature-meta span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 30px;
-  padding: 0 12px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(111, 114, 92, 0.14);
-  color: #5b584d;
-  font-size: 0.82rem;
-}
-
-.podcast-feature-side {
-  padding: 18px 20px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.58);
-  border: 1px solid rgba(76, 63, 46, 0.06);
-}
-
-.podcast-section-head {
-  display: flex;
-  align-items: end;
-}
-
-.monastery-subpage .podcast-section-head {
-  max-width: 760px;
-  margin-bottom: 16px;
-}
-
-.monastery-subpage .podcast-section-head p {
-  margin-bottom: 0;
-}
-
 .share-inline {
   margin-top: 18px;
   padding-top: 16px;
@@ -2983,28 +2835,6 @@ a:hover { opacity: 0.7; }
 .home-classic .btn-primary.amazon-btn:hover {
   background: #ffd874;
   color: #1c1207;
-}
-
-.podcast-footer-note {
-  text-align: center;
-  max-width: 600px;
-  margin: 2rem auto 4rem;
-  padding: 0 1.5rem;
-  color: #888;
-  font-size: 0.95rem;
-}
-
-.monastery-subpage .podcast-card {
-  background: linear-gradient(180deg, rgba(246, 241, 231, 0.94) 0%, rgba(241, 235, 224, 0.9) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 10px 24px rgba(13, 27, 31, 0.08);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  border-radius: 18px;
-}
-
-.monastery-subpage .podcast-card--muted {
-  background: linear-gradient(180deg, rgba(239, 234, 223, 0.82) 0%, rgba(235, 229, 218, 0.76) 100%);
 }
 
 .about-body {
@@ -4200,11 +4030,6 @@ a:hover { opacity: 0.7; }
     padding: 24px 20px;
   }
 
-  .podcast-feature-card {
-    padding: 20px;
-  }
-
-  .podcast-feature-side,
   .thoughts-feature-side,
   .thoughts-bottom-card {
     padding: 18px;
@@ -4734,7 +4559,6 @@ section {
 }
 
 @media (max-width: 900px) {
-  .podcast-feature-card,
   .thoughts-feature-card,
   .thoughts-bottom-grid {
     grid-template-columns: 1fr;
@@ -4760,13 +4584,10 @@ section {
     padding: 12px 10px;
   }
 
-  .monastery-subpage .podcast-featured.podcast-shelf,
-  .monastery-subpage .podcast-grid.podcast-shelf,
   .monastery-subpage .thoughts-shelf {
     padding: 12px;
   }
 
-  .monastery-subpage .podcast-grid.podcast-shelf,
   .monastery-subpage .thoughts-shelf .ideas-grid {
     gap: 16px;
   }
@@ -5217,9 +5038,6 @@ section {
   /* Cards */
   .idea-card { padding: 32px 24px; }
   .ideas-grid {
-    grid-template-columns: 1fr;
-  }
-  .podcast-grid {
     grid-template-columns: 1fr;
   }
   .about-columns {

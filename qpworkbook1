@@ -56,7 +56,6 @@
     <a href="/quiet-power.html" class="active">Quiet Power</a>
     <a href="/ideas.html">Thoughts</a>
     <a href="/books.html">Books</a>
-    <a href="/podcast.html">Podcast</a>
     <a href="/shop.html">Shop</a>
     <a href="/about.html">About</a>
     <a href="/contact.html">Contact</a>
@@ -120,7 +119,6 @@
 <footer class="site-footer">
   <p>&copy; 2026 Sabino Pereira &mdash; Built with Quiet power thoughts and steady work.</p>
   <p style="margin-top: 8px;">
-    <a href="https://open.spotify.com/show/1CVJWxfqOOeH0p9ZmGHNVz" target="_blank" rel="noopener">Podcast</a> &nbsp;·&nbsp;
     <a href="https://www.youtube.com/@SabinoQuietPower" target="_blank" rel="noopener">YouTube</a> &nbsp;·&nbsp;
     <a href="https://www.instagram.com/my_quiet_power/" target="_blank" rel="noopener">Instagram</a>
   </p>
