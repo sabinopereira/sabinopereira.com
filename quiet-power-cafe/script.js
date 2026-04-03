@@ -229,6 +229,7 @@ const scenarioTitleEl = document.getElementById("scenario-title");
 const scenarioDescriptionEl = document.getElementById("scenario-description");
 const choicesEl = document.getElementById("choices");
 const feedbackEl = document.getElementById("feedback");
+const insightFeedbackEl = document.getElementById("insight-feedback");
 const gameScreenEl = document.getElementById("game-screen");
 const gameOverEl = document.getElementById("game-over");
 const finalScoreEl = document.getElementById("final-score");
@@ -245,10 +246,52 @@ const soundStatusEl = document.getElementById("sound-status");
 const GAME_DURATION = 60;
 const START_DECISION_TIME = 14;
 const MIN_DECISION_TIME = 10;
+const INSIGHT_INTERVALS = [3, 4];
+
+const microFeedback = {
+  correct: [
+    "That was controlled.",
+    "You stayed with it.",
+    "No rush. Good.",
+    "You chose, not reacted."
+  ],
+  wrong: [
+    "Too fast.",
+    "You reacted.",
+    "That's how focus breaks.",
+    "Impulse took over."
+  ],
+  timeout: [
+    "You're thinking... or avoiding?",
+    "Delay is a decision too.",
+    "You felt it. You paused.",
+    "Uncertainty slows you down."
+  ]
+};
+
+const dynamicInsights = {
+  impulsive: [
+    "You're moving fast... but not forward.",
+    "Speed is replacing clarity."
+  ],
+  distracted: [
+    "You're slipping.",
+    "Focus is leaking."
+  ],
+  controlled: [
+    "You're holding your ground.",
+    "This is rare."
+  ],
+  inconsistent: [
+    "You're switching modes.",
+    "Control... then reaction."
+  ]
+};
 
 let score = 0;
 let gameTimeRemaining = GAME_DURATION;
 let decisionTimeRemaining = START_DECISION_TIME;
+let currentScenarioTotalTime = START_DECISION_TIME;
 let currentScenario = null;
 let gameTimerId = null;
 let decisionTimerId = null;
@@ -259,6 +302,9 @@ let audioContext = null;
 let behavioralMetrics = null;
 let decisionHistory = [];
 let lastScenarioTitle = null;
+let feedbackTimeoutId = null;
+let insightTimeoutId = null;
+let nextInsightAt = 3;
 
 function createEmptyMetrics() {
   return {
@@ -296,6 +342,7 @@ function applyMetricsChange(change = {}, meta = {}) {
     category: currentScenario?.category || "unknown",
     outcome: meta.outcome || "decision",
     choice: meta.choice || null,
+    responseSpeed: meta.responseSpeed || "steady",
     metrics: change,
     timestamp: Date.now()
   });
@@ -399,6 +446,10 @@ function shuffle(array) {
   return items;
 }
 
+function randomFrom(list) {
+  return list[Math.floor(Math.random() * list.length)];
+}
+
 function getScenarioTime() {
   const elapsed = GAME_DURATION - gameTimeRemaining;
   const progress = Math.min(elapsed / GAME_DURATION, 1);
@@ -419,7 +470,7 @@ function updateGameClock() {
 
 function setFeedback(message, tone = "positive") {
   feedbackEl.textContent = message;
-  feedbackEl.classList.remove("is-negative", "is-neutral", "is-animated");
+  feedbackEl.classList.remove("is-negative", "is-neutral", "is-animated", "is-whisper", "is-whisper-visible");
 
   if (tone === "negative") {
     feedbackEl.classList.add("is-negative");
@@ -429,6 +480,49 @@ function setFeedback(message, tone = "positive") {
 
   void feedbackEl.offsetWidth;
   feedbackEl.classList.add("is-animated");
+}
+
+function showMicroFeedback(type) {
+  const tone = type === "correct" ? "positive" : type === "wrong" ? "negative" : "neutral";
+  feedbackEl.textContent = randomFrom(microFeedback[type]);
+  feedbackEl.classList.remove("is-negative", "is-neutral", "is-animated", "is-whisper", "is-whisper-visible");
+
+  if (tone === "negative") {
+    feedbackEl.classList.add("is-negative");
+  } else if (tone === "neutral") {
+    feedbackEl.classList.add("is-neutral");
+  }
+
+  feedbackEl.classList.add("is-whisper");
+  void feedbackEl.offsetWidth;
+  feedbackEl.classList.add("is-whisper-visible");
+
+  if (feedbackTimeoutId) {
+    window.clearTimeout(feedbackTimeoutId);
+  }
+
+  feedbackTimeoutId = window.setTimeout(() => {
+    feedbackEl.classList.remove("is-whisper-visible");
+  }, 1700);
+}
+
+function showInsight(message) {
+  if (!message) {
+    return;
+  }
+
+  insightFeedbackEl.textContent = message;
+  insightFeedbackEl.classList.remove("is-visible");
+  void insightFeedbackEl.offsetWidth;
+  insightFeedbackEl.classList.add("is-visible");
+
+  if (insightTimeoutId) {
+    window.clearTimeout(insightTimeoutId);
+  }
+
+  insightTimeoutId = window.setTimeout(() => {
+    insightFeedbackEl.classList.remove("is-visible");
+  }, 2800);
 }
 
 function clearDecisionTimer() {
@@ -536,6 +630,7 @@ function renderScenario(scenario) {
   currentScenario = scenario;
   roundLocked = false;
   decisionTimeRemaining = getScenarioTime();
+  currentScenarioTotalTime = decisionTimeRemaining;
 
   scenarioTitleEl.textContent = scenario.title;
   scenarioDescriptionEl.textContent = scenario.activeText;
@@ -567,6 +662,50 @@ function renderScenario(scenario) {
   });
 
   startDecisionTimer();
+}
+
+function getRecentPattern() {
+  const recent = decisionHistory.slice(-4);
+  if (recent.length < 3) {
+    return null;
+  }
+
+  const wrongFastCount = recent.filter((entry) => entry.outcome === "wrong" && entry.responseSpeed === "fast").length;
+  const timeoutCount = recent.filter((entry) => entry.outcome === "timeout").length;
+  const correctCount = recent.filter((entry) => entry.outcome === "correct").length;
+  const mixedOutcomes = new Set(recent.map((entry) => entry.outcome)).size >= 2;
+
+  if (wrongFastCount >= 2) {
+    return "impulsive";
+  }
+
+  if (timeoutCount >= 2 || (timeoutCount >= 1 && correctCount <= 1)) {
+    return "distracted";
+  }
+
+  if (correctCount >= 3) {
+    return "controlled";
+  }
+
+  if (mixedOutcomes) {
+    return "inconsistent";
+  }
+
+  return null;
+}
+
+function maybeShowDynamicInsight() {
+  const decisionsCount = decisionHistory.length;
+  if (decisionsCount < nextInsightAt) {
+    return;
+  }
+
+  const pattern = getRecentPattern();
+  if (pattern) {
+    showInsight(randomFrom(dynamicInsights[pattern]));
+  }
+
+  nextInsightAt += randomFrom(INSIGHT_INTERVALS);
 }
 
 function startDecisionTimer() {
@@ -625,11 +764,15 @@ function handleChoice(choice) {
 
   const isCorrect = choice.index === currentScenario.correctAnswerIndex;
   const metricsChange = getChoiceMetrics(currentScenario, choice.index);
+  const scenarioDuration = currentScenarioTotalTime;
+  const responseElapsed = Math.max(0, scenarioDuration - decisionTimeRemaining);
+  const responseRatio = scenarioDuration === 0 ? 1 : responseElapsed / scenarioDuration;
+  const responseSpeed = responseRatio <= 0.45 ? "fast" : responseRatio >= 0.8 ? "slow" : "steady";
 
   if (isCorrect) {
     score += 10;
     updateScore();
-    setFeedback("+10 Calm choice. The room stays steady.");
+    showMicroFeedback("correct");
     setCardState("is-success");
     clickedButton?.classList.add("is-correct");
     playSuccessSound();
@@ -637,7 +780,7 @@ function handleChoice(choice) {
   } else {
     score -= 5;
     updateScore();
-    setFeedback("-5 Noise got in. Try the calmer move next time.", "negative");
+    showMicroFeedback("wrong");
     setCardState("is-danger");
     clickedButton?.classList.add("is-wrong");
     playErrorSound();
@@ -646,8 +789,11 @@ function handleChoice(choice) {
 
   applyMetricsChange(metricsChange, {
     outcome: isCorrect ? "correct" : "wrong",
-    choice: choice.text
+    choice: choice.text,
+    responseSpeed
   });
+
+  maybeShowDynamicInsight();
 
   scheduleNextScenario();
 }
@@ -660,13 +806,14 @@ function handleTimeout() {
   lockChoices();
   score -= 3;
   updateScore();
-  setFeedback("-3 Too slow. The customer left with the noise.", "negative");
+  showMicroFeedback("timeout");
   setCardState("is-danger");
   playErrorSound();
   applyMetricsChange(
     { focus: -1, impulsivity: 0, discipline: -1 },
-    { outcome: "timeout" }
+    { outcome: "timeout", responseSpeed: "timeout" }
   );
+  maybeShowDynamicInsight();
   scheduleNextScenario();
 }
 
@@ -716,6 +863,15 @@ function resetGameState() {
   behavioralMetrics = createEmptyMetrics();
   decisionHistory = [];
   lastScenarioTitle = null;
+  nextInsightAt = 3;
+  if (feedbackTimeoutId) {
+    window.clearTimeout(feedbackTimeoutId);
+    feedbackTimeoutId = null;
+  }
+  if (insightTimeoutId) {
+    window.clearTimeout(insightTimeoutId);
+    insightTimeoutId = null;
+  }
   updateScore();
   updateGameClock();
   decisionTimeEl.textContent = `${START_DECISION_TIME}s`;
@@ -723,6 +879,8 @@ function resetGameState() {
   scenarioTitleEl.textContent = "Quiet Power Cafe";
   scenarioDescriptionEl.textContent = "Serve calm choices under pressure before the shift ends.";
   setFeedback("Stay focused. One customer at a time.", "neutral");
+  insightFeedbackEl.textContent = "";
+  insightFeedbackEl.classList.remove("is-visible");
   setCardState();
   persistBehavioralState();
 }

@@ -288,6 +288,7 @@ button {
   margin: 18px 0 0;
   color: var(--accent);
   font-weight: 600;
+  letter-spacing: 0.01em;
   transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease;
 }
 
@@ -312,6 +313,68 @@ button {
 
 .feedback.is-neutral {
   color: var(--muted);
+}
+
+.feedback.is-whisper {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.feedback.is-whisper-visible {
+  animation: whisperFade 1.6s ease forwards;
+}
+
+@keyframes whisperFade {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  14% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  78% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0.45;
+    transform: translateY(-2px);
+  }
+}
+
+.insight-feedback {
+  min-height: 24px;
+  margin: 10px 0 0;
+  color: rgba(248, 250, 252, 0.72);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.insight-feedback.is-visible {
+  animation: insightFade 2.8s ease forwards;
+}
+
+@keyframes insightFade {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  12% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  82% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
 }
 
 .game-over {
@@ -429,6 +492,7 @@ button {
   .restart-btn,
   .hud-toggle,
   .feedback,
+  .insight-feedback,
   .decision-time,
   .timer-bar,
   .score-pop {
