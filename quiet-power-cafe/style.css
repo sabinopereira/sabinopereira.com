@@ -45,6 +45,45 @@ button {
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.28s ease, border-color 0.28s ease, filter 0.28s ease, transform 0.18s ease;
+}
+
+.game-frame.is-controlled {
+  border-color: rgba(125, 211, 168, 0.18);
+  box-shadow:
+    0 0 0 1px rgba(125, 211, 168, 0.08),
+    0 18px 36px rgba(2, 6, 23, 0.34),
+    0 0 26px rgba(74, 222, 128, 0.12);
+}
+
+.game-frame.is-distracted {
+  filter: saturate(0.96);
+}
+
+.game-frame.is-unstable .hud-card,
+.game-frame.is-unstable .choice-btn {
+  animation: subtleJitter 1.6s ease-in-out infinite;
+}
+
+.game-frame.is-shaking {
+  animation: frameShake 0.16s ease;
+}
+
+@keyframes frameShake {
+  0% { transform: translate3d(0, 0, 0); }
+  20% { transform: translate3d(-1px, 0, 0); }
+  40% { transform: translate3d(1px, -1px, 0); }
+  60% { transform: translate3d(-1px, 1px, 0); }
+  80% { transform: translate3d(1px, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes subtleJitter {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  25% { transform: translate3d(0.5px, 0, 0); }
+  50% { transform: translate3d(-0.5px, 0.5px, 0); }
+  75% { transform: translate3d(0, -0.5px, 0); }
 }
 
 .game-topbar {
@@ -91,6 +130,12 @@ button {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.06);
   text-align: right;
+  transition: background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+}
+
+.game-frame.is-controlled .hud-card {
+  border-color: rgba(125, 211, 168, 0.14);
+  box-shadow: 0 0 0 1px rgba(125, 211, 168, 0.06);
 }
 
 .hud-card strong {
@@ -113,6 +158,22 @@ button {
 
 .game-stage {
   padding: 28px;
+  position: relative;
+}
+
+.game-stage::after {
+  content: "";
+  position: absolute;
+  inset: 28px;
+  border-radius: 20px;
+  background: rgba(248, 113, 113, 0.12);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.16s ease;
+}
+
+.game-stage.has-impulse-flash::after {
+  opacity: 1;
 }
 
 .customer-card,
@@ -126,6 +187,11 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  --drift-blur: 0px;
+  --drift-opacity: 1;
+  --drift-contrast: 1;
+  filter: blur(var(--drift-blur)) contrast(var(--drift-contrast));
+  opacity: var(--drift-opacity);
 }
 
 .customer-card {
@@ -141,6 +207,13 @@ button {
 .customer-card.is-success {
   border-color: rgba(125, 211, 168, 0.46);
   box-shadow: 0 0 0 1px rgba(125, 211, 168, 0.18), 0 24px 60px rgba(2, 6, 23, 0.45);
+}
+
+.game-frame.is-controlled .customer-card {
+  box-shadow:
+    0 0 0 1px rgba(125, 211, 168, 0.12),
+    0 18px 44px rgba(2, 6, 23, 0.38),
+    0 0 18px rgba(74, 222, 128, 0.08);
 }
 
 .customer-card.is-danger {
@@ -248,6 +321,16 @@ button {
   transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
 }
 
+.game-frame.is-controlled .choice-btn,
+.game-frame.is-controlled .restart-btn {
+  transition-duration: 0.14s;
+}
+
+.game-frame.is-unstable .choice-btn,
+.game-frame.is-unstable .restart-btn {
+  transition-duration: 0.26s;
+}
+
 .choice-btn:hover,
 .choice-btn:focus-visible,
 .restart-btn:hover,
@@ -267,6 +350,10 @@ button {
 .choice-btn.is-selected {
   border-color: rgba(248, 250, 252, 0.22);
   background: rgba(255, 255, 255, 0.08);
+}
+
+.choice-btn.is-snap {
+  transform: scale(0.965);
 }
 
 .choice-btn.is-correct {

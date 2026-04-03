@@ -232,6 +232,8 @@ const feedbackEl = document.getElementById("feedback");
 const insightFeedbackEl = document.getElementById("insight-feedback");
 const gameScreenEl = document.getElementById("game-screen");
 const gameOverEl = document.getElementById("game-over");
+const gameFrameEl = document.querySelector(".game-frame");
+const gameStageEl = document.querySelector(".game-stage");
 const finalScoreEl = document.getElementById("final-score");
 const identityTitleEl = document.getElementById("identity-title");
 const identityLineOneEl = document.getElementById("identity-line-one");
@@ -305,6 +307,7 @@ let lastScenarioTitle = null;
 let feedbackTimeoutId = null;
 let insightTimeoutId = null;
 let nextInsightAt = 3;
+let correctStreak = 0;
 
 function createEmptyMetrics() {
   return {
@@ -525,6 +528,57 @@ function showInsight(message) {
   }, 2800);
 }
 
+function setDriftLevel(level = 0) {
+  const clamped = Math.max(0, Math.min(level, 1));
+  const blur = `${(clamped * 1.35).toFixed(2)}px`;
+  const opacity = String((1 - clamped * 0.08).toFixed(2));
+  const contrast = String((1 - clamped * 0.05).toFixed(2));
+
+  gameScreenEl.style.setProperty("--drift-blur", blur);
+  gameScreenEl.style.setProperty("--drift-opacity", opacity);
+  gameScreenEl.style.setProperty("--drift-contrast", contrast);
+  gameFrameEl.classList.toggle("is-distracted", clamped > 0.08);
+}
+
+function clearVisualModes() {
+  gameFrameEl.classList.remove("is-controlled", "is-unstable", "is-distracted");
+  setDriftLevel(0);
+}
+
+function triggerImpulseChaos(button) {
+  gameFrameEl.classList.remove("is-shaking");
+  gameStageEl.classList.remove("has-impulse-flash");
+  button?.classList.remove("is-snap");
+
+  void gameFrameEl.offsetWidth;
+
+  gameFrameEl.classList.add("is-shaking");
+  gameStageEl.classList.add("has-impulse-flash");
+  button?.classList.add("is-snap");
+
+  window.setTimeout(() => {
+    gameFrameEl.classList.remove("is-shaking");
+    gameStageEl.classList.remove("has-impulse-flash");
+    button?.classList.remove("is-snap");
+  }, 190);
+}
+
+function updateBehaviorVisualState() {
+  const recent = decisionHistory.slice(-4);
+  const outcomes = recent.map((entry) => entry.outcome);
+  const alternating =
+    recent.length >= 4 &&
+    outcomes.every((outcome, index) => index === 0 || outcome !== outcomes[index - 1]);
+
+  gameFrameEl.classList.toggle("is-unstable", alternating);
+  gameFrameEl.classList.toggle("is-controlled", correctStreak >= 2);
+
+  if (correctStreak >= 2) {
+    setDriftLevel(0);
+    gameFrameEl.classList.remove("is-distracted");
+  }
+}
+
 function clearDecisionTimer() {
   if (decisionTimerId) {
     window.clearInterval(decisionTimerId);
@@ -640,6 +694,9 @@ function renderScenario(scenario) {
   decisionTimeEl.classList.remove("is-low");
   setFeedback("Choose the quietest strong response.");
   setCardState();
+  if (correctStreak < 2) {
+    setDriftLevel(0);
+  }
 
   gameScreenEl.classList.remove("is-visible");
   void gameScreenEl.offsetWidth;
@@ -716,9 +773,13 @@ function startDecisionTimer() {
   decisionTimerId = window.setInterval(() => {
     decisionTimeRemaining = Math.max(0, decisionTimeRemaining - 0.1);
     const ratio = total === 0 ? 0 : decisionTimeRemaining / total;
+    const hesitationProgress = Math.max(0, Math.min(1, (0.55 - ratio) / 0.55));
 
     timerBarEl.style.transform = `scaleX(${ratio})`;
     decisionTimeEl.textContent = `${Math.ceil(decisionTimeRemaining)}s`;
+    if (correctStreak < 2) {
+      setDriftLevel(hesitationProgress);
+    }
     pulseLowTimeState();
 
     if (decisionTimeRemaining <= 0) {
@@ -770,6 +831,7 @@ function handleChoice(choice) {
   const responseSpeed = responseRatio <= 0.45 ? "fast" : responseRatio >= 0.8 ? "slow" : "steady";
 
   if (isCorrect) {
+    correctStreak += 1;
     score += 10;
     updateScore();
     showMicroFeedback("correct");
@@ -778,6 +840,7 @@ function handleChoice(choice) {
     playSuccessSound();
     navigator.vibrate?.(18);
   } else {
+    correctStreak = 0;
     score -= 5;
     updateScore();
     showMicroFeedback("wrong");
@@ -785,6 +848,10 @@ function handleChoice(choice) {
     clickedButton?.classList.add("is-wrong");
     playErrorSound();
     navigator.vibrate?.([24, 40, 24]);
+
+    if (responseSpeed === "fast") {
+      triggerImpulseChaos(clickedButton);
+    }
   }
 
   applyMetricsChange(metricsChange, {
@@ -793,6 +860,7 @@ function handleChoice(choice) {
     responseSpeed
   });
 
+  updateBehaviorVisualState();
   maybeShowDynamicInsight();
 
   scheduleNextScenario();
@@ -804,6 +872,7 @@ function handleTimeout() {
   }
 
   lockChoices();
+  correctStreak = 0;
   score -= 3;
   updateScore();
   showMicroFeedback("timeout");
@@ -813,6 +882,8 @@ function handleTimeout() {
     { focus: -1, impulsivity: 0, discipline: -1 },
     { outcome: "timeout", responseSpeed: "timeout" }
   );
+  setDriftLevel(0.72);
+  updateBehaviorVisualState();
   maybeShowDynamicInsight();
   scheduleNextScenario();
 }
@@ -864,6 +935,7 @@ function resetGameState() {
   decisionHistory = [];
   lastScenarioTitle = null;
   nextInsightAt = 3;
+  correctStreak = 0;
   if (feedbackTimeoutId) {
     window.clearTimeout(feedbackTimeoutId);
     feedbackTimeoutId = null;
@@ -881,6 +953,7 @@ function resetGameState() {
   setFeedback("Stay focused. One customer at a time.", "neutral");
   insightFeedbackEl.textContent = "";
   insightFeedbackEl.classList.remove("is-visible");
+  clearVisualModes();
   setCardState();
   persistBehavioralState();
 }
