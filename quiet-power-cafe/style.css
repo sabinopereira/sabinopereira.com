@@ -256,6 +256,7 @@ button {
 @media (max-width: 720px) {
   .game-shell {
     padding: 14px;
+    align-items: start;
   }
 
   .game-topbar,

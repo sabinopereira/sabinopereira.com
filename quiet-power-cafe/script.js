@@ -88,8 +88,8 @@ const restartButtonEl = document.getElementById("restart-button");
 const startButtonEl = document.getElementById("start-button");
 
 const GAME_DURATION = 60;
-const START_DECISION_TIME = 10;
-const MIN_DECISION_TIME = 7;
+const START_DECISION_TIME = 14;
+const MIN_DECISION_TIME = 10;
 
 let score = 0;
 let gameTimeRemaining = GAME_DURATION;
@@ -142,6 +142,15 @@ function clearDecisionTimer() {
   }
 }
 
+function focusScenarioCard() {
+  window.requestAnimationFrame(() => {
+    gameScreenEl.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  });
+}
+
 function renderScenario(scenario) {
   currentScenario = scenario;
   roundLocked = false;
@@ -156,6 +165,7 @@ function renderScenario(scenario) {
   gameScreenEl.classList.remove("is-visible");
   void gameScreenEl.offsetWidth;
   gameScreenEl.classList.add("is-visible");
+  focusScenarioCard();
 
   choicesEl.innerHTML = "";
 
@@ -290,6 +300,7 @@ function startGame() {
   gameRunning = true;
   gameOverEl.classList.add("hidden");
   gameScreenEl.classList.remove("hidden");
+  focusScenarioCard();
   startGameTimer();
   renderScenario(scenarios[Math.floor(Math.random() * scenarios.length)]);
 }
