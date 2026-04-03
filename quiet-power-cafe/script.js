@@ -308,6 +308,7 @@ let feedbackTimeoutId = null;
 let insightTimeoutId = null;
 let nextInsightAt = 3;
 let correctStreak = 0;
+let timerFeel = "steady";
 
 function createEmptyMetrics() {
   return {
@@ -543,6 +544,8 @@ function setDriftLevel(level = 0) {
 function clearVisualModes() {
   gameFrameEl.classList.remove("is-controlled", "is-unstable", "is-distracted");
   setDriftLevel(0);
+  timerFeel = "steady";
+  timerBarEl.classList.remove("is-impulsive", "is-controlled");
 }
 
 function triggerImpulseChaos(button) {
@@ -566,12 +569,24 @@ function triggerImpulseChaos(button) {
 function updateBehaviorVisualState() {
   const recent = decisionHistory.slice(-4);
   const outcomes = recent.map((entry) => entry.outcome);
+  const fastWrongCount = recent.filter((entry) => entry.outcome === "wrong" && entry.responseSpeed === "fast").length;
   const alternating =
     recent.length >= 4 &&
     outcomes.every((outcome, index) => index === 0 || outcome !== outcomes[index - 1]);
 
   gameFrameEl.classList.toggle("is-unstable", alternating);
   gameFrameEl.classList.toggle("is-controlled", correctStreak >= 2);
+
+  if (correctStreak >= 2) {
+    timerFeel = "controlled";
+  } else if (fastWrongCount >= 1) {
+    timerFeel = "impulsive";
+  } else {
+    timerFeel = "steady";
+  }
+
+  timerBarEl.classList.toggle("is-controlled", timerFeel === "controlled");
+  timerBarEl.classList.toggle("is-impulsive", timerFeel === "impulsive");
 
   if (correctStreak >= 2) {
     setDriftLevel(0);
@@ -691,6 +706,8 @@ function renderScenario(scenario) {
   decisionTimeEl.textContent = `${Math.ceil(decisionTimeRemaining)}s`;
   timerBarEl.style.transform = "scaleX(1)";
   timerBarEl.classList.remove("is-low");
+  timerBarEl.classList.toggle("is-controlled", timerFeel === "controlled");
+  timerBarEl.classList.toggle("is-impulsive", timerFeel === "impulsive");
   decisionTimeEl.classList.remove("is-low");
   setFeedback("Choose the quietest strong response.");
   setCardState();
@@ -773,9 +790,15 @@ function startDecisionTimer() {
   decisionTimerId = window.setInterval(() => {
     decisionTimeRemaining = Math.max(0, decisionTimeRemaining - 0.1);
     const ratio = total === 0 ? 0 : decisionTimeRemaining / total;
+    const visualRatio =
+      timerFeel === "impulsive"
+        ? Math.pow(ratio, 1.14)
+        : timerFeel === "controlled"
+          ? Math.pow(ratio, 0.94)
+          : ratio;
     const hesitationProgress = Math.max(0, Math.min(1, (0.55 - ratio) / 0.55));
 
-    timerBarEl.style.transform = `scaleX(${ratio})`;
+    timerBarEl.style.transform = `scaleX(${visualRatio})`;
     decisionTimeEl.textContent = `${Math.ceil(decisionTimeRemaining)}s`;
     if (correctStreak < 2) {
       setDriftLevel(hesitationProgress);

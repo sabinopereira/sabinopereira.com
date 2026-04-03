@@ -289,11 +289,20 @@ button {
   border-radius: inherit;
   background: linear-gradient(90deg, var(--accent-strong) 0%, var(--accent) 100%);
   transform-origin: left center;
-  transition: background 0.18s ease;
+  transition: background 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
 }
 
 .timer-bar.is-low {
   background: linear-gradient(90deg, #fda4af 0%, #fb7185 100%);
+}
+
+.timer-bar.is-impulsive {
+  opacity: 0.96;
+  box-shadow: 0 0 12px rgba(248, 113, 113, 0.16);
+}
+
+.timer-bar.is-controlled {
+  box-shadow: 0 0 14px rgba(74, 222, 128, 0.16);
 }
 
 .scenario-description {
