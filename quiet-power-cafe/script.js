@@ -1,62 +1,222 @@
 const scenarios = [
   {
+    category: "focus",
     title: "Notification Pull",
-    text: "Your phone lights up while you're focused.",
+    variations: [
+      "Your phone lights up while you're focused.",
+      "A notification appears mid-task.",
+      "You hear your phone buzz during deep work."
+    ],
     choices: ["Check it quickly", "Ignore and continue working", "Pick it up but don't open anything"],
     correctAnswerIndex: 1
   },
   {
+    category: "focus",
     title: "Instant Reply Trap",
-    text: "Someone messages you. It feels urgent.",
+    variations: [
+      "Someone messages you. It feels urgent.",
+      "A message arrives and your mind treats it like an emergency.",
+      "A new message pulls at your attention while you work."
+    ],
     choices: ["Reply immediately", "Finish your task first", "Send a quick short reply"],
     correctAnswerIndex: 1
   },
   {
+    category: "focus",
     title: "Boredom Drift",
-    text: "You feel bored in the middle of a task.",
+    variations: [
+      "You feel bored in the middle of a task.",
+      "The work feels slow and your attention starts wandering.",
+      "You lose stimulation halfway through something important."
+    ],
     choices: ["Switch to something easier", "Push through the discomfort", "Take a random break"],
     correctAnswerIndex: 1
   },
   {
+    category: "emotion",
     title: "Emotional Trigger",
-    text: "Someone says something that annoys you.",
+    variations: [
+      "Someone says something that annoys you.",
+      "A comment lands badly and you feel it instantly.",
+      "Someone close to you says something that gets under your skin."
+    ],
     choices: ["Respond immediately", "Pause before reacting", "Respond sarcastically"],
     correctAnswerIndex: 1
   },
   {
+    category: "focus",
     title: "Overthinking Loop",
-    text: "You're unsure about a decision.",
+    variations: [
+      "You're unsure about a decision.",
+      "You don't have certainty, so your mind keeps circling.",
+      "A decision needs to be made, but you keep delaying the move."
+    ],
     choices: ["Keep thinking more", "Make a decision with available info", "Ask others before deciding"],
     correctAnswerIndex: 1
   },
   {
+    category: "focus",
     title: "Easy Escape",
-    text: "You think about watching something instead of working.",
+    variations: [
+      "You think about watching something instead of working.",
+      "Entertainment suddenly feels more attractive than the task.",
+      "You want a quick dopamine hit instead of staying with the work."
+    ],
     choices: ["Start watching", "Stay on task", "Watch just one short video"],
     correctAnswerIndex: 1
   },
   {
+    category: "deep work",
     title: "Pressure Spike",
-    text: "You have too many things to do.",
+    variations: [
+      "You have too many things to do.",
+      "Your list is too full and everything feels urgent.",
+      "Pressure rises because too many tasks are demanding attention."
+    ],
     choices: ["Try to do everything fast", "Prioritize one thing and start", "Jump between tasks"],
     correctAnswerIndex: 1
   },
   {
+    category: "deep work",
     title: "Mental Fatigue",
-    text: "You feel mentally tired.",
+    variations: [
+      "You feel mentally tired.",
+      "Your mind feels heavy halfway through the session.",
+      "The work is still there, but your mental energy drops."
+    ],
     choices: ["Stop everything", "Slow down but continue", "Switch to something random"],
     correctAnswerIndex: 1
   },
   {
+    category: "relationships",
     title: "Social Distraction",
-    text: "Someone starts talking to you while you work.",
+    variations: [
+      "Someone starts talking to you while you work.",
+      "A conversation begins just as you were getting into rhythm.",
+      "Someone wants your attention while you're in the middle of something important."
+    ],
     choices: ["Fully engage", "Politely delay the conversation", "Half listen while working"],
     correctAnswerIndex: 1
   },
   {
+    category: "focus",
     title: "False Urgency",
-    text: "A task suddenly feels urgent.",
+    variations: [
+      "A task suddenly feels urgent.",
+      "Something new arrives and instantly feels like top priority.",
+      "A task pulls hard at you before you've even evaluated it."
+    ],
     choices: ["Drop everything and do it", "Evaluate if it truly matters first", "Start it while doing other things"],
+    correctAnswerIndex: 1
+  },
+  {
+    category: "relationships",
+    title: "Difficult Conversation",
+    variations: [
+      "Someone close to you says something that bothers you.",
+      "A difficult comment lands and you want to answer fast.",
+      "A conversation turns sharp with someone who matters to you."
+    ],
+    choices: ["React immediately", "Pause and respond later with clarity", "Ignore it completely"],
+    correctAnswerIndex: 1
+  },
+  {
+    category: "relationships",
+    title: "Approval Seeking",
+    variations: [
+      "You want someone's approval before making a move.",
+      "You hesitate because you want validation first.",
+      "A decision feels harder because no one has approved it yet."
+    ],
+    choices: ["Wait for validation", "Decide based on your own judgment", "Ask casually just to confirm"],
+    correctAnswerIndex: 1
+  },
+  {
+    category: "relationships",
+    title: "Boundaries Test",
+    variations: [
+      "Someone asks for your time when you're busy.",
+      "A request arrives right when your focus is already committed.",
+      "Someone wants access to your time while you're under pressure."
+    ],
+    choices: ["Say yes anyway", "Politely decline or delay", "Say yes but rush everything"],
+    correctAnswerIndex: 1
+  },
+  {
+    category: "money",
+    title: "Impulse Buy",
+    variations: [
+      "You see something you want but didn't plan.",
+      "An unplanned purchase suddenly feels justified.",
+      "You want to buy something that wasn't part of the plan."
+    ],
+    choices: ["Buy it immediately", "Wait and reconsider later", "Add to cart for later"],
+    correctAnswerIndex: 1
+  },
+  {
+    category: "money",
+    title: "Lifestyle Pressure",
+    variations: [
+      "People around you are spending more than you.",
+      "The people around you make your own plan feel small.",
+      "You feel pressure to match the lifestyle around you."
+    ],
+    choices: ["Match their lifestyle", "Stick to your plan", "Spend a little to fit in"],
+    correctAnswerIndex: 1
+  },
+  {
+    category: "money",
+    title: "Opportunity vs Distraction",
+    variations: [
+      "A new money-making idea appears suddenly.",
+      "A fresh opportunity shows up while you're already committed elsewhere.",
+      "A shiny money idea tries to pull you off your real priorities."
+    ],
+    choices: ["Drop current work and chase it", "Evaluate and stay focused on priorities", "Explore it briefly"],
+    correctAnswerIndex: 1
+  },
+  {
+    category: "deep work",
+    title: "Hard Task Resistance",
+    variations: [
+      "You're about to start something mentally demanding.",
+      "A hard task is in front of you and your mind wants to delay it.",
+      "Deep work is waiting, but resistance shows up first."
+    ],
+    choices: ["Delay it", "Start anyway", "Prepare more before starting"],
+    correctAnswerIndex: 1
+  },
+  {
+    category: "deep work",
+    title: "Task Switching",
+    variations: [
+      "You feel like switching tasks mid-work.",
+      "Your attention wants novelty before the current task is done.",
+      "You want to leave the current task before finishing it."
+    ],
+    choices: ["Switch immediately", "Finish current task first", "Open another task briefly"],
+    correctAnswerIndex: 1
+  },
+  {
+    category: "deep work",
+    title: "Fake Productivity",
+    variations: [
+      "You consider doing small tasks instead of the important one.",
+      "Busywork feels easier than the task that actually matters.",
+      "You want the comfort of visible progress instead of meaningful progress."
+    ],
+    choices: ["Do the easy tasks", "Do the important task first", "Mix both"],
+    correctAnswerIndex: 1
+  },
+  {
+    category: "deep work",
+    title: "End-of-Day Decision",
+    variations: [
+      "You're near the end of your work session.",
+      "The session is almost over and stopping feels easy.",
+      "You're close to the end of the day and tempted to coast out."
+    ],
+    choices: ["Stop now", "Finish one meaningful action", "Do something light"],
     correctAnswerIndex: 1
   }
 ];
@@ -98,6 +258,7 @@ let soundEnabled = true;
 let audioContext = null;
 let behavioralMetrics = null;
 let decisionHistory = [];
+let lastScenarioTitle = null;
 
 function createEmptyMetrics() {
   return {
@@ -132,6 +293,7 @@ function applyMetricsChange(change = {}, meta = {}) {
 
   decisionHistory.push({
     scenario: currentScenario?.title || "Unknown",
+    category: currentScenario?.category || "unknown",
     outcome: meta.outcome || "decision",
     choice: meta.choice || null,
     metrics: change,
@@ -165,6 +327,20 @@ function getChoiceMetrics(scenario, choiceIndex) {
   }
 
   return { focus: -2, impulsivity: 2, discipline: -2 };
+}
+
+function pickScenario() {
+  const availableScenarios = scenarios.filter((scenario) => scenario.title !== lastScenarioTitle);
+  const pool = availableScenarios.length > 0 ? availableScenarios : scenarios;
+  const scenario = pool[Math.floor(Math.random() * pool.length)];
+  const variation = scenario.variations[Math.floor(Math.random() * scenario.variations.length)];
+
+  lastScenarioTitle = scenario.title;
+
+  return {
+    ...scenario,
+    activeText: variation
+  };
 }
 
 function resolveIdentity() {
@@ -362,7 +538,7 @@ function renderScenario(scenario) {
   decisionTimeRemaining = getScenarioTime();
 
   scenarioTitleEl.textContent = scenario.title;
-  scenarioDescriptionEl.textContent = scenario.text;
+  scenarioDescriptionEl.textContent = scenario.activeText;
   decisionTimeEl.textContent = `${Math.ceil(decisionTimeRemaining)}s`;
   timerBarEl.style.transform = "scaleX(1)";
   timerBarEl.classList.remove("is-low");
@@ -427,7 +603,7 @@ function scheduleNextScenario() {
 
   window.setTimeout(() => {
     if (gameRunning) {
-      renderScenario(scenarios[Math.floor(Math.random() * scenarios.length)]);
+      renderScenario(pickScenario());
     }
   }, 700);
 }
@@ -539,6 +715,7 @@ function resetGameState() {
   gameTimeRemaining = GAME_DURATION;
   behavioralMetrics = createEmptyMetrics();
   decisionHistory = [];
+  lastScenarioTitle = null;
   updateScore();
   updateGameClock();
   decisionTimeEl.textContent = `${START_DECISION_TIME}s`;
@@ -559,7 +736,7 @@ function startGame() {
   focusScenarioCard();
   startGameTimer();
   playStartSound();
-  renderScenario(scenarios[Math.floor(Math.random() * scenarios.length)]);
+  renderScenario(pickScenario());
 }
 
 startButtonEl.addEventListener("click", startGame);
