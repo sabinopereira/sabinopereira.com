@@ -97,6 +97,20 @@ button {
   font-size: 1.3rem;
 }
 
+.hud-toggle {
+  cursor: pointer;
+  color: var(--text);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.hud-toggle:hover,
+.hud-toggle:focus-visible {
+  outline: none;
+  transform: translateY(-1px);
+  border-color: rgba(125, 211, 168, 0.34);
+  background: rgba(125, 211, 168, 0.08);
+}
+
 .game-stage {
   padding: 28px;
 }
@@ -117,10 +131,25 @@ button {
 .customer-card {
   opacity: 0;
   transform: translateY(10px);
+  transition: box-shadow 0.24s ease, border-color 0.24s ease, transform 0.24s ease;
 }
 
 .customer-card.is-visible {
   animation: cardFade 0.35s ease forwards;
+}
+
+.customer-card.is-success {
+  border-color: rgba(125, 211, 168, 0.46);
+  box-shadow: 0 0 0 1px rgba(125, 211, 168, 0.18), 0 24px 60px rgba(2, 6, 23, 0.45);
+}
+
+.customer-card.is-danger {
+  border-color: rgba(252, 165, 165, 0.42);
+  box-shadow: 0 0 0 1px rgba(252, 165, 165, 0.18), 0 24px 60px rgba(2, 6, 23, 0.45);
+}
+
+.customer-card.is-warning {
+  border-color: rgba(248, 250, 252, 0.18);
 }
 
 @keyframes cardFade {
@@ -157,6 +186,21 @@ button {
   font-weight: 700;
 }
 
+.decision-time.is-low {
+  animation: timePulse 0.8s ease-in-out infinite;
+}
+
+@keyframes timePulse {
+  0%, 100% {
+    transform: scale(1);
+    background: rgba(125, 211, 168, 0.12);
+  }
+  50% {
+    transform: scale(1.04);
+    background: rgba(252, 165, 165, 0.18);
+  }
+}
+
 .timer-track {
   width: 100%;
   height: 10px;
@@ -172,6 +216,11 @@ button {
   border-radius: inherit;
   background: linear-gradient(90deg, var(--accent-strong) 0%, var(--accent) 100%);
   transform-origin: left center;
+  transition: background 0.18s ease;
+}
+
+.timer-bar.is-low {
+  background: linear-gradient(90deg, #fda4af 0%, #fb7185 100%);
 }
 
 .scenario-description {
@@ -196,7 +245,7 @@ button {
   background: rgba(255, 255, 255, 0.04);
   color: var(--text);
   text-align: left;
-  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
 }
 
 .choice-btn:hover,
@@ -207,6 +256,31 @@ button {
   transform: translateY(-1px);
   border-color: rgba(125, 211, 168, 0.42);
   background: rgba(125, 211, 168, 0.1);
+  box-shadow: 0 10px 22px rgba(2, 6, 23, 0.22);
+}
+
+.choice-btn:active,
+.restart-btn:active {
+  transform: scale(0.99);
+}
+
+.choice-btn.is-selected {
+  border-color: rgba(248, 250, 252, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.choice-btn.is-correct {
+  border-color: rgba(125, 211, 168, 0.46);
+  background: rgba(125, 211, 168, 0.16);
+}
+
+.choice-btn.is-wrong {
+  border-color: rgba(252, 165, 165, 0.44);
+  background: rgba(252, 165, 165, 0.12);
+}
+
+.choice-btn:disabled {
+  cursor: default;
 }
 
 .feedback {
@@ -214,6 +288,22 @@ button {
   margin: 18px 0 0;
   color: var(--accent);
   font-weight: 600;
+  transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease;
+}
+
+.feedback.is-animated {
+  animation: feedbackLift 0.28s ease;
+}
+
+@keyframes feedbackLift {
+  0% {
+    opacity: 0.4;
+    transform: translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .feedback.is-negative {
@@ -251,6 +341,36 @@ button {
 
 .hidden {
   display: none;
+}
+
+.score-pop {
+  animation: scorePop 0.28s ease;
+}
+
+@keyframes scorePop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .customer-card,
+  .choice-btn,
+  .restart-btn,
+  .hud-toggle,
+  .feedback,
+  .decision-time,
+  .timer-bar,
+  .score-pop {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 @media (max-width: 720px) {

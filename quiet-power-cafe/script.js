@@ -86,6 +86,8 @@ const gameOverEl = document.getElementById("game-over");
 const finalScoreEl = document.getElementById("final-score");
 const restartButtonEl = document.getElementById("restart-button");
 const startButtonEl = document.getElementById("start-button");
+const soundToggleEl = document.getElementById("sound-toggle");
+const soundStatusEl = document.getElementById("sound-status");
 
 const GAME_DURATION = 60;
 const START_DECISION_TIME = 14;
@@ -99,6 +101,8 @@ let gameTimerId = null;
 let decisionTimerId = null;
 let roundLocked = false;
 let gameRunning = false;
+let soundEnabled = true;
+let audioContext = null;
 
 function shuffle(array) {
   const items = [...array];
@@ -118,6 +122,9 @@ function getScenarioTime() {
 
 function updateScore() {
   scoreEl.textContent = String(score);
+  scoreEl.classList.remove("score-pop");
+  void scoreEl.offsetWidth;
+  scoreEl.classList.add("score-pop");
 }
 
 function updateGameClock() {
@@ -126,13 +133,16 @@ function updateGameClock() {
 
 function setFeedback(message, tone = "positive") {
   feedbackEl.textContent = message;
-  feedbackEl.classList.remove("is-negative", "is-neutral");
+  feedbackEl.classList.remove("is-negative", "is-neutral", "is-animated");
 
   if (tone === "negative") {
     feedbackEl.classList.add("is-negative");
   } else if (tone === "neutral") {
     feedbackEl.classList.add("is-neutral");
   }
+
+  void feedbackEl.offsetWidth;
+  feedbackEl.classList.add("is-animated");
 }
 
 function clearDecisionTimer() {
@@ -151,6 +161,91 @@ function focusScenarioCard() {
   });
 }
 
+function ensureAudioContext() {
+  if (!soundEnabled) {
+    return null;
+  }
+
+  const AudioCtor = window.AudioContext || window.webkitAudioContext;
+  if (!AudioCtor) {
+    return null;
+  }
+
+  if (!audioContext) {
+    audioContext = new AudioCtor();
+  }
+
+  if (audioContext.state === "suspended") {
+    audioContext.resume().catch(() => {});
+  }
+
+  return audioContext;
+}
+
+function playTone({ frequency, duration = 0.12, type = "sine", volume = 0.03, delay = 0 }) {
+  const ctx = ensureAudioContext();
+  if (!ctx) {
+    return;
+  }
+
+  const oscillator = ctx.createOscillator();
+  const gain = ctx.createGain();
+  const startAt = ctx.currentTime + delay;
+  const endAt = startAt + duration;
+
+  oscillator.type = type;
+  oscillator.frequency.setValueAtTime(frequency, startAt);
+
+  gain.gain.setValueAtTime(0.0001, startAt);
+  gain.gain.exponentialRampToValueAtTime(volume, startAt + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.0001, endAt);
+
+  oscillator.connect(gain);
+  gain.connect(ctx.destination);
+
+  oscillator.start(startAt);
+  oscillator.stop(endAt);
+}
+
+function playSuccessSound() {
+  playTone({ frequency: 520, duration: 0.08, type: "sine", volume: 0.035 });
+  playTone({ frequency: 680, duration: 0.12, type: "sine", volume: 0.03, delay: 0.07 });
+}
+
+function playErrorSound() {
+  playTone({ frequency: 240, duration: 0.12, type: "triangle", volume: 0.03 });
+  playTone({ frequency: 180, duration: 0.14, type: "triangle", volume: 0.025, delay: 0.06 });
+}
+
+function playStartSound() {
+  playTone({ frequency: 400, duration: 0.08, type: "sine", volume: 0.024 });
+}
+
+function playEndSound() {
+  playTone({ frequency: 300, duration: 0.12, type: "sine", volume: 0.028 });
+  playTone({ frequency: 220, duration: 0.18, type: "sine", volume: 0.024, delay: 0.08 });
+}
+
+function setCardState(state = "") {
+  gameScreenEl.classList.remove("is-success", "is-danger", "is-warning");
+  if (state) {
+    gameScreenEl.classList.add(state);
+  }
+}
+
+function setSoundEnabled(nextValue) {
+  soundEnabled = nextValue;
+  soundStatusEl.textContent = soundEnabled ? "On" : "Off";
+  soundToggleEl.setAttribute("aria-pressed", String(soundEnabled));
+}
+
+function pulseLowTimeState() {
+  const isLow = decisionTimeRemaining <= 4;
+  decisionTimeEl.classList.toggle("is-low", isLow);
+  timerBarEl.classList.toggle("is-low", isLow);
+  gameScreenEl.classList.toggle("is-warning", isLow);
+}
+
 function renderScenario(scenario) {
   currentScenario = scenario;
   roundLocked = false;
@@ -160,7 +255,10 @@ function renderScenario(scenario) {
   scenarioDescriptionEl.textContent = scenario.description;
   decisionTimeEl.textContent = `${Math.ceil(decisionTimeRemaining)}s`;
   timerBarEl.style.transform = "scaleX(1)";
+  timerBarEl.classList.remove("is-low");
+  decisionTimeEl.classList.remove("is-low");
   setFeedback("Choose the quietest strong response.");
+  setCardState();
 
   gameScreenEl.classList.remove("is-visible");
   void gameScreenEl.offsetWidth;
@@ -192,6 +290,7 @@ function startDecisionTimer() {
 
     timerBarEl.style.transform = `scaleX(${ratio})`;
     decisionTimeEl.textContent = `${Math.ceil(decisionTimeRemaining)}s`;
+    pulseLowTimeState();
 
     if (decisionTimeRemaining <= 0) {
       clearDecisionTimer();
@@ -226,15 +325,30 @@ function handleChoice(choice) {
 
   clearDecisionTimer();
   lockChoices();
+  const clickedButton = Array.from(choicesEl.querySelectorAll(".choice-btn")).find(
+    (button) => button.textContent === choice.text
+  );
+
+  if (clickedButton) {
+    clickedButton.classList.add("is-selected");
+  }
 
   if (choice.correct) {
     score += 10;
     updateScore();
     setFeedback("+10 Calm choice. The room stays steady.");
+    setCardState("is-success");
+    clickedButton?.classList.add("is-correct");
+    playSuccessSound();
+    navigator.vibrate?.(18);
   } else {
     score -= 5;
     updateScore();
     setFeedback("-5 Noise got in. Try the calmer move next time.", "negative");
+    setCardState("is-danger");
+    clickedButton?.classList.add("is-wrong");
+    playErrorSound();
+    navigator.vibrate?.([24, 40, 24]);
   }
 
   scheduleNextScenario();
@@ -249,6 +363,8 @@ function handleTimeout() {
   score -= 3;
   updateScore();
   setFeedback("-3 Too slow. The customer left with the noise.", "negative");
+  setCardState("is-danger");
+  playErrorSound();
   scheduleNextScenario();
 }
 
@@ -264,6 +380,7 @@ function endGame() {
   gameScreenEl.classList.add("hidden");
   gameOverEl.classList.remove("hidden");
   finalScoreEl.textContent = String(score);
+  playEndSound();
 }
 
 function startGameTimer() {
@@ -293,17 +410,26 @@ function resetGameState() {
   scenarioTitleEl.textContent = "Quiet Power Cafe";
   scenarioDescriptionEl.textContent = "Serve calm choices under pressure before the shift ends.";
   setFeedback("Stay focused. One customer at a time.", "neutral");
+  setCardState();
 }
 
 function startGame() {
+  ensureAudioContext();
   resetGameState();
   gameRunning = true;
   gameOverEl.classList.add("hidden");
   gameScreenEl.classList.remove("hidden");
   focusScenarioCard();
   startGameTimer();
+  playStartSound();
   renderScenario(scenarios[Math.floor(Math.random() * scenarios.length)]);
 }
 
 startButtonEl.addEventListener("click", startGame);
 restartButtonEl.addEventListener("click", startGame);
+soundToggleEl.addEventListener("click", () => {
+  setSoundEnabled(!soundEnabled);
+  if (soundEnabled) {
+    playStartSound();
+  }
+});
