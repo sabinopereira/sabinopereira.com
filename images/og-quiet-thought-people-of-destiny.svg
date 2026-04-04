@@ -1,0 +1,26 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0D1014"/>
+  <rect x="34" y="34" width="1132" height="562" rx="28" fill="url(#bg)"/>
+  <circle cx="1030" cy="146" r="132" fill="url(#halo)" fill-opacity="0.34"/>
+  <circle cx="186" cy="516" r="188" fill="url(#halo2)" fill-opacity="0.22"/>
+  <path d="M94 487C208 423 296 403 426 402C557 401 681 448 823 428C919 414 1006 369 1098 282" stroke="#E8D8B8" stroke-opacity="0.26" stroke-width="2"/>
+  <text x="96" y="166" fill="#E8D8B8" font-family="Georgia, 'Times New Roman', serif" font-size="28" letter-spacing="5">QUIET POWER THOUGHT</text>
+  <text x="96" y="278" fill="#F7F1E7" font-family="Georgia, 'Times New Roman', serif" font-size="80" font-weight="700">People of</text>
+  <text x="96" y="360" fill="#F7F1E7" font-family="Georgia, 'Times New Roman', serif" font-size="80" font-weight="700">Destiny</text>
+  <text x="96" y="438" fill="#D3C5AA" font-family="Georgia, 'Times New Roman', serif" font-size="31">Aura. Symbolic impact. A lasting trail.</text>
+  <text x="96" y="516" fill="#C8B89A" font-family="Georgia, 'Times New Roman', serif" font-size="24">sabinopereira.com</text>
+  <defs>
+    <linearGradient id="bg" x1="82" y1="72" x2="1105" y2="551" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1A1F26"/>
+      <stop offset="1" stop-color="#10151B"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1030 146) rotate(90) scale(132)">
+      <stop stop-color="#F0D59F"/>
+      <stop offset="1" stop-color="#F0D59F" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="halo2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(186 516) rotate(90) scale(188)">
+      <stop stop-color="#9FA7B2"/>
+      <stop offset="1" stop-color="#9FA7B2" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
