@@ -113,6 +113,43 @@ body {
   opacity: 1;
 }
 
+.social-strip {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.social-strip a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 116px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  background: rgba(255, 250, 240, 0.58);
+  color: #4f4438;
+  border: 1px solid rgba(94, 81, 64, 0.16);
+  box-shadow: 0 8px 18px rgba(60, 47, 34, 0.05);
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.social-strip a:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 250, 240, 0.82);
+  color: #2f261d;
+  border-color: rgba(94, 81, 64, 0.3);
+  opacity: 1;
+}
+
+.social-strip--home {
+  margin-top: 16px;
+}
+
 .home-classic-intro {
   margin-top: 20px;
   font-size: 1.28rem;
@@ -459,6 +496,19 @@ body {
   display: block;
   object-fit: cover;
   border: 1px solid rgba(236, 223, 205, 0.26);
+}
+
+.home-classic-footer .social-strip a {
+  background: rgba(255, 248, 236, 0.08);
+  color: #eadfcd;
+  border-color: rgba(236, 223, 205, 0.18);
+  box-shadow: none;
+}
+
+.home-classic-footer .social-strip a:hover {
+  background: rgba(255, 248, 236, 0.16);
+  color: #fff5e8;
+  border-color: rgba(236, 223, 205, 0.34);
 }
 
 .monastery-body {
@@ -1110,6 +1160,22 @@ body {
 .monastery-subpage .site-footer a:hover {
   color: #231d17;
   opacity: 1;
+}
+
+.monastery-subpage .social-strip {
+  justify-content: center;
+}
+
+.monastery-subpage .social-strip a {
+  background: rgba(255, 255, 255, 0.78);
+  color: #2f2a24;
+  border-color: rgba(82, 70, 54, 0.12);
+}
+
+.monastery-subpage .social-strip a:hover {
+  background: rgba(255, 255, 255, 0.96);
+  color: #171410;
+  border-color: rgba(82, 70, 54, 0.26);
 }
 
 .monastery-subpage .qp-book-main {
