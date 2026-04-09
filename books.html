@@ -84,58 +84,68 @@
     <h2 class="page-title">A quiet shelf of books.</h2>
   </section>
 
-  <section class="page-section books-shelf">
-    <div class="books-grid">
+  <section class="page-section books-shelf books-carousel-shell">
+    <div class="books-carousel-header">
+      <p class="book-meta">Catalogue</p>
+      <div class="books-carousel-controls">
+        <button type="button" class="books-carousel-btn" data-carousel-prev aria-label="Previous books">‹</button>
+        <button type="button" class="books-carousel-btn" data-carousel-next aria-label="Next books">›</button>
+      </div>
+    </div>
 
-      <article class="book-card book-card--featured">
-        <a href="/the-calm-digital-life.html" class="book-object-stage">
-          <img src="/images/TheCalmDigitalLife.png" alt="The Calm Digital Life book cover" class="book-cover-img">
-        </a>
-        <p class="book-meta">BOOK · ENGLISH</p>
-        <h2><a href="/the-calm-digital-life.html">The Calm Digital Life</a></h2>
-        <p class="book-description">A practical guide to avoiding scams, protecting your money, and staying in control in a fast-moving digital world.</p>
-        <div class="book-actions">
-          <a href="/the-calm-digital-life.html" class="btn-secondary">Explore the book</a>
-          <a href="https://www.amazon.com/dp/B0GW8HN841" class="btn-primary amazon-btn" target="_blank" rel="noopener">Buy on Amazon</a>
-        </div>
-      </article>
+    <div class="books-carousel-viewport" data-books-carousel>
+      <div class="books-grid books-carousel-track">
 
-      <article class="book-card">
-        <a href="/quiet-power.html" class="book-object-stage">
-          <img src="/images/quiet-power-cover.jpg" alt="Quiet Power book cover" class="book-cover-img">
-        </a>
-        <p class="book-meta">BOOK · ENGLISH</p>
-        <h2><a href="/quiet-power.html">Quiet Power</a></h2>
-        <p class="book-description">A short guide to inner strength, calm thinking, and mental clarity in a world that rewards noise.</p>
-        <div class="book-actions">
-          <a href="/quiet-power.html" class="btn-secondary">Explore the book</a>
-          <a href="https://amzn.eu/d/0aqOJyCI" class="btn-primary amazon-btn" target="_blank" rel="noopener">Buy on Amazon</a>
-        </div>
-      </article>
+        <article class="book-card">
+          <a href="/the-calm-digital-life.html" class="book-object-stage">
+            <img src="/images/TheCalmDigitalLife.png" alt="The Calm Digital Life book cover" class="book-cover-img">
+          </a>
+          <p class="book-meta">BOOK · ENGLISH</p>
+          <h2><a href="/the-calm-digital-life.html">The Calm Digital Life</a></h2>
+          <p class="book-description">Avoid scams. Protect your money. Stay in control.</p>
+          <div class="book-actions">
+            <a href="/the-calm-digital-life.html" class="btn-secondary">Explore</a>
+            <a href="https://www.amazon.com/dp/B0GW8HN841" class="btn-primary amazon-btn" target="_blank" rel="noopener">Buy</a>
+          </div>
+        </article>
 
-      <article class="book-card">
-        <a href="/livro-reclamacao.html" class="book-object-stage">
-          <img src="/images/livro-reclamacoes-cover.jpg" alt="Livro de Reclamações para o Mundo capa" class="book-cover-img">
-        </a>
-        <p class="book-meta">BOOK · PORTUGUESE</p>
-        <h2><a href="/livro-reclamacao.html">Livro de Reclamações para o Mundo</a></h2>
-        <p class="book-description">A collection of modern complaints, observations, and quiet frustrations, written in Portuguese.</p>
-        <div class="book-actions">
-          <a href="/livro-reclamacao.html" class="btn-secondary">Explorar o livro (PT)</a>
-          <a href="https://amzn.eu/d/0d0PquzY" class="btn-primary amazon-btn" target="_blank" rel="noopener">Comprar na Amazon</a>
-        </div>
-      </article>
+        <article class="book-card">
+          <a href="/quiet-power.html" class="book-object-stage">
+            <img src="/images/quiet-power-cover.jpg" alt="Quiet Power book cover" class="book-cover-img">
+          </a>
+          <p class="book-meta">BOOK · ENGLISH</p>
+          <h2><a href="/quiet-power.html">Quiet Power</a></h2>
+          <p class="book-description">Calm thinking and mental clarity in a noisy world.</p>
+          <div class="book-actions">
+            <a href="/quiet-power.html" class="btn-secondary">Explore</a>
+            <a href="https://amzn.eu/d/0aqOJyCI" class="btn-primary amazon-btn" target="_blank" rel="noopener">Buy</a>
+          </div>
+        </article>
 
-      <article class="book-card book-card--soon">
-        <div class="book-object-stage">
-          <img src="/images/bugs-cover.jpg" alt="A Life Full of Bugs placeholder cover" class="book-cover-img">
-        </div>
-        <p class="book-meta">BOOK · IN PROGRESS</p>
-        <h2>A Life Full of Bugs</h2>
-        <p class="book-description">A future book about modern life bugs, patterns, and quiet chaos behind normal days.</p>
-        <p class="book-note">In development. Updates soon.</p>
-      </article>
+        <article class="book-card">
+          <a href="/livro-reclamacao.html" class="book-object-stage">
+            <img src="/images/livro-reclamacoes-cover.jpg" alt="Livro de Reclamações para o Mundo capa" class="book-cover-img">
+          </a>
+          <p class="book-meta">BOOK · PORTUGUESE</p>
+          <h2><a href="/livro-reclamacao.html">Livro de Reclamações para o Mundo</a></h2>
+          <p class="book-description">Observações, ironia, e frustração moderna em português.</p>
+          <div class="book-actions">
+            <a href="/livro-reclamacao.html" class="btn-secondary">Explore</a>
+            <a href="https://amzn.eu/d/0d0PquzY" class="btn-primary amazon-btn" target="_blank" rel="noopener">Buy</a>
+          </div>
+        </article>
 
+        <article class="book-card book-card--soon">
+          <div class="book-object-stage">
+            <img src="/images/bugs-cover.jpg" alt="A Life Full of Bugs placeholder cover" class="book-cover-img">
+          </div>
+          <p class="book-meta">BOOK · IN PROGRESS</p>
+          <h2>A Life Full of Bugs</h2>
+          <p class="book-description">Modern life bugs, patterns, and quiet chaos.</p>
+          <p class="book-note">In development.</p>
+        </article>
+
+      </div>
     </div>
   </section>
 </main>
@@ -144,42 +154,27 @@
   <p>&copy; 2026 Sabino Pereira &mdash; Built with QP Thoughts, Deep Dives, and steady work.</p>
 </footer>
 
-<script src="/share-utils.js"></script>
 <script>
-  const booksToShare = [
-    {
-      selector: ".book-card:nth-of-type(1)",
-      label: "Share this book",
-      title: "The Calm Digital Life by Sabino Pereira",
-      url: "https://sabinopereira.com/the-calm-digital-life.html"
-    },
-    {
-      selector: ".book-card:nth-of-type(2)",
-      label: "Share this book",
-      title: "Quiet Power by Sabino Pereira",
-      url: "https://sabinopereira.com/quiet-power.html"
-    },
-    {
-      selector: ".book-card:nth-of-type(3)",
-      label: "Share this book",
-      title: "Livro de Reclamações para o Mundo by Sabino Pereira",
-      url: "https://sabinopereira.com/livro-reclamacao.html"
-    }
-  ];
+  const carousel = document.querySelector("[data-books-carousel]");
+  const prevBtn = document.querySelector("[data-carousel-prev]");
+  const nextBtn = document.querySelector("[data-carousel-next]");
 
-  booksToShare.forEach((item) => {
-    const card = document.querySelector(item.selector);
+  if (carousel && prevBtn && nextBtn) {
+    const getStep = () => {
+      const card = carousel.querySelector(".book-card");
+      if (!card) return 320;
+      const gap = 20;
+      return card.getBoundingClientRect().width + gap;
+    };
 
-    if (!card) {
-      return;
-    }
+    prevBtn.addEventListener("click", () => {
+      carousel.scrollBy({ left: -getStep(), behavior: "smooth" });
+    });
 
-    const share = window.ShareUtils.createInlineShareBlock(item.label);
-    const links = window.ShareUtils.buildShareLinks(item.title, item.url);
-    window.ShareUtils.wireShareControls(share, links);
-
-    card.appendChild(share);
-  });
+    nextBtn.addEventListener("click", () => {
+      carousel.scrollBy({ left: getStep(), behavior: "smooth" });
+    });
+  }
 </script>
 
 </body>
