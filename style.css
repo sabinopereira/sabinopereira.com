@@ -3253,9 +3253,10 @@ a:hover { opacity: 0.7; }
 .book-card--featured {
   grid-column: span 12;
   display: grid;
-  grid-template-columns: minmax(220px, 290px) minmax(0, 1fr);
-  gap: 16px;
+  grid-template-columns: 220px minmax(280px, 420px);
+  gap: 18px;
   align-items: center;
+  justify-content: start;
   padding: 14px 16px 16px;
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.6);
@@ -3365,7 +3366,11 @@ a:hover { opacity: 0.7; }
 
 .book-card--featured .book-description {
   font-size: 0.9rem;
-  max-width: 34ch;
+  max-width: 30ch;
+}
+
+.book-card--featured > :not(.book-object-stage) {
+  max-width: 420px;
 }
 
 .books-page-main .books-grid {
