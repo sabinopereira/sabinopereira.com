@@ -2400,8 +2400,8 @@ a:hover { opacity: 0.7; }
   --hub-ink: #201b17;
   --hub-muted: #6e6257;
   --hub-line: rgba(71, 56, 42, 0.14);
-  --hub-accent: #133d42;
-  --hub-accent-soft: #dbe9e7;
+  --hub-accent: #315f63;
+  --hub-accent-soft: #dfe9e8;
   --hub-warm: #b88b5a;
   --hub-shadow: 0 24px 80px rgba(30, 21, 15, 0.1);
   --hub-max: 1180px;
@@ -2616,7 +2616,7 @@ a:hover { opacity: 0.7; }
 
 .author-button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(19, 61, 66, 0.16);
+  box-shadow: 0 10px 24px rgba(49, 95, 99, 0.16);
   color: #ffffff;
 }
 
