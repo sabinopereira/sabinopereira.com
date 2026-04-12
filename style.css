@@ -2948,20 +2948,28 @@ a:hover { opacity: 0.7; }
   }
 
   .author-nav {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
     width: 100%;
-    justify-content: stretch;
+    justify-content: flex-start;
     margin-top: 14px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .author-nav::-webkit-scrollbar {
+    display: none;
   }
 
   .author-nav a {
+    flex: 0 0 auto;
     justify-content: center;
-    width: 100%;
-    min-height: 42px;
-    padding: 9px 10px;
+    min-height: 40px;
+    padding: 9px 14px;
     font-size: 0.88rem;
+    white-space: nowrap;
   }
 
   .author-main {
