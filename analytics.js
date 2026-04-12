@@ -25,4 +25,17 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
+
+  document.querySelectorAll("[data-tool-name]").forEach((link) => {
+    link.addEventListener("click", () => {
+      window.trackEvent("quiet_power_tool_click", {
+        page_path: window.location.pathname,
+        tool_name: link.dataset.toolName || "",
+        link_type: link.dataset.toolLinkType || "",
+        source: link.dataset.toolSource || "",
+        destination_host: link.hostname || "",
+        link_text: (link.textContent || "").trim()
+      });
+    });
+  });
 });
