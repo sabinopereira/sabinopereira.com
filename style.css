@@ -2630,6 +2630,20 @@ a:hover { opacity: 0.7; }
   background: rgba(255, 255, 255, 0.6);
 }
 
+.author-button.amazon-btn,
+.author-button.author-button--secondary.amazon-btn {
+  background: #f7ca5f;
+  color: #23180a;
+  border-color: rgba(148, 104, 16, 0.34);
+  box-shadow: 0 2px 0 rgba(120, 85, 13, 0.12);
+}
+
+.author-button.amazon-btn:hover,
+.author-button.author-button--secondary.amazon-btn:hover {
+  background: #ffd874;
+  color: #1c1207;
+}
+
 .author-social a {
   text-decoration: none;
   color: var(--hub-muted);
