@@ -2511,6 +2511,12 @@ a:hover { opacity: 0.7; }
   align-items: center;
 }
 
+.author-hero--compact {
+  grid-template-columns: minmax(0, 1.08fr) minmax(260px, 0.82fr);
+  gap: 16px;
+  align-items: start;
+}
+
 .author-kicker {
   margin: 0 0 10px;
   color: var(--hub-accent);
@@ -2534,6 +2540,12 @@ a:hover { opacity: 0.7; }
   line-height: 0.95;
 }
 
+.author-hero--compact .author-display {
+  max-width: 11ch;
+  font-size: clamp(2.45rem, 4.6vw, 4rem);
+  line-height: 0.94;
+}
+
 .author-tagline {
   margin: 18px 0 0;
   max-width: 14ch;
@@ -2541,6 +2553,12 @@ a:hover { opacity: 0.7; }
   font-size: clamp(1.45rem, 2.2vw, 2rem);
   line-height: 1.12;
   color: #322921;
+}
+
+.author-hero--compact .author-tagline {
+  max-width: 24ch;
+  font-size: clamp(1.08rem, 1.45vw, 1.32rem);
+  line-height: 1.18;
 }
 
 .author-lede,
@@ -2559,6 +2577,12 @@ a:hover { opacity: 0.7; }
   margin: 16px 0 0;
 }
 
+.author-hero--compact .author-lede {
+  max-width: 48ch;
+  font-size: 0.95rem;
+  line-height: 1.52;
+}
+
 .author-actions,
 .author-social,
 .author-meta-row {
@@ -2571,6 +2595,10 @@ a:hover { opacity: 0.7; }
   margin-top: 22px;
 }
 
+.author-hero--compact .author-actions {
+  margin-top: 18px;
+}
+
 .author-button {
   display: inline-flex;
   align-items: center;
@@ -2579,7 +2607,7 @@ a:hover { opacity: 0.7; }
   border: 1px solid var(--hub-accent);
   border-radius: 999px;
   background: var(--hub-accent);
-  color: #f8f6f0;
+  color: #fcfaf4;
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 600;
@@ -2589,6 +2617,7 @@ a:hover { opacity: 0.7; }
 .author-button:hover {
   transform: translateY(-1px);
   box-shadow: 0 10px 24px rgba(19, 61, 66, 0.16);
+  color: #ffffff;
 }
 
 .author-button--secondary {
@@ -2616,6 +2645,11 @@ a:hover { opacity: 0.7; }
   justify-content: flex-end;
 }
 
+.author-hero--compact .author-hero-art {
+  align-self: start;
+  padding-top: 6px;
+}
+
 .author-portrait {
   width: min(100%, 420px);
   border-radius: 28px;
@@ -2623,6 +2657,10 @@ a:hover { opacity: 0.7; }
   object-fit: cover;
   border: 1px solid rgba(19, 61, 66, 0.14);
   box-shadow: 0 26px 60px rgba(19, 61, 66, 0.14);
+}
+
+.author-hero--compact .author-portrait {
+  width: min(100%, 320px);
 }
 
 .author-grid,
