@@ -2632,16 +2632,17 @@ a:hover { opacity: 0.7; }
 
 .author-button.amazon-btn,
 .author-button.author-button--secondary.amazon-btn {
-  background: #f7ca5f;
-  color: #23180a;
-  border-color: rgba(148, 104, 16, 0.34);
-  box-shadow: 0 2px 0 rgba(120, 85, 13, 0.12);
+  background: #e8d4a2;
+  color: #3d2f15;
+  border-color: rgba(120, 92, 33, 0.22);
+  box-shadow: 0 6px 16px rgba(120, 92, 33, 0.08);
+  border-radius: 16px;
 }
 
 .author-button.amazon-btn:hover,
 .author-button.author-button--secondary.amazon-btn:hover {
-  background: #ffd874;
-  color: #1c1207;
+  background: #eedcad;
+  color: #2f2411;
 }
 
 .author-social a {
