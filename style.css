@@ -2632,17 +2632,28 @@ a:hover { opacity: 0.7; }
 
 .author-button.amazon-btn,
 .author-button.author-button--secondary.amazon-btn {
-  background: #e8d4a2;
-  color: #3d2f15;
-  border-color: rgba(120, 92, 33, 0.22);
-  box-shadow: 0 6px 16px rgba(120, 92, 33, 0.08);
-  border-radius: 16px;
+  background: #e5dcc8;
+  color: #3c3428;
+  border-color: rgba(122, 103, 69, 0.18);
+  box-shadow: 0 6px 16px rgba(122, 103, 69, 0.06);
+  border-radius: 999px;
 }
 
 .author-button.amazon-btn:hover,
 .author-button.author-button--secondary.amazon-btn:hover {
-  background: #eedcad;
-  color: #2f2411;
+  background: #ece3d1;
+  color: #2f281f;
+}
+
+.author-book-actions .author-button:not(.amazon-btn) {
+  background: #47686b;
+  border-color: #47686b;
+  box-shadow: 0 8px 20px rgba(71, 104, 107, 0.12);
+}
+
+.author-book-actions .author-button:not(.amazon-btn):hover {
+  background: #54777a;
+  border-color: #54777a;
 }
 
 .author-social a {
