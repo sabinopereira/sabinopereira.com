@@ -2685,6 +2685,12 @@ a:hover { opacity: 0.7; }
   padding: 22px;
 }
 
+.author-tool {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
 .author-section-title,
 .author-page-title {
   font-size: clamp(2rem, 3vw, 3rem);
@@ -2773,6 +2779,8 @@ a:hover { opacity: 0.7; }
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 20px;
+  margin-top: auto;
+  padding-top: 20px;
 }
 
 .author-tool-secondary {
