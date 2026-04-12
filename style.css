@@ -2974,15 +2974,38 @@ a:hover { opacity: 0.7; }
 
   .author-main {
     gap: 22px;
-    padding-top: 22px;
+    padding-top: 18px;
   }
 
-  .author-hero-art {
-    justify-content: flex-start;
+  .author-hero {
+    gap: 10px;
   }
 
-  .author-portrait {
-    width: min(100%, 280px);
+  .author-hero--compact .author-display {
+    max-width: 8ch;
+    font-size: clamp(2.2rem, 12vw, 3.2rem);
+    line-height: 0.94;
+  }
+
+  .author-hero--compact .author-tagline {
+    max-width: 22ch;
+    font-size: 1rem;
+    line-height: 1.16;
+  }
+
+  .author-hero--compact .author-lede {
+    max-width: 34ch;
+    font-size: 0.9rem;
+    line-height: 1.48;
+  }
+
+  .author-hero--compact .author-actions {
+    margin-top: 16px;
+  }
+
+  .author-hero-art,
+  .author-hero--compact .author-hero-art {
+    display: none;
   }
 
   .author-footer {
