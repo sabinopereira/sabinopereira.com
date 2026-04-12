@@ -2512,8 +2512,8 @@ a:hover { opacity: 0.7; }
 }
 
 .author-hero--compact {
-  grid-template-columns: minmax(0, 1.08fr) minmax(260px, 0.82fr);
-  gap: 16px;
+  grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.72fr);
+  gap: 8px;
   align-items: start;
 }
 
@@ -2660,7 +2660,7 @@ a:hover { opacity: 0.7; }
 }
 
 .author-hero--compact .author-portrait {
-  width: min(100%, 320px);
+  width: min(100%, 340px);
 }
 
 .author-grid,
