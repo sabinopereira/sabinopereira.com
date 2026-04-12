@@ -2819,6 +2819,43 @@ a:hover { opacity: 0.7; }
   box-shadow: 0 16px 36px rgba(44, 33, 26, 0.1);
 }
 
+.author-book-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(240px, 0.7fr);
+  gap: 20px;
+  align-items: center;
+  padding: 28px;
+  background: rgba(255, 252, 247, 0.82);
+  border: 1px solid var(--hub-line);
+  border-radius: 24px;
+}
+
+.author-book-detail-copy {
+  max-width: 34rem;
+}
+
+.author-book-detail-tagline {
+  margin: 12px 0 0;
+  max-width: 24ch;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.35rem, 2vw, 1.85rem);
+  line-height: 1.14;
+  color: #312821;
+}
+
+.author-book-detail-cover {
+  display: flex;
+  justify-content: center;
+}
+
+.author-book-detail-image {
+  width: min(100%, 270px);
+  border-radius: 18px;
+  display: block;
+  border: 1px solid rgba(71, 56, 42, 0.12);
+  box-shadow: 0 18px 40px rgba(44, 33, 26, 0.12);
+}
+
 .author-book-actions,
 .author-inline-links {
   display: flex;
@@ -2907,6 +2944,7 @@ a:hover { opacity: 0.7; }
   .author-card-grid,
   .author-feature-grid,
   .author-home-split,
+  .author-book-detail,
   .author-books-grid,
   .author-tools-grid,
   .author-stories-grid,
@@ -2928,6 +2966,7 @@ a:hover { opacity: 0.7; }
   .author-card-grid,
   .author-feature-grid,
   .author-home-split,
+  .author-book-detail,
   .author-books-grid,
   .author-tools-grid,
   .author-stories-grid,
@@ -3026,6 +3065,19 @@ a:hover { opacity: 0.7; }
   .author-footer {
     width: min(calc(100% - 24px), var(--hub-max));
     padding: 0 2px;
+  }
+
+  .author-book-detail {
+    padding: 22px;
+    gap: 18px;
+  }
+
+  .author-book-detail-copy {
+    max-width: none;
+  }
+
+  .author-book-detail-image {
+    width: min(100%, 220px);
   }
 }
 .site-nav a:focus-visible {
