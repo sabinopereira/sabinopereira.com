@@ -2789,6 +2789,19 @@ a:hover { opacity: 0.7; }
   margin: 12px 0 0;
 }
 
+.author-tool-copy {
+  margin-top: 12px;
+}
+
+.author-tool-copy .author-card-text {
+  margin-top: 10px;
+}
+
+.author-tool-copy .author-card-text strong {
+  color: var(--hub-ink);
+  font-weight: 700;
+}
+
 .author-link {
   display: inline-flex;
   align-items: center;
