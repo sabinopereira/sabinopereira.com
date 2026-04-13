@@ -2678,6 +2678,14 @@ a:hover { opacity: 0.7; }
   padding-top: 6px;
 }
 
+.author-hero-book-cover {
+  width: min(100%, 300px);
+  border-radius: 20px;
+  display: block;
+  border: 1px solid rgba(71, 56, 42, 0.12);
+  box-shadow: 0 24px 52px rgba(44, 33, 26, 0.14);
+}
+
 .author-portrait {
   width: min(100%, 420px);
   border-radius: 28px;
@@ -2741,6 +2749,11 @@ a:hover { opacity: 0.7; }
 .author-page-hero,
 .author-quote {
   padding: 26px;
+}
+
+.author-panel--primary {
+  border-color: rgba(49, 95, 99, 0.22);
+  box-shadow: 0 16px 32px rgba(19, 61, 66, 0.06);
 }
 
 .author-card,
