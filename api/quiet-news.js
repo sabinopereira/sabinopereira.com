@@ -6,31 +6,27 @@ export default async function handler(req, res) {
 
   try {
     const preferences = typeof req.body === "string" ? JSON.parse(req.body) : req.body || {};
-    const provider = preferences.provider || process.env.QUIET_NEWS_PROVIDER || "gnews";
-    const providerConfig = getProviderConfig(provider);
+    const apiKey = process.env.GNEWS_API_KEY || "";
 
-    if (!providerConfig.apiKey) {
+    if (!apiKey) {
       return res.status(500).json({
-        error: "Provider key is missing. Add the API key in the deployment environment first."
+        error: "GNews is not configured yet. Add GNEWS_API_KEY in the deployment environment first."
       });
     }
 
-    const requests = buildProviderRequests(preferences, provider, providerConfig.apiKey);
+    const requests = buildProviderRequests(preferences, apiKey);
     const rawResults = await Promise.all(
       requests.map(async (url) => {
         const response = await fetch(url);
         if (!response.ok) {
           const text = await response.text();
-          throw new Error(providerConfig.label + " returned " + response.status + ". " + text.slice(0, 180));
+          throw new Error("GNews returned " + response.status + ". " + text.slice(0, 180));
         }
         return response.json();
       })
     );
 
-    const articles = normalizeResults(
-      provider,
-      rawResults.flatMap((result) => normalizeProviderPayload(provider, result))
-    );
+    const articles = normalizeResults(rawResults.flatMap((result) => normalizeProviderPayload(result)));
 
     return res.status(200).json(articles);
   } catch (error) {
@@ -38,25 +34,6 @@ export default async function handler(req, res) {
       error: error.message || "Unable to build the news briefing right now."
     });
   }
-}
-
-function getProviderConfig(provider) {
-  const providers = {
-    gnews: {
-      label: "GNews",
-      apiKey: process.env.GNEWS_API_KEY || ""
-    },
-    newsapi: {
-      label: "NewsAPI",
-      apiKey: process.env.NEWSAPI_API_KEY || ""
-    },
-    newsdata: {
-      label: "NewsData.io",
-      apiKey: process.env.NEWSDATA_API_KEY || ""
-    }
-  };
-
-  return providers[provider] || providers.gnews;
 }
 
 function mapLanguage(language) {
@@ -106,55 +83,23 @@ function buildQuery(preferences) {
   return interestTerms.join(" OR ");
 }
 
-function buildProviderRequests(preferences, provider, apiKey) {
+function buildProviderRequests(preferences, apiKey) {
   const query = encodeURIComponent(buildQuery(preferences));
   const language = mapLanguage(preferences.language || "en");
   const { start, end } = getDateRange(preferences.timeFrame || "today");
   const startIso = start.toISOString();
   const endIso = end.toISOString();
   const localCountry = preferences.regionFocus === "global" ? "" : (preferences.regionFocus || "pt");
-  const newsApiDomains = {
-    pt: "publico.pt,observador.pt,dn.pt,jn.pt",
-    us: "nytimes.com,wsj.com,cnn.com,apnews.com",
-    gb: "bbc.com,theguardian.com,ft.com,reuters.com"
-  };
   const requests = [];
 
   function pushRequest(mode) {
-    if (provider === "gnews") {
-      let url = "https://gnews.io/api/v4/search?q=" + query +
-        "&lang=" + language +
-        "&max=20" +
-        "&from=" + encodeURIComponent(startIso) +
-        "&to=" + encodeURIComponent(endIso) +
-        "&apikey=" + encodeURIComponent(apiKey);
-      if (mode === "local" && localCountry && localCountry !== "eu") {
-        url += "&country=" + encodeURIComponent(localCountry);
-      }
-      requests.push(url);
-      return;
-    }
-
-    if (provider === "newsapi") {
-      let url = "https://newsapi.org/v2/everything?q=" + query +
-        "&language=" + language +
-        "&sortBy=publishedAt" +
-        "&pageSize=25" +
-        "&from=" + encodeURIComponent(startIso) +
-        "&to=" + encodeURIComponent(endIso) +
-        "&apiKey=" + encodeURIComponent(apiKey);
-      if (mode === "local" && newsApiDomains[localCountry]) {
-        url += "&domains=" + encodeURIComponent(newsApiDomains[localCountry]);
-      }
-      requests.push(url);
-      return;
-    }
-
-    let url = "https://newsdata.io/api/1/latest?q=" + query +
-      "&language=" + encodeURIComponent(language) +
-      "&size=20" +
+    let url = "https://gnews.io/api/v4/search?q=" + query +
+      "&lang=" + language +
+      "&max=20" +
+      "&from=" + encodeURIComponent(startIso) +
+      "&to=" + encodeURIComponent(endIso) +
       "&apikey=" + encodeURIComponent(apiKey);
-    if (mode === "local" && localCountry && localCountry !== "eu" && localCountry !== "global") {
+    if (mode === "local" && localCountry && localCountry !== "eu") {
       url += "&country=" + encodeURIComponent(localCountry);
     }
     requests.push(url);
@@ -172,40 +117,18 @@ function buildProviderRequests(preferences, provider, apiKey) {
   return requests.filter(Boolean);
 }
 
-function normalizeProviderPayload(provider, payload) {
-  if (provider === "gnews") {
-    return (payload.articles || []).map((article) => ({
-      title: article.title || "",
-      description: article.description || "",
-      content: article.content || "",
-      url: article.url || "",
-      source: article.source && article.source.name ? article.source.name : "Source",
-      publishedAt: article.publishedAt || ""
-    }));
-  }
-
-  if (provider === "newsapi") {
-    return (payload.articles || []).map((article) => ({
-      title: article.title || "",
-      description: article.description || "",
-      content: article.content || "",
-      url: article.url || "",
-      source: article.source && article.source.name ? article.source.name : "Source",
-      publishedAt: article.publishedAt || ""
-    }));
-  }
-
-  return (payload.results || []).map((article) => ({
+function normalizeProviderPayload(payload) {
+  return (payload.articles || []).map((article) => ({
     title: article.title || "",
     description: article.description || "",
     content: article.content || "",
-    url: article.link || "",
-    source: article.source_id || "Source",
-    publishedAt: article.pubDate || ""
+    url: article.url || "",
+    source: article.source && article.source.name ? article.source.name : "Source",
+    publishedAt: article.publishedAt || ""
   }));
 }
 
-function normalizeResults(provider, articles) {
+function normalizeResults(articles) {
   const seen = new Set();
   return articles
     .filter((article) => article.title && article.url)
@@ -214,9 +137,5 @@ function normalizeResults(provider, articles) {
       if (seen.has(key)) return false;
       seen.add(key);
       return true;
-    })
-    .map((article) => ({
-      ...article,
-      provider
-    }));
+    });
 }

@@ -59,7 +59,7 @@
           </div>
           <div class="lead-app-status-card">
             <span class="lead-app-status-label">Data source</span>
-            <strong id="provider-status">Not configured</strong>
+            <strong id="provider-status">GNews</strong>
           </div>
         </div>
       </section>
@@ -67,20 +67,12 @@
       <section class="lead-app-shell">
         <section class="author-panel news-settings-panel">
           <p class="author-card-eyebrow">Setup</p>
-          <h2 class="author-section-title">Add one provider for local testing.</h2>
-          <p class="author-page-intro">This app now prefers a private server-side endpoint. If that endpoint is not configured yet, you can still save one API key locally in this browser for testing.</p>
+          <h2 class="author-section-title">GNews is the primary source.</h2>
+          <p class="author-page-intro">For public use, the app should read from the private server-side endpoint. If that is not configured yet, you can still save one local GNews key in this browser for testing.</p>
           <form class="lead-pro-login-form" id="provider-settings-form">
             <div class="lead-app-grid">
               <label>
-                Provider
-                <select name="provider" id="provider-select">
-                  <option value="gnews">GNews</option>
-                  <option value="newsapi">NewsAPI</option>
-                  <option value="newsdata">NewsData.io</option>
-                </select>
-              </label>
-              <label>
-                API key
+                GNews API key
                 <input type="password" name="apiKey" id="provider-api-key" placeholder="Saved locally in this browser only">
               </label>
             </div>
@@ -244,11 +236,6 @@
     const QUIET_NEWS_FREE_LIMIT = 5;
 
     const config = window.QUIET_NEWS_FILTER_CONFIG || {};
-    const providerMeta = {
-      gnews: { label: "GNews", language: true, country: true },
-      newsapi: { label: "NewsAPI", language: true, country: false },
-      newsdata: { label: "NewsData.io", language: true, country: true }
-    };
 
     const interestSearchTerms = {
       "AI / Tech": "AI OR artificial intelligence OR technology OR software",
@@ -264,7 +251,6 @@
     const form = document.getElementById("quiet-news-form");
     const resultsSection = document.getElementById("briefing-results");
     const providerForm = document.getElementById("provider-settings-form");
-    const providerSelect = document.getElementById("provider-select");
     const providerApiKey = document.getElementById("provider-api-key");
     const providerSetupStatus = document.getElementById("provider-setup-status");
     const providerStatus = document.getElementById("provider-status");
@@ -274,9 +260,9 @@
     function readProviderSettings() {
       try {
         const stored = localStorage.getItem(QUIET_NEWS_STORAGE_KEY);
-        return stored ? JSON.parse(stored) : { provider: config.preferredProvider || "gnews", apiKey: "" };
+        return stored ? JSON.parse(stored) : { apiKey: "" };
       } catch (error) {
-        return { provider: config.preferredProvider || "gnews", apiKey: "" };
+        return { apiKey: "" };
       }
     }
 
@@ -300,17 +286,18 @@
 
     function updateProviderUI() {
       const settings = readProviderSettings();
-      providerSelect.value = settings.provider || "gnews";
       providerApiKey.value = settings.apiKey || "";
-      if (settings.apiKey) {
-        providerStatus.textContent = providerMeta[settings.provider].label + " ready";
-        providerSetupStatus.textContent = providerMeta[settings.provider].label + " key saved locally in this browser.";
-      } else if (config.proxyEndpoint) {
-        providerStatus.textContent = "Proxy ready";
-        providerSetupStatus.textContent = "Proxy endpoint configured. Local API key is not required.";
+      if (config.proxyEndpoint) {
+        providerStatus.textContent = "GNews via private endpoint";
+        providerSetupStatus.textContent = settings.apiKey
+          ? "Private endpoint preferred. A local GNews key is also saved in this browser as fallback."
+          : "Private endpoint configured. Local API key is optional.";
+      } else if (settings.apiKey) {
+        providerStatus.textContent = "GNews local test mode";
+        providerSetupStatus.textContent = "GNews key saved locally in this browser.";
       } else {
-        providerStatus.textContent = "Not configured";
-        providerSetupStatus.textContent = "No local provider key saved yet.";
+        providerStatus.textContent = "GNews not configured";
+        providerSetupStatus.textContent = "No local GNews key saved yet.";
       }
       updateRemainingCount();
     }
@@ -447,10 +434,7 @@
         const response = await fetch(config.proxyEndpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ...preferences,
-            provider: readProviderSettings().provider || config.preferredProvider || "gnews"
-          })
+          body: JSON.stringify(preferences)
         });
         const data = await response.json();
         if (!response.ok) {
@@ -460,58 +444,34 @@
       }
 
       if (!settings.apiKey) {
-        throw new Error("Save one provider key locally before generating a briefing.");
+        throw new Error("Save a local GNews key first, or configure the private endpoint.");
       }
 
       const requests = buildProviderRequests(preferences, settings);
       const rawResults = await Promise.all(requests.map(async (url) => {
         const response = await fetch(url);
         if (!response.ok) {
-          throw new Error(providerMeta[settings.provider].label + " did not return a usable response.");
+          throw new Error("GNews did not return a usable response.");
         }
         return response.json();
       }));
 
-      return normalizeResults(settings.provider, rawResults.flatMap((result) => normalizeProviderPayload(settings.provider, result)));
+      return normalizeResults(rawResults.flatMap((result) => normalizeProviderPayload(result)));
     }
 
-    function normalizeProviderPayload(provider, payload) {
-      if (provider === "gnews") {
-        return (payload.articles || []).map((article) => ({
-          title: article.title || "",
-          description: article.description || "",
-          content: article.content || "",
-          url: article.url || "",
-          source: article.source && article.source.name ? article.source.name : "Source",
-          publishedAt: article.publishedAt || "",
-          image: article.image || ""
-        }));
-      }
-
-      if (provider === "newsapi") {
-        return (payload.articles || []).map((article) => ({
-          title: article.title || "",
-          description: article.description || "",
-          content: article.content || "",
-          url: article.url || "",
-          source: article.source && article.source.name ? article.source.name : "Source",
-          publishedAt: article.publishedAt || "",
-          image: article.urlToImage || ""
-        }));
-      }
-
-      return (payload.results || []).map((article) => ({
+    function normalizeProviderPayload(payload) {
+      return (payload.articles || []).map((article) => ({
         title: article.title || "",
         description: article.description || "",
         content: article.content || "",
-        url: article.link || "",
-        source: article.source_id || "Source",
-        publishedAt: article.pubDate || "",
-        image: article.image_url || ""
+        url: article.url || "",
+        source: article.source && article.source.name ? article.source.name : "Source",
+        publishedAt: article.publishedAt || "",
+        image: article.image || ""
       }));
     }
 
-    function normalizeResults(provider, articles) {
+    function normalizeResults(articles) {
       const seen = new Set();
       return articles
         .filter((article) => article.title && article.url)
@@ -520,11 +480,7 @@
           if (seen.has(key)) return false;
           seen.add(key);
           return true;
-        })
-        .map((article) => ({
-          ...article,
-          provider
-        }));
+        });
     }
 
     function cleanText(text) {
@@ -695,10 +651,7 @@
 
     providerForm.addEventListener("submit", (event) => {
       event.preventDefault();
-      const settings = {
-        provider: providerSelect.value,
-        apiKey: providerApiKey.value.trim()
-      };
+      const settings = { apiKey: providerApiKey.value.trim() };
       writeProviderSettings(settings);
       updateProviderUI();
     });
