@@ -65,7 +65,7 @@
       </section>
 
       <section class="lead-app-shell">
-        <section class="author-panel news-settings-panel">
+        <section class="author-panel news-settings-panel" id="proxy-setup-panel">
           <p class="author-card-eyebrow">Setup</p>
           <h2 class="author-section-title">GNews is the primary source.</h2>
           <p class="author-page-intro">For public use, the app should read from the private server-side endpoint. If that is not configured yet, you can still save one local GNews key in this browser for testing.</p>
@@ -254,8 +254,10 @@
     const providerApiKey = document.getElementById("provider-api-key");
     const providerSetupStatus = document.getElementById("provider-setup-status");
     const providerStatus = document.getElementById("provider-status");
+    const proxySetupPanel = document.getElementById("proxy-setup-panel");
     const briefingsRemaining = document.getElementById("briefings-remaining");
     const runBriefingButton = document.getElementById("run-briefing");
+    let proxyIsActive = false;
 
     function readProviderSettings() {
       try {
@@ -287,19 +289,44 @@
     function updateProviderUI() {
       const settings = readProviderSettings();
       providerApiKey.value = settings.apiKey || "";
-      if (config.proxyEndpoint) {
+      if (proxyIsActive) {
+        providerStatus.textContent = "GNews connected";
+        providerSetupStatus.textContent = "Quiet Signal is connected and ready.";
+        proxySetupPanel.hidden = true;
+      } else if (config.proxyEndpoint) {
         providerStatus.textContent = "GNews via private endpoint";
         providerSetupStatus.textContent = settings.apiKey
-          ? "Private endpoint preferred. A local GNews key is also saved in this browser as fallback."
-          : "Private endpoint configured. Local API key is optional.";
+          ? "Private endpoint not confirmed yet. A local GNews key is also saved in this browser as fallback."
+          : "Private endpoint not confirmed yet. You can still save a local GNews key for testing.";
+        proxySetupPanel.hidden = false;
       } else if (settings.apiKey) {
         providerStatus.textContent = "GNews local test mode";
         providerSetupStatus.textContent = "GNews key saved locally in this browser.";
+        proxySetupPanel.hidden = false;
       } else {
         providerStatus.textContent = "GNews not configured";
         providerSetupStatus.textContent = "No local GNews key saved yet.";
+        proxySetupPanel.hidden = false;
       }
       updateRemainingCount();
+    }
+
+    async function checkProxyStatus() {
+      if (!config.proxyEndpoint) {
+        proxyIsActive = false;
+        updateProviderUI();
+        return;
+      }
+
+      try {
+        const response = await fetch(config.proxyEndpoint, { method: "GET" });
+        const data = await response.json();
+        proxyIsActive = Boolean(response.ok && data && data.ok);
+      } catch (error) {
+        proxyIsActive = false;
+      }
+
+      updateProviderUI();
     }
 
     function parseFormPreferences() {
@@ -698,7 +725,7 @@
       }
     });
 
-    updateProviderUI();
+    checkProxyStatus();
   </script>
 </body>
 </html>
