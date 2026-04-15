@@ -68,7 +68,7 @@
         <section class="author-panel news-settings-panel">
           <p class="author-card-eyebrow">Setup</p>
           <h2 class="author-section-title">Add one provider for local testing.</h2>
-          <p class="author-page-intro">Save one API key in this browser to test the app without exposing it in your public code. For a real public launch, move the key to a small server-side endpoint later.</p>
+          <p class="author-page-intro">This app now prefers a private server-side endpoint. If that endpoint is not configured yet, you can still save one API key locally in this browser for testing.</p>
           <form class="lead-pro-login-form" id="provider-settings-form">
             <div class="lead-app-grid">
               <label>
@@ -447,10 +447,16 @@
         const response = await fetch(config.proxyEndpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(preferences)
+          body: JSON.stringify({
+            ...preferences,
+            provider: readProviderSettings().provider || config.preferredProvider || "gnews"
+          })
         });
-        if (!response.ok) throw new Error("The proxy endpoint did not return a valid response.");
-        return response.json();
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.error || "The proxy endpoint did not return a valid response.");
+        }
+        return data;
       }
 
       if (!settings.apiKey) {
