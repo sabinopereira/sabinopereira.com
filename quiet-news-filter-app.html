@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiet Signal App — Sabino Pereira</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Quiet Signal is a practical news filtering tool. Choose your interests, coverage type, language, and time frame, then get a calmer briefing with only the stories that matter.">
+  <meta name="author" content="Sabino Pereira">
+  <link rel="canonical" href="https://sabinopereira.com/quiet-news-filter-app.html">
+  <meta property="og:title" content="Quiet Signal App — Sabino Pereira">
+  <meta property="og:description" content="Filter the noise and get a calmer news briefing with only what matters.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sabinopereira.com/quiet-news-filter-app.html">
+  <meta property="og:image" content="https://sabinopereira.com/images/avatar.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Quiet Signal App — Sabino Pereira">
+  <meta name="twitter:description" content="A calmer news briefing based on your interests.">
+  <meta name="twitter:image" content="https://sabinopereira.com/images/avatar.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEVDEH8PGZ"></script>
+  <script src="/analytics.js"></script>
+  <script src="/quiet-news-filter-config.js"></script>
+  <link rel="icon" type="image/png" href="/images/avatar.png">
+  <link rel="apple-touch-icon" href="/images/avatar.png">
+  <link rel="stylesheet" href="/style.css?v=2">
+</head>
+<body class="author-hub-body">
+  <div class="author-shell">
+    <header class="author-header">
+      <a class="author-brand" href="/index.html">
+        <img src="/images/avatar.png" alt="Sabino Pereira" class="author-brand-mark">
+        <span>
+          <span class="author-brand-name">Sabino Pereira</span>
+          <span class="author-brand-line">Books, writing, tools, and ideas</span>
+        </span>
+      </a>
+      <nav class="author-nav" aria-label="Primary">
+        <a href="/index.html">Home</a>
+        <a href="/books.html">Books</a>
+        <a href="/ideas.html">Thoughts</a>
+        <a class="is-active" href="/tools.html">Tools</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main class="author-main">
+      <section class="author-page-hero news-app-hero">
+        <p class="author-kicker">Quiet Signal — News Filter</p>
+        <h1 class="author-page-title">What matters now</h1>
+        <p class="author-page-intro">Filter the news around what you care about most and get a calmer briefing with only the developments that deserve attention.</p>
+        <div class="lead-app-status-row">
+          <div class="lead-app-status-card">
+            <span class="lead-app-status-label">Free briefings</span>
+            <strong id="briefings-remaining">5 remaining</strong>
+          </div>
+          <div class="lead-app-status-card">
+            <span class="lead-app-status-label">Product focus</span>
+            <strong>Filtering, not doomscrolling</strong>
+          </div>
+          <div class="lead-app-status-card">
+            <span class="lead-app-status-label">Data source</span>
+            <strong id="provider-status">Not configured</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="lead-app-shell">
+        <section class="author-panel news-settings-panel">
+          <p class="author-card-eyebrow">Setup</p>
+          <h2 class="author-section-title">Add one provider for local testing.</h2>
+          <p class="author-page-intro">Save one API key in this browser to test the app without exposing it in your public code. For a real public launch, move the key to a small server-side endpoint later.</p>
+          <form class="lead-pro-login-form" id="provider-settings-form">
+            <div class="lead-app-grid">
+              <label>
+                Provider
+                <select name="provider" id="provider-select">
+                  <option value="gnews">GNews</option>
+                  <option value="newsapi">NewsAPI</option>
+                  <option value="newsdata">NewsData.io</option>
+                </select>
+              </label>
+              <label>
+                API key
+                <input type="password" name="apiKey" id="provider-api-key" placeholder="Saved locally in this browser only">
+              </label>
+            </div>
+            <div class="author-book-actions">
+              <button type="submit" class="author-button">Save local setup</button>
+              <button type="button" class="author-button author-button--secondary" id="clear-provider-settings">Clear saved key</button>
+            </div>
+          </form>
+          <div class="lead-auth-status" id="provider-setup-status">No local provider key saved yet.</div>
+        </section>
+
+        <form class="lead-app-form" id="quiet-news-form">
+          <section class="author-panel">
+            <p class="author-card-eyebrow">1. Interests</p>
+            <h2 class="author-section-title">Tell the filter what matters to you.</h2>
+            <p class="author-page-intro">Choose a few areas of interest or add a specific topic. Prefer fewer stronger signals over too many loose inputs.</p>
+            <div class="news-chip-grid" id="interest-grid">
+              <label class="news-chip-option"><input type="checkbox" value="AI / Tech"><span>AI / Tech</span></label>
+              <label class="news-chip-option"><input type="checkbox" value="Business / Economy"><span>Business / Economy</span></label>
+              <label class="news-chip-option"><input type="checkbox" value="World / Geopolitics"><span>World / Geopolitics</span></label>
+              <label class="news-chip-option"><input type="checkbox" value="Science / Health"><span>Science / Health</span></label>
+              <label class="news-chip-option"><input type="checkbox" value="Culture / Entertainment"><span>Culture / Entertainment</span></label>
+              <label class="news-chip-option"><input type="checkbox" value="Environment / Climate"><span>Environment / Climate</span></label>
+              <label class="news-chip-option"><input type="checkbox" value="Books / Ideas"><span>Books / Ideas</span></label>
+              <label class="news-chip-option"><input type="checkbox" value="Sports"><span>Sports</span></label>
+            </div>
+            <label class="lead-app-field--full news-custom-topic">
+              Specific topic or angle
+              <input type="text" name="customTopic" placeholder="Ex: chip regulation, AI agents, housing policy, Portugal economy">
+            </label>
+          </section>
+
+          <section class="author-panel">
+            <p class="author-card-eyebrow">2. Coverage</p>
+            <h2 class="author-section-title">Choose how broad the briefing should be.</h2>
+            <div class="lead-app-grid">
+              <label>
+                Coverage type
+                <select name="coverageType">
+                  <option value="mixed">Mixed</option>
+                  <option value="global">Global</option>
+                  <option value="local">Local</option>
+                </select>
+              </label>
+              <label>
+                Region focus
+                <select name="regionFocus">
+                  <option value="pt">Portugal</option>
+                  <option value="us">United States</option>
+                  <option value="gb">United Kingdom</option>
+                  <option value="eu">Europe</option>
+                  <option value="global">Global only</option>
+                </select>
+              </label>
+              <label>
+                Preferred language
+                <select name="preferredLanguage">
+                  <option value="en">English</option>
+                  <option value="pt">Portuguese</option>
+                </select>
+              </label>
+              <label>
+                Time frame
+                <select name="timeFrame">
+                  <option value="today">Today</option>
+                  <option value="yesterday">Yesterday</option>
+                  <option value="this-week">This week</option>
+                  <option value="last-7-days">Last 7 days</option>
+                </select>
+              </label>
+              <label class="lead-app-field--full">
+                Working note
+                <textarea name="workingNote" rows="3" placeholder="Optional: what are you trying to stay informed about right now?"></textarea>
+              </label>
+            </div>
+            <div class="author-book-actions">
+              <button type="submit" class="author-button" id="run-briefing">Generate calm briefing</button>
+              <a class="author-button author-button--secondary" href="/quiet-news-filter.html">Back to landing page</a>
+            </div>
+          </section>
+        </form>
+
+        <section class="lead-app-results" id="briefing-results" hidden>
+          <div class="author-panel lead-result-hero">
+            <p class="author-card-eyebrow">Briefing</p>
+            <h2 class="author-section-title" id="briefing-hook">What matters now</h2>
+            <p class="author-page-intro" id="briefing-summary">Your calmer briefing will appear here.</p>
+          </div>
+
+          <section class="author-panel">
+            <p class="author-card-eyebrow">What matters now</p>
+            <div class="news-story-list" id="story-list"></div>
+          </section>
+
+          <div class="author-two-column">
+            <article class="author-panel">
+              <p class="author-card-eyebrow">The shift</p>
+              <p class="author-page-intro" id="shift-summary">The wider pattern will appear here.</p>
+            </article>
+
+            <article class="author-panel">
+              <p class="author-card-eyebrow">Watch this</p>
+              <p class="author-page-intro" id="watch-summary">One trend worth watching will appear here.</p>
+            </article>
+          </div>
+
+          <div class="author-two-column">
+            <article class="author-panel" id="ignore-panel" hidden>
+              <p class="author-card-eyebrow">Ignore this</p>
+              <p class="author-page-intro" id="ignore-summary"></p>
+            </article>
+
+            <article class="author-panel" id="worth-panel" hidden>
+              <p class="author-card-eyebrow">Worth a look</p>
+              <p class="author-page-intro" id="worth-summary"></p>
+            </article>
+          </div>
+
+          <div class="author-two-column">
+            <article class="author-panel">
+              <p class="author-card-eyebrow">Free</p>
+              <h2 class="author-section-title">Current access</h2>
+              <ul class="author-list">
+                <li>5 briefings by browser</li>
+                <li>Interest-based filtering</li>
+                <li>Calm story summaries</li>
+                <li>The shift</li>
+                <li>Watch this</li>
+              </ul>
+            </article>
+
+            <article class="author-panel lead-pro-panel">
+              <p class="author-card-eyebrow">Pro</p>
+              <h2 class="author-section-title">Quiet upgrades when the habit matters.</h2>
+              <ul class="author-list lead-pro-list">
+                <li>Save briefing history <span class="lead-lock">Locked</span></li>
+                <li>Save watchlists <span class="lead-lock">Locked</span></li>
+                <li>Persistent presets <span class="lead-lock">Locked</span></li>
+                <li>Export summary <span class="lead-lock">Locked</span></li>
+                <li>Premium briefing templates <span class="lead-lock">Locked</span></li>
+              </ul>
+              <div class="author-book-actions">
+                <a class="author-button" href="/contact.html">Ask about Pro</a>
+                <a class="author-button author-button--secondary" href="/tools.html">Back to tools</a>
+              </div>
+            </article>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <footer class="author-footer">
+    <span>&copy; 2026 Sabino Pereira</span>
+    <span><a href="/quiet-news-filter.html">Landing page</a> · <a href="/tools.html">Tools</a> · <a href="/contact.html">Contact</a> · <a href="https://www.linkedin.com/feed" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a></span>
+  </footer>
+
+  <script>
+    const QUIET_NEWS_STORAGE_KEY = "quiet-news-filter-provider-settings";
+    const QUIET_NEWS_COUNT_KEY = "quiet-news-filter-free-count";
+    const QUIET_NEWS_FREE_LIMIT = 5;
+
+    const config = window.QUIET_NEWS_FILTER_CONFIG || {};
+    const providerMeta = {
+      gnews: { label: "GNews", language: true, country: true },
+      newsapi: { label: "NewsAPI", language: true, country: false },
+      newsdata: { label: "NewsData.io", language: true, country: true }
+    };
+
+    const interestSearchTerms = {
+      "AI / Tech": "AI OR artificial intelligence OR technology OR software",
+      "Business / Economy": "business OR economy OR markets OR companies",
+      "World / Geopolitics": "geopolitics OR world OR international OR security",
+      "Science / Health": "science OR health OR medicine OR research",
+      "Culture / Entertainment": "culture OR media OR film OR entertainment",
+      "Environment / Climate": "climate OR environment OR energy",
+      "Books / Ideas": "books OR ideas OR publishing OR education",
+      "Sports": "sports OR football OR basketball OR tennis"
+    };
+
+    const form = document.getElementById("quiet-news-form");
+    const resultsSection = document.getElementById("briefing-results");
+    const providerForm = document.getElementById("provider-settings-form");
+    const providerSelect = document.getElementById("provider-select");
+    const providerApiKey = document.getElementById("provider-api-key");
+    const providerSetupStatus = document.getElementById("provider-setup-status");
+    const providerStatus = document.getElementById("provider-status");
+    const briefingsRemaining = document.getElementById("briefings-remaining");
+    const runBriefingButton = document.getElementById("run-briefing");
+
+    function readProviderSettings() {
+      try {
+        const stored = localStorage.getItem(QUIET_NEWS_STORAGE_KEY);
+        return stored ? JSON.parse(stored) : { provider: config.preferredProvider || "gnews", apiKey: "" };
+      } catch (error) {
+        return { provider: config.preferredProvider || "gnews", apiKey: "" };
+      }
+    }
+
+    function writeProviderSettings(settings) {
+      localStorage.setItem(QUIET_NEWS_STORAGE_KEY, JSON.stringify(settings));
+    }
+
+    function getBriefingsUsed() {
+      return Number(localStorage.getItem(QUIET_NEWS_COUNT_KEY) || 0);
+    }
+
+    function incrementBriefingsUsed() {
+      localStorage.setItem(QUIET_NEWS_COUNT_KEY, String(getBriefingsUsed() + 1));
+    }
+
+    function updateRemainingCount() {
+      const remaining = Math.max(QUIET_NEWS_FREE_LIMIT - getBriefingsUsed(), 0);
+      briefingsRemaining.textContent = remaining + " remaining";
+      return remaining;
+    }
+
+    function updateProviderUI() {
+      const settings = readProviderSettings();
+      providerSelect.value = settings.provider || "gnews";
+      providerApiKey.value = settings.apiKey || "";
+      if (settings.apiKey) {
+        providerStatus.textContent = providerMeta[settings.provider].label + " ready";
+        providerSetupStatus.textContent = providerMeta[settings.provider].label + " key saved locally in this browser.";
+      } else if (config.proxyEndpoint) {
+        providerStatus.textContent = "Proxy ready";
+        providerSetupStatus.textContent = "Proxy endpoint configured. Local API key is not required.";
+      } else {
+        providerStatus.textContent = "Not configured";
+        providerSetupStatus.textContent = "No local provider key saved yet.";
+      }
+      updateRemainingCount();
+    }
+
+    function parseFormPreferences() {
+      const formData = new FormData(form);
+      const selectedInterests = Array.from(document.querySelectorAll("#interest-grid input:checked")).map((input) => input.value);
+      const customTopic = String(formData.get("customTopic") || "").trim();
+      const language = String(formData.get("preferredLanguage") || "en");
+      const coverageType = String(formData.get("coverageType") || "mixed");
+      const regionFocus = String(formData.get("regionFocus") || "pt");
+      const timeFrame = String(formData.get("timeFrame") || "today");
+      const workingNote = String(formData.get("workingNote") || "").trim();
+
+      if (!selectedInterests.length && !customTopic) {
+        throw new Error("Choose at least one interest or add a specific topic.");
+      }
+
+      return {
+        selectedInterests,
+        customTopic,
+        language,
+        coverageType,
+        regionFocus,
+        timeFrame,
+        workingNote
+      };
+    }
+
+    function mapLanguage(language) {
+      return language === "pt" ? "pt" : "en";
+    }
+
+    function getDateRange(timeFrame) {
+      const now = new Date();
+      const end = new Date(now);
+      const start = new Date(now);
+
+      if (timeFrame === "today") {
+        start.setHours(0, 0, 0, 0);
+      } else if (timeFrame === "yesterday") {
+        start.setDate(start.getDate() - 1);
+        start.setHours(0, 0, 0, 0);
+        end.setDate(end.getDate() - 1);
+        end.setHours(23, 59, 59, 999);
+      } else if (timeFrame === "this-week") {
+        const day = start.getDay();
+        const diff = (day === 0 ? 6 : day - 1);
+        start.setDate(start.getDate() - diff);
+        start.setHours(0, 0, 0, 0);
+      } else {
+        start.setDate(start.getDate() - 7);
+        start.setHours(0, 0, 0, 0);
+      }
+
+      return {
+        start,
+        end
+      };
+    }
+
+    function buildQuery(preferences) {
+      const interestTerms = preferences.selectedInterests.map((interest) => interestSearchTerms[interest] || interest);
+      if (preferences.customTopic) interestTerms.push(preferences.customTopic);
+      return interestTerms.join(" OR ");
+    }
+
+    function buildProviderRequests(preferences, settings) {
+      const query = encodeURIComponent(buildQuery(preferences));
+      const language = mapLanguage(preferences.language);
+      const { start, end } = getDateRange(preferences.timeFrame);
+      const startIso = start.toISOString();
+      const endIso = end.toISOString();
+      const localCountry = preferences.regionFocus === "global" ? "" : preferences.regionFocus;
+      const newsApiDomains = {
+        pt: "publico.pt,observador.pt,dn.pt,jn.pt",
+        us: "nytimes.com,wsj.com,cnn.com,apnews.com",
+        gb: "bbc.com,theguardian.com,ft.com,reuters.com"
+      };
+      const requests = [];
+
+      function pushRequest(mode) {
+        if (settings.provider === "gnews") {
+          let url = "https://gnews.io/api/v4/search?q=" + query +
+            "&lang=" + language +
+            "&max=20" +
+            "&from=" + encodeURIComponent(startIso) +
+            "&to=" + encodeURIComponent(endIso) +
+            "&apikey=" + encodeURIComponent(settings.apiKey);
+          if (mode === "local" && localCountry && localCountry !== "eu") {
+            url += "&country=" + encodeURIComponent(localCountry);
+          }
+          requests.push(url);
+        } else if (settings.provider === "newsapi") {
+          let url = "https://newsapi.org/v2/everything?q=" + query +
+            "&language=" + language +
+            "&sortBy=publishedAt" +
+            "&pageSize=25" +
+            "&from=" + encodeURIComponent(startIso) +
+            "&to=" + encodeURIComponent(endIso) +
+            "&apiKey=" + encodeURIComponent(settings.apiKey);
+          if (mode === "local" && newsApiDomains[localCountry]) {
+            url += "&domains=" + encodeURIComponent(newsApiDomains[localCountry]);
+          }
+          requests.push(url);
+        } else if (settings.provider === "newsdata") {
+          let url = "https://newsdata.io/api/1/latest?q=" + query +
+            "&language=" + encodeURIComponent(language) +
+            "&size=20" +
+            "&apikey=" + encodeURIComponent(settings.apiKey);
+          if (mode === "local" && localCountry && localCountry !== "eu" && localCountry !== "global") {
+            url += "&country=" + encodeURIComponent(localCountry);
+          }
+          requests.push(url);
+        }
+      }
+
+      if (preferences.coverageType === "mixed") {
+        pushRequest("global");
+        pushRequest("local");
+      } else if (preferences.coverageType === "local") {
+        pushRequest("local");
+      } else {
+        pushRequest("global");
+      }
+
+      return requests.filter(Boolean);
+    }
+
+    async function fetchArticles(preferences) {
+      const settings = readProviderSettings();
+
+      if (config.proxyEndpoint) {
+        const response = await fetch(config.proxyEndpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(preferences)
+        });
+        if (!response.ok) throw new Error("The proxy endpoint did not return a valid response.");
+        return response.json();
+      }
+
+      if (!settings.apiKey) {
+        throw new Error("Save one provider key locally before generating a briefing.");
+      }
+
+      const requests = buildProviderRequests(preferences, settings);
+      const rawResults = await Promise.all(requests.map(async (url) => {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(providerMeta[settings.provider].label + " did not return a usable response.");
+        }
+        return response.json();
+      }));
+
+      return normalizeResults(settings.provider, rawResults.flatMap((result) => normalizeProviderPayload(settings.provider, result)));
+    }
+
+    function normalizeProviderPayload(provider, payload) {
+      if (provider === "gnews") {
+        return (payload.articles || []).map((article) => ({
+          title: article.title || "",
+          description: article.description || "",
+          content: article.content || "",
+          url: article.url || "",
+          source: article.source && article.source.name ? article.source.name : "Source",
+          publishedAt: article.publishedAt || "",
+          image: article.image || ""
+        }));
+      }
+
+      if (provider === "newsapi") {
+        return (payload.articles || []).map((article) => ({
+          title: article.title || "",
+          description: article.description || "",
+          content: article.content || "",
+          url: article.url || "",
+          source: article.source && article.source.name ? article.source.name : "Source",
+          publishedAt: article.publishedAt || "",
+          image: article.urlToImage || ""
+        }));
+      }
+
+      return (payload.results || []).map((article) => ({
+        title: article.title || "",
+        description: article.description || "",
+        content: article.content || "",
+        url: article.link || "",
+        source: article.source_id || "Source",
+        publishedAt: article.pubDate || "",
+        image: article.image_url || ""
+      }));
+    }
+
+    function normalizeResults(provider, articles) {
+      const seen = new Set();
+      return articles
+        .filter((article) => article.title && article.url)
+        .filter((article) => {
+          const key = article.url || article.title.toLowerCase();
+          if (seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        })
+        .map((article) => ({
+          ...article,
+          provider
+        }));
+    }
+
+    function cleanText(text) {
+      return String(text || "")
+        .replace(/\s+/g, " ")
+        .replace(/\[[^\]]+\]/g, "")
+        .replace(/… \[\+\d+ chars\]$/g, "")
+        .trim();
+    }
+
+    function scoreArticle(article, preferences) {
+      const text = (article.title + " " + article.description + " " + article.content).toLowerCase();
+      const terms = preferences.selectedInterests.concat(preferences.customTopic ? [preferences.customTopic] : []).join(" ").toLowerCase().split(/[\s/,]+/).filter(Boolean);
+      let score = 0;
+
+      terms.forEach((term) => {
+        if (term.length < 3) return;
+        if (text.includes(term)) score += 3;
+      });
+
+      if (article.description) score += 2;
+      if (article.content) score += 1;
+      if (/policy|regulation|law|approval|launch|funding|market|price|security|tariff|interest rate|chip|model|research/.test(text)) score += 3;
+      if (/celebrity|viral|rumor|feud|drama/.test(text)) score -= 3;
+
+      const published = new Date(article.publishedAt).getTime();
+      if (!Number.isNaN(published)) {
+        const ageHours = Math.max((Date.now() - published) / 36e5, 1);
+        score += Math.max(6 - ageHours / 8, 0);
+      }
+
+      return score;
+    }
+
+    function chooseStories(articles, preferences) {
+      return articles
+        .map((article) => ({ article, score: scoreArticle(article, preferences) }))
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 5)
+        .map((entry) => entry.article);
+    }
+
+    function inferPracticalAngle(article) {
+      const text = (article.title + " " + article.description).toLowerCase();
+      if (/policy|regulation|law|court|tariff/.test(text)) return "rules, cost, or access may change around this.";
+      if (/market|economy|inflation|interest rate|funding|earnings/.test(text)) return "it may change budgets, demand, or business expectations.";
+      if (/ai|chip|software|platform|launch|model/.test(text)) return "it may shift workflows, tools, or competitive pressure.";
+      if (/security|war|election|trade|geopolitic/.test(text)) return "it can affect direction, incentives, and decision timing.";
+      if (/health|science|research|medicine/.test(text)) return "it may change risk, access, or what deserves attention next.";
+      return "it looks more like signal than background noise.";
+    }
+
+    function maybePerspective(article) {
+      const text = (article.title + " " + article.description).toLowerCase();
+      if (/rumor|might|could|possible|unclear|expected/.test(text)) {
+        return "Separate what is confirmed from what is still being projected. The direction may matter more than the speculation around it.";
+      }
+      if (/launch|release|announce|deal|approval/.test(text)) {
+        return "Look less at the headline and more at what changed in incentives, access, or timing.";
+      }
+      if (/market|price|stocks|inflation|rate/.test(text)) {
+        return "Treat this as a directional signal first, not as a reason to overreact to one cycle of headlines.";
+      }
+      return "";
+    }
+
+    function buildStoryHtml(article, preferences) {
+      const whatHappenedBase = cleanText(article.description || article.content || article.title);
+      const whatHappened = whatHappenedBase || "Recent reporting points to a development worth tracking more closely.";
+      const whyItMatters = "This matters if you follow " +
+        (preferences.selectedInterests[0] || preferences.customTopic || "this area") +
+        " because " + inferPracticalAngle(article);
+      const perspective = maybePerspective(article);
+      const dateLabel = article.publishedAt ? new Date(article.publishedAt).toLocaleString(preferences.language === "pt" ? "pt-PT" : "en-US", { dateStyle: "medium", timeStyle: "short" }) : "";
+
+      return `
+        <article class="news-story-card">
+          <div class="news-story-meta">
+            <span>${article.source}</span>
+            <span>${dateLabel}</span>
+          </div>
+          <h3 class="author-card-title">${article.title}</h3>
+          <p class="news-story-copy"><strong>What happened:</strong> ${whatHappened}</p>
+          <p class="news-story-copy"><strong>Why it matters to you:</strong> ${whyItMatters}</p>
+          ${perspective ? `<p class="news-story-copy"><strong>How to look at this:</strong> ${perspective}</p>` : ""}
+          <a class="author-link" href="${article.url}" target="_blank" rel="noopener">Open source</a>
+        </article>
+      `;
+    }
+
+    function buildShift(stories, preferences) {
+      if (!stories.length) return "No clear pattern surfaced from the selected time frame.";
+      const titles = stories.map((story) => (story.title + " " + story.description).toLowerCase()).join(" ");
+
+      if (/policy|regulation|law|tariff|election/.test(titles)) {
+        return "The stronger pattern here is that policy and incentives are moving, which usually matters more than the daily commentary around them.";
+      }
+      if (/ai|chip|software|model|platform/.test(titles)) {
+        return "The shift is less about isolated headlines and more about capability moving into practical use, competition, and workflow change.";
+      }
+      if (/market|economy|inflation|funding|interest rate/.test(titles)) {
+        return "The pattern is economic direction rather than isolated numbers: cost, confidence, and timing are starting to matter more than sentiment alone.";
+      }
+
+      return "Across these stories, the main shift is directional: a few developments are meaningfully changing context, while the rest of the noise becomes easier to ignore.";
+    }
+
+    function buildWatch(stories) {
+      if (!stories.length) return "Nothing strong enough surfaced yet.";
+      const top = stories[0];
+      return "Watch the next move around “" + top.title + "”. If the follow-through is real, it is likely to shape the next wave of coverage more than the surrounding commentary.";
+    }
+
+    function buildIgnore(articles, selectedStories) {
+      const selectedUrls = new Set(selectedStories.map((story) => story.url));
+      const lowValue = articles.find((article) => {
+        const text = (article.title + " " + article.description).toLowerCase();
+        return !selectedUrls.has(article.url) && /celebrity|viral|drama|feud|outrage|rumor/.test(text);
+      });
+
+      if (!lowValue) return "";
+      return "A story like “" + lowValue.title + "” may attract attention, but it does not appear to change direction, incentives, access, or real decisions in a meaningful way.";
+    }
+
+    function buildWorth(articles, selectedStories) {
+      const selectedUrls = new Set(selectedStories.map((story) => story.url));
+      const curiosity = articles.find((article) => {
+        const text = (article.title + " " + article.description).toLowerCase();
+        return !selectedUrls.has(article.url) && /research|study|book|museum|science|discovery|design/.test(text);
+      });
+
+      if (!curiosity) return "";
+      return "“" + curiosity.title + "” is not urgent, but it is worth a look if you want one useful piece of context beyond the main briefing.";
+    }
+
+    function renderBriefing(stories, allArticles, preferences) {
+      document.getElementById("briefing-hook").textContent = stories.length ? "If you only have a few minutes, start here." : "No clear briefing yet.";
+      document.getElementById("briefing-summary").textContent = stories.length
+        ? "These are the recent developments most likely to matter across your interests, without the extra noise."
+        : "The selected source did not return enough usable coverage for these preferences. Try broadening the interests or the time frame.";
+
+      document.getElementById("story-list").innerHTML = stories.map((story) => buildStoryHtml(story, preferences)).join("");
+      document.getElementById("shift-summary").textContent = buildShift(stories, preferences);
+      document.getElementById("watch-summary").textContent = buildWatch(stories);
+
+      const ignoreText = buildIgnore(allArticles, stories);
+      const worthText = buildWorth(allArticles, stories);
+      const ignorePanel = document.getElementById("ignore-panel");
+      const worthPanel = document.getElementById("worth-panel");
+
+      if (ignoreText) {
+        ignorePanel.hidden = false;
+        document.getElementById("ignore-summary").textContent = ignoreText;
+      } else {
+        ignorePanel.hidden = true;
+      }
+
+      if (worthText) {
+        worthPanel.hidden = false;
+        document.getElementById("worth-summary").textContent = worthText;
+      } else {
+        worthPanel.hidden = true;
+      }
+
+      resultsSection.hidden = false;
+      resultsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    providerForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const settings = {
+        provider: providerSelect.value,
+        apiKey: providerApiKey.value.trim()
+      };
+      writeProviderSettings(settings);
+      updateProviderUI();
+    });
+
+    document.getElementById("clear-provider-settings").addEventListener("click", () => {
+      localStorage.removeItem(QUIET_NEWS_STORAGE_KEY);
+      updateProviderUI();
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      try {
+        if (!config.proxyEndpoint && !readProviderSettings().apiKey) {
+          throw new Error("Save one provider key locally first. That key stays in this browser only.");
+        }
+
+        const remaining = updateRemainingCount();
+        if (remaining <= 0) {
+          throw new Error("The free browser limit has been reached. If you want more, we can add Pro access next.");
+        }
+
+        const preferences = parseFormPreferences();
+        runBriefingButton.disabled = true;
+        runBriefingButton.textContent = "Generating...";
+
+        const articles = await fetchArticles(preferences);
+        const stories = chooseStories(articles, preferences);
+        renderBriefing(stories, articles, preferences);
+        incrementBriefingsUsed();
+        updateRemainingCount();
+      } catch (error) {
+        resultsSection.hidden = false;
+        document.getElementById("briefing-hook").textContent = "Setup needed";
+        document.getElementById("briefing-summary").textContent = error.message;
+        document.getElementById("story-list").innerHTML = "";
+        document.getElementById("shift-summary").textContent = "Once the provider is configured, the wider pattern will appear here.";
+        document.getElementById("watch-summary").textContent = "Add a provider key and run a briefing to see what deserves attention next.";
+        document.getElementById("ignore-panel").hidden = true;
+        document.getElementById("worth-panel").hidden = true;
+      } finally {
+        runBriefingButton.disabled = false;
+        runBriefingButton.textContent = "Generate calm briefing";
+      }
+    });
+
+    updateProviderUI();
+  </script>
+</body>
+</html>
