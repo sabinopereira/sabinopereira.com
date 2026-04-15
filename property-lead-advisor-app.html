@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Property Lead Advisor App — Sabino Pereira</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A working lead triage tool for real estate professionals to review readiness, identify blockers, and decide the next best step.">
+  <meta name="author" content="Sabino Pereira">
+  <link rel="canonical" href="https://sabinopereira.com/property-lead-advisor-app.html">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEVDEH8PGZ"></script>
+  <script src="/analytics.js"></script>
+  <link rel="icon" type="image/png" href="/images/avatar.png">
+  <link rel="apple-touch-icon" href="/images/avatar.png">
+  <link rel="stylesheet" href="/style.css?v=2">
+</head>
+<body class="author-hub-body">
+  <div class="author-shell">
+    <header class="author-header">
+      <a class="author-brand" href="/index.html">
+        <img src="/images/avatar.png" alt="Sabino Pereira" class="author-brand-mark">
+        <span>
+          <span class="author-brand-name">Sabino Pereira</span>
+          <span class="author-brand-line">Books, writing, tools, and ideas</span>
+        </span>
+      </a>
+      <nav class="author-nav" aria-label="Primary">
+        <a href="/index.html">Home</a>
+        <a href="/books.html">Books</a>
+        <a href="/ideas.html">Thoughts</a>
+        <a class="is-active" href="/tools.html">Tools</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main class="author-main">
+      <section class="author-page-hero">
+        <p class="author-kicker">Lead Assessment</p>
+        <h1 class="author-page-title">Property Lead Advisor</h1>
+        <p class="author-page-intro">A working lead triage tool for reviewing readiness, spotting blockers, and deciding the next best action before time gets wasted.</p>
+      </section>
+
+      <section class="lead-advisor-shell">
+        <form class="lead-advisor-form" id="lead-advisor-form">
+          <section class="author-panel">
+            <p class="author-card-eyebrow">Lead type</p>
+            <h2 class="author-section-title">Start with the lead type.</h2>
+            <div class="lead-type-toggle" role="radiogroup" aria-label="Lead type">
+              <label class="lead-type-option">
+                <input type="radio" name="leadType" value="Seller" checked>
+                <span>Seller</span>
+              </label>
+              <label class="lead-type-option">
+                <input type="radio" name="leadType" value="Buyer">
+                <span>Buyer</span>
+              </label>
+            </div>
+          </section>
+
+          <section class="author-two-column">
+            <article class="author-panel">
+              <p class="author-card-eyebrow">Lead Context</p>
+              <h2 class="author-section-title">What is the signal so far?</h2>
+              <div class="lead-advisor-fields">
+                <label>
+                  Lead source
+                  <select name="leadSource">
+                    <option value="Warm referral">Warm referral</option>
+                    <option value="Portal enquiry">Portal enquiry</option>
+                    <option value="Social media">Social media</option>
+                    <option value="Paid ad">Paid ad</option>
+                    <option value="Past contact">Past contact</option>
+                  </select>
+                </label>
+                <label>
+                  Response quality
+                  <select name="responseQuality">
+                    <option value="Clear and responsive">Clear and responsive</option>
+                    <option value="Interested but inconsistent">Interested but inconsistent</option>
+                    <option value="Slow and vague">Slow and vague</option>
+                  </select>
+                </label>
+                <label>
+                  Timing
+                  <select name="timing">
+                    <option value="Immediate">Immediate</option>
+                    <option value="Next 1-3 months">Next 1-3 months</option>
+                    <option value="Undefined">Undefined</option>
+                  </select>
+                </label>
+                <label>
+                  Motivation
+                  <textarea name="motivation" rows="3" placeholder="Why are they moving now?"></textarea>
+                </label>
+              </div>
+            </article>
+
+            <article class="author-panel">
+              <p class="author-card-eyebrow">Client Situation</p>
+              <h2 class="author-section-title">How ready is the person behind the lead?</h2>
+              <div class="lead-advisor-fields">
+                <label>
+                  Decision clarity
+                  <select name="decisionClarity">
+                    <option value="Very clear">Very clear</option>
+                    <option value="Somewhat clear">Somewhat clear</option>
+                    <option value="Still unclear">Still unclear</option>
+                  </select>
+                </label>
+                <label>
+                  Financial readiness
+                  <select name="financialReadiness">
+                    <option value="Confirmed">Confirmed</option>
+                    <option value="Likely but not confirmed">Likely but not confirmed</option>
+                    <option value="Unknown">Unknown</option>
+                  </select>
+                </label>
+                <label>
+                  Decision-maker alignment
+                  <select name="alignment">
+                    <option value="Aligned">Aligned</option>
+                    <option value="Some misalignment">Some misalignment</option>
+                    <option value="Not aligned yet">Not aligned yet</option>
+                  </select>
+                </label>
+                <label>
+                  Situation notes
+                  <textarea name="situationNotes" rows="3" placeholder="Anything that affects seriousness, urgency, or fit?"></textarea>
+                </label>
+              </div>
+            </article>
+          </section>
+
+          <section class="author-two-column">
+            <article class="author-panel">
+              <p class="author-card-eyebrow">Property Context</p>
+              <h2 class="author-section-title">Only the context that matters.</h2>
+              <div class="lead-advisor-fields">
+                <label>
+                  Budget or price position
+                  <input type="text" name="budget" placeholder="Ex: 350k budget or 420k asking price">
+                </label>
+                <label>
+                  Area or property target
+                  <input type="text" name="area" placeholder="Ex: Porto city centre, T2 apartment">
+                </label>
+                <label>
+                  Fit with current market reality
+                  <select name="marketFit">
+                    <option value="Looks realistic">Looks realistic</option>
+                    <option value="Some tension">Some tension</option>
+                    <option value="Looks unrealistic">Looks unrealistic</option>
+                  </select>
+                </label>
+                <label>
+                  Property notes
+                  <textarea name="propertyNotes" rows="3" placeholder="Only the details that affect the next decision."></textarea>
+                </label>
+              </div>
+            </article>
+
+            <article class="author-panel">
+              <p class="author-card-eyebrow">Possible Blockers</p>
+              <h2 class="author-section-title">Where could this slow down?</h2>
+              <div class="lead-advisor-checks">
+                <label><input type="checkbox" name="blocker" value="Timeline unclear"> Timeline unclear</label>
+                <label><input type="checkbox" name="blocker" value="Budget not confirmed"> Budget not confirmed</label>
+                <label><input type="checkbox" name="blocker" value="Weak urgency"> Weak urgency</label>
+                <label><input type="checkbox" name="blocker" value="Decision-maker misalignment"> Decision-maker misalignment</label>
+                <label><input type="checkbox" name="blocker" value="Market expectations unrealistic"> Market expectations unrealistic</label>
+                <label><input type="checkbox" name="blocker" value="Missing qualification details"> Missing qualification details</label>
+                <label>
+                  Additional blocker notes
+                  <textarea name="blockerNotes" rows="3" placeholder="Anything else that could delay or weaken the lead?"></textarea>
+                </label>
+              </div>
+            </article>
+          </section>
+
+          <section class="author-panel">
+            <p class="author-card-eyebrow">Best Next Action</p>
+            <h2 class="author-section-title">Decide before you follow up.</h2>
+            <p class="author-page-intro">Run the assessment to see lead strength, what is missing, likely blockers, the next best action, and a follow-up message.</p>
+            <div class="author-book-actions">
+              <button type="submit" class="author-button">Run assessment</button>
+              <a class="author-button author-button--secondary" href="/property-lead-advisor.html">Back to landing page</a>
+            </div>
+          </section>
+        </form>
+
+        <aside class="lead-advisor-output">
+          <section class="author-panel lead-output-panel">
+            <p class="author-card-eyebrow">Lead strength</p>
+            <h2 class="author-section-title" id="lead-strength">Waiting for review</h2>
+            <p class="author-page-intro" id="lead-summary">Choose the lead type, add the context, and run the assessment to review readiness.</p>
+          </section>
+
+          <section class="author-panel lead-output-panel">
+            <p class="author-card-eyebrow">What is missing</p>
+            <ul class="author-list" id="missing-list">
+              <li>Qualification gaps will appear here.</li>
+            </ul>
+          </section>
+
+          <section class="author-panel lead-output-panel">
+            <p class="author-card-eyebrow">Possible blockers</p>
+            <ul class="author-list" id="blocker-list">
+              <li>Blockers will appear here.</li>
+            </ul>
+          </section>
+
+          <section class="author-panel lead-output-panel">
+            <p class="author-card-eyebrow">Best next action</p>
+            <p class="author-page-intro" id="next-action">The recommended next action will appear here after the assessment.</p>
+          </section>
+
+          <section class="author-panel lead-output-panel">
+            <p class="author-card-eyebrow">Follow-up message</p>
+            <div class="lead-followup" id="followup-message">Your follow-up message will appear here.</div>
+          </section>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <footer class="author-footer">
+    <span>&copy; 2026 Sabino Pereira</span>
+    <span><a href="/property-lead-advisor.html">Landing page</a> · <a href="/tools.html">Tools</a> · <a href="/contact.html">Contact</a> · <a href="https://www.linkedin.com/feed" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a></span>
+  </footer>
+
+  <script>
+    const form = document.getElementById("lead-advisor-form");
+    const leadStrength = document.getElementById("lead-strength");
+    const leadSummary = document.getElementById("lead-summary");
+    const missingList = document.getElementById("missing-list");
+    const blockerList = document.getElementById("blocker-list");
+    const nextAction = document.getElementById("next-action");
+    const followupMessage = document.getElementById("followup-message");
+
+    function setList(target, items, fallback) {
+      target.innerHTML = "";
+      const values = items.length ? items : [fallback];
+      values.forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        target.appendChild(li);
+      });
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const leadType = data.get("leadType");
+      const responseQuality = data.get("responseQuality");
+      const timing = data.get("timing");
+      const decisionClarity = data.get("decisionClarity");
+      const financialReadiness = data.get("financialReadiness");
+      const alignment = data.get("alignment");
+      const marketFit = data.get("marketFit");
+      const blockers = data.getAll("blocker");
+
+      let score = 0;
+      if (responseQuality === "Clear and responsive") score += 2;
+      if (timing === "Immediate") score += 2;
+      if (timing === "Next 1-3 months") score += 1;
+      if (decisionClarity === "Very clear") score += 2;
+      if (decisionClarity === "Somewhat clear") score += 1;
+      if (financialReadiness === "Confirmed") score += 2;
+      if (financialReadiness === "Likely but not confirmed") score += 1;
+      if (alignment === "Aligned") score += 1;
+      if (marketFit === "Looks realistic") score += 1;
+
+      const missing = [];
+      if (timing === "Undefined") missing.push("Clear timeline");
+      if (decisionClarity === "Still unclear") missing.push("Decision clarity");
+      if (financialReadiness === "Unknown") missing.push("Financial readiness");
+      if (alignment === "Not aligned yet") missing.push("Decision-maker alignment");
+      if (marketFit === "Looks unrealistic") missing.push("Market fit");
+
+      let strength = "Needs review";
+      let summary = "The lead needs more clarification before strong follow-up effort makes sense.";
+      let action = "Clarify the missing points before booking a visit or investing more time.";
+
+      if (score >= 8 && blockers.length <= 1 && missing.length <= 1) {
+        strength = "Strong lead";
+        summary = "The lead looks commercially workable. The next step should move the process forward, not restart qualification.";
+        action = leadType === "Buyer"
+          ? "Book a focused call or viewing with a clear decision objective."
+          : "Book a valuation or strategy call and confirm the selling timeline.";
+      } else if (score >= 5) {
+        strength = "Promising but not ready";
+        summary = "There is enough interest to continue, but not enough clarity to treat this as a ready lead yet.";
+        action = "Run a clarification follow-up focused on timing, readiness, and the main blocker before committing to the next step.";
+      }
+
+      if (blockers.length > 2 || missing.length > 2) {
+        strength = "Weak or unclear lead";
+        summary = "The lead currently has too much friction or too many unknowns for a strong next-step commitment.";
+        action = "Keep the follow-up light, qualify the gaps, and avoid over-investing until the lead becomes clearer.";
+      }
+
+      const allBlockers = blockers.slice();
+      const blockerNotes = (data.get("blockerNotes") || "").trim();
+      if (blockerNotes) allBlockers.push(blockerNotes);
+
+      setList(missingList, missing, "No major qualification gaps detected yet.");
+      setList(blockerList, allBlockers, "No major blockers marked.");
+
+      leadStrength.textContent = strength;
+      leadSummary.textContent = summary;
+      nextAction.textContent = action;
+
+      const motivation = (data.get("motivation") || "your situation").toString().trim();
+      const followup = leadType === "Buyer"
+        ? `Hi, thank you for sharing the context around ${motivation}. From here, the best next step is to clarify timing, budget, and decision readiness so we can focus only on options that make sense. If useful, we can schedule a short call and define the next move clearly.`
+        : `Hi, thank you for sharing the context around ${motivation}. From here, the best next step is to confirm timing, expectations, and any remaining blockers so the next conversation is useful and specific. If helpful, we can book a short call and define the right next step clearly.`;
+
+      followupMessage.textContent = followup;
+    });
+  </script>
+</body>
+</html>
