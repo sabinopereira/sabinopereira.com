@@ -3035,14 +3035,37 @@ a:hover { opacity: 0.7; }
   gap: 18px;
 }
 
-.lead-advisor-shell {
-  display: grid;
-  grid-template-columns: minmax(0, 1.18fr) minmax(320px, 0.82fr);
-  gap: 18px;
-  align-items: start;
+.lead-app-hero {
+  gap: 14px;
 }
 
-.lead-advisor-form {
+.lead-app-status-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.lead-app-status-card {
+  min-width: 180px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(210, 210, 215, 0.9);
+}
+
+.lead-app-status-label {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #81776e;
+  margin-bottom: 4px;
+}
+
+.lead-app-shell,
+.lead-app-form,
+.lead-app-results {
   display: grid;
   gap: 18px;
 }
@@ -3068,11 +3091,11 @@ a:hover { opacity: 0.7; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 116px;
-  padding: 12px 18px;
+  min-width: 156px;
+  padding: 14px 18px;
   border-radius: 999px;
-  border: 1px solid rgba(49, 95, 99, 0.2);
-  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(49, 95, 99, 0.16);
+  background: rgba(255, 255, 255, 0.82);
   color: var(--hub-ink);
   font-weight: 600;
   cursor: pointer;
@@ -3084,15 +3107,21 @@ a:hover { opacity: 0.7; }
   border-color: var(--hub-accent);
 }
 
-.lead-advisor-fields,
-.lead-advisor-checks {
+.lead-app-grid,
+.lead-app-blockers {
   display: grid;
   gap: 14px;
   margin-top: 18px;
 }
 
-.lead-advisor-fields label,
-.lead-advisor-checks label {
+.lead-app-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.lead-app-field,
+.lead-app-grid label,
+.lead-app-blockers label,
+.lead-app-extra-notes {
   display: grid;
   gap: 6px;
   color: #4a4139;
@@ -3100,10 +3129,14 @@ a:hover { opacity: 0.7; }
   font-weight: 600;
 }
 
-.lead-advisor-fields input,
-.lead-advisor-fields select,
-.lead-advisor-fields textarea,
-.lead-advisor-checks textarea {
+.lead-app-field--full {
+  grid-column: 1 / -1;
+}
+
+.lead-app-grid input,
+.lead-app-grid select,
+.lead-app-grid textarea,
+.lead-app-extra-notes textarea {
   width: 100%;
   border: 1px solid #d7d1c8;
   border-radius: 14px;
@@ -3113,24 +3146,24 @@ a:hover { opacity: 0.7; }
   background: rgba(255, 255, 255, 0.92);
 }
 
-.lead-advisor-checks {
-  align-content: start;
+.lead-app-blockers {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.lead-advisor-checks label input[type="checkbox"] {
-  width: auto;
+.lead-app-checkbox {
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(210, 210, 215, 0.88);
+  font-weight: 500;
+}
+
+.lead-app-checkbox input[type="checkbox"] {
   margin-right: 10px;
 }
 
-.lead-advisor-output {
-  display: grid;
-  gap: 18px;
-  position: sticky;
-  top: 24px;
-}
-
-.lead-output-panel .author-section-title {
-  font-size: clamp(1.55rem, 2vw, 2rem);
+.lead-result-hero .author-section-title {
+  font-size: clamp(1.8rem, 2.3vw, 2.4rem);
 }
 
 .lead-followup {
@@ -3141,6 +3174,31 @@ a:hover { opacity: 0.7; }
   border: 1px solid rgba(210, 210, 215, 0.9);
   color: #5b524a;
   line-height: 1.6;
+}
+
+.lead-pro-panel {
+  background: linear-gradient(180deg, rgba(255, 252, 247, 0.92) 0%, rgba(248, 244, 237, 0.94) 100%);
+}
+
+.lead-pro-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.lead-lock {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(19, 61, 66, 0.08);
+  color: var(--hub-accent);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 @media (max-width: 1080px) {
@@ -3160,14 +3218,6 @@ a:hover { opacity: 0.7; }
 
   .author-feature-grid--three {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .lead-advisor-shell {
-    grid-template-columns: 1fr;
-  }
-
-  .lead-advisor-output {
-    position: static;
   }
 }
 
@@ -3203,6 +3253,11 @@ a:hover { opacity: 0.7; }
 
   .lead-type-option span {
     width: 100%;
+  }
+
+  .lead-app-grid,
+  .lead-app-blockers {
+    grid-template-columns: 1fr;
   }
 
   .author-header {
