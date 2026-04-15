@@ -18,6 +18,9 @@
   <meta name="twitter:image" content="https://sabinopereira.com/images/avatar.png">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEVDEH8PGZ"></script>
   <script src="/analytics.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/property-lead-auth-config.js"></script>
+  <script src="/property-lead-auth.js"></script>
   <link rel="icon" type="image/png" href="/images/avatar.png">
   <link rel="apple-touch-icon" href="/images/avatar.png">
   <link rel="stylesheet" href="/style.css?v=2">
@@ -55,6 +58,10 @@
           <div class="lead-app-status-card">
             <span class="lead-app-status-label">Product focus</span>
             <strong>Lead triage, not CRM</strong>
+          </div>
+          <div class="lead-app-status-card">
+            <span class="lead-app-status-label">Pro access</span>
+            <strong id="pro-access-status">Signed out</strong>
           </div>
         </div>
       </section>
@@ -304,6 +311,7 @@
   <script>
     const STORAGE_KEY = "property-lead-advisor-free-count";
     const FREE_LIMIT = 5;
+    let hasProAccess = false;
 
     const leadConfig = {
       seller: {
@@ -508,6 +516,7 @@
     const clientSituationGrid = document.getElementById("client-situation-grid");
     const blockersGrid = document.getElementById("blockers-grid");
     const assessmentRemaining = document.getElementById("assessment-remaining");
+    const proAccessStatus = document.getElementById("pro-access-status");
     const runAssessmentButton = document.getElementById("run-assessment");
     const resultScreen = document.getElementById("result-screen");
     const resultStrength = document.getElementById("result-strength");
@@ -526,8 +535,17 @@
     }
 
     function updateRemaining() {
+      if (hasProAccess) {
+        assessmentRemaining.textContent = "Pro access active";
+        proAccessStatus.textContent = "Signed in";
+        runAssessmentButton.disabled = false;
+        runAssessmentButton.textContent = "Run assessment";
+        return;
+      }
+
       const remaining = Math.max(FREE_LIMIT - getCount(), 0);
       assessmentRemaining.textContent = `${remaining} remaining`;
+      proAccessStatus.textContent = window.PropertyLeadAuth && window.PropertyLeadAuth.configured ? "Signed out" : "Not configured";
       const exhausted = remaining <= 0;
       runAssessmentButton.disabled = exhausted;
       runAssessmentButton.textContent = exhausted ? "Free limit reached" : "Run assessment";
@@ -697,7 +715,17 @@
     });
 
     renderLeadType("seller");
-    updateRemaining();
+    (async function initAuth() {
+      if (window.PropertyLeadAuth && window.PropertyLeadAuth.ready) {
+        const session = await window.PropertyLeadAuth.getSession();
+        hasProAccess = Boolean(session && session.user);
+        window.PropertyLeadAuth.onChange((nextSession) => {
+          hasProAccess = Boolean(nextSession && nextSession.user);
+          updateRemaining();
+        });
+      }
+      updateRemaining();
+    })();
   </script>
 </body>
 </html>

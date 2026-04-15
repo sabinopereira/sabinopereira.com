@@ -9,6 +9,9 @@
   <link rel="canonical" href="https://sabinopereira.com/property-lead-advisor-pro.html">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEVDEH8PGZ"></script>
   <script src="/analytics.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/property-lead-auth-config.js"></script>
+  <script src="/property-lead-auth.js"></script>
   <link rel="icon" type="image/png" href="/images/avatar.png">
   <link rel="apple-touch-icon" href="/images/avatar.png">
   <link rel="stylesheet" href="/style.css?v=2">
@@ -44,7 +47,8 @@
         <article class="author-panel">
           <p class="author-card-eyebrow">Sign in</p>
           <h2 class="author-section-title">Access your Pro workspace.</h2>
-          <form class="lead-pro-login-form">
+          <div class="lead-auth-status" id="lead-auth-status">Checking access status...</div>
+          <form class="lead-pro-login-form" id="lead-pro-login-form">
             <label>
               Email
               <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
@@ -62,7 +66,11 @@
               <a class="author-button author-button--secondary" href="/contact.html">Need access?</a>
             </div>
           </form>
-          <p class="author-card-meta">This access page is ready for a real authentication backend. The current version is the product entry point.</p>
+          <div class="author-book-actions" id="lead-pro-session-actions" hidden>
+            <a class="author-button" href="/property-lead-advisor-app.html">Open the app</a>
+            <button type="button" class="author-button author-button--secondary" id="lead-pro-signout">Sign out</button>
+          </div>
+          <p class="author-card-meta">Use an existing Pro account. If you do not have access yet, request it first.</p>
         </article>
 
         <article class="author-panel lead-pro-panel">
@@ -86,5 +94,66 @@
     <span>&copy; 2026 Sabino Pereira</span>
     <span><a href="/property-lead-advisor-app.html">App</a> · <a href="/property-lead-advisor.html">Landing page</a> · <a href="/contact.html">Contact</a> · <a href="https://www.linkedin.com/feed" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a></span>
   </footer>
+
+  <script>
+    const authStatus = document.getElementById("lead-auth-status");
+    const loginForm = document.getElementById("lead-pro-login-form");
+    const sessionActions = document.getElementById("lead-pro-session-actions");
+    const signoutButton = document.getElementById("lead-pro-signout");
+
+    function renderSession(session) {
+      const configured = window.PropertyLeadAuth && window.PropertyLeadAuth.configured;
+      if (!configured) {
+        authStatus.textContent = "Auth is not configured yet. Add your Supabase URL and anon key in property-lead-auth-config.js.";
+        loginForm.hidden = false;
+        sessionActions.hidden = true;
+        return;
+      }
+
+      if (session && session.user) {
+        authStatus.textContent = `Signed in as ${session.user.email}. Pro access is active on this browser.`;
+        loginForm.hidden = true;
+        sessionActions.hidden = false;
+      } else {
+        authStatus.textContent = "Sign in with your Pro account to unlock the Pro workspace.";
+        loginForm.hidden = false;
+        sessionActions.hidden = true;
+      }
+    }
+
+    async function loadSession() {
+      if (!window.PropertyLeadAuth) return renderSession(null);
+      const session = await window.PropertyLeadAuth.getSession();
+      renderSession(session);
+    }
+
+    loginForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const formData = new FormData(loginForm);
+      const email = String(formData.get("email") || "").trim();
+      const password = String(formData.get("password") || "");
+      authStatus.textContent = "Signing in...";
+
+      const { error } = await window.PropertyLeadAuth.signIn(email, password);
+      if (error) {
+        authStatus.textContent = error.message || "Unable to sign in.";
+        return;
+      }
+
+      authStatus.textContent = "Signed in successfully.";
+      await loadSession();
+    });
+
+    signoutButton.addEventListener("click", async () => {
+      await window.PropertyLeadAuth.signOut();
+      await loadSession();
+    });
+
+    if (window.PropertyLeadAuth) {
+      window.PropertyLeadAuth.onChange(renderSession);
+    }
+
+    loadSession();
+  </script>
 </body>
 </html>
