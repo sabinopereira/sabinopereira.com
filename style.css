@@ -3201,6 +3201,38 @@ a:hover { opacity: 0.7; }
   text-transform: uppercase;
 }
 
+.lead-pro-login-form {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.lead-pro-login-form label {
+  display: grid;
+  gap: 6px;
+  color: #4a4139;
+  font-size: 0.94rem;
+  font-weight: 600;
+}
+
+.lead-pro-login-form input[type="email"],
+.lead-pro-login-form input[type="password"] {
+  width: 100%;
+  border: 1px solid #d7d1c8;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font: inherit;
+  color: #2f2822;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.lead-pro-login-check {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500 !important;
+}
+
 @media (max-width: 1080px) {
   .author-hero,
   .author-grid,
