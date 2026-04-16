@@ -1,3 +1,7 @@
+const CACHE_TTL_MS = 10 * 60 * 1000;
+const responseCache = globalThis.__quietNewsCache || new Map();
+globalThis.__quietNewsCache = responseCache;
+
 export default async function handler(req, res) {
   if (req.method === "GET") {
     return res.status(200).json({
@@ -14,11 +18,25 @@ export default async function handler(req, res) {
   try {
     const preferences = typeof req.body === "string" ? JSON.parse(req.body) : req.body || {};
     const apiKey = process.env.GNEWS_API_KEY || "";
+    const cacheKey = JSON.stringify({
+      selectedInterests: preferences.selectedInterests || [],
+      customTopic: preferences.customTopic || "",
+      language: preferences.language || "en",
+      coverageType: preferences.coverageType || "mixed",
+      regionFocus: preferences.regionFocus || "pt",
+      timeFrame: preferences.timeFrame || "today"
+    });
 
     if (!apiKey) {
       return res.status(500).json({
         error: "GNews is not configured yet. Add GNEWS_API_KEY in the deployment environment first."
       });
+    }
+
+    const cached = responseCache.get(cacheKey);
+    if (cached && Date.now() - cached.timestamp < CACHE_TTL_MS) {
+      res.setHeader("Cache-Control", "s-maxage=600, stale-while-revalidate=300");
+      return res.status(200).json(cached.data);
     }
 
     const requests = buildProviderRequests(preferences, apiKey);
@@ -27,17 +45,30 @@ export default async function handler(req, res) {
         const response = await fetch(url);
         if (!response.ok) {
           const text = await response.text();
-          throw new Error("GNews returned " + response.status + ". " + text.slice(0, 180));
+          const error = new Error("GNews returned " + response.status + ". " + text.slice(0, 180));
+          error.status = response.status;
+          throw error;
         }
         return response.json();
       })
     );
 
     const articles = normalizeResults(rawResults.flatMap((result) => normalizeProviderPayload(result)));
+    responseCache.set(cacheKey, {
+      timestamp: Date.now(),
+      data: articles
+    });
 
+    res.setHeader("Cache-Control", "s-maxage=600, stale-while-revalidate=300");
     return res.status(200).json(articles);
   } catch (error) {
-    return res.status(500).json({
+    if (error.status === 429) {
+      return res.status(429).json({
+        error: "Quiet Signal is receiving too many requests right now. Please wait a moment and try again."
+      });
+    }
+
+    return res.status(error.status || 500).json({
       error: error.message || "Unable to build the news briefing right now."
     });
   }

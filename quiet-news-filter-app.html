@@ -259,6 +259,7 @@
     const runBriefingButton = document.getElementById("run-briefing");
     let proxyIsActive = false;
     let proxyCheckComplete = false;
+    let lastBriefingRunAt = 0;
 
     function readProviderSettings() {
       try {
@@ -673,6 +674,10 @@
       event.preventDefault();
 
       try {
+        if (Date.now() - lastBriefingRunAt < 12000) {
+          throw new Error("Please wait a few seconds before generating another briefing.");
+        }
+
         if (!config.proxyEndpoint && !readProviderSettings().apiKey) {
           throw new Error("Save one provider key locally first. That key stays in this browser only.");
         }
@@ -685,6 +690,7 @@
         const preferences = parseFormPreferences();
         runBriefingButton.disabled = true;
         runBriefingButton.textContent = "Generating...";
+        lastBriefingRunAt = Date.now();
 
         const articles = await fetchArticles(preferences);
         const stories = chooseStories(articles, preferences);
@@ -697,7 +703,9 @@
         document.getElementById("briefing-summary").textContent = error.message;
         document.getElementById("story-list").innerHTML = "";
         document.getElementById("shift-summary").textContent = "Once the provider is configured, the wider pattern will appear here.";
-        document.getElementById("watch-summary").textContent = "Add a provider key and run a briefing to see what deserves attention next.";
+        document.getElementById("watch-summary").textContent = error.message.includes("too many requests")
+          ? "Wait a moment before trying again. Quiet Signal will work better once the request pressure drops."
+          : "Add a provider key and run a briefing to see what deserves attention next.";
         document.getElementById("ignore-panel").hidden = true;
         document.getElementById("worth-panel").hidden = true;
       } finally {
