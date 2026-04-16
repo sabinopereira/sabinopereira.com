@@ -65,7 +65,7 @@
       </section>
 
       <section class="lead-app-shell">
-        <section class="author-panel news-settings-panel" id="proxy-setup-panel">
+        <section class="author-panel news-settings-panel" id="proxy-setup-panel" hidden>
           <p class="author-card-eyebrow">Setup</p>
           <h2 class="author-section-title">GNews is the primary source.</h2>
           <p class="author-page-intro">For public use, the app should read from the private server-side endpoint. If that is not configured yet, you can still save one local GNews key in this browser for testing.</p>
@@ -258,6 +258,7 @@
     const briefingsRemaining = document.getElementById("briefings-remaining");
     const runBriefingButton = document.getElementById("run-briefing");
     let proxyIsActive = false;
+    let proxyCheckComplete = false;
 
     function readProviderSettings() {
       try {
@@ -293,7 +294,7 @@
         providerStatus.textContent = "GNews connected";
         providerSetupStatus.textContent = "Quiet Signal is connected and ready.";
         proxySetupPanel.hidden = true;
-      } else if (config.proxyEndpoint) {
+      } else if (config.proxyEndpoint && proxyCheckComplete) {
         providerStatus.textContent = "GNews via private endpoint";
         providerSetupStatus.textContent = settings.apiKey
           ? "Private endpoint not confirmed yet. A local GNews key is also saved in this browser as fallback."
@@ -314,6 +315,7 @@
     async function checkProxyStatus() {
       if (!config.proxyEndpoint) {
         proxyIsActive = false;
+        proxyCheckComplete = true;
         updateProviderUI();
         return;
       }
@@ -326,6 +328,7 @@
         proxyIsActive = false;
       }
 
+      proxyCheckComplete = true;
       updateProviderUI();
     }
 
@@ -399,47 +402,19 @@
       const startIso = start.toISOString();
       const endIso = end.toISOString();
       const localCountry = preferences.regionFocus === "global" ? "" : preferences.regionFocus;
-      const newsApiDomains = {
-        pt: "publico.pt,observador.pt,dn.pt,jn.pt",
-        us: "nytimes.com,wsj.com,cnn.com,apnews.com",
-        gb: "bbc.com,theguardian.com,ft.com,reuters.com"
-      };
       const requests = [];
 
       function pushRequest(mode) {
-        if (settings.provider === "gnews") {
-          let url = "https://gnews.io/api/v4/search?q=" + query +
-            "&lang=" + language +
-            "&max=20" +
-            "&from=" + encodeURIComponent(startIso) +
-            "&to=" + encodeURIComponent(endIso) +
-            "&apikey=" + encodeURIComponent(settings.apiKey);
-          if (mode === "local" && localCountry && localCountry !== "eu") {
-            url += "&country=" + encodeURIComponent(localCountry);
-          }
-          requests.push(url);
-        } else if (settings.provider === "newsapi") {
-          let url = "https://newsapi.org/v2/everything?q=" + query +
-            "&language=" + language +
-            "&sortBy=publishedAt" +
-            "&pageSize=25" +
-            "&from=" + encodeURIComponent(startIso) +
-            "&to=" + encodeURIComponent(endIso) +
-            "&apiKey=" + encodeURIComponent(settings.apiKey);
-          if (mode === "local" && newsApiDomains[localCountry]) {
-            url += "&domains=" + encodeURIComponent(newsApiDomains[localCountry]);
-          }
-          requests.push(url);
-        } else if (settings.provider === "newsdata") {
-          let url = "https://newsdata.io/api/1/latest?q=" + query +
-            "&language=" + encodeURIComponent(language) +
-            "&size=20" +
-            "&apikey=" + encodeURIComponent(settings.apiKey);
-          if (mode === "local" && localCountry && localCountry !== "eu" && localCountry !== "global") {
-            url += "&country=" + encodeURIComponent(localCountry);
-          }
-          requests.push(url);
+        let url = "https://gnews.io/api/v4/search?q=" + query +
+          "&lang=" + language +
+          "&max=20" +
+          "&from=" + encodeURIComponent(startIso) +
+          "&to=" + encodeURIComponent(endIso) +
+          "&apikey=" + encodeURIComponent(settings.apiKey);
+        if (mode === "local" && localCountry && localCountry !== "eu") {
+          url += "&country=" + encodeURIComponent(localCountry);
         }
+        requests.push(url);
       }
 
       if (preferences.coverageType === "mixed") {
@@ -546,7 +521,7 @@
       return articles
         .map((article) => ({ article, score: scoreArticle(article, preferences) }))
         .sort((a, b) => b.score - a.score)
-        .slice(0, 5)
+        .slice(0, 4)
         .map((entry) => entry.article);
     }
 
@@ -712,7 +687,7 @@
         updateRemainingCount();
       } catch (error) {
         resultsSection.hidden = false;
-        document.getElementById("briefing-hook").textContent = "Setup needed";
+        document.getElementById("briefing-hook").textContent = "Briefing unavailable";
         document.getElementById("briefing-summary").textContent = error.message;
         document.getElementById("story-list").innerHTML = "";
         document.getElementById("shift-summary").textContent = "Once the provider is configured, the wider pattern will appear here.";
