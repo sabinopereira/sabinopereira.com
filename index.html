@@ -122,13 +122,13 @@
 
       <section class="author-panel author-signal-panel" id="what-matters-now">
         <p class="author-kicker">What matters now</p>
-        <h2 class="author-section-title">A short global signal, refreshed quietly.</h2>
-        <p class="author-page-intro">A small selection of developments worth noticing, updated automatically without turning the site into a news feed.</p>
+        <h2 class="author-section-title">A short global signal, kept deliberately small.</h2>
+        <p class="author-page-intro">A few developments worth noticing, chosen to keep the homepage informed without turning it into a stream of headlines.</p>
         <div class="author-signal-list" id="signal-list">
           <article class="author-signal-card">
             <p class="author-card-eyebrow">Loading</p>
             <h3 class="author-card-title">Checking what matters now.</h3>
-            <p class="author-card-text">This section updates automatically and keeps only a few stronger signals.</p>
+            <p class="author-card-text">This section keeps only a few stronger signals, so it stays useful without becoming noise.</p>
           </article>
         </div>
       </section>
@@ -176,6 +176,20 @@
       const signalList = document.getElementById("signal-list");
       if (!signalList) return;
 
+      function calmWhyItMatters(story) {
+        const text = ((story.title || "") + " " + (story.description || "")).toLowerCase();
+        if (/policy|law|regulation|government|tariff|trade|election/.test(text)) {
+          return "Why it matters: this may change rules, incentives, or the direction of decisions beyond the headline itself.";
+        }
+        if (/economy|inflation|interest rate|market|earnings|funding/.test(text)) {
+          return "Why it matters: it may shape cost, confidence, and the timing of real-world decisions.";
+        }
+        if (/technology|ai|chip|software|platform|security/.test(text)) {
+          return "Why it matters: it may signal a shift in capability, pressure, or how people work and adapt.";
+        }
+        return "Why it matters: it looks more like signal than background noise, which is why it is here.";
+      }
+
       try {
         const response = await fetch("/api/what-matters-now");
         const data = await response.json();
@@ -193,6 +207,7 @@
               <p class="author-card-eyebrow">${story.source}${published ? " · " + published : ""}</p>
               <h3 class="author-card-title">${story.title}</h3>
               <p class="author-card-text">${story.description || "A development worth noticing across policy, economics, technology, or direction."}</p>
+              <p class="author-signal-note">${calmWhyItMatters(story)}</p>
               <a class="author-link" href="${story.url}" target="_blank" rel="noopener">Read more</a>
             </article>
           `;

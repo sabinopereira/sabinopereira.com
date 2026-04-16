@@ -3050,6 +3050,13 @@ a:hover { opacity: 0.7; }
   margin-top: 4px;
 }
 
+.author-signal-note {
+  margin: 10px 0 0;
+  color: #6e645b;
+  line-height: 1.55;
+  font-size: 0.94rem;
+}
+
 .author-home-split {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
