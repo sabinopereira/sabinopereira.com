@@ -21,17 +21,9 @@ export default async function handler(req, res) {
   }
 
   try {
-    const now = new Date();
-    const from = new Date(now);
-    from.setDate(from.getDate() - 2);
-    from.setHours(0, 0, 0, 0);
-
-    const query = encodeURIComponent("world OR policy OR economy OR technology OR AI");
-    const url = "https://gnews.io/api/v4/search?q=" + query +
+    const url = "https://gnews.io/api/v4/top-headlines?category=general" +
       "&lang=en" +
       "&max=12" +
-      "&from=" + encodeURIComponent(from.toISOString()) +
-      "&to=" + encodeURIComponent(now.toISOString()) +
       "&apikey=" + encodeURIComponent(apiKey);
 
     const response = await fetch(url);
@@ -52,6 +44,11 @@ export default async function handler(req, res) {
     res.setHeader("Cache-Control", "s-maxage=86400, stale-while-revalidate=43200");
     return res.status(200).json(stories);
   } catch (error) {
+    if (cached && cached.data && cached.data.length) {
+      res.setHeader("Cache-Control", "s-maxage=3600, stale-while-revalidate=43200");
+      return res.status(200).json(cached.data);
+    }
+
     return res.status(500).json({
       error: error.message || "Unable to load the current signal."
     });
