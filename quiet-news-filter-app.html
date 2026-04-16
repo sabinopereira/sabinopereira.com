@@ -521,7 +521,7 @@
       return articles
         .map((article) => ({ article, score: scoreArticle(article, preferences) }))
         .sort((a, b) => b.score - a.score)
-        .slice(0, 4)
+        .slice(0, 6)
         .map((entry) => entry.article);
     }
 
