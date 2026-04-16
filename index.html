@@ -120,6 +120,19 @@
         </article>
       </section>
 
+      <section class="author-panel author-signal-panel" id="what-matters-now">
+        <p class="author-kicker">What matters now</p>
+        <h2 class="author-section-title">A short global signal, refreshed quietly.</h2>
+        <p class="author-page-intro">A small selection of developments worth noticing, updated automatically without turning the site into a news feed.</p>
+        <div class="author-signal-list" id="signal-list">
+          <article class="author-signal-card">
+            <p class="author-card-eyebrow">Loading</p>
+            <h3 class="author-card-title">Checking what matters now.</h3>
+            <p class="author-card-text">This section updates automatically and keeps only a few stronger signals.</p>
+          </article>
+        </div>
+      </section>
+
       <section class="author-panel" id="quiet-power-tools">
         <p class="author-kicker">Featured tools</p>
         <h2 class="author-section-title">Two useful tools to start with.</h2>
@@ -143,9 +156,9 @@
             <p class="author-card-text">A news assistant for readers who want calm context, stronger filters, and less emotional overload from headlines designed to trigger fast reactions.</p>
             <div class="author-tool-actions">
               <a class="author-button" href="/quiet-news-filter.html">Open landing page</a>
-              <a class="author-button author-button--secondary" href="/quiet-news-filter-app.html">Open app</a>
+              <a class="author-button author-button--secondary" href="https://chatgpt.com/g/g-69dbb09837388191afd7c6e335681cae-quiet-signal-news-filter" target="_blank" rel="noopener" data-tool-name="Quiet Signal — News Filter" data-tool-link-type="primary" data-tool-source="homepage">Open GPT</a>
             </div>
-            <a class="author-tool-secondary" href="https://chatgpt.com/g/g-69dbb09837388191afd7c6e335681cae-quiet-signal-news-filter" target="_blank" rel="noopener" data-tool-name="Quiet Signal — News Filter" data-tool-link-type="secondary" data-tool-source="homepage">Prefer the current GPT version? Use it here</a>
+            <a class="author-tool-secondary" href="https://chatgpt.com/g/g-69dbb09837388191afd7c6e335681cae-quiet-signal-news-filter" target="_blank" rel="noopener" data-tool-name="Quiet Signal — News Filter" data-tool-link-type="secondary" data-tool-source="homepage">Use Quiet Signal in ChatGPT</a>
           </article>
         </div>
 
@@ -157,5 +170,45 @@
     <span>&copy; 2026 Sabino Pereira</span>
     <span><a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/ideas.html">Thoughts</a> · <a href="https://www.linkedin.com/feed" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a></span>
   </footer>
+
+  <script>
+    async function loadWhatMattersNow() {
+      const signalList = document.getElementById("signal-list");
+      if (!signalList) return;
+
+      try {
+        const response = await fetch("/api/what-matters-now");
+        const data = await response.json();
+
+        if (!response.ok || !Array.isArray(data) || !data.length) {
+          throw new Error(data.error || "Unable to load the current signal.");
+        }
+
+        signalList.innerHTML = data.map((story) => {
+          const published = story.publishedAt
+            ? new Date(story.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric" })
+            : "";
+          return `
+            <article class="author-signal-card">
+              <p class="author-card-eyebrow">${story.source}${published ? " · " + published : ""}</p>
+              <h3 class="author-card-title">${story.title}</h3>
+              <p class="author-card-text">${story.description || "A development worth noticing across policy, economics, technology, or direction."}</p>
+              <a class="author-link" href="${story.url}" target="_blank" rel="noopener">Read more</a>
+            </article>
+          `;
+        }).join("");
+      } catch (error) {
+        signalList.innerHTML = `
+          <article class="author-signal-card">
+            <p class="author-card-eyebrow">Quiet update</p>
+            <h3 class="author-card-title">The signal is unavailable right now.</h3>
+            <p class="author-card-text">This section will return once the current news source is available again.</p>
+          </article>
+        `;
+      }
+    }
+
+    loadWhatMattersNow();
+  </script>
 </body>
 </html>
