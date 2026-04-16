@@ -74,20 +74,27 @@ function getDateRange(timeFrame) {
 
 function buildQuery(preferences) {
   const interestSearchTerms = {
-    "AI / Tech": "AI OR artificial intelligence OR technology OR software",
-    "Business / Economy": "business OR economy OR markets OR companies",
-    "World / Geopolitics": "geopolitics OR world OR international OR security",
-    "Science / Health": "science OR health OR medicine OR research",
-    "Culture / Entertainment": "culture OR media OR film OR entertainment",
-    "Environment / Climate": "climate OR environment OR energy",
-    "Books / Ideas": "books OR ideas OR publishing OR education",
-    Sports: "sports OR football OR basketball OR tennis"
+    "AI / Tech": "AI technology",
+    "Business / Economy": "business economy",
+    "World / Geopolitics": "geopolitics world",
+    "Science / Health": "science health",
+    "Culture / Entertainment": "culture entertainment",
+    "Environment / Climate": "climate environment",
+    "Books / Ideas": "books ideas",
+    Sports: "sports"
   };
 
   const selectedInterests = Array.isArray(preferences.selectedInterests) ? preferences.selectedInterests : [];
-  const interestTerms = selectedInterests.map((interest) => interestSearchTerms[interest] || interest);
-  if (preferences.customTopic) interestTerms.push(preferences.customTopic);
-  return interestTerms.join(" OR ");
+  const interestTerms = selectedInterests
+    .slice(0, 3)
+    .map((interest) => interestSearchTerms[interest] || String(interest || "").trim())
+    .filter(Boolean);
+  const customTopic = String(preferences.customTopic || "")
+    .trim()
+    .slice(0, 60);
+  if (customTopic) interestTerms.unshift(customTopic);
+  const query = interestTerms.join(" OR ");
+  return query.slice(0, 180);
 }
 
 function buildProviderRequests(preferences, apiKey) {

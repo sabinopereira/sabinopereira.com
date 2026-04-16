@@ -238,14 +238,14 @@
     const config = window.QUIET_NEWS_FILTER_CONFIG || {};
 
     const interestSearchTerms = {
-      "AI / Tech": "AI OR artificial intelligence OR technology OR software",
-      "Business / Economy": "business OR economy OR markets OR companies",
-      "World / Geopolitics": "geopolitics OR world OR international OR security",
-      "Science / Health": "science OR health OR medicine OR research",
-      "Culture / Entertainment": "culture OR media OR film OR entertainment",
-      "Environment / Climate": "climate OR environment OR energy",
-      "Books / Ideas": "books OR ideas OR publishing OR education",
-      "Sports": "sports OR football OR basketball OR tennis"
+      "AI / Tech": "AI technology",
+      "Business / Economy": "business economy",
+      "World / Geopolitics": "geopolitics world",
+      "Science / Health": "science health",
+      "Culture / Entertainment": "culture entertainment",
+      "Environment / Climate": "climate environment",
+      "Books / Ideas": "books ideas",
+      "Sports": "sports"
     };
 
     const form = document.getElementById("quiet-news-form");
@@ -390,9 +390,15 @@
     }
 
     function buildQuery(preferences) {
-      const interestTerms = preferences.selectedInterests.map((interest) => interestSearchTerms[interest] || interest);
-      if (preferences.customTopic) interestTerms.push(preferences.customTopic);
-      return interestTerms.join(" OR ");
+      const interestTerms = preferences.selectedInterests
+        .slice(0, 3)
+        .map((interest) => interestSearchTerms[interest] || String(interest || "").trim())
+        .filter(Boolean);
+      const customTopic = String(preferences.customTopic || "")
+        .trim()
+        .slice(0, 60);
+      if (customTopic) interestTerms.unshift(customTopic);
+      return interestTerms.join(" OR ").slice(0, 180);
     }
 
     function buildProviderRequests(preferences, settings) {
