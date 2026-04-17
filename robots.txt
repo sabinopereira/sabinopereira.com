@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /archive/
 
 Sitemap: https://sabinopereira.com/sitemap.xml
