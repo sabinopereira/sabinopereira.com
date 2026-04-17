@@ -163,7 +163,7 @@ function initQuietPowerAssessment() {
   }
 
   function buildShareState(profile) {
-    const url = "https://sabinopereira.com/test.html";
+    const url = "https://sabinopereira.com/quiet-power-assessment.html";
     const text = `I got "${profile.name}" on the Quiet Power Assessment. Take the test: ${url}`;
     const links = window.ShareUtils
       ? window.ShareUtils.buildShareLinks(`I got "${profile.name}" on the Quiet Power Assessment`, url)
@@ -422,7 +422,7 @@ function initQuietPowerAssessment() {
     } else {
       shareCopy.addEventListener("click", async () => {
         trackEvent("test_share_click", { platform: "copy_link" });
-        const text = shareCopy.dataset.copyText || "https://sabinopereira.com/test.html";
+        const text = shareCopy.dataset.copyText || "https://sabinopereira.com/quiet-power-assessment.html";
 
         try {
           await navigator.clipboard.writeText(text);

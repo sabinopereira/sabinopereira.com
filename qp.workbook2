@@ -56,7 +56,7 @@
     <a href="/about.html">About Me</a>
     <a href="/books.html" class="active">Books</a>
     <a href="/ideas.html">QP Thoughts</a>
-    <a href="/deep-dives.html">QP Deep Dives</a>
+    <a href="/ideas.html#thoughts-in-other-forms">Thoughts in Video</a>
     <a href="/contact.html">Contact Me</a>
   </nav>
 </header>

@@ -416,7 +416,7 @@ function resolveIdentity() {
         "You move fast.",
         "Too fast."
       ],
-      cta: { label: "Improve your Quiet Power", href: "/test.html" }
+      cta: { label: "Improve your Quiet Power", href: "/quiet-power-assessment.html" }
     };
   }
 
