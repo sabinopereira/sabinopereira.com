@@ -3148,7 +3148,18 @@ a:hover { opacity: 0.7; }
 }
 
 .author-book-page .author-book-detail {
+  grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
   gap: 18px;
+  align-items: start;
+}
+
+.author-book-page .author-book-detail-cover {
+  justify-content: flex-start;
+  align-self: start;
+}
+
+.author-book-page .author-book-detail-image {
+  width: clamp(230px, 24vw, 300px);
 }
 
 .author-book-page .author-two-column,
