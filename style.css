@@ -3113,6 +3113,97 @@ a:hover { opacity: 0.7; }
   font-size: 0.95rem;
 }
 
+.author-book-page .author-main {
+  gap: 18px;
+  padding-top: 18px;
+}
+
+.author-book-page .author-book-intro {
+  padding: 2px 0 0;
+}
+
+.author-book-page .author-book-intro-panel {
+  padding: 26px 24px;
+}
+
+.author-book-page .author-book-intro-tagline {
+  margin-top: 14px;
+}
+
+.author-book-page .author-book-intro-subtitle {
+  margin-top: 18px;
+}
+
+.author-book-page .author-book-chip-row,
+.author-book-page .author-book-actions,
+.author-book-page .author-inline-links {
+  margin-top: 14px;
+}
+
+.author-book-page .author-book-detail,
+.author-book-page .author-panel,
+.author-book-page .author-page-hero,
+.author-book-page .author-quote {
+  padding: 22px;
+}
+
+.author-book-page .author-book-detail {
+  gap: 18px;
+}
+
+.author-book-page .author-two-column,
+.author-book-page .author-feature-grid {
+  gap: 14px;
+}
+
+.author-book-page .author-page-intro {
+  margin-top: 10px;
+}
+
+.author-book-page .author-card-eyebrow,
+.author-book-page .author-meta-label {
+  margin-bottom: 8px;
+}
+
+.author-book-page .author-list {
+  margin-top: 12px;
+}
+
+.author-book-page .author-list li + li {
+  margin-top: 6px;
+}
+
+.author-book-page .author-panel--excerpt {
+  gap: 16px;
+}
+
+.author-book-page .author-excerpt {
+  padding: 22px;
+}
+
+.author-book-page .author-excerpt-body {
+  margin-top: 16px;
+  gap: 10px;
+}
+
+.author-book-page .author-excerpt-cta {
+  margin-top: 18px;
+  padding-top: 16px;
+}
+
+.author-book-page .author-format-stack {
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.author-book-page .author-format-card {
+  padding: 16px;
+}
+
+.author-book-page .author-section-note {
+  margin-top: 12px;
+}
+
 .author-footer {
   width: min(calc(100% - 40px), var(--hub-max));
   margin: 0 auto 28px;
