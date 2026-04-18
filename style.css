@@ -2961,6 +2961,31 @@ a:hover { opacity: 0.7; }
   margin-top: 18px;
 }
 
+.author-book-actions--center {
+  justify-content: center;
+}
+
+.author-book-chip-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.author-book-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(88, 70, 51, 0.12);
+  color: #645748;
+  font-size: 0.83rem;
+  font-weight: 600;
+}
+
 .author-tool-actions {
   display: flex;
   flex-wrap: wrap;
@@ -2990,6 +3015,102 @@ a:hover { opacity: 0.7; }
 
 .author-list li + li {
   margin-top: 8px;
+}
+
+.author-panel--excerpt {
+  display: grid;
+  gap: 22px;
+}
+
+.author-section-head {
+  display: grid;
+  gap: 10px;
+}
+
+.author-page-intro--compact {
+  max-width: 56rem;
+}
+
+.author-excerpt {
+  padding: 28px;
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 254, 250, 0.98) 0%, rgba(248, 241, 231, 0.94) 100%);
+  border: 1px solid rgba(88, 70, 51, 0.12);
+}
+
+.author-excerpt-kicker,
+.author-format-label {
+  margin: 0;
+  color: #7d6e5e;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.author-excerpt-title,
+.author-format-title {
+  margin: 10px 0 0;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  line-height: 1.04;
+  color: #261f19;
+}
+
+.author-excerpt-subtitle {
+  margin: 10px 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #54483c;
+  font-size: 1.08rem;
+}
+
+.author-excerpt-body {
+  margin-top: 22px;
+  display: grid;
+  gap: 14px;
+}
+
+.author-excerpt-body p,
+.author-excerpt-note,
+.author-format-copy,
+.author-section-note {
+  margin: 0;
+  color: #4d4339;
+  line-height: 1.7;
+}
+
+.author-excerpt-cta {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(88, 70, 51, 0.12);
+}
+
+.author-format-stack {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.author-format-card {
+  padding: 20px;
+  border-radius: 18px;
+  border: 1px solid rgba(88, 70, 51, 0.12);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.author-format-card--primary {
+  background:
+    radial-gradient(circle at top right, rgba(179, 164, 137, 0.14), transparent 34%),
+    rgba(255, 252, 247, 0.88);
+}
+
+.author-format-copy {
+  margin-top: 10px;
+}
+
+.author-section-note {
+  margin-top: 16px;
+  font-size: 0.95rem;
 }
 
 .author-footer {
