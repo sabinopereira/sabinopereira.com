@@ -52,7 +52,7 @@
     </div>
   </div>
   <nav class="site-nav">
-    <a href="/index.html">Home</a>
+    <a href="/">Home</a>
     <a href="/about.html">About Me</a>
     <a href="/books.html" class="active">Books</a>
     <a href="/ideas.html">QP Thoughts</a>
