@@ -2631,7 +2631,9 @@ a:hover { opacity: 0.7; }
 }
 
 .author-button.amazon-btn,
-.author-button.author-button--secondary.amazon-btn {
+.author-button.author-button--secondary.amazon-btn,
+.author-button.buy-btn,
+.author-button.author-button--secondary.buy-btn {
   background: #f7d774;
   color: #2b2112;
   border-color: rgba(181, 136, 36, 0.34);
@@ -2640,19 +2642,21 @@ a:hover { opacity: 0.7; }
 }
 
 .author-button.amazon-btn:hover,
-.author-button.author-button--secondary.amazon-btn:hover {
+.author-button.author-button--secondary.amazon-btn:hover,
+.author-button.buy-btn:hover,
+.author-button.author-button--secondary.buy-btn:hover {
   background: #ffdf84;
   color: #21180d;
 }
 
-.author-book-actions .author-button:not(.amazon-btn) {
+.author-book-actions .author-button:not(.amazon-btn):not(.buy-btn) {
   background: transparent;
   color: var(--hub-accent);
   border-color: rgba(49, 95, 99, 0.26);
   box-shadow: none;
 }
 
-.author-book-actions .author-button:not(.amazon-btn):hover {
+.author-book-actions .author-button:not(.amazon-btn):not(.buy-btn):hover {
   background: rgba(49, 95, 99, 0.06);
   border-color: rgba(49, 95, 99, 0.36);
   color: var(--hub-accent);
