@@ -38,4 +38,22 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
+
+  document.querySelectorAll('a[href*="fourthwall.com"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      const url = new URL(link.href, window.location.origin);
+      const linkText = (link.textContent || "").trim();
+
+      window.trackEvent("fourthwall_click", {
+        page_path: window.location.pathname,
+        page_title: document.title,
+        link_text: linkText,
+        destination_host: url.hostname,
+        destination_path: url.pathname,
+        destination_url: url.href,
+        product_slug: url.pathname.split("/").filter(Boolean).pop() || "",
+        outbound_type: "digital_product"
+      });
+    });
+  });
 });
