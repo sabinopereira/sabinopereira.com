@@ -2882,6 +2882,13 @@ a:hover { opacity: 0.7; }
   color: #2c241d;
 }
 
+.author-tool-mark {
+  width: min(100%, 180px);
+  margin-bottom: 12px;
+  display: block;
+  object-fit: contain;
+}
+
 .author-meta-row {
   margin-top: 14px;
 }
@@ -3631,6 +3638,18 @@ a:hover { opacity: 0.7; }
   .author-feature-grid--three {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .author-book-page .author-book-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .author-book-page .author-book-detail-cover {
+    order: -1;
+  }
+
+  .author-book-page .author-book-detail-copy {
+    max-width: none;
+  }
 }
 
 @media (max-width: 760px) {
@@ -3770,6 +3789,10 @@ a:hover { opacity: 0.7; }
     gap: 18px;
   }
 
+  .author-book-page .author-book-detail {
+    justify-items: center;
+  }
+
   .author-book-intro-panel {
     padding: 28px 20px;
   }
@@ -3789,6 +3812,7 @@ a:hover { opacity: 0.7; }
 
   .author-book-detail-copy {
     max-width: none;
+    width: 100%;
   }
 
   .author-book-detail-image {
