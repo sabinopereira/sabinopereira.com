@@ -1,0 +1,32 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="36" fill="#F7F2E8"/>
+  <rect x="60" y="60" width="1080" height="780" rx="34" fill="#FFFDF8" stroke="#E4DCCB" stroke-width="2"/>
+  <rect x="116" y="128" width="418" height="620" rx="28" fill="url(#panelGlow)" stroke="#E6DDCF"/>
+  <rect x="666" y="128" width="418" height="620" rx="28" fill="#FFFCF5" stroke="#E6DDCF"/>
+  <rect x="536" y="300" width="128" height="270" rx="26" fill="#315F63"/>
+  <path d="M602 374C636.794 374 665 345.794 665 311C665 276.206 636.794 248 602 248C567.206 248 539 276.206 539 311C539 345.794 567.206 374 602 374Z" fill="#F4D35F"/>
+  <path d="M350 234C404.124 234 448 190.124 448 136H252C252 190.124 295.876 234 350 234Z" fill="#EADFCB"/>
+  <rect x="178" y="260" width="294" height="70" rx="20" fill="#FFF8EC" stroke="#E6DDCF"/>
+  <rect x="178" y="354" width="220" height="22" rx="11" fill="#D3C6B2"/>
+  <rect x="178" y="392" width="248" height="22" rx="11" fill="#D3C6B2"/>
+  <rect x="178" y="430" width="186" height="22" rx="11" fill="#D3C6B2"/>
+  <rect x="178" y="518" width="124" height="56" rx="28" fill="#315F63"/>
+  <rect x="318" y="518" width="132" height="56" rx="28" fill="#F4D35F"/>
+  <rect x="720" y="214" width="310" height="128" rx="22" fill="#FFF8EC" stroke="#E6DDCF"/>
+  <rect x="748" y="250" width="124" height="18" rx="9" fill="#315F63"/>
+  <rect x="748" y="286" width="220" height="18" rx="9" fill="#CEC1AB"/>
+  <rect x="720" y="382" width="310" height="128" rx="22" fill="#FFF8EC" stroke="#E6DDCF"/>
+  <rect x="748" y="418" width="160" height="18" rx="9" fill="#315F63"/>
+  <rect x="748" y="454" width="208" height="18" rx="9" fill="#CEC1AB"/>
+  <rect x="720" y="550" width="310" height="128" rx="22" fill="#FFF8EC" stroke="#E6DDCF"/>
+  <rect x="748" y="586" width="110" height="18" rx="9" fill="#315F63"/>
+  <rect x="748" y="622" width="194" height="18" rx="9" fill="#CEC1AB"/>
+  <path d="M517 521C486.003 563.62 438.064 591 383.731 591C329.399 591 281.46 563.62 250.462 521" stroke="#315F63" stroke-width="18" stroke-linecap="round"/>
+  <path d="M954 698C954 658.788 922.212 627 883 627C843.788 627 812 658.788 812 698" stroke="#315F63" stroke-width="18" stroke-linecap="round"/>
+  <defs>
+    <linearGradient id="panelGlow" x1="116" y1="128" x2="534" y2="748" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF7EB"/>
+      <stop offset="1" stop-color="#F5EEE1"/>
+    </linearGradient>
+  </defs>
+</svg>
