@@ -2911,6 +2911,17 @@ a:hover { opacity: 0.7; }
   box-shadow: 0 16px 36px rgba(44, 33, 26, 0.1);
 }
 
+.author-feature-book-cover {
+  width: min(100%, 230px);
+  aspect-ratio: 4 / 5.6;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 22px;
+  border-radius: 18px;
+  border: 1px solid rgba(71, 56, 42, 0.12);
+  box-shadow: 0 20px 44px rgba(44, 33, 26, 0.14);
+}
+
 .author-book-intro {
   padding: 8px 0 2px;
 }
