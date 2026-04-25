@@ -2731,6 +2731,12 @@ a:hover { opacity: 0.7; }
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.author-feature-stack {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+}
+
 .author-books-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
