@@ -2437,8 +2437,8 @@ a:hover { opacity: 0.7; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  padding-bottom: 22px;
+  gap: 18px;
+  padding-bottom: 12px;
   border-bottom: 1px solid var(--hub-line);
 }
 
@@ -2478,16 +2478,17 @@ a:hover { opacity: 0.7; }
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-wrap: nowrap;
+  gap: 8px;
 }
 
 .author-nav a {
-  padding: 10px 14px;
+  padding: 8px 12px;
   border-radius: 999px;
   text-decoration: none;
   color: var(--hub-muted);
-  font-size: 0.94rem;
+  font-size: 0.9rem;
+  white-space: nowrap;
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
@@ -2501,7 +2502,7 @@ a:hover { opacity: 0.7; }
 .author-main {
   display: grid;
   gap: 28px;
-  padding-top: 28px;
+  padding-top: 18px;
 }
 
 .author-hero {
@@ -2803,6 +2804,37 @@ a:hover { opacity: 0.7; }
 
 .author-work-note-copy {
   max-width: 620px;
+}
+
+.author-feature-book {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(180px, 0.55fr);
+  align-items: center;
+  gap: 28px;
+  padding: 26px;
+  background: rgba(255, 252, 247, 0.82);
+  border: 1px solid var(--hub-line);
+  border-radius: 24px;
+}
+
+.author-feature-book-copy {
+  max-width: 680px;
+}
+
+.author-feature-book-media {
+  justify-self: center;
+  display: block;
+  width: min(100%, 230px);
+}
+
+.author-feature-book-media img {
+  width: 100%;
+  aspect-ratio: 141 / 225;
+  object-fit: contain;
+  display: block;
+  border-radius: 18px;
+  border: 1px solid rgba(71, 56, 42, 0.12);
+  box-shadow: 0 20px 44px rgba(44, 33, 26, 0.14);
 }
 
 .author-card,
@@ -3675,6 +3707,7 @@ a:hover { opacity: 0.7; }
   .author-feature-grid,
   .author-home-split,
   .author-work-note,
+  .author-feature-book,
   .author-book-intro,
   .author-book-detail,
   .author-books-grid,
@@ -3715,6 +3748,7 @@ a:hover { opacity: 0.7; }
   .author-feature-grid,
   .author-home-split,
   .author-work-note,
+  .author-feature-book,
   .author-book-intro,
   .author-book-detail,
   .author-books-grid,
