@@ -2460,7 +2460,7 @@ a:hover { opacity: 0.7; }
 .author-brand-name {
   display: block;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.25rem;
+  font-size: 1.65rem;
   font-weight: 700;
   letter-spacing: 0.01em;
 }
@@ -3778,7 +3778,7 @@ a:hover { opacity: 0.7; }
   .author-header {
     display: block;
     gap: 0;
-    padding-bottom: 18px;
+    padding-bottom: 10px;
   }
 
   .author-brand {
@@ -3794,8 +3794,8 @@ a:hover { opacity: 0.7; }
   }
 
   .author-brand-name {
-    font-size: 0.92rem;
-    line-height: 1.05;
+    font-size: 1.75rem;
+    line-height: 1;
   }
 
   .author-brand-line {
@@ -3808,9 +3808,9 @@ a:hover { opacity: 0.7; }
     gap: 10px;
     width: 100%;
     justify-content: flex-start;
-    margin-top: 14px;
+    margin-top: 10px;
     overflow-x: auto;
-    padding-bottom: 4px;
+    padding-bottom: 2px;
     scrollbar-width: none;
   }
 
@@ -3829,7 +3829,7 @@ a:hover { opacity: 0.7; }
 
   .author-main {
     gap: 22px;
-    padding-top: 18px;
+    padding-top: 14px;
   }
 
   .author-hero {
