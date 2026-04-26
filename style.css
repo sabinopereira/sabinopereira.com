@@ -2774,6 +2774,37 @@ a:hover { opacity: 0.7; }
   box-shadow: 0 16px 32px rgba(19, 61, 66, 0.06);
 }
 
+.author-work-note {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: 28px;
+  padding: 22px;
+  background: rgba(255, 252, 247, 0.82);
+  border: 1px solid var(--hub-line);
+  border-radius: 24px;
+}
+
+.author-work-note-media {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  aspect-ratio: 4 / 3;
+  background: #f4eee4;
+}
+
+.author-work-note-media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 52% 42%;
+}
+
+.author-work-note-copy {
+  max-width: 620px;
+}
+
 .author-card,
 .author-highlight,
 .author-book,
@@ -3643,6 +3674,7 @@ a:hover { opacity: 0.7; }
   .author-card-grid,
   .author-feature-grid,
   .author-home-split,
+  .author-work-note,
   .author-book-intro,
   .author-book-detail,
   .author-books-grid,
@@ -3682,6 +3714,7 @@ a:hover { opacity: 0.7; }
   .author-card-grid,
   .author-feature-grid,
   .author-home-split,
+  .author-work-note,
   .author-book-intro,
   .author-book-detail,
   .author-books-grid,
