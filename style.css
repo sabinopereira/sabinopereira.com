@@ -4060,6 +4060,110 @@ a:hover { opacity: 0.7; }
     rgba(255, 247, 226, 0.82);
 }
 
+.monastery-subpage.author-home-notebook {
+  background:
+    linear-gradient(90deg, rgba(70, 56, 44, 0.055) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(70, 56, 44, 0.045) 1px, transparent 1px),
+    radial-gradient(circle at 20% 12%, rgba(255, 248, 224, 0.5), transparent 30%),
+    radial-gradient(circle at 82% 88%, rgba(159, 76, 30, 0.12), transparent 28%),
+    linear-gradient(180deg, #e8deca 0%, #d0c4ae 52%, #8f806a 100%);
+  background-size: 28px 28px, 100% 30px, auto, auto, auto;
+}
+
+.monastery-subpage.author-home-notebook .site-header,
+.monastery-subpage.author-home-notebook .page-intro,
+.monastery-subpage.author-home-notebook .page-hero-intro,
+.monastery-subpage.author-home-notebook main:not(.monastery-page):not(.knowledge-page):not(.editorial-page):not(.premium-page):not(.home-classic),
+.monastery-subpage.author-home-notebook .thought-article,
+.monastery-subpage.author-home-notebook .thought-article-shell {
+  background: rgba(255, 249, 232, 0.9);
+  border-color: rgba(58, 46, 36, 0.2);
+  box-shadow: 0 24px 60px rgba(58, 46, 36, 0.16);
+}
+
+.monastery-subpage.author-home-notebook .site-nav {
+  background: rgba(255, 249, 232, 0.42);
+  border-color: rgba(58, 46, 36, 0.18);
+}
+
+.monastery-subpage.author-home-notebook .page-intro,
+.monastery-subpage.author-home-notebook .page-hero-intro,
+.monastery-subpage.author-home-notebook .thought-article {
+  background:
+    linear-gradient(0deg, rgba(58, 46, 36, 0.045) 1px, transparent 1px),
+    rgba(255, 249, 232, 0.9);
+  background-size: 100% 30px, auto;
+}
+
+.monastery-subpage.author-home-notebook .idea-chip,
+.monastery-subpage.author-home-notebook .thought-backlink {
+  border-color: rgba(90, 41, 31, 0.22);
+  color: #5a291f;
+  background: rgba(255, 247, 226, 0.68);
+}
+
+.monastery-subpage.author-home-notebook .page-kicker,
+.monastery-subpage.author-home-notebook .thought-article h2,
+.monastery-subpage.author-home-notebook .thought-article h3 {
+  color: #8f4023;
+}
+
+.monastery-subpage.book-theme-quiet-power .site-header,
+.monastery-subpage.book-theme-quiet-power .page-intro,
+.monastery-subpage.book-theme-quiet-power main:not(.monastery-page):not(.knowledge-page):not(.editorial-page):not(.premium-page):not(.home-classic),
+.monastery-subpage.book-theme-quiet-power .qp-hero,
+.monastery-subpage.book-theme-quiet-power .page-section {
+  background: rgba(11, 29, 49, 0.76);
+  border-color: rgba(242, 226, 190, 0.2);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+}
+
+.monastery-subpage.book-theme-quiet-power .site-nav {
+  background: rgba(242, 226, 190, 0.08);
+  border-color: rgba(242, 226, 190, 0.16);
+}
+
+.monastery-subpage.book-theme-quiet-power .branding-title,
+.monastery-subpage.book-theme-quiet-power .page-title,
+.monastery-subpage.book-theme-quiet-power h1,
+.monastery-subpage.book-theme-quiet-power h2,
+.monastery-subpage.book-theme-quiet-power h3 {
+  color: #fff8e8;
+}
+
+.monastery-subpage.book-theme-quiet-power .branding-subtitle,
+.monastery-subpage.book-theme-quiet-power .site-nav a,
+.monastery-subpage.book-theme-quiet-power p,
+.monastery-subpage.book-theme-quiet-power li,
+.monastery-subpage.book-theme-quiet-power .page-text,
+.monastery-subpage.book-theme-quiet-power .page-subtitle {
+  color: #d9e0e6;
+}
+
+.monastery-subpage.book-theme-quiet-power .page-kicker,
+.monastery-subpage.book-theme-quiet-power .idea-chip {
+  color: #f2d391;
+}
+
+.monastery-subpage.book-theme-quiet-power .btn-primary,
+.monastery-subpage.book-theme-quiet-power .btn-secondary {
+  background: #f2d391;
+  border-color: #f2d391;
+  color: #081321;
+}
+
+.monastery-subpage.book-theme-quiet-power .btn-secondary {
+  background: transparent;
+  color: #ffe7aa;
+  border-color: rgba(242, 211, 145, 0.32);
+}
+
+.monastery-subpage.book-theme-quiet-power .qp-hero-cover img,
+.monastery-subpage.book-theme-quiet-power .page-hero-cover img {
+  border: 1px solid rgba(242, 226, 190, 0.28);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.34);
+}
+
 .author-footer {
   width: min(calc(100% - 40px), var(--hub-max));
   margin: 0 auto 28px;
