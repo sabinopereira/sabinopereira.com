@@ -2554,6 +2554,42 @@ a:hover { opacity: 0.7; }
   box-shadow: 10px 10px 0 rgba(58, 46, 36, 0.08);
 }
 
+.author-home-notebook .author-page-hero,
+.author-home-notebook .author-panel,
+.author-home-notebook .author-card,
+.author-home-notebook .author-book,
+.author-home-notebook .author-story {
+  background: rgba(255, 249, 232, 0.84);
+  border-color: rgba(58, 46, 36, 0.2);
+  box-shadow: 0 14px 0 rgba(58, 46, 36, 0.06);
+}
+
+.author-tools-clean {
+  background:
+    radial-gradient(circle at 14% 12%, rgba(255, 248, 224, 0.42), transparent 30%),
+    radial-gradient(circle at 86% 88%, rgba(49, 95, 99, 0.12), transparent 32%),
+    linear-gradient(180deg, #ece3d4 0%, #d7ccba 100%);
+}
+
+.author-tools-clean .author-shell {
+  background: rgba(250, 246, 236, 0.94);
+  border-color: rgba(58, 46, 36, 0.16);
+  box-shadow: 0 28px 70px rgba(58, 46, 36, 0.14);
+}
+
+.author-tools-clean .author-page-hero,
+.author-tools-clean .author-panel,
+.author-tools-clean .author-tool {
+  background: rgba(255, 252, 244, 0.88);
+  border-color: rgba(49, 95, 99, 0.14);
+  box-shadow: 0 12px 34px rgba(49, 95, 99, 0.06);
+}
+
+.author-tools-clean .author-card-eyebrow,
+.author-tools-clean .author-kicker {
+  color: #315f63;
+}
+
 .author-hero {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
