@@ -2505,6 +2505,55 @@ a:hover { opacity: 0.7; }
   padding-top: 18px;
 }
 
+.author-home-notebook {
+  background:
+    linear-gradient(90deg, rgba(70, 56, 44, 0.055) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(70, 56, 44, 0.045) 1px, transparent 1px),
+    radial-gradient(circle at 20% 12%, rgba(255, 248, 224, 0.5), transparent 30%),
+    radial-gradient(circle at 82% 88%, rgba(159, 76, 30, 0.12), transparent 28%),
+    linear-gradient(180deg, #e8deca 0%, #d0c4ae 52%, #8f806a 100%);
+  background-size: 28px 28px, 100% 30px, auto, auto, auto;
+}
+
+.author-home-notebook .author-shell {
+  background: rgba(246, 238, 216, 0.94);
+  border-color: rgba(58, 46, 36, 0.22);
+  box-shadow: 0 30px 80px rgba(58, 46, 36, 0.2);
+}
+
+.author-home-notebook .author-header {
+  border-bottom-color: rgba(58, 46, 36, 0.22);
+}
+
+.author-home-notebook .author-work-note,
+.author-home-notebook .author-feature-book,
+.author-home-notebook .author-panel {
+  background: rgba(255, 249, 232, 0.84);
+  border-color: rgba(58, 46, 36, 0.2);
+  box-shadow: 0 14px 0 rgba(58, 46, 36, 0.06);
+}
+
+.author-home-notebook .author-work-note {
+  background:
+    linear-gradient(0deg, rgba(58, 46, 36, 0.045) 1px, transparent 1px),
+    rgba(255, 249, 232, 0.88);
+  background-size: 100% 30px, auto;
+}
+
+.author-home-notebook .author-card-eyebrow,
+.author-home-notebook .author-kicker {
+  color: #8f4023;
+}
+
+.author-home-notebook .author-link {
+  color: #5a291f;
+}
+
+.author-home-notebook .author-work-note-media {
+  border: 1px solid rgba(58, 46, 36, 0.18);
+  box-shadow: 10px 10px 0 rgba(58, 46, 36, 0.08);
+}
+
 .author-hero {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
