@@ -3328,6 +3328,150 @@ a:hover { opacity: 0.7; }
   margin-top: 12px;
 }
 
+.book-theme-borrow {
+  color: #15120a;
+  background:
+    linear-gradient(90deg, rgba(21, 18, 10, 0.04) 1px, transparent 1px),
+    linear-gradient(180deg, #f9d90b 0%, #f2c400 45%, #1a160c 100%);
+  background-size: 18px 18px, auto;
+}
+
+.book-theme-borrow .author-shell {
+  background: rgba(255, 247, 204, 0.95);
+  border-color: rgba(21, 18, 10, 0.48);
+  box-shadow: 0 28px 70px rgba(21, 18, 10, 0.28);
+}
+
+.book-theme-borrow .author-header {
+  border-bottom-color: rgba(21, 18, 10, 0.32);
+}
+
+.book-theme-borrow .author-brand-name,
+.book-theme-borrow .author-page-title,
+.book-theme-borrow .author-section-title,
+.book-theme-borrow .author-card-title {
+  color: #111111;
+}
+
+.book-theme-borrow .author-brand-line,
+.book-theme-borrow .author-page-intro,
+.book-theme-borrow .author-card-text,
+.book-theme-borrow .author-list,
+.book-theme-borrow .author-excerpt-note {
+  color: #3f3520;
+}
+
+.book-theme-borrow .author-nav a:hover,
+.book-theme-borrow .author-nav a.is-active {
+  background: rgba(21, 18, 10, 0.1);
+}
+
+.book-theme-borrow .author-book-intro-panel,
+.book-theme-borrow .author-book-detail,
+.book-theme-borrow .author-panel,
+.book-theme-borrow .author-page-hero,
+.book-theme-borrow .author-quote {
+  background: rgba(255, 247, 204, 0.9);
+  border-color: rgba(21, 18, 10, 0.34);
+  box-shadow: 0 14px 0 rgba(21, 18, 10, 0.1);
+}
+
+.book-theme-borrow .author-book-intro-panel {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(255, 230, 36, 0.96) 0%, rgba(250, 211, 10, 0.94) 100%);
+  border: 2px solid #15120a;
+  box-shadow: 0 16px 0 rgba(21, 18, 10, 0.16);
+}
+
+.book-theme-borrow .author-book-intro-panel::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  pointer-events: none;
+  border: 1px solid rgba(21, 18, 10, 0.22);
+  border-radius: 20px;
+}
+
+.book-theme-borrow .author-book-intro-panel .author-page-title {
+  font-family: Impact, "Arial Black", "Avenir Next", sans-serif;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.book-theme-borrow .author-book-intro-tagline,
+.book-theme-borrow .author-book-detail-tagline {
+  color: #15120a;
+  font-family: Impact, "Arial Black", "Avenir Next", sans-serif;
+  letter-spacing: 0.01em;
+}
+
+.book-theme-borrow .author-book-intro-subtitle {
+  color: #2f2818;
+}
+
+.book-theme-borrow .author-card-eyebrow,
+.book-theme-borrow .author-kicker,
+.book-theme-borrow .author-excerpt-kicker,
+.book-theme-borrow .author-format-label {
+  color: #15120a;
+}
+
+.book-theme-borrow .author-book-chip {
+  background: #15120a;
+  border-color: #15120a;
+  color: #ffe22b;
+}
+
+.book-theme-borrow .author-button.amazon-btn,
+.book-theme-borrow .author-button.author-button--secondary.amazon-btn {
+  background: #15120a;
+  color: #ffe22b;
+  border-color: #15120a;
+  box-shadow: 0 8px 0 rgba(21, 18, 10, 0.16);
+}
+
+.book-theme-borrow .author-button.amazon-btn:hover,
+.book-theme-borrow .author-button.author-button--secondary.amazon-btn:hover {
+  background: #000000;
+  color: #ffef72;
+}
+
+.book-theme-borrow .author-book-actions .author-button:not(.amazon-btn):not(.buy-btn) {
+  color: #15120a;
+  border-color: rgba(21, 18, 10, 0.35);
+}
+
+.book-theme-borrow .author-book-actions .author-button:not(.amazon-btn):not(.buy-btn):hover {
+  background: rgba(21, 18, 10, 0.08);
+  border-color: rgba(21, 18, 10, 0.55);
+  color: #15120a;
+}
+
+.book-theme-borrow .author-book-detail-image {
+  border: 2px solid #15120a;
+  border-radius: 8px;
+  box-shadow: 12px 12px 0 rgba(21, 18, 10, 0.18);
+}
+
+.book-theme-borrow .author-excerpt {
+  background:
+    linear-gradient(180deg, rgba(255, 251, 229, 0.98) 0%, rgba(255, 242, 176, 0.96) 100%);
+  border-color: rgba(21, 18, 10, 0.3);
+}
+
+.book-theme-borrow .author-excerpt-title,
+.book-theme-borrow .author-format-title {
+  color: #15120a;
+}
+
+.book-theme-borrow .author-excerpt-body p,
+.book-theme-borrow .author-format-copy,
+.book-theme-borrow .author-section-note {
+  color: #342b18;
+}
+
 .author-footer {
   width: min(calc(100% - 40px), var(--hub-max));
   margin: 0 auto 28px;
