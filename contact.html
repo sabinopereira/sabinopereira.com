@@ -13,7 +13,7 @@
   <link rel="apple-touch-icon" href="/images/sp-favicon.svg">
   <link rel="stylesheet" href="/style.css?v=2">
 </head>
-<body class="author-hub-body author-home-notebook">
+<body class="author-hub-body author-home-notebook contact-studio-theme">
   <div class="author-shell">
     <header class="author-header">
       <a class="author-brand" href="/">
@@ -33,16 +33,22 @@
     </header>
 
     <main class="author-main">
-      <section class="author-page-hero">
-        <p class="author-kicker">Contact</p>
-        <h1 class="author-page-title">Clear work. Honest ideas. Real contact.</h1>
-        <p class="author-page-intro">Use the form for books, observations, tools, interviews, thoughtful collaborations, or a message that has a real reason to exist.</p>
+      <section class="author-page-hero contact-hero">
+        <div class="contact-hero-copy">
+          <p class="author-kicker">Contact</p>
+          <h1 class="author-page-title">Clear work. Honest ideas. Real contact.</h1>
+          <p class="author-page-intro">Use the form for books, observations, tools, interviews, thoughtful collaborations, or a message that has a real reason to exist.</p>
+        </div>
+        <aside class="contact-note-card" aria-label="Contact note">
+          <span class="contact-note-label">Best messages</span>
+          <p>Specific, thoughtful, and connected to something worth making clearer.</p>
+        </aside>
       </section>
 
-      <section class="author-two-column">
-        <article class="author-panel">
+      <section class="author-two-column contact-layout">
+        <article class="author-panel contact-reasons-panel">
           <p class="author-card-eyebrow">Good reasons to get in touch</p>
-          <ul class="author-list">
+          <ul class="author-list contact-chip-list">
             <li>Book-related questions or opportunities</li>
             <li>Ideas, interviews, or speaking invitations</li>
             <li>Tools, experiments, and digital collaborations</li>
@@ -50,18 +56,28 @@
           </ul>
         </article>
 
-        <article class="author-panel">
+        <article class="author-panel contact-form-panel">
+          <div class="contact-form-heading">
+            <p class="author-card-eyebrow">Send a message</p>
+            <h2 class="author-card-title">Start with the useful part.</h2>
+          </div>
           <form action="https://formspree.io/f/meerqwop" method="POST" class="contact-form">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
+            <div class="contact-field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" autocomplete="name" required>
+            </div>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+            <div class="contact-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required>
+            </div>
 
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="7" required></textarea>
+            <div class="contact-field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="7" required></textarea>
+            </div>
 
-            <button type="submit" class="btn-primary contact-submit">Send message</button>
+            <button type="submit" class="author-button contact-submit">Send message</button>
           </form>
         </article>
       </section>

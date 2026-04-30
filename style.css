@@ -2772,6 +2772,253 @@ a:hover { opacity: 0.7; }
   color: var(--field-marigold);
 }
 
+.contact-studio-theme {
+  --contact-ink: #1f211d;
+  --contact-muted: #686056;
+  --contact-green: #35382c;
+  --contact-gold: #b88b48;
+  --contact-clay: #9f4c1e;
+  --contact-paper: #fffaf0;
+  background:
+    linear-gradient(90deg, rgba(53, 56, 44, 0.055) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(53, 56, 44, 0.045) 1px, transparent 1px),
+    radial-gradient(circle at 16% 18%, rgba(184, 139, 72, 0.22), transparent 28%),
+    radial-gradient(circle at 84% 12%, rgba(49, 95, 99, 0.16), transparent 26%),
+    linear-gradient(180deg, #eee4d0 0%, #d7c9ad 100%);
+  background-size: 32px 32px, 32px 32px, auto, auto, auto;
+}
+
+.contact-studio-theme .author-shell {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 240, 0.95) 0%, rgba(248, 239, 220, 0.96) 100%);
+  border-color: rgba(53, 56, 44, 0.18);
+  box-shadow: 0 30px 80px rgba(53, 56, 44, 0.18);
+}
+
+.contact-studio-theme .author-shell::before {
+  content: "";
+  position: absolute;
+  top: 118px;
+  right: -72px;
+  width: 280px;
+  height: 280px;
+  border: 1px solid rgba(53, 56, 44, 0.12);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 34px rgba(184, 139, 72, 0.08);
+  pointer-events: none;
+}
+
+.contact-studio-theme .author-header,
+.contact-studio-theme .author-main {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-studio-theme .author-header {
+  border-bottom-color: rgba(53, 56, 44, 0.18);
+}
+
+.contact-studio-theme .author-brand-name,
+.contact-studio-theme .author-page-title,
+.contact-studio-theme .author-card-title {
+  color: var(--contact-ink);
+}
+
+.contact-studio-theme .author-brand-line,
+.contact-studio-theme .author-page-intro,
+.contact-studio-theme .author-list li,
+.contact-studio-theme .author-card-text {
+  color: var(--contact-muted);
+}
+
+.contact-studio-theme .author-kicker,
+.contact-studio-theme .author-card-eyebrow {
+  color: var(--contact-clay);
+}
+
+.contact-studio-theme .author-nav a:hover,
+.contact-studio-theme .author-nav a.is-active {
+  background: rgba(53, 56, 44, 0.1);
+  color: var(--contact-ink);
+}
+
+.contact-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.42fr);
+  gap: 28px;
+  align-items: stretch;
+  padding: 34px;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(53, 56, 44, 0.045) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 252, 245, 0.92) 0%, rgba(250, 242, 225, 0.82) 100%);
+  background-size: 36px 100%, auto;
+  border-color: rgba(53, 56, 44, 0.18);
+  box-shadow: 0 16px 0 rgba(53, 56, 44, 0.06);
+}
+
+.contact-hero-copy {
+  align-self: center;
+}
+
+.contact-hero .author-page-title {
+  max-width: 12ch;
+  font-size: clamp(2.8rem, 5.6vw, 5.3rem);
+  line-height: 0.92;
+}
+
+.contact-hero .author-page-intro {
+  max-width: 58ch;
+}
+
+.contact-note-card {
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 320px;
+  padding: 24px;
+  color: #fffaf0;
+  background:
+    radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.16), transparent 28%),
+    linear-gradient(145deg, #35382c 0%, #1f211d 100%);
+  border: 1px solid rgba(53, 56, 44, 0.2);
+  border-radius: 22px;
+  box-shadow: 12px 12px 0 rgba(184, 139, 72, 0.16);
+}
+
+.contact-note-card::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  width: 58px;
+  height: 2px;
+  background: var(--contact-gold);
+  box-shadow: 0 12px 0 rgba(184, 139, 72, 0.58), 0 24px 0 rgba(184, 139, 72, 0.3);
+}
+
+.contact-note-label {
+  margin-bottom: 14px;
+  color: #e3c88b;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.contact-note-card p {
+  margin: 0;
+  max-width: 18ch;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.55rem;
+  line-height: 1.1;
+}
+
+.contact-layout {
+  grid-template-columns: minmax(0, 0.82fr) minmax(320px, 1.18fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.contact-reasons-panel,
+.contact-form-panel {
+  background: rgba(255, 250, 240, 0.86);
+  border-color: rgba(53, 56, 44, 0.17);
+  box-shadow: 0 12px 0 rgba(53, 56, 44, 0.06);
+}
+
+.contact-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  margin: 4px 0 0;
+  list-style: none;
+}
+
+.contact-chip-list li {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 10px 13px;
+  border: 1px solid rgba(53, 56, 44, 0.13);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.46);
+  color: #524a3f;
+  font-size: 0.92rem;
+  line-height: 1.25;
+}
+
+.contact-form-panel {
+  padding: 28px;
+}
+
+.contact-form-heading {
+  margin-bottom: 20px;
+}
+
+.contact-studio-theme .contact-form {
+  display: grid;
+  gap: 16px;
+}
+
+.contact-studio-theme .contact-field {
+  display: grid;
+  gap: 8px;
+}
+
+.contact-studio-theme .contact-form label {
+  color: #4b4339;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contact-studio-theme .contact-form input,
+.contact-studio-theme .contact-form textarea {
+  width: 100%;
+  border: 1px solid rgba(53, 56, 44, 0.18);
+  border-radius: 16px;
+  padding: 1rem 1.05rem;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--contact-ink);
+  font: inherit;
+  line-height: 1.45;
+  resize: vertical;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+.contact-studio-theme .contact-form textarea {
+  min-height: 190px;
+}
+
+.contact-studio-theme .contact-form input:focus,
+.contact-studio-theme .contact-form textarea:focus {
+  outline: none;
+  background: #fffdf8;
+  border-color: rgba(159, 76, 30, 0.5);
+  box-shadow: 0 0 0 4px rgba(159, 76, 30, 0.1);
+}
+
+.contact-studio-theme .contact-submit {
+  width: 100%;
+  margin-top: 2px;
+  background: var(--contact-green);
+  border-color: var(--contact-green);
+  color: #fffaf0;
+  border-radius: 16px;
+}
+
+.contact-studio-theme .contact-submit:hover {
+  background: #24271f;
+  color: #fffaf0;
+}
+
 .tool-theme-property {
   --property-green: #244f48;
   --property-ink: #192f2c;
@@ -5090,6 +5337,40 @@ a:hover { opacity: 0.7; }
   .about-photo-theme .author-page-title {
     max-width: 12ch;
     font-size: clamp(2.25rem, 13vw, 3.25rem);
+  }
+
+  .contact-hero,
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-hero {
+    padding: 22px;
+    gap: 20px;
+  }
+
+  .contact-hero .author-page-title {
+    max-width: 11ch;
+    font-size: clamp(2.4rem, 13vw, 3.4rem);
+  }
+
+  .contact-note-card {
+    min-height: 220px;
+    box-shadow: 8px 8px 0 rgba(184, 139, 72, 0.16);
+  }
+
+  .contact-note-card p {
+    max-width: 22ch;
+    font-size: 1.35rem;
+  }
+
+  .contact-form-panel {
+    padding: 22px;
+  }
+
+  .contact-chip-list li {
+    width: 100%;
+    border-radius: 16px;
   }
 
   .author-footer {
