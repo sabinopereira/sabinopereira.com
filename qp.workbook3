@@ -33,6 +33,8 @@
       "offers": {
         "@type": "Offer",
         "url": "https://quiet-power-shop.fourthwall.com/products/workbook-3-control-quiet-power-system",
+        "price": "87.00",
+        "priceCurrency": "USD",
         "availability": "https://schema.org/InStock"
       }
     }
