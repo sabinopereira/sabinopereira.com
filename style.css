@@ -3396,6 +3396,28 @@ a:hover { opacity: 0.7; }
   line-height: 1;
 }
 
+@media (max-width: 640px) {
+  .author-preview-dialog {
+    width: calc(100% - 20px);
+    max-height: 90dvh;
+  }
+
+  .author-preview-dialog-inner {
+    max-height: 90dvh;
+    border-radius: 18px;
+  }
+
+  .author-preview-dialog .author-excerpt {
+    padding: 56px 18px 22px;
+    border-radius: 18px;
+  }
+
+  .author-preview-close {
+    top: 10px;
+    right: 10px;
+  }
+}
+
 .author-excerpt-kicker,
 .author-format-label {
   margin: 0;
