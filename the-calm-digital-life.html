@@ -145,29 +145,37 @@
           </div>
           <p class="author-page-intro author-page-intro--compact">This opening frames the real pressure behind digital life: not stupidity, but speed, uncertainty, and the feeling of being pushed into quick decisions.</p>
         </div>
+        <div class="author-book-actions">
+          <button type="button" class="author-button" data-preview-open="calm-digital-preview">Open preview</button>
+        </div>
 
-        <div class="author-excerpt">
-          <p class="author-excerpt-kicker">Introduction</p>
-          <h3 class="author-excerpt-title">Pause First</h3>
-          <p class="author-excerpt-subtitle">An opening preview from the book.</p>
+        <dialog class="author-preview-dialog" id="calm-digital-preview" aria-labelledby="calm-digital-preview-title">
+          <div class="author-preview-dialog-inner">
+            <button type="button" class="author-preview-close" data-preview-close aria-label="Close preview">&times;</button>
+            <div class="author-excerpt">
+              <p class="author-excerpt-kicker">Introduction</p>
+              <h3 class="author-excerpt-title" id="calm-digital-preview-title">Pause First</h3>
+              <p class="author-excerpt-subtitle">An opening preview from the book.</p>
 
-          <div class="author-excerpt-body">
-            <p>Most people do not feel unsafe because they lack intelligence.</p>
-            <p>The world changed faster than they expected.</p>
-            <p>Messages arrive constantly. Phones ring with unknown numbers. Emails ask for urgent action. Websites look real, but are not.</p>
-            <p>And behind all this is a quiet concern: Am I doing the right thing?</p>
-            <p>Am I managing this well? Am I being tricked by a scam?</p>
-            <p>You do not need to understand every new technology.</p>
-            <p>You need a calmer way to pause, think clearly, and make better decisions before pressure takes over.</p>
-          </div>
+              <div class="author-excerpt-body">
+                <p>Most people do not feel unsafe because they lack intelligence.</p>
+                <p>The world changed faster than they expected.</p>
+                <p>Messages arrive constantly. Phones ring with unknown numbers. Emails ask for urgent action. Websites look real, but are not.</p>
+                <p>And behind all this is a quiet concern: Am I doing the right thing?</p>
+                <p>Am I managing this well? Am I being tricked by a scam?</p>
+                <p>You do not need to understand every new technology.</p>
+                <p>You need a calmer way to pause, think clearly, and make better decisions before pressure takes over.</p>
+              </div>
 
-          <div class="author-excerpt-cta">
-            <p class="author-excerpt-note">If this already sounds familiar, the full book continues with practical habits for handling messages, money, calls, urgency, and the emotional pressure that scammers rely on.</p>
-            <div class="author-book-actions">
-              <a href="https://www.amazon.com/dp/B0GW8HN841" class="author-button amazon-btn" target="_blank" rel="noopener">Buy on Amazon</a>
+              <div class="author-excerpt-cta">
+                <p class="author-excerpt-note">If this already sounds familiar, the full book continues with practical habits for handling messages, money, calls, urgency, and the emotional pressure that scammers rely on.</p>
+                <div class="author-book-actions">
+                  <a href="https://www.amazon.com/dp/B0GW8HN841" class="author-button amazon-btn" target="_blank" rel="noopener">Buy on Amazon</a>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </dialog>
       </section>
 
       <section class="author-panel">
@@ -185,5 +193,6 @@
     <span>&copy; 2026 Sabino Pereira</span>
     <span><a href="/books.html">Books</a> · <a href="/ideas.html">Thoughts</a> · <a href="/contact.html">Contact</a> · <a href="https://www.linkedin.com/feed" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a></span>
   </footer>
+  <script src="/preview-modal.js"></script>
 </body>
 </html>

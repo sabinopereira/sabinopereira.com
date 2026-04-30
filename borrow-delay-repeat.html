@@ -71,7 +71,7 @@
             <span class="author-book-chip">Published on KDP</span>
           </div>
           <div class="author-book-actions author-book-actions--center">
-            <a href="#read-excerpt" class="author-button">Read excerpt</a>
+            <button type="button" class="author-button" data-preview-open="borrow-preview">Read excerpt</button>
             <a href="https://www.amazon.com/dp/B0GYKX34VT?ref=sp_email" class="author-button author-button--secondary amazon-btn" target="_blank" rel="noopener">Buy on Amazon</a>
           </div>
         </div>
@@ -89,7 +89,7 @@
           <p class="author-page-intro">It is not financial advice. It is satire about excuses, emotional timing, tiny manipulations, and the familiar social awkwardness of money between people.</p>
           <p class="author-book-detail-tagline">Read the sample first. If it feels uncomfortably familiar, that is exactly the point.</p>
           <div class="author-book-actions">
-            <a href="#read-excerpt" class="author-button">Read excerpt</a>
+            <button type="button" class="author-button" data-preview-open="borrow-preview">Read excerpt</button>
             <a href="https://www.amazon.com/dp/B0GYKX34VT?ref=sp_email" class="author-button author-button--secondary amazon-btn" target="_blank" rel="noopener">Buy on Amazon</a>
             <a href="/books.html" class="author-button author-button--secondary">Back to Books</a>
           </div>
@@ -127,16 +127,22 @@
           </div>
           <p class="author-page-intro author-page-intro--compact">This sample opens the voice of the book: confident, shameless, comic, and just close enough to real life to sting a little.</p>
         </div>
+        <div class="author-book-actions">
+          <button type="button" class="author-button" data-preview-open="borrow-preview">Open preview</button>
+        </div>
 
-        <div class="author-excerpt">
-          <p class="author-excerpt-kicker">Free sample</p>
-          <h3 class="author-excerpt-title">Borrow. Delay. Repeat.</h3>
-          <p class="author-excerpt-subtitle">A very unserious guide to not giving money back.</p>
+        <dialog class="author-preview-dialog" id="borrow-preview" aria-labelledby="borrow-preview-title">
+          <div class="author-preview-dialog-inner">
+            <button type="button" class="author-preview-close" data-preview-close aria-label="Close preview">&times;</button>
+            <div class="author-excerpt">
+              <p class="author-excerpt-kicker">Free sample</p>
+              <h3 class="author-excerpt-title" id="borrow-preview-title">Borrow. Delay. Repeat.</h3>
+              <p class="author-excerpt-subtitle">A very unserious guide to not giving money back.</p>
 
-          <div class="author-excerpt-body">
-            <p><strong>Disclaimer</strong></p>
-            <p>This book is satire.</p>
-            <p>If you try this in real life, you totally deserve the consequences.</p>
+              <div class="author-excerpt-body">
+                <p><strong>Disclaimer</strong></p>
+                <p>This book is satire.</p>
+                <p>If you try this in real life, you totally deserve the consequences.</p>
 
             <p><strong>Intro</strong></p>
             <p>Most people borrow money.</p>
@@ -186,14 +192,16 @@
             <p>Between your politeness and your doubt.</p>
           </div>
 
-          <div class="author-excerpt-cta">
-            <p class="author-excerpt-note">The full book continues through the art of promising tomorrow, creating confusion, vanishing politely, and returning like nothing strange happened.</p>
-            <div class="author-book-actions">
-              <a href="https://www.amazon.com/dp/B0GYKX34VT?ref=sp_email" class="author-button amazon-btn" target="_blank" rel="noopener">Buy on Amazon</a>
-              <a href="/books.html" class="author-button author-button--secondary">See more books</a>
+              <div class="author-excerpt-cta">
+                <p class="author-excerpt-note">The full book continues through the art of promising tomorrow, creating confusion, vanishing politely, and returning like nothing strange happened.</p>
+                <div class="author-book-actions">
+                  <a href="https://www.amazon.com/dp/B0GYKX34VT?ref=sp_email" class="author-button amazon-btn" target="_blank" rel="noopener">Buy on Amazon</a>
+                  <a href="/books.html" class="author-button author-button--secondary">See more books</a>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </dialog>
       </section>
 
       <section class="author-panel" id="buy-on-amazon">
@@ -202,7 +210,7 @@
         <p class="author-page-intro">The book is published through KDP. Read the sample above, then continue with the full version on Amazon.</p>
         <div class="author-book-actions">
           <a href="https://www.amazon.com/dp/B0GYKX34VT?ref=sp_email" class="author-button amazon-btn" target="_blank" rel="noopener">Buy on Amazon</a>
-          <a href="#read-excerpt" class="author-button author-button--secondary">Read the sample</a>
+          <button type="button" class="author-button author-button--secondary" data-preview-open="borrow-preview">Read the sample</button>
         </div>
       </section>
     </main>
@@ -212,5 +220,6 @@
     <span>&copy; 2026 Sabino Pereira</span>
     <span><a href="/books.html">Books</a> · <a href="/ideas.html">Thoughts</a> · <a href="/contact.html">Contact</a> · <a href="https://www.linkedin.com/feed" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a></span>
   </footer>
+  <script src="/preview-modal.js"></script>
 </body>
 </html>
