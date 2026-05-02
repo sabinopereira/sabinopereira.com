@@ -2518,6 +2518,12 @@ a:hover { opacity: 0.7; }
   margin-top: 18px;
 }
 
+.author-book[id],
+.author-tool[id],
+.author-card[id] {
+  scroll-margin-top: 24px;
+}
+
 .quiet-system-strip,
 .quiet-system-inline {
   padding: clamp(24px, 4vw, 36px);
