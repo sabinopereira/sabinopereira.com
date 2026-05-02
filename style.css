@@ -2518,6 +2518,53 @@ a:hover { opacity: 0.7; }
   margin-top: 18px;
 }
 
+.quiet-system-strip,
+.quiet-system-inline {
+  padding: clamp(24px, 4vw, 36px);
+  border: 1px solid rgba(49, 95, 99, 0.14);
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, rgba(255, 253, 247, 0.94), rgba(240, 247, 245, 0.88));
+  box-shadow: 0 16px 38px rgba(49, 95, 99, 0.07);
+}
+
+.quiet-system-strip {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 24px;
+  margin: 28px 0;
+}
+
+.quiet-system-strip h2,
+.quiet-system-inline h2 {
+  margin: 8px 0 10px;
+}
+
+.quiet-system-strip p,
+.quiet-system-inline p {
+  max-width: 64ch;
+}
+
+.quiet-system-actions,
+.quiet-system-inline .author-book-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.quiet-system-inline {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 22px;
+  margin-top: 24px;
+}
+
+.quiet-system-inline--books {
+  margin: 0;
+}
+
 .author-shell {
   width: min(calc(100% - 40px), var(--hub-max));
   margin: 24px auto;
@@ -5765,6 +5812,22 @@ a:hover { opacity: 0.7; }
     padding: 7px 10px;
   }
 
+  .author-book-actions,
+  .author-tool-actions,
+  .quiet-system-actions,
+  .quiet-system-inline .author-book-actions,
+  .afraid-cta-grid {
+    align-items: stretch;
+  }
+
+  .author-book-actions .author-button,
+  .author-tool-actions .author-button,
+  .quiet-system-inline .author-button,
+  .afraid-cta-grid a {
+    min-width: min(100%, 210px);
+    text-align: center;
+  }
+
   .author-main {
     gap: 22px;
     padding-top: 14px;
@@ -5772,7 +5835,9 @@ a:hover { opacity: 0.7; }
 
   .author-home-hero,
   .author-start-if-grid,
-  .author-start-path-grid {
+  .author-start-path-grid,
+  .quiet-system-strip,
+  .quiet-system-inline {
     grid-template-columns: 1fr;
   }
 

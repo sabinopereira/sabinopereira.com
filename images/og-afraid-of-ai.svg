@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Afraid of AI</title>
+  <desc id="desc">Editorial Open Graph image for the Afraid of AI series by Sabino Pereira.</desc>
+  <rect width="1200" height="630" fill="#f5eddd"/>
+  <path d="M0 0h1200v630H0z" fill="url(#grid)"/>
+  <rect x="72" y="64" width="1056" height="502" rx="38" fill="#fffaf0" stroke="#d7c9b3" stroke-width="2"/>
+  <text x="116" y="148" fill="#8f4023" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" letter-spacing="6">SABINO PEREIRA</text>
+  <text x="116" y="278" fill="#1f2328" font-family="Georgia, 'Times New Roman', serif" font-size="92" font-weight="700">Afraid of AI</text>
+  <text x="116" y="350" fill="#315f63" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700">Choose your field.</text>
+  <text x="116" y="416" fill="#62584f" font-family="Arial, Helvetica, sans-serif" font-size="31">What AI exposes when fog, friction,</text>
+  <text x="116" y="458" fill="#62584f" font-family="Arial, Helvetica, sans-serif" font-size="31">and opacity start to weaken.</text>
+  <g fill="none" stroke="#315f63" stroke-width="3" opacity="0.5">
+    <circle cx="950" cy="246" r="72"/>
+    <path d="M898 246h104M950 194v104"/>
+    <path d="M854 392h192"/>
+  </g>
+  <defs>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M36 0H0v36" fill="none" stroke="#d9cbb7" stroke-opacity=".35"/>
+    </pattern>
+  </defs>
+</svg>

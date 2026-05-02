@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Books by Sabino Pereira</title>
+  <desc id="desc">Open Graph image for books by Sabino Pereira.</desc>
+  <rect width="1200" height="630" fill="#f2ead9"/>
+  <rect x="72" y="64" width="1056" height="502" rx="38" fill="#fffaf0" stroke="#d7c9b3" stroke-width="2"/>
+  <text x="116" y="148" fill="#8f4023" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" letter-spacing="6">BOOKS</text>
+  <text x="116" y="276" fill="#1f2328" font-family="Georgia, 'Times New Roman', serif" font-size="84" font-weight="700">Short books about</text>
+  <text x="116" y="368" fill="#1f2328" font-family="Georgia, 'Times New Roman', serif" font-size="84" font-weight="700">modern pressure.</text>
+  <text x="116" y="446" fill="#62584f" font-family="Arial, Helvetica, sans-serif" font-size="31">Quiet Power, digital life, satire,</text>
+  <text x="116" y="488" fill="#62584f" font-family="Arial, Helvetica, sans-serif" font-size="31">and everyday human behaviour.</text>
+  <g transform="translate(846 154)">
+    <rect x="0" y="30" width="70" height="290" rx="10" fill="#315f63"/>
+    <rect x="86" y="0" width="70" height="320" rx="10" fill="#8f4023"/>
+    <rect x="172" y="54" width="70" height="266" rx="10" fill="#d9b95e"/>
+  </g>
+</svg>
