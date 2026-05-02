@@ -2730,6 +2730,218 @@ a:hover { opacity: 0.7; }
   box-shadow: 0 14px 0 rgba(58, 46, 36, 0.06);
 }
 
+.afraid-series-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
+  align-items: center;
+  gap: 26px;
+  overflow: hidden;
+}
+
+.afraid-series-hero-copy {
+  min-width: 0;
+}
+
+.afraid-series-hero-media {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(58, 46, 36, 0.22);
+  box-shadow: 12px 12px 0 rgba(58, 46, 36, 0.08);
+}
+
+.afraid-series-hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(21, 29, 30, 0.18), transparent 36%),
+    linear-gradient(0deg, rgba(21, 29, 30, 0.18), transparent 48%);
+  pointer-events: none;
+}
+
+.afraid-series-hero-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.life-bug-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.48fr);
+  align-items: center;
+  gap: 30px;
+}
+
+.life-bug-hero-copy {
+  min-width: 0;
+}
+
+.life-bug-hero-media {
+  margin: 0;
+  justify-self: center;
+  width: min(100%, 320px);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(58, 46, 36, 0.22);
+  box-shadow: 12px 12px 0 rgba(58, 46, 36, 0.08);
+  background: #f7f0df;
+}
+
+.life-bug-hero-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+
+.life-bug-note {
+  border-color: rgba(143, 64, 35, 0.2);
+}
+
+.life-bug-console {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.42fr);
+  gap: 22px;
+  align-items: center;
+  padding: 24px;
+  border-radius: 24px;
+  border: 1px solid rgba(58, 46, 36, 0.2);
+  background:
+    linear-gradient(135deg, rgba(47, 40, 34, 0.96), rgba(58, 46, 36, 0.92));
+  box-shadow: 0 14px 0 rgba(58, 46, 36, 0.06);
+}
+
+.life-bug-console .author-card-eyebrow,
+.life-bug-console .author-section-title,
+.life-bug-console .author-page-intro {
+  color: #fff9e8;
+}
+
+.life-bug-console .author-card-eyebrow {
+  opacity: 0.74;
+}
+
+.life-bug-stats {
+  display: grid;
+  gap: 10px;
+}
+
+.life-bug-stats span {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  color: #fff9e8;
+  background: rgba(255, 249, 232, 0.08);
+  border: 1px solid rgba(255, 249, 232, 0.14);
+  font-size: 0.9rem;
+}
+
+.life-bug-stats strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.35rem;
+}
+
+.life-bug-index {
+  display: grid;
+  gap: 18px;
+  padding: 24px;
+  border-radius: 24px;
+  border: 1px solid rgba(58, 46, 36, 0.18);
+  background: rgba(255, 252, 247, 0.72);
+}
+
+.life-bug-index-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.life-bug-index-grid a {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-height: 58px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #2f2822;
+  background: rgba(255, 249, 232, 0.92);
+  border: 1px solid rgba(88, 70, 51, 0.14);
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+.life-bug-index-grid a:hover {
+  border-color: rgba(143, 64, 35, 0.34);
+  transform: translateY(-1px);
+}
+
+.life-bug-index-grid span {
+  color: #8f4023;
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+}
+
+.life-bug-entry {
+  display: grid;
+  gap: 16px;
+  padding: 26px;
+  border: 1px solid rgba(58, 46, 36, 0.2);
+  border-radius: 24px;
+  background: rgba(255, 249, 232, 0.86);
+  box-shadow: 0 14px 0 rgba(58, 46, 36, 0.06);
+}
+
+.life-bug-entry-header {
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(58, 46, 36, 0.14);
+}
+
+.life-bug-field,
+.life-bug-final {
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 252, 247, 0.78);
+  border: 1px solid rgba(88, 70, 51, 0.12);
+}
+
+.life-bug-field h3,
+.life-bug-final h3 {
+  margin: 0 0 8px;
+  color: #5a291f;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.life-bug-field p,
+.life-bug-final p {
+  margin: 0;
+  color: #3d3329;
+  line-height: 1.65;
+}
+
+.life-bug-field p + p {
+  margin-top: 8px;
+}
+
+.life-bug-final {
+  background: #2f2822;
+  border-color: #2f2822;
+}
+
+.life-bug-final h3,
+.life-bug-final p {
+  color: #fff9e8;
+}
+
 .author-tools-clean {
   background:
     radial-gradient(circle at 16% 10%, rgba(255, 244, 196, 0.42), transparent 28%),
@@ -5642,11 +5854,18 @@ a:hover { opacity: 0.7; }
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .afraid-series-hero,
+  .life-bug-hero,
+  .life-bug-console,
   .author-tools-hero {
     grid-template-columns: 1fr;
   }
 
   .author-tool-route {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .life-bug-index-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -5704,6 +5923,10 @@ a:hover { opacity: 0.7; }
   .author-tools-grid,
   .author-stories-grid,
   .author-two-column {
+    grid-template-columns: 1fr;
+  }
+
+  .life-bug-index-grid {
     grid-template-columns: 1fr;
   }
 
