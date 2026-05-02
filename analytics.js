@@ -17,7 +17,7 @@ window.trackEvent = function trackEvent(name, params = {}) {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll('a[href="/quiet-power-assessment.html"]').forEach((link) => {
+  document.querySelectorAll('a[href="/quiet-power-assessment.html"], a[href="/pt/teste.html"]').forEach((link) => {
     link.addEventListener("click", () => {
       window.trackEvent("assessment_cta_click", {
         page_path: window.location.pathname,
