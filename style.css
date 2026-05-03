@@ -2900,8 +2900,41 @@ a:hover { opacity: 0.7; }
 }
 
 .life-bug-entry-header {
+  display: grid;
+  gap: 12px;
   padding-bottom: 8px;
   border-bottom: 1px solid rgba(58, 46, 36, 0.14);
+}
+
+.life-bug-share {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.life-bug-share-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 8px 11px;
+  border: 1px solid rgba(90, 41, 31, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 252, 247, 0.74);
+  color: #5a291f;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  transition: border-color 180ms ease, transform 180ms ease, background 180ms ease;
+}
+
+.life-bug-share-link:hover {
+  border-color: rgba(143, 64, 35, 0.38);
+  background: #fffdf8;
+  transform: translateY(-1px);
 }
 
 .life-bug-field,
