@@ -21,15 +21,16 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Product",
+      "@type": "Book",
       "name": "Quiet Power Workbook 3 — Control",
       "url": "https://sabinopereira.com/qp.workbook3",
       "image": "https://sabinopereira.com/images/qpworkbook3.png",
       "description": "A Quiet Power workbook for defining what matters, protecting it, and holding that line over time.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Quiet Power"
+      "author": {
+        "@type": "Person",
+        "name": "Sabino Pereira"
       },
+      "inLanguage": "en",
       "offers": {
         "@type": "Offer",
         "url": "https://quiet-power-shop.fourthwall.com/products/workbook-3-control-quiet-power-system",

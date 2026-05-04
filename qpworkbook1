@@ -21,15 +21,16 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Product",
+      "@type": "Book",
       "name": "Quiet Power Workbook 1 — Reaction",
       "url": "https://sabinopereira.com/qpworkbook1",
       "image": "https://sabinopereira.com/images/qpworkbook1.PNG",
       "description": "A practical Quiet Power workbook for noticing triggers, reactions, and where control slips away.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Quiet Power"
+      "author": {
+        "@type": "Person",
+        "name": "Sabino Pereira"
       },
+      "inLanguage": "en",
       "offers": {
         "@type": "Offer",
         "url": "https://quiet-power-shop.fourthwall.com/products/workbook-1-reaction-quiet-power-system",

@@ -21,15 +21,16 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Product",
+      "@type": "Book",
       "name": "Quiet Power Workbook 2 — Filter",
       "url": "https://sabinopereira.com/qp.workbook2",
       "image": "https://sabinopereira.com/images/qpworkbook2.PNG",
       "description": "A Quiet Power workbook for deciding what stays, what goes, and what never gets close.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Quiet Power"
+      "author": {
+        "@type": "Person",
+        "name": "Sabino Pereira"
       },
+      "inLanguage": "en",
       "offers": {
         "@type": "Offer",
         "url": "https://quiet-power-shop.fourthwall.com/products/workbook-2-filter-quiet-power-system",
