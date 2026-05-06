@@ -6683,6 +6683,136 @@ a:hover { opacity: 0.7; }
   font-size: 1rem;
 }
 
+.being-human-feature {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 92% 10%, rgba(192, 111, 87, 0.14), transparent 30%),
+    radial-gradient(circle at 8% 92%, rgba(215, 181, 109, 0.16), transparent 28%),
+    rgba(255, 252, 245, 0.78);
+}
+
+.being-human-feature-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.82fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+}
+
+.being-human-feature-media {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(78, 68, 55, 0.16);
+  border-radius: 8px;
+  background: #11140f;
+  box-shadow: 0 24px 60px rgba(33, 25, 18, 0.14);
+}
+
+.being-human-feature-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  object-fit: cover;
+}
+
+.being-human-page {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(192, 111, 87, 0.1), transparent 30%),
+    radial-gradient(circle at 82% 8%, rgba(215, 181, 109, 0.14), transparent 28%),
+    linear-gradient(180deg, #fffaf1 0%, #f7efe2 46%, #fffaf1 100%);
+}
+
+.being-human-page .author-page-hero {
+  position: relative;
+  overflow: hidden;
+  border-color: rgba(119, 84, 62, 0.18);
+  background:
+    radial-gradient(circle at 88% 18%, rgba(192, 111, 87, 0.14), transparent 30%),
+    radial-gradient(circle at 10% 86%, rgba(112, 128, 88, 0.12), transparent 28%),
+    rgba(255, 252, 245, 0.82);
+}
+
+.being-human-page .author-page-hero::before,
+.being-human-page .author-page-hero::after {
+  content: "";
+  position: absolute;
+  width: 210px;
+  height: 210px;
+  pointer-events: none;
+  opacity: 0.24;
+  background:
+    radial-gradient(circle at 50% 20%, #c06f57 0 10px, transparent 11px),
+    radial-gradient(circle at 66% 34%, #d7b56d 0 12px, transparent 13px),
+    radial-gradient(circle at 36% 38%, #d9a193 0 11px, transparent 12px),
+    radial-gradient(circle at 52% 54%, #8f9f72 0 9px, transparent 10px),
+    linear-gradient(115deg, transparent 0 46%, #687957 47% 49%, transparent 50%),
+    linear-gradient(38deg, transparent 0 54%, #687957 55% 57%, transparent 58%);
+}
+
+.being-human-page .author-page-hero::before {
+  right: -54px;
+  top: -52px;
+  transform: rotate(18deg);
+}
+
+.being-human-page .author-page-hero::after {
+  left: -70px;
+  bottom: -72px;
+  transform: rotate(198deg);
+}
+
+.being-human-page .thought-article-shell {
+  position: relative;
+}
+
+.being-human-page .thought-article-shell::before,
+.being-human-page .thought-article-shell::after {
+  content: "";
+  position: absolute;
+  width: 130px;
+  height: 180px;
+  pointer-events: none;
+  opacity: 0.2;
+  background:
+    radial-gradient(ellipse at 48% 18%, #c06f57 0 12px, transparent 13px),
+    radial-gradient(ellipse at 62% 34%, #e2bb76 0 10px, transparent 11px),
+    radial-gradient(ellipse at 38% 38%, #d9a193 0 10px, transparent 11px),
+    linear-gradient(90deg, transparent 0 49%, #687957 50% 52%, transparent 53%);
+}
+
+.being-human-page .thought-article-shell::before {
+  right: -28px;
+  top: 92px;
+}
+
+.being-human-page .thought-article-shell::after {
+  left: -34px;
+  top: 520px;
+  transform: rotate(180deg);
+}
+
+.being-human-page .being-human-hero-art {
+  position: relative;
+  border-color: rgba(119, 84, 62, 0.2);
+  box-shadow: 0 30px 80px rgba(62, 42, 30, 0.22);
+}
+
+.being-human-page .being-human-hero-art::after {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(255, 248, 236, 0.36);
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.being-human-page .thought-article {
+  border-color: rgba(119, 84, 62, 0.18);
+  background:
+    linear-gradient(180deg, rgba(255, 252, 245, 0.96), rgba(255, 248, 238, 0.94)),
+    #fffaf1;
+}
+
 .thought-audio-block {
   margin: 2rem 0 0;
   padding: 20px 22px;
@@ -8096,6 +8226,21 @@ a:hover { opacity: 0.7; }
 }
 
 @media (max-width: 720px) {
+  .being-human-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .being-human-feature-media img {
+    aspect-ratio: 16 / 10;
+  }
+
+  .being-human-page .author-page-hero::before,
+  .being-human-page .author-page-hero::after,
+  .being-human-page .thought-article-shell::before,
+  .being-human-page .thought-article-shell::after {
+    opacity: 0.14;
+  }
+
   .qp-assessment-introband {
     margin-top: 24px;
   }
