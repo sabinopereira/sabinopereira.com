@@ -6696,7 +6696,7 @@ a:hover { opacity: 0.7; }
   display: grid;
   grid-template-columns: minmax(260px, 0.82fr) minmax(0, 1fr);
   gap: 28px;
-  align-items: center;
+  align-items: start;
 }
 
 .being-human-feature-media {
