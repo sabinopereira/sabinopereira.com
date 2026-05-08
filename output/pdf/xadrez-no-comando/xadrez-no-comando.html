@@ -35,14 +35,28 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
       overflow: hidden;
     }
 
+    .cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.68)),
+        url("assets/cover.png") center / cover no-repeat;
+      filter: grayscale(1);
+      transform: scale(1.08);
+    }
+
     .cover img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: 5.45in;
+      height: 5.45in;
+      object-fit: contain;
       display: block;
+      position: relative;
+      box-shadow: 0 0.15in 0.55in rgba(0, 0, 0, 0.7);
     }
 
     .title-page,
