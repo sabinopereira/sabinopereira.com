@@ -5957,9 +5957,49 @@ a:hover { opacity: 0.7; }
   color: var(--hub-ink);
 }
 
+.finance-warning-card {
+  border-color: rgba(184, 139, 90, 0.34);
+  background: rgba(251, 242, 225, 0.9);
+}
+
 .finance-idea {
   border-color: rgba(49, 95, 99, 0.18);
   background: rgba(247, 251, 250, 0.82);
+}
+
+.finance-money-map {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.finance-money-box {
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(49, 95, 99, 0.16);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.finance-money-box strong,
+.finance-money-box span {
+  display: block;
+}
+
+.finance-money-box span {
+  margin-top: 4px;
+  color: var(--hub-accent);
+  font-size: 1.24rem;
+  font-weight: 800;
+}
+
+.finance-money-box p {
+  margin: 8px 0 0;
+  color: #6e6257;
+  line-height: 1.55;
+}
+
+.finance-investment-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .finance-plan {
@@ -5998,6 +6038,10 @@ a:hover { opacity: 0.7; }
 
   .finance-score-strip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .finance-investment-list {
+    grid-template-columns: 1fr;
   }
 
   .life-bug-index-grid {

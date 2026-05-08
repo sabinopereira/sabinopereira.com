@@ -193,6 +193,48 @@
                 </select>
               </label>
             </div>
+          </section>
+
+          <section class="author-panel">
+            <p class="author-card-eyebrow">5. Organização e cuidado</p>
+            <h2 class="author-section-title">Antes de crescer, reduz o risco de te apertar.</h2>
+            <div class="lead-app-grid">
+              <label>
+                Tens conta separada para contas?
+                <select name="hasBillsAccount">
+                  <option value="no" selected>Não, está tudo misturado</option>
+                  <option value="yes">Sim, separo o dinheiro das contas</option>
+                </select>
+              </label>
+              <label>
+                Tens reserva intocável?
+                <select name="hasEmergencyFund">
+                  <option value="no" selected>Ainda não</option>
+                  <option value="small">Tenho alguma, mas é frágil</option>
+                  <option value="yes">Sim, já tenho proteção</option>
+                </select>
+              </label>
+              <label>
+                Estás a pensar investir agora?
+                <select name="investmentIntent">
+                  <option value="no" selected>Não, primeiro quero estabilidade</option>
+                  <option value="curious">Tenho curiosidade, mas quero cuidado</option>
+                  <option value="yes">Sim, estou a considerar investir</option>
+                </select>
+              </label>
+              <label>
+                As prestações pesam no mês?
+                <select name="debtPressure">
+                  <option value="low">Pouco</option>
+                  <option value="medium" selected>Às vezes apertam</option>
+                  <option value="high">Sim, estão a pesar muito</option>
+                </select>
+              </label>
+              <label class="lead-app-field--full">
+                Se houver empréstimos, cartões ou prestações, o que mais preocupa?
+                <textarea name="debtNotes" rows="3" placeholder="Ex: cartão de crédito, prestação do carro, crédito pessoal, várias prestações pequenas, juros altos"></textarea>
+              </label>
+            </div>
             <div class="author-book-actions finance-actions">
               <button type="submit" class="author-button">Analisar margem</button>
               <button type="button" class="author-button author-button--secondary" id="load-example">Carregar exemplo AML</button>
@@ -249,9 +291,26 @@
             </article>
           </section>
 
+          <section class="author-two-column">
+            <article class="author-panel">
+              <p class="author-card-eyebrow">Como separar o dinheiro</p>
+              <div class="finance-money-map" id="money-map"></div>
+            </article>
+
+            <article class="author-panel">
+              <p class="author-card-eyebrow">Renegociação e alívio</p>
+              <div class="finance-answer-list" id="renegotiation-list"></div>
+            </article>
+          </section>
+
+          <section class="author-panel">
+            <p class="author-card-eyebrow">Investimento com travões</p>
+            <div class="finance-answer-list finance-investment-list" id="investment-guardrails"></div>
+          </section>
+
           <section class="author-panel finance-note">
             <p class="author-card-eyebrow">Nota</p>
-            <p class="author-page-intro">Isto é uma ferramenta de clareza e planeamento, não aconselhamento financeiro profissional. O objetivo é reduzir aperto, criar margem e evitar decisões tomadas em modo incêndio.</p>
+            <p class="author-page-intro">Isto é uma ferramenta de clareza e planeamento, não aconselhamento financeiro, fiscal ou de investimento. A app pode ajudar a preparar perguntas e decisões, mas propostas de crédito, renegociação ou investimento devem ser comparadas com cuidado e, quando necessário, revistas com um profissional qualificado.</p>
           </section>
         </section>
       </section>
@@ -286,6 +345,10 @@
 
     function idea(title, copy) {
       return `<article class="finance-answer finance-idea"><strong>${title}</strong><span>${copy}</span></article>`;
+    }
+
+    function moneyBox(label, amount, copy) {
+      return `<article class="finance-money-box"><strong>${label}</strong><span>${euro.format(Math.max(0, amount))}</span><p>${copy}</p></article>`;
     }
 
     function getIncomeIdeas(profession, skills, hours, energy, risk) {
@@ -358,6 +421,11 @@
       const hours = numberValue(data, "hoursPerWeek");
       const energy = textValue(data, "energy");
       const risk = textValue(data, "risk");
+      const hasBillsAccount = textValue(data, "hasBillsAccount");
+      const hasEmergencyFund = textValue(data, "hasEmergencyFund");
+      const investmentIntent = textValue(data, "investmentIntent");
+      const debtPressure = textValue(data, "debtPressure");
+      const debtNotes = textValue(data, "debtNotes");
 
       const essentialsUntilIncome = dailyEssentials * daysToIncome;
       const obligationsUntilIncome = fixedDue + debtDue + essentialsUntilIncome;
@@ -371,6 +439,14 @@
       const invisibleSpend = subscriptions + takeaway + impulse + fees;
       const goalGap = Math.max(0, goalTarget - goalSaved);
       const goalMonths = trueLeftover > 0 ? Math.ceil(goalGap / Math.max(1, trueLeftover * 0.5)) : Infinity;
+      const debtLoadRatio = monthlyIncome > 0 ? debtDue / monthlyIncome : 0;
+      const fixedLoadRatio = monthlyIncome > 0 ? monthlyFixed / monthlyIncome : 0;
+      const survivalBox = Math.min(currentBalance, Math.max(0, fixedDue + debtDue + essentialsUntilIncome));
+      const remainingAfterSurvival = Math.max(0, currentBalance - survivalBox);
+      const safetyBox = Math.min(remainingAfterSurvival, Math.max(50, currentBalance * 0.25));
+      const remainingAfterSafety = Math.max(0, remainingAfterSurvival - safetyBox);
+      const flexibleBox = Math.min(remainingAfterSafety, Math.max(0, dailySafeSpend * Math.min(daysToIncome, 7)));
+      const growthBox = Math.max(0, remainingAfterSafety - flexibleBox);
 
       let statusTitle = "Estável, mas ainda precisa de margem.";
       let statusCopy = "Há espaço para respirar, desde que a compra de hoje não coma a proteção dos próximos dias.";
@@ -435,11 +511,53 @@
         plan.push("Separar uma mini-reserva antes de qualquer compra emocional.");
         plan.push("Cortar ou pausar a maior fuga invisível durante 30 dias.");
       }
+      if (hasBillsAccount === "no") {
+        plan.push("No dia em que receberes, separar primeiro o dinheiro das contas antes de qualquer gasto variável.");
+      }
+      if (debtPressure === "high" || debtLoadRatio > 0.15) {
+        plan.push("Preparar uma conversa de renegociação antes de falhar pagamentos ou usar mais crédito.");
+      }
       plan.push("Transformar uma skill em oferta simples de baixo risco esta semana.");
       plan.push("Rever a margem no mesmo dia todas as semanas, sempre antes de decisões grandes.");
       document.getElementById("stability-plan").innerHTML = plan.map((step) => `<li>${step}</li>`).join("");
 
       document.getElementById("income-ideas").innerHTML = getIncomeIdeas(profession, skills, hours, energy, risk);
+
+      document.getElementById("money-map").innerHTML = [
+        moneyBox("Sobrevivência", survivalBox, "Contas, prestações e básicos até receber. Esta caixa protege o mês."),
+        moneyBox("Segurança", safetyBox, "Dinheiro que idealmente não se toca. Serve para não viver sempre no limite."),
+        moneyBox("Flexível", flexibleBox, "Pequena margem para vida normal, limitada ao que não ameaça a liquidez."),
+        moneyBox("Crescimento", growthBox, "Só deve ser usado para aprender, testar uma oferta ou criar rendimento sem pôr o mês em risco.")
+      ].join("");
+
+      const renegotiationItems = [];
+      if (debtPressure === "high" || debtLoadRatio > 0.15 || fees > monthlyIncome * 0.02) {
+        renegotiationItems.push(item("Sinal para renegociar", "As prestações, juros ou taxas parecem estar a pressionar a liquidez. Pode fazer sentido falar com banco/credor antes de o problema ficar urgente.", "finance-warning-card"));
+      } else if (debtPressure === "medium") {
+        renegotiationItems.push(item("Vigiar prestações", "Ainda não parece emergência, mas convém comparar custo total, taxa, prazo e impacto mensal antes de aceitar qualquer alteração."));
+      } else {
+        renegotiationItems.push(item("Pressão de dívida baixa", "Mantém pagamentos em dia e evita transformar gastos variáveis em crédito recorrente."));
+      }
+      renegotiationItems.push(item("Perguntas para levar", "Qual é o custo total? A taxa muda? O prazo aumenta? Há comissões? Pago menos por mês mas mais no total? Posso amortizar sem penalização?"));
+      renegotiationItems.push(item("Cuidado", "Renegociar pode aliviar o mês, mas também pode aumentar o custo total. A app só sinaliza, não decide por ti."));
+      if (debtNotes) {
+        renegotiationItems.push(item("Nota tua", `Prestar atenção a: ${debtNotes}.`));
+      }
+      document.getElementById("renegotiation-list").innerHTML = renegotiationItems.join("");
+
+      const investmentItems = [];
+      const canConsiderLearning = trueLeftover > 0 && emergencyRunway >= 30 && hasEmergencyFund !== "no" && debtPressure !== "high";
+      if (investmentIntent === "no") {
+        investmentItems.push(item("Prioridade certa", "Faz sentido focar em estabilidade, reserva e rendimento extra antes de pensar em investimento."));
+      } else if (!canConsiderLearning) {
+        investmentItems.push(item("Travão recomendado", "Agora parece cedo para investir dinheiro relevante. Primeiro cria reserva, reduz pressão e garante que uma perda não afeta contas ou básicos.", "finance-warning-card"));
+      } else {
+        investmentItems.push(item("Pode estudar, com limite", "A situação permite aprender com calma, mas qualquer valor deve ser pequeno, planeado e separado da caixa de sobrevivência."));
+      }
+      investmentItems.push(item("Checklist antes de investir", "Tenho reserva? Tenho dívidas caras? Entendo o risco? Posso perder este valor sem afetar renda, comida ou contas? Estou a agir por plano ou ansiedade?"));
+      investmentItems.push(item("Regra da Margem", "Investimento só entra depois de liquidez, contas, reserva e plano. Crescimento sem estabilidade costuma virar mais pressão."));
+      document.getElementById("investment-guardrails").innerHTML = investmentItems.join("");
+
       results.hidden = false;
       results.scrollIntoView({ behavior: "smooth", block: "start" });
     }
@@ -468,6 +586,11 @@
       form.skills.value = "inglês, escrita, AML, banca, revisão de processos";
       form.energy.value = "medium";
       form.risk.value = "low";
+      form.hasBillsAccount.value = "no";
+      form.hasEmergencyFund.value = "small";
+      form.investmentIntent.value = "curious";
+      form.debtPressure.value = "medium";
+      form.debtNotes.value = "cartão de crédito e prestação pequena";
     });
 
     form.addEventListener("submit", analyze);
