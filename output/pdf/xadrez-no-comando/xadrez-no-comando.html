@@ -1,0 +1,1163 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <title>Xadrez no Comando</title>
+  <style>
+    @page {
+      size: 6in 9in;
+      margin: 0.72in 0.66in;
+    }
+
+    @page cover {
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: #151515;
+      background: #f8f7f2;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 12.4pt;
+      line-height: 1.55;
+    }
+
+    .cover {
+      page: cover;
+      width: 6in;
+      height: 9in;
+      page-break-after: always;
+      background: #050505;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .title-page,
+    .toc,
+    .piece-page,
+    .chapter,
+    .closing-note {
+      page-break-after: always;
+    }
+
+    .title-page {
+      min-height: 7.5in;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Impact, "Arial Black", sans-serif;
+      font-size: 38pt;
+      line-height: 0.96;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      max-width: 4.2in;
+      margin: 0.34in auto 0;
+      font-size: 13pt;
+      line-height: 1.45;
+      color: #333;
+      font-style: italic;
+    }
+
+    .mark {
+      width: 1.1in;
+      height: 1px;
+      margin: 0.42in auto;
+      background: #171717;
+    }
+
+    .toc h2,
+    .chapter h2 {
+      margin: 0 0 0.28in;
+      font-family: Impact, "Arial Black", sans-serif;
+      font-size: 25pt;
+      line-height: 1;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .toc {
+      padding-top: 0.5in;
+    }
+
+    .toc-list {
+      margin: 0.2in 0 0;
+      padding: 0;
+      list-style: none;
+      font-size: 12.2pt;
+      line-height: 1.8;
+    }
+
+    .toc-list li {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.14);
+      padding: 0.05in 0;
+    }
+
+    .piece-page {
+      min-height: 7.5in;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .piece-card {
+      width: 4.5in;
+      height: 5.9in;
+      border: 2px solid #151515;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 26% 20%, rgba(0, 0, 0, 0.08), transparent 23%),
+        linear-gradient(135deg, rgba(0, 0, 0, 0.08) 0 1px, transparent 1px 18px),
+        #f8f7f2;
+    }
+
+    .piece-svg {
+      width: 2.55in;
+      height: 2.55in;
+      margin-bottom: 0.35in;
+    }
+
+    .piece-label {
+      font-family: Impact, "Arial Black", sans-serif;
+      font-size: 21pt;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .piece-sub {
+      margin-top: 0.08in;
+      font-size: 10.5pt;
+      font-style: italic;
+      color: #333;
+    }
+
+    .chapter {
+      padding-top: 0.15in;
+    }
+
+    .chapter p {
+      margin: 0 0 0.14in;
+      orphans: 3;
+      widows: 3;
+    }
+
+    .chapter .short {
+      margin-bottom: 0.09in;
+    }
+
+    .chapter .quote {
+      margin: 0.22in 0;
+      padding-left: 0.22in;
+      border-left: 3px solid #171717;
+      font-style: italic;
+    }
+
+    .chapter .stanza {
+      margin: 0.2in 0;
+    }
+
+    .chapter .stanza p {
+      margin-bottom: 0.03in;
+    }
+
+    .divider {
+      width: 0.85in;
+      height: 2px;
+      background: #151515;
+      margin: 0.24in 0 0.28in;
+    }
+
+    .closing-note {
+      min-height: 7.5in;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-style: italic;
+      color: #2b2b2b;
+    }
+
+    .no-break {
+      break-inside: avoid;
+    }
+
+    svg text {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <section class="cover">
+    <img src="assets/cover.png" alt="Capa de Xadrez no Comando">
+  </section>
+
+  <section class="title-page">
+    <h1>Xadrez<br>No Comando</h1>
+    <div class="mark"></div>
+    <p class="subtitle">Cada peça tem uma dor. Cada movimento tem um preço.</p>
+  </section>
+
+  <section class="toc">
+    <h2>Índice</h2>
+    <ol class="toc-list">
+      <li>Abertura - O Tabuleiro</li>
+      <li>O Peão</li>
+      <li>O Cavalo</li>
+      <li>O Bispo</li>
+      <li>A Torre</li>
+      <li>A Rainha</li>
+      <li>O Rei</li>
+      <li>Xeque-Mate</li>
+      <li>Fim de Jogo</li>
+    </ol>
+  </section>
+
+  <section class="piece-page">
+    <div class="piece-card">
+      <svg class="piece-svg" viewBox="0 0 200 200" role="img" aria-label="Tabuleiro">
+        <rect x="26" y="26" width="148" height="148" fill="#f8f7f2" stroke="#111" stroke-width="7"/>
+        <g fill="#111">
+          <rect x="26" y="26" width="37" height="37"/>
+          <rect x="100" y="26" width="37" height="37"/>
+          <rect x="63" y="63" width="37" height="37"/>
+          <rect x="137" y="63" width="37" height="37"/>
+          <rect x="26" y="100" width="37" height="37"/>
+          <rect x="100" y="100" width="37" height="37"/>
+          <rect x="63" y="137" width="37" height="37"/>
+          <rect x="137" y="137" width="37" height="37"/>
+        </g>
+      </svg>
+      <div class="piece-label">Abertura</div>
+      <div class="piece-sub">O tabuleiro</div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <h2>Abertura - O Tabuleiro</h2>
+    <div class="divider"></div>
+    <p>Aprendi cedo que algumas pessoas entram no jogo já protegidas.</p>
+    <p>Nascem em casas silenciosas. Com comida no frigorífico. Com tempo para errar. Tempo para sonhar. Tempo para descobrir quem são.</p>
+    <p>Outras não.</p>
+    <p>Outras começam a partida encostadas à parede, a tentar sobreviver antes mesmo de perceberem as regras.</p>
+    <p>No bairro onde cresci, ninguém falava de xadrez.</p>
+    <p>Falava-se de contas. De respeito. De oportunidades que nunca chegavam inteiras. Falava-se de vizinhos cansados, mães fortes demais para descansar e homens que envelheciam cedo sem dar por isso.</p>
+    <p>Mesmo assim, olhando para trás, percebo que toda a gente se movia como peças.</p>
+    <p>Os peões acordavam primeiro.</p>
+    <p>Saíam cedo, regressavam tarde e carregavam o peso do tabuleiro inteiro sem quase nunca aparecerem na fotografia final. Eram os homens das obras, as mulheres do mercado, os miúdos que cresciam rápido demais porque a vida não lhes deu alternativa.</p>
+    <p>Os cavalos eram diferentes.</p>
+    <p>Nunca andavam em linha reta. Aprenderam cedo a sobreviver pelos lados, a escapar quando o mundo fechava portas pela frente. Alguns tornaram-se criativos. Outros perderam-se nos próprios desvios.</p>
+    <p>As torres eram os que resistiam.</p>
+    <p>Os que aguentavam tudo de pé mesmo rachados por dentro. Pais. Irmãos mais velhos. Mães silenciosas. Gente que transformava orgulho em armadura porque cair nunca pareceu uma opção.</p>
+    <p>E depois existiam os reis.</p>
+    <p>Toda a gente pensa que o rei manda.</p>
+    <p>Pouca gente percebe o medo constante de perder tudo num único movimento.</p>
+    <p>Demorei anos para perceber isto:</p>
+    <p>o tabuleiro muda de bairro para bairro... mas o jogo continua parecido.</p>
+    <p>Alguns jogam por dinheiro. Outros por orgulho. Outros só querem sair vivos.</p>
+    <p>No fundo, quase toda a gente está a tentar proteger alguma coisa: a família, o coração, o nome, a dignidade, os sonhos antigos ou a pequena versão de si próprio que ainda sobrevive por dentro.</p>
+    <p>A vida ensinou-me xadrez antes de eu saber o nome das peças.</p>
+    <p>Ensinou-me que há pessoas que sacrificam tudo para salvar os outros. Que há silêncios mais perigosos do que gritos. E que algumas derrotas começam muito antes do xeque-mate.</p>
+    <p>Hoje percebo que o jogo nunca foi apenas sobre vencer.</p>
+    <p>Foi sempre sobre outra coisa.</p>
+    <p>Sobre quem conseguimos continuar a ser... enquanto o mundo tenta mover-nos à força.</p>
+  </section>
+
+  <section class="piece-page">
+    <div class="piece-card">
+      <svg class="piece-svg" viewBox="0 0 200 200" role="img" aria-label="Peão">
+        <text x="100" y="142" text-anchor="middle" font-size="132" fill="#111">♙</text>
+      </svg>
+      <div class="piece-label">O Peão</div>
+      <div class="piece-sub">Um passo de cada vez</div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <h2>O Peão</h2>
+    <div class="divider"></div>
+    <p>O peão é sempre o primeiro a avançar.</p>
+    <p>Talvez por isso me lembre tanto de quem cresceu sem escolha.</p>
+    <p>Gente que acordava cedo antes da cidade ter coragem de abrir os olhos. Gente que saía de casa ainda com o corpo cansado do dia anterior. Gente que não tinha tempo para falar de sonhos porque havia contas em cima da mesa, comida para garantir e filhos a olhar em silêncio.</p>
+    <p>No xadrez, o peão parece pequeno.</p>
+    <p>Na vida também.</p>
+    <p>Mas é quase sempre ele que carrega o começo da guerra.</p>
+    <p>Eu vi muitos peões no meu bairro.</p>
+    <div class="stanza">
+      <p>Homens com as mãos gastas.</p>
+      <p>Mulheres com a alma cansada.</p>
+      <p>Miúdos que aprenderam a baixar a cabeça antes de aprenderem a levantar a voz.</p>
+    </div>
+    <p>Ninguém lhes chamava estratégicos.</p>
+    <div class="stanza">
+      <p>Chamavam-lhes trabalhadores.</p>
+      <p>Chamavam-lhes desenrascados.</p>
+      <p>Chamavam-lhes "boa gente".</p>
+    </div>
+    <p>Mas sobreviver todos os dias sem perder completamente a ternura também é estratégia.</p>
+    <p>E talvez seja das mais difíceis.</p>
+    <p>O peão anda pouco.</p>
+    <p>Um passo de cada vez.</p>
+    <div class="stanza">
+      <p>Sem teatro.</p>
+      <p>Sem aplauso.</p>
+      <p>Sem ninguém a dizer que aquilo também é coragem.</p>
+    </div>
+    <p>Mas há vidas que só puderam ser salvas assim: devagar. Com cuidado. Com medo. Com fome. Com fé no dia seguinte, mesmo quando o dia seguinte parecia igual ao anterior.</p>
+    <p>Durante muito tempo, eu achei que ser peão era ser fraco.</p>
+    <p>Achava que força era mandar. Era ter dinheiro. Era entrar num sítio e todos saberem o teu nome.</p>
+    <p>Depois cresci.</p>
+    <p>E percebi que há pessoas que seguram o mundo sem nunca se sentarem à mesa onde se decide o mundo.</p>
+    <p>A minha mãe foi peão muitas vezes.</p>
+    <p>Não porque fosse pequena.</p>
+    <p>Mas porque avançou mesmo quando ninguém abriu caminho.</p>
+    <p>Vi-a contar moedas como quem calcula movimentos. Vi-a esconder cansaço para não nos assustar. Vi-a perder coisas que queria para nos dar coisas de que precisávamos.</p>
+    <p>Nunca lhe ouvi chamar isso de sacrifício.</p>
+    <p>Chamava-lhe vida.</p>
+    <p>E talvez seja isso que mais dói nos peões: eles habituam-se a sofrer em silêncio.</p>
+    <div class="stanza">
+      <p>Habituam-se a ser necessários, mas não vistos.</p>
+      <p>Habituam-se a ser fortes, mas não cuidados.</p>
+      <p>Habituam-se a dar tudo, até quando já quase não têm nada.</p>
+    </div>
+    <p>No xadrez, quando um peão chega ao fim do tabuleiro, pode transformar-se noutra peça.</p>
+    <p>Na vida, quase ninguém conta essa parte.</p>
+    <p>Quase ninguém diz que alguns peões atravessam o tabuleiro inteiro sem se transformarem em nada aos olhos dos outros.</p>
+    <div class="stanza">
+      <p>Continuam com o mesmo nome.</p>
+      <p>A mesma roupa simples.</p>
+      <p>A mesma conta apertada.</p>
+      <p>As mesmas mãos marcadas.</p>
+    </div>
+    <p>Mas por dentro, já são outra coisa.</p>
+    <div class="stanza">
+      <p>São memória.</p>
+      <p>São aviso.</p>
+      <p>São raiz.</p>
+      <p>São prova de que a dignidade também sabe andar de cabeça baixa sem deixar de ser dignidade.</p>
+    </div>
+    <p>Hoje, quando vejo alguém levantar cedo para trabalhar num mundo que raramente agradece, penso no peão.</p>
+    <p>Penso na coragem silenciosa de quem avança sem garantias.</p>
+    <div class="stanza">
+      <p>Um passo.</p>
+      <p>Depois outro.</p>
+      <p>Depois outro.</p>
+    </div>
+    <p>Porque às vezes sobreviver não é uma grande jogada.</p>
+    <p>É só não desistir da próxima casa.</p>
+  </section>
+
+  <section class="piece-page">
+    <div class="piece-card">
+      <svg class="piece-svg" viewBox="0 0 200 200" role="img" aria-label="Cavalo">
+        <text x="100" y="143" text-anchor="middle" font-size="132" fill="#111">♞</text>
+      </svg>
+      <div class="piece-label">O Cavalo</div>
+      <div class="piece-sub">Os caminhos tortos</div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <h2>O Cavalo</h2>
+    <div class="divider"></div>
+    <p>No bairro, os caminhos nunca eram retos.</p>
+    <p>Talvez por isso eu tenha aprendido cedo a mover-me de lado.</p>
+    <div class="stanza">
+      <p>Havia portas que não se abriam para nós.</p>
+      <p>Havia olhares que nos fechavam antes mesmo de falarmos.</p>
+      <p>Havia futuros que pareciam reservados para outros nomes, outras casas, outros códigos postais.</p>
+    </div>
+    <p>Então aprendíamos desvios.</p>
+    <div class="stanza">
+      <p>Aprendíamos a chegar sem sermos esperados.</p>
+      <p>A sair antes de sermos apanhados.</p>
+      <p>A rir quando a vontade era desaparecer.</p>
+      <p>A parecer calmos quando por dentro estava tudo em guerra.</p>
+    </div>
+    <p>O cavalo é a peça mais estranha do tabuleiro.</p>
+    <p>Não anda como os outros.</p>
+    <p>Salta.</p>
+    <p>Passa por cima.</p>
+    <p>Faz curvas onde o mundo só entende linhas.</p>
+    <p>Durante muito tempo, achei isso bonito.</p>
+    <p>Depois percebi que nem todo o desvio é liberdade.</p>
+    <p>Às vezes, uma pessoa aprende a contornar tanto a dor que deixa de saber atravessá-la. Aprende a fugir tão bem que confunde movimento com caminho. Aprende a sobreviver em ziguezague e chama isso de personalidade.</p>
+    <p>Eu conheci muitos cavalos.</p>
+    <div class="stanza">
+      <p>Miúdos inteligentes demais para a idade que tinham.</p>
+      <p>Homens engraçados que escondiam tristeza atrás de piadas.</p>
+      <p>Mulheres que faziam milagres com pouco e ainda pediam desculpa por existir.</p>
+    </div>
+    <p>Gente que nunca teve estrada limpa, mas mesmo assim chegou a algum lado.</p>
+    <p>Também conheci outros.</p>
+    <p>Os que se perderam no próprio salto.</p>
+    <p>Começaram a desviar-se da pobreza. Depois da polícia. Depois da família. Depois de si próprios.</p>
+    <p>E quando deram por isso, já não sabiam voltar em linha reta para casa.</p>
+    <p>A rua ensina criatividade.</p>
+    <p>Mas cobra caro.</p>
+    <div class="stanza">
+      <p>Ensina a ler rostos depressa.</p>
+      <p>A perceber perigo antes dele falar.</p>
+      <p>A sentir quando uma conversa mudou de temperatura.</p>
+      <p>A saber quem está a mentir só pelo silêncio que deixa depois da frase.</p>
+    </div>
+    <p>Isto não aparece nos currículos.</p>
+    <p>Ninguém escreve no papel:</p>
+    <div class="quote">
+      <p>"Sobreviveu a ambientes instáveis."</p>
+      <p>"Aprendeu estratégia emocional antes da adolescência."</p>
+      <p>"Consegue detectar ameaça numa sala antes dos adultos perceberem."</p>
+    </div>
+    <p>Mas essas coisas também são conhecimento.</p>
+    <p>Conhecimento cansado. Conhecimento sem diploma. Conhecimento que às vezes salva.</p>
+    <p>O problema é que o corpo não esquece o preço.</p>
+    <p>Mesmo quando a vida melhora, há pessoas que continuam a mover-se como se ainda estivessem cercadas.</p>
+    <div class="stanza">
+      <p>Não atendem certas chamadas.</p>
+      <p>Não confiam em certas pazes.</p>
+      <p>Não descansam em certos silêncios.</p>
+      <p>Não acreditam completamente quando alguém diz: "está tudo bem."</p>
+    </div>
+    <p>Porque houve um tempo em que nunca estava.</p>
+    <p>E o cavalo lembra-se.</p>
+    <p>Lembra-se de cada portão fechado. De cada humilhação engolida. De cada plano feito à pressa. De cada vez em que teve de parecer mais esperto do que assustado.</p>
+    <p>Talvez seja por isso que tenho respeito por quem se move diferente.</p>
+    <div class="stanza">
+      <p>Nem toda a curva é desonestidade.</p>
+      <p>Nem todo o salto é fuga.</p>
+      <p>Nem toda a pessoa difícil nasceu difícil.</p>
+    </div>
+    <p>Algumas só aprenderam a sobreviver num tabuleiro onde andar em frente era perigoso.</p>
+    <p>Hoje tento julgar menos os caminhos tortos.</p>
+    <p>Às vezes, antes de alguém se perder, só estava a tentar encontrar uma saída.</p>
+    <p>E às vezes, antes de alguém parecer complicado, foi apenas obrigado a tornar-se estratégico cedo demais.</p>
+  </section>
+
+  <section class="piece-page">
+    <div class="piece-card">
+      <svg class="piece-svg" viewBox="0 0 200 200" role="img" aria-label="Bispo">
+        <text x="100" y="143" text-anchor="middle" font-size="132" fill="#111">♝</text>
+      </svg>
+      <div class="piece-label">O Bispo</div>
+      <div class="piece-sub">Olhar na diagonal</div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <h2>O Bispo</h2>
+    <div class="divider"></div>
+    <p>O bispo anda na diagonal.</p>
+    <p>Talvez por isso me lembre das pessoas que veem a vida de lado.</p>
+    <p>Não porque sejam estranhas.</p>
+    <p>Mas porque o mundo nunca lhes apareceu de frente.</p>
+    <p>Há gente que aprende cedo que a verdade raramente vem inteira. Vem aos bocados. Vem em olhares. Em portas meio fechadas. Em conversas interrompidas quando uma criança entra na sala.</p>
+    <div class="stanza">
+      <p>Um rádio baixo na cozinha.</p>
+      <p>Uma conta dobrada ao lado do pão.</p>
+      <p>Uma criança fingindo que não ouviu a discussão no quarto.</p>
+    </div>
+    <p>No bairro, havia muita coisa que ninguém explicava.</p>
+    <p>A gente percebia.</p>
+    <div class="stanza">
+      <p>Percebia quando o dinheiro não chegava.</p>
+      <p>Percebia quando alguém estava a beber para esquecer.</p>
+      <p>Percebia quando uma mãe dizia "está tudo bem" com os olhos cheios de outra coisa.</p>
+      <p>Sentia quando a casa mudava de peso antes de alguém bater a porta.</p>
+    </div>
+    <p>As crianças dos sítios difíceis tornam-se especialistas em diagonais.</p>
+    <p>Aprendem a ler o ar.</p>
+    <div class="stanza">
+      <p>A medir silêncios.</p>
+      <p>A escutar paredes.</p>
+      <p>A sentir a tristeza dos adultos antes de saberem escrever a palavra tristeza.</p>
+    </div>
+    <p>Durante muito tempo, pensei que isso era inteligência.</p>
+    <p>Hoje acho que também era defesa.</p>
+    <p>Quem cresce em paz pode dar-se ao luxo de ser distraído.</p>
+    <p>Quem cresce em tensão aprende a reparar no invisível.</p>
+    <p>O bispo não atravessa o tabuleiro como a torre. Não impõe presença. Não faz barulho. Não parece mandar em nada.</p>
+    <p>Mas vê longe.</p>
+    <p>E às vezes ver longe é uma bênção com dentes.</p>
+    <p>Porque há coisas que uma pessoa percebe antes de estar preparada para carregar.</p>
+    <p>Eu vi demasiado cedo que os adultos também tinham medo.</p>
+    <div class="stanza">
+      <p>Vi que amor nem sempre chega.</p>
+      <p>Vi que trabalhar muito não garante justiça.</p>
+      <p>Vi que pessoas boas também perdem.</p>
+      <p>Vi que há casas cheias de gente onde cada um está sozinho à sua maneira.</p>
+    </div>
+    <p>Essas verdades não chegam como lições.</p>
+    <p>Chegam como marcas.</p>
+    <p>A fé também morava ali.</p>
+    <p>Não a fé bonita dos discursos.</p>
+    <p>A fé cansada.</p>
+    <div class="stanza">
+      <p>A fé de quem acende uma vela porque já não sabe o que fazer com as mãos.</p>
+      <p>A fé de quem diz "Deus queira" quando a esperança ficou pequena demais para ser chamada esperança.</p>
+      <p>A fé de quem continua a pôr a mesa mesmo sem saber se amanhã haverá o suficiente.</p>
+    </div>
+    <p>Eu nunca soube bem se acreditava.</p>
+    <p>Mas respeitei sempre quem precisava acreditar para não cair.</p>
+    <div class="stanza">
+      <p>Há pessoas que não têm terapia.</p>
+      <p>Não têm descanso.</p>
+      <p>Não têm ninguém a perguntar: "como estás mesmo?"</p>
+    </div>
+    <p>Têm uma oração baixa. Uma medalha ao peito. Uma fotografia guardada. Uma frase antiga repetida como quem segura uma parede com os ombros.</p>
+    <p>E quem sou eu para chamar ilusão ao que manteve alguém vivo?</p>
+    <p>O bispo ensina-me isso.</p>
+    <p>Que nem tudo o que salva precisa ser explicado.</p>
+    <p>Que há forças que se movem em silêncio, por dentro das pessoas, sem pedir autorização ao mundo.</p>
+    <p>Também me ensinou o perigo de ver demais.</p>
+    <p>Porque quem mede tudo, às vezes participa pouco.</p>
+    <p>Fica à margem.</p>
+    <div class="stanza">
+      <p>Analisa tudo.</p>
+      <p>Entende tudo.</p>
+      <p>Perdoa demais.</p>
+      <p>Cala demais.</p>
+    </div>
+    <p>E quando dá por si, passou anos a compreender a dor dos outros sem nunca ter perguntado o que fazer com a sua.</p>
+    <p>Eu fui assim muitas vezes.</p>
+    <p>Olhava para as pessoas e tentava descobrir de onde vinha a dureza delas.</p>
+    <div class="stanza">
+      <p>Se alguém gritava, eu procurava a ferida.</p>
+      <p>Se alguém traía, eu procurava o medo.</p>
+      <p>Se alguém desaparecia, eu procurava a vergonha.</p>
+    </div>
+    <p>Talvez isso fosse compaixão.</p>
+    <p>Talvez fosse só uma forma elegante de evitar a minha própria raiva.</p>
+    <p>Há uma idade em que entender tudo começa a cansar.</p>
+    <p>Uma pessoa percebe que pode ter empatia sem se abandonar. Pode ver os ângulos todos e ainda assim escolher uma direção. Pode compreender quem a feriu sem transformar essa compreensão numa prisão.</p>
+    <p>Hoje continuo a olhar na diagonal.</p>
+    <p>É da minha natureza.</p>
+    <p>Mas já não quero viver apenas a interpretar sinais.</p>
+    <p>Quero também estar presente.</p>
+    <div class="stanza">
+      <p>Dizer sim quando for sim.</p>
+      <p>Dizer não quando for não.</p>
+      <p>Sair quando ficar me diminui.</p>
+      <p>Ficar quando o amor for limpo.</p>
+    </div>
+    <p>Porque ver longe não serve de muito se uma pessoa nunca aprende a mover-se em direção à própria paz.</p>
+  </section>
+
+  <section class="piece-page">
+    <div class="piece-card">
+      <svg class="piece-svg" viewBox="0 0 200 200" role="img" aria-label="Torre">
+        <text x="100" y="143" text-anchor="middle" font-size="132" fill="#111">♜</text>
+      </svg>
+      <div class="piece-label">A Torre</div>
+      <div class="piece-sub">Quem aguenta de pé</div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <h2>A Torre</h2>
+    <div class="divider"></div>
+    <p>A torre não se desvia.</p>
+    <p>Vai em frente.</p>
+    <div class="stanza">
+      <p>Firme.</p>
+      <p>Direta.</p>
+      <p>Quase dura.</p>
+    </div>
+    <p>Talvez por isso eu a associe às pessoas que aprenderam a aguentar.</p>
+    <p>No bairro, havia muita gente assim.</p>
+    <p>Gente que não falava muito. Gente que chegava a casa com os ombros pesados. Gente que se sentava à mesa em silêncio, como se o corpo ainda estivesse no trabalho.</p>
+    <p>E havia casas que pareciam torres.</p>
+    <p>Não por serem grandes.</p>
+    <p>Mas porque toda a gente lá dentro dependia de alguém que não podia cair.</p>
+    <div class="stanza">
+      <p>Uma mãe que segurava filhos, contas, dores antigas e ainda perguntava se os outros tinham comido.</p>
+      <p>Um pai que não sabia dizer "tenho medo", então dizia "isto resolve-se".</p>
+      <p>Um irmão mais velho que virou adulto antes de tempo porque alguém tinha de tomar conta dos mais novos.</p>
+    </div>
+    <p>A torre é resistência.</p>
+    <p>Mas também é prisão.</p>
+    <p>Porque quando toda a gente se habitua a ver-te de pé, quase ninguém pergunta se estás cansado.</p>
+    <p>Esperam que aguentes.</p>
+    <div class="stanza">
+      <p>Que resolvas.</p>
+      <p>Que carregues.</p>
+      <p>Que não compliques.</p>
+      <p>Que não desabes no meio da sala.</p>
+    </div>
+    <p>Há pessoas que passam a vida inteira a ser parede.</p>
+    <p>Encostam-se nelas. Batem nelas. Pendura-se tudo nelas.</p>
+    <p>E quando começam a rachar, ainda pedem desculpa pelo pó.</p>
+    <p>Eu vi isso muitas vezes.</p>
+    <div class="stanza">
+      <p>Vi mulheres a chorar na casa de banho e a sair com a cara lavada como se nada tivesse acontecido.</p>
+      <p>Vi homens a engolir tristeza em garfos de comida fria.</p>
+      <p>Vi avós a guardar notas pequenas em envelopes antigos para salvar meses inteiros.</p>
+    </div>
+    <p>Ninguém chamava isso de heroísmo.</p>
+    <p>Era só a vida.</p>
+    <p>Essa frase aparece muito nos bairros.</p>
+    <p>"É a vida."</p>
+    <p>Como se a vida fosse uma sentença e não uma coisa que também devia cuidar de nós.</p>
+    <p>A torre ensina postura.</p>
+    <p>Ensina-nos a não fugir ao primeiro impacto. A proteger quem está atrás. A manter a casa de pé quando o vento entra por todos os lados.</p>
+    <p>Mas também pode ensinar uma mentira perigosa:</p>
+    <p>que sentir é fraqueza.</p>
+    <p>E eu acreditei nisso durante muito tempo.</p>
+    <p>Achei que ser forte era não pedir. Não tremer. Não explicar. Não precisar de ninguém.</p>
+    <p>Achava bonito aguentar calado.</p>
+    <p>Hoje já não acho.</p>
+    <p>Hoje sei que há silêncios que não são dignidade.</p>
+    <p>São feridas sem testemunha.</p>
+    <p>Há uma diferença entre resistência e abandono de si próprio.</p>
+    <p>Resistência é continuar quando é preciso.</p>
+    <p>Abandono é continuar sempre, mesmo quando a alma já está a pedir descanso.</p>
+    <p>Vi muita gente confundir as duas coisas.</p>
+    <p>Eu também confundi.</p>
+    <p>Durante anos, fui construindo paredes por dentro.</p>
+    <div class="stanza">
+      <p>Uma para a vergonha.</p>
+      <p>Outra para a raiva.</p>
+      <p>Outra para a tristeza.</p>
+      <p>Outra para todas as vezes em que precisei de colo e recebi conselhos.</p>
+    </div>
+    <p>Por fora, parecia estabilidade.</p>
+    <p>Por dentro, era isolamento bem organizado.</p>
+    <p>A torre tem força, sim.</p>
+    <p>Mas força sem movimento vira dureza.</p>
+    <p>E dureza prolongada começa a parecer carácter, quando às vezes é só cansaço antigo.</p>
+    <p>Há pessoas que não são frias.</p>
+    <p>Só estão há demasiado tempo a tentar não partir.</p>
+    <p>Isto mudou a forma como olho para os fortes.</p>
+    <p>Hoje, quando alguém diz "eu aguento", eu escuto melhor.</p>
+    <p>Porque às vezes essa frase não significa poder.</p>
+    <p>Significa hábito.</p>
+    <p>Significa que aquela pessoa nunca teve autorização para cair.</p>
+    <p>E ninguém devia passar a vida inteira a provar que merece descanso.</p>
+    <p>Nem toda a torre precisa ficar de pé até ao fim.</p>
+    <p>Às vezes, também é coragem encostar.</p>
+    <div class="stanza">
+      <p>Pedir ajuda.</p>
+      <p>Sentar.</p>
+      <p>Chorar.</p>
+      <p>Dizer: "não consigo sozinho."</p>
+    </div>
+    <p>No xadrez, a torre protege linhas inteiras.</p>
+    <p>Na vida, também.</p>
+    <p>Mas até as paredes precisam de fundação.</p>
+    <p>Até quem segura tudo precisa ser segurado.</p>
+    <p>E talvez a verdadeira força não seja aguentar sempre.</p>
+    <p>Talvez seja aprender o momento certo de deixar alguém aproximar-se sem achar que isso nos diminui.</p>
+  </section>
+
+  <section class="piece-page">
+    <div class="piece-card">
+      <svg class="piece-svg" viewBox="0 0 200 200" role="img" aria-label="Rainha">
+        <text x="100" y="143" text-anchor="middle" font-size="132" fill="#111">♛</text>
+      </svg>
+      <div class="piece-label">A Rainha</div>
+      <div class="piece-sub">A força invisível</div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <h2>A Rainha</h2>
+    <div class="divider"></div>
+    <p>A rainha move-se em todas as direções.</p>
+    <p>Talvez por isso, durante muito tempo, eu tenha pensado nela como poder.</p>
+    <p>Hoje penso nela como cansaço.</p>
+    <p>Porque há forças que parecem infinitas só porque ninguém lhes deu permissão para parar.</p>
+    <p>No bairro, as rainhas raramente usavam coroa.</p>
+    <p>Usavam avental. Usavam bata. Usavam cabelo preso à pressa. Usavam sacos de compras em cada mão e uma preocupação antiga no rosto.</p>
+    <p>E mesmo assim, chegavam a todo o lado.</p>
+    <div class="stanza">
+      <p>À cozinha.</p>
+      <p>Ao trabalho.</p>
+      <p>À escola dos filhos.</p>
+      <p>Ao hospital.</p>
+      <p>À repartição.</p>
+      <p>À casa de alguém que precisava.</p>
+    </div>
+    <p>A rainha era mãe, avó, tia, vizinha.</p>
+    <p>Era a mulher que sabia quem tinha comido, quem estava doente, quem precisava de boleia, quem andava triste, quem estava a mentir quando dizia "está tudo bem".</p>
+    <p>Havia sempre uma mulher a segurar o mundo sem o mundo perceber.</p>
+    <div class="stanza">
+      <p>Uma mulher a fazer contas de cabeça enquanto mexia a panela.</p>
+      <p>Uma mulher a dobrar roupa de madrugada.</p>
+      <p>Uma mulher a transformar pouco em suficiente, e suficiente em milagre.</p>
+    </div>
+    <p>Eu cresci rodeado por esse tipo de poder.</p>
+    <p>Só que, na altura, não lhe chamava poder.</p>
+    <p>Chamava normal.</p>
+    <p>Normal era ver uma mãe cansada continuar. Normal era ver uma avó guardar o melhor pedaço para os outros. Normal era uma mulher engolir preocupação para a casa não perder o chão.</p>
+    <p>É estranho como a gente demora a reconhecer aquilo que sempre nos salvou.</p>
+    <p>No xadrez, perder a rainha muda a partida inteira.</p>
+    <p>Na vida também.</p>
+    <p>Há ausências que não ocupam espaço.</p>
+    <p>Tomam conta dele.</p>
+    <div class="stanza">
+      <p>Uma cadeira vazia.</p>
+      <p>Uma voz que já não chama da cozinha.</p>
+      <p>Um perfume que aparece do nada numa rua qualquer.</p>
+      <p>Uma receita que ninguém consegue fazer igual.</p>
+    </div>
+    <p>A perda de uma rainha não é só tristeza.</p>
+    <p>É desorganização do mundo.</p>
+    <p>De repente, ninguém sabe onde estão certas coisas. Ninguém sabe dizer certas palavras. Ninguém sabe acalmar a casa da mesma maneira.</p>
+    <p>E é aí que percebemos que algumas pessoas eram muito mais do que presença.</p>
+    <p>Eram direção. Eram abrigo. Eram memória viva de quem fomos antes de endurecermos.</p>
+    <p>Eu aprendi tarde que o amor também pode ser estratégia.</p>
+    <p>Não aquela estratégia fria de quem quer vencer alguém.</p>
+    <p>Mas a estratégia de manter gente viva.</p>
+    <p>De lembrar aniversários. De insistir numa chamada. De pôr comida num prato. De dizer "leva casaco" quando a pessoa já é adulta, mas continua a ser criança em algum lugar dentro dela.</p>
+    <p>Durante muito tempo, confundi amor com grandes gestos.</p>
+    <p>Depois vi mulheres salvarem famílias com gestos pequenos.</p>
+    <div class="stanza">
+      <p>Um tacho ao lume.</p>
+      <p>Uma mão na testa.</p>
+      <p>Uma mentira piedosa para não assustar os filhos.</p>
+      <p>Um "come mais um bocadinho" dito como oração.</p>
+    </div>
+    <p>As rainhas do meu bairro sabiam mover-se em todas as direções porque a vida exigia isso delas.</p>
+    <p>Mas havia uma direção que quase nunca lhes ensinavam:</p>
+    <p>para dentro.</p>
+    <p>Para o próprio descanso. Para o próprio desejo. Para a própria tristeza. Para a própria liberdade.</p>
+    <p>Muitas viveram para os outros até se esquecerem de onde começavam.</p>
+    <p>E nós, que fomos amados por elas, também temos culpa.</p>
+    <p>Porque nos habituámos ao milagre.</p>
+    <p>Habituámo-nos à mesa posta. À roupa limpa. À pergunta certa na hora certa. À força sempre disponível.</p>
+    <p>E esquecemo-nos de perguntar:</p>
+    <p>"E tu?"</p>
+    <p>Só isso.</p>
+    <p>"E tu?"</p>
+    <div class="stanza">
+      <p>O que queres?</p>
+      <p>O que perdeste?</p>
+      <p>O que sonhavas antes de toda a gente precisar de ti?</p>
+      <p>Onde dói quando ninguém está a ver?</p>
+    </div>
+    <p>Há perguntas que chegam tarde.</p>
+    <p>Mas mesmo tarde, precisam ser feitas.</p>
+    <p>Porque amar uma rainha não pode ser apenas depender dela.</p>
+    <p>Tem de ser vê-la.</p>
+    <p>Inteira.</p>
+    <div class="stanza">
+      <p>Não só mãe.</p>
+      <p>Não só esposa.</p>
+      <p>Não só avó.</p>
+      <p>Não só cuidadora.</p>
+      <p>Não só a pessoa que resolve.</p>
+    </div>
+    <p>Pessoa.</p>
+    <p>Com medo. Com desejo. Com memórias. Com cansaços. Com partes de si que nunca tiveram tempo de nascer.</p>
+    <p>Hoje, quando penso na rainha, penso menos em domínio e mais em entrega.</p>
+    <p>Penso em todas as mulheres que fizeram do amor uma forma de resistência.</p>
+    <div class="stanza">
+      <p>Penso nas que ficaram.</p>
+      <p>Nas que partiram.</p>
+      <p>Nas que ainda estão aqui, mas nunca foram realmente cuidadas.</p>
+    </div>
+    <p>E se este livro tiver alguma justiça, que seja esta:</p>
+    <p>dizer que elas não eram fortes porque não sofriam.</p>
+    <p>Eram fortes porque sofriam e, mesmo assim, continuavam a proteger a vida.</p>
+    <p>Mas talvez a próxima geração precise aprender outra coisa.</p>
+    <p>Que uma rainha também tem direito a pousar a coroa.</p>
+    <p>Mesmo quando a coroa é invisível.</p>
+    <p>Mesmo quando ninguém sabe o quanto pesa.</p>
+  </section>
+
+  <section class="piece-page">
+    <div class="piece-card">
+      <svg class="piece-svg" viewBox="0 0 200 200" role="img" aria-label="Rei">
+        <text x="100" y="143" text-anchor="middle" font-size="132" fill="#111">♚</text>
+      </svg>
+      <div class="piece-label">O Rei</div>
+      <div class="piece-sub">O peso do comando</div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <h2>O Rei</h2>
+    <div class="divider"></div>
+    <p>Toda a gente pensa que o rei manda.</p>
+    <p>Foi uma das primeiras mentiras que aprendi sem ninguém me dizer.</p>
+    <p>No xadrez, o rei é a peça mais importante.</p>
+    <p>Mas também é a mais limitada.</p>
+    <div class="stanza">
+      <p>Anda pouco.</p>
+      <p>Depende dos outros.</p>
+      <p>Vive cercado de proteção e ameaça.</p>
+    </div>
+    <p>Se cair, acaba o jogo.</p>
+    <p>Talvez por isso eu tenha pensado tantas vezes nos homens que conheci.</p>
+    <p>Homens que pareciam grandes vistos de fora.</p>
+    <p>Grandes na voz. Grandes no orgulho. Grandes na forma como entravam numa sala e ocupavam espaço.</p>
+    <p>Mas de madrugada, quando a casa ficava quieta, muitos deles eram só medo com nome próprio.</p>
+    <div class="stanza">
+      <p>Lembro-me do som das chaves a cair na mesa sem uma palavra.</p>
+      <p>Do prato aquecido duas vezes.</p>
+      <p>Da televisão ligada para ninguém ter de falar.</p>
+    </div>
+    <p>Medo de falhar. Medo de não conseguir sustentar. Medo de perder respeito. Medo de ser visto como pequeno. Medo de que alguém descobrisse que por dentro também tremiam.</p>
+    <p>Ninguém ensinava os homens do meu bairro a dizer "tenho medo".</p>
+    <p>Ensinavam-nos a dizer:</p>
+    <div class="stanza">
+      <p>"Está tudo controlado."</p>
+      <p>"Eu resolvo."</p>
+      <p>"Não preciso de ninguém."</p>
+      <p>"Deixa comigo."</p>
+    </div>
+    <p>Frases bonitas.</p>
+    <p>Frases perigosas.</p>
+    <p>Porque às vezes um homem passa a vida inteira a representar segurança enquanto se afunda em silêncio.</p>
+    <p>Eu vi homens assim.</p>
+    <div class="stanza">
+      <p>Homens bons que não sabiam ser suaves.</p>
+      <p>Homens feridos que confundiam dureza com autoridade.</p>
+      <p>Homens cansados que chegavam a casa sem linguagem para explicar o peso do dia.</p>
+    </div>
+    <div class="stanza">
+      <p>Uma camisa pendurada na cadeira.</p>
+      <p>Um copo deixado no lava-loiça.</p>
+      <p>Um suspiro tão baixo que parecia vergonha.</p>
+    </div>
+    <p>Alguns amavam mal porque nunca tinham sido ensinados a amar sem armadura.</p>
+    <div class="stanza">
+      <p>Davam dinheiro, mas não davam palavras.</p>
+      <p>Davam presença, mas não davam ternura.</p>
+      <p>Davam regras, mas não davam colo.</p>
+    </div>
+    <p>E, mesmo assim, queriam ser compreendidos.</p>
+    <p>Há dores que não justificam o estrago que causam.</p>
+    <p>Mas explicam muita coisa.</p>
+    <p>Com o tempo, comecei a perceber que muitos reis não queriam mandar.</p>
+    <p>Queriam não desaparecer.</p>
+    <p>Queriam sentir que ainda tinham valor num mundo que mede um homem pelo que ele consegue pagar, vencer, carregar ou esconder.</p>
+    <p>E quando um homem acredita que só vale enquanto aguenta, qualquer sinal de fragilidade parece uma ameaça ao trono.</p>
+    <div class="stanza">
+      <p>Por isso grita.</p>
+      <p>Por isso foge.</p>
+      <p>Por isso bebe.</p>
+      <p>Por isso controla.</p>
+      <p>Por isso se fecha.</p>
+    </div>
+    <p>Nem sempre por maldade.</p>
+    <p>Às vezes por pânico.</p>
+    <p>Mas o pânico de um rei pode destruir uma casa inteira.</p>
+    <p>Foi isso que demorei a entender.</p>
+    <p>Que a dor de um homem não pode virar lei para os outros.</p>
+    <div class="stanza">
+      <p>Que o medo dele não pode ser governo.</p>
+      <p>Que a ferida dele não pode ser desculpa.</p>
+      <p>Que o silêncio dele não pode obrigar toda a gente a viver em cuidado permanente.</p>
+    </div>
+    <p>Ser rei não é mandar.</p>
+    <p>É responder pelo impacto dos próprios movimentos.</p>
+    <p>E talvez essa seja a maturidade que ninguém nos ensina cedo:</p>
+    <p>perceber que aquilo que não curamos em nós acaba por governar alguém.</p>
+    <p>Durante anos, achei que crescer era tornar-me invencível.</p>
+    <p>Hoje acho que é o contrário.</p>
+    <p>Crescer é deixar de precisar parecer invencível o tempo todo.</p>
+    <p>É conseguir dizer:</p>
+    <div class="stanza">
+      <p>"Não sei."</p>
+      <p>"Tenho medo."</p>
+      <p>"Errei."</p>
+      <p>"Preciso de ajuda."</p>
+      <p>"Desculpa."</p>
+    </div>
+    <p>Sem sentir que cada palavra dessas nos tira a dignidade.</p>
+    <p>No tabuleiro, o rei sobrevive porque aprende a depender.</p>
+    <p>Na vida também.</p>
+    <p>Nenhum homem se salva sozinho.</p>
+    <p>Nenhuma família se sustenta só com orgulho.</p>
+    <p>Nenhum amor aguenta eternamente uma pessoa que nunca se deixa alcançar.</p>
+    <p>Talvez o verdadeiro comando comece quando um homem deixa de confundir controlo com cuidado.</p>
+    <div class="stanza">
+      <p>Quando entende que proteger não é dominar.</p>
+      <p>Que liderar não é calar os outros.</p>
+      <p>Que força não é ausência de lágrimas.</p>
+      <p>Que respeito não nasce do medo.</p>
+    </div>
+    <p>Eu ainda estou a aprender isso.</p>
+    <p>A desaprender certas heranças. A desmontar certas frases. A reconhecer dentro de mim gestos que não quero repetir.</p>
+    <p>Porque todos nós carregamos reis antigos por dentro.</p>
+    <div class="stanza">
+      <p>Vozes.</p>
+      <p>Posturas.</p>
+      <p>Medos.</p>
+      <p>Maneiras de amar que herdámos antes de saber escolher.</p>
+    </div>
+    <p>Mas também podemos interromper a linhagem.</p>
+    <p>Podemos ser o primeiro homem da casa a pedir desculpa sem se diminuir.</p>
+    <p>O primeiro a falar sem gritar. O primeiro a cuidar sem controlar. O primeiro a admitir cansaço antes de virar pedra.</p>
+    <p>Talvez seja isso comandar.</p>
+    <p>Não vencer todos.</p>
+    <p>Não dominar o tabuleiro.</p>
+    <p>Mas aprender a mover-se com consciência do que cada passo pode causar em quem está perto.</p>
+    <p>Porque no fim, um rei não se mede pelo número de peças que protegeu em público.</p>
+    <p>Mede-se pelo que fez quando ninguém estava a aplaudir.</p>
+    <p>Pelo amor que não precisou assustar ninguém para ser respeitado.</p>
+    <p>Pela coragem de continuar humano quando o mundo lhe exigia dureza.</p>
+  </section>
+
+  <section class="piece-page">
+    <div class="piece-card">
+      <svg class="piece-svg" viewBox="0 0 200 200" role="img" aria-label="Xeque-Mate">
+        <text x="82" y="138" text-anchor="middle" font-size="118" fill="#111" transform="rotate(-18 82 138)">♚</text>
+        <line x1="122" y1="54" x2="170" y2="102" stroke="#111" stroke-width="9"/>
+        <line x1="170" y1="54" x2="122" y2="102" stroke="#111" stroke-width="9"/>
+      </svg>
+      <div class="piece-label">Xeque-Mate</div>
+      <div class="piece-sub">O fim da ilusão</div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <h2>Xeque-Mate</h2>
+    <div class="divider"></div>
+    <p>Há momentos em que a vida nos encosta ao canto.</p>
+    <p>Não pergunta se estamos prontos.</p>
+    <div class="stanza">
+      <p>Não espera que a gente entenda.</p>
+      <p>Não dá tempo para organizar o coração.</p>
+      <p>Não explica as regras antes de mudar o jogo.</p>
+    </div>
+    <p>Acontece.</p>
+    <div class="stanza">
+      <p>Uma chamada de madrugada.</p>
+      <p>Uma porta que se fecha de vez.</p>
+      <p>Um nome que deixa de aparecer no ecrã.</p>
+      <p>Uma cadeira que fica vazia à mesa.</p>
+    </div>
+    <p>E, de repente, tudo o que parecia firme começa a tremer.</p>
+    <p>No xadrez, o xeque é aviso.</p>
+    <div class="stanza">
+      <p>Ainda há saída.</p>
+      <p>Ainda há movimento.</p>
+      <p>Ainda há uma casa possível.</p>
+    </div>
+    <p>Mas há fases da vida em que o aviso chega atrasado.</p>
+    <p>Quando percebemos, já estamos cansados demais. Orgulhosos demais. Feridos demais. Longe demais de quem fomos.</p>
+    <p>E é aí que o jogo fica sério.</p>
+    <p>Porque nem todo xeque-mate acontece de uma vez.</p>
+    <p>Às vezes, começa devagar.</p>
+    <p>Com uma conversa que não tivemos. Com uma desculpa que adiámos. Com uma ausência repetida até virar costume. Com uma raiva pequena guardada todos os dias no mesmo sítio.</p>
+    <div class="stanza">
+      <p>Uma chávena deixada no lava-loiça.</p>
+      <p>Uma mensagem escrita e apagada.</p>
+      <p>Uma luz acesa no corredor sem ninguém a passar.</p>
+    </div>
+    <p>Depois, um dia, a pessoa olha para a própria vida e não reconhece a casa onde está.</p>
+    <div class="stanza">
+      <p>Não reconhece a voz.</p>
+      <p>Não reconhece o amor.</p>
+      <p>Não reconhece o rosto no espelho.</p>
+    </div>
+    <p>E pergunta:</p>
+    <p>"Como é que vim parar aqui?"</p>
+    <p>Eu já fiz essa pergunta.</p>
+    <p>Mais do que uma vez.</p>
+    <p>Há derrotas que ninguém vê.</p>
+    <p>A pessoa continua a trabalhar. Continua a responder mensagens. Continua a rir nas horas certas. Continua a aparecer nas fotografias.</p>
+    <p>Mas por dentro perdeu uma partida inteira.</p>
+    <p>Ninguém repara porque o corpo ainda se mexe.</p>
+    <p>E há corpos que continuam muito tempo depois da alma pedir intervalo.</p>
+    <p>No bairro, muita gente chamava isso de força.</p>
+    <p>Eu hoje chamo de sobrevivência sem testemunha.</p>
+    <p>O xeque-mate pode ser uma perda.</p>
+    <p>Mas também pode ser uma revelação.</p>
+    <p>Pode ser o momento em que a mentira já não sustenta a casa. O momento em que o orgulho deixa de proteger e começa a prender. O momento em que continuar igual custa mais do que mudar.</p>
+    <p>Nem todo fim é castigo.</p>
+    <p>Alguns fins são misericórdia atrasada.</p>
+    <p>Há portas que doem quando fecham.</p>
+    <p>Mesmo assim, às vezes, depois do barulho da fechadura, vem um silêncio diferente.</p>
+    <p>Não paz.</p>
+    <p>Ainda não.</p>
+    <p>Mas espaço.</p>
+    <div class="stanza">
+      <p>Um quarto onde finalmente se ouve a própria respiração.</p>
+      <p>Uma cama feita só de um lado.</p>
+      <p>Um telefone que já não se espera que toque.</p>
+    </div>
+    <p>Isto não torna a dor bonita.</p>
+    <p>Dor é dor.</p>
+    <p>Não precisa de poesia para existir.</p>
+    <p>Às vezes é só um quarto escuro. Uma mensagem sem resposta. Um café frio. Uma camisa que ainda cheira a alguém. Uma vontade enorme de voltar ao antes, mesmo sabendo que o antes já não existe.</p>
+    <p>Mas existe uma maturidade estranha que nasce depois do fim.</p>
+    <p>Não vem com música. Não vem com luz. Não vem com frases bonitas.</p>
+    <p>Vem pequena.</p>
+    <p>Como quem se levanta só para abrir a janela.</p>
+    <p>Como quem come alguma coisa porque alguém insistiu. Como quem responde "estou aqui" mesmo sem saber exatamente onde está por dentro. Como quem começa a arrumar uma gaveta e, sem querer, arruma um pedaço da vida.</p>
+    <p>Depois de certas partidas, a gente não volta igual.</p>
+    <p>Voltar igual até seria uma ofensa ao que se atravessou.</p>
+    <p>Perder também ensina.</p>
+    <p>Ensina quem ficou. Quem fugiu. Quem só gostava da nossa vitória. Quem nos amava mesmo no chão.</p>
+    <p>Ensina devagar.</p>
+    <div class="stanza">
+      <p>Num domingo demasiado comprido.</p>
+      <p>Numa fotografia antiga encontrada sem aviso.</p>
+      <p>Num lugar da mesa que ninguém ocupa da mesma maneira.</p>
+    </div>
+    <p>O xeque-mate não é sempre o fim da vida.</p>
+    <p>Às vezes é o fim da ilusão.</p>
+    <p>E isso também dói.</p>
+    <p>Porque há ilusões que nos fizeram companhia durante anos.</p>
+    <p>A ideia de que um dia certas pessoas iam mudar. A ideia de que aguentar tudo nos tornava melhores. A ideia de que ser amado era provar constantemente o nosso valor. A ideia de que sair era fracassar.</p>
+    <p>Mas quando a ilusão cai, sobra uma coisa difícil:</p>
+    <p>a verdade.</p>
+    <p>E a verdade, no início, parece vazia.</p>
+    <p>Depois começa a parecer espaço.</p>
+    <div class="stanza">
+      <p>Espaço para respirar.</p>
+      <p>Para escolher.</p>
+      <p>Para pedir perdão.</p>
+      <p>Para não voltar.</p>
+      <p>Para voltar diferente.</p>
+    </div>
+    <p>Para finalmente entender que comando não é controlar o jogo inteiro.</p>
+    <p>Comando é responder ao que acontece sem abandonar quem somos.</p>
+    <p>Hoje, quando penso em xeque-mate, penso menos em derrota e mais em consequência.</p>
+    <p>Cada movimento contou.</p>
+    <p>Os que fizemos. Os que evitámos. Os que alguém fez contra nós. Os que deixámos de fazer por medo.</p>
+    <p>A vida não esquece movimentos.</p>
+    <p>Mas também não é só castigo.</p>
+    <p>Às vezes, mesmo depois do xeque-mate, existe outro tabuleiro.</p>
+    <p>Não igual.</p>
+    <p>Nunca igual.</p>
+    <p>Mas existe.</p>
+    <p>E talvez crescer seja isso:</p>
+    <p>aceitar que algumas partidas terminam para que a gente pare de tentar vencer no lugar onde estava a desaparecer.</p>
+  </section>
+
+  <section class="piece-page">
+    <div class="piece-card">
+      <svg class="piece-svg" viewBox="0 0 200 200" role="img" aria-label="Fim de Jogo">
+        <rect x="35" y="46" width="130" height="108" fill="none" stroke="#111" stroke-width="8"/>
+        <line x1="35" y1="82" x2="165" y2="82" stroke="#111" stroke-width="5"/>
+        <line x1="35" y1="118" x2="165" y2="118" stroke="#111" stroke-width="5"/>
+        <line x1="78" y1="46" x2="78" y2="154" stroke="#111" stroke-width="5"/>
+        <line x1="122" y1="46" x2="122" y2="154" stroke="#111" stroke-width="5"/>
+        <circle cx="78" cy="82" r="12" fill="#111"/>
+        <circle cx="122" cy="118" r="12" fill="#111"/>
+      </svg>
+      <div class="piece-label">Fim de Jogo</div>
+      <div class="piece-sub">O outro tabuleiro</div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <h2>Fim de Jogo</h2>
+    <div class="divider"></div>
+    <p>No fim, o tabuleiro fica em silêncio.</p>
+    <p>As peças param.</p>
+    <p>A mão que antes calculava tudo afasta-se devagar.</p>
+    <p>E só aí percebemos o cansaço.</p>
+    <p>Durante muito tempo, achei que vencer era chegar ao outro lado sem perder nada.</p>
+    <p>Hoje sei que isso quase nunca acontece.</p>
+    <p>A vida leva peças.</p>
+    <div class="stanza">
+      <p>Leva certezas.</p>
+      <p>Leva pessoas.</p>
+      <p>Leva versões nossas que pensávamos eternas.</p>
+    </div>
+    <p>E, mesmo assim, às vezes continuamos.</p>
+    <p>Não por coragem bonita.</p>
+    <p>Mas porque há contas para pagar. Há alguém a chamar o nosso nome. Há uma luz acesa na cozinha. Há manhãs que chegam mesmo quando a noite não foi embora por dentro.</p>
+    <p>O fim de jogo não é sempre vitória.</p>
+    <p>Também não é sempre derrota.</p>
+    <p>Às vezes é só lucidez.</p>
+    <div class="stanza">
+      <p>O som da rua já era outro.</p>
+      <p>Mas a mesa continuava marcada pelos mesmos copos.</p>
+    </div>
+    <p>A capacidade de olhar para trás e dizer:</p>
+    <p>"Eu fiz o que consegui com o que sabia."</p>
+    <p>Isso não apaga os erros.</p>
+    <div class="stanza">
+      <p>Não devolve quem partiu.</p>
+      <p>Não desfaz palavras ditas no momento errado.</p>
+      <p>Não limpa todas as marcas.</p>
+    </div>
+    <p>Mas talvez permita respirar.</p>
+    <p>Há partidas que eu jogaria diferente hoje.</p>
+    <p>Pessoas a quem teria pedido desculpa mais cedo. Portas que teria fechado com menos culpa. Silêncios que teria quebrado antes de se tornarem paredes.</p>
+    <p>Mas ninguém amadurece a tempo de evitar tudo.</p>
+    <p>A gente aprende depois.</p>
+    <p>Depois da queda. Depois da perda. Depois da frase que não volta. Depois de entender que orgulho nenhum aquece uma casa vazia.</p>
+    <p>Se há alguma sabedoria neste livro, talvez seja pequena.</p>
+    <p>Não é a sabedoria de quem venceu.</p>
+    <p>É a de quem observou.</p>
+    <p>Quem viu peões sustentarem mundos. Cavalos encontrarem saídas onde só havia muro. Bispos lerem tristezas escondidas. Torres aguentarem até esquecerem de si. Rainhas salvarem vidas com gestos pequenos. Reis aprenderem, tarde, que mandar não é comandar.</p>
+    <p>E depois de ver tudo isso, já não consigo olhar para ninguém como peça simples.</p>
+    <p>Toda a gente carrega uma partida invisível.</p>
+    <div class="stanza">
+      <p>Um medo.</p>
+      <p>Uma promessa.</p>
+      <p>Uma perda.</p>
+      <p>Uma casa antiga dentro do peito.</p>
+      <p>Um nome que ainda dói quando aparece sem aviso.</p>
+    </div>
+    <p>Por isso tento julgar menos.</p>
+    <p>Não por ingenuidade.</p>
+    <p>Mas porque sei que há movimentos que só fazem sentido quando conhecemos o tabuleiro inteiro.</p>
+    <p>E quase nunca conhecemos.</p>
+    <div class="stanza">
+      <p>Uma cadeira vazia explica mais do que muita teoria.</p>
+      <p>Uma porta fechada também.</p>
+      <p>Um prato posto para alguém que já não vem.</p>
+    </div>
+    <p>O fim de jogo ensina humildade.</p>
+    <p>Ensina que vencer sozinho pode parecer triunfo, mas às vezes é só solidão bem vestida.</p>
+    <p>Ensina que perder nem sempre nos destrói.</p>
+    <p>Às vezes, tira-nos do lugar onde estávamos a endurecer.</p>
+    <p>Hoje, se penso em comando, já não penso em controlo.</p>
+    <p>Penso em consciência.</p>
+    <div class="stanza">
+      <p>Em escolher melhor quando a raiva pede pressa.</p>
+      <p>Em proteger sem prender.</p>
+      <p>Em amar sem possuir.</p>
+      <p>Em sair sem destruir.</p>
+      <p>Em ficar sem desaparecer.</p>
+    </div>
+    <p>Penso em mover-me sabendo que cada passo toca alguém.</p>
+    <p>Talvez seja isso crescer.</p>
+    <p>Não tornar-se invencível.</p>
+    <p>Mas tornar-se responsável.</p>
+    <p>Pelo que fazemos com a dor. Pelo que repetimos sem questionar. Pelo que curamos antes de passar adiante. Pelo tipo de presença que deixamos no mundo.</p>
+    <p>No fim, ninguém sai igual do tabuleiro.</p>
+    <p>Alguns saem mais duros. Outros mais atentos. Outros finalmente livres.</p>
+    <p>Eu ainda estou a aprender a jogar.</p>
+    <p>Mas já sei isto:</p>
+    <p>a vida ensinou-me xadrez antes de eu saber o nome das peças.</p>
+    <p>E se hoje tento estar no comando, não é para vencer toda a gente.</p>
+    <p>É para não me perder de mim.</p>
+  </section>
+
+  <section class="closing-note">
+    <p>Xadrez no Comando</p>
+  </section>
+</body>
+</html>
