@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Margem — App de Sobrevivência Financeira</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Margem ajuda a perceber quanto podes gastar hoje, quanto sobra depois das contas, que despesas pressionam a liquidez e que rendimento extra faz sentido para as tuas skills.">
+  <meta name="author" content="Sabino Pereira">
+  <link rel="canonical" href="https://sabinopereira.com/financial-survival-app.html">
+  <meta property="og:title" content="Margem — App de Sobrevivência Financeira">
+  <meta property="og:description" content="Primeiro estabilidade. Depois crescimento.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sabinopereira.com/financial-survival-app.html">
+  <meta property="og:image" content="https://sabinopereira.com/images/og-tools.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Margem — App de Sobrevivência Financeira">
+  <meta name="twitter:description" content="Clareza, liquidez e rendimento extra antes de ambição financeira.">
+  <meta name="twitter:image" content="https://sabinopereira.com/images/og-tools.svg">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEVDEH8PGZ"></script>
+  <script src="/analytics.js"></script>
+  <link rel="icon" type="image/svg+xml" href="/images/sp-favicon.svg">
+  <link rel="apple-touch-icon" href="/images/sp-favicon.svg">
+  <link rel="stylesheet" href="/style.css?v=8">
+</head>
+<body class="author-hub-body author-tools-clean">
+  <div class="author-shell">
+    <header class="author-header">
+      <a class="author-brand" href="/">
+        <span>
+          <span class="author-brand-name">Sabino Pereira</span>
+          <span class="author-brand-line">Books, ideas, and tools</span>
+        </span>
+      </a>
+      <nav class="author-nav" aria-label="Navegação principal">
+        <a href="/">Home</a>
+        <a href="/books.html">Books</a>
+        <a href="/ideas.html">Ideas</a>
+        <a class="is-active" href="/tools.html">Tools</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main class="author-main finance-app">
+      <section class="author-page-hero finance-hero">
+        <p class="author-kicker">Margem</p>
+        <h1 class="author-page-title">Primeiro estabilidade. Depois crescimento.</h1>
+        <p class="author-page-intro">Uma app para responder a perguntas financeiras reais: quanto podes gastar hoje, se uma compra te aperta, quanto sobra depois das contas e que rendimento extra combina com as tuas skills.</p>
+        <div class="lead-app-status-row">
+          <div class="lead-app-status-card">
+            <span class="lead-app-status-label">Foco</span>
+            <strong>Liquidez antes de riqueza</strong>
+          </div>
+          <div class="lead-app-status-card">
+            <span class="lead-app-status-label">Modo</span>
+            <strong>Sobrevivência inteligente</strong>
+          </div>
+          <div class="lead-app-status-card">
+            <span class="lead-app-status-label">Filosofia</span>
+            <strong>Clareza antes de ambição</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="lead-app-shell">
+        <form class="lead-app-form" id="finance-form">
+          <section class="author-panel">
+            <p class="author-card-eyebrow">1. Realidade de hoje</p>
+            <h2 class="author-section-title">Começa pela liquidez, não pela fantasia.</h2>
+            <div class="lead-app-grid">
+              <label>
+                Dinheiro disponível agora
+                <input type="number" name="currentBalance" min="0" step="0.01" value="850">
+              </label>
+              <label>
+                Dias até receber
+                <input type="number" name="daysToIncome" min="1" step="1" value="18">
+              </label>
+              <label>
+                Rendimento mensal líquido
+                <input type="number" name="monthlyIncome" min="0" step="0.01" value="1450">
+              </label>
+              <label>
+                Rendimento extra já previsível
+                <input type="number" name="expectedExtraIncome" min="0" step="0.01" value="0">
+              </label>
+              <label>
+                Despesas fixas ainda por pagar
+                <input type="number" name="fixedDue" min="0" step="0.01" value="520">
+              </label>
+              <label>
+                Dívidas/prestações ainda por pagar
+                <input type="number" name="debtDue" min="0" step="0.01" value="130">
+              </label>
+              <label>
+                Essenciais por dia até receber
+                <input type="number" name="dailyEssentials" min="0" step="0.01" value="18">
+              </label>
+              <label>
+                Compra que estás a considerar
+                <input type="number" name="purchaseAmount" min="0" step="0.01" value="75">
+              </label>
+            </div>
+          </section>
+
+          <section class="author-panel">
+            <p class="author-card-eyebrow">2. Mês e objetivos</p>
+            <h2 class="author-section-title">Descobre quanto sobra mesmo.</h2>
+            <div class="lead-app-grid">
+              <label>
+                Dia atual do mês
+                <input type="number" name="dayOfMonth" min="1" max="31" step="1" value="8">
+              </label>
+              <label>
+                Dias no mês
+                <input type="number" name="daysInMonth" min="28" max="31" step="1" value="31">
+              </label>
+              <label>
+                Despesas mensais fixas totais
+                <input type="number" name="monthlyFixed" min="0" step="0.01" value="920">
+              </label>
+              <label>
+                Gastos variáveis previstos
+                <input type="number" name="monthlyVariable" min="0" step="0.01" value="360">
+              </label>
+              <label>
+                Margem do mês passado
+                <input type="number" name="lastMonthMargin" step="0.01" value="80">
+              </label>
+              <label>
+                Objetivo a construir
+                <input type="text" name="goalName" value="fundo de emergência">
+              </label>
+              <label>
+                Valor objetivo
+                <input type="number" name="goalTarget" min="0" step="0.01" value="1500">
+              </label>
+              <label>
+                Já guardado para o objetivo
+                <input type="number" name="goalSaved" min="0" step="0.01" value="200">
+              </label>
+            </div>
+          </section>
+
+          <section class="author-panel">
+            <p class="author-card-eyebrow">3. Pressão invisível</p>
+            <h2 class="author-section-title">Onde o dinheiro se perde sem pedir licença.</h2>
+            <div class="lead-app-grid">
+              <label>
+                Subscrições e apps
+                <input type="number" name="subscriptions" min="0" step="0.01" value="42">
+              </label>
+              <label>
+                Comida fora / entregas
+                <input type="number" name="takeaway" min="0" step="0.01" value="160">
+              </label>
+              <label>
+                Compras impulsivas
+                <input type="number" name="impulse" min="0" step="0.01" value="95">
+              </label>
+              <label>
+                Juros, taxas e multas
+                <input type="number" name="fees" min="0" step="0.01" value="25">
+              </label>
+              <label class="lead-app-field--full">
+                Despesas ou hábitos que te preocupam
+                <textarea name="worryNotes" rows="3" placeholder="Ex: Uber, cartões, almoços, compras online, crédito, pagamentos pequenos que se acumulam"></textarea>
+              </label>
+            </div>
+          </section>
+
+          <section class="author-panel">
+            <p class="author-card-eyebrow">4. Rendimento extra</p>
+            <h2 class="author-section-title">Usa o que já sabes antes de inventar uma vida nova.</h2>
+            <div class="lead-app-grid">
+              <label>
+                Profissão ou área
+                <input type="text" name="profession" value="compliance">
+              </label>
+              <label>
+                Horas livres por semana
+                <input type="number" name="hoursPerWeek" min="0" step="1" value="5">
+              </label>
+              <label class="lead-app-field--full">
+                Skills, idiomas e experiência
+                <textarea name="skills" rows="3">inglês, escrita, AML, banca, revisão de processos</textarea>
+              </label>
+              <label>
+                Energia disponível
+                <select name="energy">
+                  <option value="low">Baixa: preciso de algo leve</option>
+                  <option value="medium" selected>Média: consigo testar uma ideia</option>
+                  <option value="high">Alta: posso criar uma oferta séria</option>
+                </select>
+              </label>
+              <label>
+                Tolerância a risco
+                <select name="risk">
+                  <option value="low" selected>Baixa: sem grandes custos iniciais</option>
+                  <option value="medium">Média: aceito investir algum tempo/dinheiro</option>
+                  <option value="high">Alta: quero construir algo maior</option>
+                </select>
+              </label>
+            </div>
+            <div class="author-book-actions finance-actions">
+              <button type="submit" class="author-button">Analisar margem</button>
+              <button type="button" class="author-button author-button--secondary" id="load-example">Carregar exemplo AML</button>
+            </div>
+          </section>
+        </form>
+
+        <section class="lead-app-results finance-results" id="finance-results" hidden>
+          <section class="author-panel finance-result-hero">
+            <p class="author-card-eyebrow">Diagnóstico</p>
+            <h2 class="author-section-title" id="finance-status-title">A tua margem aparece aqui.</h2>
+            <p class="author-page-intro" id="finance-status-copy"></p>
+            <div class="finance-score-strip">
+              <div>
+                <span>Podes gastar hoje</span>
+                <strong id="safe-today">0 €</strong>
+              </div>
+              <div>
+                <span>Sobra mesmo</span>
+                <strong id="true-leftover">0 €</strong>
+              </div>
+              <div>
+                <span>Aguentas</span>
+                <strong id="runway-days">0 dias</strong>
+              </div>
+              <div>
+                <span>Compra agora</span>
+                <strong id="purchase-verdict">A avaliar</strong>
+              </div>
+            </div>
+          </section>
+
+          <section class="author-two-column">
+            <article class="author-panel">
+              <p class="author-card-eyebrow">Perguntas humanas</p>
+              <div class="finance-answer-list" id="human-answers"></div>
+            </article>
+
+            <article class="author-panel">
+              <p class="author-card-eyebrow">Pressão de liquidez</p>
+              <div class="finance-answer-list" id="pressure-list"></div>
+            </article>
+          </section>
+
+          <section class="author-two-column">
+            <article class="author-panel">
+              <p class="author-card-eyebrow">Plano de estabilidade</p>
+              <ol class="finance-plan" id="stability-plan"></ol>
+            </article>
+
+            <article class="author-panel">
+              <p class="author-card-eyebrow">Rendimento extra compatível</p>
+              <div class="finance-answer-list" id="income-ideas"></div>
+            </article>
+          </section>
+
+          <section class="author-panel finance-note">
+            <p class="author-card-eyebrow">Nota</p>
+            <p class="author-page-intro">Isto é uma ferramenta de clareza e planeamento, não aconselhamento financeiro profissional. O objetivo é reduzir aperto, criar margem e evitar decisões tomadas em modo incêndio.</p>
+          </section>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <footer class="author-footer">
+    <span>&copy; 2026 Sabino Pereira</span>
+    <span><a href="/">Home</a> · <a href="/tools.html">Tools</a> · <a href="/contact.html">Contact</a></span>
+  </footer>
+
+  <script>
+    const form = document.getElementById("finance-form");
+    const results = document.getElementById("finance-results");
+    const euro = new Intl.NumberFormat("pt-PT", { style: "currency", currency: "EUR" });
+
+    function numberValue(data, key) {
+      return Number(data.get(key)) || 0;
+    }
+
+    function textValue(data, key) {
+      return String(data.get(key) || "").trim();
+    }
+
+    function clamp(value, min, max) {
+      return Math.min(Math.max(value, min), max);
+    }
+
+    function item(title, copy, tone = "") {
+      return `<article class="finance-answer ${tone}"><strong>${title}</strong><span>${copy}</span></article>`;
+    }
+
+    function idea(title, copy) {
+      return `<article class="finance-answer finance-idea"><strong>${title}</strong><span>${copy}</span></article>`;
+    }
+
+    function getIncomeIdeas(profession, skills, hours, energy, risk) {
+      const profile = `${profession} ${skills}`.toLowerCase();
+      const ideas = [];
+
+      if (profile.includes("compliance") || profile.includes("aml") || profile.includes("banca") || profile.includes("bank")) {
+        ideas.push(idea("Templates AML/KYC", "Criar checklists, modelos de revisão, glossários ou packs de onboarding para pequenas equipas financeiras."));
+        ideas.push(idea("Consultoria leve", "Oferecer sessões de 60 minutos para founders, fintechs ou freelancers que precisam de entender requisitos básicos sem contratar uma equipa inteira."));
+        ideas.push(idea("Tutoria especializada", "Ajudar candidatos a preparar entrevistas de compliance, CV LinkedIn e casos práticos em inglês."));
+      }
+
+      if (profile.includes("escrita") || profile.includes("copy") || profile.includes("english") || profile.includes("inglês")) {
+        ideas.push(idea("Revisão profissional", "Rever CVs, perfis LinkedIn, propostas, emails sensíveis ou documentação técnica para pessoas da tua área."));
+        ideas.push(idea("Produto digital pequeno", "Transformar conhecimento repetido num guia curto, template Gumroad ou Notion pack com promessa específica."));
+      }
+
+      if (profile.includes("excel") || profile.includes("data") || profile.includes("dados") || profile.includes("automação") || profile.includes("ai")) {
+        ideas.push(idea("Automações simples", "Criar mini sistemas em Sheets, Notion ou AI para tarefas repetitivas de pequenos negócios."));
+      }
+
+      if (ideas.length < 4) {
+        ideas.push(idea("Oferta de 2 horas", "Escolhe uma dor concreta que consegues resolver em duas horas e vende como serviço simples, sem construir uma marca inteira."));
+        ideas.push(idea("Auditoria pessoal", "Transforma a tua experiência numa análise curta: CV, processo, página de vendas, rotina operacional, documentos ou mensagens."));
+        ideas.push(idea("Microproduto", "Cria uma checklist, calculadora, guia ou pacote de prompts ligado a uma skill que já usas no trabalho."));
+      }
+
+      if (hours < 3 || energy === "low") {
+        ideas.unshift(idea("Começar leve", "Evita projetos grandes. Testa uma oferta curta, assíncrona e repetível antes de aceitar trabalho pesado."));
+      }
+
+      if (risk === "low") {
+        ideas.push(idea("Sem custos iniciais", "Prioriza serviços e templates vendidos a partir de conhecimento existente. Nada de stock, anúncios ou cursos caros no início."));
+      }
+
+      return ideas.slice(0, 6).join("");
+    }
+
+    function analyze(event) {
+      event.preventDefault();
+      const data = new FormData(form);
+
+      const currentBalance = numberValue(data, "currentBalance");
+      const daysToIncome = Math.max(1, numberValue(data, "daysToIncome"));
+      const monthlyIncome = numberValue(data, "monthlyIncome");
+      const expectedExtraIncome = numberValue(data, "expectedExtraIncome");
+      const fixedDue = numberValue(data, "fixedDue");
+      const debtDue = numberValue(data, "debtDue");
+      const dailyEssentials = numberValue(data, "dailyEssentials");
+      const purchaseAmount = numberValue(data, "purchaseAmount");
+      const dayOfMonth = clamp(numberValue(data, "dayOfMonth"), 1, 31);
+      const daysInMonth = clamp(numberValue(data, "daysInMonth"), 28, 31);
+      const monthlyFixed = numberValue(data, "monthlyFixed");
+      const monthlyVariable = numberValue(data, "monthlyVariable");
+      const lastMonthMargin = numberValue(data, "lastMonthMargin");
+      const goalName = textValue(data, "goalName") || "objetivo";
+      const goalTarget = numberValue(data, "goalTarget");
+      const goalSaved = numberValue(data, "goalSaved");
+      const subscriptions = numberValue(data, "subscriptions");
+      const takeaway = numberValue(data, "takeaway");
+      const impulse = numberValue(data, "impulse");
+      const fees = numberValue(data, "fees");
+      const profession = textValue(data, "profession");
+      const skills = textValue(data, "skills");
+      const hours = numberValue(data, "hoursPerWeek");
+      const energy = textValue(data, "energy");
+      const risk = textValue(data, "risk");
+
+      const essentialsUntilIncome = dailyEssentials * daysToIncome;
+      const obligationsUntilIncome = fixedDue + debtDue + essentialsUntilIncome;
+      const liquidityAfterObligations = currentBalance + expectedExtraIncome - obligationsUntilIncome;
+      const dailySafeSpend = Math.max(0, liquidityAfterObligations / daysToIncome);
+      const afterPurchase = liquidityAfterObligations - purchaseAmount;
+      const trueLeftover = monthlyIncome + expectedExtraIncome - monthlyFixed - monthlyVariable;
+      const emergencyRunway = dailyEssentials > 0 ? Math.max(0, Math.floor((currentBalance - fixedDue - debtDue) / dailyEssentials)) : 0;
+      const monthProgress = dayOfMonth / daysInMonth;
+      const projectedMargin = trueLeftover * monthProgress + liquidityAfterObligations * (1 - monthProgress);
+      const invisibleSpend = subscriptions + takeaway + impulse + fees;
+      const goalGap = Math.max(0, goalTarget - goalSaved);
+      const goalMonths = trueLeftover > 0 ? Math.ceil(goalGap / Math.max(1, trueLeftover * 0.5)) : Infinity;
+
+      let statusTitle = "Estável, mas ainda precisa de margem.";
+      let statusCopy = "Há espaço para respirar, desde que a compra de hoje não coma a proteção dos próximos dias.";
+      let statusTone = "finance-ok";
+
+      if (liquidityAfterObligations < 0) {
+        statusTitle = "Modo aperto: proteger liquidez agora.";
+        statusCopy = "As obrigações até receber são maiores do que o dinheiro disponível. O foco deve ser adiar, negociar, cortar pressão imediata ou criar entrada rápida.";
+        statusTone = "finance-danger";
+      } else if (dailySafeSpend < dailyEssentials * 0.45 || emergencyRunway < 7) {
+        statusTitle = "Margem frágil: ainda estás perto do limite.";
+        statusCopy = "A situação não está perdida, mas um gasto médio pode transformar o mês num incêndio. Mantém decisões grandes em pausa até haver folga.";
+        statusTone = "finance-warning";
+      } else if (trueLeftover > monthlyIncome * 0.15 && emergencyRunway >= 21) {
+        statusTitle = "Base relativamente saudável.";
+        statusCopy = "Já existe alguma folga. O próximo passo é transformar essa folga em proteção, depois em crescimento.";
+      }
+
+      const purchaseVerdict = afterPurchase < 0 ? "Não agora" : afterPurchase < dailyEssentials * 3 ? "Só se for essencial" : "Cabe com cuidado";
+      const compared = projectedMargin - lastMonthMargin;
+      const comparisonText = compared >= 0
+        ? `Estás melhor cerca de ${euro.format(compared)} face ao mês passado, se o padrão se mantiver.`
+        : `Estás pior cerca de ${euro.format(Math.abs(compared))} face ao mês passado, se o padrão se mantiver.`;
+
+      document.getElementById("finance-status-title").textContent = statusTitle;
+      document.getElementById("finance-status-copy").textContent = statusCopy;
+      document.querySelector(".finance-result-hero").className = `author-panel finance-result-hero ${statusTone}`;
+      document.getElementById("safe-today").textContent = euro.format(dailySafeSpend);
+      document.getElementById("true-leftover").textContent = euro.format(trueLeftover);
+      document.getElementById("runway-days").textContent = `${emergencyRunway} dias`;
+      document.getElementById("purchase-verdict").textContent = purchaseVerdict;
+
+      document.getElementById("human-answers").innerHTML = [
+        item("Quanto posso gastar hoje?", `Cerca de ${euro.format(dailySafeSpend)} por dia até receber, depois de contar contas, dívidas e essenciais.`),
+        item("Se comprar isto, fico apertado?", afterPurchase < 0 ? `Sim. Faltariam ${euro.format(Math.abs(afterPurchase))} para atravessar o período com segurança.` : `Depois da compra ainda ficariam ${euro.format(afterPurchase)} de margem até receber.`),
+        item("Quanto sobra mesmo depois das contas?", `${euro.format(trueLeftover)} no mês, antes de decisões novas e imprevistos.`),
+        item(`Quanto guardar para ${goalName}?`, goalMonths === Infinity ? "Primeiro é preciso margem positiva. Sem isso, o objetivo vira pressão extra." : `Se guardares metade da margem mensal, chegas lá em cerca de ${goalMonths} meses.`),
+        item("Estou melhor ou pior?", comparisonText)
+      ].join("");
+
+      const pressureItems = [
+        { name: "Subscrições e apps", value: subscriptions },
+        { name: "Comida fora / entregas", value: takeaway },
+        { name: "Compras impulsivas", value: impulse },
+        { name: "Juros, taxas e multas", value: fees }
+      ].sort((a, b) => b.value - a.value);
+
+      document.getElementById("pressure-list").innerHTML = [
+        item("Despesas invisíveis", `Há ${euro.format(invisibleSpend)} em pressão mensal potencialmente ajustável.`),
+        item("Maior fuga", `${pressureItems[0].name}: ${euro.format(pressureItems[0].value)}.`),
+        item("Destruidor de liquidez", fixedDue + debtDue > currentBalance * 0.55 ? "As contas e prestações ainda por pagar consomem mais de metade do dinheiro disponível." : "A pressão fixa parece controlável, mas os gastos variáveis precisam de vigilância."),
+        item("Tempo de resistência", `Se algo correr mal hoje, a tua autonomia aproximada é ${emergencyRunway} dias antes de entrar em zona crítica.`)
+      ].join("");
+
+      const plan = [];
+      if (liquidityAfterObligations < 0) {
+        plan.push("Congelar compras não essenciais até receber.");
+        plan.push("Listar uma conta negociável, adiável ou parcelável nas próximas 24 horas.");
+        plan.push("Criar entrada rápida: venda pequena, serviço curto ou cobrança pendente.");
+      } else {
+        plan.push("Definir o gasto seguro diário como teto até ao próximo rendimento.");
+        plan.push("Separar uma mini-reserva antes de qualquer compra emocional.");
+        plan.push("Cortar ou pausar a maior fuga invisível durante 30 dias.");
+      }
+      plan.push("Transformar uma skill em oferta simples de baixo risco esta semana.");
+      plan.push("Rever a margem no mesmo dia todas as semanas, sempre antes de decisões grandes.");
+      document.getElementById("stability-plan").innerHTML = plan.map((step) => `<li>${step}</li>`).join("");
+
+      document.getElementById("income-ideas").innerHTML = getIncomeIdeas(profession, skills, hours, energy, risk);
+      results.hidden = false;
+      results.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    document.getElementById("load-example").addEventListener("click", () => {
+      form.currentBalance.value = 850;
+      form.daysToIncome.value = 18;
+      form.monthlyIncome.value = 1450;
+      form.expectedExtraIncome.value = 0;
+      form.fixedDue.value = 520;
+      form.debtDue.value = 130;
+      form.dailyEssentials.value = 18;
+      form.purchaseAmount.value = 75;
+      form.dayOfMonth.value = 8;
+      form.daysInMonth.value = 31;
+      form.monthlyFixed.value = 920;
+      form.monthlyVariable.value = 360;
+      form.lastMonthMargin.value = 80;
+      form.goalName.value = "fundo de emergência";
+      form.goalTarget.value = 1500;
+      form.goalSaved.value = 200;
+      form.subscriptions.value = 42;
+      form.takeaway.value = 160;
+      form.impulse.value = 95;
+      form.fees.value = 25;
+      form.profession.value = "compliance";
+      form.hoursPerWeek.value = 5;
+      form.skills.value = "inglês, escrita, AML, banca, revisão de processos";
+      form.energy.value = "medium";
+      form.risk.value = "low";
+    });
+
+    form.addEventListener("submit", analyze);
+  </script>
+</body>
+</html>
