@@ -72,62 +72,54 @@
                 <input type="number" name="currentBalance" min="0" step="0.01" value="850">
               </label>
               <label>
-                Dias até receber
-                <input type="number" name="daysToIncome" min="1" step="1" value="18">
+                Em que dia do mês costumas receber?
+                <input type="number" name="payDay" min="1" max="31" step="1" value="26">
               </label>
               <label>
                 Rendimento mensal líquido
                 <input type="number" name="monthlyIncome" min="0" step="0.01" value="1450">
               </label>
               <label>
-                Rendimento extra já previsível
+                Dinheiro extra quase certo antes de receber
                 <input type="number" name="expectedExtraIncome" min="0" step="0.01" value="0">
               </label>
               <label>
-                Despesas fixas ainda por pagar
+                Neste mês, que contas obrigatórias ainda faltam pagar?
                 <input type="number" name="fixedDue" min="0" step="0.01" value="520">
               </label>
               <label>
-                Dívidas/prestações ainda por pagar
+                Neste mês, que créditos/prestações ainda faltam pagar?
                 <input type="number" name="debtDue" min="0" step="0.01" value="130">
               </label>
               <label>
-                Essenciais por dia até receber
+                Quanto precisas por dia para comida, transporte e básicos?
                 <input type="number" name="dailyEssentials" min="0" step="0.01" value="18">
               </label>
               <label>
-                Compra que estás a considerar
+                Se estás a pensar comprar algo, quanto custa?
                 <input type="number" name="purchaseAmount" min="0" step="0.01" value="75">
               </label>
             </div>
           </section>
 
           <section class="author-panel">
-            <p class="author-card-eyebrow">2. Mês e objetivos</p>
-            <h2 class="author-section-title">Descobre quanto sobra mesmo.</h2>
+            <p class="author-card-eyebrow">2. Sobra real e objetivos</p>
+            <h2 class="author-section-title">Depois das contas, sobra mesmo quanto?</h2>
             <div class="lead-app-grid">
               <label>
-                Dia atual do mês
-                <input type="number" name="dayOfMonth" min="1" max="31" step="1" value="8">
-              </label>
-              <label>
-                Dias no mês
-                <input type="number" name="daysInMonth" min="28" max="31" step="1" value="31">
-              </label>
-              <label>
-                Despesas mensais fixas totais
+                Num mês normal, quanto pagas em contas obrigatórias?
                 <input type="number" name="monthlyFixed" min="0" step="0.01" value="920">
               </label>
               <label>
-                Gastos variáveis previstos
+                Num mês normal, quanto gastas fora dessas contas?
                 <input type="number" name="monthlyVariable" min="0" step="0.01" value="360">
               </label>
               <label>
-                Margem do mês passado
+                Quanto sobrou no mês passado?
                 <input type="number" name="lastMonthMargin" step="0.01" value="80">
               </label>
               <label>
-                Objetivo a construir
+                Objetivo que queres construir
                 <input type="text" name="goalName" value="fundo de emergência">
               </label>
               <label>
@@ -337,15 +329,20 @@
       const data = new FormData(form);
 
       const currentBalance = numberValue(data, "currentBalance");
-      const daysToIncome = Math.max(1, numberValue(data, "daysToIncome"));
+      const today = new Date();
+      const currentDay = today.getDate();
+      const daysInCurrentMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
+      const payDay = clamp(numberValue(data, "payDay"), 1, 31);
+      const normalizedPayDay = Math.min(payDay, daysInCurrentMonth);
+      const daysToIncome = normalizedPayDay > currentDay
+        ? normalizedPayDay - currentDay
+        : daysInCurrentMonth - currentDay + normalizedPayDay;
       const monthlyIncome = numberValue(data, "monthlyIncome");
       const expectedExtraIncome = numberValue(data, "expectedExtraIncome");
       const fixedDue = numberValue(data, "fixedDue");
       const debtDue = numberValue(data, "debtDue");
       const dailyEssentials = numberValue(data, "dailyEssentials");
       const purchaseAmount = numberValue(data, "purchaseAmount");
-      const dayOfMonth = clamp(numberValue(data, "dayOfMonth"), 1, 31);
-      const daysInMonth = clamp(numberValue(data, "daysInMonth"), 28, 31);
       const monthlyFixed = numberValue(data, "monthlyFixed");
       const monthlyVariable = numberValue(data, "monthlyVariable");
       const lastMonthMargin = numberValue(data, "lastMonthMargin");
@@ -369,7 +366,7 @@
       const afterPurchase = liquidityAfterObligations - purchaseAmount;
       const trueLeftover = monthlyIncome + expectedExtraIncome - monthlyFixed - monthlyVariable;
       const emergencyRunway = dailyEssentials > 0 ? Math.max(0, Math.floor((currentBalance - fixedDue - debtDue) / dailyEssentials)) : 0;
-      const monthProgress = dayOfMonth / daysInMonth;
+      const monthProgress = currentDay / daysInCurrentMonth;
       const projectedMargin = trueLeftover * monthProgress + liquidityAfterObligations * (1 - monthProgress);
       const invisibleSpend = subscriptions + takeaway + impulse + fees;
       const goalGap = Math.max(0, goalTarget - goalSaved);
@@ -407,7 +404,7 @@
       document.getElementById("purchase-verdict").textContent = purchaseVerdict;
 
       document.getElementById("human-answers").innerHTML = [
-        item("Quanto posso gastar hoje?", `Cerca de ${euro.format(dailySafeSpend)} por dia até receber, depois de contar contas, dívidas e essenciais.`),
+        item("Quanto posso gastar hoje?", `Cerca de ${euro.format(dailySafeSpend)} por dia até receber. Estou a assumir que recebes no dia ${normalizedPayDay}, daqui a ${daysToIncome} dias.`),
         item("Se comprar isto, fico apertado?", afterPurchase < 0 ? `Sim. Faltariam ${euro.format(Math.abs(afterPurchase))} para atravessar o período com segurança.` : `Depois da compra ainda ficariam ${euro.format(afterPurchase)} de margem até receber.`),
         item("Quanto sobra mesmo depois das contas?", `${euro.format(trueLeftover)} no mês, antes de decisões novas e imprevistos.`),
         item(`Quanto guardar para ${goalName}?`, goalMonths === Infinity ? "Primeiro é preciso margem positiva. Sem isso, o objetivo vira pressão extra." : `Se guardares metade da margem mensal, chegas lá em cerca de ${goalMonths} meses.`),
@@ -449,15 +446,13 @@
 
     document.getElementById("load-example").addEventListener("click", () => {
       form.currentBalance.value = 850;
-      form.daysToIncome.value = 18;
+      form.payDay.value = 26;
       form.monthlyIncome.value = 1450;
       form.expectedExtraIncome.value = 0;
       form.fixedDue.value = 520;
       form.debtDue.value = 130;
       form.dailyEssentials.value = 18;
       form.purchaseAmount.value = 75;
-      form.dayOfMonth.value = 8;
-      form.daysInMonth.value = 31;
       form.monthlyFixed.value = 920;
       form.monthlyVariable.value = 360;
       form.lastMonthMargin.value = 80;
