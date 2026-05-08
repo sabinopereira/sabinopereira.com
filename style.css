@@ -3917,6 +3917,10 @@ a:hover { opacity: 0.7; }
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.author-tools-showcase {
+  align-items: start;
+}
+
 .author-tools-grid--three {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -4023,6 +4027,10 @@ a:hover { opacity: 0.7; }
   overflow: hidden;
   isolation: isolate;
   transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.author-tools-showcase .author-tool {
+  min-height: 0;
 }
 
 .author-tool::before {
@@ -4384,6 +4392,10 @@ a:hover { opacity: 0.7; }
   margin-top: 20px;
   margin-top: auto;
   padding-top: 20px;
+}
+
+.author-tools-showcase .author-tool-actions {
+  margin-top: 20px;
 }
 
 .author-tool-secondary {
