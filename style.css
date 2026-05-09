@@ -4273,8 +4273,9 @@ a:hover { opacity: 0.7; }
 
 .author-books-grid .author-book-cover {
   aspect-ratio: 1 / 1;
-  object-fit: cover;
-  object-position: center top;
+  object-fit: contain;
+  object-position: center;
+  background: rgba(246, 239, 224, 0.72);
   border-radius: 12px;
 }
 
