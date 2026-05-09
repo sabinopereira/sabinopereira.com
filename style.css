@@ -4266,6 +4266,13 @@ a:hover { opacity: 0.7; }
   box-shadow: 0 16px 36px rgba(44, 33, 26, 0.1);
 }
 
+.author-book-cover--square {
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  background: #080806;
+  border-radius: 12px;
+}
+
 .author-feature-book-cover {
   width: min(100%, 230px);
   aspect-ratio: 141 / 225;
