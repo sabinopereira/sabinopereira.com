@@ -5539,6 +5539,23 @@ a:hover { opacity: 0.7; }
   color: #f4f0e6;
 }
 
+.xadrez-soundtrack-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 4px;
+}
+
+.xadrez-soundtrack-grid span {
+  padding: 8px 11px;
+  border: 1px solid rgba(232, 226, 210, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  color: #f4f0e6;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
 .xadrez-inline-excerpt {
   max-width: 760px;
 }
