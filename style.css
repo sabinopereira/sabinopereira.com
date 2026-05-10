@@ -2765,10 +2765,18 @@ a:hover { opacity: 0.7; }
 .author-home-notebook .author-panel,
 .author-home-notebook .author-card,
 .author-home-notebook .author-book,
-.author-home-notebook .author-story {
+.author-home-notebook .author-story,
+.author-home-notebook .quiet-system-strip,
+.author-home-notebook .quiet-system-inline {
   background: rgba(28, 28, 25, 0.9);
   border-color: rgba(232, 226, 210, 0.16);
   box-shadow: 0 14px 0 rgba(0, 0, 0, 0.22);
+}
+
+.author-home-notebook .quiet-system-strip,
+.author-home-notebook .quiet-system-inline {
+  background:
+    linear-gradient(135deg, rgba(40, 39, 34, 0.96), rgba(18, 18, 16, 0.96));
 }
 
 .author-home-notebook .author-button {
