@@ -7,10 +7,21 @@
     @page {
       size: 6in 9in;
       margin: 0.72in 0.66in;
+
+      @bottom-center {
+        content: counter(page);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 9pt;
+        color: #555;
+      }
     }
 
     @page cover {
       margin: 0;
+
+      @bottom-center {
+        content: "";
+      }
     }
 
     * {
@@ -291,7 +302,7 @@
     <p>Toda a gente pensa que o rei manda.</p>
     <p>Pouca gente percebe o medo constante de perder tudo num único movimento.</p>
     <p>Demorei anos para perceber isto:</p>
-    <p>o tabuleiro muda de bairro para bairro... mas o jogo continua parecido.</p>
+    <p>O tabuleiro muda de bairro para bairro... mas o jogo continua parecido.</p>
     <p>Alguns jogam por dinheiro. Outros por orgulho. Outros só querem sair vivos.</p>
     <p>No fundo, quase toda a gente está a tentar proteger alguma coisa: a família, o coração, o nome, a dignidade, os sonhos antigos ou a pequena versão de si próprio que ainda sobrevive por dentro.</p>
     <p>A vida ensinou-me xadrez antes de eu saber o nome das peças.</p>
