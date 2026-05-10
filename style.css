@@ -3075,28 +3075,120 @@ a:hover { opacity: 0.7; }
 
 .author-tools-clean {
   background:
-    radial-gradient(circle at 16% 10%, rgba(255, 244, 196, 0.42), transparent 28%),
-    radial-gradient(circle at 80% 18%, rgba(90, 141, 148, 0.2), transparent 32%),
-    linear-gradient(135deg, #efe6d5 0%, #d8d3c5 48%, #d2ddd8 100%);
+    radial-gradient(circle at 16% 10%, rgba(215, 168, 82, 0.16), transparent 26%),
+    radial-gradient(circle at 80% 18%, rgba(255, 255, 255, 0.07), transparent 28%),
+    linear-gradient(90deg, rgba(232, 226, 210, 0.05) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(232, 226, 210, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, #050505 0%, #11100e 52%, #060606 100%);
+  background-size: auto, auto, 28px 28px, 100% 30px, auto;
 }
 
 .author-tools-clean .author-shell {
-  background: rgba(252, 248, 239, 0.91);
-  border-color: rgba(40, 77, 80, 0.14);
-  box-shadow: 0 30px 80px rgba(39, 58, 58, 0.16);
+  background: rgba(15, 15, 13, 0.95);
+  border-color: rgba(232, 226, 210, 0.16);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.46);
+}
+
+.author-tools-clean .author-header {
+  border-bottom-color: rgba(232, 226, 210, 0.14);
 }
 
 .author-tools-clean .author-page-hero,
 .author-tools-clean .author-panel,
 .author-tools-clean .author-tool {
-  background: rgba(255, 252, 244, 0.9);
-  border-color: rgba(49, 95, 99, 0.14);
-  box-shadow: 0 14px 38px rgba(49, 95, 99, 0.07);
+  background: rgba(28, 28, 25, 0.9);
+  border-color: rgba(232, 226, 210, 0.16);
+  box-shadow: 0 14px 0 rgba(0, 0, 0, 0.22);
+}
+
+.author-tools-clean .author-brand-name,
+.author-tools-clean .author-section-title,
+.author-tools-clean .author-page-title,
+.author-tools-clean .author-card-title,
+.author-tools-clean .author-tool-headline,
+.author-tools-clean .author-tool-copy .author-card-text strong,
+.author-tools-clean .author-tool-fit strong {
+  color: #f4f0e6;
+}
+
+.author-tools-clean .author-brand-line,
+.author-tools-clean .author-nav a,
+.author-tools-clean .author-page-intro,
+.author-tools-clean .author-card-text,
+.author-tools-clean .author-tool-fit p,
+.author-tools-clean .author-tool-demo-text,
+.author-tools-clean .author-tool-secondary,
+.author-tools-clean .author-footer {
+  color: #c8c1b1;
+}
+
+.author-tools-clean .author-nav a:hover,
+.author-tools-clean .author-nav a.is-active,
+.author-tools-clean .author-language-switch,
+.author-tools-clean .author-tool-secondary:hover,
+.author-tools-clean .author-footer a:hover {
+  color: #fff8e8;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .author-tools-clean .author-card-eyebrow,
 .author-tools-clean .author-kicker {
-  color: #315f63;
+  color: #d7a852;
+}
+
+.author-tools-clean .author-tool-demo,
+.author-tools-clean .author-tools-hero-board div,
+.author-tools-clean .author-tool-example-grid > div {
+  background: rgba(10, 10, 9, 0.42);
+  border-color: rgba(232, 226, 210, 0.14);
+}
+
+.author-tools-clean .author-tool-demo-label,
+.author-tools-clean .author-tools-hero-board span,
+.author-tools-clean .author-chip {
+  color: #d7a852;
+}
+
+.author-tools-clean .author-tools-hero-board p {
+  color: #c8c1b1;
+}
+
+.author-tools-clean .author-chip {
+  background: rgba(215, 168, 82, 0.11);
+}
+
+.author-tools-clean .author-tool::before,
+.author-tools-clean .author-tool::after {
+  background: #d7a852;
+}
+
+.author-tools-clean .author-tool:hover {
+  border-color: rgba(215, 168, 82, 0.32);
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.24);
+}
+
+.author-tools-clean .author-button {
+  background: #f4f0e6;
+  color: #0d0d0c;
+  border-color: #f4f0e6;
+}
+
+.author-tools-clean .author-button:hover {
+  background: #d8d0bf;
+  color: #0d0d0c;
+}
+
+.author-tools-clean .author-button--secondary,
+.author-tools-clean .author-tool-actions .author-button:not(.amazon-btn):not(.buy-btn) {
+  background: transparent;
+  color: #f4f0e6;
+  border-color: rgba(232, 226, 210, 0.28);
+}
+
+.author-tools-clean .author-button--secondary:hover,
+.author-tools-clean .author-tool-actions .author-button:not(.amazon-btn):not(.buy-btn):hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff8e8;
 }
 
 .author-tools-hero {
