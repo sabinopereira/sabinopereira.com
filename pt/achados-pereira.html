@@ -44,91 +44,119 @@
       </nav>
     </header>
 
-    <main class="author-main">
-      <section class="author-page-hero achados-hero">
-        <p class="author-kicker">Achados Pereira by Sabino Pereira</p>
-        <h1 class="author-page-title">Casas bonitas com orçamento real.</h1>
-        <p class="author-page-intro">Uma ferramenta editorial para transformar medidas, orçamento e gosto numa lista de compras realista para casas portuguesas pequenas. Menos inspiração solta, mais decisão prática.</p>
-        <div class="author-meta-row">
-          <span class="author-chip">Medidas primeiro</span>
-          <span class="author-chip">Produtos reais</span>
-          <span class="author-chip">Orçamento fechado</span>
-          <span class="author-chip">Alternativas usadas</span>
-        </div>
-      </section>
-
-      <section class="achados-scenario-grid" aria-label="Cenários iniciais">
-        <article class="author-panel achados-scenario-card">
-          <p class="author-card-eyebrow">Piloto 01</p>
-          <h2 class="author-section-title">Sala Pequena Até 500€</h2>
-          <p class="author-page-intro">Uma sala mais composta, confortável e fácil de comprar, pensada para paredes curtas, circulação apertada e casas onde cada centímetro conta.</p>
-          <a class="author-link" href="#sala-pequena-500">Ver primeira proposta</a>
-        </article>
-
-        <article class="author-panel achados-scenario-card">
-          <p class="author-card-eyebrow">Piloto 02</p>
-          <h2 class="author-section-title">Home Office Até 250€</h2>
-          <p class="author-page-intro">Um canto de trabalho mais sério e bonito, com foco em luz, cadeira, arrumação e superfície útil.</p>
-          <a class="author-link" href="#home-office-250">Ver próximo guia</a>
-        </article>
-
-        <article class="author-panel achados-scenario-card">
-          <p class="author-card-eyebrow">Piloto 03</p>
-          <h2 class="author-section-title">Quarto Acolhedor Até 300€</h2>
-          <p class="author-page-intro">Roupa de cama, luz quente, arrumação simples e uma peça usada bem escolhida para dar carácter.</p>
-          <a class="author-link" href="#quarto-acolhedor-300">Ver próximo guia</a>
-        </article>
-      </section>
-
-      <section class="author-panel achados-product-section" aria-labelledby="measure-first-title">
-        <div class="achados-section-head">
-          <div>
-            <p class="author-card-eyebrow">Como a ferramenta pensa</p>
-            <h2 id="measure-first-title" class="author-section-title">O tamanho da casa decide a lista.</h2>
-            <p class="author-page-intro">Antes de sugerir produtos, cada proposta deve partir das medidas reais da divisão. Uma sala de 12 m², um quarto estreito ou uma cozinha pequena não precisam só de peças bonitas: precisam de peças com escala certa, circulação e arrumação inteligente.</p>
+    <main class="achados-main">
+      <section class="achados-editorial-hero">
+        <div class="achados-hero-copy">
+          <p class="achados-kicker">Achados Pereira by Sabino Pereira</p>
+          <h1>Casa bonita.<br>Orçamento real.</h1>
+          <p>Curadoria de decoração para casas portuguesas pequenas: medidas reais, bons achados, peças acessíveis e uma lista clara do que comprar.</p>
+          <div class="achados-hero-actions">
+            <a class="achados-primary-link" href="#proposta">Explorar o conceito</a>
+            <a class="achados-secondary-link" href="#sala-pequena-500">Ver sala até 500€</a>
           </div>
         </div>
+        <div class="achados-hero-visual" aria-label="Moodboard editorial de uma sala pequena">
+          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80" alt="Sala pequena acolhedora com tons neutros, sofá claro e luz natural">
+          <div class="achados-hero-note">
+            <span>Sala pequena</span>
+            <strong>10-16 m² · até 500€</strong>
+          </div>
+        </div>
+      </section>
 
-        <div class="achados-measure-guide" aria-label="Brief de medidas para qualquer divisão">
+      <section class="achados-intro-strip" aria-label="Promessa do Achados Pereira">
+        <p>Inspiração bonita é fácil de encontrar. O difícil é saber o que cabe, o que combina e o que vale mesmo a pena comprar.</p>
+      </section>
+
+      <section class="achados-simulator" id="proposta" aria-labelledby="simulador-title">
+        <div class="achados-simulator-copy">
+          <p class="achados-kicker">A proposta</p>
+          <h2 id="simulador-title">Escolhe a divisão. Define o orçamento. Recebe uma composição comprável.</h2>
+          <p>O objetivo não é criar mais um blog de decoração. É transformar uma casa real, pequena e imperfeita numa decisão de compra simples: esta peça cabe, esta eleva o espaço, esta pode ser encontrada usada.</p>
+        </div>
+        <div class="achados-simulator-panel">
+          <div class="achados-choice-group" aria-label="Divisões">
+            <span>Divisão</span>
+            <button class="is-active" type="button">Sala</button>
+            <button type="button">Quarto</button>
+            <button type="button">Home office</button>
+          </div>
+          <div class="achados-choice-group" aria-label="Orçamentos">
+            <span>Orçamento</span>
+            <button type="button">250€</button>
+            <button class="is-active" type="button">500€</button>
+            <button type="button">800€</button>
+          </div>
+          <div class="achados-result-card">
+            <div>
+              <span>Resultado exemplo</span>
+              <strong>Sala pequena, calma e comprável</strong>
+              <p>Sofá compatível com a parede, tapete para definir zona, luz indireta, arrumação baixa e uma alternativa usada para poupar.</p>
+            </div>
+            <b>487€</b>
+          </div>
+        </div>
+      </section>
+
+      <section class="achados-curation" aria-labelledby="curadoria-title">
+        <div>
+          <p class="achados-kicker">A curadoria</p>
+          <h2 id="curadoria-title">O segredo está na mistura.</h2>
+          <p>O Achados Pereira não precisa de parecer showroom. A graça está em combinar básicos acessíveis com uma ou duas peças com carácter, incluindo usados bem escolhidos.</p>
+        </div>
+        <div class="achados-source-board" aria-label="Fontes de produtos">
           <article>
-            <span>1. Divisão</span>
-            <strong>Área e formato</strong>
-            <p>Metros quadrados, largura, comprimento e se a divisão é quadrada, estreita, em L ou partilhada com outra função.</p>
+            <span>45%</span>
+            <strong>Básicos acessíveis</strong>
+            <p>IKEA, Conforama, Leroy Merlin, Auchan.</p>
           </article>
           <article>
-            <span>2. Obstáculos</span>
-            <strong>Portas, janelas e tomadas</strong>
-            <p>Radiadores, varandas, roupeiros, bancadas, tomadas e portas alteram o que cabe e onde faz sentido colocar cada peça.</p>
+            <span>30%</span>
+            <strong>Textura e acabamento</strong>
+            <p>La Redoute, Kave Home, Zara Home, H&M Home.</p>
           </article>
           <article>
-            <span>3. Circulação</span>
-            <strong>Espaço para viver</strong>
-            <p>A proposta deve deixar passagem, abertura de portas e uso confortável. Se uma peça obriga a andar de lado, é grande demais.</p>
-          </article>
-          <article>
-            <span>4. Peças-âncora</span>
-            <strong>Medidas máximas</strong>
-            <p>Sofá, cama, mesa, secretária, móvel TV e mesa de jantar devem ter largura e profundidade máxima antes da procura começar.</p>
-          </article>
-          <article>
-            <span>5. Arrumação</span>
-            <strong>Vertical, leve e realista</strong>
-            <p>Em casas pequenas, a arrumação precisa de aproveitar parede, altura e cantos sem tornar a divisão pesada.</p>
-          </article>
-          <article>
-            <span>6. Orçamento</span>
-            <strong>Comprar por prioridade</strong>
-            <p>O dinheiro deve ir primeiro para o que muda o uso da divisão: luz, conforto, circulação, arrumação e uma peça principal bem dimensionada.</p>
+            <span>25%</span>
+            <strong>Achados usados</strong>
+            <p>OLX, Marketplace, peças vintage e móveis com potencial.</p>
           </article>
         </div>
       </section>
 
-      <section class="author-panel achados-product-section" id="sala-pequena-500" aria-labelledby="sala-pequena-title">
-        <div class="achados-section-head">
+      <section class="achados-measure-editorial" aria-labelledby="measure-first-title">
+        <p class="achados-kicker">A regra</p>
+        <h2 id="measure-first-title">O tamanho da casa decide a lista.</h2>
+        <p>Antes de sugerir produtos, cada proposta parte das medidas reais da divisão. Uma sala de 12 m², um quarto estreito ou uma cozinha pequena precisam de escala certa, circulação e arrumação inteligente.</p>
+        <div class="achados-measure-guide" aria-label="Brief de medidas para qualquer divisão">
+          <article>
+            <span>Divisão</span>
+            <strong>Área e formato</strong>
+            <p>Metros quadrados, largura, comprimento e se a divisão é quadrada, estreita, em L ou partilhada.</p>
+          </article>
+          <article>
+            <span>Obstáculos</span>
+            <strong>Portas, janelas e tomadas</strong>
+            <p>Radiadores, varandas, roupeiros, bancadas e tomadas alteram o que cabe.</p>
+          </article>
+          <article>
+            <span>Circulação</span>
+            <strong>Espaço para viver</strong>
+            <p>Se uma peça obriga a andar de lado, é grande demais.</p>
+          </article>
+          <article>
+            <span>Prioridade</span>
+            <strong>Comprar pelo impacto</strong>
+            <p>O dinheiro vai primeiro para luz, conforto, circulação, arrumação e peça principal.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="achados-room-feature" id="sala-pequena-500" aria-labelledby="sala-pequena-title">
+        <div class="achados-room-heading">
           <div>
-            <p class="author-card-eyebrow">Primeira proposta</p>
-            <h2 id="sala-pequena-title" class="author-section-title">Sala Pequena Até 500€</h2>
-            <p class="author-page-intro">Uma lista inicial para uma sala portuguesa pequena. A escolha começa sempre pelas medidas, não pelo nome da peça.</p>
+            <p class="achados-kicker">Primeira proposta</p>
+            <h2 id="sala-pequena-title">Sala Pequena Até 500€</h2>
+            <p>Uma composição inicial para uma sala portuguesa pequena. A escolha começa sempre pelas medidas, não pelo nome da peça.</p>
           </div>
           <div class="achados-budget-box">
             <span>Orçamento</span>
@@ -162,7 +190,6 @@
                 <th scope="col">Produto</th>
                 <th scope="col">Loja</th>
                 <th scope="col">Preço</th>
-                <th scope="col">Link afiliado</th>
                 <th scope="col">Comprar</th>
               </tr>
             </thead>
@@ -174,7 +201,6 @@
                 </td>
                 <td>A definir</td>
                 <td>até 220€</td>
-                <td><span class="achados-affiliate-badge is-not-affiliate">Não</span></td>
                 <td><a class="author-link" href="#alternativa-usada-sala" data-scenario="sala-pequena-500" data-product-category="sofa" data-store="olx-method" data-affiliate="false">Ver método OLX</a></td>
               </tr>
               <tr data-product-category="rug" data-affiliate="false">
@@ -184,7 +210,6 @@
                 </td>
                 <td>A definir</td>
                 <td>até 80€</td>
-                <td><span class="achados-affiliate-badge is-not-affiliate">Não</span></td>
                 <td><span class="achados-link-placeholder">Adicionar link</span></td>
               </tr>
               <tr data-product-category="lighting" data-affiliate="false">
@@ -194,7 +219,6 @@
                 </td>
                 <td>A definir</td>
                 <td>até 60€</td>
-                <td><span class="achados-affiliate-badge is-not-affiliate">Não</span></td>
                 <td><span class="achados-link-placeholder">Adicionar link</span></td>
               </tr>
               <tr data-product-category="storage" data-affiliate="false">
@@ -204,7 +228,6 @@
                 </td>
                 <td>A definir</td>
                 <td>até 90€</td>
-                <td><span class="achados-affiliate-badge is-not-affiliate">Não</span></td>
                 <td><span class="achados-link-placeholder">Adicionar link</span></td>
               </tr>
               <tr data-product-category="textiles" data-affiliate="false">
@@ -214,7 +237,6 @@
                 </td>
                 <td>A definir</td>
                 <td>até 50€</td>
-                <td><span class="achados-affiliate-badge is-not-affiliate">Não</span></td>
                 <td><span class="achados-link-placeholder">Adicionar link</span></td>
               </tr>
             </tbody>
@@ -233,19 +255,19 @@
         </div>
       </section>
 
-      <section class="author-feature-grid author-feature-grid--three achados-next-sections" aria-label="Próximas listas">
-        <article class="author-panel" id="home-office-250">
-          <p class="author-card-eyebrow">A seguir</p>
+      <section class="achados-next-guides" aria-label="Próximas listas">
+        <article id="home-office-250">
+          <p class="achados-kicker">A seguir</p>
           <h2 class="author-section-title">Home Office Até 250€</h2>
           <p class="author-page-intro">Mesmo método: medidas do canto, luz, cadeira, superfície útil e arrumação vertical. Peças usadas prováveis: cadeira ou secretária.</p>
         </article>
-        <article class="author-panel" id="quarto-acolhedor-300">
-          <p class="author-card-eyebrow">A seguir</p>
+        <article id="quarto-acolhedor-300">
+          <p class="achados-kicker">A seguir</p>
           <h2 class="author-section-title">Quarto Acolhedor Até 300€</h2>
           <p class="author-page-intro">Mesmo método: cama, passagem, arrumação, luz quente e têxteis. Peças usadas prováveis: cómoda, mesa de cabeceira ou cabeceira de cama.</p>
         </article>
-        <article class="author-panel">
-          <p class="author-card-eyebrow">Como evolui</p>
+        <article>
+          <p class="achados-kicker">Como evolui</p>
           <h2 class="author-section-title">De guia a assistente de compra.</h2>
           <p class="author-page-intro">Primeiro vêm guias úteis por orçamento. Depois, a ferramenta pode recomendar opções com base nas medidas reais de cada casa.</p>
         </article>
