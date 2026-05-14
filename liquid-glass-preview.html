@@ -339,13 +339,17 @@
 
       .portrait {
         min-height: 0;
-        aspect-ratio: 4 / 5;
+        aspect-ratio: auto;
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.58), rgba(219, 234, 227, 0.42)),
+          #e8eee8;
       }
 
       .portrait img {
         min-height: 0;
-        height: 100%;
-        object-position: 52% 36%;
+        height: auto;
+        object-fit: contain;
+        object-position: center;
       }
 
       h1 {
