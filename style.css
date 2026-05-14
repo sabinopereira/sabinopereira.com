@@ -4126,6 +4126,185 @@ a:hover { opacity: 0.7; }
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.achados-body {
+  --hub-bg: #f5f1e8;
+  --hub-surface: #fffaf0;
+  --hub-ink: #27231d;
+  --hub-muted: #73695e;
+  --hub-accent: #3f6654;
+  --hub-line: rgba(76, 63, 48, 0.14);
+  background:
+    linear-gradient(180deg, rgba(245, 241, 232, 0.96) 0%, rgba(238, 243, 235, 0.94) 100%);
+}
+
+.achados-hero {
+  display: grid;
+  gap: 18px;
+}
+
+.achados-scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.achados-scenario-card {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.achados-product-section {
+  display: grid;
+  gap: 22px;
+}
+
+.achados-section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 22px;
+  align-items: start;
+}
+
+.achados-budget-box {
+  display: grid;
+  gap: 4px;
+  min-width: 118px;
+  padding: 14px 16px;
+  border: 1px solid rgba(63, 102, 84, 0.18);
+  border-radius: 14px;
+  background: rgba(63, 102, 84, 0.08);
+  color: var(--hub-ink);
+  text-align: right;
+}
+
+.achados-budget-box span {
+  color: var(--hub-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.achados-budget-box strong {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.achados-product-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--hub-line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.achados-product-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  color: var(--hub-ink);
+  font-size: 0.94rem;
+}
+
+.achados-product-table caption {
+  padding: 14px 16px 0;
+  color: var(--hub-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.achados-product-table th,
+.achados-product-table td {
+  padding: 16px;
+  border-bottom: 1px solid var(--hub-line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.achados-product-table th {
+  color: var(--hub-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.achados-product-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.achados-product-table td strong,
+.achados-product-table td span {
+  display: block;
+}
+
+.achados-product-table td strong {
+  margin-bottom: 4px;
+}
+
+.achados-product-table td span {
+  color: var(--hub-muted);
+  line-height: 1.45;
+}
+
+.achados-affiliate-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.achados-affiliate-badge.is-affiliate {
+  background: rgba(63, 102, 84, 0.12);
+  color: #274837;
+}
+
+.achados-affiliate-badge.is-not-affiliate {
+  background: rgba(115, 105, 94, 0.1);
+  color: var(--hub-muted);
+}
+
+.achados-link-placeholder {
+  color: var(--hub-muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.achados-product-notes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.achados-product-notes article {
+  padding: 18px;
+  border: 1px solid rgba(76, 63, 48, 0.12);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.36);
+}
+
+.achados-product-notes h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.achados-product-notes p {
+  margin: 0;
+  color: var(--hub-muted);
+  line-height: 1.58;
+}
+
+.achados-next-sections {
+  align-items: stretch;
+}
+
 .author-panel,
 .author-card,
 .author-highlight,
@@ -10227,6 +10406,16 @@ section {
   }
   .book-cover img {
     max-width: 140px !important;
+  }
+
+  .achados-scenario-grid,
+  .achados-section-head,
+  .achados-product-notes {
+    grid-template-columns: 1fr;
+  }
+
+  .achados-budget-box {
+    text-align: left;
   }
 }
 
