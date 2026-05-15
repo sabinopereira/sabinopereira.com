@@ -4509,6 +4509,162 @@ a:hover { opacity: 0.7; }
   align-items: start;
 }
 
+.achados-shop-set {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.achados-set-visual {
+  position: relative;
+  min-height: 520px;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #ddd4c7;
+  box-shadow: 0 24px 54px rgba(38, 35, 29, 0.16);
+}
+
+.achados-set-visual img {
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  display: block;
+  object-fit: cover;
+}
+
+.achados-set-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 58%, rgba(24, 22, 18, 0.2) 100%);
+}
+
+.achados-hotspot {
+  position: absolute;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 2px solid rgba(255, 250, 242, 0.92);
+  border-radius: 50%;
+  background: var(--achados-clay);
+  color: #fffaf2;
+  font-weight: 850;
+  text-decoration: none;
+  box-shadow: 0 12px 26px rgba(39, 35, 29, 0.28);
+}
+
+.achados-hotspot:hover {
+  color: #fffaf2;
+  transform: translateY(-2px) scale(1.04);
+  opacity: 1;
+}
+
+.achados-hotspot--sofa { left: 43%; top: 58%; }
+.achados-hotspot--rug { left: 58%; top: 82%; }
+.achados-hotspot--lamp { left: 28%; top: 35%; }
+.achados-hotspot--storage { right: 11%; top: 62%; }
+.achados-hotspot--table { left: 64%; top: 66%; }
+
+.achados-set-panel {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+  padding: 24px;
+  border: 1px solid rgba(63, 102, 84, 0.14);
+  border-radius: 28px;
+  background: #fffaf2;
+}
+
+.achados-set-panel h3 {
+  margin: 0;
+  color: var(--achados-ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.achados-set-panel p {
+  margin: 0;
+  color: var(--achados-muted);
+  line-height: 1.58;
+}
+
+.achados-set-total {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 18px;
+  background: #edf2eb;
+}
+
+.achados-set-total span {
+  color: var(--achados-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.achados-set-total strong {
+  color: var(--achados-green);
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.achados-set-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: achados-set;
+}
+
+.achados-set-list li {
+  counter-increment: achados-set;
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  color: var(--achados-ink);
+  font-weight: 760;
+}
+
+.achados-set-list li::before {
+  content: counter(achados-set);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--achados-clay);
+  color: #fffaf2;
+  font-size: 0.8rem;
+}
+
+.achados-set-list a {
+  color: var(--achados-ink);
+  text-decoration: none;
+}
+
+.achados-set-list a:hover {
+  color: var(--achados-clay);
+  opacity: 1;
+}
+
+.achados-set-list span {
+  color: var(--achados-muted);
+  font-size: 0.92rem;
+}
+
 .achados-scenario-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -10842,7 +10998,8 @@ section {
   .achados-editorial-hero,
   .achados-simulator,
   .achados-curation,
-  .achados-room-heading {
+  .achados-room-heading,
+  .achados-shop-set {
     grid-template-columns: 1fr;
   }
 
@@ -10873,7 +11030,9 @@ section {
   }
 
   .achados-hero-visual,
-  .achados-hero-visual img {
+  .achados-hero-visual img,
+  .achados-set-visual,
+  .achados-set-visual img {
     min-height: 390px;
   }
 
