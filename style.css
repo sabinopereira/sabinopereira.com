@@ -3590,6 +3590,441 @@ a:hover { opacity: 0.7; }
   }
 }
 
+/* Vintage modern-build direction, inspired by monochrome architectural posters. */
+.author-vintage {
+  --poster-paper: #d8d8ce;
+  --poster-ink: #11110f;
+  --poster-muted: #4d4d47;
+  --poster-line: rgba(17, 17, 15, 0.32);
+  background:
+    radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.16), transparent 22%),
+    linear-gradient(120deg, #191916 0%, #2d2f2b 40%, #11110f 100%);
+  color: var(--poster-ink);
+  font-family: "Avenir Next", "Segoe UI", Arial, sans-serif;
+}
+
+.author-vintage .author-shell {
+  width: min(calc(100% - 48px), 1160px);
+  margin-top: 28px;
+  padding: 18px;
+  background:
+    linear-gradient(90deg, rgba(17, 17, 15, 0.08) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(17, 17, 15, 0.07) 1px, transparent 1px),
+    linear-gradient(135deg, #e1e1d8 0%, #c7c8bf 100%);
+  background-size: 38px 38px, 100% 38px, auto;
+  border: 0;
+  border-radius: 0;
+  box-shadow: 16px 16px 0 rgba(0, 0, 0, 0.34);
+}
+
+.author-vintage .author-shell::before {
+  display: none;
+}
+
+.author-vintage .author-header {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 16px;
+  padding: 0 0 18px;
+  border-bottom: 2px solid var(--poster-ink);
+}
+
+.author-vintage .author-header::before,
+.author-vintage .author-header::after {
+  min-height: 42px;
+  border: 2px solid var(--poster-ink);
+  background: transparent;
+  color: var(--poster-ink);
+  font-family: "Avenir Next", "Segoe UI", Arial, sans-serif;
+  font-size: 0.56rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1.05;
+}
+
+.author-vintage .author-header::before {
+  content: "Quiet\A Construction";
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.author-vintage .author-header::after {
+  content: "Build\A 2026";
+  grid-column: 3;
+  grid-row: 1;
+  width: 76px;
+}
+
+.author-vintage .author-brand {
+  grid-column: 2;
+  grid-row: 1;
+  justify-content: flex-start;
+}
+
+.author-vintage .author-brand-name {
+  color: var(--poster-ink);
+  font-family: "Arial Black", "Avenir Next", Arial, sans-serif;
+  font-size: clamp(2.6rem, 7vw, 6.9rem);
+  font-weight: 900;
+  line-height: 0.78;
+  letter-spacing: -0.095em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.author-vintage .author-brand-line {
+  margin-top: 10px;
+  color: var(--poster-muted);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-align: left;
+}
+
+.author-vintage .author-nav {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, auto));
+  justify-content: end;
+  gap: 10px;
+  margin-top: 6px;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.author-vintage .author-language-switch {
+  display: inline-flex;
+  gap: 0;
+  margin: 0;
+}
+
+.author-vintage .author-nav a,
+.author-vintage .author-language-switch a {
+  min-height: 30px;
+  padding: 8px 10px;
+  border: 2px solid transparent;
+  border-left: 0;
+  color: var(--poster-ink);
+  background: transparent;
+  font-size: 0.56rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  line-height: 1;
+}
+
+.author-vintage .author-language-switch a {
+  border-color: var(--poster-ink);
+}
+
+.author-vintage .author-nav a:hover,
+.author-vintage .author-nav a.is-active,
+.author-vintage .author-language-switch a.is-active {
+  color: var(--poster-paper);
+  background: var(--poster-ink);
+}
+
+.author-vintage .author-main {
+  gap: 12px;
+  padding-top: 14px;
+}
+
+.author-vintage .author-home-hero,
+.author-vintage .author-work-note,
+.author-vintage .author-feature-book,
+.author-vintage .author-page-hero,
+.author-vintage .author-panel,
+.author-vintage .quiet-system-inline {
+  border: 2px solid var(--poster-ink);
+  background: rgba(218, 218, 208, 0.62);
+  box-shadow: none;
+}
+
+.author-vintage .author-home-hero {
+  position: relative;
+  grid-template-columns: 1fr;
+  min-height: 510px;
+  padding: 28px;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, transparent 0 52%, rgba(17, 17, 15, 0.08) 52% 53%, transparent 53%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(193, 194, 185, 0.68));
+}
+
+.author-vintage .author-home-hero::before {
+  content: "";
+  position: absolute;
+  left: 28px;
+  bottom: 28px;
+  width: min(45%, 430px);
+  height: 48%;
+  background:
+    linear-gradient(135deg, transparent 0 36%, rgba(17, 17, 15, 0.95) 36% 38%, transparent 38%),
+    linear-gradient(70deg, rgba(17, 17, 15, 0.92) 0 2px, transparent 2px 20px),
+    linear-gradient(0deg, rgba(17, 17, 15, 0.86) 0 6px, transparent 6px 24px),
+    linear-gradient(180deg, rgba(17, 17, 15, 0.18), rgba(17, 17, 15, 0.05));
+  border: 2px solid var(--poster-ink);
+  filter: grayscale(1) contrast(1.2);
+}
+
+.author-vintage .author-home-hero::after {
+  content: "WE'RE NOT JUST BUILDERS. WE'RE PROBLEM SOLVERS, OBSERVERS, AND QUIET TRUSTED PARTNERS.";
+  position: absolute;
+  right: 28px;
+  bottom: 36px;
+  width: min(38%, 380px);
+  color: var(--poster-ink);
+  font-size: clamp(0.78rem, 1.15vw, 1.02rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.author-vintage .author-home-hero-copy {
+  position: relative;
+  z-index: 1;
+  align-self: start;
+  max-width: none;
+}
+
+.author-vintage .author-home-hero .author-kicker {
+  color: var(--poster-ink);
+  font-size: 0.58rem;
+}
+
+.author-vintage .author-home-hero .author-page-title {
+  max-width: 12ch;
+  color: var(--poster-ink);
+  font-family: "Arial Black", "Avenir Next", Arial, sans-serif;
+  font-size: clamp(4.3rem, 8.8vw, 8rem);
+  font-weight: 900;
+  line-height: 0.78;
+  letter-spacing: -0.11em;
+  text-transform: uppercase;
+}
+
+.author-vintage .author-home-hero .author-page-intro {
+  max-width: 42ch;
+  margin-top: 20px;
+  margin-left: auto;
+  color: var(--poster-ink);
+  font-family: "Avenir Next", "Segoe UI", Arial, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.42;
+}
+
+.author-vintage .author-home-hero-media {
+  display: none;
+}
+
+.author-vintage .author-book-actions {
+  gap: 4px;
+}
+
+.author-vintage .author-button,
+.author-vintage .author-button--secondary,
+.author-vintage .author-book-actions .author-button:not(.amazon-btn):not(.buy-btn) {
+  border: 2px solid var(--poster-ink);
+  color: var(--poster-ink);
+  background: transparent;
+  font-family: "Avenir Next", "Segoe UI", Arial, sans-serif;
+  font-size: 0.64rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.author-vintage .author-button:hover,
+.author-vintage .author-button--secondary:hover,
+.author-vintage .author-book-actions .author-button:not(.amazon-btn):not(.buy-btn):hover {
+  color: var(--poster-paper);
+  background: var(--poster-ink);
+}
+
+.author-vintage .author-section-title,
+.author-vintage .author-page-title,
+.author-vintage .author-card-title {
+  color: var(--poster-ink);
+  font-family: "Arial Black", "Avenir Next", Arial, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.07em;
+}
+
+.author-vintage .author-page-intro,
+.author-vintage .author-card-text {
+  color: #282823;
+  font-family: "Avenir Next", "Segoe UI", Arial, sans-serif;
+  font-weight: 650;
+}
+
+.author-vintage .author-kicker,
+.author-vintage .author-card-eyebrow {
+  color: var(--poster-ink);
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.author-vintage .author-work-note,
+.author-vintage .quiet-power-style-note,
+.author-vintage .author-feature-book {
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.45fr);
+  align-items: stretch;
+  padding: 14px;
+}
+
+.author-vintage .author-work-note-media,
+.author-vintage .author-feature-book-media,
+.author-vintage .being-human-feature-media {
+  filter: grayscale(1) contrast(1.25);
+  mix-blend-mode: multiply;
+}
+
+.author-vintage .quiet-power-style-note .author-work-note-copy {
+  order: 0;
+}
+
+.author-vintage .author-card-grid,
+.author-vintage .author-feature-grid {
+  gap: 10px;
+  border: 0;
+}
+
+.author-vintage .author-card,
+.author-vintage .author-book {
+  border: 2px solid var(--poster-ink);
+  background: rgba(218, 218, 208, 0.56);
+}
+
+.author-vintage .author-series-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  padding: 22px;
+}
+
+.author-vintage .author-series-hero::after {
+  content: "MODERN BUILDS";
+  position: static;
+  align-self: start;
+  width: auto;
+  padding: 12px;
+  color: var(--poster-paper);
+  background: var(--poster-ink);
+  font-size: 0.72rem;
+}
+
+@media (max-width: 760px) {
+  .author-vintage {
+    background: #181816;
+  }
+
+  .author-vintage .author-shell {
+    width: calc(100% - 28px);
+    max-width: var(--hub-max);
+    padding: 10px;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.4);
+  }
+
+  .author-vintage .author-header {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .author-vintage .author-header::before,
+  .author-vintage .author-header::after {
+    display: none;
+  }
+
+  .author-vintage .author-brand {
+    grid-column: 1;
+    justify-content: flex-start;
+  }
+
+  .author-vintage .author-brand-name {
+    max-width: 100%;
+    font-size: clamp(1.6rem, 8.5vw, 2.3rem);
+    line-height: 0.88;
+    letter-spacing: -0.075em;
+    overflow-wrap: anywhere;
+  }
+
+  .author-vintage .author-nav {
+    grid-column: 1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: stretch;
+    gap: 4px;
+  }
+
+  .author-vintage .author-language-switch {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-column: 1 / -1;
+  }
+
+  .author-vintage .author-nav a,
+  .author-vintage .author-language-switch a {
+    border: 2px solid var(--poster-ink);
+    font-size: 0.46rem;
+    letter-spacing: 0.035em;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .author-vintage .author-home-hero,
+  .author-vintage .author-work-note,
+  .author-vintage .quiet-power-style-note,
+  .author-vintage .author-feature-book,
+  .author-vintage .author-series-hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    padding: 16px;
+  }
+
+  .author-vintage .author-home-hero::before {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    display: block;
+    width: 100%;
+    height: 180px;
+    margin-top: 18px;
+    order: 2;
+  }
+
+  .author-vintage .author-home-hero::after {
+    position: static;
+    display: block;
+    width: auto;
+    margin-top: 18px;
+  }
+
+  .author-vintage .author-home-hero .author-page-title,
+  .author-vintage .author-section-title,
+  .author-vintage .author-page-title {
+    max-width: 100%;
+    font-size: clamp(2rem, 10.5vw, 3rem);
+    line-height: 0.86;
+    letter-spacing: -0.08em;
+    overflow-wrap: anywhere;
+  }
+
+  .author-vintage .author-home-hero .author-page-intro {
+    margin-left: 0;
+  }
+
+  .author-vintage .author-page-intro,
+  .author-vintage .author-card-text {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .author-vintage .author-work-note,
+  .author-vintage .quiet-power-style-note {
+    gap: 14px;
+  }
+}
+
 .afraid-series-hero {
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
