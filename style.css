@@ -12438,6 +12438,7 @@ section {
   .author-tool,
   .author-story,
   .author-work-note,
+  .author-work-note-copy,
   .author-feature-book,
   .quiet-system-inline {
     min-width: 0;
@@ -12454,6 +12455,8 @@ section {
   .author-start-if-grid,
   .author-start-path-grid,
   .quiet-system-inline,
+  .author-work-note,
+  .author-feature-book,
   .being-human-feature-grid {
     grid-template-columns: 1fr;
     width: 100%;
@@ -12534,8 +12537,12 @@ section {
     text-wrap: wrap;
   }
 
+  .author-vintage .author-work-note .author-section-title {
+    font-size: clamp(1.45rem, 6.2vw, 1.7rem);
+  }
+
   .author-vintage .author-home-hero .author-page-title {
-    font-size: clamp(2rem, 10.5vw, 3.05rem);
+    font-size: clamp(1.55rem, 6.8vw, 1.9rem);
   }
 
   .author-vintage .author-page-intro,
@@ -12545,6 +12552,12 @@ section {
     font-size: 0.92rem;
     line-height: 1.5;
     overflow-wrap: anywhere;
+  }
+
+  .author-vintage .author-work-note-copy {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .author-vintage .author-panel,
@@ -12657,7 +12670,7 @@ section {
 
 @media (max-width: 760px) {
   .author-vintage .author-nav {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: 6px;
   }
 
@@ -12681,5 +12694,6 @@ section {
     min-height: 30px;
     padding: 7px 8px;
     font-size: 0.5rem;
+    white-space: normal;
   }
 }
