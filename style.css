@@ -12406,6 +12406,13 @@ section {
 
 /* Final mobile pass for the poster direction. Keep grids and book covers stable. */
 @media (max-width: 760px) {
+  body.author-hub-body,
+  body.author-vintage {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+  }
+
   .author-hub-body,
   .author-home-notebook,
   .author-vintage {
@@ -12413,11 +12420,12 @@ section {
   }
 
   .author-shell,
+  body.author-vintage .author-shell,
   .author-vintage .author-shell {
     box-sizing: border-box;
-    width: calc(100% - 20px);
-    max-width: none;
-    margin: 14px auto;
+    width: calc(100vw - 20px) !important;
+    max-width: calc(100vw - 20px) !important;
+    margin: 14px 10px !important;
     padding: 10px;
   }
 
@@ -12490,6 +12498,8 @@ section {
   .author-button {
     max-width: 100%;
     overflow-wrap: anywhere;
+    word-break: break-word;
+    text-wrap: wrap;
   }
 
   .author-page-title,
@@ -12506,18 +12516,22 @@ section {
   .author-vintage .author-page-title,
   .author-vintage .author-section-title {
     max-width: 100%;
-    font-size: clamp(1.85rem, 8.6vw, 2.55rem);
-    line-height: 0.92;
-    letter-spacing: -0.065em;
+    font-size: clamp(1.6rem, 7vw, 2rem);
+    line-height: 0.96;
+    letter-spacing: -0.03em;
     overflow-wrap: anywhere;
+    word-break: break-word;
+    text-wrap: wrap;
   }
 
   .author-vintage .author-card-title {
     max-width: 100%;
-    font-size: clamp(1.45rem, 7.4vw, 2.2rem);
-    line-height: 0.92;
-    letter-spacing: -0.06em;
+    font-size: clamp(1.25rem, 6.1vw, 1.75rem);
+    line-height: 0.96;
+    letter-spacing: -0.03em;
     overflow-wrap: anywhere;
+    word-break: break-word;
+    text-wrap: wrap;
   }
 
   .author-vintage .author-home-hero .author-page-title {
@@ -12537,7 +12551,7 @@ section {
   .author-vintage .author-page-hero,
   .author-vintage .author-card,
   .author-vintage .author-book {
-    overflow: hidden;
+    overflow: visible;
   }
 
   .author-book-actions,
