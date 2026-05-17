@@ -9506,7 +9506,7 @@ a:hover { opacity: 0.7; }
     linear-gradient(180deg, rgba(255, 254, 250, 0.98), rgba(255, 249, 239, 0.96)),
     #fffdf8;
   box-shadow:
-    0 34px 80px rgba(31, 25, 20, 0.18),
+    0 22px 64px rgba(31, 25, 20, 0.12),
     0 2px 0 rgba(255, 255, 255, 0.82) inset;
 }
 
@@ -9716,7 +9716,7 @@ a:hover { opacity: 0.7; }
     linear-gradient(180deg, rgba(255, 254, 250, 0.98), rgba(255, 249, 239, 0.96)),
     #fffdf8;
   box-shadow:
-    0 34px 80px rgba(31, 25, 20, 0.18),
+    0 22px 64px rgba(31, 25, 20, 0.12),
     0 2px 0 rgba(255, 255, 255, 0.82) inset;
 }
 
@@ -9789,6 +9789,194 @@ a:hover { opacity: 0.7; }
 .thought-next-card p {
   color: #5f5448;
   line-height: 1.72;
+}
+
+body.author-home-notebook:has(.thought-article),
+body.monastery-subpage:has(.thought-article) {
+  background: #f7f3eb;
+  color: #28231d;
+}
+
+body.author-home-notebook:has(.thought-article) .author-shell,
+body.monastery-subpage:has(.thought-article) main:not(.monastery-page):not(.knowledge-page):not(.editorial-page):not(.premium-page):not(.home-classic) {
+  width: min(calc(100% - 32px), 1060px);
+  margin: 0 auto;
+  padding: 24px 0 72px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+body.author-home-notebook:has(.thought-article) .author-header,
+body.monastery-subpage:has(.thought-article) .site-header {
+  width: min(100%, 960px);
+  margin: 0 auto;
+  padding: 22px 0 18px;
+  border: 0;
+  border-bottom: 1px solid rgba(70, 56, 44, 0.14);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+body.author-home-notebook:has(.thought-article) .author-brand-name,
+body.monastery-subpage:has(.thought-article) .branding-title,
+body.author-home-notebook:has(.thought-article) .author-page-title,
+body.monastery-subpage:has(.thought-article) .page-title {
+  color: #26211b;
+}
+
+body.author-home-notebook:has(.thought-article) .author-brand-line,
+body.monastery-subpage:has(.thought-article) .branding-subtitle,
+body.author-home-notebook:has(.thought-article) .author-page-intro,
+body.monastery-subpage:has(.thought-article) .page-subtitle {
+  color: #6d6257;
+}
+
+body.author-home-notebook:has(.thought-article) .author-nav a,
+body.monastery-subpage:has(.thought-article) .site-nav a {
+  color: #4c443b;
+}
+
+body.monastery-subpage:has(.thought-article) .site-nav {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+body.author-home-notebook:has(.thought-article) .author-nav a:hover,
+body.author-home-notebook:has(.thought-article) .author-nav a.is-active,
+body.author-home-notebook:has(.thought-article) .author-language-switch,
+body.monastery-subpage:has(.thought-article) .site-nav a:hover,
+body.monastery-subpage:has(.thought-article) .site-nav a.active {
+  color: #201b16;
+  background: rgba(70, 56, 44, 0.08);
+}
+
+body.author-home-notebook:has(.thought-article) .author-page-hero,
+body.monastery-subpage:has(.thought-article) .page-hero-intro,
+body.monastery-subpage:has(.thought-article) .page-intro {
+  max-width: 820px;
+  margin: clamp(52px, 8vw, 88px) auto 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  text-align: left;
+}
+
+body.author-home-notebook:has(.thought-article) .author-page-title,
+body.monastery-subpage:has(.thought-article) .page-title,
+body.monastery-subpage:has(.thought-article) .page-hero-intro h1,
+body.monastery-subpage:has(.thought-article) .page-intro h1 {
+  max-width: 18ch;
+  color: #26211b;
+  font-size: clamp(2.25rem, 4.8vw, 4.2rem);
+  line-height: 1;
+}
+
+body.author-home-notebook:has(.thought-article) .author-page-intro,
+body.monastery-subpage:has(.thought-article) .page-subtitle,
+body.monastery-subpage:has(.thought-article) .page-hero-intro p,
+body.monastery-subpage:has(.thought-article) .page-intro p {
+  max-width: 58ch;
+  margin-left: 0;
+  margin-right: 0;
+  color: #6d6257;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body.author-home-notebook:has(.thought-article) .author-kicker,
+body.monastery-subpage:has(.thought-article) .page-kicker {
+  color: #9d7a3e;
+}
+
+body.author-home-notebook:has(.thought-article) .author-chip,
+body.monastery-subpage:has(.thought-article) .idea-chip,
+body.monastery-subpage:has(.thought-article) .afraid-breadcrumb a {
+  border-color: rgba(70, 56, 44, 0.12);
+  background: rgba(255, 255, 255, 0.42);
+  color: #5d5147;
+}
+
+body.author-home-notebook:has(.thought-article) .thought-article-shell,
+body.monastery-subpage:has(.thought-article) .thought-article-shell {
+  max-width: 960px;
+  padding: 0 0 72px;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.author-home-notebook:has(.thought-article) .thought-article-top,
+body.monastery-subpage:has(.thought-article) .thought-article-top,
+body.monastery-subpage:has(.thought-article) .afraid-breadcrumb {
+  max-width: 760px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+body.author-home-notebook:has(.thought-article) .thought-backlink,
+body.monastery-subpage:has(.thought-article) .thought-backlink {
+  min-height: 36px;
+  border-color: rgba(70, 56, 44, 0.14);
+  background: rgba(255, 255, 255, 0.44);
+  color: #4c443b;
+}
+
+body.author-home-notebook:has(.thought-article) .being-human-hero-art {
+  max-width: 760px;
+  margin: 0 auto 42px;
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+body.author-home-notebook:has(.thought-article) .being-human-hero-art img {
+  aspect-ratio: 16 / 8;
+}
+
+body.author-home-notebook:has(.thought-article) .thought-next-grid,
+body.monastery-subpage:has(.thought-article) .thought-next-grid {
+  max-width: 760px;
+  margin: 28px auto 0;
+  gap: 14px;
+}
+
+body.author-home-notebook:has(.thought-article) .thought-next-card,
+body.monastery-subpage:has(.thought-article) .thought-next-card {
+  padding: 0;
+  border: 0;
+  border-top: 1px solid rgba(70, 56, 44, 0.14);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body.author-home-notebook:has(.thought-article) .thought-next-card h3,
+body.monastery-subpage:has(.thought-article) .thought-next-card h3 {
+  margin-top: 18px;
+  color: #26211b;
+}
+
+body.author-home-notebook:has(.thought-article) .thought-next-card p,
+body.monastery-subpage:has(.thought-article) .thought-next-card p {
+  color: #6d6257;
+}
+
+.being-human-page .author-page-hero::before,
+.being-human-page .author-page-hero::after,
+.being-human-page .thought-article-shell::before,
+.being-human-page .thought-article-shell::after,
+.being-human-page .being-human-hero-art::after {
+  display: none;
 }
 
 .idea-full {
@@ -11148,6 +11336,34 @@ a:hover { opacity: 0.7; }
 }
 
 @media (max-width: 720px) {
+  body.author-home-notebook:has(.thought-article) .author-header,
+  body.monastery-subpage:has(.thought-article) .site-header {
+    width: min(100%, 370px);
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  body.author-home-notebook:has(.thought-article) .author-nav,
+  body.monastery-subpage:has(.thought-article) .site-nav {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 4px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  body.author-home-notebook:has(.thought-article) .author-nav a,
+  body.monastery-subpage:has(.thought-article) .site-nav a {
+    flex: 0 0 auto;
+  }
+
+  body.author-home-notebook:has(.thought-article) .author-page-hero,
+  body.monastery-subpage:has(.thought-article) .page-hero-intro,
+  body.monastery-subpage:has(.thought-article) .page-intro {
+    margin-top: 48px;
+  }
+
   .being-human-feature-grid {
     grid-template-columns: 1fr;
   }
