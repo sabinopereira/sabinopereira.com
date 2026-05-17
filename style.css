@@ -3644,13 +3644,13 @@ a:hover { opacity: 0.7; }
 }
 
 .author-vintage .author-header::before {
-  content: "Quiet\A Construction";
+  content: "Personal\A Notes";
   grid-column: 1;
   grid-row: 1;
 }
 
 .author-vintage .author-header::after {
-  content: "Build\A 2026";
+  content: "Online\A Desk";
   grid-column: 3;
   grid-row: 1;
   width: 76px;
@@ -3768,7 +3768,7 @@ a:hover { opacity: 0.7; }
 }
 
 .author-vintage .author-home-hero::after {
-  content: "WE'RE NOT JUST BUILDERS. WE'RE PROBLEM SOLVERS, OBSERVERS, AND QUIET TRUSTED PARTNERS.";
+  content: "ESSAYS, SERIES, TOOLS, BOOKS, AND SMALL OBSERVATIONS FROM MODERN LIFE.";
   position: absolute;
   right: 28px;
   bottom: 36px;
