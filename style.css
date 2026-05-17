@@ -13166,3 +13166,225 @@ section {
     box-shadow: 5px 5px 0 rgba(168, 58, 47, 0.16);
   }
 }
+
+/* Final editorial accents across the vintage site. */
+.author-vintage .amazon-btn,
+.author-vintage .buy-btn,
+.author-vintage a[href*="amazon.com"],
+.author-vintage a[href*="fourthwall.com"] {
+  background: #e7c760;
+  border-color: #d4b143;
+  color: #151512;
+  box-shadow: 4px 4px 0 rgba(168, 58, 47, 0.18);
+}
+
+.author-vintage .amazon-btn:hover,
+.author-vintage .buy-btn:hover,
+.author-vintage a[href*="amazon.com"]:hover,
+.author-vintage a[href*="fourthwall.com"]:hover {
+  background: #f3d978;
+  border-color: #c59f2d;
+  color: #151512;
+}
+
+.author-vintage .author-project-highlight {
+  border-color: #a83a2f;
+  background:
+    linear-gradient(90deg, rgba(168, 58, 47, 0.1), transparent 36%),
+    rgba(255, 248, 232, 0.62);
+  box-shadow: 7px 7px 0 rgba(168, 58, 47, 0.16);
+}
+
+.author-vintage .author-project-highlight .author-kicker,
+.author-vintage .author-project-highlight .author-section-title {
+  color: #a83a2f;
+}
+
+.author-vintage .author-series-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(280px, 0.58fr);
+  gap: clamp(24px, 5vw, 74px);
+  align-items: end;
+  min-height: 0;
+  padding: clamp(26px, 4vw, 46px);
+  border-color: #3f6f63;
+  background:
+    linear-gradient(90deg, rgba(63, 111, 99, 0.11), transparent 42%),
+    rgba(255, 248, 232, 0.54);
+  box-shadow: 8px 8px 0 rgba(63, 111, 99, 0.17);
+}
+
+.author-vintage .author-series-hero .author-page-title {
+  max-width: 13ch;
+  color: #3f6f63;
+  font-size: clamp(3rem, 5.3vw, 5.3rem);
+  line-height: 0.9;
+}
+
+.author-vintage .author-series-hero .author-page-intro {
+  max-width: 48ch;
+  font-size: clamp(1rem, 1.35vw, 1.16rem);
+}
+
+.author-vintage .being-human-feature {
+  border-color: #a83a2f;
+  background:
+    linear-gradient(180deg, rgba(168, 58, 47, 0.08), rgba(255, 248, 232, 0.54));
+  box-shadow: 8px 8px 0 rgba(168, 58, 47, 0.15);
+}
+
+.author-vintage .being-human-feature-grid {
+  grid-template-columns: minmax(260px, 0.52fr) minmax(0, 0.48fr);
+  align-items: center;
+  gap: clamp(22px, 4vw, 52px);
+}
+
+.author-vintage .being-human-feature-media {
+  aspect-ratio: 16 / 9;
+  max-height: 430px;
+  border: 0;
+  filter: grayscale(0.88) sepia(0.16) contrast(1.08);
+}
+
+.author-vintage .being-human-feature .author-card-eyebrow,
+.author-vintage .being-human-feature .author-section-title {
+  color: #a83a2f;
+}
+
+.author-vintage .being-human-episodes {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.author-vintage.author-tools-clean .author-page-hero {
+  border-color: #3f6f63;
+  background:
+    linear-gradient(90deg, rgba(63, 111, 99, 0.12), transparent 45%),
+    rgba(255, 248, 232, 0.58);
+  box-shadow: 8px 8px 0 rgba(63, 111, 99, 0.16);
+}
+
+.author-vintage.author-tools-clean .author-panel--primary {
+  border-color: #a83a2f;
+  background:
+    linear-gradient(90deg, rgba(168, 58, 47, 0.1), transparent 40%),
+    rgba(255, 248, 232, 0.62);
+  box-shadow: 7px 7px 0 rgba(168, 58, 47, 0.15);
+}
+
+.author-vintage.author-tools-clean .author-tools-grid {
+  gap: 18px;
+}
+
+.author-vintage.author-tools-clean .author-tool {
+  border: 2px solid #151512;
+  border-radius: 0;
+  background: rgba(255, 248, 232, 0.58);
+  box-shadow: 6px 6px 0 rgba(63, 111, 99, 0.13);
+}
+
+.author-vintage.author-tools-clean .author-tool:nth-child(odd) {
+  border-color: #3f6f63;
+}
+
+.author-vintage.author-tools-clean .author-tool:nth-child(even) {
+  border-color: #a83a2f;
+  box-shadow-color: rgba(168, 58, 47, 0.13);
+}
+
+.author-vintage.author-tools-clean .author-tool-mark {
+  border-radius: 0;
+  filter: grayscale(0.2) contrast(1.08);
+}
+
+.author-vintage.author-tools-clean .author-brand-name,
+.author-vintage.author-tools-clean .author-section-title,
+.author-vintage.author-tools-clean .author-page-title,
+.author-vintage.author-tools-clean .author-card-title,
+.author-vintage.author-tools-clean .author-tool-headline,
+.author-vintage.author-tools-clean .author-tool-copy .author-card-text strong,
+.author-vintage.author-tools-clean .author-tool-fit strong {
+  color: #151512;
+}
+
+.author-vintage.author-tools-clean .author-brand-line,
+.author-vintage.author-tools-clean .author-nav a,
+.author-vintage.author-tools-clean .author-page-intro,
+.author-vintage.author-tools-clean .author-card-text,
+.author-vintage.author-tools-clean .author-tool-fit p,
+.author-vintage.author-tools-clean .author-tool-demo-text,
+.author-vintage.author-tools-clean .author-tool-secondary,
+.author-vintage.author-tools-clean .author-footer {
+  color: #303229;
+}
+
+.author-vintage.author-tools-clean .author-kicker,
+.author-vintage.author-tools-clean .author-card-eyebrow,
+.author-vintage.author-tools-clean .author-tool-demo-label {
+  color: #a83a2f;
+}
+
+.author-vintage.author-tools-clean .author-tool-demo,
+.author-vintage.author-tools-clean .author-tool-example-grid > div,
+.author-vintage.author-tools-clean .author-tool-fit {
+  background: rgba(255, 248, 232, 0.7);
+  color: #303229;
+}
+
+@media (max-width: 760px) {
+  .author-vintage .author-project-highlight {
+    padding: 18px;
+  }
+
+  .author-vintage .author-series-hero,
+  .author-vintage .being-human-feature-grid,
+  .author-vintage .being-human-episodes {
+    grid-template-columns: 1fr;
+  }
+
+  .author-vintage .author-series-hero {
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .author-vintage .author-series-hero .author-page-title {
+    max-width: 12ch;
+    font-size: clamp(2rem, 9vw, 2.8rem);
+  }
+
+  .author-vintage .being-human-feature-media {
+    max-height: 230px;
+  }
+
+  .author-vintage.author-tools-clean .author-tool {
+    padding: 18px;
+  }
+}
+
+/* Keep the series landing intro compact and readable. */
+.author-vintage .author-series-hero {
+  display: block;
+  min-height: 0;
+  padding: clamp(28px, 4vw, 44px);
+}
+
+.author-vintage .author-series-hero::after {
+  display: none;
+}
+
+.author-vintage .author-series-hero .author-page-title {
+  max-width: 17ch;
+  font-size: clamp(2.7rem, 4.8vw, 4.7rem);
+  line-height: 0.94;
+}
+
+.author-vintage .author-series-hero .author-page-intro {
+  max-width: 54ch;
+  margin-top: 22px;
+}
+
+@media (max-width: 760px) {
+  .author-vintage .author-series-hero .author-page-title {
+    max-width: 12ch;
+    font-size: clamp(1.85rem, 8vw, 2.45rem);
+  }
+}
