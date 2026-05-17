@@ -12697,3 +12697,112 @@ section {
     white-space: normal;
   }
 }
+
+/* Quiet Power is a supporting thread, so keep this feature quieter than the hero. */
+.author-vintage .quiet-power-style-note {
+  grid-template-columns: minmax(260px, 0.46fr) minmax(0, 0.54fr);
+  align-items: center;
+  gap: 22px;
+  padding: 22px;
+  min-height: 0;
+}
+
+.author-vintage .quiet-power-style-note .author-work-note-media {
+  aspect-ratio: 4 / 3;
+  max-height: 420px;
+  background: var(--poster-ink);
+}
+
+.author-vintage .quiet-power-style-note .author-work-note-media img {
+  object-position: center 56%;
+}
+
+.author-vintage .quiet-power-style-note .author-work-note-copy {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  max-width: 520px;
+  padding: clamp(8px, 2vw, 18px);
+}
+
+.author-vintage .quiet-power-style-note .author-section-title {
+  max-width: 10ch;
+  font-size: clamp(2.2rem, 4.4vw, 4rem);
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+}
+
+.author-vintage .quiet-power-style-note .author-page-intro {
+  max-width: 31rem;
+  margin-top: 16px;
+  font-size: clamp(1rem, 1.35vw, 1.2rem);
+  line-height: 1.45;
+}
+
+.author-vintage .quiet-power-style-note .author-book-actions {
+  margin-top: 24px;
+}
+
+@media (max-width: 760px) {
+  .author-vintage .quiet-power-style-note {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .author-vintage .quiet-power-style-note .author-work-note-media {
+    aspect-ratio: 16 / 10;
+    max-height: none;
+  }
+
+  .author-vintage .quiet-power-style-note .author-work-note-copy {
+    padding: 0;
+  }
+
+  .author-vintage .quiet-power-style-note .author-section-title {
+    max-width: 12ch;
+    font-size: clamp(1.65rem, 8vw, 2.3rem);
+    letter-spacing: -0.04em;
+  }
+
+  .author-vintage .quiet-power-style-note .author-page-intro {
+    font-size: 0.92rem;
+  }
+
+  .author-vintage .author-home-hero .author-page-title {
+    max-width: 100%;
+    font-size: clamp(1.35rem, 6.1vw, 1.75rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .author-vintage .author-home-hero,
+  .author-vintage .author-home-hero-copy {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .author-vintage .author-home-hero {
+    display: block;
+  }
+
+  .author-vintage .author-home-hero::after {
+    width: 100%;
+    max-width: 29ch;
+    font-size: 0.78rem;
+    overflow-wrap: anywhere;
+  }
+
+  .author-vintage .author-home-hero .author-page-intro {
+    width: 100%;
+    max-width: 29ch;
+    margin-left: 0;
+    font-size: 0.88rem;
+    overflow-wrap: anywhere;
+  }
+}
