@@ -2779,6 +2779,21 @@ a:hover { opacity: 0.7; }
     linear-gradient(135deg, rgba(40, 39, 34, 0.96), rgba(18, 18, 16, 0.96));
 }
 
+.author-home-notebook .quiet-system-strip .library-label,
+.author-home-notebook .quiet-system-inline .library-label {
+  color: #d7a852;
+}
+
+.author-home-notebook .quiet-system-strip h2,
+.author-home-notebook .quiet-system-inline h2 {
+  color: #f4f0e6;
+}
+
+.author-home-notebook .quiet-system-strip p,
+.author-home-notebook .quiet-system-inline p {
+  color: #c8c1b1;
+}
+
 .author-home-notebook .author-button {
   background: #f4f0e6;
   color: #0d0d0c;
