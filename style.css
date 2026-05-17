@@ -9454,16 +9454,17 @@ a:hover { opacity: 0.7; }
 }
 
 .thought-article-shell {
-  max-width: 900px;
+  max-width: 1080px;
   margin: 0 auto;
-  padding: 0 24px 72px;
+  padding: 0 24px 88px;
 }
 
 .thought-article-top {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin: 0 0 18px;
+  max-width: 760px;
+  margin: 0 auto 22px;
 }
 
 .thought-meta-strip {
@@ -9492,12 +9493,46 @@ a:hover { opacity: 0.7; }
 }
 
 .thought-article {
-  padding: 30px 32px;
-  border-radius: 18px;
-  border: 1px solid rgba(76, 63, 46, 0.08);
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(36px, 6vw, 68px) clamp(26px, 7vw, 74px);
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(76, 63, 46, 0.14);
   background:
-    radial-gradient(circle at top right, rgba(205, 190, 160, 0.12), transparent 32%),
-    rgba(255, 255, 255, 0.56);
+    linear-gradient(90deg, rgba(215, 181, 109, 0.16) 0 7px, transparent 7px),
+    radial-gradient(circle at 92% 8%, rgba(215, 181, 109, 0.12), transparent 22%),
+    linear-gradient(180deg, rgba(255, 254, 250, 0.98), rgba(255, 249, 239, 0.96)),
+    #fffdf8;
+  box-shadow:
+    0 34px 80px rgba(31, 25, 20, 0.18),
+    0 2px 0 rgba(255, 255, 255, 0.82) inset;
+}
+
+.thought-article::before {
+  content: "";
+  display: block;
+  width: min(180px, 44%);
+  height: 4px;
+  margin: 0 0 30px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #d7b56d, rgba(112, 128, 88, 0.42));
+}
+
+.thought-article::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  z-index: 0;
+  pointer-events: none;
+  border: 1px solid rgba(76, 63, 46, 0.07);
+  border-radius: 5px;
+}
+
+.thought-article > * {
+  position: relative;
+  z-index: 1;
 }
 
 .thought-article h3,
@@ -9520,10 +9555,13 @@ a:hover { opacity: 0.7; }
 }
 
 .thought-article p {
-  margin: 0 0 1rem;
-  color: #4f4338;
-  line-height: 1.82;
-  font-size: 1rem;
+  max-width: 58ch;
+  margin: 0 0 1.16rem;
+  color: #332b23;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.08rem, 0.95rem + 0.28vw, 1.22rem);
+  line-height: 1.86;
+  text-wrap: pretty;
 }
 
 .being-human-feature {
@@ -9661,6 +9699,40 @@ a:hover { opacity: 0.7; }
   background:
     linear-gradient(180deg, rgba(255, 252, 245, 0.96), rgba(255, 248, 238, 0.94)),
     #fffaf1;
+}
+
+.author-home-notebook .thought-article,
+.monastery-subpage.author-home-notebook .thought-article,
+.being-human-page .thought-article {
+  max-width: 760px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: clamp(36px, 6vw, 68px) clamp(26px, 7vw, 74px);
+  border-radius: 8px;
+  border-color: rgba(76, 63, 46, 0.14);
+  background:
+    linear-gradient(90deg, rgba(215, 181, 109, 0.16) 0 7px, transparent 7px),
+    radial-gradient(circle at 92% 8%, rgba(215, 181, 109, 0.12), transparent 22%),
+    linear-gradient(180deg, rgba(255, 254, 250, 0.98), rgba(255, 249, 239, 0.96)),
+    #fffdf8;
+  box-shadow:
+    0 34px 80px rgba(31, 25, 20, 0.18),
+    0 2px 0 rgba(255, 255, 255, 0.82) inset;
+}
+
+.monastery-subpage.author-home-notebook .thought-article-shell {
+  max-width: 1080px;
+  border: 0;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.monastery-subpage.author-home-notebook .thought-article p,
+.being-human-page .thought-article p {
+  color: #332b23;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.08rem, 0.95rem + 0.28vw, 1.22rem);
+  line-height: 1.86;
 }
 
 .thought-audio-block {
@@ -11125,6 +11197,22 @@ a:hover { opacity: 0.7; }
 
   .thought-article {
     padding: 24px 20px;
+  }
+
+  .thought-article-shell,
+  .monastery-subpage.author-home-notebook .thought-article-shell {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .author-home-notebook .thought-article,
+  .monastery-subpage.author-home-notebook .thought-article,
+  .being-human-page .thought-article {
+    padding: 32px 22px;
+  }
+
+  .thought-article::after {
+    inset: 10px;
   }
 
   .thoughts-feature-side,
