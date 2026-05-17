@@ -13559,10 +13559,11 @@ section {
   }
 
   .author-vintage .contact-chip-list li {
-    width: 100%;
-    max-width: 100%;
+    width: min(100%, 27ch);
+    max-width: 27ch;
     padding: 12px;
     border-radius: 0;
+    font-size: 0.9rem;
     overflow-wrap: anywhere;
   }
 
