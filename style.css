@@ -13388,3 +13388,160 @@ section {
     font-size: clamp(1.85rem, 8vw, 2.45rem);
   }
 }
+
+/* Contact page in the same vintage editorial system. */
+.author-vintage.contact-studio-theme {
+  --contact-ink: #151512;
+  --contact-muted: #303229;
+  --contact-green: #3f6f63;
+  --contact-gold: #e7c760;
+  --contact-clay: #a83a2f;
+  --contact-paper: #f7f0df;
+}
+
+.author-vintage.contact-studio-theme .author-shell {
+  background:
+    linear-gradient(90deg, rgba(21, 21, 18, 0.07) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(21, 21, 18, 0.055) 1px, transparent 1px),
+    linear-gradient(135deg, #ece8d9 0%, #d3d6c7 100%);
+  background-size: 38px 38px, 100% 38px, auto;
+}
+
+.author-vintage.contact-studio-theme .author-brand-name,
+.author-vintage.contact-studio-theme .author-page-title,
+.author-vintage.contact-studio-theme .author-card-title,
+.author-vintage.contact-studio-theme .contact-form label {
+  color: var(--contact-ink);
+}
+
+.author-vintage.contact-studio-theme .author-brand-line,
+.author-vintage.contact-studio-theme .author-page-intro,
+.author-vintage.contact-studio-theme .author-list li,
+.author-vintage.contact-studio-theme .author-card-text,
+.author-vintage.contact-studio-theme .contact-note-card p {
+  color: var(--contact-muted);
+}
+
+.author-vintage.contact-studio-theme .author-kicker,
+.author-vintage.contact-studio-theme .author-card-eyebrow,
+.author-vintage.contact-studio-theme .contact-note-label {
+  color: var(--contact-clay);
+}
+
+.author-vintage .contact-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(260px, 0.28fr);
+  gap: clamp(22px, 4vw, 48px);
+  align-items: stretch;
+  border: 2px solid var(--contact-green);
+  background:
+    linear-gradient(90deg, rgba(63, 111, 99, 0.11), transparent 45%),
+    rgba(255, 248, 232, 0.58);
+  box-shadow: 8px 8px 0 rgba(63, 111, 99, 0.16);
+}
+
+.author-vintage .contact-hero .author-page-title {
+  max-width: 13ch;
+  font-size: clamp(3rem, 5.6vw, 5.7rem);
+  line-height: 0.9;
+}
+
+.author-vintage .contact-hero .author-page-intro {
+  max-width: 50ch;
+  margin-top: 22px;
+}
+
+.author-vintage .contact-note-card {
+  min-height: 100%;
+  border: 2px solid var(--contact-clay);
+  border-radius: 0;
+  background:
+    linear-gradient(180deg, rgba(168, 58, 47, 0.1), rgba(255, 248, 232, 0.58));
+  box-shadow: 6px 6px 0 rgba(168, 58, 47, 0.15);
+}
+
+.author-vintage .contact-note-card::before {
+  background: var(--contact-gold);
+}
+
+.author-vintage .contact-layout {
+  grid-template-columns: minmax(260px, 0.42fr) minmax(0, 0.58fr);
+  gap: 18px;
+}
+
+.author-vintage .contact-reasons-panel {
+  border-color: var(--contact-green);
+  background: rgba(255, 248, 232, 0.58);
+  box-shadow: 7px 7px 0 rgba(63, 111, 99, 0.16);
+}
+
+.author-vintage .contact-form-panel {
+  border-color: var(--contact-clay);
+  background: rgba(255, 248, 232, 0.64);
+  box-shadow: 7px 7px 0 rgba(168, 58, 47, 0.14);
+}
+
+.author-vintage .contact-chip-list {
+  display: grid;
+  gap: 10px;
+}
+
+.author-vintage .contact-chip-list li {
+  padding: 14px 16px;
+  border: 2px solid rgba(21, 21, 18, 0.16);
+  background: rgba(247, 240, 223, 0.72);
+}
+
+.author-vintage.contact-studio-theme .contact-form {
+  gap: 16px;
+}
+
+.author-vintage.contact-studio-theme .contact-field {
+  gap: 8px;
+}
+
+.author-vintage.contact-studio-theme .contact-form input,
+.author-vintage.contact-studio-theme .contact-form textarea {
+  border: 2px solid var(--contact-ink);
+  border-radius: 0;
+  background: rgba(255, 248, 232, 0.76);
+  color: var(--contact-ink);
+  box-shadow: 4px 4px 0 rgba(63, 111, 99, 0.12);
+}
+
+.author-vintage.contact-studio-theme .contact-form input:focus,
+.author-vintage.contact-studio-theme .contact-form textarea:focus {
+  border-color: var(--contact-clay);
+  box-shadow: 4px 4px 0 rgba(168, 58, 47, 0.18);
+}
+
+.author-vintage.contact-studio-theme .contact-submit {
+  background: var(--contact-clay);
+  border-color: var(--contact-clay);
+  color: var(--contact-paper);
+  box-shadow: 4px 4px 0 rgba(63, 111, 99, 0.18);
+}
+
+.author-vintage.contact-studio-theme .contact-submit:hover {
+  background: var(--contact-green);
+  border-color: var(--contact-green);
+  color: var(--contact-paper);
+}
+
+@media (max-width: 760px) {
+  .author-vintage .contact-hero,
+  .author-vintage .contact-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .author-vintage .contact-hero .author-page-title {
+    max-width: 12ch;
+    font-size: clamp(2rem, 9vw, 2.8rem);
+  }
+
+  .author-vintage .contact-note-card,
+  .author-vintage .contact-reasons-panel,
+  .author-vintage .contact-form-panel {
+    padding: 18px;
+  }
+}
