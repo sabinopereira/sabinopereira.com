@@ -13532,6 +13532,8 @@ section {
   .author-vintage .contact-hero,
   .author-vintage .contact-layout {
     grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 100%;
   }
 
   .author-vintage .contact-hero .author-page-title {
@@ -13543,5 +13545,30 @@ section {
   .author-vintage .contact-reasons-panel,
   .author-vintage .contact-form-panel {
     padding: 18px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .author-vintage .contact-chip-list {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .author-vintage .contact-chip-list li {
+    width: 100%;
+    max-width: 100%;
+    padding: 12px;
+    border-radius: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .author-vintage .contact-form-panel .author-card-title {
+    max-width: 11ch;
+    font-size: clamp(1.7rem, 8vw, 2.25rem);
+    line-height: 0.98;
   }
 }
