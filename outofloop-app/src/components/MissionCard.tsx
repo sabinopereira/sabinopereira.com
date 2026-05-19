@@ -1,7 +1,7 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { StyleSheet, Text, View } from "react-native";
 
-import { Mission } from "../data/mockMissions";
+import { Mission } from "../data/missions.generated";
 import { colors, radius } from "../theme/colors";
 import { ActionButton } from "./ActionButton";
 import { Pill } from "./Pill";
@@ -70,7 +70,9 @@ export function MissionCard({
             size={17}
             color={colors.green}
           />
-          <Text style={styles.detailText}>{mission.accessibilityNote}</Text>
+          <Text style={styles.detailText}>
+            {mission.accessibleAlternativeDescription}
+          </Text>
         </View>
         <View style={styles.detailRow}>
           <MaterialCommunityIcons
@@ -78,7 +80,9 @@ export function MissionCard({
             size={17}
             color={colors.coral}
           />
-          <Text style={styles.detailText}>{mission.reason}</Text>
+          <Text style={styles.detailText}>
+            Escolhida pelo teu ritmo, modo e preferencia de custo.
+          </Text>
         </View>
       </View>
 

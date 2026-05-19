@@ -1,31 +1,3 @@
-export type Mission = {
-  id: string;
-  title: string;
-  description: string;
-  mode: "coragem" | "social" | "familia" | "saude" | "recomeco";
-  intensity: "leve" | "real" | "coragem";
-  costTier: "gratis" | "low_cost" | "medio" | "especial";
-  durationLabel: "micro" | "leve" | "realista" | "plano" | "maior";
-  estimatedMinutes: number;
-  accessibilityNote: string;
-  reason: string;
-};
-
-export const todayMission: Mission = {
-  id: "uma-mensagem-simples",
-  title: "Uma mensagem simples",
-  description:
-    "Envia uma mensagem curta a alguem: lembrei-me de ti hoje. Como estas?",
-  mode: "social",
-  intensity: "leve",
-  costTier: "gratis",
-  durationLabel: "micro",
-  estimatedMinutes: 5,
-  accessibilityNote: "Texto, audio ou chamada. O formato e teu.",
-  reason:
-    "Escolhida porque hoje pede uma acao pequena, social e sem custo."
-};
-
 export const upcomingPlans = [
   {
     id: "walk-saturday",

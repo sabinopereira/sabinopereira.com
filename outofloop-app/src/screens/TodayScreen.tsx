@@ -3,12 +3,20 @@ import { Modal, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { ActionButton } from "../components/ActionButton";
 import { MissionCard } from "../components/MissionCard";
-import { todayMission } from "../data/mockMissions";
+import { selectMissionOfTheDay } from "../data/missions.generated";
 import { colors, radius } from "../theme/colors";
 
 export function TodayScreen() {
   const [accepted, setAccepted] = useState(false);
   const [notTodayOpen, setNotTodayOpen] = useState(false);
+  const todayMission = selectMissionOfTheDay({
+    primaryMode: "social",
+    secondaryMode: "recomeco",
+    preferredIntensity: "leve",
+    preferredCostTier: "gratis",
+    privateFirst: true,
+    maxMinutes: 15
+  });
 
   return (
     <ScrollView
