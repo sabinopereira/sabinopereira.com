@@ -24,6 +24,7 @@ Recommended Postgres enums:
 ```sql
 mission_mode: coragem, social, familia, saude, recomeco
 mission_intensity: leve, real, coragem
+mission_duration_label: micro, leve, realista, plano, maior
 cost_tier: gratis, low_cost, medio, especial
 circle_category: familia, amigos, gym, futebol, escola_pais, igreja_comunidade, trabalho, bairro, outro
 circle_role: owner, host, helper, member
@@ -222,6 +223,7 @@ Columns:
 - `intensity mission_intensity not null`
 - `cost_tier cost_tier default 'gratis'`
 - `estimated_minutes int`
+- `duration_label mission_duration_label not null`
 - `recommended_day_mask int`
 - `recommended_time_blocks text[]`
 - `solo_enabled boolean default true`
@@ -742,15 +744,24 @@ reports(status, created_at)
 
 Minimum seed:
 
-- 40-60 missions
+- 120 missions
 - 5 modes
 - 3 intensities
+- 5 duration labels
 - low-cost/free majority
 - at least 10 accessibility-friendly missions
 - at least 10 solo/private-first missions
 - at least 10 family missions
 - at least 10 social/courage missions
 - at least 5 recomeço low-energy missions
+
+Duration labels:
+
+- `micro`: 2-5 minutes
+- `leve`: 6-15 minutes
+- `realista`: 16-30 minutes
+- `plano`: 31-60 minutes
+- `maior`: more than 60 minutes or multi-step/weekend missions
 
 Example mission categories:
 

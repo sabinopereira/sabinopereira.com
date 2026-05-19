@@ -275,7 +275,8 @@ Mission card:
 - mode label: Coragem / Social / Familia / Saude / Recomeço
 - intensity: Leve / Real / Coragem
 - cost tag: Gratis / Low cost / Medio / Especial
-- time estimate: 10 min / 30 min / este fim de semana
+- duration label: Micro / Leve / Realista / Plano / Maior
+- time estimate: 3 min / 10 min / 30 min / 60 min
 - accessibility badge if relevant: "opcao calma", "sentado", "sem escadas"
 - mission title
 - short description
@@ -379,6 +380,7 @@ Sections:
 
 - title
 - why this mission
+- duration label
 - estimated time
 - cost
 - intensity
