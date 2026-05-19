@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "OutOfLoop",
+    "slug": "outofloop",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#F7F2EA"
+      }
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}

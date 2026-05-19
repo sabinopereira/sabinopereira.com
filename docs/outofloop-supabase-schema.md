@@ -217,6 +217,7 @@ Mission library.
 Columns:
 
 - `id uuid primary key default gen_random_uuid()`
+- `slug text unique not null`
 - `title text not null`
 - `description text not null`
 - `mode mission_mode not null`
@@ -580,9 +581,20 @@ is_circle_host(circle_uuid uuid, user_uuid uuid) returns boolean
 is_event_participant(event_uuid uuid, user_uuid uuid) returns boolean
 is_event_host(event_uuid uuid, user_uuid uuid) returns boolean
 can_view_event(event_uuid uuid, user_uuid uuid) returns boolean
+shares_circle(user_a uuid, user_b uuid) returns boolean
+assign_daily_mission(target_date date default current_date) returns mission_assignments
 ```
 
 These keep RLS readable and reduce copy-paste policy risk.
+
+`assign_daily_mission` is the v1 rules engine for the `Hoje` screen. It chooses from active missions using:
+
+- primary/secondary mode
+- preferred intensity
+- preferred cost tier
+- family context
+- private-first preference
+- random tie-breaking
 
 ## 5. RLS Policy Direction
 
