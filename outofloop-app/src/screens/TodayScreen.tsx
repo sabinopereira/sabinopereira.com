@@ -17,6 +17,10 @@ export function TodayScreen() {
     privateFirst: true,
     maxMinutes: 15
   });
+  const minuteLabel =
+    todayMission.estimatedMinutes === 1
+      ? "1 minuto"
+      : `${todayMission.estimatedMinutes} minutos`;
 
   return (
     <ScrollView
@@ -25,7 +29,7 @@ export function TodayScreen() {
     >
       <View style={styles.hero}>
         <Text style={styles.eyebrow}>Hoje vamos pequeno</Text>
-        <Text style={styles.heading}>Sai do loop por 5 minutos.</Text>
+        <Text style={styles.heading}>Sai do loop por {minuteLabel}.</Text>
         <Text style={styles.subheading}>
           Uma missao simples, sem culpa, com tempo previsto claro.
         </Text>

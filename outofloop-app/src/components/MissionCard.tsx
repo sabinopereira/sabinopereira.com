@@ -37,6 +37,11 @@ export function MissionCard({
   onAccept: () => void;
   onNotToday: () => void;
 }) {
+  const minuteLabel =
+    mission.estimatedMinutes === 1
+      ? "1 minuto"
+      : `${mission.estimatedMinutes} minutos`;
+
   return (
     <View style={styles.card}>
       <View style={styles.header}>
@@ -61,7 +66,7 @@ export function MissionCard({
             color={colors.blue}
           />
           <Text style={styles.detailText}>
-            Tempo previsto: {mission.estimatedMinutes} minutos
+            Tempo previsto: {minuteLabel}
           </Text>
         </View>
         <View style={styles.detailRow}>
