@@ -12,6 +12,7 @@ This is a product schema spec, not yet a final SQL migration. The goal is to mak
 - Circle data is visible only to circle members.
 - Event memories are visible only to confirmed event participants.
 - Accessibility preferences are private by default.
+- Solo/private-first users must be supported without requiring circle membership.
 - Hosts can manage events, but should not see private user data unless explicitly shared.
 - Reports and moderation actions must be protected from normal users.
 - Avoid public discovery in the MVP beta.
@@ -67,6 +68,7 @@ Columns:
 - `distance_km int default 5`
 - `social_comfort text`
 - `new_people_preference text`
+- `community_preference text default 'private_first'`
 - `energy_type text`
 - `mission_paused boolean default false`
 - `preferred_notification_time time`
@@ -421,7 +423,32 @@ Visibility:
 - host can see aggregate counts, not raw private notes unless explicitly shared later
 - service/admin can read for safety and beta analysis
 
-## 3.14 event_memories
+## 3.14 private_memories
+
+Private memories or reflections from solo missions.
+
+Columns:
+
+- `id uuid primary key default gen_random_uuid()`
+- `user_id uuid references profiles(id) on delete cascade`
+- `mission_assignment_id uuid references mission_assignments(id) on delete set null`
+- `type text not null check (type in ('photo', 'text'))`
+- `photo_url text`
+- `text_body text`
+- `created_at timestamptz default now()`
+- `deleted_at timestamptz`
+
+Visibility:
+
+- owner only
+
+Storage:
+
+- Supabase Storage bucket: `private-memories`
+- path: `users/{user_id}/private-memories/{memory_id}`
+- owner-only access
+
+## 3.15 event_memories
 
 Private event memories.
 
@@ -452,7 +479,7 @@ Storage:
 - path: `events/{event_id}/{memory_id}`
 - access through signed URLs or storage policies restricted by event participation
 
-## 3.15 host_roles
+## 3.16 host_roles
 
 Optional explicit host capability beyond circle role.
 
@@ -473,7 +500,7 @@ MVP note:
 - use simple circle roles first
 - keep this table for future verified host progression
 
-## 3.16 reports
+## 3.17 reports
 
 Reports for users, events, memories, circles, or comments later.
 
@@ -499,7 +526,7 @@ Visibility:
 - moderators/admins can read relevant reports
 - normal users cannot read reports against others
 
-## 3.17 moderation_actions
+## 3.18 moderation_actions
 
 Audit log of moderation actions.
 
@@ -521,7 +548,7 @@ Visibility:
 - admins/service role
 - possibly circle owners for actions in their circle, later
 
-## 3.18 blocks
+## 3.19 blocks
 
 User blocking.
 
@@ -625,7 +652,12 @@ These keep RLS readable and reduce copy-paste policy risk.
 - Update/delete own memory.
 - Host/helper can set status to hidden/removed for event.
 
-## 5.12 reports
+## 5.12 private_memories
+
+- Select/insert/update/delete own private memories only.
+- No host/circle access.
+
+## 5.13 reports
 
 - Insert own report.
 - Select own report status.
@@ -641,6 +673,11 @@ Case: event memory
 
 - Only confirmed/attended participants can see memory content.
 - A user who was invited but declined should not see memories.
+
+Case: private memory
+
+- A private-first user's memory is visible only to them.
+- It is not attached to a circle or event unless the user explicitly shares it later.
 
 Case: accessibility preferences
 
@@ -675,6 +712,7 @@ events(acceptance_deadline)
 event_participants(user_id, status)
 event_participants(event_id, status)
 event_memories(event_id, status, created_at)
+private_memories(user_id, created_at)
 mission_assignments(user_id, assigned_for)
 mission_feedback(user_id, created_at)
 reports(status, created_at)
@@ -694,6 +732,12 @@ reports(status, created_at)
 - users can upload only for events they participate in
 - host/helper can remove/hide via database state, not necessarily delete original immediately
 
+## 8.3 private-memories
+
+- private bucket
+- owner-only access
+- for solo mission reflections and private photos
+
 ## 9. Seed Data For Beta
 
 Minimum seed:
@@ -703,6 +747,7 @@ Minimum seed:
 - 3 intensities
 - low-cost/free majority
 - at least 10 accessibility-friendly missions
+- at least 10 solo/private-first missions
 - at least 10 family missions
 - at least 10 social/courage missions
 - at least 5 recomeço low-energy missions
@@ -718,6 +763,7 @@ Example mission categories:
 - coffee with someone
 - local free event
 - quiet solo reflection
+- private city exploration
 - host-led group plan
 
 ## 10. MVP Build Order
@@ -744,4 +790,3 @@ Example mission categories:
 - Should host aggregate feedback be a materialized view or RPC?
 - Should invite joining be fully RPC-based from the start?
 - How much admin tooling is needed for beta moderation?
-

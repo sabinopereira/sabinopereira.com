@@ -2,9 +2,9 @@
 
 ## 1. Product Vision
 
-OutOfLoop is a mobile app that helps people leave autopilot through real-world missions, safe circles, and human hosts who make sure nobody is left out.
+OutOfLoop is a mobile app that helps people improve their lifestyle by leaving autopilot through real-world missions, safe circles, and human hosts who make sure nobody is left out.
 
-The product is not a fitness app, productivity app, dating app, or traditional social network. It is a community engine: a way to create simple reasons for people, families, and groups to meet, reconnect, and live more stories together.
+The product is not a fitness app, productivity app, dating app, or traditional social network. It is a lifestyle and community engine: a way to create simple reasons for people, families, and groups to move, connect, explore, recover energy, and live more stories together.
 
 Core promise:
 
@@ -33,6 +33,12 @@ Existing products tend to over-index on:
 
 OutOfLoop solves a different problem: turning small intentions into safe, accessible, real-world action.
 
+Lifestyle problem:
+
+People often know what would make life better: move a little more, leave the house, call someone, spend better time with family, meet people, read something interesting, try a new place, or rest without disappearing. The hard part is not knowing; it is turning that knowledge into a doable action at the right moment, with the right level of social pressure, safety, cost, and energy.
+
+OutOfLoop should help people improve lifestyle without becoming another guilt machine.
+
 ## 3. Target Users
 
 Primary users:
@@ -44,6 +50,8 @@ Primary users:
 - friends who want to do more than say "we should meet"
 - parents looking for safe activities with children
 - introverts who want gradual social confidence
+- people who dislike groups but still want meaningful solo or one-to-one missions
+- people who prefer private progress before joining any community
 - disabled people who want accessible, safe, realistic ways to join community life
 - carers or family members who help someone participate in social activities
 
@@ -65,6 +73,10 @@ OutOfLoop is for people who want to live more stories.
 
 It creates missions that fit the user's rhythm, energy, personality, availability, budget, and social comfort. It then helps those missions become plans with people.
 
+Lifestyle positioning:
+
+> A practical lifestyle app for people who want better days, stronger relationships, and more real-world moments without pressure or performance.
+
 Key differentiation:
 
 - missions first, feed second
@@ -74,6 +86,33 @@ Key differentiation:
 - hosts, not influencers
 - real-world action over online attention
 - personalization by rhythm, feedback, and context
+- lifestyle improvement without guilt
+
+## 4.1 Market Context And Differentiation
+
+The market signal is promising: people are tired of passive scrolling, isolation, and plans that never happen. Products focused on offline socialization, local events, habits, and quick challenges show that there is demand, but the space is fragmented.
+
+Comparable categories:
+
+- Local social/event apps: help people find events or meet strangers, but often require effort, feel public, or lack personal lifestyle missions.
+- Offline dinner/social apps: prove appetite for real-world connection, but usually focus on a narrow format.
+- Habit/gamification apps: help with routines, but often become solitary, performance-driven, or punitive.
+- Challenge apps: create novelty, but often lack safety, community, personalization, and continuity.
+
+OutOfLoop's distinct combination:
+
+- lifestyle missions
+- private circles
+- optional solo/private-first path
+- "Hoje nao da" feedback instead of guilt
+- low-cost and accessible defaults
+- hosts who care for people, not influencers
+- safe group plans with acceptance timers
+- post-event memories and feedback
+
+Strategic hypothesis:
+
+> OutOfLoop can win by becoming the gentle activation layer for real communities and individual lifestyle change, not by becoming another public social network.
 
 ## 5. Core Product Loop
 
@@ -98,6 +137,7 @@ Key differentiation:
 - Public discovery should grow only after private circles work.
 - Children and family contexts require stricter privacy and moderation.
 - Accessibility is a core inclusion requirement, not a future nice-to-have.
+- Community should be optional and gradual; solo users must still get value.
 - The app should help people meet outside the screen, not keep them scrolling.
 
 ## 7. MVP Scope
@@ -114,6 +154,7 @@ MVP Beta Core:
 - mission intensity levels: Leve, Real, Coragem
 - daily mission
 - "Hoje nao da" feedback
+- solo/private mission path
 - private circles
 - circle invitations
 - simple group mission/event creation
@@ -147,6 +188,50 @@ Out of MVP:
 - travel marketplace
 - full institution dashboards
 - advanced monetization
+
+## 7.1 Solo And Low-Exposure Path
+
+Some users will not want groups, public events, or social exposure. OutOfLoop should still work for them.
+
+User types:
+
+- solo by preference
+- socially anxious
+- introverted
+- burned out by groups
+- rebuilding confidence
+- wants private progress first
+- prefers one trusted person instead of a group
+
+Product behavior:
+
+- onboarding allows "Sozinho/a" and "Ainda nao" for people/new groups
+- first circle creation should be skippable
+- daily missions can be fully private
+- "Quem alinha?" is optional, never required
+- memories can be private journal entries, not shared albums
+- app can suggest one-to-one missions before group missions
+- app can slowly offer low-pressure options when the user shows readiness
+
+Solo mission examples:
+
+- "Vai a um sitio novo e tira uma foto so para ti."
+- "Le 10 minutos num lugar fora da tua rotina."
+- "Faz uma caminhada curta sem transformar isto em plano."
+- "Escreve uma frase sobre algo que reparaste hoje."
+- "Escolhe uma pessoa segura para talvez convidares esta semana, sem enviar ainda."
+
+Low-exposure progression:
+
+1. Private solo mission.
+2. Private reflection.
+3. Mission with one trusted person.
+4. Mission in existing private circle.
+5. Small hosted event, if and when the user wants.
+
+Principle:
+
+> Ninguem fica de fora tambem significa: ninguem e obrigado a entrar num grupo.
 
 ## 8. Onboarding
 

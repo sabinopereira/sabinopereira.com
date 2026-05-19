@@ -157,6 +157,13 @@ Choices:
 - So em grupo
 - Talvez, com anfitriao
 
+If user chooses "Sozinho/a" and "Ainda nao":
+
+- set onboarding path to private-first
+- do not force circle creation
+- show solo missions first
+- keep "Quem alinha?" available but secondary
+
 Primary button:
 
 - "Continuar"
@@ -234,6 +241,10 @@ Primary action:
 
 - "Criar circulo"
 
+Secondary action:
+
+- "Saltar por agora"
+
 After creation:
 
 > Queres adicionar outro?
@@ -242,6 +253,11 @@ Options:
 
 - "Adicionar outro"
 - "Ir para a minha primeira missao"
+
+If skipped:
+
+- route directly to Hoje with a private solo mission
+- suggest circle creation later only after useful moments
 
 ## 3. Hoje Tab
 
@@ -274,6 +290,7 @@ Secondary actions:
 
 - "Hoje nao da"
 - "Trocar"
+- "Fazer em privado" if mission has social variants
 
 Footer:
 
@@ -375,6 +392,7 @@ Actions:
 - "Aceitar"
 - "Convidar alguem"
 - "Quem alinha?"
+- "Fazer so para mim"
 - "Hoje nao da"
 
 Example copy:
@@ -794,6 +812,15 @@ Copy examples:
 5. Check out.
 6. Give feedback.
 
+### Flow A2: Private-First User
+
+1. User chooses "Sozinho/a" and "Ainda nao" during onboarding.
+2. User skips first circle creation.
+3. App opens Hoje with a private solo mission.
+4. User completes mission.
+5. User saves a private memory or reflection.
+6. App offers either another solo mission or a one-to-one mission later.
+
 ### Flow B: Mission Becomes Plan
 
 1. Open Hoje.
@@ -898,7 +925,8 @@ MVP component groups:
 - Should "Alinhar" be a tab, or should it live inside Circulos for MVP?
 - Should onboarding ask accessibility before or after first circle?
 - Should Memories allow only photos/text, or also audio in beta?
+- Should private memories live inside Memorias or a separate private journal view?
 - Should a support companion be a full participant or a guest attached to a participant?
 - Should event updates replace chat in MVP?
 - Should the first beta remove "Trocar" and keep only "Hoje nao da" to learn better?
-
+- Should the first circle step be skippable for everyone or only private-first users?
