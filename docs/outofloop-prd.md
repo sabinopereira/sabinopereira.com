@@ -44,6 +44,8 @@ Primary users:
 - friends who want to do more than say "we should meet"
 - parents looking for safe activities with children
 - introverts who want gradual social confidence
+- disabled people who want accessible, safe, realistic ways to join community life
+- carers or family members who help someone participate in social activities
 
 Community users:
 
@@ -51,6 +53,7 @@ Community users:
 - football and sports groups
 - schools and parent groups
 - churches and faith communities
+- disability associations and inclusive community groups
 - local associations
 - volunteering groups
 - travel and day-trip groups
@@ -94,6 +97,7 @@ Key differentiation:
 - Hosts exist to include, not to become influencers.
 - Public discovery should grow only after private circles work.
 - Children and family contexts require stricter privacy and moderation.
+- Accessibility is a core inclusion requirement, not a future nice-to-have.
 - The app should help people meet outside the screen, not keep them scrolling.
 
 ## 7. MVP Scope
@@ -102,25 +106,37 @@ The MVP should prove this hypothesis:
 
 > People will accept missions, create small plans, attend safely, and return because they felt included.
 
-MVP features:
+MVP Beta Core:
 
 - mobile onboarding
 - personal profile and rhythm
-- mission modes
-- mission intensity levels
+- reduced mission modes: Coragem, Social, Familia, Saude, Recomeço
+- mission intensity levels: Leve, Real, Coragem
 - daily mission
 - "Hoje nao da" feedback
-- mission saving
 - private circles
 - circle invitations
-- group mission/event creation
-- "Quem alinha?" acceptance flow
+- simple group mission/event creation
+- "Quem alinha?" acceptance flow with deadline
 - event timer
-- host and helper roles
+- simple host/helper roles
 - event check-out
 - event feedback
 - private event memories with photos/text
 - basic reporting and moderation
+- basic accessibility preferences
+
+Defer until after beta validation:
+
+- full mission pool
+- all 9 mission modes
+- host level progression
+- public local discovery
+- advanced personalization
+- organization dashboards
+- paid events and partners
+- complex event chat
+- advanced AI mission generation
 
 Out of MVP:
 
@@ -595,7 +611,87 @@ Family/children safety:
 - host approval for family events
 - no 1:1 adult-child interactions
 
-## 20. Badges And Physical Identity
+## 20. Accessibility And Disability Inclusion
+
+"Nobody left behind" must include disabled people from the start.
+
+The product should support people with:
+
+- mobility disabilities
+- visual impairments
+- hearing impairments
+- neurodivergence
+- chronic illness
+- anxiety or sensory sensitivity
+- temporary injury
+- carers or support companions
+
+Accessibility principles:
+
+- disabled users should not have to disclose details publicly to participate
+- accessibility preferences are private by default
+- event accessibility information should be visible before the user accepts
+- hosts should be prompted to choose accessible locations when possible
+- missions should have accessible alternatives
+- low-energy and low-sensory missions should be available
+- users should be able to bring a companion/carer when appropriate
+- nobody should be pressured to explain why a mission is not possible
+
+Onboarding accessibility preferences:
+
+- step-free access needed
+- seated activity preferred
+- low-noise places preferred
+- visual instructions helpful
+- text-based communication preferred
+- audio-based communication preferred
+- easy transport/parking needed
+- can walk short distances only
+- needs companion/carer option
+- prefers small groups
+- prefers predictable plan and clear schedule
+
+Event accessibility fields:
+
+- step-free access
+- accessible bathroom known/unknown
+- seating available
+- public transport nearby
+- parking nearby
+- noise level: quiet, moderate, loud
+- walking distance: low, medium, high
+- standing required: yes/no
+- family-friendly
+- support companion allowed
+- accessibility notes
+
+Mission adaptation examples:
+
+- Standard: "Go for a 30-minute walk with someone."
+- Accessible alternative: "Meet someone for a seated coffee or a short roll/walk in an accessible place."
+- Standard: "Try a new gym class."
+- Accessible alternative: "Do a movement session adapted to your body, alone or with someone."
+- Standard: "Attend a busy local event."
+- Accessible alternative: "Choose a smaller, quieter event or invite one person to a calm public place."
+
+Host responsibilities:
+
+- check accessibility basics before publishing an event
+- clearly state what is known and unknown
+- avoid promising accessibility that has not been verified
+- welcome companions/carers without making it awkward
+- avoid public attention around someone's disability
+- offer an accessible meeting point
+- ask privately if a participant requests help
+
+Beta inclusion requirement:
+
+- include at least 2-5 people with accessibility needs in the closed beta if possible
+- include one disability-aware host/helper if possible
+- test at least one accessible low-cost event
+- ask specifically whether the app made participation easier or harder
+
+## 21. Badges And Physical Identity
 
 Physical badges should be for hosts/helpers only at first.
 
@@ -620,7 +716,7 @@ Future enhancement:
 
 Avoid participant badges in MVP to reduce pressure and exposure.
 
-## 21. Event Memories
+## 22. Event Memories
 
 Each event can have a private space for participants.
 
@@ -665,7 +761,7 @@ Privacy:
 - stricter review for children/family events
 - option: "prefiro nao aparecer em fotos"
 
-## 22. Feedback And Personalization
+## 23. Feedback And Personalization
 
 After a mission/event, ask minimal feedback:
 
@@ -702,7 +798,7 @@ Adaptive behavior:
 - suggest group plans if user saves many social missions
 - suggest host outreach if user wants company but does not initiate
 
-## 23. Closed Beta
+## 24. Closed Beta
 
 Closed beta is a critical phase, not an afterthought.
 
@@ -714,9 +810,11 @@ Target beta composition:
 
 - 5-10 family/friend users
 - 5-10 people who want to meet new people
+- 2-5 people with accessibility needs, if possible
 - 1 gym/sport group
 - 1 church/community group
 - 1 parent/family group
+- 1 inclusive/disability-aware community contact, if possible
 - 1 friends group
 - 2-4 potential hosts
 
@@ -732,6 +830,7 @@ Beta constraints:
 - small groups
 - host-led events
 - low-cost/free events
+- at least one accessibility-aware event
 - manual support by founder
 - no public discovery at first
 
@@ -746,6 +845,7 @@ What to test:
 - safety and moderation
 - whether people feel included
 - whether low-cost matters
+- whether accessibility information helps people decide safely
 - whether people return after events
 - whether people share memories
 
@@ -762,6 +862,7 @@ Key beta metrics:
 - repeat participation
 - memories shared per event
 - feedback: felt included
+- accessibility friction reports
 - reports/issues
 - host satisfaction
 
@@ -770,6 +871,7 @@ Qualitative questions:
 - Did this make you do something you would not have done?
 - Did you feel safe?
 - Did you feel included?
+- Did the event feel accessible enough for you or someone you came with?
 - Was the mission realistic for your day?
 - Did the app create a real reason to meet?
 - Would you invite someone else?
@@ -785,7 +887,7 @@ Beta success criteria:
 - no unresolved serious safety issues
 - at least 3 users naturally show host potential
 
-## 24. Roadmap
+## 25. Roadmap
 
 Phase 1: Product design
 
@@ -837,7 +939,7 @@ Phase 5: Monetization
 - organization dashboards
 - approved paid events
 
-## 25. Suggested Tech Stack
+## 26. Suggested Tech Stack
 
 Mobile:
 
@@ -865,7 +967,7 @@ Analytics:
 - PostHog or similar
 - privacy-conscious event tracking
 
-## 26. Initial Data Model
+## 27. Initial Data Model
 
 Core tables:
 
@@ -880,6 +982,8 @@ Core tables:
 - event_participants
 - event_memories
 - host_roles
+- accessibility_preferences
+- event_accessibility
 - reports
 - moderation_actions
 - invites
@@ -893,8 +997,10 @@ Important relationships:
 - an event belongs to a circle or local community
 - event memories are visible only to participants
 - host roles can be circle-level, local, or verified
+- accessibility preferences are private to the user unless explicitly shared for an event
+- event accessibility fields are visible before joining
 
-## 27. Monetization Direction
+## 28. Monetization Direction
 
 Do not monetize safety, belonging, or basic inclusion.
 
@@ -913,7 +1019,7 @@ Best early bet:
 
 > Communities that already exist but need activation: gyms, schools, churches, clubs, associations, and local groups.
 
-## 28. Open Questions
+## 29. Open Questions
 
 - Should the first beta be in one city/area only?
 - Should user verification start with phone number, email, or both?
@@ -925,8 +1031,11 @@ Best early bet:
 - How do we handle users under 18?
 - Should family groups be adult-managed only in v1?
 - What is the right first circle category to push: family, friends, or local group?
+- Which accessibility preferences must be in v1?
+- How do we verify accessibility information without overburdening hosts?
+- Should support companions count against event participant limits?
 
-## 29. Next Step
+## 30. Next Step
 
 Create mobile wireframes for:
 
@@ -940,4 +1049,3 @@ Create mobile wireframes for:
 8. post-event feedback
 9. Memorias
 10. host dashboard
-
