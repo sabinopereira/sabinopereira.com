@@ -204,7 +204,7 @@ def create_cover(path: Path) -> None:
     d.text((130, 255), "THE CALM", font=ImageFont.truetype(impact, 150), fill="#ffffff")
     d.text((130, 405), "DIGITAL LIFE", font=ImageFont.truetype(impact, 150), fill="#ffffff")
     d.text((135, 615), "Pause first. Write it down. Stay in control.", font=ImageFont.truetype(georgia_italic, 62), fill="#d8e6eb")
-    d.text((130, 2025), "A practical guide and workbook", font=ImageFont.truetype(georgia, 44), fill=ink)
+    d.text((130, 2025), "A practical guide with exercises", font=ImageFont.truetype(georgia, 44), fill=ink)
     d.text((130, 2085), "for safer online decisions after 60.", font=ImageFont.truetype(georgia, 44), fill=ink)
     d.rectangle([130, 2195, 620, 2205], fill=gold)
     d.text((130, 2290), "AVOID SCAMS  /  PROTECT MONEY  /  TAKE NOTES", font=ImageFont.truetype(georgia_bold, 34), fill=muted)
@@ -295,7 +295,7 @@ def build_interior(chapters: list[Chapter]) -> int:
         story.append(paragraph(chapter.title, styles["Toc"]))
         key = chapter.title.split(":")[0]
         if key in EXERCISES:
-            story.append(paragraph("  Workbook pages", styles["Toc"]))
+            story.append(paragraph("  Exercise pages", styles["Toc"]))
     story.append(PageBreak())
 
     for chapter in chapters:
@@ -339,6 +339,69 @@ def add_blank_page(pdf_path: Path) -> None:
     blank_path.unlink(missing_ok=True)
 
 
+def draw_exercise_page(c: canvas.Canvas, title: str, prompts: list[str]) -> None:
+    margin_x = 0.58 * inch
+    top_y = TRIM_H - 0.72 * inch
+    c.setFillColor(colors.black)
+    c.setFont("Georgia-Bold", 27)
+    c.drawString(margin_x, top_y, title)
+    y = top_y - 0.62 * inch
+    for prompt in prompts:
+        c.setFont("Georgia-Bold", 18)
+        c.drawString(margin_x, y, prompt)
+        y -= 0.55 * inch
+        c.setStrokeColor(colors.HexColor("#b8b0a2"))
+        c.setLineWidth(0.8)
+        for _ in range(3):
+            c.line(margin_x, y, TRIM_W - margin_x, y)
+            y -= 0.42 * inch
+        y -= 0.12 * inch
+        if y < 1.0 * inch:
+            break
+    c.showPage()
+
+
+def create_exercise_pdf(path: Path) -> int:
+    c = canvas.Canvas(str(path), pagesize=(TRIM_W, TRIM_H))
+    c.setTitle("The Calm Digital Life - Practical Exercise Pages")
+    c.setAuthor(AUTHOR)
+
+    c.setFont("Georgia-Bold", 28)
+    c.drawCentredString(TRIM_W / 2, 5.35 * inch, "Practical Exercise Pages")
+    c.setFont("Georgia-Italic", 15)
+    c.drawCentredString(TRIM_W / 2, 4.85 * inch, "Use these pages to pause, write things down, and decide calmly.")
+    c.showPage()
+
+    page_count = 1
+    for exercises in EXERCISES.values():
+        for title, prompts in exercises:
+            draw_exercise_page(c, title, prompts)
+            page_count += 1
+    c.save()
+    return page_count
+
+
+def build_interior_from_source() -> int:
+    PAPERBACK_DIR.mkdir(parents=True, exist_ok=True)
+    exercise_pdf = PAPERBACK_DIR / "the-calm-digital-life-exercise-pages.tmp.pdf"
+    exercise_count = create_exercise_pdf(exercise_pdf)
+    writer = PdfWriter()
+    source = PdfReader(str(SOURCE_PDF))
+    for page in source.pages:
+        writer.add_page(page)
+    exercises = PdfReader(str(exercise_pdf))
+    for page in exercises.pages:
+        writer.add_page(page)
+    with INTERIOR_PDF.open("wb") as handle:
+        writer.write(handle)
+    exercise_pdf.unlink(missing_ok=True)
+    page_count = len(PdfReader(str(INTERIOR_PDF)).pages)
+    if page_count % 2:
+        add_blank_page(INTERIOR_PDF)
+        page_count += 1
+    return page_count
+
+
 def draw_wrapped_text(canv: canvas.Canvas, text: str, x: float, y: float, width: float, font: str, size: float, leading: float, color) -> float:
     canv.setFont(font, size)
     canv.setFillColor(color)
@@ -380,7 +443,7 @@ def build_cover_pdf(page_count: int) -> dict[str, float]:
     c.line(safe_x, y, safe_x + 1.65 * inch, y)
     y -= 0.36 * inch
     blurb = (
-        "A practical guide and workbook for safer online decisions after 60. "
+        "A practical guide with simple exercises for safer online decisions after 60. "
         "Read the lesson, pause, write things down, and build calm habits around messages, calls, passwords, money, and pressure."
     )
     y = draw_wrapped_text(c, blurb, safe_x, y, TRIM_W - 0.95 * inch, "Georgia", 12, 18, colors.HexColor("#f1efe6"))
@@ -458,7 +521,7 @@ def write_epub(chapters: list[Chapter]) -> None:
             parts.append(f"<p>{html.escape(line)}</p>")
         key = chapter.title.split(":")[0]
         if key in EXERCISES:
-            parts.append('<section class="exercise"><h2>Workbook pages</h2>')
+            parts.append('<section class="exercise"><h2>Exercise pages</h2>')
             for ex_title, prompts in EXERCISES[key]:
                 parts.append(f"<h3>{html.escape(ex_title)}</h3>")
                 for prompt in prompts:
@@ -484,7 +547,7 @@ def write_metadata(specs: dict[str, float]) -> None:
     METADATA_JSON.write_text(json.dumps({
         "title": TITLE,
         "author": AUTHOR,
-        "edition": "Workbook edition",
+        "edition": "Updated edition with practical exercises",
         "kdp_setup": {
             "trim_size": "6 x 9 in",
             "interior": "Black & white",
@@ -511,7 +574,7 @@ def main() -> None:
     chapters = parse_chapters(extract_source())
     if len(chapters) < 20:
         raise SystemExit(f"Expected full chapter set, found {len(chapters)}")
-    page_count = build_interior(chapters)
+    page_count = build_interior_from_source()
     specs = build_cover_pdf(page_count)
     write_epub(chapters)
     write_metadata(specs)

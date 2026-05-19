@@ -1,7 +1,7 @@
 {
   "title": "The Calm Digital Life",
   "author": "Sabino Pereira",
-  "edition": "Workbook edition",
+  "edition": "Updated edition with practical exercises",
   "kdp_setup": {
     "trim_size": "6 x 9 in",
     "interior": "Black & white",
@@ -16,12 +16,12 @@
     "ebook_cover_jpg": "ebook/the-calm-digital-life-ebook-cover.jpg"
   },
   "print_specs": {
-    "page_count": 140,
+    "page_count": 162,
     "trim_width_in": 6,
     "trim_height_in": 9,
     "bleed_in": 0.125,
-    "spine_width_in": 0.31528,
-    "cover_width_in": 12.56528,
+    "spine_width_in": 0.36482400000000004,
+    "cover_width_in": 12.614824,
     "cover_height_in": 9.25
   }
 }
