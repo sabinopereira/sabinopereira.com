@@ -34,7 +34,10 @@ from reportlab.pdfgen import canvas
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_HTML = ROOT / "output/pdf/xadrez-no-comando/xadrez-no-comando.html"
 COVER_IMAGE = ROOT / "output/pdf/xadrez-no-comando/assets/cover.png"
-OUT_DIR = ROOT / "output/kdp/xadrez-no-comando"
+OUT_DIR = ROOT / "books/xadrez-no-comando"
+PAPERBACK_DIR = OUT_DIR / "paperback"
+EBOOK_DIR = OUT_DIR / "ebook"
+PREVIEWS_DIR = OUT_DIR / "previews"
 
 TRIM_W = 6 * inch
 TRIM_H = 9 * inch
@@ -214,12 +217,10 @@ def build_interior(chapters: list[Chapter], output_pdf: Path) -> int:
             fontName="Georgia-Italic",
             fontSize=11.2,
             leading=17,
-            leftIndent=20,
-            borderColor=colors.HexColor("#111111"),
-            borderWidth=1.6,
-            borderPadding=(0, 0, 0, 8),
+            leftIndent=24,
+            rightIndent=18,
             spaceBefore=7,
-            spaceAfter=10,
+            spaceAfter=11,
             textColor=colors.HexColor("#222222"),
         )
     )
@@ -418,6 +419,92 @@ def draw_wrapped_text(
     return y
 
 
+def fit_font_to_width(font_path: str, text: str, max_width: int, start_size: int, min_size: int = 24) -> ImageFont.FreeTypeFont:
+    size = start_size
+    while size > min_size:
+        font = ImageFont.truetype(font_path, size)
+        left, _, right, _ = ImageDraw.Draw(Image.new("RGB", (10, 10))).textbbox((0, 0), text, font=font)
+        if right - left <= max_width:
+            return font
+        size -= 2
+    return ImageFont.truetype(font_path, min_size)
+
+
+def create_front_cover_art(output_path: Path, width_px: int, height_px: int) -> None:
+    impact = "/System/Library/Fonts/Supplemental/Impact.ttf"
+    georgia = "/System/Library/Fonts/Supplemental/Georgia.ttf"
+    georgia_bold = "/System/Library/Fonts/Supplemental/Georgia Bold.ttf"
+    georgia_italic = "/System/Library/Fonts/Supplemental/Georgia Italic.ttf"
+
+    source = Image.open(COVER_IMAGE).convert("RGB")
+    crop_h = source.height
+    crop_w = round(source.width * 0.56)
+    # Keep the fallen king and cracked ground, while hiding most embedded square-cover typography.
+    crop_x = 0
+    crop_y = 0
+    crop = source.crop((crop_x, crop_y, crop_x + crop_w, crop_y + crop_h))
+    cover = crop.resize((width_px, height_px), Image.Resampling.LANCZOS).convert("RGBA")
+
+    # Strong paperback mood: darker top for title, darker bottom for author/tagline.
+    overlay = Image.new("RGBA", (width_px, height_px), (0, 0, 0, 0))
+    od = ImageDraw.Draw(overlay)
+    for y in range(height_px):
+        top_alpha = max(0, int(230 * (1 - y / (height_px * 0.42))))
+        bottom_alpha = max(0, int(210 * ((y - height_px * 0.52) / (height_px * 0.48))))
+        alpha = min(245, max(top_alpha, bottom_alpha))
+        if alpha:
+            od.line([(0, y), (width_px, y)], fill=(0, 0, 0, alpha))
+    # Left/right vignette gives the title and subtitle quieter breathing room.
+    for x in range(width_px):
+        edge = min(x / (width_px * 0.23), (width_px - x) / (width_px * 0.23), 1)
+        alpha = int(105 * (1 - edge))
+        if alpha:
+            od.line([(x, 0), (x, height_px)], fill=(0, 0, 0, alpha))
+    cover = Image.alpha_composite(cover, overlay)
+
+    draw = ImageDraw.Draw(cover)
+    margin = round(width_px * 0.09)
+    cream = (238, 236, 224, 255)
+    muted = (196, 193, 180, 255)
+    white = (255, 255, 255, 255)
+    red = (166, 19, 18, 255)
+
+    title_font = fit_font_to_width(impact, "NO COMANDO", width_px - 2 * margin, round(width_px * 0.21), 54)
+    title_font_big = fit_font_to_width(impact, "XADREZ", width_px - 2 * margin, round(width_px * 0.24), 62)
+    subtitle_font = ImageFont.truetype(georgia_italic, round(width_px * 0.052))
+    author_font = ImageFont.truetype(georgia_bold, round(width_px * 0.055))
+    kicker_font = ImageFont.truetype(georgia, round(width_px * 0.025))
+
+    draw.rectangle([0, 0, width_px, round(height_px * 0.43)], fill=(0, 0, 0, 155))
+    y = round(height_px * 0.075)
+    draw.text((margin, y), "XADREZ", font=title_font_big, fill=white)
+    y += round(title_font_big.size * 0.88)
+    draw.text((margin, y), "NO COMANDO", font=title_font, fill=white)
+    y += round(title_font.size * 1.03)
+    draw.rectangle([margin, y, margin + round(width_px * 0.28), y + 5], fill=red)
+    draw.rectangle([margin + round(width_px * 0.30), y, margin + round(width_px * 0.48), y + 5], fill=cream)
+
+    bottom_y = round(height_px * 0.765)
+    draw.rectangle(
+        [margin, bottom_y - round(height_px * 0.025), width_px - margin, bottom_y + round(height_px * 0.155)],
+        fill=(0, 0, 0, 142),
+    )
+    line1 = "Cada peça tem uma dor."
+    line2 = "Cada movimento tem um preço."
+    draw.text((margin + 22, bottom_y), line1, font=subtitle_font, fill=cream)
+    draw.text((margin + 22, bottom_y + round(subtitle_font.size * 1.28)), line2, font=subtitle_font, fill=cream)
+
+    draw.text((margin, height_px - round(height_px * 0.108)), "SABINO PEREIRA", font=author_font, fill=white)
+    draw.text((margin, height_px - round(height_px * 0.057)), "UM LIVRO SOBRE ESTRATÉGIA, PERDA E MATURIDADE", font=kicker_font, fill=muted)
+
+    # Print-safe inner frame, far enough from the trim not to be chopped by KDP.
+    inset = round(width_px * 0.036)
+    draw.rectangle([inset, inset, width_px - inset, height_px - inset], outline=(238, 236, 224, 165), width=max(2, round(width_px * 0.004)))
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    cover.convert("RGB").save(output_path, quality=96)
+
+
 def build_cover(page_count: int, output_pdf: Path, preview_png: Path) -> dict[str, float]:
     spine = page_count * WHITE_PAPER_SPINE_PER_PAGE
     cover_w = BLEED + TRIM_W + spine + TRIM_W + BLEED
@@ -433,23 +520,20 @@ def build_cover(page_count: int, output_pdf: Path, preview_png: Path) -> dict[st
     c.setFillColor(colors.black)
     c.rect(0, 0, cover_w, cover_h, stroke=0, fill=1)
 
-    # Front cover: use the existing art, expanded into a paperback-safe panel.
-    img = Image.open(COVER_IMAGE)
+    # Front cover: full-bleed paperback artwork generated from the original square art.
     front_box_w = TRIM_W + BLEED
     front_box_h = cover_h
-    img_w, img_h = fit_image_size(img.width, img.height, front_box_w - 0.35 * inch, front_box_h - 0.55 * inch)
+    front_art = preview_png.parent / "tmp-xadrez-no-comando-front-art.png"
+    create_front_cover_art(front_art, round((front_box_w / inch) * 300), round((front_box_h / inch) * 300))
     c.drawImage(
-        str(COVER_IMAGE),
-        front_x + (front_box_w - img_w) / 2,
-        (cover_h - img_h) / 2,
-        width=img_w,
-        height=img_h,
-        preserveAspectRatio=True,
+        str(front_art),
+        front_x,
+        0,
+        width=front_box_w,
+        height=front_box_h,
+        preserveAspectRatio=False,
         mask="auto",
     )
-    c.setStrokeColor(colors.HexColor("#eeeeee"))
-    c.setLineWidth(0.8)
-    c.rect(front_x + 0.22 * inch, 0.22 * inch, front_box_w - 0.44 * inch, cover_h - 0.44 * inch, stroke=1, fill=0)
 
     # Back cover.
     safe_x = back_x + 0.42 * inch
@@ -498,6 +582,7 @@ def build_cover(page_count: int, output_pdf: Path, preview_png: Path) -> dict[st
 
     c.showPage()
     c.save()
+    front_art.unlink(missing_ok=True)
 
     make_cover_preview(preview_png, cover_w, cover_h, spine, page_count)
     return {
@@ -516,7 +601,6 @@ def make_cover_preview(preview_png: Path, cover_w_pt: float, cover_h_pt: float, 
     w = round(cover_w_pt / inch * scale)
     h = round(cover_h_pt / inch * scale)
     im = Image.new("RGB", (w, h), "black")
-    art = Image.open(COVER_IMAGE).convert("RGB")
     draw = ImageDraw.Draw(im)
     bleed_px = round((BLEED / inch) * scale)
     trim_w_px = round((TRIM_W / inch) * scale)
@@ -525,10 +609,11 @@ def make_cover_preview(preview_png: Path, cover_w_pt: float, cover_h_pt: float, 
     front_x = spine_x + spine_px
     cover_h_px = h
     front_box_w = trim_w_px + bleed_px
-    art_w = front_box_w - round(0.35 * scale)
-    art_h = cover_h_px - round(0.55 * scale)
-    art.thumbnail((art_w, art_h))
-    im.paste(art, (front_x + (front_box_w - art.width) // 2, (h - art.height) // 2))
+    preview_front = preview_png.with_name("tmp-xadrez-no-comando-front-preview-art.png")
+    create_front_cover_art(preview_front, front_box_w, cover_h_px)
+    front_art = Image.open(preview_front).convert("RGB")
+    im.paste(front_art, (front_x, 0))
+    preview_front.unlink(missing_ok=True)
     try:
         title_font = ImageFont.truetype("/System/Library/Fonts/Supplemental/Impact.ttf", 34)
         body_font = ImageFont.truetype("/System/Library/Fonts/Supplemental/Georgia.ttf", 17)
@@ -581,9 +666,11 @@ def write_metadata(specs: dict[str, float], output_path: Path) -> None:
             "reading_direction": "Left to Right",
         },
         "files": {
-            "interior_pdf": "xadrez-no-comando-kdp-interior.pdf",
-            "cover_pdf": "xadrez-no-comando-kdp-cover.pdf",
-            "cover_preview_png": "xadrez-no-comando-kdp-cover-preview.png",
+            "paperback_interior_pdf": "paperback/xadrez-no-comando-paperback-miolo-kdp.pdf",
+            "paperback_cover_pdf": "paperback/xadrez-no-comando-paperback-capa-kdp.pdf",
+            "ebook_epub": "ebook/xadrez-no-comando-kindle-ebook.epub",
+            "ebook_cover_jpg": "ebook/xadrez-no-comando-ebook-cover.jpg",
+            "cover_preview_png": "previews/xadrez-no-comando-paperback-spread-preview.png",
         },
         "description_pt": (
             "Xadrez no Comando é um livro em português sobre estratégia, sobrevivência emocional, pressão, silêncio, amor, perda e maturidade. "
@@ -612,16 +699,18 @@ def write_readme(specs: dict[str, float], output_path: Path) -> None:
     output_path.write_text(
         f"""# Xadrez no Comando - Amazon KDP package
 
-Files prepared for Amazon KDP paperback upload.
+Files prepared for Amazon KDP paperback and Kindle/eBook upload.
 
 ## Upload files
 
-- Interior/manuscript: `xadrez-no-comando-kdp-interior.pdf`
-- Cover: `xadrez-no-comando-kdp-cover.pdf`
-- Visual cover preview: `xadrez-no-comando-kdp-cover-preview.png`
+- Paperback interior/manuscript: `paperback/xadrez-no-comando-paperback-miolo-kdp.pdf`
+- Paperback cover: `paperback/xadrez-no-comando-paperback-capa-kdp.pdf`
+- Kindle/eBook manuscript: `ebook/xadrez-no-comando-kindle-ebook.epub`
+- Kindle/eBook cover: `ebook/xadrez-no-comando-ebook-cover.jpg`
+- Visual previews: `previews/`
 - Metadata helper: `kdp-metadata.json`
 
-Only upload the two PDF files to KDP. PNG files are previews/checks only.
+For paperback, upload the two PDF files. For Kindle/eBook, upload the EPUB manuscript and JPG cover. PNG files are previews/checks only.
 
 ## KDP setup
 
@@ -643,10 +732,11 @@ Only upload the two PDF files to KDP. PNG files are previews/checks only.
 
 ## Before publishing
 
-1. Upload both PDFs to KDP.
-2. Open KDP's online previewer and check every flagged page.
-3. Order a proof copy before enabling live sales.
-4. If KDP assigns a free ISBN, verify whether you want to add it to a future copyright page revision.
+1. Paperback: upload `paperback/xadrez-no-comando-paperback-miolo-kdp.pdf` and `paperback/xadrez-no-comando-paperback-capa-kdp.pdf`.
+2. Kindle/eBook: upload `ebook/xadrez-no-comando-kindle-ebook.epub` and `ebook/xadrez-no-comando-ebook-cover.jpg`.
+3. Open KDP's online previewer and check every flagged page/screen.
+4. Order a paperback proof copy before enabling live sales.
+5. If KDP assigns a free ISBN, verify whether you want to add it to a future copyright page revision.
 """,
         encoding="utf-8",
     )
@@ -659,10 +749,12 @@ def main() -> None:
     if len(chapters) != 9:
         raise SystemExit(f"Expected 9 chapters, found {len(chapters)}")
 
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    interior_pdf = OUT_DIR / "xadrez-no-comando-kdp-interior.pdf"
-    cover_pdf = OUT_DIR / "xadrez-no-comando-kdp-cover.pdf"
-    cover_preview = OUT_DIR / "xadrez-no-comando-kdp-cover-preview.png"
+    PAPERBACK_DIR.mkdir(parents=True, exist_ok=True)
+    EBOOK_DIR.mkdir(parents=True, exist_ok=True)
+    PREVIEWS_DIR.mkdir(parents=True, exist_ok=True)
+    interior_pdf = PAPERBACK_DIR / "xadrez-no-comando-paperback-miolo-kdp.pdf"
+    cover_pdf = PAPERBACK_DIR / "xadrez-no-comando-paperback-capa-kdp.pdf"
+    cover_preview = PREVIEWS_DIR / "xadrez-no-comando-paperback-spread-preview.png"
     page_count = build_interior(chapters, interior_pdf)
     specs = build_cover(page_count, cover_pdf, cover_preview)
     write_metadata(specs, OUT_DIR / "kdp-metadata.json")
