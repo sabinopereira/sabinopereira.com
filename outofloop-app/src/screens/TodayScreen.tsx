@@ -13,7 +13,11 @@ export function TodayScreen({
   preferences: AppPreferences;
 }) {
   const [accepted, setAccepted] = useState(false);
+  const [completed, setCompleted] = useState(false);
   const [notTodayOpen, setNotTodayOpen] = useState(false);
+  const [feedbackOpen, setFeedbackOpen] = useState(false);
+  const [feedbackResult, setFeedbackResult] = useState<string | null>(null);
+  const [memorySaved, setMemorySaved] = useState(false);
   const todayMission = selectMissionOfTheDay(preferences);
   const minuteLabel =
     todayMission.estimatedMinutes === 1
@@ -33,16 +37,66 @@ export function TodayScreen({
         </Text>
       </View>
 
-      {accepted ? (
+      {completed ? (
+        <View style={styles.completedCard}>
+          <Text style={styles.completedLabel}>Missao concluida</Text>
+          <Text style={styles.completedTitle}>{todayMission.title}</Text>
+          <Text style={styles.completedText}>
+            Isto ja conta: uma acao real fora do automatico.
+          </Text>
+          {feedbackResult ? (
+            <Text style={styles.completedMeta}>Feedback: {feedbackResult}</Text>
+          ) : null}
+          <View style={styles.memoryBox}>
+            <Text style={styles.memoryTitle}>Memoria privada</Text>
+            <Text style={styles.memoryText}>
+              Guarda uma frase sobre o que aconteceu. So tu ves isto nesta
+              versao.
+            </Text>
+            <ActionButton
+              variant={memorySaved ? "secondary" : "primary"}
+              onPress={() => setMemorySaved(true)}
+            >
+              {memorySaved ? "Memoria guardada" : "Guardar memoria"}
+            </ActionButton>
+          </View>
+          <ActionButton
+            variant="secondary"
+            onPress={() => {
+              setAccepted(false);
+              setCompleted(false);
+              setFeedbackResult(null);
+              setMemorySaved(false);
+            }}
+          >
+            Ver outra vez
+          </ActionButton>
+        </View>
+      ) : accepted ? (
         <View style={styles.acceptedCard}>
           <Text style={styles.acceptedLabel}>Missao aceite</Text>
           <Text style={styles.acceptedTitle}>{todayMission.title}</Text>
           <Text style={styles.acceptedText}>
             Faz isto ate ao fim do dia. Se nao der, podes ajustar sem vergonha.
           </Text>
-          <ActionButton variant="secondary" onPress={() => setAccepted(false)}>
-            Voltar a missao
-          </ActionButton>
+          <View style={styles.acceptedActions}>
+            <ActionButton
+              onPress={() => {
+                setCompleted(true);
+                setFeedbackOpen(true);
+              }}
+              style={styles.actionGrow}
+            >
+              Concluir
+            </ActionButton>
+            <ActionButton
+              variant="secondary"
+              onPress={() => setAccepted(false)}
+              style={styles.actionGrow}
+            >
+              Voltar
+            </ActionButton>
+          </View>
         </View>
       ) : (
         <MissionCard
@@ -88,6 +142,50 @@ export function TodayScreen({
             ))}
             <ActionButton variant="ghost" onPress={() => setNotTodayOpen(false)}>
               Voltar
+            </ActionButton>
+          </View>
+        </View>
+      </Modal>
+
+      <Modal
+        animationType="slide"
+        transparent
+        visible={feedbackOpen}
+        onRequestClose={() => setFeedbackOpen(false)}
+      >
+        <View style={styles.modalBackdrop}>
+          <View style={styles.modalCard}>
+            <Text style={styles.modalTitle}>Como correu?</Text>
+            <Text style={styles.modalText}>
+              Isto ajuda a ajustar as proximas missoes.
+            </Text>
+            {[
+              "Gostei",
+              "Foi facil",
+              "Foi no ponto",
+              "Foi demais",
+              "Quero mais deste tipo",
+              "Nao era para mim"
+            ].map((result) => (
+              <ActionButton
+                key={result}
+                variant="secondary"
+                onPress={() => {
+                  setFeedbackResult(result);
+                  setFeedbackOpen(false);
+                }}
+              >
+                {result}
+              </ActionButton>
+            ))}
+            <ActionButton
+              variant="ghost"
+              onPress={() => {
+                setFeedbackResult("Sem feedback");
+                setFeedbackOpen(false);
+              }}
+            >
+              Saltar
             </ActionButton>
           </View>
         </View>
@@ -150,6 +248,67 @@ const styles = StyleSheet.create({
     color: "#EEF6EF",
     fontSize: 15,
     lineHeight: 22,
+    letterSpacing: 0
+  },
+  acceptedActions: {
+    flexDirection: "row",
+    gap: 10
+  },
+  actionGrow: {
+    flex: 1
+  },
+  completedCard: {
+    backgroundColor: colors.surface,
+    borderRadius: radius.lg,
+    borderWidth: 1,
+    borderColor: colors.line,
+    padding: 20,
+    gap: 14
+  },
+  completedLabel: {
+    color: colors.green,
+    fontSize: 13,
+    fontWeight: "900",
+    letterSpacing: 0,
+    textTransform: "uppercase"
+  },
+  completedTitle: {
+    color: colors.ink,
+    fontSize: 28,
+    lineHeight: 32,
+    fontWeight: "900",
+    letterSpacing: 0
+  },
+  completedText: {
+    color: colors.inkMuted,
+    fontSize: 15,
+    lineHeight: 22,
+    letterSpacing: 0
+  },
+  completedMeta: {
+    color: colors.blue,
+    fontSize: 14,
+    fontWeight: "800",
+    letterSpacing: 0
+  },
+  memoryBox: {
+    backgroundColor: colors.background,
+    borderRadius: radius.md,
+    borderWidth: 1,
+    borderColor: colors.line,
+    padding: 14,
+    gap: 10
+  },
+  memoryTitle: {
+    color: colors.ink,
+    fontSize: 16,
+    fontWeight: "900",
+    letterSpacing: 0
+  },
+  memoryText: {
+    color: colors.inkMuted,
+    fontSize: 14,
+    lineHeight: 20,
     letterSpacing: 0
   },
   note: {
