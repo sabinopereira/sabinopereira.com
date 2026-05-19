@@ -135,7 +135,7 @@ def fit_font(text: str, font_path: str, max_width: int, start_size: int, min_siz
 def create_cover(path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     width, height = 1600, 2560
-    im = Image.new("RGB", (width, height), "#f1efe8")
+    im = Image.new("RGB", (width, height), "#111111")
     draw = ImageDraw.Draw(im)
     impact = "/System/Library/Fonts/Supplemental/Impact.ttf"
     georgia = "/System/Library/Fonts/Supplemental/Georgia.ttf"
@@ -143,47 +143,72 @@ def create_cover(path: Path) -> None:
     georgia_italic = "/System/Library/Fonts/Supplemental/Georgia Italic.ttf"
 
     black = "#111111"
-    ink = "#252525"
-    grey = "#6b6b62"
+    paper = "#f4f0e4"
+    ink = "#171717"
+    grey = "#9a9a92"
     red = "#b01f1f"
 
-    draw.rectangle([90, 90, width - 90, height - 90], outline=black, width=8)
-    draw.rectangle([120, 120, width - 120, height - 120], outline=black, width=2)
+    draw.rectangle([105, 105, width - 105, height - 105], fill=paper)
+    draw.rectangle([155, 155, width - 155, height - 155], outline=black, width=5)
 
     author_font = ImageFont.truetype(georgia_bold, 48)
-    draw.text((140, 165), "SABINO PEREIRA", font=author_font, fill=black)
+    draw.text((185, 205), "SABINO PEREIRA", font=author_font, fill=black)
 
-    title_font = fit_font("BORROW.", impact, width - 260, 255, 140)
-    title_font_2 = fit_font("DELAY.", impact, width - 260, 255, 140)
-    title_font_3 = fit_font("REPEAT.", impact, width - 260, 255, 140)
-    y = 365
-    for word, font in [("BORROW.", title_font), ("DELAY.", title_font_2), ("REPEAT.", title_font_3)]:
-        draw.text((140, y), word, font=font, fill=black)
-        y += int(font.size * 0.83)
-    draw.rectangle([145, y + 18, 710, y + 34], fill=red)
+    receipt_x, receipt_y = 270, 390
+    receipt_w, receipt_h = 1060, 1385
+    tooth = [
+        (receipt_x, receipt_y),
+        (receipt_x + 70, receipt_y + 38),
+        (receipt_x + 140, receipt_y),
+        (receipt_x + 210, receipt_y + 38),
+        (receipt_x + 280, receipt_y),
+        (receipt_x + 350, receipt_y + 38),
+        (receipt_x + 420, receipt_y),
+        (receipt_x + 490, receipt_y + 38),
+        (receipt_x + 560, receipt_y),
+        (receipt_x + 630, receipt_y + 38),
+        (receipt_x + 700, receipt_y),
+        (receipt_x + 770, receipt_y + 38),
+        (receipt_x + 840, receipt_y),
+        (receipt_x + 910, receipt_y + 38),
+        (receipt_x + receipt_w, receipt_y),
+        (receipt_x + receipt_w, receipt_y + receipt_h),
+        (receipt_x, receipt_y + receipt_h),
+    ]
+    draw.polygon(tooth, fill="#fffdf4", outline=ink)
+    draw.line([receipt_x, receipt_y + receipt_h, receipt_x + receipt_w, receipt_y + receipt_h], fill=ink, width=7)
 
-    subtitle_font = ImageFont.truetype(georgia_italic, 58)
-    sub_y = y + 115
-    draw.text((145, sub_y), "A very unserious guide", font=subtitle_font, fill=ink)
-    draw.text((145, sub_y + 76), "to not giving money back.", font=subtitle_font, fill=ink)
+    title_font = ImageFont.truetype(impact, 190)
+    y = 560
+    for word in ("BORROW.", "DELAY.", "REPEAT."):
+        draw.text((receipt_x + 90, y), word, font=title_font, fill=ink)
+        y += 185
+    draw.rectangle([receipt_x + 98, y - 18, receipt_x + 650, y], fill=red)
 
-    # Simple monochrome satirical illustration: an IOU note quietly running away.
-    note_x, note_y = 430, 1470
-    draw.rounded_rectangle([note_x, note_y, note_x + 710, note_y + 430], radius=30, fill="#fffdf6", outline=black, width=7)
-    draw.line([note_x + 45, note_y + 105, note_x + 665, note_y + 105], fill=grey, width=4)
-    draw.line([note_x + 45, note_y + 185, note_x + 560, note_y + 185], fill=grey, width=4)
-    draw.line([note_x + 45, note_y + 265, note_x + 610, note_y + 265], fill=grey, width=4)
-    iou_font = ImageFont.truetype(impact, 108)
-    draw.text((note_x + 64, note_y + 42), "IOU", font=iou_font, fill=black)
-    draw.arc([note_x + 500, note_y + 285, note_x + 650, note_y + 385], 205, 340, fill=black, width=8)
-    draw.line([note_x + 170, note_y + 430, note_x + 110, note_y + 540], fill=black, width=10)
-    draw.line([note_x + 545, note_y + 430, note_x + 615, note_y + 540], fill=black, width=10)
-    draw.line([note_x + 98, note_y + 540, note_x + 215, note_y + 540], fill=black, width=10)
-    draw.line([note_x + 600, note_y + 540, note_x + 720, note_y + 540], fill=black, width=10)
-    draw.arc([260, 1880, 1200, 2290], 190, 350, fill="#9a9487", width=5)
+    label_font = ImageFont.truetype(georgia, 42)
+    value_font = ImageFont.truetype(georgia_italic, 50)
+    draw.text((receipt_x + 92, y + 115), "Amount owed:", font=label_font, fill=ink)
+    draw.text((receipt_x + 680, y + 105), "later", font=value_font, fill=ink)
+    draw.line([receipt_x + 92, y + 205, receipt_x + 955, y + 205], fill=grey, width=4)
+    draw.text((receipt_x + 92, y + 285), "Due date:", font=label_font, fill=ink)
+    draw.text((receipt_x + 645, y + 275), "tomorrow-ish", font=value_font, fill=ink)
+    draw.line([receipt_x + 92, y + 375, receipt_x + 955, y + 375], fill=grey, width=4)
+    draw.text((receipt_x + 92, y + 470), "Status:", font=label_font, fill=ink)
+    draw.text((receipt_x + 485, y + 460), "complicated", font=value_font, fill=ink)
 
-    kicker_font = ImageFont.truetype(georgia, 38)
-    draw.text((145, height - 225), "SATIRE / SHORT READ", font=kicker_font, fill=grey)
+    stamp = Image.new("RGBA", (520, 220), (0, 0, 0, 0))
+    stamp_draw = ImageDraw.Draw(stamp)
+    stamp_draw.rectangle([8, 8, 512, 212], outline=red, width=12)
+    stamp_draw.text((52, 58), "UNPAID", font=ImageFont.truetype(impact, 110), fill=red)
+    stamp = stamp.rotate(-12, expand=True)
+    im.paste(stamp, (860, 1565), stamp)
+
+    subtitle_font = ImageFont.truetype(georgia_italic, 68)
+    draw.text((185, 2045), "A very unserious guide", font=subtitle_font, fill=paper)
+    draw.text((185, 2132), "to not giving money back.", font=subtitle_font, fill=paper)
+
+    kicker_font = ImageFont.truetype(georgia, 42)
+    draw.text((185, 2320), "SATIRE / SHORT READ", font=kicker_font, fill="#9f9a8d")
     im.save(path, "JPEG", quality=95, optimize=True)
 
 

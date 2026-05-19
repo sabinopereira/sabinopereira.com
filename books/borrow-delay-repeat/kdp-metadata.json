@@ -1,0 +1,29 @@
+{
+  "title": "Borrow. Delay. Repeat.",
+  "author": "Sabino Pereira",
+  "language": "English",
+  "format": "Paperback and Kindle eBook",
+  "kdp_setup": {
+    "trim_size": "6 x 9 in",
+    "interior": "Black & white",
+    "paper": "White paper",
+    "interior_bleed": "No bleed",
+    "cover_finish": "Matte recommended",
+    "reading_direction": "Left to Right"
+  },
+  "files": {
+    "paperback_interior_pdf": "paperback/borrow-delay-repeat-paperback-miolo-kdp.pdf",
+    "paperback_cover_pdf": "paperback/borrow-delay-repeat-paperback-capa-kdp.pdf",
+    "ebook_epub": "ebook/borrow-delay-repeat-kindle-ebook.epub",
+    "ebook_cover_jpg": "ebook/borrow-delay-repeat-ebook-cover.jpg"
+  },
+  "print_specs": {
+    "page_count": 26,
+    "trim_width_in": 6.0,
+    "trim_height_in": 9.0,
+    "bleed_in": 0.125,
+    "spine_width_in": 0.058552,
+    "cover_width_in": 12.308551999999999,
+    "cover_height_in": 9.25
+  }
+}
