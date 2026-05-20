@@ -144,9 +144,11 @@ def extract_source() -> list[str]:
 
 
 def parse_chapters(lines: list[str]) -> list[Chapter]:
+    part_labels = {"Part I", "PART II", "PART III"}
+    part_display = {"Part I": "Part I", "PART II": "Part II", "PART III": "Part III"}
     starts: list[int] = []
     for idx, line in enumerate(lines):
-        if line == "Introduction" or re.fullmatch(r"Chapter \d+", line) or line == "Final Note":
+        if line in part_labels or line == "Introduction" or re.fullmatch(r"Chapter \d+", line) or line == "Final Note":
             starts.append(idx)
     intro_hits = [idx for idx in starts if lines[idx] == "Introduction"]
     body_start = intro_hits[1] if len(intro_hits) > 1 else starts[0]
@@ -156,7 +158,10 @@ def parse_chapters(lines: list[str]) -> list[Chapter]:
         end = starts[pos + 1] if pos + 1 < len(starts) else len(lines)
         heading = lines[start]
         body_start = start + 1
-        if heading.startswith("Chapter ") and body_start < end:
+        if heading in part_labels and body_start < end:
+            title = f"{part_display[heading]}: {lines[body_start]}"
+            body_start += 1
+        elif heading.startswith("Chapter ") and body_start < end:
             title = f"{heading}: {lines[body_start]}"
             body_start += 1
         else:
@@ -340,23 +345,42 @@ def add_blank_page(pdf_path: Path) -> None:
 
 
 def draw_exercise_page(c: canvas.Canvas, title: str, prompts: list[str]) -> None:
-    margin_x = 0.58 * inch
-    top_y = TRIM_H - 0.72 * inch
+    margin_x = 0.82 * inch
+    content_w = TRIM_W - (2 * margin_x)
+    top_y = TRIM_H - 0.88 * inch
+
+    def wrapped(text: str, x: float, y: float, width: float, font_name: str, size: float, leading: float) -> float:
+        c.setFont(font_name, size)
+        words = text.split()
+        line = ""
+        for word in words:
+            candidate = f"{line} {word}".strip()
+            if c.stringWidth(candidate, font_name, size) <= width:
+                line = candidate
+            else:
+                if line:
+                    c.drawString(x, y, line)
+                    y -= leading
+                line = word
+        if line:
+            c.drawString(x, y, line)
+            y -= leading
+        return y
+
     c.setFillColor(colors.black)
-    c.setFont("Georgia-Bold", 27)
-    c.drawString(margin_x, top_y, title)
-    y = top_y - 0.62 * inch
+    y = wrapped(title, margin_x, top_y, content_w, "Georgia-Bold", 22, 27)
+    y -= 0.28 * inch
     for prompt in prompts:
-        c.setFont("Georgia-Bold", 18)
-        c.drawString(margin_x, y, prompt)
-        y -= 0.55 * inch
+        c.setFillColor(colors.black)
+        y = wrapped(prompt, margin_x, y, content_w, "Georgia-Bold", 13.5, 18)
+        y -= 0.18 * inch
         c.setStrokeColor(colors.HexColor("#b8b0a2"))
         c.setLineWidth(0.8)
         for _ in range(3):
-            c.line(margin_x, y, TRIM_W - margin_x, y)
-            y -= 0.42 * inch
-        y -= 0.12 * inch
-        if y < 1.0 * inch:
+            c.line(margin_x, y, margin_x + content_w, y)
+            y -= 0.36 * inch
+        y -= 0.1 * inch
+        if y < 0.82 * inch:
             break
     c.showPage()
 
@@ -366,10 +390,14 @@ def create_exercise_pdf(path: Path) -> int:
     c.setTitle("The Calm Digital Life - Practical Exercise Pages")
     c.setAuthor(AUTHOR)
 
-    c.setFont("Georgia-Bold", 28)
+    margin_x = 0.82 * inch
+    content_w = TRIM_W - (2 * margin_x)
+    c.setFont("Georgia-Bold", 24)
     c.drawCentredString(TRIM_W / 2, 5.35 * inch, "Practical Exercise Pages")
-    c.setFont("Georgia-Italic", 15)
-    c.drawCentredString(TRIM_W / 2, 4.85 * inch, "Use these pages to pause, write things down, and decide calmly.")
+    c.setFont("Georgia-Italic", 11.5)
+    subtitle = "Use these pages to pause, write things down, and decide calmly."
+    subtitle_w = c.stringWidth(subtitle, "Georgia-Italic", 11.5)
+    c.drawString(margin_x + max(0, (content_w - subtitle_w) / 2), 4.85 * inch, subtitle)
     c.showPage()
 
     page_count = 1
@@ -507,7 +535,7 @@ def write_epub(chapters: list[Chapter]) -> None:
     write(build_dir / "META-INF/container.xml", '''<?xml version="1.0" encoding="utf-8"?>
 <container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container"><rootfiles><rootfile full-path="OEBPS/content.opf" media-type="application/oebps-package+xml"/></rootfiles></container>
 ''')
-    write(build_dir / "OEBPS/styles.css", """body{font-family:Georgia,serif;line-height:1.55;margin:0 7%;color:#151515}.chapter{break-before:page;page-break-before:always}h1{font-size:1.45em;line-height:1.18;margin:1em 0}.cover{text-align:center;margin:0}.cover img,figure img{max-width:100%;height:auto}.exercise{break-before:page;page-break-before:always;border-top:1px solid #aaa;margin-top:1.4em;padding-top:1em}p{margin:0 0 .8em}.prompt{font-weight:bold;margin-top:1em}.line{border-bottom:1px solid #aaa;height:1.6em}""")
+    write(build_dir / "OEBPS/styles.css", """body{font-family:Georgia,serif;line-height:1.55;margin:0 7%;color:#151515}.chapter{break-before:page;page-break-before:always}h1{font-size:1.45em;line-height:1.18;margin:1em 0}.part{text-align:center;margin-top:35%}.part h1{font-size:1.3em;text-transform:uppercase;letter-spacing:.08em}.part-title{font-size:1.6em;font-style:italic;margin-top:.8em}.cover{text-align:center;margin:0}.cover img,figure img{max-width:100%;height:auto}.exercise{break-before:page;page-break-before:always;border-top:1px solid #aaa;margin-top:1.4em;padding-top:1em}p{margin:0 0 .8em}.prompt{font-weight:bold;margin-top:1em}.line{border-bottom:1px solid #aaa;height:1.6em}""")
     write(build_dir / "OEBPS/cover.xhtml", xhtml_page("Cover", '<section class="cover" epub:type="cover"><img src="images/cover.jpg" alt="The Calm Digital Life cover"/></section>'))
     shutil.copyfile(COVER_JPG, build_dir / "OEBPS/images/cover.jpg")
     nav_items, spine_items, manifest_items = [], [], []
@@ -516,7 +544,11 @@ def write_epub(chapters: list[Chapter]) -> None:
         nav_items.append(f'<li><a href="{fname}">{html.escape(chapter.title)}</a></li>')
         spine_items.append(f'<itemref idref="chapter-{i:02d}"/>')
         manifest_items.append(f'<item id="chapter-{i:02d}" href="{fname}" media-type="application/xhtml+xml"/>')
-        parts = [f'<section class="chapter" epub:type="chapter"><h1>{html.escape(chapter.title)}</h1>']
+        if chapter.title.startswith("Part "):
+            part_label, part_title = chapter.title.split(":", 1)
+            parts = [f'<section class="chapter part" epub:type="part"><h1>{html.escape(part_label)}</h1><p class="part-title">{html.escape(part_title.strip())}</p>']
+        else:
+            parts = [f'<section class="chapter" epub:type="chapter"><h1>{html.escape(chapter.title)}</h1>']
         for line in chapter.lines:
             parts.append(f"<p>{html.escape(line)}</p>")
         key = chapter.title.split(":")[0]
