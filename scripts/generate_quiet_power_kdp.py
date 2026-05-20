@@ -136,6 +136,39 @@ def page_lines(reader: PdfReader, page_no: int) -> list[str]:
     return lines
 
 
+def is_heading_like(line: str) -> bool:
+    if line.startswith("•") or re.fullmatch(r"\d+\..+", line):
+        return False
+    if line.endswith((".", "?", "!", ":", ";")):
+        return False
+    words = [word.strip("“”\"'()") for word in line.split()]
+    if not words or len(words) > 7:
+        return False
+    titled = sum(1 for word in words if word[:1].isupper() or word.lower() in {"as", "of", "the", "to", "and", "vs"})
+    return titled >= max(1, len(words) - 1)
+
+
+def merge_extracted_lines(raw_lines: list[str]) -> list[str]:
+    lines: list[str] = []
+    for line in raw_lines:
+        if lines and re.fullmatch(r"[a-z]+(?: [a-z]+)?", line) and not lines[-1].endswith((".", "?", "!", ":")):
+            lines[-1] = f"{lines[-1]} {line}"
+            continue
+        if (
+            lines
+            and not lines[-1].endswith((".", "?", "!", ":", ";"))
+            and not lines[-1].startswith("•")
+            and not is_heading_like(lines[-1])
+            and not is_heading_like(line)
+            and not line.startswith("•")
+            and not re.fullmatch(r"\d+\..+", line)
+        ):
+            lines[-1] = f"{lines[-1]} {line}"
+            continue
+        lines.append(line)
+    return lines
+
+
 def parse_sections() -> list[Section]:
     reader = PdfReader(str(SOURCE_PDF))
     sections: list[Section] = []
@@ -146,12 +179,7 @@ def parse_sections() -> list[Section]:
         raw_lines: list[str] = []
         for page_no in range(start, end):
             raw_lines.extend(page_lines(reader, page_no))
-        lines: list[str] = []
-        for line in raw_lines:
-            if lines and re.fullmatch(r"[a-z]+(?: [a-z]+)?", line) and not lines[-1].endswith((".", "?", "!", ":")):
-                lines[-1] = f"{lines[-1]} {line}"
-            else:
-                lines.append(line)
+        lines = merge_extracted_lines(raw_lines)
         for expected in skip:
             if lines and clean_line(lines[0]) == clean_line(expected):
                 lines.pop(0)
@@ -220,8 +248,9 @@ def build_interior(sections: list[Section]) -> int:
     styles.add(ParagraphStyle("BookSubtitle", fontName="Georgia-Italic", fontSize=14, leading=20, alignment=TA_CENTER, spaceAfter=12))
     styles.add(ParagraphStyle("BookAuthor", fontName="Georgia", fontSize=12, leading=16, alignment=TA_CENTER, spaceBefore=24))
     styles.add(ParagraphStyle("QPToc", fontName="Georgia", fontSize=10.8, leading=15, spaceAfter=1))
-    styles.add(ParagraphStyle("QPPart", fontName="Georgia-Bold", fontSize=22, leading=28, alignment=TA_CENTER, spaceAfter=12))
+    styles.add(ParagraphStyle("QPPart", fontName="Georgia-Bold", fontSize=23, leading=29, alignment=TA_CENTER, spaceAfter=14))
     styles.add(ParagraphStyle("QPPartSub", fontName="Georgia-Italic", fontSize=15, leading=21, alignment=TA_CENTER, spaceAfter=22))
+    styles.add(ParagraphStyle("QPPartIntroTitle", fontName="Georgia-Bold", fontSize=15.5, leading=20, alignment=TA_LEFT, spaceAfter=10))
     styles.add(ParagraphStyle("QPChapter", fontName="Georgia-Bold", fontSize=18.5, leading=23, alignment=TA_LEFT, spaceAfter=7))
     styles.add(ParagraphStyle("QPChapterSub", fontName="Georgia-Italic", fontSize=12.2, leading=17, alignment=TA_LEFT, spaceAfter=14))
     styles.add(ParagraphStyle("QPBody", fontName="Georgia", fontSize=10.8, leading=16.2, spaceAfter=5.5))
@@ -253,12 +282,15 @@ def build_interior(sections: list[Section]) -> int:
     story.append(PageBreak())
     for section in sections:
         if section.kind == "part":
-            story.extend([Spacer(1, 2.25 * inch), paragraph(section.title, styles["QPPart"]), paragraph(section.subtitle, styles["QPPartSub"])])
+            story.extend([Spacer(1, 3.0 * inch), paragraph(section.title, styles["QPPart"]), paragraph(section.subtitle, styles["QPPartSub"]), PageBreak()])
+            story.append(Spacer(1, 0.35 * inch))
+            story.append(paragraph(section.title.replace(":", " -"), styles["QPPartIntroTitle"]))
             for line in section.lines:
                 story.append(paragraph(line, styles["QPBody"] if not line.startswith("-") and not line.startswith("•") else styles["QPBullet"]))
             story.append(PageBreak())
             continue
         title_style = styles["QPChapter"]
+        story.append(Spacer(1, 0.36 * inch))
         story.append(paragraph(section.title, title_style))
         if section.subtitle:
             story.append(paragraph(section.subtitle, styles["QPChapterSub"]))
@@ -432,7 +464,7 @@ def write_epub(sections: list[Section]) -> None:
     write(build_dir / "META-INF/container.xml", '''<?xml version="1.0" encoding="utf-8"?>
 <container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container"><rootfiles><rootfile full-path="OEBPS/content.opf" media-type="application/oebps-package+xml"/></rootfiles></container>
 ''')
-    write(build_dir / "OEBPS/styles.css", """body{font-family:Georgia,serif;line-height:1.55;margin:0 7%;color:#151515}.section{break-before:page;page-break-before:always}h1{font-size:1.45em;line-height:1.18;margin:1em 0 .4em}.subtitle{font-style:italic;margin-bottom:1.2em}.part{text-align:center;margin-top:30%}.part h1{text-transform:uppercase;letter-spacing:.06em}.cover{text-align:center;margin:0}.cover img{max-width:100%;height:auto}.practice h2{font-size:1.1em;margin-top:1.4em}p{margin:0 0 .8em}""")
+    write(build_dir / "OEBPS/styles.css", """body{font-family:Georgia,serif;line-height:1.58;margin:0 7%;color:#151515}.section{break-before:page;page-break-before:always}h1{font-size:1.38em;line-height:1.22;margin:2em 0 .55em}.subtitle{font-style:italic;margin-bottom:1.6em}.part-opener{break-before:page;page-break-before:always;text-align:center;margin-top:38%}.part-opener h1{text-transform:uppercase;letter-spacing:.06em}.part-intro{break-before:page;page-break-before:always}.part-intro h1{font-size:1.15em}.cover{text-align:center;margin:0}.cover img{max-width:100%;height:auto}.practice h2{font-size:1.1em;margin-top:1.4em}p{margin:0 0 .85em}""")
     write(build_dir / "OEBPS/cover.xhtml", xhtml("Cover", '<section class="cover" epub:type="cover"><img src="images/cover.jpg" alt="Quiet Power cover"/></section>'))
     shutil.copyfile(COVER_JPG, build_dir / "OEBPS/images/cover.jpg")
     nav_items, spine_items, manifest_items = [], [], []
@@ -441,11 +473,18 @@ def write_epub(sections: list[Section]) -> None:
         nav_items.append(f'<li><a href="{fname}">{html.escape(section.title)}</a></li>')
         spine_items.append(f'<itemref idref="section-{i:02d}"/>')
         manifest_items.append(f'<item id="section-{i:02d}" href="{fname}" media-type="application/xhtml+xml"/>')
-        cls = "section part" if section.kind == "part" else "section practice" if section.kind == "practice" else "section"
+        cls = "section practice" if section.kind == "practice" else "section"
         epub_type = "part" if section.kind == "part" else "chapter"
-        parts = [f'<section class="{cls}" epub:type="{epub_type}"><h1>{html.escape(section.title)}</h1>']
-        if section.subtitle:
-            parts.append(f'<p class="subtitle">{html.escape(section.subtitle)}</p>')
+        if section.kind == "part":
+            parts = [
+                f'<section class="part-opener" epub:type="part"><h1>{html.escape(section.title)}</h1>',
+                f'<p class="subtitle">{html.escape(section.subtitle)}</p></section>',
+                f'<section class="part-intro"><h1>{html.escape(section.title.replace(":", " -"))}</h1>',
+            ]
+        else:
+            parts = [f'<section class="{cls}" epub:type="{epub_type}"><h1>{html.escape(section.title)}</h1>']
+            if section.subtitle:
+                parts.append(f'<p class="subtitle">{html.escape(section.subtitle)}</p>')
         for line in section.lines:
             if re.fullmatch(r"\d+\..+", line):
                 parts.append(f"<h2>{html.escape(line)}</h2>")
