@@ -19,7 +19,7 @@ from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
-from reportlab.platypus import BaseDocTemplate, Frame, PageBreak, PageTemplate, Paragraph, Spacer
+from reportlab.platypus import BaseDocTemplate, Frame, KeepTogether, PageBreak, PageTemplate, Paragraph, Spacer
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -77,7 +77,7 @@ SECTION_SPECS = [
     (175, "chapter", "Chapter 15: The Long Position", "A Life Oriented Toward What Endures", ["Chapter 15 - The Long", "Position", "A Life Oriented Toward What Endures"]),
     (185, "chapter", "Chapter 16: Growth Tests Structure", "When Expansion Becomes Exposure", ["Chapter 16 - Growth Tests", "Structure", "When Expansion Becomes Exposure"]),
     (195, "manifesto", "Final Manifesto", "Quiet Power", ["Final Manifesto", "Quiet Power"]),
-    (204, "practice", "The Quiet Power Standard", "Calm. Focused. Unshaken. Designed.", ["The Quiet Power Standard", "Calm. Focused. Unshaken."]),
+    (204, "practice", "The Quiet Power Standard", "Calm. Focused. Unshaken. Design.", ["The Quiet Power Standard", "Calm. Focused. Unshaken."]),
 ]
 
 
@@ -97,6 +97,9 @@ def register_fonts() -> None:
 
 def clean_line(line: str) -> str:
     replacements = {
+        "\x00": " - ",
+        "→": " - ",
+        "بسبب": "through ",
         "\ufb00": "ff",
         "\ufb01": "fi",
         "\ufb02": "fl",
@@ -116,6 +119,8 @@ def clean_line(line: str) -> str:
     for old, new in replacements.items():
         line = line.replace(old, new)
     line = re.sub(r"\s+", " ", line)
+    line = re.sub(r"\s+-\s+-\s+", " - ", line)
+    line = re.sub(r"\s+([.,:;!?])", r"\1", line)
     line = re.sub(r"^- ", "• ", line)
     return line.strip()
 
@@ -138,9 +143,15 @@ def parse_sections() -> list[Section]:
     for idx, spec in enumerate(SECTION_SPECS):
         start, kind, title, subtitle, skip = spec
         end = SECTION_SPECS[idx + 1][0] if idx + 1 < len(SECTION_SPECS) else len(reader.pages) + 1
-        lines: list[str] = []
+        raw_lines: list[str] = []
         for page_no in range(start, end):
-            lines.extend(page_lines(reader, page_no))
+            raw_lines.extend(page_lines(reader, page_no))
+        lines: list[str] = []
+        for line in raw_lines:
+            if lines and re.fullmatch(r"[a-z]+(?: [a-z]+)?", line) and not lines[-1].endswith((".", "?", "!", ":")):
+                lines[-1] = f"{lines[-1]} {line}"
+            else:
+                lines.append(line)
         for expected in skip:
             if lines and clean_line(lines[0]) == clean_line(expected):
                 lines.pop(0)
@@ -211,12 +222,12 @@ def build_interior(sections: list[Section]) -> int:
     styles.add(ParagraphStyle("QPToc", fontName="Georgia", fontSize=10.8, leading=15, spaceAfter=1))
     styles.add(ParagraphStyle("QPPart", fontName="Georgia-Bold", fontSize=22, leading=28, alignment=TA_CENTER, spaceAfter=12))
     styles.add(ParagraphStyle("QPPartSub", fontName="Georgia-Italic", fontSize=15, leading=21, alignment=TA_CENTER, spaceAfter=22))
-    styles.add(ParagraphStyle("QPChapter", fontName="Georgia-Bold", fontSize=21, leading=26, alignment=TA_LEFT, spaceAfter=8))
-    styles.add(ParagraphStyle("QPChapterSub", fontName="Georgia-Italic", fontSize=12.8, leading=18, alignment=TA_LEFT, spaceAfter=16))
-    styles.add(ParagraphStyle("QPBody", fontName="Georgia", fontSize=11.4, leading=17.2, spaceAfter=7))
-    styles.add(ParagraphStyle("QPBullet", fontName="Georgia", fontSize=11.2, leading=16.5, leftIndent=16, firstLineIndent=-10, spaceAfter=4))
-    styles.add(ParagraphStyle("QPSectionHead", fontName="Georgia-Bold", fontSize=11.8, leading=17, alignment=TA_LEFT, spaceBefore=8, spaceAfter=5))
-    styles.add(ParagraphStyle("QPPracticeTitle", fontName="Georgia-Bold", fontSize=20, leading=25, alignment=TA_LEFT, spaceAfter=10))
+    styles.add(ParagraphStyle("QPChapter", fontName="Georgia-Bold", fontSize=18.5, leading=23, alignment=TA_LEFT, spaceAfter=7))
+    styles.add(ParagraphStyle("QPChapterSub", fontName="Georgia-Italic", fontSize=12.2, leading=17, alignment=TA_LEFT, spaceAfter=14))
+    styles.add(ParagraphStyle("QPBody", fontName="Georgia", fontSize=10.8, leading=16.2, spaceAfter=5.5))
+    styles.add(ParagraphStyle("QPBullet", fontName="Georgia", fontSize=10.8, leading=15.8, leftIndent=16, firstLineIndent=-10, spaceAfter=3))
+    styles.add(ParagraphStyle("QPSectionHead", fontName="Georgia-Bold", fontSize=11.2, leading=16, alignment=TA_LEFT, spaceBefore=8, spaceAfter=4))
+    styles.add(ParagraphStyle("QPPracticeTitle", fontName="Georgia-Bold", fontSize=15.4, leading=19, alignment=TA_LEFT, spaceBefore=8, spaceAfter=5))
     styles.add(ParagraphStyle("QPSmall", fontName="Georgia", fontSize=9.4, leading=14))
     doc = BaseDocTemplate(str(INTERIOR_PDF), pagesize=(TRIM_W, TRIM_H), title=TITLE, author=AUTHOR)
     odd = Frame(0.78 * inch, 0.72 * inch, TRIM_W - 1.46 * inch, TRIM_H - 1.42 * inch, id="odd")
@@ -247,17 +258,51 @@ def build_interior(sections: list[Section]) -> int:
                 story.append(paragraph(line, styles["QPBody"] if not line.startswith("-") and not line.startswith("•") else styles["QPBullet"]))
             story.append(PageBreak())
             continue
-        title_style = styles["QPPracticeTitle"] if section.kind == "practice" else styles["QPChapter"]
+        title_style = styles["QPChapter"]
         story.append(paragraph(section.title, title_style))
         if section.subtitle:
             story.append(paragraph(section.subtitle, styles["QPChapterSub"]))
+        if section.kind == "practice":
+            pending: list[str] = []
+            current_title: str | None = None
+            current_lines: list[str] = []
+
+            def flush_intro() -> None:
+                nonlocal pending
+                for item in pending:
+                    story.append(paragraph(item, styles["QPBody"]))
+                pending = []
+
+            def flush_block() -> None:
+                nonlocal current_title, current_lines
+                if current_title is None:
+                    return
+                block = [paragraph(current_title, styles["QPPracticeTitle"])]
+                block.extend(paragraph(item, styles["QPBody"]) for item in current_lines)
+                story.append(KeepTogether(block))
+                current_title, current_lines = None, []
+
+            for line in section.lines:
+                if re.fullmatch(r"\d+\..+", line) or line == "Closing Standard":
+                    flush_intro()
+                    flush_block()
+                    current_title = line
+                    current_lines = []
+                elif current_title is None:
+                    pending.append(line)
+                else:
+                    current_lines.append(line)
+            flush_intro()
+            flush_block()
+            story.append(PageBreak())
+            continue
         for line in section.lines:
             if line.startswith("•"):
                 story.append(paragraph(line, styles["QPBullet"]))
             elif re.fullmatch(r"\d+\..+", line):
                 story.append(Spacer(1, 0.08 * inch))
                 story.append(paragraph(line, styles["QPPracticeTitle"]))
-            elif len(line) < 44 and not line.endswith(".") and not line.endswith("?") and not line.endswith(":") and not line.startswith("“"):
+            elif len(line) < 44 and not line.endswith(".") and not line.endswith("?") and not line.startswith("“"):
                 story.append(paragraph(line, styles["QPSectionHead"]))
             else:
                 story.append(paragraph(line, styles["QPBody"]))

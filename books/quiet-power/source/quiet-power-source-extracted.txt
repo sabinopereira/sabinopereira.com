@@ -31,17 +31,16 @@ They are limited by structure.
 Not lack of intelligence.
 Not lack of ambition.
 Lack of control over:
-- their attention
-- their responses
-- their internal state under pressure
+• their attention
+• their responses
+• their internal state under pressure
 And without that control, effort gets diluted.
 Quiet Power is not about becoming passive.
 It is about becoming deliberate.
 It is the ability to:
-- hold your state when pressure rises
-- direct your attention instead of reacting to whatever is
-loudest
-- continue operating when conditions are unstable
+• hold your state when pressure rises
+• direct your attention instead of reacting to whatever is loudest
+• continue operating when conditions are unstable
 Not occasionally.
 Consistently.
 In high-performance environments, instability is
@@ -53,8 +52,7 @@ progress.
 These are not dramatic failures.
 They are small leaks.
 But repeated daily, they compound.
-And over time, they separate people who stay in
-control
+And over time, they separate people who stay in control
 from those who are constantly responding to what
 happens around them.
 This book is about closing those leaks.
@@ -80,17 +78,16 @@ You do not need more intensity.
 If you are reading this, you already have that.
 What you likely do not have — or have not fully
 installed — is a system that:
-- protects your attention
-- regulates your responses
-- maintains your standards under pressure
-- and allows your work to compound without constant
-recalibration
+• protects your attention
+• regulates your responses
+• maintains your standards under pressure
+• and allows your work to compound without constant recalibration
 There is a moment where this becomes clear.
 It usually does not arrive during success.
 It arrives when:
-- pressure increases
-- decisions stack
-- noise becomes constant
+• pressure increases
+• decisions stack
+• noise becomes constant
 And you realize that reacting faster is not solving the
 problem.
 It is amplifying it.
@@ -374,14 +371,13 @@ Reduce your pace.
 Then ask one question.
 The Clarification Move
 Instead of reacting, ask:
-“Can you clarify what you mean?”
-or
+“Can you clarify what you mean?” or
 “What outcome are you expecting here?”
 This does three things:
 1.Slows the interaction
 2.Reduces emotional escalation
 3.Gives you time to think
-Most conflicts accelerate بسببassumption.
+Most conflicts accelerate through assumption.
 Clarification breaks that pattern.
 Timing Is Power
 The person who controls tempo controls direction.
@@ -775,7 +771,7 @@ Fast replies.
 Frequent updates.
 Visible participation.
 It creates a loop:
-Appear active → Receive validation → Repeat.
+Appear active - Receive validation - Repeat.
 I operated like this.
 Answering quickly felt like competence.
 Being visible felt like relevance.
@@ -1073,7 +1069,7 @@ The boundary that keeps it controlled.
 • fixed duration
 • defined outcome
 • limited scope
-Trigger → Action → Constraint
+Trigger - Action - Constraint
 This removes variability.
 Operational Standard: Install the Engine
 Example:
@@ -1468,9 +1464,9 @@ Sometimes it is:
 • correction
 • adaptation
 Examples:
-• a plateau in training → adaptation
-• a weak draft → iteration
-• a volatile market → fluctuation
+• a plateau in training - adaptation
+• a weak draft - iteration
+• a volatile market - fluctuation
 Pain does not equal failure.
 The mistake is reacting before understanding.
 The Calibration Process
@@ -1731,8 +1727,7 @@ Scale requires structure.
 Part IV is about that shift.
 How to:
 • multiply output without multiplying effort
-• build systems that continue without your
-presence
+• build systems that continue without your presence
 • position your work so it compounds
 This is where force becomes architecture.
 Without design, discipline plateaus.
@@ -1760,23 +1755,22 @@ More effort.
 That is not scale.
 Linear vs Designed
 Linear effort depends on presence.
-You act → result happens
-You stop → result stops
+You act - result happens
+You stop - result stops
 Designed leverage separates output from effort.
 The system continues.
 Even when you are not actively working.
 This is the shift:
-From execution
-to architecture
+From execution to architecture
 The Architecture Principle
 Force without structure dissipates.
 Structure without force stagnates.
 You need both.
 Examples:
-• skill without visibility → limited impact
-• visibility without substance → fragile
-• capital without discipline → loss
-• discipline without structure → capped growth
+• skill without visibility - limited impact
+• visibility without substance - fragile
+• capital without discipline - loss
+• discipline without structure - capped growth
 Leverage is alignment.
 When structure and discipline meet, multiplication
 begins.
@@ -1821,8 +1815,8 @@ The difference is not talent.
 It is design.
 The Structural Consequence
 Linear systems break under growth.
-More work → more pressure
-More demand → more overload
+More work - more pressure
+More demand - more overload
 Without structure:
 • responses slow
 • quality drops
@@ -1940,11 +1934,11 @@ Consistency comes first.
 Principle 4: Use Triggers, Not Memory
 Rules depend on remembering.
 Triggers depend on sequence.
-“When X happens, I do Y .”
+“When X happens, I do Y.”
 Examples:
-• After coffee → start deep work
-• After work → go to the gym
-• Before sleep → review the day
+• After coffee - start deep work
+• After work - go to the gym
+• Before sleep - review the day
 Triggers remove hesitation.
 They reduce friction.
 They create automatic behavior.
@@ -2501,7 +2495,7 @@ Not performative.
 But built to last.
 
 # The Quiet Power Standard
-## Calm. Focused. Unshaken. Designed.
+## Calm. Focused. Unshaken. Design.
 This is the baseline.
 Not your best day.
 Your minimum standard.

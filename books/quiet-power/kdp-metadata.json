@@ -16,12 +16,12 @@
     "ebook_cover_jpg": "ebook/quiet-power-ebook-cover.jpg"
   },
   "print_specs": {
-    "page_count": 132,
+    "page_count": 122,
     "trim_width_in": 6,
     "trim_height_in": 9,
     "bleed_in": 0.125,
-    "spine_width_in": 0.297264,
-    "cover_width_in": 12.547264,
+    "spine_width_in": 0.274744,
+    "cover_width_in": 12.524744,
     "cover_height_in": 9.25
   }
 }
