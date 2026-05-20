@@ -116,7 +116,7 @@ def paragraph_html(text: str) -> str:
 
 
 def build_section(section, index: int) -> str:
-    parts = [f'<section epub:type="chapter" id="section-{index:02d}">', f"<h1>{html.escape(section.title)}</h1>"]
+    parts = [f'<section class="chapter" epub:type="chapter" id="section-{index:02d}">', f"<h1>{html.escape(section.title)}</h1>"]
     img = image_name(section.title)
     if img:
         parts.append(f'<figure><img src="images/{img}" alt="Illustration for {html.escape(section.title)}"/></figure>')
@@ -239,6 +239,10 @@ def build_epub() -> None:
   font-family: Georgia, serif;
   line-height: 1.55;
   margin: 0 7%;
+}
+.chapter {
+  break-before: page;
+  page-break-before: always;
 }
 h1 {
   font-size: 1.65em;

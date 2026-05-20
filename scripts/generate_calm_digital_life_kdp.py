@@ -269,7 +269,7 @@ def build_interior(chapters: list[Chapter]) -> int:
     styles.add(ParagraphStyle("Prompt", fontName="Georgia-Bold", fontSize=11.6, leading=16, spaceBefore=8, spaceAfter=2))
     styles.add(ParagraphStyle("Small", fontName="Georgia", fontSize=9.5, leading=14))
 
-    doc = BaseDocTemplate(str(INTERIOR_PDF), pagesize=(TRIM_W, TRIM_H), title=f"{TITLE} - Workbook Edition", author=AUTHOR)
+    doc = BaseDocTemplate(str(INTERIOR_PDF), pagesize=(TRIM_W, TRIM_H), title=f"{TITLE} - Updated Edition", author=AUTHOR)
     odd = Frame(0.68 * inch, 0.72 * inch, TRIM_W - 1.22 * inch, TRIM_H - 1.42 * inch, id="odd")
     even = Frame(0.54 * inch, 0.72 * inch, TRIM_W - 1.22 * inch, TRIM_H - 1.42 * inch, id="even")
     doc.addPageTemplates([
@@ -280,14 +280,14 @@ def build_interior(chapters: list[Chapter]) -> int:
         Spacer(1, 2.0 * inch),
         Paragraph("THE CALM<br/>DIGITAL LIFE", styles["TitleImpact"]),
         paragraph("Pause First. Write It Down. Stay in Control.", styles["Subtitle"]),
-        paragraph("A practical guide and workbook for safer online decisions after 60.", styles["Subtitle"]),
+        paragraph("A practical guide with simple exercises for safer online decisions after 60.", styles["Subtitle"]),
         paragraph(AUTHOR, styles["Author"]),
         PageBreak(),
         Spacer(1, 2.0 * inch),
         paragraph("Copyright © 2026 Sabino Pereira. All rights reserved.", styles["Small"]),
         paragraph("This book is for informational purposes only. It does not constitute financial, legal, or professional advice.", styles["Small"]),
         Spacer(1, 0.25 * inch),
-        paragraph("Workbook edition.", styles["Small"]),
+        paragraph("Updated edition with practical exercises.", styles["Small"]),
         PageBreak(),
         paragraph("Contents", styles["ChapterTitle"]),
     ]
@@ -507,7 +507,7 @@ def write_epub(chapters: list[Chapter]) -> None:
     write(build_dir / "META-INF/container.xml", '''<?xml version="1.0" encoding="utf-8"?>
 <container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container"><rootfiles><rootfile full-path="OEBPS/content.opf" media-type="application/oebps-package+xml"/></rootfiles></container>
 ''')
-    write(build_dir / "OEBPS/styles.css", """body{font-family:Georgia,serif;line-height:1.55;margin:0 7%;color:#151515}h1{font-size:1.45em;line-height:1.18;margin:1em 0}.cover{text-align:center;margin:0}.cover img,figure img{max-width:100%;height:auto}.exercise{border-top:1px solid #aaa;margin-top:1.4em;padding-top:1em}p{margin:0 0 .8em}.prompt{font-weight:bold;margin-top:1em}.line{border-bottom:1px solid #aaa;height:1.6em}""")
+    write(build_dir / "OEBPS/styles.css", """body{font-family:Georgia,serif;line-height:1.55;margin:0 7%;color:#151515}.chapter{break-before:page;page-break-before:always}h1{font-size:1.45em;line-height:1.18;margin:1em 0}.cover{text-align:center;margin:0}.cover img,figure img{max-width:100%;height:auto}.exercise{break-before:page;page-break-before:always;border-top:1px solid #aaa;margin-top:1.4em;padding-top:1em}p{margin:0 0 .8em}.prompt{font-weight:bold;margin-top:1em}.line{border-bottom:1px solid #aaa;height:1.6em}""")
     write(build_dir / "OEBPS/cover.xhtml", xhtml_page("Cover", '<section class="cover" epub:type="cover"><img src="images/cover.jpg" alt="The Calm Digital Life cover"/></section>'))
     shutil.copyfile(COVER_JPG, build_dir / "OEBPS/images/cover.jpg")
     nav_items, spine_items, manifest_items = [], [], []
@@ -516,7 +516,7 @@ def write_epub(chapters: list[Chapter]) -> None:
         nav_items.append(f'<li><a href="{fname}">{html.escape(chapter.title)}</a></li>')
         spine_items.append(f'<itemref idref="chapter-{i:02d}"/>')
         manifest_items.append(f'<item id="chapter-{i:02d}" href="{fname}" media-type="application/xhtml+xml"/>')
-        parts = [f'<section epub:type="chapter"><h1>{html.escape(chapter.title)}</h1>']
+        parts = [f'<section class="chapter" epub:type="chapter"><h1>{html.escape(chapter.title)}</h1>']
         for line in chapter.lines:
             parts.append(f"<p>{html.escape(line)}</p>")
         key = chapter.title.split(":")[0]
