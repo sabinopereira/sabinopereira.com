@@ -8,9 +8,9 @@
     "trim_size": "6 x 9 in",
     "interior": "books/livro-reclamacoes/paperback/livro-reclamacoes-paperback-miolo-kdp.pdf",
     "cover_pdf": "books/livro-reclamacoes/paperback/livro-reclamacoes-paperback-capa-kdp.pdf",
-    "page_count": 124,
-    "spine_width_in": 0.27924800000000005,
-    "cover_width_in": 12.529248,
+    "page_count": 196,
+    "spine_width_in": 0.441392,
+    "cover_width_in": 12.691392,
     "cover_height_in": 9.25
   },
   "ebook": {

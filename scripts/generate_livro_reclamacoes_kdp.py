@@ -6,6 +6,7 @@ import json
 import re
 import uuid
 from dataclasses import dataclass
+from html.parser import HTMLParser
 from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZIP_STORED, ZipFile
 
@@ -26,18 +27,21 @@ from reportlab.platypus import (
     PageTemplate,
     Paragraph,
     Spacer,
+    Flowable,
 )
 
 
 ROOT = Path(__file__).resolve().parents[1]
 BOOK_DIR = ROOT / "books/livro-reclamacoes"
 SOURCE_TXT = BOOK_DIR / "source/livro-reclamacoes-source-textutil.txt"
+KDP_UPLOAD_EPUB = BOOK_DIR / "source/livro-reclamacoes-amazon-kdp-upload-original.epub"
 EDITED_TXT = BOOK_DIR / "source/livro-reclamacoes-edited.txt"
 EBOOK_DIR = BOOK_DIR / "ebook"
 PAPERBACK_DIR = BOOK_DIR / "paperback"
 PREVIEWS_DIR = BOOK_DIR / "previews"
 
 EBOOK_COVER = EBOOK_DIR / "livro-reclamacoes-ebook-cover.jpg"
+SELECTED_COVER = PREVIEWS_DIR / "livro-reclamacoes-cover-improved-approved.png"
 EPUB_OUT = EBOOK_DIR / "livro-reclamacoes-kindle-ebook.epub"
 INTERIOR_PDF = PAPERBACK_DIR / "livro-reclamacoes-paperback-miolo-kdp.pdf"
 COVER_PDF = PAPERBACK_DIR / "livro-reclamacoes-paperback-capa-kdp.pdf"
@@ -54,11 +58,15 @@ BLEED = 0.125 * inch
 WHITE_PAPER_SPINE_PER_PAGE = 0.002252 * inch
 
 DROP_TITLES = {
+    "A Indústria da Beleza Impossível",
+    "Gurus da Alma e da Carteira",
     "A Maquilhagem do Óbvio (O Gourmet da Banalidade)",
+    "Consumismo Disfarçado (O Luxo do Lixo)",
     "Celebridades Anónimas",
-    "O Teatro da Presença (O Networking do Isolamento)",
-    "Ocupação e Pais (A Terceirização do Afeto)",
 }
+
+SUPPLEMENTAL_AFTER_TITLE = "O Negócio da Cauda a Abanar"
+SUPPLEMENTAL_TITLES = ["O Mercado da Fé"]
 
 TITLE_REWRITES = {
     "A Ditadura do Ofendidinho": "A Ditadura da Reação",
@@ -75,6 +83,30 @@ PART_TITLES = {
     "Parte IV": "Identidade, exaustão e confusão",
     "Parte V": "Memória, medo e fim de linha",
 }
+
+ILLUSTRATED_TITLES = {
+    "O Inocente do Jogo Limpo": "stamp",
+    "O Teatro do Candidato Ideal": "mask",
+    "A Liturgia do Calendário Cheio": "calendar",
+    "O Labirinto do \"Aguarde\" (Apoio ao Cliente)": "counter",
+    "O Negócio da Cauda a Abanar": "vet",
+    "O Mercado da Fé": "altar",
+    "O Paradoxo da Conectividade (A Solidão Digital)": "phone",
+    "O Depósito da Memória": "memory",
+    "A Fila Invisível (A Caridade como Espetáculo)": "queue",
+}
+
+DEFAULT_ILLUSTRATION_SEQUENCE = [
+    "stamp",
+    "counter",
+    "phone",
+    "calendar",
+    "mask",
+    "queue",
+    "memory",
+    "altar",
+    "vet",
+]
 
 
 @dataclass
@@ -108,15 +140,17 @@ def register_fonts() -> None:
 
 def source_lines() -> list[str]:
     text = SOURCE_TXT.read_text(encoding="utf-8")
-    text = text.replace("\u2028", " ").replace("\xa0", " ").replace("\u200b", "")
-    lines = [clean_line(line) for line in text.splitlines()]
+    text = text.replace("\xa0", " ").replace("\u200b", "")
+    # Keep U+2028 soft line separators as intentional verse breaks.
+    lines = [clean_line(line) for line in text.split("\n")]
     return [line for line in lines if line]
 
 
 def clean_line(text: str) -> str:
     text = text.strip()
+    text = text.replace("\u2028", " <br/> ")
     text = text.replace("\u2011", "-").replace("\u2010", "-").replace("\u2013", "–")
-    text = re.sub(r"\s+", " ", text)
+    text = re.sub(r"[ \t\r\f\v]+", " ", text)
     text = text.replace("Optimismo", "Otimismo")
     text = text.replace("pára", "para")
     text = text.replace("never saíram", "nunca saíram")
@@ -131,6 +165,7 @@ def clean_line(text: str) -> str:
     text = text.replace("Chamamos-lheconstrução", "Chamamos-lhe construção")
     text = text.replace("Chamamos-lhe falta", "Chamamos-lhe falta")
     text = text.replace("MB Way", "MB WAY")
+    text = text.replace("Linked In", "LinkedIn")
     text = text.replace("TikTokcom", "TikTok com")
     text = text.replace("do “Aguarde”", "do \"Aguarde\"")
     text = re.sub(r"\s+([,.;:!?])", r"\1", text)
@@ -138,15 +173,88 @@ def clean_line(text: str) -> str:
     text = re.sub(r"([a-záéíóúâêôãõç])([(])", r"\1 \2", text)
     text = re.sub(r"([)])([A-Za-zÁÉÍÓÚÂÊÔÃÕÇáéíóúâêôãõç])", r"\1 \2", text)
     text = re.sub(r"([a-záéíóúâêôãõç])([A-ZÁÉÍÓÚÂÊÔÃÕÇ])", r"\1 \2", text)
+    text = re.sub(r"\s*<br/>\s*", "<br/>", text)
     text = text.replace(" .", ".")
     text = text.replace(" ,", ",")
     text = text.replace(" ;", ";")
     text = text.replace(" :", ":")
+    text = text.replace("Linked In", "LinkedIn")
     return text
 
 
 def canonical_title(text: str) -> str:
     return re.sub(r"\s+", " ", clean_line(text)).strip()
+
+
+class BlockTextParser(HTMLParser):
+    block_tags = {"h1", "h2", "h3", "p"}
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.blocks: list[tuple[str, str]] = []
+        self.current_tag: str | None = None
+        self.current_text: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs) -> None:
+        if tag in self.block_tags:
+            self.current_tag = tag
+            self.current_text = []
+        elif tag == "br" and self.current_tag:
+            self.current_text.append(" <br/> ")
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag == self.current_tag:
+            text = " ".join("".join(self.current_text).split())
+            if text:
+                self.blocks.append((tag, text))
+            self.current_tag = None
+            self.current_text = []
+
+    def handle_data(self, data: str) -> None:
+        if self.current_tag:
+            self.current_text.append(data)
+
+
+def extract_kdp_epub_chapter(title: str) -> Chapter | None:
+    if not KDP_UPLOAD_EPUB.exists():
+        return None
+    with ZipFile(KDP_UPLOAD_EPUB) as z:
+        for name in z.namelist():
+            if not name.endswith(".xhtml"):
+                continue
+            raw = z.read(name).decode("utf-8", errors="replace")
+            if title not in raw:
+                continue
+            parser = BlockTextParser()
+            parser.feed(raw)
+            blocks = [(tag, clean_line(text)) for tag, text in parser.blocks]
+            h1_titles = [text for tag, text in blocks if tag == "h1"]
+            if title not in h1_titles:
+                continue
+            paragraphs: list[str] = []
+            collecting = False
+            for tag, text in blocks:
+                if tag == "h1" and text == title:
+                    collecting = True
+                    continue
+                if not collecting:
+                    continue
+                if text.startswith("Parte "):
+                    break
+                if text == title:
+                    continue
+                paragraphs.append(text)
+            return Chapter(number=0, title=title, subtitle="", paragraphs=paragraphs)
+    return None
+
+
+def supplemental_chapters() -> list[Chapter]:
+    chapters: list[Chapter] = []
+    for title in SUPPLEMENTAL_TITLES:
+        chapter = extract_kdp_epub_chapter(title)
+        if chapter is not None:
+            chapters.append(chapter)
+    return chapters
 
 
 def parse_book() -> tuple[list[str], list[Part]]:
@@ -168,6 +276,7 @@ def parse_book() -> tuple[list[str], list[Part]]:
     parts: list[Part] = []
     current_part: Part | None = None
     kept_chapters: list[Chapter] = []
+    supplements = supplemental_chapters()
 
     for idx, start in enumerate(chapter_starts):
         end = chapter_starts[idx + 1] if idx + 1 < len(chapter_starts) else len(lines)
@@ -187,15 +296,87 @@ def parse_book() -> tuple[list[str], list[Part]]:
             subtitle = lines[body_start]
             body_start += 1
         paragraphs = [clean_line(line) for line in lines[body_start:end]]
+        paragraphs = [line for line in paragraphs if not line.startswith("Parte ")]
         paragraphs = polish_chapter(raw_title, paragraphs)
         chapter = Chapter(number=len(kept_chapters) + 1, title=raw_title, subtitle=subtitle, paragraphs=paragraphs)
         kept_chapters.append(chapter)
         current_part.chapters.append(chapter)
+        if title == SUPPLEMENTAL_AFTER_TITLE:
+            for supplement in supplements:
+                inserted = Chapter(
+                    number=len(kept_chapters) + 1,
+                    title=supplement.title,
+                    subtitle=supplement.subtitle,
+                    paragraphs=supplement.paragraphs,
+                )
+                kept_chapters.append(inserted)
+                current_part.chapters.append(inserted)
 
     return preface, parts
 
 
 def polish_chapter(title: str, paragraphs: list[str]) -> list[str]:
+    if title == "O Paradoxo da Conectividade (A Solidão Digital)":
+        return [
+            "I. A Aldeia Sem Porta",
+            "Ensinaram-te<br/>que o mundo agora<br/>cabia na tua mão.",
+            "Prometeram-te proximidade.",
+            "Prometeram-te comunidade.",
+            "Prometeram-te que ninguém<br/>voltaria a estar sozinho.",
+            "Mas tu descobriste<br/>uma verdade mais silenciosa:",
+            "estar ligado a tudo<br/>não é o mesmo<br/>que pertencer a alguém.",
+            "A tua rede é vasta.",
+            "Os teus contactos<br/>contam-se aos milhares.",
+            "Mas, nas noites difíceis,<br/>o ecrã é muitas vezes<br/>a única luz acesa.",
+            "Há fibra ótica.",
+            "Há notificações.",
+            "Há grupos,<br/>canais,<br/>mensagens,<br/>reações.",
+            "E mesmo assim,<br/>falta a voz.",
+            "Falta a presença.",
+            "Falta alguém<br/>que repare<br/>quando o teu silêncio<br/>mudou de peso.",
+            "Chamam-lhe<br/>conectividade total.",
+            "Mas parece<br/>uma casa cheia de janelas<br/>sem nenhuma porta aberta.",
+            "II. Resposta Automática da Rede Global<br/>(não responder)",
+            "Estimado Utilizador<br/>Hiper-Conectado,",
+            "Obrigado por manter<br/>o seu tráfego ativo.",
+            "Lamentamos<br/>que se sinta sozinho<br/>no meio da nossa rede,<br/>mas importa esclarecer:",
+            "Nós não vendemos companhia.",
+            "Vendemos a infraestrutura<br/>para a simular.",
+            "Se tem mil contactos<br/>e ninguém para chamar<br/>numa emergência?",
+            "Chamamos-lhe<br/>otimização social.",
+            "Se sente ansiedade<br/>quando o telemóvel<br/>fica em silêncio?",
+            "Chamamos-lhe<br/>engajamento saudável.",
+            "O nosso modelo<br/>é simples:",
+            "quanto mais vazio<br/>se sentir por dentro,",
+            "mais tempo passa<br/>à procura de sinal<br/>por fora.",
+            "Não nos peça<br/>relações humanas.",
+            "Oferecemos velocidade.",
+            "Oferecemos alcance.",
+            "Oferecemos presença digital<br/>sem presença real.",
+            "Com os melhores cumprimentos,<br/>A Administração da Solidão Assistida.",
+            "III. O Eco do Wi-Fi Vazio",
+            "A bateria chegou ao fim.",
+            "O quarto ficou escuro.",
+            "Pela primeira vez<br/>em muitas horas,<br/>nada vibrou.",
+            "Chegou o momento<br/>de olhar<br/>para a tua vida social<br/>sem filtro azul.",
+            "Conversas curtas.",
+            "Respostas adiadas.",
+            "Amigos que existem<br/>mais no feed<br/>do que na tua mesa.",
+            "Uma galeria de rostos<br/>que sabem onde estiveste,<br/>mas não sabem<br/>como estás.",
+            "E aí percebes<br/>a armadilha:",
+            "a tecnologia aproximou<br/>os corpos distantes,",
+            "mas ensinou os próximos<br/>a desaparecer<br/>sem se levantarem da cadeira.",
+            "O mundo chama-lhe<br/>era da comunicação.",
+            "Tu sabes<br/>a verdade:",
+            "o sinal está no máximo,",
+            "mas a escuta<br/>quase desapareceu.",
+            "Fica a luz azul<br/>no rosto cansado.",
+            "Fica o carregador<br/>na mão.",
+            "E fica uma vontade simples:",
+            "bater à porta de alguém<br/>sem marcar hora,",
+            "só para lembrar<br/>que a rede mais importante<br/>do mundo",
+            "ainda não tem app.",
+        ]
     if title == "O Manual Infinito do Falar Certo":
         return [
             "I. A Burocracia da Conversa",
@@ -236,6 +417,12 @@ def roman_num(value: int) -> str:
     return result
 
 
+def illustration_kind_for(chapter: Chapter) -> str:
+    if chapter.title in ILLUSTRATED_TITLES:
+        return ILLUSTRATED_TITLES[chapter.title]
+    return DEFAULT_ILLUSTRATION_SEQUENCE[(chapter.number - 1) % len(DEFAULT_ILLUSTRATION_SEQUENCE)]
+
+
 def write_edited_text(preface: list[str], parts: list[Part]) -> None:
     lines: list[str] = [TITLE, SUBTITLE, AUTHOR, "", "Prefácio", *preface, ""]
     for part in parts:
@@ -265,6 +452,110 @@ def draw_page_number(canv: canvas.Canvas, doc: BaseDocTemplate) -> None:
     canv.restoreState()
 
 
+class EditorialIllustration(Flowable):
+    def __init__(self, kind: str, width: float = 3.25 * inch, height: float = 1.55 * inch) -> None:
+        super().__init__()
+        self.kind = kind
+        self.width = width
+        self.height = height
+
+    def wrap(self, availWidth: float, availHeight: float) -> tuple[float, float]:
+        return min(self.width, availWidth), self.height
+
+    def draw(self) -> None:
+        c = self.canv
+        w, h = self.width, self.height
+        c.saveState()
+        c.setStrokeColor(colors.black)
+        c.setFillColor(colors.white)
+        c.setLineWidth(1.3)
+        getattr(self, f"draw_{self.kind}", self.draw_stamp)(c, w, h)
+        c.restoreState()
+
+    def draw_stamp(self, c: canvas.Canvas, w: float, h: float) -> None:
+        c.rotate(-5)
+        c.rect(0.35 * inch, 0.28 * inch, 2.25 * inch, 0.78 * inch, stroke=1, fill=0)
+        c.setFont("Impact", 18)
+        c.drawCentredString(1.48 * inch, 0.66 * inch, "RECLAMAÇÃO")
+        c.line(0.55 * inch, 0.45 * inch, 2.4 * inch, 0.45 * inch)
+
+    def draw_mask(self, c: canvas.Canvas, w: float, h: float) -> None:
+        c.ellipse(0.6 * inch, 0.25 * inch, 1.55 * inch, 1.2 * inch)
+        c.ellipse(1.7 * inch, 0.25 * inch, 2.65 * inch, 1.2 * inch)
+        c.circle(0.95 * inch, 0.8 * inch, 0.07 * inch)
+        c.circle(1.2 * inch, 0.8 * inch, 0.07 * inch)
+        c.arc(0.85 * inch, 0.45 * inch, 1.3 * inch, 0.75 * inch, 200, 140)
+        c.circle(2.05 * inch, 0.8 * inch, 0.07 * inch)
+        c.circle(2.3 * inch, 0.8 * inch, 0.07 * inch)
+        c.arc(1.95 * inch, 0.45 * inch, 2.4 * inch, 0.75 * inch, 20, 140)
+
+    def draw_calendar(self, c: canvas.Canvas, w: float, h: float) -> None:
+        c.rect(0.45 * inch, 0.25 * inch, 2.45 * inch, 1.05 * inch)
+        c.line(0.45 * inch, 1.02 * inch, 2.9 * inch, 1.02 * inch)
+        for x in [0.95, 1.45, 1.95, 2.45]:
+            c.line(x * inch, 0.25 * inch, x * inch, 1.02 * inch)
+        for y in [0.52, 0.78]:
+            c.line(0.45 * inch, y * inch, 2.9 * inch, y * inch)
+        c.setFont("Georgia-Bold", 10)
+        c.drawString(0.62 * inch, 1.1 * inch, "SEM TEMPO")
+
+    def draw_counter(self, c: canvas.Canvas, w: float, h: float) -> None:
+        c.rect(0.35 * inch, 0.25 * inch, 2.75 * inch, 0.28 * inch, fill=0)
+        c.rect(1.65 * inch, 0.53 * inch, 1.05 * inch, 0.65 * inch, fill=0)
+        c.circle(0.8 * inch, 0.82 * inch, 0.2 * inch)
+        c.line(0.8 * inch, 0.62 * inch, 0.8 * inch, 0.28 * inch)
+        c.line(0.55 * inch, 0.45 * inch, 1.05 * inch, 0.45 * inch)
+        c.setFont("Georgia-Bold", 9)
+        c.drawCentredString(2.17 * inch, 0.83 * inch, "AGUARDE")
+
+    def draw_vet(self, c: canvas.Canvas, w: float, h: float) -> None:
+        c.circle(0.95 * inch, 0.8 * inch, 0.28 * inch)
+        c.ellipse(0.55 * inch, 0.45 * inch, 1.45 * inch, 0.85 * inch)
+        c.line(0.6 * inch, 0.45 * inch, 0.5 * inch, 0.25 * inch)
+        c.line(1.3 * inch, 0.45 * inch, 1.42 * inch, 0.25 * inch)
+        c.rect(1.85 * inch, 0.35 * inch, 0.75 * inch, 0.95 * inch)
+        c.setFont("Georgia-Bold", 9)
+        c.drawCentredString(2.22 * inch, 0.86 * inch, "FATURA")
+        c.line(1.95 * inch, 0.65 * inch, 2.5 * inch, 0.65 * inch)
+
+    def draw_altar(self, c: canvas.Canvas, w: float, h: float) -> None:
+        c.rect(0.75 * inch, 0.25 * inch, 1.9 * inch, 0.3 * inch)
+        c.line(1.7 * inch, 0.55 * inch, 1.7 * inch, 1.28 * inch)
+        c.line(1.38 * inch, 1.0 * inch, 2.02 * inch, 1.0 * inch)
+        c.rect(0.9 * inch, 0.62 * inch, 0.52 * inch, 0.38 * inch)
+        c.setFont("Georgia-Bold", 8)
+        c.drawCentredString(1.16 * inch, 0.76 * inch, "MB")
+        c.circle(2.28 * inch, 0.9 * inch, 0.16 * inch)
+        c.line(2.28 * inch, 0.74 * inch, 2.28 * inch, 0.45 * inch)
+
+    def draw_phone(self, c: canvas.Canvas, w: float, h: float) -> None:
+        c.roundRect(1.1 * inch, 0.18 * inch, 1.05 * inch, 1.22 * inch, 0.08 * inch)
+        c.circle(1.62 * inch, 0.34 * inch, 0.04 * inch)
+        c.line(1.25 * inch, 1.05 * inch, 2.0 * inch, 1.05 * inch)
+        c.line(1.25 * inch, 0.82 * inch, 2.0 * inch, 0.82 * inch)
+        c.line(1.25 * inch, 0.59 * inch, 2.0 * inch, 0.59 * inch)
+        c.arc(0.55 * inch, 0.5 * inch, 1.0 * inch, 1.0 * inch, 300, 120)
+        c.arc(2.25 * inch, 0.5 * inch, 2.7 * inch, 1.0 * inch, 120, 300)
+
+    def draw_memory(self, c: canvas.Canvas, w: float, h: float) -> None:
+        c.rect(0.45 * inch, 0.35 * inch, 0.75 * inch, 0.8 * inch)
+        c.rect(1.35 * inch, 0.5 * inch, 0.6 * inch, 0.55 * inch)
+        c.rect(2.1 * inch, 0.32 * inch, 0.65 * inch, 0.78 * inch)
+        c.circle(0.83 * inch, 0.78 * inch, 0.13 * inch)
+        c.line(0.62 * inch, 0.52 * inch, 1.03 * inch, 0.52 * inch)
+        c.line(1.48 * inch, 0.68 * inch, 1.82 * inch, 0.68 * inch)
+        c.line(2.22 * inch, 0.55 * inch, 2.63 * inch, 0.95 * inch)
+        c.line(2.63 * inch, 0.55 * inch, 2.22 * inch, 0.95 * inch)
+
+    def draw_queue(self, c: canvas.Canvas, w: float, h: float) -> None:
+        for x in [0.65, 1.15, 1.65, 2.15]:
+            c.circle(x * inch, 0.98 * inch, 0.12 * inch)
+            c.line(x * inch, 0.86 * inch, x * inch, 0.42 * inch)
+            c.line((x - 0.16) * inch, 0.65 * inch, (x + 0.16) * inch, 0.65 * inch)
+        c.rect(2.55 * inch, 0.28 * inch, 0.34 * inch, 0.6 * inch)
+        c.line(0.45 * inch, 0.25 * inch, 2.95 * inch, 0.25 * inch)
+
+
 def add_blank_page(pdf_path: Path) -> None:
     blank_path = pdf_path.with_suffix(".blank.pdf")
     c = canvas.Canvas(str(blank_path), pagesize=(TRIM_W, TRIM_H))
@@ -288,6 +579,7 @@ def build_interior(preface: list[str], parts: list[Part]) -> int:
     styles.add(ParagraphStyle("Subtitle", fontName="Georgia-Italic", fontSize=14, leading=19, alignment=TA_CENTER))
     styles.add(ParagraphStyle("Author", fontName="Georgia", fontSize=11.5, leading=16, alignment=TA_CENTER, spaceBefore=34))
     styles.add(ParagraphStyle("Small", fontName="Georgia", fontSize=9.4, leading=14, textColor=colors.HexColor("#333333")))
+    styles.add(ParagraphStyle("Copyright", fontName="Georgia", fontSize=9.4, leading=14, alignment=TA_CENTER, textColor=colors.HexColor("#333333")))
     styles.add(ParagraphStyle("Toc", fontName="Georgia", fontSize=10.7, leading=15.2, spaceAfter=1))
     styles.add(ParagraphStyle("PrefaceTitle", fontName="Impact", fontSize=26, leading=30, alignment=TA_LEFT, spaceAfter=18))
     styles.add(ParagraphStyle("PartTitle", fontName="Impact", fontSize=25, leading=28, alignment=TA_CENTER, textColor=colors.white, spaceAfter=12))
@@ -295,7 +587,7 @@ def build_interior(preface: list[str], parts: list[Part]) -> int:
     styles.add(ParagraphStyle("ComplaintNo", fontName="Georgia-Bold", fontSize=10.5, leading=15, textColor=colors.HexColor("#777777"), spaceAfter=6))
     styles.add(ParagraphStyle("ChapterTitle", fontName="Impact", fontSize=23, leading=27, alignment=TA_LEFT, spaceAfter=8))
     styles.add(ParagraphStyle("ChapterSubtitle", fontName="Georgia-Italic", fontSize=12.5, leading=18, alignment=TA_LEFT, textColor=colors.HexColor("#333333"), spaceAfter=16))
-    styles.add(ParagraphStyle("Section", fontName="Georgia-BoldItalic", fontSize=12.8, leading=18, alignment=TA_CENTER, spaceBefore=12, spaceAfter=9))
+    styles.add(ParagraphStyle("Section", fontName="Georgia-BoldItalic", fontSize=12.8, leading=18, alignment=TA_LEFT, spaceBefore=12, spaceAfter=9))
     styles.add(ParagraphStyle("Body", fontName="Georgia", fontSize=10.9, leading=16.4, spaceAfter=7.5))
     styles.add(ParagraphStyle("Short", fontName="Georgia-Italic", fontSize=11.5, leading=17, alignment=TA_CENTER, spaceAfter=7.5))
 
@@ -327,9 +619,9 @@ def build_interior(preface: list[str], parts: list[Part]) -> int:
         Spacer(1, 2.1 * inch),
         p(TITLE, styles["Subtitle"]),
         Spacer(1, 0.25 * inch),
-        p("Copyright © 2026 Sabino Pereira. Todos os direitos reservados.", styles["Small"]),
-        p("Esta é uma obra de crónica, sátira e observação social.", styles["Small"]),
-        p("Nova edição preparada para Amazon KDP.", styles["Small"]),
+        p("Copyright © 2026 Sabino Pereira. Todos os direitos reservados.", styles["Copyright"]),
+        p("Esta é uma obra de crónica, sátira e observação social.", styles["Copyright"]),
+        p("Nova edição preparada para Amazon KDP.", styles["Copyright"]),
         PageBreak(),
         p("Índice", styles["PrefaceTitle"]),
     ]
@@ -352,6 +644,9 @@ def build_interior(preface: list[str], parts: list[Part]) -> int:
             story.append(p(chapter.title, styles["ChapterTitle"]))
             if chapter.subtitle:
                 story.append(p(chapter.subtitle, styles["ChapterSubtitle"]))
+            story.append(Spacer(1, 0.08 * inch))
+            story.append(EditorialIllustration(illustration_kind_for(chapter)))
+            story.append(Spacer(1, 0.18 * inch))
             for para in chapter.paragraphs:
                 if re.match(r"^[IVX]+\.", para):
                     story.append(p(para, styles["Section"]))
@@ -392,30 +687,13 @@ def part_opener(part: Part, styles: dict[str, ParagraphStyle]) -> list:
 def create_cover_jpg() -> None:
     EBOOK_DIR.mkdir(parents=True, exist_ok=True)
     width, height = 1600, 2560
-    img = Image.new("RGB", (width, height), "#0d0d0d")
-    draw = ImageDraw.Draw(img)
-    font_dir = Path("/System/Library/Fonts/Supplemental")
-    title_font = ImageFont.truetype(str(font_dir / "Impact.ttf"), 122)
-    sub_font = ImageFont.truetype(str(font_dir / "Georgia Italic.ttf"), 58)
-    author_font = ImageFont.truetype(str(font_dir / "Georgia Bold.ttf"), 46)
-    small_font = ImageFont.truetype(str(font_dir / "Georgia.ttf"), 34)
-
-    draw.rectangle((110, 115, width - 110, height - 115), outline="#f3f0e8", width=7)
-    draw.rectangle((145, 150, width - 145, height - 150), outline="#9b1c1f", width=5)
-    for y in range(330, 1780, 260):
-        draw.line((230, y, width - 230, y), fill="#2a2a2a", width=2)
-    stamp_box = (250, 1690, width - 250, 1915)
-    draw.rectangle(stamp_box, outline="#9b1c1f", width=9)
-    draw.text((width / 2, 1800), "RECLAMAÇÃO", font=title_font, fill="#9b1c1f", anchor="mm")
-
-    lines = ["LIVRO DE", "RECLAMAÇÕES", "PARA O MUNDO"]
-    y = 515
-    for line in lines:
-        draw.text((width / 2, y), line, font=title_font, fill="#f3f0e8", anchor="mm")
-        y += 145
-    draw.text((width / 2, 1035), SUBTITLE, font=sub_font, fill="#f3f0e8", anchor="mm")
-    draw.text((width / 2, 1180), "30 crónicas sobre o absurdo moderno", font=small_font, fill="#cfc8bd", anchor="mm")
-    draw.text((width / 2, 2260), AUTHOR.upper(), font=author_font, fill="#f3f0e8", anchor="mm")
+    original = SELECTED_COVER if SELECTED_COVER.exists() else BOOK_DIR / "source/livro-reclamacoes-original-cover.jpg"
+    img = Image.open(original).convert("RGB")
+    scale = max(width / img.width, height / img.height)
+    resized = img.resize((round(img.width * scale), round(img.height * scale)), Image.Resampling.LANCZOS)
+    left = (resized.width - width) // 2
+    top = (resized.height - height) // 2
+    img = resized.crop((left, top, left + width, top + height))
     img.save(EBOOK_COVER, quality=94, subsampling=1)
     PREVIEWS_DIR.mkdir(parents=True, exist_ok=True)
     img.resize((674, 1018), Image.Resampling.LANCZOS).save(PREVIEWS_DIR / "livro-reclamacoes-cover-preview.jpg", quality=92)
@@ -506,7 +784,7 @@ body { font-family: Georgia, serif; line-height: 1.45; color: #111; }
 h1, h2 { page-break-before: always; break-before: page; }
 h1 { font-size: 1.15em; color: #666; margin-top: 2em; }
 h2 { font-size: 1.75em; margin: .2em 0 .5em; }
-h3 { text-align: center; font-style: italic; margin: 1.5em 0 .8em; }
+h3 { text-align: left; font-style: italic; margin: 1.5em 0 .8em; }
 .title, .part { text-align: center; page-break-before: always; break-before: page; margin-top: 35%; }
 .subtitle { font-style: italic; }
 .toc li { margin-bottom: .35em; }
