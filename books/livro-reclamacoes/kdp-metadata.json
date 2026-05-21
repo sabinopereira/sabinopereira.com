@@ -1,0 +1,20 @@
+{
+  "title": "Livro de Reclamações para o Mundo",
+  "subtitle": "Crónicas do Absurdo",
+  "author": "Sabino Pereira",
+  "language": "Portuguese",
+  "edition": "Nova edição revista",
+  "paperback": {
+    "trim_size": "6 x 9 in",
+    "interior": "books/livro-reclamacoes/paperback/livro-reclamacoes-paperback-miolo-kdp.pdf",
+    "cover_pdf": "books/livro-reclamacoes/paperback/livro-reclamacoes-paperback-capa-kdp.pdf",
+    "page_count": 124,
+    "spine_width_in": 0.27924800000000005,
+    "cover_width_in": 12.529248,
+    "cover_height_in": 9.25
+  },
+  "ebook": {
+    "epub": "books/livro-reclamacoes/ebook/livro-reclamacoes-kindle-ebook.epub",
+    "cover_jpg": "books/livro-reclamacoes/ebook/livro-reclamacoes-ebook-cover.jpg"
+  }
+}
