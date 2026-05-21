@@ -5,6 +5,7 @@ import type {
 } from "./missions.generated";
 
 export type AppPreferences = {
+  routineFocus: string[];
   primaryMode: MissionMode;
   secondaryMode?: MissionMode;
   preferredIntensity: MissionIntensity;
@@ -16,6 +17,7 @@ export type AppPreferences = {
 };
 
 export const defaultPreferences: AppPreferences = {
+  routineFocus: ["Sair mais de casa", "Conhecer melhor pessoas a minha volta"],
   primaryMode: "social",
   secondaryMode: "recomeco",
   preferredIntensity: "leve",

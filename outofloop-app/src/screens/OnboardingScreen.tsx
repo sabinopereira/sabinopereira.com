@@ -14,10 +14,25 @@ import type {
 } from "../data/missions.generated";
 import { colors, radius } from "../theme/colors";
 
-const modes: Array<{ label: string; value: MissionMode }> = [
+const routineFocusOptions = [
+  "Sair mais de casa",
+  "Conhecer melhor pessoas a minha volta",
+  "Fazer planos com amigos",
+  "Fazer mais coisas em familia",
+  "Recuperar energia",
+  "Mexer o corpo",
+  "Descobrir sitios novos",
+  "Ter mais aventura",
+  "Criar momentos sem telemovel",
+  "Reaproximar-me de alguem",
+  "Fazer coisas sozinho/a",
+  "Ajudar ou participar na comunidade"
+];
+
+const modeOptions: Array<{ label: string; value: MissionMode }> = [
   { label: "Social", value: "social" },
-  { label: "Recomeço", value: "recomeco" },
-  { label: "Coragem", value: "coragem" },
+  { label: "Recuperar ritmo", value: "recomeco" },
+  { label: "Aventura", value: "coragem" },
   { label: "Familia", value: "familia" },
   { label: "Saude", value: "saude" }
 ];
@@ -25,7 +40,7 @@ const modes: Array<{ label: string; value: MissionMode }> = [
 const intensities: Array<{ label: string; value: MissionIntensity }> = [
   { label: "Leve", value: "leve" },
   { label: "Real", value: "real" },
-  { label: "Coragem", value: "coragem" }
+  { label: "Aventura", value: "coragem" }
 ];
 
 const costs: Array<{ label: string; value: CostTier }> = [
@@ -70,6 +85,53 @@ export function OnboardingScreen({
     });
   }
 
+  function modeFromFocus(focus: string[]): MissionMode {
+    if (
+      focus.includes("Fazer mais coisas em familia") ||
+      focus.includes("Criar momentos sem telemovel")
+    ) {
+      return "familia";
+    }
+
+    if (
+      focus.includes("Recuperar energia") ||
+      focus.includes("Mexer o corpo")
+    ) {
+      return "saude";
+    }
+
+    if (
+      focus.includes("Ter mais aventura") ||
+      focus.includes("Descobrir sitios novos")
+    ) {
+      return "coragem";
+    }
+
+    if (
+      focus.includes("Reaproximar-me de alguem") ||
+      focus.includes("Fazer coisas sozinho/a")
+    ) {
+      return "recomeco";
+    }
+
+    return "social";
+  }
+
+  function toggleRoutineFocus(value: string) {
+    setPreferences((current) => {
+      const exists = current.routineFocus.includes(value);
+      const routineFocus = exists
+        ? current.routineFocus.filter((item) => item !== value)
+        : [...current.routineFocus, value];
+
+      return {
+        ...current,
+        routineFocus,
+        primaryMode: modeFromFocus(routineFocus)
+      };
+    });
+  }
+
   return (
     <ScrollView contentContainerStyle={styles.content}>
       <View style={styles.hero}>
@@ -82,9 +144,31 @@ export function OnboardingScreen({
       </View>
 
       <View style={styles.card}>
-        <Text style={styles.cardTitle}>O que queres mexer primeiro?</Text>
+        <Text style={styles.cardTitle}>O que queres mexer na tua rotina?</Text>
+        <Text style={styles.helper}>
+          Escolhe tudo o que fizer sentido agora. Isto ajuda a app a sugerir
+          missoes e planos mais certos para ti.
+        </Text>
         <View style={styles.grid}>
-          {modes.map((mode) => (
+          {routineFocusOptions.map((option) => (
+            <OptionChip
+              key={option}
+              label={option}
+              selected={preferences.routineFocus.includes(option)}
+              onPress={() => toggleRoutineFocus(option)}
+            />
+          ))}
+        </View>
+      </View>
+
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Tipo de missao principal</Text>
+        <Text style={styles.helper}>
+          Podes ajustar o foco principal. “Recuperar ritmo” significa voltar a
+          mexer depois de uma fase parada, cansada ou isolada.
+        </Text>
+        <View style={styles.grid}>
+          {modeOptions.map((mode) => (
             <OptionChip
               key={mode.value}
               label={mode.label}

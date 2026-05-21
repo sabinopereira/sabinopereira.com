@@ -15,17 +15,17 @@ const durationLabel: Record<Mission["durationLabel"], string> = {
 };
 
 const modeLabel: Record<Mission["mode"], string> = {
-  coragem: "Coragem",
+  coragem: "Aventura",
   social: "Social",
   familia: "Familia",
   saude: "Saude",
-  recomeco: "Recomeco"
+  recomeco: "Recuperar ritmo"
 };
 
 const intensityLabel: Record<Mission["intensity"], string> = {
   leve: "Leve",
   real: "Real",
-  coragem: "Coragem"
+  coragem: "Aventura"
 };
 
 export function MissionCard({

@@ -71,9 +71,10 @@ export default function App() {
   const [onboardingComplete, setOnboardingComplete] = useState(() =>
     readStoredValue(storageKeys.onboardingComplete, false)
   );
-  const [preferences, setPreferences] = useState<AppPreferences>(() =>
-    readStoredValue(storageKeys.preferences, defaultPreferences)
-  );
+  const [preferences, setPreferences] = useState<AppPreferences>(() => ({
+    ...defaultPreferences,
+    ...readStoredValue(storageKeys.preferences, defaultPreferences)
+  }));
   const [memories, setMemories] = useState<AppMemory[]>(() =>
     readStoredValue(storageKeys.memories, [])
   );
