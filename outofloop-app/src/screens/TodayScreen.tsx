@@ -1,21 +1,28 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Modal, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { ActionButton } from "../components/ActionButton";
 import { MissionCard } from "../components/MissionCard";
-import { selectMissionOfTheDay } from "../data/missions.generated";
+import { Mission, selectMissionOfTheDay } from "../data/missions.generated";
 import { AppPreferences } from "../data/preferences";
 import { colors, radius } from "../theme/colors";
 
 export function TodayScreen({
-  preferences
+  preferences,
+  onMissionComplete
 }: {
   preferences: AppPreferences;
+  onMissionComplete: (mission: Mission) => void;
 }) {
   const [accepted, setAccepted] = useState(false);
+  const [acceptedAt, setAcceptedAt] = useState<number | null>(null);
   const [completed, setCompleted] = useState(false);
+  const [now, setNow] = useState(() => Date.now());
   const [notTodayOpen, setNotTodayOpen] = useState(false);
+  const [completionOpen, setCompletionOpen] = useState(false);
   const [feedbackOpen, setFeedbackOpen] = useState(false);
+  const [congratsOpen, setCongratsOpen] = useState(false);
+  const [completionResult, setCompletionResult] = useState<string | null>(null);
   const [feedbackResult, setFeedbackResult] = useState<string | null>(null);
   const [memorySaved, setMemorySaved] = useState(false);
   const todayMission = selectMissionOfTheDay(preferences);
@@ -23,6 +30,51 @@ export function TodayScreen({
     todayMission.estimatedMinutes === 1
       ? "1 minuto"
       : `${todayMission.estimatedMinutes} minutos`;
+  const timerTotalSeconds = todayMission.estimatedMinutes * 60;
+  const timerRemainingSeconds = useMemo(() => {
+    if (!acceptedAt || completed) {
+      return timerTotalSeconds;
+    }
+
+    const elapsedSeconds = Math.floor((now - acceptedAt) / 1000);
+    return Math.max(timerTotalSeconds - elapsedSeconds, 0);
+  }, [acceptedAt, completed, now, timerTotalSeconds]);
+  const timerProgress =
+    timerTotalSeconds === 0
+      ? 1
+      : (timerTotalSeconds - timerRemainingSeconds) / timerTotalSeconds;
+  const timerMinutes = Math.floor(timerRemainingSeconds / 60);
+  const timerSeconds = timerRemainingSeconds % 60;
+  const timerLabel = `${timerMinutes}:${String(timerSeconds).padStart(2, "0")}`;
+
+  useEffect(() => {
+    if (!accepted || completed) {
+      return;
+    }
+
+    const interval = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(interval);
+  }, [accepted, completed]);
+
+  function acceptMission() {
+    setAccepted(true);
+    setAcceptedAt(Date.now());
+    setNow(Date.now());
+  }
+
+  function confirmCompletion(result: string) {
+    setCompletionResult(result);
+    setCompletionOpen(false);
+    setCompleted(true);
+    onMissionComplete(todayMission);
+    setFeedbackOpen(true);
+  }
+
+  function finishFeedback(result: string) {
+    setFeedbackResult(result);
+    setFeedbackOpen(false);
+    setCongratsOpen(true);
+  }
 
   return (
     <ScrollView
@@ -47,6 +99,11 @@ export function TodayScreen({
           {feedbackResult ? (
             <Text style={styles.completedMeta}>Feedback: {feedbackResult}</Text>
           ) : null}
+          {completionResult ? (
+            <Text style={styles.completedMeta}>
+              Confirmacao: {completionResult}
+            </Text>
+          ) : null}
           <View style={styles.memoryBox}>
             <Text style={styles.memoryTitle}>Memoria privada</Text>
             <Text style={styles.memoryText}>
@@ -64,7 +121,9 @@ export function TodayScreen({
             variant="secondary"
             onPress={() => {
               setAccepted(false);
+              setAcceptedAt(null);
               setCompleted(false);
+              setCompletionResult(null);
               setFeedbackResult(null);
               setMemorySaved(false);
             }}
@@ -79,19 +138,40 @@ export function TodayScreen({
           <Text style={styles.acceptedText}>
             Faz isto ate ao fim do dia. Se nao der, podes ajustar sem vergonha.
           </Text>
+          <View style={styles.timerBox}>
+            <View style={styles.timerTop}>
+              <Text style={styles.timerLabel}>Tempo da missao</Text>
+              <Text style={styles.timerValue}>
+                {timerRemainingSeconds === 0 ? "pronto" : timerLabel}
+              </Text>
+            </View>
+            <View style={styles.progressTrack}>
+              <View
+                style={[
+                  styles.progressFill,
+                  { width: `${Math.min(timerProgress * 100, 100)}%` }
+                ]}
+              />
+            </View>
+            <Text style={styles.timerHint}>
+              {timerRemainingSeconds === 0
+                ? "O tempo acabou. Se fizeste, fecha a missao."
+                : "Usa isto como limite suave, nao como pressao."}
+            </Text>
+          </View>
           <View style={styles.acceptedActions}>
             <ActionButton
-              onPress={() => {
-                setCompleted(true);
-                setFeedbackOpen(true);
-              }}
+              onPress={() => setCompletionOpen(true)}
               style={styles.actionGrow}
             >
-              Concluir
+              {timerRemainingSeconds === 0 ? "Confirmar" : "Concluir"}
             </ActionButton>
             <ActionButton
               variant="secondary"
-              onPress={() => setAccepted(false)}
+              onPress={() => {
+                setAccepted(false);
+                setAcceptedAt(null);
+              }}
               style={styles.actionGrow}
             >
               Voltar
@@ -101,7 +181,7 @@ export function TodayScreen({
       ) : (
         <MissionCard
           mission={todayMission}
-          onAccept={() => setAccepted(true)}
+          onAccept={acceptMission}
           onNotToday={() => setNotTodayOpen(true)}
         />
       )}
@@ -150,11 +230,46 @@ export function TodayScreen({
       <Modal
         animationType="slide"
         transparent
+        visible={completionOpen}
+        onRequestClose={() => setCompletionOpen(false)}
+      >
+        <View style={styles.modalBackdrop}>
+          <View style={styles.modalCard}>
+            <Text style={styles.modalKicker}>Confirmacao</Text>
+            <Text style={styles.modalTitle}>Cumpriste a missao?</Text>
+            <Text style={styles.modalText}>
+              Nao precisa de ser perfeito. Queremos saber se houve acao real.
+            </Text>
+            {["Sim, cumpri", "Mais ou menos", "Tentei, mas nao deu"].map(
+              (result) => (
+                <ActionButton
+                  key={result}
+                  variant="secondary"
+                  onPress={() => confirmCompletion(result)}
+                >
+                  {result}
+                </ActionButton>
+              )
+            )}
+            <ActionButton
+              variant="ghost"
+              onPress={() => setCompletionOpen(false)}
+            >
+              Ainda estou a fazer
+            </ActionButton>
+          </View>
+        </View>
+      </Modal>
+
+      <Modal
+        animationType="slide"
+        transparent
         visible={feedbackOpen}
         onRequestClose={() => setFeedbackOpen(false)}
       >
         <View style={styles.modalBackdrop}>
           <View style={styles.modalCard}>
+            <Text style={styles.modalKicker}>Feedback rapido</Text>
             <Text style={styles.modalTitle}>Como correu?</Text>
             <Text style={styles.modalText}>
               Isto ajuda a ajustar as proximas missoes.
@@ -170,22 +285,37 @@ export function TodayScreen({
               <ActionButton
                 key={result}
                 variant="secondary"
-                onPress={() => {
-                  setFeedbackResult(result);
-                  setFeedbackOpen(false);
-                }}
+                onPress={() => finishFeedback(result)}
               >
                 {result}
               </ActionButton>
             ))}
             <ActionButton
               variant="ghost"
-              onPress={() => {
-                setFeedbackResult("Sem feedback");
-                setFeedbackOpen(false);
-              }}
+              onPress={() => finishFeedback("Sem feedback")}
             >
               Saltar
+            </ActionButton>
+          </View>
+        </View>
+      </Modal>
+
+      <Modal
+        animationType="fade"
+        transparent
+        visible={congratsOpen}
+        onRequestClose={() => setCongratsOpen(false)}
+      >
+        <View style={styles.centerBackdrop}>
+          <View style={styles.congratsCard}>
+            <Text style={styles.congratsKicker}>Participacao registada</Text>
+            <Text style={styles.congratsTitle}>Boa. Saiste do loop hoje.</Text>
+            <Text style={styles.congratsText}>
+              Pequeno ou imperfeito, conta. A tua proxima missao pode aprender
+              com isto.
+            </Text>
+            <ActionButton onPress={() => setCongratsOpen(false)}>
+              Fechar
             </ActionButton>
           </View>
         </View>
@@ -248,6 +378,50 @@ const styles = StyleSheet.create({
     color: "#EEF6EF",
     fontSize: 15,
     lineHeight: 22,
+    letterSpacing: 0
+  },
+  timerBox: {
+    backgroundColor: "rgba(255, 255, 255, 0.12)",
+    borderRadius: radius.md,
+    padding: 14,
+    gap: 9
+  },
+  timerTop: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "baseline",
+    gap: 12
+  },
+  timerLabel: {
+    color: colors.greenSoft,
+    fontSize: 13,
+    fontWeight: "900",
+    letterSpacing: 0,
+    textTransform: "uppercase"
+  },
+  timerValue: {
+    color: "#FFFFFF",
+    fontSize: 26,
+    lineHeight: 30,
+    fontWeight: "900",
+    letterSpacing: 0,
+    fontVariant: ["tabular-nums"]
+  },
+  progressTrack: {
+    height: 8,
+    backgroundColor: "rgba(255, 255, 255, 0.22)",
+    borderRadius: radius.sm,
+    overflow: "hidden"
+  },
+  progressFill: {
+    height: 8,
+    backgroundColor: colors.goldSoft,
+    borderRadius: radius.sm
+  },
+  timerHint: {
+    color: "#EEF6EF",
+    fontSize: 13,
+    lineHeight: 18,
     letterSpacing: 0
   },
   acceptedActions: {
@@ -341,6 +515,13 @@ const styles = StyleSheet.create({
     padding: 20,
     gap: 10
   },
+  modalKicker: {
+    color: colors.coral,
+    fontSize: 13,
+    fontWeight: "900",
+    letterSpacing: 0,
+    textTransform: "uppercase"
+  },
   modalTitle: {
     color: colors.ink,
     fontSize: 26,
@@ -351,6 +532,40 @@ const styles = StyleSheet.create({
     color: colors.inkMuted,
     fontSize: 16,
     marginBottom: 4,
+    letterSpacing: 0
+  },
+  centerBackdrop: {
+    flex: 1,
+    justifyContent: "center",
+    padding: 24,
+    backgroundColor: "rgba(31, 39, 35, 0.44)"
+  },
+  congratsCard: {
+    backgroundColor: colors.surface,
+    borderRadius: radius.lg,
+    padding: 22,
+    gap: 14,
+    borderWidth: 1,
+    borderColor: colors.line
+  },
+  congratsKicker: {
+    color: colors.green,
+    fontSize: 13,
+    fontWeight: "900",
+    letterSpacing: 0,
+    textTransform: "uppercase"
+  },
+  congratsTitle: {
+    color: colors.ink,
+    fontSize: 28,
+    lineHeight: 32,
+    fontWeight: "900",
+    letterSpacing: 0
+  },
+  congratsText: {
+    color: colors.inkMuted,
+    fontSize: 15,
+    lineHeight: 22,
     letterSpacing: 0
   }
 });

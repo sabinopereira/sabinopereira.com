@@ -3,21 +3,39 @@ import { Modal, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { ActionButton } from "../components/ActionButton";
 import { Pill } from "../components/Pill";
-import { upcomingPlans } from "../data/mockMissions";
+import { UpcomingPlan } from "../data/mockMissions";
 import { colors, radius } from "../theme/colors";
 
-type PlanStatus = "open" | "accepted" | "checkedIn";
-type Plan = (typeof upcomingPlans)[number];
+type PlanStatus = "open" | "accepted" | "checkedIn" | "dismissed";
+type PlanResponse = {
+  notNowReason?: string;
+};
+
+const notNowReasons = [
+  "Hora dificil",
+  "Dia nao ajuda",
+  "Fica longe",
+  "Custo alto",
+  "Sem energia",
+  "Prefiro algo mais leve"
+];
 
 export function AlignScreen({
+  plans,
   onCheckIn
 }: {
-  onCheckIn: (plan: Plan) => void;
+  plans: UpcomingPlan[];
+  onCheckIn: (plan: UpcomingPlan) => void;
 }) {
   const [planStatuses, setPlanStatuses] = useState<Record<string, PlanStatus>>(
     {}
   );
-  const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
+  const [selectedPlan, setSelectedPlan] = useState<UpcomingPlan | null>(null);
+  const [detailsPlan, setDetailsPlan] = useState<UpcomingPlan | null>(null);
+  const [notNowPlan, setNotNowPlan] = useState<UpcomingPlan | null>(null);
+  const [planResponses, setPlanResponses] = useState<
+    Record<string, PlanResponse>
+  >({});
 
   function statusFor(planId: string): PlanStatus {
     return planStatuses[planId] ?? "open";
@@ -30,6 +48,35 @@ export function AlignScreen({
     }));
   }
 
+  function dismissPlan(planId: string, reason: string) {
+    setPlanResponses((current) => ({
+      ...current,
+      [planId]: {
+        notNowReason: reason
+      }
+    }));
+    updateStatus(planId, "dismissed");
+    setNotNowPlan(null);
+  }
+
+  function suggestionFor(reason?: string) {
+    switch (reason) {
+      case "Hora dificil":
+        return "Sugestao: propor duas horas alternativas antes de fechar.";
+      case "Dia nao ajuda":
+        return "Sugestao: testar outro dia ou transformar em plano de fim de semana.";
+      case "Fica longe":
+        return "Sugestao: escolher um ponto mais central ou opcao perto de transportes.";
+      case "Custo alto":
+        return "Sugestao: trocar por opcao gratis ou low cost.";
+      case "Sem energia":
+      case "Prefiro algo mais leve":
+        return "Sugestao: reduzir duracao e deixar claro que sair cedo e ok.";
+      default:
+        return "Sugestao: manter o plano simples e pedir uma resposta clara.";
+    }
+  }
+
   return (
     <ScrollView contentContainerStyle={styles.content}>
       <View style={styles.header}>
@@ -40,7 +87,7 @@ export function AlignScreen({
         </Text>
       </View>
 
-      {upcomingPlans.map((plan) => {
+      {plans.map((plan) => {
         const status = statusFor(plan.id);
         const acceptedCount =
           status === "open" ? plan.acceptedCount : plan.acceptedCount + 1;
@@ -49,7 +96,10 @@ export function AlignScreen({
             ? "check-in feito"
             : status === "accepted"
               ? "alinhado"
-              : "aberto";
+              : status === "dismissed"
+                ? "agora nao"
+                : "aberto";
+        const response = planResponses[plan.id];
 
         return (
           <View key={plan.id} style={styles.card}>
@@ -74,6 +124,17 @@ export function AlignScreen({
               </View>
               <Text style={styles.deadline}>{plan.deadline}</Text>
             </View>
+            {response?.notNowReason ? (
+              <View style={styles.hostInsight}>
+                <Text style={styles.hostInsightTitle}>Feedback ao anfitriao</Text>
+                <Text style={styles.hostInsightText}>
+                  1 pessoa respondeu: {response.notNowReason}.
+                </Text>
+                <Text style={styles.hostInsightText}>
+                  {suggestionFor(response.notNowReason)}
+                </Text>
+              </View>
+            ) : null}
             {status === "checkedIn" ? (
               <View style={styles.doneBox}>
                 <Text style={styles.doneTitle}>Presenca confirmada</Text>
@@ -100,10 +161,48 @@ export function AlignScreen({
                   Afinal nao da
                 </ActionButton>
               </View>
+            ) : status === "dismissed" ? (
+              <View style={styles.dismissedBox}>
+                <Text style={styles.dismissedTitle}>Resposta guardada</Text>
+                <Text style={styles.dismissedText}>
+                  Sem culpa. O anfitriao recebe o sinal para melhorar o plano.
+                </Text>
+                <ActionButton
+                  variant="secondary"
+                  onPress={() => {
+                    updateStatus(plan.id, "open");
+                    setPlanResponses((current) => ({
+                      ...current,
+                      [plan.id]: {}
+                    }));
+                  }}
+                >
+                  Reconsiderar
+                </ActionButton>
+              </View>
             ) : (
-              <ActionButton onPress={() => setSelectedPlan(plan)}>
-                Alinhar
-              </ActionButton>
+              <View style={styles.actions}>
+                <ActionButton
+                  style={styles.actionGrow}
+                  onPress={() => setSelectedPlan(plan)}
+                >
+                  Alinhar
+                </ActionButton>
+                <ActionButton
+                  variant="secondary"
+                  style={styles.actionGrow}
+                  onPress={() => setDetailsPlan(plan)}
+                >
+                  Saber mais
+                </ActionButton>
+                <ActionButton
+                  variant="ghost"
+                  style={styles.actionGrow}
+                  onPress={() => setNotNowPlan(plan)}
+                >
+                  Agora nao
+                </ActionButton>
+              </View>
             )}
           </View>
         );
@@ -142,6 +241,87 @@ export function AlignScreen({
                   onPress={() => setSelectedPlan(null)}
                 >
                   Ver melhor depois
+                </ActionButton>
+              </>
+            ) : null}
+          </View>
+        </View>
+      </Modal>
+
+      <Modal
+        animationType="slide"
+        transparent
+        visible={detailsPlan !== null}
+        onRequestClose={() => setDetailsPlan(null)}
+      >
+        <View style={styles.modalBackdrop}>
+          <View style={styles.modalCard}>
+            {detailsPlan ? (
+              <>
+                <Text style={styles.modalKicker}>Saber mais</Text>
+                <Text style={styles.modalTitle}>{detailsPlan.title}</Text>
+                <Text style={styles.modalText}>{detailsPlan.safetyNote}</Text>
+                <Text style={styles.modalDetail}>Quando: {detailsPlan.time}</Text>
+                <Text style={styles.modalDetail}>Onde: {detailsPlan.place}</Text>
+                <Text style={styles.modalDetail}>
+                  Custo: {detailsPlan.costTier}
+                </Text>
+                <Text style={styles.modalDetail}>
+                  Acessibilidade: {detailsPlan.accessibility}
+                </Text>
+                <ActionButton
+                  onPress={() => {
+                    updateStatus(detailsPlan.id, "accepted");
+                    setDetailsPlan(null);
+                  }}
+                >
+                  Alinhar
+                </ActionButton>
+                <ActionButton
+                  variant="secondary"
+                  onPress={() => {
+                    setNotNowPlan(detailsPlan);
+                    setDetailsPlan(null);
+                  }}
+                >
+                  Agora nao
+                </ActionButton>
+                <ActionButton variant="ghost" onPress={() => setDetailsPlan(null)}>
+                  Fechar
+                </ActionButton>
+              </>
+            ) : null}
+          </View>
+        </View>
+      </Modal>
+
+      <Modal
+        animationType="slide"
+        transparent
+        visible={notNowPlan !== null}
+        onRequestClose={() => setNotNowPlan(null)}
+      >
+        <View style={styles.modalBackdrop}>
+          <View style={styles.modalCard}>
+            {notNowPlan ? (
+              <>
+                <Text style={styles.modalKicker}>Agora nao</Text>
+                <Text style={styles.modalTitle}>O que tornava isto mais facil?</Text>
+                <Text style={styles.modalText}>
+                  A tua resposta ajuda o anfitriao a melhorar hora, dia, local,
+                  preco ou energia do plano.
+                </Text>
+                {notNowReasons.map((reason) => (
+                  <ActionButton
+                    key={reason}
+                    variant="secondary"
+                    onPress={() => dismissPlan(notNowPlan.id, reason)}
+                  >
+                    {reason}
+                  </ActionButton>
+                ))}
+                <ActionButton variant="ghost" onPress={() => setNotNowPlan(null)}>
+                  Voltar
                 </ActionButton>
               </>
             ) : null}
@@ -228,10 +408,12 @@ const styles = StyleSheet.create({
   },
   actions: {
     flexDirection: "row",
+    flexWrap: "wrap",
     gap: 10
   },
   actionGrow: {
-    flex: 1
+    flexGrow: 1,
+    minWidth: 120
   },
   doneBox: {
     backgroundColor: colors.greenSoft,
@@ -247,6 +429,43 @@ const styles = StyleSheet.create({
   },
   doneText: {
     color: colors.inkMuted,
+    fontSize: 13,
+    lineHeight: 18,
+    letterSpacing: 0
+  },
+  dismissedBox: {
+    backgroundColor: colors.surfaceMuted,
+    borderRadius: radius.sm,
+    padding: 12,
+    gap: 9
+  },
+  dismissedTitle: {
+    color: colors.ink,
+    fontSize: 14,
+    fontWeight: "900",
+    letterSpacing: 0
+  },
+  dismissedText: {
+    color: colors.inkMuted,
+    fontSize: 13,
+    lineHeight: 18,
+    letterSpacing: 0
+  },
+  hostInsight: {
+    backgroundColor: colors.goldSoft,
+    borderRadius: radius.sm,
+    padding: 12,
+    gap: 4
+  },
+  hostInsightTitle: {
+    color: colors.gold,
+    fontSize: 13,
+    fontWeight: "900",
+    letterSpacing: 0,
+    textTransform: "uppercase"
+  },
+  hostInsightText: {
+    color: colors.ink,
     fontSize: 13,
     lineHeight: 18,
     letterSpacing: 0
@@ -271,10 +490,23 @@ const styles = StyleSheet.create({
     fontWeight: "900",
     letterSpacing: 0
   },
+  modalKicker: {
+    color: colors.coral,
+    fontSize: 13,
+    fontWeight: "900",
+    letterSpacing: 0,
+    textTransform: "uppercase"
+  },
   modalText: {
     color: colors.inkMuted,
     fontSize: 15,
     lineHeight: 22,
+    letterSpacing: 0
+  },
+  modalDetail: {
+    color: colors.ink,
+    fontSize: 15,
+    lineHeight: 21,
     letterSpacing: 0
   },
   checklist: {

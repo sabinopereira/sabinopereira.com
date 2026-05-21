@@ -1,4 +1,21 @@
-export const upcomingPlans = [
+export type UpcomingPlan = {
+  id: string;
+  title: string;
+  circle: string;
+  time: string;
+  place: string;
+  costTier: string;
+  durationLabel: string;
+  acceptedCount: number;
+  capacity: number;
+  deadline: string;
+  accessibility: string;
+  host: string;
+  safetyNote: string;
+  checklist: string[];
+};
+
+export const upcomingPlans: UpcomingPlan[] = [
   {
     id: "walk-saturday",
     title: "Volta curta no sabado",

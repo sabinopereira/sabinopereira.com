@@ -1,11 +1,80 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import { Modal, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { ActionButton } from "../components/ActionButton";
 import { Pill } from "../components/Pill";
-import { circles } from "../data/mockMissions";
+import { circles, UpcomingPlan } from "../data/mockMissions";
 import { colors, radius } from "../theme/colors";
 
-export function CirclesScreen() {
+type Circle = (typeof circles)[number];
+
+const planTemplates = [
+  {
+    title: "Cafe curto sem complicar",
+    time: "Hoje, 18:30",
+    place: "Cafe perto de todos",
+    durationLabel: "leve",
+    accessibility: "baixo custo, facil de sair cedo",
+    checklist: [
+      "Confirmar quem vem",
+      "Escolher sitio simples",
+      "Nao transformar isto num grande evento"
+    ]
+  },
+  {
+    title: "Volta curta para respirar",
+    time: "Amanha, fim de tarde",
+    place: "Jardim ou rua calma",
+    durationLabel: "realista",
+    accessibility: "percurso curto, ritmo calmo",
+    checklist: [
+      "Combinar ponto de encontro",
+      "Avisar se precisares de banco ou pausa",
+      "Ir mesmo que sejam so duas pessoas"
+    ]
+  },
+  {
+    title: "Mesa com pergunta",
+    time: "Proximo jantar",
+    place: "Casa",
+    durationLabel: "realista",
+    accessibility: "sentado, privado, previsivel",
+    checklist: [
+      "Escolher uma pergunta",
+      "Cada pessoa pode passar",
+      "Guardar uma memoria no fim"
+    ]
+  }
+];
+
+export function CirclesScreen({
+  onCreatePlan
+}: {
+  onCreatePlan: (plan: UpcomingPlan) => void;
+}) {
+  const [selectedCircle, setSelectedCircle] = useState<Circle | null>(null);
+
+  function createPlan(circle: Circle, template: (typeof planTemplates)[number]) {
+    onCreatePlan({
+      id: `plan-${circle.id}-${Date.now()}`,
+      title: template.title,
+      circle: circle.name,
+      time: template.time,
+      place: template.place,
+      costTier: "gratis",
+      durationLabel: template.durationLabel,
+      acceptedCount: 1,
+      capacity: circle.type === "Familia" ? 5 : 6,
+      deadline: "fecha hoje as 21:00",
+      accessibility: template.accessibility,
+      host: "Tu",
+      safetyNote:
+        "Plano criado no circulo: prazo, local, custo e conforto ficam claros antes de alguem alinhar.",
+      checklist: template.checklist
+    });
+    setSelectedCircle(null);
+  }
+
   return (
     <ScrollView contentContainerStyle={styles.content}>
       <View style={styles.header}>
@@ -28,8 +97,12 @@ export function CirclesScreen() {
           </View>
           <Text style={styles.next}>Proximo: {circle.next}</Text>
           <View style={styles.actions}>
-            <ActionButton variant="secondary" style={styles.actionGrow}>
-              Abrir
+            <ActionButton
+              variant="secondary"
+              style={styles.actionGrow}
+              onPress={() => setSelectedCircle(circle)}
+            >
+              Criar plano
             </ActionButton>
             <ActionButton variant="ghost" style={styles.actionGrow}>
               Convidar
@@ -40,6 +113,43 @@ export function CirclesScreen() {
 
       <ActionButton>Criar circulo</ActionButton>
       <ActionButton variant="ghost">Saltar grupos por agora</ActionButton>
+
+      <Modal
+        animationType="slide"
+        transparent
+        visible={selectedCircle !== null}
+        onRequestClose={() => setSelectedCircle(null)}
+      >
+        <View style={styles.modalBackdrop}>
+          <View style={styles.modalCard}>
+            {selectedCircle ? (
+              <>
+                <Text style={styles.modalKicker}>Plano estruturado</Text>
+                <Text style={styles.modalTitle}>{selectedCircle.name}</Text>
+                <Text style={styles.modalText}>
+                  Escolhe um plano simples. Ele aparece em Quem alinha? com
+                  prazo, custo e detalhes claros.
+                </Text>
+                {planTemplates.map((template) => (
+                  <ActionButton
+                    key={template.title}
+                    variant="secondary"
+                    onPress={() => createPlan(selectedCircle, template)}
+                  >
+                    {template.title}
+                  </ActionButton>
+                ))}
+                <ActionButton
+                  variant="ghost"
+                  onPress={() => setSelectedCircle(null)}
+                >
+                  Voltar
+                </ActionButton>
+              </>
+            ) : null}
+          </View>
+        </View>
+      </Modal>
     </ScrollView>
   );
 }
@@ -101,5 +211,38 @@ const styles = StyleSheet.create({
   },
   actionGrow: {
     flex: 1
+  },
+  modalBackdrop: {
+    flex: 1,
+    justifyContent: "flex-end",
+    backgroundColor: "rgba(31, 39, 35, 0.42)"
+  },
+  modalCard: {
+    backgroundColor: colors.background,
+    borderTopLeftRadius: radius.lg,
+    borderTopRightRadius: radius.lg,
+    padding: 20,
+    paddingBottom: 30,
+    gap: 12
+  },
+  modalKicker: {
+    color: colors.coral,
+    fontSize: 13,
+    fontWeight: "900",
+    letterSpacing: 0,
+    textTransform: "uppercase"
+  },
+  modalTitle: {
+    color: colors.ink,
+    fontSize: 28,
+    lineHeight: 32,
+    fontWeight: "900",
+    letterSpacing: 0
+  },
+  modalText: {
+    color: colors.inkMuted,
+    fontSize: 15,
+    lineHeight: 22,
+    letterSpacing: 0
   }
 });

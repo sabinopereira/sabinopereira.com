@@ -15,24 +15,28 @@ import {
   AppPreferences,
   defaultPreferences
 } from "./src/data/preferences";
-import { upcomingPlans } from "./src/data/mockMissions";
+import { upcomingPlans, UpcomingPlan } from "./src/data/mockMissions";
+import { Mission } from "./src/data/missions.generated";
+import { buildProgressPath, ProgressPath } from "./src/data/progress";
 
 export type TabKey = "today" | "circles" | "align" | "memories" | "profile";
-
-type Plan = (typeof upcomingPlans)[number];
 
 function renderScreen(
   tab: TabKey,
   preferences: AppPreferences,
   memories: AppMemory[],
-  onPlanCheckIn: (plan: Plan) => void,
+  progress: ProgressPath,
+  plans: UpcomingPlan[],
+  onCreatePlan: (plan: UpcomingPlan) => void,
+  onPlanCheckIn: (plan: UpcomingPlan) => void,
+  onMissionComplete: (mission: Mission) => void,
   onMemoryNoteChange: (memoryId: string, note: string) => void
 ) {
   switch (tab) {
     case "circles":
-      return <CirclesScreen />;
+      return <CirclesScreen onCreatePlan={onCreatePlan} />;
     case "align":
-      return <AlignScreen onCheckIn={onPlanCheckIn} />;
+      return <AlignScreen plans={plans} onCheckIn={onPlanCheckIn} />;
     case "memories":
       return (
         <MemoriesScreen
@@ -41,10 +45,15 @@ function renderScreen(
         />
       );
     case "profile":
-      return <ProfileScreen />;
+      return <ProfileScreen progress={progress} />;
     case "today":
     default:
-      return <TodayScreen preferences={preferences} />;
+      return (
+        <TodayScreen
+          preferences={preferences}
+          onMissionComplete={onMissionComplete}
+        />
+      );
   }
 }
 
@@ -54,10 +63,19 @@ export default function App() {
   const [preferences, setPreferences] =
     useState<AppPreferences>(defaultPreferences);
   const [memories, setMemories] = useState<AppMemory[]>([]);
+  const [plans, setPlans] = useState<UpcomingPlan[]>(upcomingPlans);
+  const progress = buildProgressPath(memories);
 
-  function handlePlanCheckIn(plan: Plan) {
+  function handleCreatePlan(plan: UpcomingPlan) {
+    setPlans((current) => [plan, ...current]);
+    setActiveTab("align");
+  }
+
+  function handlePlanCheckIn(plan: UpcomingPlan) {
     setMemories((current) => {
-      const existing = current.some((memory) => memory.planId === plan.id);
+      const existing = current.some(
+        (memory) => memory.sourceType === "plan" && memory.sourceId === plan.id
+      );
 
       if (existing) {
         return current;
@@ -66,13 +84,42 @@ export default function App() {
       return [
         {
           id: `memory-${plan.id}`,
-          planId: plan.id,
+          sourceId: plan.id,
+          sourceType: "plan",
           title: plan.title,
           circle: plan.circle,
           time: plan.time,
           place: plan.place,
           privacy: "participants",
           prompt: "O que queres lembrar deste plano?"
+        },
+        ...current
+      ];
+    });
+  }
+
+  function handleMissionComplete(mission: Mission) {
+    setMemories((current) => {
+      const existing = current.some(
+        (memory) =>
+          memory.sourceType === "mission" && memory.sourceId === mission.slug
+      );
+
+      if (existing) {
+        return current;
+      }
+
+      return [
+        {
+          id: `memory-mission-${mission.slug}`,
+          sourceId: mission.slug,
+          sourceType: "mission",
+          title: mission.title,
+          circle: "Missao privada",
+          time: "Hoje",
+          place: "No teu ritmo",
+          privacy: "private",
+          prompt: "O que aconteceu quando saiste do automatico?"
         },
         ...current
       ];
@@ -114,7 +161,11 @@ export default function App() {
           activeTab,
           preferences,
           memories,
+          progress,
+          plans,
+          handleCreatePlan,
           handlePlanCheckIn,
+          handleMissionComplete,
           handleMemoryNoteChange
         )}
       </View>

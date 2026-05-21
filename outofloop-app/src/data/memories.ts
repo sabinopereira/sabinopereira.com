@@ -1,6 +1,7 @@
 export type AppMemory = {
   id: string;
-  planId: string;
+  sourceId: string;
+  sourceType: "mission" | "plan";
   title: string;
   circle: string;
   time: string;

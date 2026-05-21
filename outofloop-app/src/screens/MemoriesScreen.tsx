@@ -41,9 +41,11 @@ export function MemoriesScreen({
                 <Text style={styles.meta}>{memory.circle}</Text>
               </View>
               <Text style={styles.privacy}>
-                {memory.privacy === "participants"
-                  ? "participantes"
-                  : "privado"}
+                {memory.sourceType === "mission"
+                  ? "missao"
+                  : memory.privacy === "participants"
+                    ? "participantes"
+                    : "privado"}
               </Text>
             </View>
             <Text style={styles.detail}>{memory.time}</Text>
