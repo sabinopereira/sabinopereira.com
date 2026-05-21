@@ -553,7 +553,6 @@ class EditorialIllustration(Flowable):
         c.restoreState()
 
     def draw_stamp(self, c: canvas.Canvas, w: float, h: float) -> None:
-        c.rotate(-5)
         c.rect(0.35 * inch, 0.28 * inch, 2.25 * inch, 0.78 * inch, stroke=1, fill=0)
         c.setFont("Impact", 18)
         c.drawCentredString(1.48 * inch, 0.66 * inch, "RECLAMAÇÃO")
@@ -809,28 +808,37 @@ def build_cover_pdf(page_count: int) -> dict[str, float]:
     c = canvas.Canvas(str(COVER_PDF), pagesize=(cover_w, cover_h))
     c.setFillColor(colors.HexColor("#0d0d0d"))
     c.rect(0, 0, cover_w, cover_h, stroke=0, fill=1)
-    c.drawImage(str(EBOOK_COVER), front_x, 0, width=TRIM_W + BLEED, height=cover_h, preserveAspectRatio=False)
+    front_safe_inset = 0.32 * inch
+    c.drawImage(
+        str(EBOOK_COVER),
+        front_x + front_safe_inset,
+        BLEED + front_safe_inset,
+        width=TRIM_W - (2 * front_safe_inset),
+        height=TRIM_H - (2 * front_safe_inset),
+        preserveAspectRatio=False,
+    )
 
     c.setFillColor(colors.white)
     c.setStrokeColor(colors.HexColor("#9b1c1f"))
     c.setLineWidth(3)
-    c.rect(back_x + 0.42 * inch, 0.55 * inch, TRIM_W - 0.84 * inch, cover_h - 1.1 * inch, stroke=1, fill=0)
+    back_safe_x = back_x + 0.64 * inch
+    back_safe_w = TRIM_W - 1.28 * inch
+    c.rect(back_x + 0.52 * inch, 0.65 * inch, TRIM_W - 1.04 * inch, cover_h - 1.3 * inch, stroke=1, fill=0)
     y = cover_h - 0.85 * inch
-    c.setFont("Impact", 26)
-    c.drawString(back_x + 0.62 * inch, y, TITLE.upper())
-    y -= 0.42 * inch
+    y = draw_wrapped(c, TITLE.upper(), back_safe_x, y, back_safe_w, "Impact", 22, 24, colors.white)
+    y -= 0.12 * inch
     c.setStrokeColor(colors.HexColor("#f3f0e8"))
-    c.line(back_x + 0.62 * inch, y, back_x + 2.8 * inch, y)
+    c.line(back_safe_x, y, back_safe_x + 2.25 * inch, y)
     y -= 0.35 * inch
     blurb = (
         "Um livro de crónicas sobre sistemas que falham, promessas vazias, "
         "burocracias infinitas, mercados de ego e a sensação de que o mundo enlouqueceu devagar."
     )
-    y = draw_wrapped(c, blurb, back_x + 0.62 * inch, y, TRIM_W - 1.24 * inch, "Georgia", 11.5, 16, colors.HexColor("#f3f0e8"))
+    y = draw_wrapped(c, blurb, back_safe_x, y, back_safe_w, "Georgia", 11.5, 16, colors.HexColor("#f3f0e8"))
     y -= 0.25 * inch
-    y = draw_wrapped(c, "Não é autoajuda. Não é manual de soluções rápidas. É uma coleção de reclamações organizadas contra o absurdo moderno.", back_x + 0.62 * inch, y, TRIM_W - 1.24 * inch, "Georgia-Italic", 11.2, 16, colors.HexColor("#d8d1c7"))
+    y = draw_wrapped(c, "Não é autoajuda. Não é manual de soluções rápidas. É uma coleção de reclamações organizadas contra o absurdo moderno.", back_safe_x, y, back_safe_w, "Georgia-Italic", 11.2, 16, colors.HexColor("#d8d1c7"))
     c.setFont("Georgia", 10)
-    c.drawString(back_x + 0.62 * inch, 0.72 * inch, AUTHOR)
+    c.drawString(back_safe_x, 0.82 * inch, AUTHOR)
 
     if spine >= 0.12 * inch:
         c.saveState()
