@@ -7,6 +7,7 @@ import re
 import uuid
 from dataclasses import dataclass
 from html.parser import HTMLParser
+from io import BytesIO
 from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZIP_STORED, ZipFile
 
@@ -442,6 +443,85 @@ def p(text: str, style: ParagraphStyle) -> Paragraph:
     return Paragraph(escaped, style)
 
 
+def epub_text(text: str) -> str:
+    return html.escape(text).replace("&lt;br/&gt;", "<br/>")
+
+
+def epub_illustration_png(kind: str) -> bytes:
+    img = Image.new("RGB", (650, 310), "white")
+    d = ImageDraw.Draw(img)
+    black = (18, 18, 18)
+    gray = (95, 95, 95)
+    w = 5
+
+    if kind == "stamp":
+        d.rectangle((145, 95, 500, 205), outline=black, width=w)
+        d.line((175, 165, 470, 165), fill=black, width=3)
+        d.text((215, 125), "RECLAMACAO", fill=black)
+    elif kind == "mask":
+        d.ellipse((150, 80, 295, 220), outline=black, width=w)
+        d.ellipse((355, 80, 500, 220), outline=black, width=w)
+        for x in (200, 245, 405, 450):
+            d.ellipse((x - 9, 140, x + 9, 158), fill=black)
+        d.arc((190, 145, 255, 200), 20, 160, fill=black, width=4)
+        d.arc((395, 160, 460, 205), 200, 340, fill=black, width=4)
+    elif kind == "calendar":
+        d.rectangle((135, 60, 515, 245), outline=black, width=w)
+        d.line((135, 110, 515, 110), fill=black, width=w)
+        for x in (211, 287, 363, 439):
+            d.line((x, 110, x, 245), fill=gray, width=2)
+        for y in (155, 200):
+            d.line((135, y, 515, y), fill=gray, width=2)
+        d.text((160, 78), "SEM TEMPO", fill=black)
+    elif kind == "counter":
+        d.rectangle((100, 190, 550, 230), outline=black, width=w)
+        d.rectangle((350, 78, 515, 190), outline=black, width=w)
+        d.ellipse((150, 95, 230, 175), outline=black, width=w)
+        d.line((190, 175, 190, 205), fill=black, width=w)
+        d.text((382, 122), "AGUARDE", fill=black)
+    elif kind == "vet":
+        d.ellipse((120, 95, 245, 195), outline=black, width=w)
+        d.ellipse((155, 70, 225, 140), outline=black, width=w)
+        d.line((145, 190, 125, 235), fill=black, width=w)
+        d.line((225, 190, 250, 235), fill=black, width=w)
+        d.rectangle((360, 70, 490, 225), outline=black, width=w)
+        d.text((397, 125), "FATURA", fill=black)
+        d.line((385, 165, 465, 165), fill=black, width=3)
+    elif kind == "altar":
+        d.rectangle((155, 205, 500, 250), outline=black, width=w)
+        d.line((325, 70, 325, 205), fill=black, width=w)
+        d.line((275, 125, 375, 125), fill=black, width=w)
+        d.rectangle((185, 135, 265, 190), outline=black, width=w)
+        d.text((210, 152), "MB", fill=black)
+        d.ellipse((430, 110, 485, 165), outline=black, width=w)
+        d.line((458, 165, 458, 215), fill=black, width=w)
+    elif kind == "phone":
+        d.rounded_rectangle((250, 40, 400, 260), radius=18, outline=black, width=w)
+        d.ellipse((318, 230, 332, 244), fill=black)
+        for y in (95, 135, 175):
+            d.line((275, y, 375, y), fill=black, width=3)
+        d.arc((115, 100, 200, 190), 295, 65, fill=black, width=4)
+        d.arc((450, 100, 535, 190), 115, 245, fill=black, width=4)
+    elif kind == "memory":
+        d.rectangle((115, 80, 225, 220), outline=black, width=w)
+        d.rectangle((275, 105, 375, 195), outline=black, width=w)
+        d.rectangle((425, 80, 535, 220), outline=black, width=w)
+        d.ellipse((150, 115, 190, 155), outline=black, width=w)
+        d.line((445, 100, 515, 200), fill=black, width=w)
+        d.line((515, 100, 445, 200), fill=black, width=w)
+    else:
+        for x in (150, 240, 330, 420):
+            d.ellipse((x - 20, 70, x + 20, 110), outline=black, width=w)
+            d.line((x, 110, x, 200), fill=black, width=w)
+            d.line((x - 35, 150, x + 35, 150), fill=black, width=w)
+        d.rectangle((495, 120, 550, 225), outline=black, width=w)
+        d.line((115, 235, 560, 235), fill=black, width=3)
+
+    out = BytesIO()
+    img.save(out, format="PNG", optimize=True)
+    return out.getvalue()
+
+
 def draw_page_number(canv: canvas.Canvas, doc: BaseDocTemplate) -> None:
     if doc.page <= 4:
         return
@@ -767,12 +847,14 @@ def build_cover_pdf(page_count: int) -> dict[str, float]:
 def chapter_xhtml(chapter: Chapter) -> str:
     parts = [f"<h1>Reclamação n.º {chapter.number}</h1>", f"<h2>{html.escape(chapter.title)}</h2>"]
     if chapter.subtitle:
-        parts.append(f"<p class=\"subtitle\">{html.escape(chapter.subtitle)}</p>")
+        parts.append(f"<p class=\"subtitle\">{epub_text(chapter.subtitle)}</p>")
+    kind = illustration_kind_for(chapter)
+    parts.append(f"<div class=\"chapter-illustration\"><img src=\"images/illustration-{kind}.png\" alt=\"\"/></div>")
     for para in chapter.paragraphs:
         if re.match(r"^[IVX]+\\.", para):
-            parts.append(f"<h3>{html.escape(para)}</h3>")
+            parts.append(f"<h3>{epub_text(para)}</h3>")
         else:
-            parts.append(f"<p>{html.escape(para)}</p>")
+            parts.append(f"<p>{epub_text(para)}</p>")
     return "\n".join(parts)
 
 
@@ -785,11 +867,14 @@ h1, h2 { page-break-before: always; break-before: page; }
 h1 { font-size: 1.15em; color: #666; margin-top: 2em; }
 h2 { font-size: 1.75em; margin: .2em 0 .5em; }
 h3 { text-align: left; font-style: italic; margin: 1.5em 0 .8em; }
+.chapter-illustration { margin: 1.1em 0 1.3em; text-align: center; }
+.chapter-illustration img { width: 62%; max-width: 360px; height: auto; }
 .title, .part { text-align: center; page-break-before: always; break-before: page; margin-top: 35%; }
 .subtitle { font-style: italic; }
 .toc li { margin-bottom: .35em; }
 """
     chapters = [chapter for part in parts for chapter in part.chapters]
+    illustration_kinds = sorted({illustration_kind_for(chapter) for chapter in chapters})
     manifest = [
         '<item id="css" href="css/book.css" media-type="text/css"/>',
         '<item id="cover-image" href="images/cover.jpg" media-type="image/jpeg" properties="cover-image"/>',
@@ -797,11 +882,13 @@ h3 { text-align: left; font-style: italic; margin: 1.5em 0 .8em; }
         '<item id="title" href="title.xhtml" media-type="application/xhtml+xml"/>',
         '<item id="preface" href="preface.xhtml" media-type="application/xhtml+xml"/>',
     ]
+    for kind in illustration_kinds:
+        manifest.append(f'<item id="illustration-{kind}" href="images/illustration-{kind}.png" media-type="image/png"/>')
     spine = ['<itemref idref="title"/>', '<itemref idref="preface"/>']
     files: dict[str, str] = {
         "OEBPS/css/book.css": css,
         "OEBPS/title.xhtml": xhtml_page("title", f"<section class=\"title\"><h1>{TITLE}</h1><p>{SUBTITLE}</p><p>{AUTHOR}</p></section>"),
-        "OEBPS/preface.xhtml": xhtml_page("preface", "<h1>Prefácio</h1>" + "".join(f"<p>{html.escape(x)}</p>" for x in preface)),
+        "OEBPS/preface.xhtml": xhtml_page("preface", "<h1>Prefácio</h1>" + "".join(f"<p>{epub_text(x)}</p>" for x in preface)),
     }
     nav_items = ["<li><a href=\"preface.xhtml\">Prefácio</a></li>"]
     part_index = 0
@@ -842,6 +929,8 @@ h3 { text-align: left; font-style: italic; margin: 1.5em 0 .8em; }
         z.writestr("mimetype", "application/epub+zip", compress_type=ZIP_STORED)
         z.writestr("META-INF/container.xml", container, compress_type=ZIP_DEFLATED)
         z.write(EBOOK_COVER, "OEBPS/images/cover.jpg", compress_type=ZIP_DEFLATED)
+        for kind in illustration_kinds:
+            z.writestr(f"OEBPS/images/illustration-{kind}.png", epub_illustration_png(kind), compress_type=ZIP_DEFLATED)
         for name, value in files.items():
             z.writestr(name, value, compress_type=ZIP_DEFLATED)
 
