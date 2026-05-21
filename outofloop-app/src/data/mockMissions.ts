@@ -7,9 +7,17 @@ export const upcomingPlans = [
     place: "Jardim publico",
     costTier: "gratis",
     durationLabel: "plano",
-    participants: "3/6",
+    acceptedCount: 3,
+    capacity: 6,
     deadline: "fecha hoje as 18:00",
-    accessibility: "percurso curto, bancos perto"
+    accessibility: "percurso curto, bancos perto",
+    host: "Marta",
+    safetyNote: "O anfitriao espera no ponto combinado e confirma presencas.",
+    checklist: [
+      "Levar agua",
+      "Confirmar se o percurso esta confortavel",
+      "Sair sem culpa se precisares"
+    ]
   },
   {
     id: "family-table",
@@ -19,9 +27,17 @@ export const upcomingPlans = [
     place: "Casa",
     costTier: "gratis",
     durationLabel: "realista",
-    participants: "2/5",
+    acceptedCount: 2,
+    capacity: 5,
     deadline: "fecha amanha as 12:00",
-    accessibility: "sentado, baixo ruido"
+    accessibility: "sentado, baixo ruido",
+    host: "Tiago",
+    safetyNote: "Plano privado: so pessoas deste circulo veem a memoria.",
+    checklist: [
+      "Escolher uma pergunta simples",
+      "Sem telemoveis durante 15 minutos",
+      "Cada pessoa pode passar a vez"
+    ]
   }
 ];
 
