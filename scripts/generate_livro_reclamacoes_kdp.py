@@ -661,8 +661,8 @@ def build_interior(preface: list[str], parts: list[Part]) -> int:
     styles.add(ParagraphStyle("Copyright", fontName="Georgia", fontSize=9.4, leading=14, alignment=TA_CENTER, textColor=colors.HexColor("#333333")))
     styles.add(ParagraphStyle("Toc", fontName="Georgia", fontSize=10.7, leading=15.2, spaceAfter=1))
     styles.add(ParagraphStyle("PrefaceTitle", fontName="Impact", fontSize=26, leading=30, alignment=TA_LEFT, spaceAfter=18))
-    styles.add(ParagraphStyle("PartTitle", fontName="Impact", fontSize=25, leading=28, alignment=TA_CENTER, textColor=colors.white, spaceAfter=12))
-    styles.add(ParagraphStyle("PartSubtitle", fontName="Georgia-Italic", fontSize=14, leading=20, alignment=TA_CENTER, textColor=colors.white))
+    styles.add(ParagraphStyle("PartTitle", fontName="Impact", fontSize=25, leading=28, alignment=TA_CENTER, textColor=colors.black, spaceAfter=12))
+    styles.add(ParagraphStyle("PartSubtitle", fontName="Georgia-Italic", fontSize=14, leading=20, alignment=TA_CENTER, textColor=colors.HexColor("#333333")))
     styles.add(ParagraphStyle("ComplaintNo", fontName="Georgia-Bold", fontSize=10.5, leading=15, textColor=colors.HexColor("#777777"), spaceAfter=6))
     styles.add(ParagraphStyle("ChapterTitle", fontName="Impact", fontSize=23, leading=27, alignment=TA_LEFT, spaceAfter=8))
     styles.add(ParagraphStyle("ChapterSubtitle", fontName="Georgia-Italic", fontSize=12.5, leading=18, alignment=TA_LEFT, textColor=colors.HexColor("#333333"), spaceAfter=16))
@@ -743,16 +743,8 @@ def build_interior(preface: list[str], parts: list[Part]) -> int:
 
 
 def part_opener(part: Part, styles: dict[str, ParagraphStyle]) -> list:
-    class BlackPage(Spacer):
-        def drawOn(self, canv: canvas.Canvas, x: float, y: float, _sW: float = 0) -> None:
-            canv.saveState()
-            canv.setFillColor(colors.black)
-            canv.rect(0, 0, TRIM_W, TRIM_H, stroke=0, fill=1)
-            canv.restoreState()
-
     return [
-        BlackPage(1, 0.1),
-        Spacer(1, 2.25 * inch),
+        Spacer(1, 2.65 * inch),
         KeepTogether(
             [
                 p(f"PARTE {part.roman}", styles["PartTitle"]),
