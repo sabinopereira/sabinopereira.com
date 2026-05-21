@@ -31,7 +31,7 @@ export const upcomingPlans: UpcomingPlan[] = [
     accessibility: "percurso curto, bancos perto",
     host: "Marta",
     originMission: "Faz uma coisa simples fora de casa com alguem.",
-    safetyNote: "O anfitriao espera no ponto combinado e confirma presencas.",
+    safetyNote: "Quem criou o plano espera no ponto combinado e confirma presencas.",
     checklist: [
       "Levar agua",
       "Confirmar se o percurso esta confortavel",
@@ -40,7 +40,7 @@ export const upcomingPlans: UpcomingPlan[] = [
   },
   {
     id: "family-table",
-    title: "Mesa com pergunta",
+    title: "Conversa a mesa",
     circle: "Familia",
     time: "Domingo, jantar",
     place: "Casa",
@@ -67,7 +67,7 @@ export const circles = [
     name: "Familia",
     type: "Familia",
     members: 4,
-    next: "Mesa com pergunta",
+    next: "Conversa a mesa",
     role: "Membro"
   },
   {

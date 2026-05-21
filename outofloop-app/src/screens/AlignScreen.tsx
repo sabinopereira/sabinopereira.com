@@ -4,13 +4,12 @@ import { Modal, ScrollView, StyleSheet, Text, View } from "react-native";
 import { ActionButton } from "../components/ActionButton";
 import { Pill } from "../components/Pill";
 import { UpcomingPlan } from "../data/mockMissions";
+import {
+  PlanResponses,
+  PlanStatuses,
+  PlanStatus
+} from "../data/planState";
 import { colors, radius } from "../theme/colors";
-
-type PlanStatus = "open" | "accepted" | "checkedIn" | "dismissed";
-type PlanResponse = {
-  detailsViews?: number;
-  notNowReason?: string;
-};
 
 const notNowReasons = [
   "Hora dificil",
@@ -23,52 +22,45 @@ const notNowReasons = [
 
 export function AlignScreen({
   plans,
+  planStatuses,
+  planResponses,
+  onPlanStatusChange,
+  onPlanResponseChange,
   onCheckIn
 }: {
   plans: UpcomingPlan[];
+  planStatuses: PlanStatuses;
+  planResponses: PlanResponses;
+  onPlanStatusChange: (planId: string, status: PlanStatus) => void;
+  onPlanResponseChange: (planId: string, response: PlanResponses[string]) => void;
   onCheckIn: (plan: UpcomingPlan) => void;
 }) {
-  const [planStatuses, setPlanStatuses] = useState<Record<string, PlanStatus>>(
-    {}
-  );
   const [selectedPlan, setSelectedPlan] = useState<UpcomingPlan | null>(null);
   const [detailsPlan, setDetailsPlan] = useState<UpcomingPlan | null>(null);
   const [notNowPlan, setNotNowPlan] = useState<UpcomingPlan | null>(null);
-  const [planResponses, setPlanResponses] = useState<
-    Record<string, PlanResponse>
-  >({});
 
   function statusFor(planId: string): PlanStatus {
     return planStatuses[planId] ?? "open";
   }
 
   function updateStatus(planId: string, status: PlanStatus) {
-    setPlanStatuses((current) => ({
-      ...current,
-      [planId]: status
-    }));
+    onPlanStatusChange(planId, status);
   }
 
   function dismissPlan(planId: string, reason: string) {
-    setPlanResponses((current) => ({
-      ...current,
-      [planId]: {
-        ...current[planId],
-        notNowReason: reason
-      }
-    }));
+    onPlanResponseChange(planId, {
+      ...planResponses[planId],
+      notNowReason: reason
+    });
     updateStatus(planId, "dismissed");
     setNotNowPlan(null);
   }
 
   function openDetails(plan: UpcomingPlan) {
-    setPlanResponses((current) => ({
-      ...current,
-      [plan.id]: {
-        ...current[plan.id],
-        detailsViews: (current[plan.id]?.detailsViews ?? 0) + 1
-      }
-    }));
+    onPlanResponseChange(plan.id, {
+      ...planResponses[plan.id],
+      detailsViews: (planResponses[plan.id]?.detailsViews ?? 0) + 1
+    });
     setDetailsPlan(plan);
   }
 
@@ -77,14 +69,14 @@ export function AlignScreen({
       case "Hora dificil":
         return "Sugestao: propor duas horas alternativas antes de fechar.";
       case "Dia nao ajuda":
-        return "Sugestao: testar outro dia ou transformar em plano de fim de semana.";
+        return "Sugestao: tentar outro dia ou passar para o fim de semana.";
       case "Fica longe":
-        return "Sugestao: escolher um ponto mais central ou opcao perto de transportes.";
+        return "Sugestao: escolher um lugar mais central ou perto de transportes.";
       case "Custo alto":
         return "Sugestao: trocar por opcao gratis ou low cost.";
       case "Sem energia":
       case "Prefiro algo mais leve":
-        return "Sugestao: reduzir duracao e deixar claro que sair cedo e ok.";
+        return "Sugestao: fazer mais curto e deixar claro que sair cedo e ok.";
       default:
         return "Sugestao: manter o plano simples e pedir uma resposta clara.";
     }
@@ -95,8 +87,8 @@ export function AlignScreen({
       <View style={styles.header}>
         <Text style={styles.title}>Quem alinha?</Text>
         <Text style={styles.subtitle}>
-          Planos dos teus circulos, com prazo, custo e acessibilidade antes de
-          aceitares.
+          Planos dos teus circulos com hora, local, custo e prazo para
+          responder.
         </Text>
       </View>
 
@@ -154,13 +146,13 @@ export function AlignScreen({
                 <Text style={styles.deadline}>
                   {acceptedCount}/{plan.capacity} alinharam
                 </Text>
-                <Text style={styles.host}>Anfitriao: {plan.host}</Text>
+                <Text style={styles.host}>Criado por: {plan.host}</Text>
               </View>
               <Text style={styles.deadline}>{plan.deadline}</Text>
             </View>
             {response?.notNowReason ? (
               <View style={styles.hostInsight}>
-                <Text style={styles.hostInsightTitle}>Feedback ao anfitriao</Text>
+                <Text style={styles.hostInsightTitle}>Feedback para quem criou</Text>
                 <Text style={styles.hostInsightText}>
                   1 pessoa respondeu: {response.notNowReason}.
                 </Text>
@@ -170,13 +162,13 @@ export function AlignScreen({
               </View>
             ) : response?.detailsViews ? (
               <View style={styles.hostInsight}>
-                <Text style={styles.hostInsightTitle}>Feedback ao anfitriao</Text>
+                <Text style={styles.hostInsightTitle}>Feedback para quem criou</Text>
                 <Text style={styles.hostInsightText}>
                   Ha interesse, mas ainda falta confirmacao.
                 </Text>
                 <Text style={styles.hostInsightText}>
-                  Sugestao: reforcar hora, ponto de encontro e custo para
-                  reduzir duvida.
+                  Sugestao: repetir a hora, o ponto de encontro e o custo para
+                  tirar duvidas.
                 </Text>
               </View>
             ) : null}
@@ -210,16 +202,13 @@ export function AlignScreen({
               <View style={styles.dismissedBox}>
                 <Text style={styles.dismissedTitle}>Resposta guardada</Text>
                 <Text style={styles.dismissedText}>
-                  Sem culpa. O anfitriao recebe o sinal para melhorar o plano.
+                  Sem culpa. Quem criou o plano recebe este sinal para melhorar.
                 </Text>
                 <ActionButton
                   variant="secondary"
                   onPress={() => {
                     updateStatus(plan.id, "open");
-                    setPlanResponses((current) => ({
-                      ...current,
-                      [plan.id]: {}
-                    }));
+                    onPlanResponseChange(plan.id, {});
                   }}
                 >
                   Reconsiderar
@@ -325,13 +314,10 @@ export function AlignScreen({
                 <ActionButton
                   onPress={() => {
                     updateStatus(detailsPlan.id, "accepted");
-                    setPlanResponses((current) => ({
-                      ...current,
-                      [detailsPlan.id]: {
-                        ...current[detailsPlan.id],
-                        notNowReason: undefined
-                      }
-                    }));
+                    onPlanResponseChange(detailsPlan.id, {
+                      ...planResponses[detailsPlan.id],
+                      notNowReason: undefined
+                    });
                     setDetailsPlan(null);
                   }}
                 >
@@ -368,8 +354,8 @@ export function AlignScreen({
                 <Text style={styles.modalKicker}>Agora nao</Text>
                 <Text style={styles.modalTitle}>O que tornava isto mais facil?</Text>
                 <Text style={styles.modalText}>
-                  A tua resposta ajuda o anfitriao a melhorar hora, dia, local,
-                  preco ou energia do plano.
+                  A tua resposta ajuda a melhorar a hora, o dia, o local, o
+                  preco ou o peso do plano.
                 </Text>
                 {notNowReasons.map((reason) => (
                   <ActionButton

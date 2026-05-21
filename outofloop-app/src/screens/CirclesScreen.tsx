@@ -24,7 +24,7 @@ const planTemplates = [
   },
   {
     title: "Volta curta para respirar",
-    originMission: "Sai do automatico com uma caminhada leve.",
+    originMission: "Sai da rotina com uma caminhada leve.",
     time: "Amanha, fim de tarde",
     place: "Jardim ou rua calma",
     durationLabel: "realista",
@@ -36,7 +36,7 @@ const planTemplates = [
     ]
   },
   {
-    title: "Mesa com pergunta",
+    title: "Conversa a mesa",
     originMission: "Cria uma conversa real em familia ou circulo.",
     time: "Proximo jantar",
     place: "Casa",
@@ -73,7 +73,7 @@ export function CirclesScreen({
       host: "Tu",
       originMission: template.originMission,
       safetyNote:
-        "Plano criado no circulo: prazo, local, custo e conforto ficam claros antes de alguem alinhar.",
+        "Plano criado no circulo: hora, local, custo e conforto ficam claros antes de alguem responder.",
       checklist: template.checklist
     });
     setSelectedCircle(null);
@@ -128,11 +128,11 @@ export function CirclesScreen({
           <View style={styles.modalCard}>
             {selectedCircle ? (
               <>
-                <Text style={styles.modalKicker}>Plano estruturado</Text>
+                <Text style={styles.modalKicker}>Criar plano simples</Text>
                 <Text style={styles.modalTitle}>{selectedCircle.name}</Text>
                 <Text style={styles.modalText}>
                   Escolhe um plano simples. Ele aparece em Quem alinha? com
-                  prazo, custo e detalhes claros.
+                  hora, local, custo e prazo para responder.
                 </Text>
                 {planTemplates.map((template) => (
                   <ActionButton

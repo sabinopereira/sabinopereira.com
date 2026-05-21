@@ -72,7 +72,7 @@ export function buildProgressPath(memories: AppMemory[]): ProgressPath {
         unlocked: savedNoteCount >= 1
       },
       {
-        label: "Tres saidas do automatico",
+        label: "Tres saidas da rotina",
         unlocked: completedCount >= 3
       }
     ]

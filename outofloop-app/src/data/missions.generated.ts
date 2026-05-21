@@ -997,8 +997,8 @@ export const missions: Mission[] = [
   },
   {
     slug: "mesa-com-pergunta",
-    title: "Mesa com pergunta",
-    description: "Mesa com pergunta",
+    title: "Conversa a mesa",
+    description: "Escolhe uma pergunta simples para abrir uma conversa real durante uma refeicao ou cafe.",
     mode: "familia",
     intensity: "leve",
     costTier: "gratis",

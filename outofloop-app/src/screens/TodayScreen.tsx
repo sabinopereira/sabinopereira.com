@@ -85,7 +85,7 @@ export function TodayScreen({
         <Text style={styles.eyebrow}>Hoje vamos pequeno</Text>
         <Text style={styles.heading}>Sai do loop por {minuteLabel}.</Text>
         <Text style={styles.subheading}>
-          Uma missao simples, sem culpa, com tempo previsto claro.
+          Uma missao simples, sem culpa e com tempo claro.
         </Text>
       </View>
 
@@ -94,7 +94,7 @@ export function TodayScreen({
           <Text style={styles.completedLabel}>Missao concluida</Text>
           <Text style={styles.completedTitle}>{todayMission.title}</Text>
           <Text style={styles.completedText}>
-            Isto ja conta: uma acao real fora do automatico.
+            Isto ja conta: fizeste uma coisa fora da rotina.
           </Text>
           {feedbackResult ? (
             <Text style={styles.completedMeta}>Feedback: {feedbackResult}</Text>
@@ -136,7 +136,7 @@ export function TodayScreen({
           <Text style={styles.acceptedLabel}>Missao aceite</Text>
           <Text style={styles.acceptedTitle}>{todayMission.title}</Text>
           <Text style={styles.acceptedText}>
-            Faz isto ate ao fim do dia. Se nao der, podes ajustar sem vergonha.
+            Faz isto ate ao fim do dia. Se nao der, podes ajustar sem culpa.
           </Text>
           <View style={styles.timerBox}>
             <View style={styles.timerTop}>
@@ -156,7 +156,7 @@ export function TodayScreen({
             <Text style={styles.timerHint}>
               {timerRemainingSeconds === 0
                 ? "O tempo acabou. Se fizeste, fecha a missao."
-                : "Usa isto como limite suave, nao como pressao."}
+                : "O tempo e so uma ajuda, nao uma pressao."}
             </Text>
           </View>
           <View style={styles.acceptedActions}>
@@ -189,8 +189,7 @@ export function TodayScreen({
       <View style={styles.note}>
         <Text style={styles.noteTitle}>Porque esta missao?</Text>
         <Text style={styles.noteText}>
-          A primeira beta testa se uma acao pequena consegue criar movimento
-          real sem empurrar a pessoa para vergonha ou performance.
+          Porque uma coisa pequena pode ajudar-te a sair da rotina sem peso.
         </Text>
       </View>
 
@@ -235,10 +234,10 @@ export function TodayScreen({
       >
         <View style={styles.modalBackdrop}>
           <View style={styles.modalCard}>
-            <Text style={styles.modalKicker}>Confirmacao</Text>
+            <Text style={styles.modalKicker}>Confirmar</Text>
             <Text style={styles.modalTitle}>Cumpriste a missao?</Text>
             <Text style={styles.modalText}>
-              Nao precisa de ser perfeito. Queremos saber se houve acao real.
+              Nao precisa de ser perfeito. Queremos saber se tentaste.
             </Text>
             {["Sim, cumpri", "Mais ou menos", "Tentei, mas nao deu"].map(
               (result) => (
@@ -308,11 +307,11 @@ export function TodayScreen({
       >
         <View style={styles.centerBackdrop}>
           <View style={styles.congratsCard}>
-            <Text style={styles.congratsKicker}>Participacao registada</Text>
+            <Text style={styles.congratsKicker}>Guardado</Text>
             <Text style={styles.congratsTitle}>Boa. Saiste do loop hoje.</Text>
             <Text style={styles.congratsText}>
-              Pequeno ou imperfeito, conta. A tua proxima missao pode aprender
-              com isto.
+              Pequeno ou imperfeito, conta. A proxima missao pode adaptar-se a
+              isto.
             </Text>
             <ActionButton onPress={() => setCongratsOpen(false)}>
               Fechar

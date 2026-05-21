@@ -2,24 +2,54 @@ import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { ActionButton } from "../components/ActionButton";
 import { Pill } from "../components/Pill";
+import { AppPreferences } from "../data/preferences";
 import { ProgressPath } from "../data/progress";
 import { colors, radius } from "../theme/colors";
 
-const preferences = [
-  "Private-first",
-  "Missoes micro",
-  "Gratis e low cost",
-  "Locais calmos",
-  "Pequenos grupos"
-];
+const modeLabel: Record<AppPreferences["primaryMode"], string> = {
+  coragem: "Aventura",
+  social: "Social",
+  familia: "Familia",
+  saude: "Saude",
+  recomeco: "Recuperar ritmo"
+};
 
-export function ProfileScreen({ progress }: { progress: ProgressPath }) {
+const costLabel: Record<AppPreferences["preferredCostTier"], string> = {
+  gratis: "Gratis",
+  low_cost: "Low cost",
+  medio: "Medio",
+  especial: "Especial"
+};
+
+const intensityLabel: Record<AppPreferences["preferredIntensity"], string> = {
+  leve: "Leve",
+  real: "Real",
+  coragem: "Aventura"
+};
+
+export function ProfileScreen({
+  preferences,
+  progress
+}: {
+  preferences: AppPreferences;
+  progress: ProgressPath;
+}) {
+  const rhythmChoices = [
+    preferences.privateFirst ? "Comecar sozinho/a" : "Comecar com pessoas",
+    `${preferences.maxMinutes} min maximo`,
+    costLabel[preferences.preferredCostTier],
+    intensityLabel[preferences.preferredIntensity],
+    modeLabel[preferences.primaryMode],
+    preferences.hasChildren ? "Tenho filhos" : null,
+    ...preferences.accessibility
+  ].filter(Boolean);
+
   return (
     <ScrollView contentContainerStyle={styles.content}>
       <View style={styles.header}>
         <Text style={styles.title}>Perfil</Text>
         <Text style={styles.subtitle}>
-          Ritmo, privacidade, acessibilidade e seguranca.
+          O teu ritmo, as tuas escolhas e a tua seguranca.
         </Text>
       </View>
       <View style={styles.pathCard}>
@@ -80,10 +110,20 @@ export function ProfileScreen({ progress }: { progress: ProgressPath }) {
         </View>
       </View>
       <View style={styles.card}>
+        <Text style={styles.cardTitle}>O que queres mexer</Text>
+        <View style={styles.pills}>
+          {preferences.routineFocus.map((item) => (
+            <Pill key={item} tone="green">
+              {item}
+            </Pill>
+          ))}
+        </View>
+      </View>
+      <View style={styles.card}>
         <Text style={styles.cardTitle}>O teu ritmo</Text>
         <View style={styles.pills}>
-          {preferences.map((item) => (
-            <Pill key={item} tone="green">
+          {rhythmChoices.map((item) => (
+            <Pill key={item} tone="blue">
               {item}
             </Pill>
           ))}
@@ -93,7 +133,7 @@ export function ProfileScreen({ progress }: { progress: ProgressPath }) {
         <Text style={styles.cardTitle}>Hoje nao da</Text>
         <Text style={styles.text}>
           A app adapta as proximas missoes quando falta tempo, energia ou
-          encaixe.
+          vontade.
         </Text>
       </View>
       <ActionButton variant="secondary">Pausar missoes</ActionButton>

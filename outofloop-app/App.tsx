@@ -17,8 +17,16 @@ import {
 } from "./src/data/preferences";
 import { upcomingPlans, UpcomingPlan } from "./src/data/mockMissions";
 import { Mission } from "./src/data/missions.generated";
+import {
+  PlanResponses,
+  PlanStatuses,
+  PlanStatus
+} from "./src/data/planState";
 import { buildProgressPath, ProgressPath } from "./src/data/progress";
-import { readStoredValue, writeStoredValue } from "./src/data/storage";
+import {
+  readStoredValue,
+  writeStoredValue
+} from "./src/data/storage";
 
 export type TabKey = "today" | "circles" | "align" | "memories" | "profile";
 
@@ -26,7 +34,9 @@ const storageKeys = {
   onboardingComplete: "outofloop:onboardingComplete",
   preferences: "outofloop:preferences",
   memories: "outofloop:memories",
-  plans: "outofloop:plans"
+  plans: "outofloop:plans",
+  planStatuses: "outofloop:planStatuses",
+  planResponses: "outofloop:planResponses"
 };
 
 function renderScreen(
@@ -35,7 +45,11 @@ function renderScreen(
   memories: AppMemory[],
   progress: ProgressPath,
   plans: UpcomingPlan[],
+  planStatuses: PlanStatuses,
+  planResponses: PlanResponses,
   onCreatePlan: (plan: UpcomingPlan) => void,
+  onPlanStatusChange: (planId: string, status: PlanStatus) => void,
+  onPlanResponseChange: (planId: string, response: PlanResponses[string]) => void,
   onPlanCheckIn: (plan: UpcomingPlan) => void,
   onMissionComplete: (mission: Mission) => void,
   onMemoryNoteChange: (memoryId: string, note: string) => void
@@ -44,7 +58,16 @@ function renderScreen(
     case "circles":
       return <CirclesScreen onCreatePlan={onCreatePlan} />;
     case "align":
-      return <AlignScreen plans={plans} onCheckIn={onPlanCheckIn} />;
+      return (
+        <AlignScreen
+          plans={plans}
+          planStatuses={planStatuses}
+          planResponses={planResponses}
+          onPlanStatusChange={onPlanStatusChange}
+          onPlanResponseChange={onPlanResponseChange}
+          onCheckIn={onPlanCheckIn}
+        />
+      );
     case "memories":
       return (
         <MemoriesScreen
@@ -53,7 +76,7 @@ function renderScreen(
         />
       );
     case "profile":
-      return <ProfileScreen progress={progress} />;
+      return <ProfileScreen preferences={preferences} progress={progress} />;
     case "today":
     default:
       return (
@@ -80,6 +103,12 @@ export default function App() {
   );
   const [plans, setPlans] = useState<UpcomingPlan[]>(() =>
     readStoredValue(storageKeys.plans, upcomingPlans)
+  );
+  const [planStatuses, setPlanStatuses] = useState<PlanStatuses>(() =>
+    readStoredValue(storageKeys.planStatuses, {})
+  );
+  const [planResponses, setPlanResponses] = useState<PlanResponses>(() =>
+    readStoredValue(storageKeys.planResponses, {})
   );
   const progress = buildProgressPath(memories);
 
@@ -111,9 +140,42 @@ export default function App() {
     }
   }, [plans, storageLoaded]);
 
+  useEffect(() => {
+    if (storageLoaded) {
+      writeStoredValue(storageKeys.planStatuses, planStatuses);
+    }
+  }, [planStatuses, storageLoaded]);
+
+  useEffect(() => {
+    if (storageLoaded) {
+      writeStoredValue(storageKeys.planResponses, planResponses);
+    }
+  }, [planResponses, storageLoaded]);
+
   function handleCreatePlan(plan: UpcomingPlan) {
     setPlans((current) => [plan, ...current]);
+    setPlanStatuses((current) => ({
+      ...current,
+      [plan.id]: "open"
+    }));
     setActiveTab("align");
+  }
+
+  function handlePlanStatusChange(planId: string, status: PlanStatus) {
+    setPlanStatuses((current) => ({
+      ...current,
+      [planId]: status
+    }));
+  }
+
+  function handlePlanResponseChange(
+    planId: string,
+    response: PlanResponses[string]
+  ) {
+    setPlanResponses((current) => ({
+      ...current,
+      [planId]: response
+    }));
   }
 
   function handlePlanCheckIn(plan: UpcomingPlan) {
@@ -164,7 +226,7 @@ export default function App() {
           time: "Hoje",
           place: "No teu ritmo",
           privacy: "private",
-          prompt: "O que aconteceu quando saiste do automatico?"
+          prompt: "O que aconteceu quando saiste da rotina?"
         },
         ...current
       ];
@@ -208,7 +270,11 @@ export default function App() {
           memories,
           progress,
           plans,
+          planStatuses,
+          planResponses,
           handleCreatePlan,
+          handlePlanStatusChange,
+          handlePlanResponseChange,
           handlePlanCheckIn,
           handleMissionComplete,
           handleMemoryNoteChange

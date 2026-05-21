@@ -70,7 +70,7 @@ export function MemoriesScreen({
         <Text style={styles.cardTitle}>Memorias seguras</Text>
         <Text style={styles.text}>
           Fotos e textos devem ficar acessiveis so a participantes confirmados.
-          Nesta beta, isto ainda vive localmente no prototipo.
+          Por agora, isto fica guardado apenas neste telemovel.
         </Text>
         <ActionButton variant="secondary">Guardar memoria privada</ActionButton>
       </View>

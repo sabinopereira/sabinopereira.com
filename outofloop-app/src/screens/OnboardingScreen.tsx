@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View
+} from "react-native";
 
 import { ActionButton } from "../components/ActionButton";
 import { OptionChip } from "../components/OptionChip";
@@ -65,6 +71,8 @@ const accessibilityOptions = [
   "Grupos pequenos"
 ];
 
+type EntryMode = "welcome" | "try" | "create" | "login";
+
 export function OnboardingScreen({
   onComplete
 }: {
@@ -72,6 +80,9 @@ export function OnboardingScreen({
 }) {
   const [preferences, setPreferences] =
     useState<AppPreferences>(defaultPreferences);
+  const [entryMode, setEntryMode] = useState<EntryMode>("welcome");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
   function toggleAccessibility(value: string) {
     setPreferences((current) => {
@@ -138,10 +149,87 @@ export function OnboardingScreen({
         <Text style={styles.logo}>OutOfLoop</Text>
         <Text style={styles.title}>Sai do automatico no teu ritmo.</Text>
         <Text style={styles.subtitle}>
-          Escolhe como queres comecar. A app adapta as primeiras missoes sem te
-          empurrar para grupos.
+          Podes experimentar primeiro. Se fizer sentido, crias conta depois.
         </Text>
       </View>
+
+      {entryMode === "welcome" ? (
+        <View style={styles.entryCard}>
+          <Text style={styles.entryTitle}>Como queres entrar?</Text>
+          <Text style={styles.entryText}>
+            Experimenta sem compromisso, cria conta ou entra numa conta que ja
+            tens.
+          </Text>
+          <ActionButton onPress={() => setEntryMode("try")}>
+            Experimentar primeiro
+          </ActionButton>
+          <ActionButton variant="secondary" onPress={() => setEntryMode("create")}>
+            Criar conta
+          </ActionButton>
+          <ActionButton variant="ghost" onPress={() => setEntryMode("login")}>
+            Entrar
+          </ActionButton>
+        </View>
+      ) : null}
+
+      {entryMode === "create" ? (
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>Criar conta</Text>
+          <Text style={styles.helper}>
+            Por agora, isto prepara o teu perfil neste telemovel. Mais tarde
+            ligamos isto a uma conta real.
+          </Text>
+          <TextInput
+            value={name}
+            onChangeText={setName}
+            placeholder="Nome"
+            placeholderTextColor={colors.inkMuted}
+            style={styles.input}
+          />
+          <TextInput
+            value={email}
+            onChangeText={setEmail}
+            placeholder="Email"
+            placeholderTextColor={colors.inkMuted}
+            keyboardType="email-address"
+            autoCapitalize="none"
+            style={styles.input}
+          />
+          <ActionButton onPress={() => setEntryMode("try")}>
+            Continuar
+          </ActionButton>
+          <ActionButton variant="ghost" onPress={() => setEntryMode("welcome")}>
+            Voltar
+          </ActionButton>
+        </View>
+      ) : null}
+
+      {entryMode === "login" ? (
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>Entrar</Text>
+          <Text style={styles.helper}>
+            Escreve o email. Nesta fase, seguimos para a app neste telemovel.
+          </Text>
+          <TextInput
+            value={email}
+            onChangeText={setEmail}
+            placeholder="Email"
+            placeholderTextColor={colors.inkMuted}
+            keyboardType="email-address"
+            autoCapitalize="none"
+            style={styles.input}
+          />
+          <ActionButton onPress={() => setEntryMode("try")}>
+            Continuar
+          </ActionButton>
+          <ActionButton variant="ghost" onPress={() => setEntryMode("welcome")}>
+            Voltar
+          </ActionButton>
+        </View>
+      ) : null}
+
+      {entryMode === "try" ? (
+        <>
 
       <View style={styles.card}>
         <Text style={styles.cardTitle}>O que queres mexer na tua rotina?</Text>
@@ -303,6 +391,8 @@ export function OnboardingScreen({
           Usar sugestoes iniciais
         </ActionButton>
       </View>
+        </>
+      ) : null}
     </ScrollView>
   );
 }
@@ -346,6 +436,25 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.line
   },
+  entryCard: {
+    backgroundColor: colors.green,
+    borderRadius: radius.lg,
+    padding: 18,
+    gap: 12
+  },
+  entryTitle: {
+    color: "#FFFFFF",
+    fontSize: 26,
+    lineHeight: 30,
+    fontWeight: "900",
+    letterSpacing: 0
+  },
+  entryText: {
+    color: "#EEF6EF",
+    fontSize: 15,
+    lineHeight: 22,
+    letterSpacing: 0
+  },
   cardTitle: {
     color: colors.ink,
     fontSize: 18,
@@ -355,6 +464,17 @@ const styles = StyleSheet.create({
   helper: {
     color: colors.inkMuted,
     fontSize: 13,
+    letterSpacing: 0
+  },
+  input: {
+    minHeight: 48,
+    borderRadius: radius.sm,
+    borderWidth: 1,
+    borderColor: colors.line,
+    backgroundColor: colors.surface,
+    color: colors.ink,
+    paddingHorizontal: 13,
+    fontSize: 15,
     letterSpacing: 0
   },
   grid: {
