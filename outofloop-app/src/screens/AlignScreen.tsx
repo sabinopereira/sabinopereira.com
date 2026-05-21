@@ -8,6 +8,7 @@ import { colors, radius } from "../theme/colors";
 
 type PlanStatus = "open" | "accepted" | "checkedIn" | "dismissed";
 type PlanResponse = {
+  detailsViews?: number;
   notNowReason?: string;
 };
 
@@ -52,11 +53,23 @@ export function AlignScreen({
     setPlanResponses((current) => ({
       ...current,
       [planId]: {
+        ...current[planId],
         notNowReason: reason
       }
     }));
     updateStatus(planId, "dismissed");
     setNotNowPlan(null);
+  }
+
+  function openDetails(plan: UpcomingPlan) {
+    setPlanResponses((current) => ({
+      ...current,
+      [plan.id]: {
+        ...current[plan.id],
+        detailsViews: (current[plan.id]?.detailsViews ?? 0) + 1
+      }
+    }));
+    setDetailsPlan(plan);
   }
 
   function suggestionFor(reason?: string) {
@@ -100,6 +113,10 @@ export function AlignScreen({
                 ? "agora nao"
                 : "aberto";
         const response = planResponses[plan.id];
+        const seenCount = Math.min(
+          plan.capacity,
+          plan.acceptedCount + (response?.detailsViews ?? 0) + 1
+        );
 
         return (
           <View key={plan.id} style={styles.card}>
@@ -112,9 +129,26 @@ export function AlignScreen({
             </View>
             <Text style={styles.cardTitle}>{plan.title}</Text>
             <Text style={styles.meta}>{plan.circle}</Text>
+            {plan.originMission ? (
+              <View style={styles.originBox}>
+                <Text style={styles.originLabel}>Nasceu da missao</Text>
+                <Text style={styles.originText}>{plan.originMission}</Text>
+              </View>
+            ) : null}
             <Text style={styles.detail}>{plan.time}</Text>
             <Text style={styles.detail}>{plan.place}</Text>
             <Text style={styles.accessibility}>{plan.accessibility}</Text>
+            <View style={styles.notificationBox}>
+              <Text style={styles.notificationTitle}>
+                Aviso enviado ao circulo
+              </Text>
+              <Text style={styles.notificationText}>
+                {seenCount}/{plan.capacity} viram ou responderam.{" "}
+                {response?.detailsViews
+                  ? `${response.detailsViews} pediu detalhes.`
+                  : "Ainda sem pedidos de detalhes."}
+              </Text>
+            </View>
             <View style={styles.planFooter}>
               <View>
                 <Text style={styles.deadline}>
@@ -132,6 +166,17 @@ export function AlignScreen({
                 </Text>
                 <Text style={styles.hostInsightText}>
                   {suggestionFor(response.notNowReason)}
+                </Text>
+              </View>
+            ) : response?.detailsViews ? (
+              <View style={styles.hostInsight}>
+                <Text style={styles.hostInsightTitle}>Feedback ao anfitriao</Text>
+                <Text style={styles.hostInsightText}>
+                  Ha interesse, mas ainda falta confirmacao.
+                </Text>
+                <Text style={styles.hostInsightText}>
+                  Sugestao: reforcar hora, ponto de encontro e custo para
+                  reduzir duvida.
                 </Text>
               </View>
             ) : null}
@@ -191,7 +236,7 @@ export function AlignScreen({
                 <ActionButton
                   variant="secondary"
                   style={styles.actionGrow}
-                  onPress={() => setDetailsPlan(plan)}
+                  onPress={() => openDetails(plan)}
                 >
                   Saber mais
                 </ActionButton>
@@ -261,6 +306,14 @@ export function AlignScreen({
                 <Text style={styles.modalKicker}>Saber mais</Text>
                 <Text style={styles.modalTitle}>{detailsPlan.title}</Text>
                 <Text style={styles.modalText}>{detailsPlan.safetyNote}</Text>
+                {detailsPlan.originMission ? (
+                  <View style={styles.originBox}>
+                    <Text style={styles.originLabel}>Missao de origem</Text>
+                    <Text style={styles.originText}>
+                      {detailsPlan.originMission}
+                    </Text>
+                  </View>
+                ) : null}
                 <Text style={styles.modalDetail}>Quando: {detailsPlan.time}</Text>
                 <Text style={styles.modalDetail}>Onde: {detailsPlan.place}</Text>
                 <Text style={styles.modalDetail}>
@@ -272,6 +325,13 @@ export function AlignScreen({
                 <ActionButton
                   onPress={() => {
                     updateStatus(detailsPlan.id, "accepted");
+                    setPlanResponses((current) => ({
+                      ...current,
+                      [detailsPlan.id]: {
+                        ...current[detailsPlan.id],
+                        notNowReason: undefined
+                      }
+                    }));
                     setDetailsPlan(null);
                   }}
                 >
@@ -389,6 +449,25 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     letterSpacing: 0
   },
+  originBox: {
+    backgroundColor: colors.coralSoft,
+    borderRadius: radius.sm,
+    padding: 12,
+    gap: 4
+  },
+  originLabel: {
+    color: colors.coral,
+    fontSize: 13,
+    fontWeight: "900",
+    letterSpacing: 0,
+    textTransform: "uppercase"
+  },
+  originText: {
+    color: colors.ink,
+    fontSize: 14,
+    lineHeight: 20,
+    letterSpacing: 0
+  },
   deadline: {
     color: colors.blue,
     fontSize: 14,
@@ -465,6 +544,25 @@ const styles = StyleSheet.create({
     textTransform: "uppercase"
   },
   hostInsightText: {
+    color: colors.ink,
+    fontSize: 13,
+    lineHeight: 18,
+    letterSpacing: 0
+  },
+  notificationBox: {
+    backgroundColor: colors.blueSoft,
+    borderRadius: radius.sm,
+    padding: 12,
+    gap: 4
+  },
+  notificationTitle: {
+    color: colors.blue,
+    fontSize: 13,
+    fontWeight: "900",
+    letterSpacing: 0,
+    textTransform: "uppercase"
+  },
+  notificationText: {
     color: colors.ink,
     fontSize: 13,
     lineHeight: 18,

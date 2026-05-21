@@ -11,6 +11,7 @@ type Circle = (typeof circles)[number];
 const planTemplates = [
   {
     title: "Cafe curto sem complicar",
+    originMission: "Convida alguem para um encontro simples.",
     time: "Hoje, 18:30",
     place: "Cafe perto de todos",
     durationLabel: "leve",
@@ -23,6 +24,7 @@ const planTemplates = [
   },
   {
     title: "Volta curta para respirar",
+    originMission: "Sai do automatico com uma caminhada leve.",
     time: "Amanha, fim de tarde",
     place: "Jardim ou rua calma",
     durationLabel: "realista",
@@ -35,6 +37,7 @@ const planTemplates = [
   },
   {
     title: "Mesa com pergunta",
+    originMission: "Cria uma conversa real em familia ou circulo.",
     time: "Proximo jantar",
     place: "Casa",
     durationLabel: "realista",
@@ -68,6 +71,7 @@ export function CirclesScreen({
       deadline: "fecha hoje as 21:00",
       accessibility: template.accessibility,
       host: "Tu",
+      originMission: template.originMission,
       safetyNote:
         "Plano criado no circulo: prazo, local, custo e conforto ficam claros antes de alguem alinhar.",
       checklist: template.checklist

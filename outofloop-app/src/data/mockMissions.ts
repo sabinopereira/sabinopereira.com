@@ -11,6 +11,7 @@ export type UpcomingPlan = {
   deadline: string;
   accessibility: string;
   host: string;
+  originMission?: string;
   safetyNote: string;
   checklist: string[];
 };
@@ -29,6 +30,7 @@ export const upcomingPlans: UpcomingPlan[] = [
     deadline: "fecha hoje as 18:00",
     accessibility: "percurso curto, bancos perto",
     host: "Marta",
+    originMission: "Faz uma coisa simples fora de casa com alguem.",
     safetyNote: "O anfitriao espera no ponto combinado e confirma presencas.",
     checklist: [
       "Levar agua",
@@ -49,6 +51,7 @@ export const upcomingPlans: UpcomingPlan[] = [
     deadline: "fecha amanha as 12:00",
     accessibility: "sentado, baixo ruido",
     host: "Tiago",
+    originMission: "Cria um momento de familia sem telemoveis.",
     safetyNote: "Plano privado: so pessoas deste circulo veem a memoria.",
     checklist: [
       "Escolher uma pergunta simples",
