@@ -9,7 +9,7 @@ import { OnboardingScreen } from "./src/screens/OnboardingScreen";
 import { ProfileScreen } from "./src/screens/ProfileScreen";
 import { TodayScreen } from "./src/screens/TodayScreen";
 import { colors } from "./src/theme/colors";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AppMemory } from "./src/data/memories";
 import {
   AppPreferences,
@@ -18,8 +18,16 @@ import {
 import { upcomingPlans, UpcomingPlan } from "./src/data/mockMissions";
 import { Mission } from "./src/data/missions.generated";
 import { buildProgressPath, ProgressPath } from "./src/data/progress";
+import { readStoredValue, writeStoredValue } from "./src/data/storage";
 
 export type TabKey = "today" | "circles" | "align" | "memories" | "profile";
+
+const storageKeys = {
+  onboardingComplete: "outofloop:onboardingComplete",
+  preferences: "outofloop:preferences",
+  memories: "outofloop:memories",
+  plans: "outofloop:plans"
+};
 
 function renderScreen(
   tab: TabKey,
@@ -59,12 +67,48 @@ function renderScreen(
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabKey>("today");
-  const [onboardingComplete, setOnboardingComplete] = useState(false);
-  const [preferences, setPreferences] =
-    useState<AppPreferences>(defaultPreferences);
-  const [memories, setMemories] = useState<AppMemory[]>([]);
-  const [plans, setPlans] = useState<UpcomingPlan[]>(upcomingPlans);
+  const [storageLoaded, setStorageLoaded] = useState(false);
+  const [onboardingComplete, setOnboardingComplete] = useState(() =>
+    readStoredValue(storageKeys.onboardingComplete, false)
+  );
+  const [preferences, setPreferences] = useState<AppPreferences>(() =>
+    readStoredValue(storageKeys.preferences, defaultPreferences)
+  );
+  const [memories, setMemories] = useState<AppMemory[]>(() =>
+    readStoredValue(storageKeys.memories, [])
+  );
+  const [plans, setPlans] = useState<UpcomingPlan[]>(() =>
+    readStoredValue(storageKeys.plans, upcomingPlans)
+  );
   const progress = buildProgressPath(memories);
+
+  useEffect(() => {
+    setStorageLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (storageLoaded) {
+      writeStoredValue(storageKeys.onboardingComplete, onboardingComplete);
+    }
+  }, [onboardingComplete, storageLoaded]);
+
+  useEffect(() => {
+    if (storageLoaded) {
+      writeStoredValue(storageKeys.preferences, preferences);
+    }
+  }, [preferences, storageLoaded]);
+
+  useEffect(() => {
+    if (storageLoaded) {
+      writeStoredValue(storageKeys.memories, memories);
+    }
+  }, [memories, storageLoaded]);
+
+  useEffect(() => {
+    if (storageLoaded) {
+      writeStoredValue(storageKeys.plans, plans);
+    }
+  }, [plans, storageLoaded]);
 
   function handleCreatePlan(plan: UpcomingPlan) {
     setPlans((current) => [plan, ...current]);
