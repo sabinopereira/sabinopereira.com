@@ -27,11 +27,13 @@ import {
   readStoredValue,
   writeStoredValue
 } from "./src/data/storage";
+import { AppUser, defaultUser } from "./src/data/user";
 
 export type TabKey = "today" | "circles" | "align" | "memories" | "profile";
 
 const storageKeys = {
   onboardingComplete: "outofloop:onboardingComplete",
+  user: "outofloop:user",
   preferences: "outofloop:preferences",
   memories: "outofloop:memories",
   plans: "outofloop:plans",
@@ -42,6 +44,7 @@ const storageKeys = {
 function renderScreen(
   tab: TabKey,
   preferences: AppPreferences,
+  user: AppUser,
   memories: AppMemory[],
   progress: ProgressPath,
   plans: UpcomingPlan[],
@@ -52,7 +55,8 @@ function renderScreen(
   onPlanResponseChange: (planId: string, response: PlanResponses[string]) => void,
   onPlanCheckIn: (plan: UpcomingPlan) => void,
   onMissionComplete: (mission: Mission) => void,
-  onMemoryNoteChange: (memoryId: string, note: string) => void
+  onMemoryNoteChange: (memoryId: string, note: string) => void,
+  onUserChange: (user: AppUser) => void
 ) {
   switch (tab) {
     case "circles":
@@ -76,7 +80,14 @@ function renderScreen(
         />
       );
     case "profile":
-      return <ProfileScreen preferences={preferences} progress={progress} />;
+      return (
+        <ProfileScreen
+          preferences={preferences}
+          progress={progress}
+          user={user}
+          onUserChange={onUserChange}
+        />
+      );
     case "today":
     default:
       return (
@@ -97,6 +108,10 @@ export default function App() {
   const [preferences, setPreferences] = useState<AppPreferences>(() => ({
     ...defaultPreferences,
     ...readStoredValue(storageKeys.preferences, defaultPreferences)
+  }));
+  const [user, setUser] = useState<AppUser>(() => ({
+    ...defaultUser,
+    ...readStoredValue(storageKeys.user, defaultUser)
   }));
   const [memories, setMemories] = useState<AppMemory[]>(() =>
     readStoredValue(storageKeys.memories, [])
@@ -127,6 +142,12 @@ export default function App() {
       writeStoredValue(storageKeys.preferences, preferences);
     }
   }, [preferences, storageLoaded]);
+
+  useEffect(() => {
+    if (storageLoaded) {
+      writeStoredValue(storageKeys.user, user);
+    }
+  }, [user, storageLoaded]);
 
   useEffect(() => {
     if (storageLoaded) {
@@ -251,8 +272,9 @@ export default function App() {
       <SafeAreaView style={styles.safe}>
         <StatusBar style="dark" />
         <OnboardingScreen
-          onComplete={(nextPreferences) => {
+          onComplete={(nextPreferences, nextUser) => {
             setPreferences(nextPreferences);
+            setUser(nextUser);
             setOnboardingComplete(true);
           }}
         />
@@ -267,6 +289,7 @@ export default function App() {
         {renderScreen(
           activeTab,
           preferences,
+          user,
           memories,
           progress,
           plans,
@@ -277,7 +300,8 @@ export default function App() {
           handlePlanResponseChange,
           handlePlanCheckIn,
           handleMissionComplete,
-          handleMemoryNoteChange
+          handleMemoryNoteChange,
+          setUser
         )}
       </View>
       <BottomTabs activeTab={activeTab} onChange={setActiveTab} />

@@ -18,6 +18,7 @@ import type {
   MissionIntensity,
   MissionMode
 } from "../data/missions.generated";
+import type { AppUser } from "../data/user";
 import { colors, radius } from "../theme/colors";
 
 const routineFocusOptions = [
@@ -76,13 +77,30 @@ type EntryMode = "welcome" | "try" | "create" | "login";
 export function OnboardingScreen({
   onComplete
 }: {
-  onComplete: (preferences: AppPreferences) => void;
+  onComplete: (preferences: AppPreferences, user: AppUser) => void;
 }) {
   const [preferences, setPreferences] =
     useState<AppPreferences>(defaultPreferences);
   const [entryMode, setEntryMode] = useState<EntryMode>("welcome");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+
+  function complete(nextPreferences: AppPreferences) {
+    const trimmedName = name.trim();
+    const trimmedEmail = email.trim();
+    const user: AppUser =
+      entryMode === "create" || entryMode === "login"
+        ? {
+            entryType: "account",
+            name: trimmedName || undefined,
+            email: trimmedEmail || undefined
+          }
+        : {
+            entryType: "guest"
+          };
+
+    onComplete(nextPreferences, user);
+  }
 
   function toggleAccessibility(value: string) {
     setPreferences((current) => {
@@ -157,8 +175,7 @@ export function OnboardingScreen({
         <View style={styles.entryCard}>
           <Text style={styles.entryTitle}>Como queres entrar?</Text>
           <Text style={styles.entryText}>
-            Experimenta sem compromisso, cria conta ou entra numa conta que ja
-            tens.
+            Podes comecar ja, criar conta ou entrar numa conta que ja tens.
           </Text>
           <ActionButton onPress={() => setEntryMode("try")}>
             Experimentar primeiro
@@ -176,8 +193,7 @@ export function OnboardingScreen({
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Criar conta</Text>
           <Text style={styles.helper}>
-            Por agora, isto prepara o teu perfil neste telemovel. Mais tarde
-            ligamos isto a uma conta real.
+            Guarda o teu nome e email para personalizar a app neste telemovel.
           </Text>
           <TextInput
             value={name}
@@ -196,7 +212,7 @@ export function OnboardingScreen({
             style={styles.input}
           />
           <ActionButton onPress={() => setEntryMode("try")}>
-            Continuar
+            Continuar para as escolhas
           </ActionButton>
           <ActionButton variant="ghost" onPress={() => setEntryMode("welcome")}>
             Voltar
@@ -208,7 +224,7 @@ export function OnboardingScreen({
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Entrar</Text>
           <Text style={styles.helper}>
-            Escreve o email. Nesta fase, seguimos para a app neste telemovel.
+            Escreve o email para continuar com a tua app neste telemovel.
           </Text>
           <TextInput
             value={email}
@@ -220,7 +236,7 @@ export function OnboardingScreen({
             style={styles.input}
           />
           <ActionButton onPress={() => setEntryMode("try")}>
-            Continuar
+            Continuar para as escolhas
           </ActionButton>
           <ActionButton variant="ghost" onPress={() => setEntryMode("welcome")}>
             Voltar
@@ -230,24 +246,25 @@ export function OnboardingScreen({
 
       {entryMode === "try" ? (
         <>
-
-      <View style={styles.card}>
-        <Text style={styles.cardTitle}>O que queres mexer na tua rotina?</Text>
-        <Text style={styles.helper}>
-          Escolhe tudo o que fizer sentido agora. Isto ajuda a app a sugerir
-          missoes e planos mais certos para ti.
-        </Text>
-        <View style={styles.grid}>
-          {routineFocusOptions.map((option) => (
-            <OptionChip
-              key={option}
-              label={option}
-              selected={preferences.routineFocus.includes(option)}
-              onPress={() => toggleRoutineFocus(option)}
-            />
-          ))}
-        </View>
-      </View>
+          <View style={styles.card}>
+            <Text style={styles.cardTitle}>
+              O que queres mexer na tua rotina?
+            </Text>
+            <Text style={styles.helper}>
+              Escolhe tudo o que fizer sentido agora. Isto ajuda a app a
+              sugerir missoes e planos mais certos para ti.
+            </Text>
+            <View style={styles.grid}>
+              {routineFocusOptions.map((option) => (
+                <OptionChip
+                  key={option}
+                  label={option}
+                  selected={preferences.routineFocus.includes(option)}
+                  onPress={() => toggleRoutineFocus(option)}
+                />
+              ))}
+            </View>
+          </View>
 
       <View style={styles.card}>
         <Text style={styles.cardTitle}>Tipo de missao principal</Text>
@@ -381,12 +398,12 @@ export function OnboardingScreen({
       </View>
 
       <View style={styles.footer}>
-        <ActionButton onPress={() => onComplete(preferences)}>
+        <ActionButton onPress={() => complete(preferences)}>
           Ver a minha missao
         </ActionButton>
         <ActionButton
           variant="ghost"
-          onPress={() => onComplete(defaultPreferences)}
+          onPress={() => complete(defaultPreferences)}
         >
           Usar sugestoes iniciais
         </ActionButton>

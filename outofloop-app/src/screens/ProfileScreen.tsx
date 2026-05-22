@@ -1,9 +1,17 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View
+} from "react-native";
 
 import { ActionButton } from "../components/ActionButton";
 import { Pill } from "../components/Pill";
 import { AppPreferences } from "../data/preferences";
 import { ProgressPath } from "../data/progress";
+import { AppUser } from "../data/user";
 import { colors, radius } from "../theme/colors";
 
 const modeLabel: Record<AppPreferences["primaryMode"], string> = {
@@ -29,11 +37,18 @@ const intensityLabel: Record<AppPreferences["preferredIntensity"], string> = {
 
 export function ProfileScreen({
   preferences,
-  progress
+  progress,
+  user,
+  onUserChange
 }: {
   preferences: AppPreferences;
   progress: ProgressPath;
+  user: AppUser;
+  onUserChange: (user: AppUser) => void;
 }) {
+  const [showAccountForm, setShowAccountForm] = useState(false);
+  const [draftName, setDraftName] = useState(user.name ?? "");
+  const [draftEmail, setDraftEmail] = useState(user.email ?? "");
   const rhythmChoices = [
     preferences.privateFirst ? "Comecar sozinho/a" : "Comecar com pessoas",
     `${preferences.maxMinutes} min maximo`,
@@ -44,6 +59,15 @@ export function ProfileScreen({
     ...preferences.accessibility
   ].filter(Boolean);
 
+  function saveAccount() {
+    onUserChange({
+      entryType: "account",
+      name: draftName.trim() || undefined,
+      email: draftEmail.trim() || undefined
+    });
+    setShowAccountForm(false);
+  }
+
   return (
     <ScrollView contentContainerStyle={styles.content}>
       <View style={styles.header}>
@@ -51,6 +75,51 @@ export function ProfileScreen({
         <Text style={styles.subtitle}>
           O teu ritmo, as tuas escolhas e a tua seguranca.
         </Text>
+      </View>
+      <View style={styles.accountCard}>
+        <Text style={styles.accountKicker}>Conta</Text>
+        <Text style={styles.accountTitle}>
+          {user.entryType === "account"
+            ? user.name || "Conta criada"
+            : "A experimentar primeiro"}
+        </Text>
+        <Text style={styles.accountText}>
+          {user.entryType === "account"
+            ? user.email || "Os teus dados ficam guardados neste telemovel."
+            : "Podes usar a app ja. Quando quiseres, crias conta para associar o caminho ao teu email."}
+        </Text>
+        {showAccountForm ? (
+          <View style={styles.accountForm}>
+            <TextInput
+              value={draftName}
+              onChangeText={setDraftName}
+              placeholder="Nome"
+              placeholderTextColor={colors.inkMuted}
+              style={styles.input}
+            />
+            <TextInput
+              value={draftEmail}
+              onChangeText={setDraftEmail}
+              placeholder="Email"
+              placeholderTextColor={colors.inkMuted}
+              keyboardType="email-address"
+              autoCapitalize="none"
+              style={styles.input}
+            />
+            <ActionButton onPress={saveAccount}>Guardar conta</ActionButton>
+          </View>
+        ) : (
+          <ActionButton
+            variant="secondary"
+            onPress={() => {
+              setDraftName(user.name ?? "");
+              setDraftEmail(user.email ?? "");
+              setShowAccountForm(true);
+            }}
+          >
+            {user.entryType === "account" ? "Editar conta" : "Criar conta"}
+          </ActionButton>
+        )}
       </View>
       <View style={styles.pathCard}>
         <Text style={styles.pathKicker}>O teu caminho</Text>
@@ -169,6 +238,48 @@ const styles = StyleSheet.create({
     gap: 12,
     borderWidth: 1,
     borderColor: colors.line
+  },
+  accountCard: {
+    backgroundColor: colors.surface,
+    borderRadius: radius.lg,
+    padding: 18,
+    gap: 7,
+    borderWidth: 1,
+    borderColor: colors.line
+  },
+  accountKicker: {
+    color: colors.coral,
+    fontSize: 13,
+    fontWeight: "900",
+    letterSpacing: 0,
+    textTransform: "uppercase"
+  },
+  accountTitle: {
+    color: colors.ink,
+    fontSize: 22,
+    lineHeight: 26,
+    fontWeight: "900",
+    letterSpacing: 0
+  },
+  accountText: {
+    color: colors.inkMuted,
+    fontSize: 14,
+    lineHeight: 20,
+    letterSpacing: 0
+  },
+  accountForm: {
+    gap: 8
+  },
+  input: {
+    minHeight: 46,
+    borderRadius: radius.sm,
+    borderWidth: 1,
+    borderColor: colors.line,
+    backgroundColor: colors.surface,
+    color: colors.ink,
+    paddingHorizontal: 13,
+    fontSize: 15,
+    letterSpacing: 0
   },
   pathCard: {
     backgroundColor: colors.green,
