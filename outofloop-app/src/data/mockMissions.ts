@@ -25,6 +25,15 @@ export type CircleMember = {
   avatar: string;
 };
 
+export type AppCircle = {
+  id: string;
+  name: string;
+  type: string;
+  members: number;
+  next: string;
+  role: string;
+};
+
 export const circleMembers: Record<string, CircleMember[]> = {
   Familia: [
     {
@@ -121,7 +130,7 @@ export const upcomingPlans: UpcomingPlan[] = [
   }
 ];
 
-export const circles = [
+export const circles: AppCircle[] = [
   {
     id: "family",
     name: "Familia",

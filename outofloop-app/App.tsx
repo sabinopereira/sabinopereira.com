@@ -19,7 +19,12 @@ import {
   AppPreferences,
   defaultPreferences
 } from "./src/data/preferences";
-import { upcomingPlans, UpcomingPlan } from "./src/data/mockMissions";
+import {
+  AppCircle,
+  circles,
+  upcomingPlans,
+  UpcomingPlan
+} from "./src/data/mockMissions";
 import { Mission } from "./src/data/missions.generated";
 import {
   NotificationPreference,
@@ -53,6 +58,8 @@ const storageKeys = {
   preferences: "outofloop:preferences",
   memories: "outofloop:memories",
   plans: "outofloop:plans",
+  circles: "outofloop:circles",
+  individualMode: "outofloop:individualMode",
   planStatuses: "outofloop:planStatuses",
   planResponses: "outofloop:planResponses"
 };
@@ -64,9 +71,13 @@ function renderScreen(
   memories: AppMemory[],
   progress: ProgressPath,
   plans: UpcomingPlan[],
+  circlesList: AppCircle[],
+  individualMode: boolean,
   planStatuses: PlanStatuses,
   planResponses: PlanResponses,
   onCreatePlan: (plan: UpcomingPlan) => void,
+  onCreateCircle: (circle: AppCircle) => void,
+  onIndividualModeChange: (enabled: boolean) => void,
   onPlanStatusChange: (planId: string, status: PlanStatus) => void,
   onPlanResponseChange: (planId: string, response: PlanResponses[string]) => void,
   onPlanCheckIn: (plan: UpcomingPlan) => void,
@@ -74,6 +85,7 @@ function renderScreen(
   onMemoryNoteChange: (memoryId: string, note: string) => void,
   onUserChange: (user: AppUser) => void,
   onPreferencesChange: (preferences: AppPreferences) => void,
+  onLogout: () => void,
   onNavigate: (tab: TabKey) => void,
   notificationPreference: NotificationPreference,
   onEnableNotifications: () => void,
@@ -99,7 +111,11 @@ function renderScreen(
       return (
         <CirclesScreen
           preferences={preferences}
+          circlesList={circlesList}
+          individualMode={individualMode}
           onCreatePlan={onCreatePlan}
+          onCreateCircle={onCreateCircle}
+          onIndividualModeChange={onIndividualModeChange}
         />
       );
     case "align":
@@ -129,6 +145,7 @@ function renderScreen(
           user={user}
           onUserChange={onUserChange}
           onPreferencesChange={onPreferencesChange}
+          onLogout={onLogout}
         />
       );
     case "today":
@@ -151,6 +168,28 @@ export default function App() {
   const [preferences, setPreferences] = useState<AppPreferences>(() => ({
     ...defaultPreferences,
     ...readStoredValue(storageKeys.preferences, defaultPreferences),
+    availability:
+      readStoredValue(storageKeys.preferences, defaultPreferences).availability ??
+      defaultPreferences.availability,
+    usualEnergy:
+      readStoredValue(storageKeys.preferences, defaultPreferences).usualEnergy ??
+      defaultPreferences.usualEnergy,
+    socialComfort:
+      readStoredValue(storageKeys.preferences, defaultPreferences)
+        .socialComfort ?? defaultPreferences.socialComfort,
+    hasPets:
+      readStoredValue(storageKeys.preferences, defaultPreferences).hasPets ??
+      defaultPreferences.hasPets,
+    likedActivities:
+      readStoredValue(storageKeys.preferences, defaultPreferences)
+        .likedActivities ?? defaultPreferences.likedActivities,
+    activityCompanyPreference:
+      readStoredValue(storageKeys.preferences, defaultPreferences)
+        .activityCompanyPreference ??
+      defaultPreferences.activityCompanyPreference,
+    soloIdeasPreference:
+      readStoredValue(storageKeys.preferences, defaultPreferences)
+        .soloIdeasPreference ?? defaultPreferences.soloIdeasPreference,
     smartHelp: {
       ...defaultPreferences.smartHelp,
       ...readStoredValue(storageKeys.preferences, defaultPreferences).smartHelp
@@ -169,6 +208,12 @@ export default function App() {
   );
   const [plans, setPlans] = useState<UpcomingPlan[]>(() =>
     readStoredValue(storageKeys.plans, upcomingPlans)
+  );
+  const [circlesList, setCirclesList] = useState<AppCircle[]>(() =>
+    readStoredValue(storageKeys.circles, circles)
+  );
+  const [individualMode, setIndividualMode] = useState(() =>
+    readStoredValue(storageKeys.individualMode, false)
   );
   const [planStatuses, setPlanStatuses] = useState<PlanStatuses>(() =>
     readStoredValue(storageKeys.planStatuses, {})
@@ -224,6 +269,18 @@ export default function App() {
 
   useEffect(() => {
     if (storageLoaded) {
+      writeStoredValue(storageKeys.circles, circlesList);
+    }
+  }, [circlesList, storageLoaded]);
+
+  useEffect(() => {
+    if (storageLoaded) {
+      writeStoredValue(storageKeys.individualMode, individualMode);
+    }
+  }, [individualMode, storageLoaded]);
+
+  useEffect(() => {
+    if (storageLoaded) {
       writeStoredValue(storageKeys.planStatuses, planStatuses);
     }
   }, [planStatuses, storageLoaded]);
@@ -241,6 +298,16 @@ export default function App() {
       [plan.id]: "open"
     }));
     setActiveTab("align");
+  }
+
+  function handleCreateCircle(circle: AppCircle) {
+    setCirclesList((current) => [circle, ...current]);
+    setIndividualMode(false);
+  }
+
+  function handleLogout() {
+    setOnboardingComplete(false);
+    setActiveTab("today");
   }
 
   function handlePlanStatusChange(planId: string, status: PlanStatus) {
@@ -372,9 +439,13 @@ export default function App() {
           memories,
           progress,
           plans,
+          circlesList,
+          individualMode,
           planStatuses,
           planResponses,
           handleCreatePlan,
+          handleCreateCircle,
+          setIndividualMode,
           handlePlanStatusChange,
           handlePlanResponseChange,
           handlePlanCheckIn,
@@ -382,6 +453,7 @@ export default function App() {
           handleMemoryNoteChange,
           setUser,
           setPreferences,
+          handleLogout,
           setActiveTab,
           notificationPreference,
           handleEnableNotifications,

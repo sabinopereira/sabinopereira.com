@@ -23,6 +23,11 @@ const notNowReasons = [
   "Prefiro algo mais leve"
 ];
 
+function isTodayPlan(plan: UpcomingPlan) {
+  const value = `${plan.time} ${plan.deadline}`.toLowerCase();
+  return value.includes("hoje");
+}
+
 export function AlignScreen({
   plans,
   preferences,
@@ -100,6 +105,17 @@ export function AlignScreen({
     }
   }
 
+  const todayPlans = plans.filter(isTodayPlan);
+  const needsAnswerCount = todayPlans.filter(
+    (plan) => statusFor(plan.id) === "open"
+  ).length;
+  const acceptedTodayCount = todayPlans.filter(
+    (plan) => statusFor(plan.id) === "accepted"
+  ).length;
+  const checkedInTodayCount = todayPlans.filter(
+    (plan) => statusFor(plan.id) === "checkedIn"
+  ).length;
+
   return (
     <ScrollView contentContainerStyle={styles.content}>
       <View style={styles.header}>
@@ -108,6 +124,76 @@ export function AlignScreen({
           Planos dos teus circulos com hora, local, custo e prazo para
           responder.
         </Text>
+      </View>
+
+      <View style={styles.todayPanel}>
+        <Text style={styles.todayKicker}>Planos de hoje</Text>
+        <Text style={styles.todayTitle}>
+          {todayPlans.length
+            ? `${todayPlans.length} para despachar`
+            : "Nada urgente hoje"}
+        </Text>
+        <View style={styles.todayStats}>
+          <View style={styles.todayStat}>
+            <Text style={styles.todayStatNumber}>{needsAnswerCount}</Text>
+            <Text style={styles.todayStatLabel}>responder</Text>
+          </View>
+          <View style={styles.todayStat}>
+            <Text style={styles.todayStatNumber}>{acceptedTodayCount}</Text>
+            <Text style={styles.todayStatLabel}>vais</Text>
+          </View>
+          <View style={styles.todayStat}>
+            <Text style={styles.todayStatNumber}>{checkedInTodayCount}</Text>
+            <Text style={styles.todayStatLabel}>feito</Text>
+          </View>
+        </View>
+        {todayPlans.length === 0 ? (
+          <Text style={styles.todayText}>
+            Quando houver planos com prazo ou hora para hoje, aparecem aqui.
+          </Text>
+        ) : (
+          todayPlans.map((plan) => {
+            const status = statusFor(plan.id);
+            return (
+              <View key={`today-${plan.id}`} style={styles.todayPlan}>
+                <View style={styles.todayPlanCopy}>
+                  <Text style={styles.todayPlanTitle}>{plan.title}</Text>
+                  <Text style={styles.todayPlanMeta}>
+                    {plan.time} · {plan.circle}
+                  </Text>
+                </View>
+                {status === "accepted" ? (
+                  <ActionButton
+                    style={styles.todayPlanAction}
+                    onPress={() => {
+                      updateStatus(plan.id, "checkedIn");
+                      onCheckIn(plan);
+                    }}
+                  >
+                    Check-in
+                  </ActionButton>
+                ) : status === "checkedIn" ? (
+                  <Pill tone="green">feito</Pill>
+                ) : status === "dismissed" ? (
+                  <ActionButton
+                    variant="secondary"
+                    style={styles.todayPlanAction}
+                    onPress={() => updateStatus(plan.id, "open")}
+                  >
+                    Reabrir
+                  </ActionButton>
+                ) : (
+                  <ActionButton
+                    style={styles.todayPlanAction}
+                    onPress={() => setSelectedPlan(plan)}
+                  >
+                    Responder
+                  </ActionButton>
+                )}
+              </View>
+            );
+          })
+        )}
       </View>
 
       {plans.map((plan) => {
@@ -563,6 +649,81 @@ const styles = StyleSheet.create({
     gap: 10,
     borderWidth: 1,
     borderColor: colors.line
+  },
+  todayPanel: {
+    backgroundColor: colors.green,
+    borderRadius: radius.lg,
+    padding: 18,
+    gap: 12
+  },
+  todayKicker: {
+    color: colors.greenSoft,
+    fontSize: 13,
+    fontWeight: "900",
+    letterSpacing: 0,
+    textTransform: "uppercase"
+  },
+  todayTitle: {
+    color: "#FFFFFF",
+    fontSize: 26,
+    lineHeight: 30,
+    fontWeight: "900",
+    letterSpacing: 0
+  },
+  todayText: {
+    color: "#EEF6EF",
+    fontSize: 15,
+    lineHeight: 22,
+    letterSpacing: 0
+  },
+  todayStats: {
+    flexDirection: "row",
+    gap: 10
+  },
+  todayStat: {
+    flex: 1,
+    backgroundColor: "rgba(255, 255, 255, 0.12)",
+    borderRadius: radius.sm,
+    padding: 10,
+    gap: 2
+  },
+  todayStatNumber: {
+    color: "#FFFFFF",
+    fontSize: 22,
+    fontWeight: "900",
+    letterSpacing: 0,
+    fontVariant: ["tabular-nums"]
+  },
+  todayStatLabel: {
+    color: colors.greenSoft,
+    fontSize: 12,
+    fontWeight: "800",
+    letterSpacing: 0
+  },
+  todayPlan: {
+    backgroundColor: colors.surface,
+    borderRadius: radius.sm,
+    padding: 12,
+    gap: 10
+  },
+  todayPlanCopy: {
+    gap: 3
+  },
+  todayPlanTitle: {
+    color: colors.ink,
+    fontSize: 16,
+    fontWeight: "900",
+    letterSpacing: 0
+  },
+  todayPlanMeta: {
+    color: colors.inkMuted,
+    fontSize: 13,
+    lineHeight: 18,
+    letterSpacing: 0
+  },
+  todayPlanAction: {
+    alignSelf: "flex-start",
+    minWidth: 120
   },
   row: {
     flexDirection: "row",

@@ -13,14 +13,14 @@ import { MemberPreview } from "../components/MemberPreview";
 import { Pill } from "../components/Pill";
 import { SmartHint } from "../components/SmartHint";
 import {
+  AppCircle,
   circleMembers,
-  circles,
   UpcomingPlan
 } from "../data/mockMissions";
 import { AppPreferences } from "../data/preferences";
 import { colors, radius } from "../theme/colors";
 
-type Circle = (typeof circles)[number];
+type Circle = AppCircle;
 type PlanTemplate = (typeof planTemplates)[number];
 
 const planTemplates = [
@@ -67,10 +67,18 @@ const planTemplates = [
 
 export function CirclesScreen({
   preferences,
-  onCreatePlan
+  circlesList,
+  individualMode,
+  onCreatePlan,
+  onCreateCircle,
+  onIndividualModeChange
 }: {
   preferences: AppPreferences;
+  circlesList: AppCircle[];
+  individualMode: boolean;
   onCreatePlan: (plan: UpcomingPlan) => void;
+  onCreateCircle: (circle: AppCircle) => void;
+  onIndividualModeChange: (enabled: boolean) => void;
 }) {
   const [selectedCircle, setSelectedCircle] = useState<Circle | null>(null);
   const [selectedTemplate, setSelectedTemplate] = useState<PlanTemplate | null>(
@@ -80,7 +88,6 @@ export function CirclesScreen({
   const [inviteCircle, setInviteCircle] = useState<Circle | null>(null);
   const [createCircleOpen, setCreateCircleOpen] = useState(false);
   const [skipOpen, setSkipOpen] = useState(false);
-  const [individualMode, setIndividualMode] = useState(false);
   const [newCircleName, setNewCircleName] = useState("");
   const [newCircleSaved, setNewCircleSaved] = useState(false);
   const [mutedCircles, setMutedCircles] = useState<Record<string, string>>({});
@@ -170,12 +177,15 @@ export function CirclesScreen({
           >
             Criar circulo quando quiser
           </ActionButton>
-          <ActionButton variant="ghost" onPress={() => setIndividualMode(false)}>
+          <ActionButton
+            variant="ghost"
+            onPress={() => onIndividualModeChange(false)}
+          >
             Voltar a ver circulos
           </ActionButton>
         </View>
       ) : (
-        circles.map((circle) => (
+        circlesList.map((circle) => (
         <View key={circle.id} style={styles.card}>
           <View style={styles.cardHeader}>
             <View>
@@ -439,6 +449,15 @@ export function CirclesScreen({
             ) : null}
             <ActionButton
               onPress={() => {
+                const circleName = newCircleName.trim() || "Novo circulo";
+                onCreateCircle({
+                  id: `circle-${Date.now()}`,
+                  name: circleName,
+                  type: "Privado",
+                  members: 1,
+                  next: "Criar primeiro plano",
+                  role: "Criador"
+                });
                 setNewCircleSaved(true);
               }}
             >
@@ -449,6 +468,7 @@ export function CirclesScreen({
               onPress={() => {
                 setCreateCircleOpen(false);
                 setNewCircleSaved(false);
+                setNewCircleName("");
               }}
             >
               Fechar
@@ -473,7 +493,7 @@ export function CirclesScreen({
             </Text>
             <ActionButton
               onPress={() => {
-                setIndividualMode(true);
+                onIndividualModeChange(true);
                 setSkipOpen(false);
               }}
             >

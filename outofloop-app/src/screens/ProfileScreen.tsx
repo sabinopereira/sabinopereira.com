@@ -38,6 +38,36 @@ const intensityLabel: Record<AppPreferences["preferredIntensity"], string> = {
   coragem: "Aventura"
 };
 
+const energyLabel: Record<AppPreferences["usualEnergy"], string> = {
+  baixa: "Energia baixa",
+  media: "Energia media",
+  alta: "Energia alta"
+};
+
+const socialComfortLabel: Record<AppPreferences["socialComfort"], string> = {
+  sozinho: "Melhor sozinho/a",
+  uma_pessoa: "Melhor com uma pessoa",
+  grupo_pequeno: "Grupo pequeno",
+  grupo: "Grupo"
+};
+
+const activityCompanyLabel: Record<
+  AppPreferences["activityCompanyPreference"],
+  string
+> = {
+  sozinho: "Atividades sozinho/a",
+  uma_pessoa: "Atividades a dois",
+  grupo_pequeno: "Atividades em grupo pequeno",
+  grupo_aberto: "Atividades em grupo aberto",
+  depende: "Depende da atividade"
+};
+
+const soloIdeasLabel: Record<AppPreferences["soloIdeasPreference"], string> = {
+  sim: "Quer ideias individuais",
+  as_vezes: "Ideias individuais as vezes",
+  com_pessoas: "Prefere ideias com pessoas"
+};
+
 const authMethodLabel: Record<NonNullable<AppUser["authMethod"]>, string> = {
   email: "Email e password",
   apple: "Apple",
@@ -49,21 +79,26 @@ export function ProfileScreen({
   progress,
   user,
   onUserChange,
-  onPreferencesChange
+  onPreferencesChange,
+  onLogout
 }: {
   preferences: AppPreferences;
   progress: ProgressPath;
   user: AppUser;
   onUserChange: (user: AppUser) => void;
   onPreferencesChange: (preferences: AppPreferences) => void;
+  onLogout: () => void;
 }) {
   const [showAccountForm, setShowAccountForm] = useState(false);
+  const [publicProfileEditing, setPublicProfileEditing] = useState(false);
+  const [publicProfileSaved, setPublicProfileSaved] = useState(false);
   const [draftName, setDraftName] = useState(user.name ?? "");
   const [draftEmail, setDraftEmail] = useState(user.email ?? "");
   const [draftPassword, setDraftPassword] = useState("");
   const [missionsPaused, setMissionsPaused] = useState(false);
   const [pauseOpen, setPauseOpen] = useState(false);
   const [securityOpen, setSecurityOpen] = useState(false);
+  const [logoutOpen, setLogoutOpen] = useState(false);
   const [draftUsername, setDraftUsername] = useState(user.username ?? "@tu");
   const [draftLocality, setDraftLocality] = useState(
     user.locality ?? "A tua zona"
@@ -85,7 +120,14 @@ export function ProfileScreen({
     costLabel[preferences.preferredCostTier],
     intensityLabel[preferences.preferredIntensity],
     modeLabel[preferences.primaryMode],
+    energyLabel[preferences.usualEnergy],
+    socialComfortLabel[preferences.socialComfort],
+    activityCompanyLabel[preferences.activityCompanyPreference],
+    soloIdeasLabel[preferences.soloIdeasPreference],
     preferences.hasChildren ? "Tenho filhos" : null,
+    preferences.hasPets ? "Tenho animais" : null,
+    ...preferences.availability,
+    ...preferences.likedActivities,
     ...preferences.accessibility
   ].filter(Boolean);
   const smartHelpOptions: Array<{
@@ -122,6 +164,7 @@ export function ProfileScreen({
 
   function saveAccount() {
     onUserChange({
+      ...user,
       entryType: "account",
       authMethod: "email",
       name: draftName.trim() || undefined,
@@ -133,6 +176,7 @@ export function ProfileScreen({
   }
 
   function updateVisibility(nextVisibility: AppUser["visibility"]) {
+    setPublicProfileSaved(false);
     onUserChange({
       ...user,
       visibility: nextVisibility
@@ -172,6 +216,8 @@ export function ProfileScreen({
       locality: draftLocality.trim() || "A tua zona",
       visibility
     });
+    setPublicProfileEditing(false);
+    setPublicProfileSaved(true);
   }
 
   function toggleSmartHelp(key: keyof AppPreferences["smartHelp"]) {
@@ -326,89 +372,110 @@ export function ProfileScreen({
               </View>
             ) : null}
             <View style={styles.publicCopy}>
-          <Text style={styles.publicName}>
-            {visibility.showName ? user.name || "O teu nome" : "Nome escondido"}
-          </Text>
-          <Text style={styles.publicMeta}>
-            {visibility.showUsername ? user.username ?? "@tu" : "@escondido"}
-            {" · "}
-            {visibility.showLocality
-              ? user.locality ?? "A tua zona"
-              : "localidade escondida"}
-          </Text>
+              <Text style={styles.publicName}>
+                {visibility.showName
+                  ? user.name || "O teu nome"
+                  : "Nome escondido"}
+              </Text>
+              <Text style={styles.publicMeta}>
+                {visibility.showUsername ? user.username ?? "@tu" : "@escondido"}
+                {" · "}
+                {visibility.showLocality
+                  ? user.locality ?? "A tua zona"
+                  : "localidade escondida"}
+              </Text>
             </View>
           </View>
         </View>
-        <View style={styles.toggleGrid}>
+        {publicProfileSaved ? (
+          <Text style={styles.publicSavedText}>Visibilidade guardada.</Text>
+        ) : null}
+        {publicProfileEditing ? (
+          <>
+            <View style={styles.toggleGrid}>
+              <ActionButton
+                variant={visibility.showPhoto ? "secondary" : "ghost"}
+                style={styles.toggleButton}
+                onPress={() =>
+                  updateVisibility({
+                    ...visibility,
+                    showPhoto: !visibility.showPhoto
+                  })
+                }
+              >
+                Foto
+              </ActionButton>
+              <ActionButton
+                variant={visibility.showName ? "secondary" : "ghost"}
+                style={styles.toggleButton}
+                onPress={() =>
+                  updateVisibility({
+                    ...visibility,
+                    showName: !visibility.showName
+                  })
+                }
+              >
+                Nome
+              </ActionButton>
+              <ActionButton
+                variant={visibility.showUsername ? "secondary" : "ghost"}
+                style={styles.toggleButton}
+                onPress={() =>
+                  updateVisibility({
+                    ...visibility,
+                    showUsername: !visibility.showUsername
+                  })
+                }
+              >
+                Username
+              </ActionButton>
+              <ActionButton
+                variant={visibility.showLocality ? "secondary" : "ghost"}
+                style={styles.toggleButton}
+                onPress={() =>
+                  updateVisibility({
+                    ...visibility,
+                    showLocality: !visibility.showLocality
+                  })
+                }
+              >
+                Localidade
+              </ActionButton>
+            </View>
+            <View style={styles.accountForm}>
+              <TextInput
+                value={draftUsername}
+                onChangeText={setDraftUsername}
+                placeholder="Username"
+                placeholderTextColor={colors.inkMuted}
+                autoCapitalize="none"
+                style={styles.input}
+              />
+              <TextInput
+                value={draftLocality}
+                onChangeText={setDraftLocality}
+                placeholder="Localidade aproximada"
+                placeholderTextColor={colors.inkMuted}
+                style={styles.input}
+              />
+              <ActionButton variant="secondary" onPress={savePublicProfile}>
+                Guardar visibilidade
+              </ActionButton>
+            </View>
+          </>
+        ) : (
           <ActionButton
-            variant={visibility.showPhoto ? "secondary" : "ghost"}
-            style={styles.toggleButton}
-            onPress={() =>
-              updateVisibility({
-                ...visibility,
-                showPhoto: !visibility.showPhoto
-              })
-            }
+            variant="secondary"
+            onPress={() => {
+              setDraftUsername(user.username ?? "@tu");
+              setDraftLocality(user.locality ?? "A tua zona");
+              setPublicProfileSaved(false);
+              setPublicProfileEditing(true);
+            }}
           >
-            Foto
+            Editar o que aparece
           </ActionButton>
-          <ActionButton
-            variant={visibility.showName ? "secondary" : "ghost"}
-            style={styles.toggleButton}
-            onPress={() =>
-              updateVisibility({
-                ...visibility,
-                showName: !visibility.showName
-              })
-            }
-          >
-            Nome
-          </ActionButton>
-          <ActionButton
-            variant={visibility.showUsername ? "secondary" : "ghost"}
-            style={styles.toggleButton}
-            onPress={() =>
-              updateVisibility({
-                ...visibility,
-                showUsername: !visibility.showUsername
-              })
-            }
-          >
-            Username
-          </ActionButton>
-          <ActionButton
-            variant={visibility.showLocality ? "secondary" : "ghost"}
-            style={styles.toggleButton}
-            onPress={() =>
-              updateVisibility({
-                ...visibility,
-                showLocality: !visibility.showLocality
-              })
-            }
-          >
-            Localidade
-          </ActionButton>
-        </View>
-        <View style={styles.accountForm}>
-          <TextInput
-            value={draftUsername}
-            onChangeText={setDraftUsername}
-            placeholder="Username"
-            placeholderTextColor={colors.inkMuted}
-            autoCapitalize="none"
-            style={styles.input}
-          />
-          <TextInput
-            value={draftLocality}
-            onChangeText={setDraftLocality}
-            placeholder="Localidade aproximada"
-            placeholderTextColor={colors.inkMuted}
-            style={styles.input}
-          />
-          <ActionButton variant="secondary" onPress={savePublicProfile}>
-            Guardar visibilidade
-          </ActionButton>
-        </View>
+        )}
       </View>
       <View style={styles.pathCard}>
         <Text style={styles.pathKicker}>O teu caminho</Text>
@@ -528,6 +595,9 @@ export function ProfileScreen({
       <ActionButton variant="ghost" onPress={() => setSecurityOpen(true)}>
         Seguranca e bloqueios
       </ActionButton>
+      <ActionButton variant="ghost" onPress={() => setLogoutOpen(true)}>
+        Terminar sessao
+      </ActionButton>
 
       <Modal
         animationType="slide"
@@ -583,6 +653,35 @@ export function ProfileScreen({
             </View>
             <ActionButton onPress={() => setSecurityOpen(false)}>
               Entendi
+            </ActionButton>
+          </View>
+        </View>
+      </Modal>
+
+      <Modal
+        animationType="slide"
+        transparent
+        visible={logoutOpen}
+        onRequestClose={() => setLogoutOpen(false)}
+      >
+        <View style={styles.modalBackdrop}>
+          <View style={styles.modalCard}>
+            <Text style={styles.modalKicker}>Conta</Text>
+            <Text style={styles.modalTitle}>Terminar sessao?</Text>
+            <Text style={styles.modalText}>
+              Vais voltar ao inicio da app. As tuas escolhas e memorias neste
+              telemovel ficam guardadas.
+            </Text>
+            <ActionButton
+              onPress={() => {
+                setLogoutOpen(false);
+                onLogout();
+              }}
+            >
+              Terminar sessao
+            </ActionButton>
+            <ActionButton variant="ghost" onPress={() => setLogoutOpen(false)}>
+              Cancelar
             </ActionButton>
           </View>
         </View>
@@ -738,6 +837,13 @@ const styles = StyleSheet.create({
     color: colors.inkMuted,
     fontSize: 14,
     lineHeight: 19,
+    letterSpacing: 0
+  },
+  publicSavedText: {
+    color: colors.green,
+    fontSize: 14,
+    lineHeight: 20,
+    fontWeight: "800",
     letterSpacing: 0
   },
   toggleGrid: {

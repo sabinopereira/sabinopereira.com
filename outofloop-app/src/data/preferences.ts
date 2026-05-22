@@ -12,8 +12,20 @@ export type AppPreferences = {
   preferredCostTier: CostTier;
   privateFirst: boolean;
   hasChildren: boolean;
+  hasPets: boolean;
+  likedActivities: string[];
   maxMinutes: number;
   accessibility: string[];
+  availability: string[];
+  usualEnergy: "baixa" | "media" | "alta";
+  socialComfort: "sozinho" | "uma_pessoa" | "grupo_pequeno" | "grupo";
+  activityCompanyPreference:
+    | "sozinho"
+    | "uma_pessoa"
+    | "grupo_pequeno"
+    | "grupo_aberto"
+    | "depende";
+  soloIdeasPreference: "sim" | "as_vezes" | "com_pessoas";
   smartHelp: {
     suggestMissions: boolean;
     improveCreatedPlans: boolean;
@@ -31,8 +43,15 @@ export const defaultPreferences: AppPreferences = {
   preferredCostTier: "gratis",
   privateFirst: true,
   hasChildren: false,
+  hasPets: false,
+  likedActivities: ["Caminhar", "Cafe", "Corrida"],
   maxMinutes: 15,
   accessibility: ["Locais calmos"],
+  availability: ["Fim de tarde", "Fim de semana"],
+  usualEnergy: "media",
+  socialComfort: "uma_pessoa",
+  activityCompanyPreference: "depende",
+  soloIdeasPreference: "sim",
   smartHelp: {
     suggestMissions: true,
     improveCreatedPlans: true,

@@ -72,6 +72,78 @@ const accessibilityOptions = [
   "Grupos pequenos"
 ];
 
+const availabilityOptions = [
+  "Manha",
+  "Almoco",
+  "Fim de tarde",
+  "Noite",
+  "Fim de semana",
+  "Dias com pouca energia"
+];
+
+const energyOptions: Array<{
+  label: string;
+  value: AppPreferences["usualEnergy"];
+}> = [
+  { label: "Baixa", value: "baixa" },
+  { label: "Media", value: "media" },
+  { label: "Alta", value: "alta" }
+];
+
+const socialComfortOptions: Array<{
+  label: string;
+  value: AppPreferences["socialComfort"];
+}> = [
+  { label: "Sozinho/a", value: "sozinho" },
+  { label: "Uma pessoa", value: "uma_pessoa" },
+  { label: "Grupo pequeno", value: "grupo_pequeno" },
+  { label: "Grupo", value: "grupo" }
+];
+
+const activityCompanyOptions: Array<{
+  label: string;
+  value: AppPreferences["activityCompanyPreference"];
+}> = [
+  { label: "Sozinho/a", value: "sozinho" },
+  { label: "Uma pessoa", value: "uma_pessoa" },
+  { label: "Grupo pequeno", value: "grupo_pequeno" },
+  { label: "Grupo aberto", value: "grupo_aberto" },
+  { label: "Depende", value: "depende" }
+];
+
+const soloIdeasOptions: Array<{
+  label: string;
+  value: AppPreferences["soloIdeasPreference"];
+}> = [
+  { label: "Sim, quero", value: "sim" },
+  { label: "So as vezes", value: "as_vezes" },
+  { label: "Prefiro com pessoas", value: "com_pessoas" }
+];
+
+const activityOptions = [
+  "Caminhar",
+  "Bicicleta",
+  "Cafe",
+  "Jantar",
+  "Cinema",
+  "Natureza",
+  "Praia",
+  "Museus",
+  "Desporto leve",
+  "Corrida",
+  "Gym partner",
+  "Viagem de moto",
+  "Trilhos",
+  "Padel",
+  "Futebol",
+  "Danca",
+  "Aulas de grupo",
+  "Fotografia",
+  "Jogos",
+  "Coisas com animais",
+  "Voluntariado"
+];
+
 type EntryMode = "welcome" | "try" | "create" | "login";
 type AuthMethod = "guest" | "email" | "apple" | "google";
 
@@ -88,6 +160,11 @@ export function OnboardingScreen({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [authError, setAuthError] = useState("");
+  const [username, setUsername] = useState("@tu");
+  const [locality, setLocality] = useState("");
+  const [showName, setShowName] = useState(true);
+  const [showUsername, setShowUsername] = useState(true);
+  const [showLocality, setShowLocality] = useState(true);
 
   function complete(nextPreferences: AppPreferences) {
     const trimmedName = name.trim();
@@ -100,10 +177,26 @@ export function OnboardingScreen({
             authMethod,
             name: trimmedName || undefined,
             email: trimmedEmail || undefined,
-            hasPassword: authMethod === "email" ? Boolean(trimmedPassword) : false
+            hasPassword: authMethod === "email" ? Boolean(trimmedPassword) : false,
+            username: username.trim() || "@tu",
+            locality: locality.trim() || undefined,
+            visibility: {
+              showPhoto: true,
+              showName,
+              showUsername,
+              showLocality
+            }
           }
         : {
-            entryType: "guest"
+            entryType: "guest",
+            username: username.trim() || "@tu",
+            locality: locality.trim() || undefined,
+            visibility: {
+              showPhoto: true,
+              showName,
+              showUsername,
+              showLocality
+            }
           };
 
     onComplete(nextPreferences, user);
@@ -150,6 +243,30 @@ export function OnboardingScreen({
         accessibility: exists
           ? current.accessibility.filter((item) => item !== value)
           : [...current.accessibility, value]
+      };
+    });
+  }
+
+  function toggleAvailability(value: string) {
+    setPreferences((current) => {
+      const exists = current.availability.includes(value);
+      return {
+        ...current,
+        availability: exists
+          ? current.availability.filter((item) => item !== value)
+          : [...current.availability, value]
+      };
+    });
+  }
+
+  function toggleActivity(value: string) {
+    setPreferences((current) => {
+      const exists = current.likedActivities.includes(value);
+      return {
+        ...current,
+        likedActivities: exists
+          ? current.likedActivities.filter((item) => item !== value)
+          : [...current.likedActivities, value]
       };
     });
   }
@@ -430,6 +547,140 @@ export function OnboardingScreen({
               }))
             }
           />
+          <OptionChip
+            label="Tenho animais"
+            selected={preferences.hasPets}
+            onPress={() =>
+              setPreferences((current) => ({
+                ...current,
+                hasPets: !current.hasPets
+              }))
+            }
+          />
+        </View>
+      </View>
+
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Que coisas gostas de fazer?</Text>
+        <Text style={styles.helper}>
+          Isto ajuda a sugerir missoes e planos que parecem mais teus.
+        </Text>
+        <View style={styles.grid}>
+          {activityOptions.map((activity) => (
+            <OptionChip
+              key={activity}
+              label={activity}
+              selected={preferences.likedActivities.includes(activity)}
+              onPress={() => toggleActivity(activity)}
+            />
+          ))}
+        </View>
+      </View>
+
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Preferes fazer estas coisas como?</Text>
+        <Text style={styles.helper}>
+          A mesma atividade pode ser sozinho/a, a dois ou em grupo.
+        </Text>
+        <View style={styles.grid}>
+          {activityCompanyOptions.map((option) => (
+            <OptionChip
+              key={option.value}
+              label={option.label}
+              selected={preferences.activityCompanyPreference === option.value}
+              onPress={() =>
+                setPreferences((current) => ({
+                  ...current,
+                  activityCompanyPreference: option.value
+                }))
+              }
+            />
+          ))}
+        </View>
+      </View>
+
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>
+          Tambem queres ideias para fazer sozinho/a?
+        </Text>
+        <Text style={styles.helper}>
+          Ajuda a app a sugerir atividades individuais quando nao queres depender
+          de ninguem.
+        </Text>
+        <View style={styles.grid}>
+          {soloIdeasOptions.map((option) => (
+            <OptionChip
+              key={option.value}
+              label={option.label}
+              selected={preferences.soloIdeasPreference === option.value}
+              onPress={() =>
+                setPreferences((current) => ({
+                  ...current,
+                  soloIdeasPreference: option.value
+                }))
+              }
+            />
+          ))}
+        </View>
+      </View>
+
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Quando costuma ser mais facil?</Text>
+        <Text style={styles.helper}>
+          Escolhe os momentos em que tens mais hipotese de aceitar uma missao ou
+          plano.
+        </Text>
+        <View style={styles.grid}>
+          {availabilityOptions.map((option) => (
+            <OptionChip
+              key={option}
+              label={option}
+              selected={preferences.availability.includes(option)}
+              onPress={() => toggleAvailability(option)}
+            />
+          ))}
+        </View>
+      </View>
+
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Energia normal</Text>
+        <View style={styles.grid}>
+          {energyOptions.map((energy) => (
+            <OptionChip
+              key={energy.value}
+              label={energy.label}
+              selected={preferences.usualEnergy === energy.value}
+              onPress={() =>
+                setPreferences((current) => ({
+                  ...current,
+                  usualEnergy: energy.value
+                }))
+              }
+            />
+          ))}
+        </View>
+      </View>
+
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Com quem te sentes melhor?</Text>
+        <Text style={styles.helper}>
+          Isto ajuda a sugerir missoes privadas, a dois ou em grupo.
+        </Text>
+        <View style={styles.grid}>
+          {socialComfortOptions.map((comfort) => (
+            <OptionChip
+              key={comfort.value}
+              label={comfort.label}
+              selected={preferences.socialComfort === comfort.value}
+              onPress={() =>
+                setPreferences((current) => ({
+                  ...current,
+                  socialComfort: comfort.value,
+                  privateFirst: comfort.value === "sozinho"
+                }))
+              }
+            />
+          ))}
         </View>
       </View>
 
@@ -502,6 +753,46 @@ export function OnboardingScreen({
               onPress={() => toggleAccessibility(option)}
             />
           ))}
+        </View>
+      </View>
+
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Como apareces aos outros?</Text>
+        <Text style={styles.helper}>
+          Esta informacao so faz sentido em circulos e planos. Podes alterar no
+          Perfil.
+        </Text>
+        <TextInput
+          value={username}
+          onChangeText={setUsername}
+          placeholder="Username"
+          placeholderTextColor={colors.inkMuted}
+          autoCapitalize="none"
+          style={styles.input}
+        />
+        <TextInput
+          value={locality}
+          onChangeText={setLocality}
+          placeholder="Localidade aproximada"
+          placeholderTextColor={colors.inkMuted}
+          style={styles.input}
+        />
+        <View style={styles.grid}>
+          <OptionChip
+            label="Mostrar nome"
+            selected={showName}
+            onPress={() => setShowName((current) => !current)}
+          />
+          <OptionChip
+            label="Mostrar username"
+            selected={showUsername}
+            onPress={() => setShowUsername((current) => !current)}
+          />
+          <OptionChip
+            label="Mostrar localidade"
+            selected={showLocality}
+            onPress={() => setShowLocality((current) => !current)}
+          />
         </View>
       </View>
 
