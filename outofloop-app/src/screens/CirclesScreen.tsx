@@ -2,8 +2,13 @@ import { useState } from "react";
 import { Modal, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { ActionButton } from "../components/ActionButton";
+import { MemberPreview } from "../components/MemberPreview";
 import { Pill } from "../components/Pill";
-import { circles, UpcomingPlan } from "../data/mockMissions";
+import {
+  circleMembers,
+  circles,
+  UpcomingPlan
+} from "../data/mockMissions";
 import { colors, radius } from "../theme/colors";
 
 type Circle = (typeof circles)[number];
@@ -56,6 +61,8 @@ export function CirclesScreen({
   onCreatePlan: (plan: UpcomingPlan) => void;
 }) {
   const [selectedCircle, setSelectedCircle] = useState<Circle | null>(null);
+  const [safetyCircle, setSafetyCircle] = useState<Circle | null>(null);
+  const [mutedCircles, setMutedCircles] = useState<Record<string, string>>({});
 
   function createPlan(circle: Circle, template: (typeof planTemplates)[number]) {
     onCreatePlan({
@@ -74,7 +81,8 @@ export function CirclesScreen({
       originMission: template.originMission,
       safetyNote:
         "Plano criado no circulo: hora, local, custo e conforto ficam claros antes de alguem responder.",
-      checklist: template.checklist
+      checklist: template.checklist,
+      attendees: circleMembers[circle.name] ?? []
     });
     setSelectedCircle(null);
   }
@@ -100,6 +108,30 @@ export function CirclesScreen({
             </Pill>
           </View>
           <Text style={styles.next}>Proximo: {circle.next}</Text>
+          {mutedCircles[circle.id] ? (
+            <View style={styles.safetySavedBox}>
+              <Text style={styles.safetySavedTitle}>Sinal guardado</Text>
+              <Text style={styles.safetySavedText}>
+                {mutedCircles[circle.id]}
+              </Text>
+            </View>
+          ) : null}
+          <View style={styles.visibilityBox}>
+            <Text style={styles.visibilityTitle}>Quem ve isto?</Text>
+            <Text style={styles.visibilityText}>
+              Membros deste circulo podem ver nome, username e localidade
+              aproximada, conforme as escolhas de cada pessoa.
+            </Text>
+          </View>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.membersRow}
+          >
+            {(circleMembers[circle.name] ?? []).map((member) => (
+              <MemberPreview key={member.id} member={member} />
+            ))}
+          </ScrollView>
           <View style={styles.actions}>
             <ActionButton
               variant="secondary"
@@ -110,6 +142,13 @@ export function CirclesScreen({
             </ActionButton>
             <ActionButton variant="ghost" style={styles.actionGrow}>
               Convidar
+            </ActionButton>
+            <ActionButton
+              variant="ghost"
+              style={styles.actionGrow}
+              onPress={() => setSafetyCircle(circle)}
+            >
+              Segurança
             </ActionButton>
           </View>
         </View>
@@ -146,6 +185,60 @@ export function CirclesScreen({
                 <ActionButton
                   variant="ghost"
                   onPress={() => setSelectedCircle(null)}
+                >
+                  Voltar
+                </ActionButton>
+              </>
+            ) : null}
+          </View>
+        </View>
+      </Modal>
+
+      <Modal
+        animationType="slide"
+        transparent
+        visible={safetyCircle !== null}
+        onRequestClose={() => setSafetyCircle(null)}
+      >
+        <View style={styles.modalBackdrop}>
+          <View style={styles.modalCard}>
+            {safetyCircle ? (
+              <>
+                <Text style={styles.modalKicker}>Segurança do circulo</Text>
+                <Text style={styles.modalTitle}>{safetyCircle.name}</Text>
+                <Text style={styles.modalText}>
+                  Se algo te deixa desconfortavel, podes reduzir contacto,
+                  esconder convites ou enviar um sinal. Isto deve ser privado.
+                </Text>
+                <ActionButton
+                  variant="secondary"
+                  onPress={() => {
+                    setMutedCircles((current) => ({
+                      ...current,
+                      [safetyCircle.id]:
+                        "Convites deste circulo ficam menos presentes para ti."
+                    }));
+                    setSafetyCircle(null);
+                  }}
+                >
+                  Receber menos convites
+                </ActionButton>
+                <ActionButton
+                  variant="secondary"
+                  onPress={() => {
+                    setMutedCircles((current) => ({
+                      ...current,
+                      [safetyCircle.id]:
+                        "Sinal de seguranca guardado. Depois ligamos isto a moderacao."
+                    }));
+                    setSafetyCircle(null);
+                  }}
+                >
+                  Enviar sinal de seguranca
+                </ActionButton>
+                <ActionButton
+                  variant="ghost"
+                  onPress={() => setSafetyCircle(null)}
                 >
                   Voltar
                 </ActionButton>
@@ -209,8 +302,49 @@ const styles = StyleSheet.create({
     lineHeight: 21,
     letterSpacing: 0
   },
+  visibilityBox: {
+    backgroundColor: colors.greenSoft,
+    borderRadius: radius.sm,
+    padding: 12,
+    gap: 5
+  },
+  visibilityTitle: {
+    color: colors.green,
+    fontSize: 14,
+    fontWeight: "900",
+    letterSpacing: 0
+  },
+  visibilityText: {
+    color: colors.ink,
+    fontSize: 14,
+    lineHeight: 20,
+    letterSpacing: 0
+  },
+  safetySavedBox: {
+    backgroundColor: colors.coralSoft,
+    borderRadius: radius.sm,
+    padding: 12,
+    gap: 5
+  },
+  safetySavedTitle: {
+    color: colors.coral,
+    fontSize: 14,
+    fontWeight: "900",
+    letterSpacing: 0
+  },
+  safetySavedText: {
+    color: colors.ink,
+    fontSize: 14,
+    lineHeight: 20,
+    letterSpacing: 0
+  },
+  membersRow: {
+    gap: 9,
+    paddingRight: 4
+  },
   actions: {
     flexDirection: "row",
+    flexWrap: "wrap",
     gap: 10
   },
   actionGrow: {

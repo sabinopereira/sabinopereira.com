@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Modal, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { ActionButton } from "../components/ActionButton";
+import { MemberPreview } from "../components/MemberPreview";
 import { Pill } from "../components/Pill";
 import { UpcomingPlan } from "../data/mockMissions";
 import {
@@ -38,6 +39,7 @@ export function AlignScreen({
   const [selectedPlan, setSelectedPlan] = useState<UpcomingPlan | null>(null);
   const [detailsPlan, setDetailsPlan] = useState<UpcomingPlan | null>(null);
   const [notNowPlan, setNotNowPlan] = useState<UpcomingPlan | null>(null);
+  const [safetyPlan, setSafetyPlan] = useState<UpcomingPlan | null>(null);
 
   function statusFor(planId: string): PlanStatus {
     return planStatuses[planId] ?? "open";
@@ -62,6 +64,18 @@ export function AlignScreen({
       detailsViews: (planResponses[plan.id]?.detailsViews ?? 0) + 1
     });
     setDetailsPlan(plan);
+  }
+
+  function saveSafetyConcern(
+    plan: UpcomingPlan,
+    safetyConcern: "reported" | "blocked"
+  ) {
+    onPlanResponseChange(plan.id, {
+      ...planResponses[plan.id],
+      safetyConcern
+    });
+    updateStatus(plan.id, "dismissed");
+    setSafetyPlan(null);
   }
 
   function suggestionFor(reason?: string) {
@@ -93,6 +107,7 @@ export function AlignScreen({
       </View>
 
       {plans.map((plan) => {
+        const attendees = plan.attendees ?? [];
         const status = statusFor(plan.id);
         const acceptedCount =
           status === "open" ? plan.acceptedCount : plan.acceptedCount + 1;
@@ -105,6 +120,7 @@ export function AlignScreen({
                 ? "agora nao"
                 : "aberto";
         const response = planResponses[plan.id];
+        const safetyConcern = response?.safetyConcern;
         const seenCount = Math.min(
           plan.capacity,
           plan.acceptedCount + (response?.detailsViews ?? 0) + 1
@@ -130,6 +146,35 @@ export function AlignScreen({
             <Text style={styles.detail}>{plan.time}</Text>
             <Text style={styles.detail}>{plan.place}</Text>
             <Text style={styles.accessibility}>{plan.accessibility}</Text>
+            {safetyConcern ? (
+              <View style={styles.safetySavedBox}>
+                <Text style={styles.safetySavedTitle}>
+                  {safetyConcern === "blocked"
+                    ? "Plano escondido"
+                    : "Sinal enviado"}
+                </Text>
+                <Text style={styles.safetySavedText}>
+                  Vamos evitar insistir neste plano. Numa versao com backend,
+                  este sinal segue para moderacao.
+                </Text>
+              </View>
+            ) : null}
+            <View style={styles.peopleBox}>
+              <Text style={styles.peopleTitle}>Quem pode ver este plano</Text>
+              <Text style={styles.peopleText}>
+                Pessoas deste circulo veem quem alinhou: nome, username e
+                localidade aproximada, conforme as escolhas de cada pessoa.
+              </Text>
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.membersRow}
+              >
+                {attendees.map((member) => (
+                  <MemberPreview key={member.id} member={member} />
+                ))}
+              </ScrollView>
+            </View>
             <View style={styles.notificationBox}>
               <Text style={styles.notificationTitle}>
                 Aviso enviado ao circulo
@@ -197,6 +242,13 @@ export function AlignScreen({
                 >
                   Afinal nao da
                 </ActionButton>
+                <ActionButton
+                  variant="ghost"
+                  style={styles.actionGrow}
+                  onPress={() => setSafetyPlan(plan)}
+                >
+                  Segurança
+                </ActionButton>
               </View>
             ) : status === "dismissed" ? (
               <View style={styles.dismissedBox}>
@@ -212,6 +264,12 @@ export function AlignScreen({
                   }}
                 >
                   Reconsiderar
+                </ActionButton>
+                <ActionButton
+                  variant="ghost"
+                  onPress={() => setSafetyPlan(plan)}
+                >
+                  Segurança
                 </ActionButton>
               </View>
             ) : (
@@ -236,6 +294,13 @@ export function AlignScreen({
                 >
                   Agora nao
                 </ActionButton>
+                <ActionButton
+                  variant="ghost"
+                  style={styles.actionGrow}
+                  onPress={() => setSafetyPlan(plan)}
+                >
+                  Segurança
+                </ActionButton>
               </View>
             )}
           </View>
@@ -254,6 +319,22 @@ export function AlignScreen({
               <>
                 <Text style={styles.modalTitle}>{selectedPlan.title}</Text>
                 <Text style={styles.modalText}>{selectedPlan.safetyNote}</Text>
+                <View style={styles.peopleBox}>
+                  <Text style={styles.peopleTitle}>Quem vai estar la</Text>
+                  <Text style={styles.peopleText}>
+                    Esta lista ajuda a perceber se ha caras familiares antes de
+                    confirmares.
+                  </Text>
+                  <ScrollView
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    contentContainerStyle={styles.membersRow}
+                  >
+                    {(selectedPlan.attendees ?? []).map((member) => (
+                      <MemberPreview key={member.id} member={member} />
+                    ))}
+                  </ScrollView>
+                </View>
                 <View style={styles.checklist}>
                   {selectedPlan.checklist.map((item) => (
                     <View key={item} style={styles.checklistItem}>
@@ -311,6 +392,21 @@ export function AlignScreen({
                 <Text style={styles.modalDetail}>
                   Acessibilidade: {detailsPlan.accessibility}
                 </Text>
+                <View style={styles.peopleBox}>
+                  <Text style={styles.peopleTitle}>Quem esta no plano</Text>
+                  <Text style={styles.peopleText}>
+                    So membros/convidados do circulo veem esta informacao.
+                  </Text>
+                  <ScrollView
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    contentContainerStyle={styles.membersRow}
+                  >
+                    {(detailsPlan.attendees ?? []).map((member) => (
+                      <MemberPreview key={member.id} member={member} />
+                    ))}
+                  </ScrollView>
+                </View>
                 <ActionButton
                   onPress={() => {
                     updateStatus(detailsPlan.id, "accepted");
@@ -367,6 +463,43 @@ export function AlignScreen({
                   </ActionButton>
                 ))}
                 <ActionButton variant="ghost" onPress={() => setNotNowPlan(null)}>
+                  Voltar
+                </ActionButton>
+              </>
+            ) : null}
+          </View>
+        </View>
+      </Modal>
+
+      <Modal
+        animationType="slide"
+        transparent
+        visible={safetyPlan !== null}
+        onRequestClose={() => setSafetyPlan(null)}
+      >
+        <View style={styles.modalBackdrop}>
+          <View style={styles.modalCard}>
+            {safetyPlan ? (
+              <>
+                <Text style={styles.modalKicker}>Segurança</Text>
+                <Text style={styles.modalTitle}>Algo nao parece bem?</Text>
+                <Text style={styles.modalText}>
+                  Podes esconder este plano ou enviar um sinal. A tua resposta
+                  nao aparece aos outros membros.
+                </Text>
+                <ActionButton
+                  variant="secondary"
+                  onPress={() => saveSafetyConcern(safetyPlan, "blocked")}
+                >
+                  Esconder este plano
+                </ActionButton>
+                <ActionButton
+                  variant="secondary"
+                  onPress={() => saveSafetyConcern(safetyPlan, "reported")}
+                >
+                  Enviar sinal de seguranca
+                </ActionButton>
+                <ActionButton variant="ghost" onPress={() => setSafetyPlan(null)}>
                   Voltar
                 </ActionButton>
               </>
@@ -434,6 +567,29 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 20,
     letterSpacing: 0
+  },
+  peopleBox: {
+    backgroundColor: colors.greenSoft,
+    borderRadius: radius.sm,
+    padding: 12,
+    gap: 8
+  },
+  peopleTitle: {
+    color: colors.green,
+    fontSize: 13,
+    fontWeight: "900",
+    letterSpacing: 0,
+    textTransform: "uppercase"
+  },
+  peopleText: {
+    color: colors.ink,
+    fontSize: 13,
+    lineHeight: 18,
+    letterSpacing: 0
+  },
+  membersRow: {
+    gap: 9,
+    paddingRight: 4
   },
   originBox: {
     backgroundColor: colors.coralSoft,
@@ -512,6 +668,25 @@ const styles = StyleSheet.create({
   },
   dismissedText: {
     color: colors.inkMuted,
+    fontSize: 13,
+    lineHeight: 18,
+    letterSpacing: 0
+  },
+  safetySavedBox: {
+    backgroundColor: colors.coralSoft,
+    borderRadius: radius.sm,
+    padding: 12,
+    gap: 4
+  },
+  safetySavedTitle: {
+    color: colors.coral,
+    fontSize: 13,
+    fontWeight: "900",
+    letterSpacing: 0,
+    textTransform: "uppercase"
+  },
+  safetySavedText: {
+    color: colors.ink,
     fontSize: 13,
     lineHeight: 18,
     letterSpacing: 0

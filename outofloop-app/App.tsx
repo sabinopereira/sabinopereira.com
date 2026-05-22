@@ -22,6 +22,11 @@ import {
 import { upcomingPlans, UpcomingPlan } from "./src/data/mockMissions";
 import { Mission } from "./src/data/missions.generated";
 import {
+  NotificationPreference,
+  requestNotificationPermission,
+  schedulePlanNotification
+} from "./src/data/notifications";
+import {
   PlanResponses,
   PlanStatuses,
   PlanStatus
@@ -44,6 +49,7 @@ export type TabKey =
 const storageKeys = {
   onboardingComplete: "outofloop:onboardingComplete",
   user: "outofloop:user",
+  notificationPreference: "outofloop:notificationPreference",
   preferences: "outofloop:preferences",
   memories: "outofloop:memories",
   plans: "outofloop:plans",
@@ -67,7 +73,10 @@ function renderScreen(
   onMissionComplete: (mission: Mission) => void,
   onMemoryNoteChange: (memoryId: string, note: string) => void,
   onUserChange: (user: AppUser) => void,
-  onNavigate: (tab: TabKey) => void
+  onNavigate: (tab: TabKey) => void,
+  notificationPreference: NotificationPreference,
+  onEnableNotifications: () => void,
+  onSendPlanReminder: (plan: UpcomingPlan) => void
 ) {
   switch (tab) {
     case "alerts":
@@ -79,6 +88,9 @@ function renderScreen(
           onPlanStatusChange={onPlanStatusChange}
           onPlanResponseChange={onPlanResponseChange}
           onNavigate={onNavigate}
+          notificationPreference={notificationPreference}
+          onEnableNotifications={onEnableNotifications}
+          onSendPlanReminder={onSendPlanReminder}
         />
       );
     case "circles":
@@ -135,6 +147,10 @@ export default function App() {
     ...defaultUser,
     ...readStoredValue(storageKeys.user, defaultUser)
   }));
+  const [notificationPreference, setNotificationPreference] =
+    useState<NotificationPreference>(() =>
+      readStoredValue(storageKeys.notificationPreference, "unknown")
+    );
   const [memories, setMemories] = useState<AppMemory[]>(() =>
     readStoredValue(storageKeys.memories, [])
   );
@@ -171,6 +187,15 @@ export default function App() {
       writeStoredValue(storageKeys.user, user);
     }
   }, [user, storageLoaded]);
+
+  useEffect(() => {
+    if (storageLoaded) {
+      writeStoredValue(
+        storageKeys.notificationPreference,
+        notificationPreference
+      );
+    }
+  }, [notificationPreference, storageLoaded]);
 
   useEffect(() => {
     if (storageLoaded) {
@@ -290,6 +315,24 @@ export default function App() {
     );
   }
 
+  async function handleEnableNotifications() {
+    const nextPreference = await requestNotificationPermission();
+    setNotificationPreference(nextPreference);
+  }
+
+  async function handleSendPlanReminder(plan: UpcomingPlan) {
+    if (notificationPreference !== "enabled") {
+      const nextPreference = await requestNotificationPermission();
+      setNotificationPreference(nextPreference);
+
+      if (nextPreference !== "enabled") {
+        return;
+      }
+    }
+
+    await schedulePlanNotification(plan);
+  }
+
   if (!onboardingComplete) {
     return (
       <SafeAreaView style={styles.safe}>
@@ -325,7 +368,10 @@ export default function App() {
           handleMissionComplete,
           handleMemoryNoteChange,
           setUser,
-          setActiveTab
+          setActiveTab,
+          notificationPreference,
+          handleEnableNotifications,
+          handleSendPlanReminder
         )}
       </View>
       <BottomTabs

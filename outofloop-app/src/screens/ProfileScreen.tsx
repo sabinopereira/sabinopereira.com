@@ -35,6 +35,12 @@ const intensityLabel: Record<AppPreferences["preferredIntensity"], string> = {
   coragem: "Aventura"
 };
 
+const authMethodLabel: Record<NonNullable<AppUser["authMethod"]>, string> = {
+  email: "Email e password",
+  apple: "Apple",
+  google: "Google"
+};
+
 export function ProfileScreen({
   preferences,
   progress,
@@ -49,6 +55,16 @@ export function ProfileScreen({
   const [showAccountForm, setShowAccountForm] = useState(false);
   const [draftName, setDraftName] = useState(user.name ?? "");
   const [draftEmail, setDraftEmail] = useState(user.email ?? "");
+  const [draftPassword, setDraftPassword] = useState("");
+  const [draftUsername, setDraftUsername] = useState(user.username ?? "@tu");
+  const [draftLocality, setDraftLocality] = useState(
+    user.locality ?? "A tua zona"
+  );
+  const visibility = user.visibility ?? {
+    showName: true,
+    showUsername: true,
+    showLocality: true
+  };
   const rhythmChoices = [
     preferences.privateFirst ? "Comecar sozinho/a" : "Comecar com pessoas",
     `${preferences.maxMinutes} min maximo`,
@@ -62,10 +78,29 @@ export function ProfileScreen({
   function saveAccount() {
     onUserChange({
       entryType: "account",
+      authMethod: "email",
       name: draftName.trim() || undefined,
-      email: draftEmail.trim() || undefined
+      email: draftEmail.trim() || undefined,
+      hasPassword: Boolean(draftPassword.trim()) || user.hasPassword
     });
+    setDraftPassword("");
     setShowAccountForm(false);
+  }
+
+  function updateVisibility(nextVisibility: AppUser["visibility"]) {
+    onUserChange({
+      ...user,
+      visibility: nextVisibility
+    });
+  }
+
+  function savePublicProfile() {
+    onUserChange({
+      ...user,
+      username: draftUsername.trim() || "@tu",
+      locality: draftLocality.trim() || "A tua zona",
+      visibility
+    });
   }
 
   return (
@@ -85,7 +120,9 @@ export function ProfileScreen({
         </Text>
         <Text style={styles.accountText}>
           {user.entryType === "account"
-            ? user.email || "Os teus dados ficam guardados neste telemovel."
+            ? `${authMethodLabel[user.authMethod ?? "email"]}${
+                user.email ? ` - ${user.email}` : ""
+              }${user.hasPassword ? " - password definida" : ""}`
             : "Podes usar a app ja. Quando quiseres, crias conta para associar o caminho ao teu email."}
         </Text>
         {showAccountForm ? (
@@ -106,6 +143,32 @@ export function ProfileScreen({
               autoCapitalize="none"
               style={styles.input}
             />
+            <TextInput
+              value={draftUsername}
+              onChangeText={setDraftUsername}
+              placeholder="Username"
+              placeholderTextColor={colors.inkMuted}
+              autoCapitalize="none"
+              style={styles.input}
+            />
+            <TextInput
+              value={draftLocality}
+              onChangeText={setDraftLocality}
+              placeholder="Localidade"
+              placeholderTextColor={colors.inkMuted}
+              style={styles.input}
+            />
+            <TextInput
+              value={draftPassword}
+              onChangeText={setDraftPassword}
+              placeholder={
+                user.hasPassword ? "Nova password opcional" : "Password"
+              }
+              placeholderTextColor={colors.inkMuted}
+              secureTextEntry
+              autoCapitalize="none"
+              style={styles.input}
+            />
             <ActionButton onPress={saveAccount}>Guardar conta</ActionButton>
           </View>
         ) : (
@@ -114,12 +177,91 @@ export function ProfileScreen({
             onPress={() => {
               setDraftName(user.name ?? "");
               setDraftEmail(user.email ?? "");
+              setDraftPassword("");
               setShowAccountForm(true);
             }}
           >
             {user.entryType === "account" ? "Editar conta" : "Criar conta"}
           </ActionButton>
         )}
+      </View>
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>O que os outros veem</Text>
+        <Text style={styles.text}>
+          Dentro de circulos e planos, outras pessoas podem ver alguns dados
+          para se sentirem mais seguras: nome, username e localidade aproximada.
+          Tu escolhes o que aparece.
+        </Text>
+        <View style={styles.publicProfileBox}>
+          <Text style={styles.publicName}>
+            {visibility.showName ? user.name || "O teu nome" : "Nome escondido"}
+          </Text>
+          <Text style={styles.publicMeta}>
+            {visibility.showUsername ? user.username ?? "@tu" : "@escondido"}
+            {" · "}
+            {visibility.showLocality
+              ? user.locality ?? "A tua zona"
+              : "localidade escondida"}
+          </Text>
+        </View>
+        <View style={styles.toggleGrid}>
+          <ActionButton
+            variant={visibility.showName ? "secondary" : "ghost"}
+            style={styles.toggleButton}
+            onPress={() =>
+              updateVisibility({
+                ...visibility,
+                showName: !visibility.showName
+              })
+            }
+          >
+            Nome
+          </ActionButton>
+          <ActionButton
+            variant={visibility.showUsername ? "secondary" : "ghost"}
+            style={styles.toggleButton}
+            onPress={() =>
+              updateVisibility({
+                ...visibility,
+                showUsername: !visibility.showUsername
+              })
+            }
+          >
+            Username
+          </ActionButton>
+          <ActionButton
+            variant={visibility.showLocality ? "secondary" : "ghost"}
+            style={styles.toggleButton}
+            onPress={() =>
+              updateVisibility({
+                ...visibility,
+                showLocality: !visibility.showLocality
+              })
+            }
+          >
+            Localidade
+          </ActionButton>
+        </View>
+        <View style={styles.accountForm}>
+          <TextInput
+            value={draftUsername}
+            onChangeText={setDraftUsername}
+            placeholder="Username"
+            placeholderTextColor={colors.inkMuted}
+            autoCapitalize="none"
+            style={styles.input}
+          />
+          <TextInput
+            value={draftLocality}
+            onChangeText={setDraftLocality}
+            placeholder="Localidade aproximada"
+            placeholderTextColor={colors.inkMuted}
+            style={styles.input}
+          />
+          <ActionButton variant="secondary" onPress={savePublicProfile}>
+            Guardar visibilidade
+          </ActionButton>
+        </View>
       </View>
       <View style={styles.pathCard}>
         <Text style={styles.pathKicker}>O teu caminho</Text>
@@ -266,6 +408,32 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 20,
     letterSpacing: 0
+  },
+  publicProfileBox: {
+    backgroundColor: colors.greenSoft,
+    borderRadius: radius.sm,
+    padding: 12,
+    gap: 3
+  },
+  publicName: {
+    color: colors.ink,
+    fontSize: 17,
+    fontWeight: "900",
+    letterSpacing: 0
+  },
+  publicMeta: {
+    color: colors.inkMuted,
+    fontSize: 14,
+    lineHeight: 19,
+    letterSpacing: 0
+  },
+  toggleGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8
+  },
+  toggleButton: {
+    flexGrow: 1
   },
   accountForm: {
     gap: 8

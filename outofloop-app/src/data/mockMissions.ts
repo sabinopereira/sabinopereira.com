@@ -14,6 +14,64 @@ export type UpcomingPlan = {
   originMission?: string;
   safetyNote: string;
   checklist: string[];
+  attendees: CircleMember[];
+};
+
+export type CircleMember = {
+  id: string;
+  displayName: string;
+  username: string;
+  locality: string;
+  avatar: string;
+};
+
+export const circleMembers: Record<string, CircleMember[]> = {
+  Familia: [
+    {
+      id: "tiago",
+      displayName: "Tiago",
+      username: "@tiago",
+      locality: "Lisboa",
+      avatar: "T"
+    },
+    {
+      id: "ana",
+      displayName: "Ana",
+      username: "@ana",
+      locality: "Odivelas",
+      avatar: "A"
+    },
+    {
+      id: "ines",
+      displayName: "Ines",
+      username: "@ines",
+      locality: "Lisboa",
+      avatar: "I"
+    }
+  ],
+  "Amigos de Lisboa": [
+    {
+      id: "marta",
+      displayName: "Marta",
+      username: "@marta",
+      locality: "Campo de Ourique",
+      avatar: "M"
+    },
+    {
+      id: "rui",
+      displayName: "Rui",
+      username: "@rui",
+      locality: "Almada",
+      avatar: "R"
+    },
+    {
+      id: "joana",
+      displayName: "Joana",
+      username: "@joana",
+      locality: "Lisboa",
+      avatar: "J"
+    }
+  ]
 };
 
 export const upcomingPlans: UpcomingPlan[] = [
@@ -36,7 +94,8 @@ export const upcomingPlans: UpcomingPlan[] = [
       "Levar agua",
       "Confirmar se o percurso esta confortavel",
       "Sair sem culpa se precisares"
-    ]
+    ],
+    attendees: circleMembers["Amigos de Lisboa"]
   },
   {
     id: "family-table",
@@ -57,7 +116,8 @@ export const upcomingPlans: UpcomingPlan[] = [
       "Escolher uma pergunta simples",
       "Sem telemoveis durante 15 minutos",
       "Cada pessoa pode passar a vez"
-    ]
+    ],
+    attendees: circleMembers.Familia
   }
 ];
 

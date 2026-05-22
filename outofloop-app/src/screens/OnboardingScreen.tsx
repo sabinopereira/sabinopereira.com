@@ -73,6 +73,7 @@ const accessibilityOptions = [
 ];
 
 type EntryMode = "welcome" | "try" | "create" | "login";
+type AuthMethod = "guest" | "email" | "apple" | "google";
 
 export function OnboardingScreen({
   onComplete
@@ -82,24 +83,63 @@ export function OnboardingScreen({
   const [preferences, setPreferences] =
     useState<AppPreferences>(defaultPreferences);
   const [entryMode, setEntryMode] = useState<EntryMode>("welcome");
+  const [authMethod, setAuthMethod] = useState<AuthMethod>("guest");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [authError, setAuthError] = useState("");
 
   function complete(nextPreferences: AppPreferences) {
     const trimmedName = name.trim();
     const trimmedEmail = email.trim();
+    const trimmedPassword = password.trim();
     const user: AppUser =
-      entryMode === "create" || entryMode === "login"
+      authMethod !== "guest"
         ? {
             entryType: "account",
+            authMethod,
             name: trimmedName || undefined,
-            email: trimmedEmail || undefined
+            email: trimmedEmail || undefined,
+            hasPassword: authMethod === "email" ? Boolean(trimmedPassword) : false
           }
         : {
             entryType: "guest"
           };
 
     onComplete(nextPreferences, user);
+  }
+
+  function startEmailFlow(nextMode: "create" | "login") {
+    setAuthMethod("email");
+    setAuthError("");
+    setEntryMode(nextMode);
+  }
+
+  function startGuestFlow() {
+    setAuthMethod("guest");
+    setAuthError("");
+    setEntryMode("try");
+  }
+
+  function startSocialFlow(method: "apple" | "google") {
+    setAuthMethod(method);
+    setAuthError("");
+    setEntryMode("try");
+  }
+
+  function continueWithEmail() {
+    if (!email.trim()) {
+      setAuthError("Escreve o email para continuar.");
+      return;
+    }
+
+    if (password.trim().length < 6) {
+      setAuthError("A password deve ter pelo menos 6 caracteres.");
+      return;
+    }
+
+    setAuthError("");
+    setEntryMode("try");
   }
 
   function toggleAccessibility(value: string) {
@@ -177,15 +217,31 @@ export function OnboardingScreen({
           <Text style={styles.entryText}>
             Podes comecar ja, criar conta ou entrar numa conta que ja tens.
           </Text>
-          <ActionButton onPress={() => setEntryMode("try")}>
+          <ActionButton onPress={startGuestFlow}>
             Experimentar primeiro
           </ActionButton>
-          <ActionButton variant="secondary" onPress={() => setEntryMode("create")}>
+          <ActionButton variant="secondary" onPress={() => startEmailFlow("create")}>
             Criar conta
           </ActionButton>
-          <ActionButton variant="ghost" onPress={() => setEntryMode("login")}>
+          <ActionButton variant="ghost" onPress={() => startEmailFlow("login")}>
             Entrar
           </ActionButton>
+          <View style={styles.socialRow}>
+            <ActionButton
+              variant="secondary"
+              style={styles.socialButton}
+              onPress={() => startSocialFlow("apple")}
+            >
+              Apple
+            </ActionButton>
+            <ActionButton
+              variant="secondary"
+              style={styles.socialButton}
+              onPress={() => startSocialFlow("google")}
+            >
+              Google
+            </ActionButton>
+          </View>
         </View>
       ) : null}
 
@@ -193,7 +249,7 @@ export function OnboardingScreen({
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Criar conta</Text>
           <Text style={styles.helper}>
-            Guarda o teu nome e email para personalizar a app neste telemovel.
+            Usa nome, email e password. Tambem podes entrar com Apple ou Google.
           </Text>
           <TextInput
             value={name}
@@ -211,9 +267,35 @@ export function OnboardingScreen({
             autoCapitalize="none"
             style={styles.input}
           />
-          <ActionButton onPress={() => setEntryMode("try")}>
+          <TextInput
+            value={password}
+            onChangeText={setPassword}
+            placeholder="Password"
+            placeholderTextColor={colors.inkMuted}
+            secureTextEntry
+            autoCapitalize="none"
+            style={styles.input}
+          />
+          {authError ? <Text style={styles.errorText}>{authError}</Text> : null}
+          <ActionButton onPress={continueWithEmail}>
             Continuar para as escolhas
           </ActionButton>
+          <View style={styles.socialRow}>
+            <ActionButton
+              variant="secondary"
+              style={styles.socialButton}
+              onPress={() => startSocialFlow("apple")}
+            >
+              Apple
+            </ActionButton>
+            <ActionButton
+              variant="secondary"
+              style={styles.socialButton}
+              onPress={() => startSocialFlow("google")}
+            >
+              Google
+            </ActionButton>
+          </View>
           <ActionButton variant="ghost" onPress={() => setEntryMode("welcome")}>
             Voltar
           </ActionButton>
@@ -224,7 +306,7 @@ export function OnboardingScreen({
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Entrar</Text>
           <Text style={styles.helper}>
-            Escreve o email para continuar com a tua app neste telemovel.
+            Entra com email e password, ou usa Apple/Google.
           </Text>
           <TextInput
             value={email}
@@ -235,9 +317,35 @@ export function OnboardingScreen({
             autoCapitalize="none"
             style={styles.input}
           />
-          <ActionButton onPress={() => setEntryMode("try")}>
+          <TextInput
+            value={password}
+            onChangeText={setPassword}
+            placeholder="Password"
+            placeholderTextColor={colors.inkMuted}
+            secureTextEntry
+            autoCapitalize="none"
+            style={styles.input}
+          />
+          {authError ? <Text style={styles.errorText}>{authError}</Text> : null}
+          <ActionButton onPress={continueWithEmail}>
             Continuar para as escolhas
           </ActionButton>
+          <View style={styles.socialRow}>
+            <ActionButton
+              variant="secondary"
+              style={styles.socialButton}
+              onPress={() => startSocialFlow("apple")}
+            >
+              Apple
+            </ActionButton>
+            <ActionButton
+              variant="secondary"
+              style={styles.socialButton}
+              onPress={() => startSocialFlow("google")}
+            >
+              Google
+            </ActionButton>
+          </View>
           <ActionButton variant="ghost" onPress={() => setEntryMode("welcome")}>
             Voltar
           </ActionButton>
@@ -493,6 +601,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 13,
     fontSize: 15,
     letterSpacing: 0
+  },
+  errorText: {
+    color: colors.danger,
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: "700",
+    letterSpacing: 0
+  },
+  socialRow: {
+    flexDirection: "row",
+    gap: 8
+  },
+  socialButton: {
+    flex: 1
   },
   grid: {
     flexDirection: "row",
