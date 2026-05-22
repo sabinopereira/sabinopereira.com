@@ -1,6 +1,10 @@
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView, StyleSheet, View } from "react-native";
 
+import {
+  AlertsScreen,
+  alertCountForPlans
+} from "./src/screens/AlertsScreen";
 import { BottomTabs } from "./src/components/BottomTabs";
 import { AlignScreen } from "./src/screens/AlignScreen";
 import { CirclesScreen } from "./src/screens/CirclesScreen";
@@ -29,7 +33,13 @@ import {
 } from "./src/data/storage";
 import { AppUser, defaultUser } from "./src/data/user";
 
-export type TabKey = "today" | "circles" | "align" | "memories" | "profile";
+export type TabKey =
+  | "today"
+  | "alerts"
+  | "circles"
+  | "align"
+  | "memories"
+  | "profile";
 
 const storageKeys = {
   onboardingComplete: "outofloop:onboardingComplete",
@@ -56,9 +66,21 @@ function renderScreen(
   onPlanCheckIn: (plan: UpcomingPlan) => void,
   onMissionComplete: (mission: Mission) => void,
   onMemoryNoteChange: (memoryId: string, note: string) => void,
-  onUserChange: (user: AppUser) => void
+  onUserChange: (user: AppUser) => void,
+  onNavigate: (tab: TabKey) => void
 ) {
   switch (tab) {
+    case "alerts":
+      return (
+        <AlertsScreen
+          plans={plans}
+          planStatuses={planStatuses}
+          planResponses={planResponses}
+          onPlanStatusChange={onPlanStatusChange}
+          onPlanResponseChange={onPlanResponseChange}
+          onNavigate={onNavigate}
+        />
+      );
     case "circles":
       return <CirclesScreen onCreatePlan={onCreatePlan} />;
     case "align":
@@ -126,6 +148,7 @@ export default function App() {
     readStoredValue(storageKeys.planResponses, {})
   );
   const progress = buildProgressPath(memories);
+  const alertCount = alertCountForPlans(plans, planStatuses, planResponses);
 
   useEffect(() => {
     setStorageLoaded(true);
@@ -301,10 +324,15 @@ export default function App() {
           handlePlanCheckIn,
           handleMissionComplete,
           handleMemoryNoteChange,
-          setUser
+          setUser,
+          setActiveTab
         )}
       </View>
-      <BottomTabs activeTab={activeTab} onChange={setActiveTab} />
+      <BottomTabs
+        activeTab={activeTab}
+        onChange={setActiveTab}
+        alertCount={alertCount}
+      />
     </SafeAreaView>
   );
 }

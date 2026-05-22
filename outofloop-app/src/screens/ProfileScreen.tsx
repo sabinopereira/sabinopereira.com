@@ -191,8 +191,8 @@ export function ProfileScreen({
       <View style={styles.card}>
         <Text style={styles.cardTitle}>O teu ritmo</Text>
         <View style={styles.pills}>
-          {rhythmChoices.map((item) => (
-            <Pill key={item} tone="blue">
+          {rhythmChoices.map((item, index) => (
+            <Pill key={`${item}-${index}`} tone="blue">
               {item}
             </Pill>
           ))}
