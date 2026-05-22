@@ -14887,6 +14887,112 @@ body.author-vintage.author-desk-page .author-footer a {
   color: #e7e1d2;
 }
 
+body.author-vintage.author-series-desk .being-human-feature {
+  padding: clamp(22px, 3vw, 38px);
+}
+
+body.author-vintage.author-series-desk .being-human-feature-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.52fr) minmax(0, 0.48fr);
+  gap: clamp(24px, 4vw, 58px);
+  align-items: center;
+}
+
+body.author-vintage.author-series-desk .being-human-feature-media {
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #171715;
+  filter: grayscale(1) contrast(1.05);
+  mix-blend-mode: normal;
+}
+
+body.author-vintage.author-series-desk .being-human-feature-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+body.author-vintage.author-series-desk .being-human-episodes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+body.author-vintage.author-series-desk .being-human-episodes .author-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 18px;
+  align-items: start;
+  padding: 16px 18px;
+  border: 1px solid rgba(32, 32, 29, 0.2);
+  border-radius: 8px;
+  background: rgba(241, 240, 230, 0.52);
+}
+
+body.author-vintage.author-series-desk .being-human-episodes .author-card-eyebrow,
+body.author-vintage.author-series-desk .being-human-episodes .author-card-title,
+body.author-vintage.author-series-desk .being-human-episodes .author-card-text {
+  grid-column: 1;
+}
+
+body.author-vintage.author-series-desk .being-human-episodes .author-card-title {
+  max-width: 20ch;
+  font-size: clamp(1.35rem, 1.7vw, 1.85rem);
+  line-height: 1.02;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+body.author-vintage.author-series-desk .being-human-episodes .author-card-text {
+  max-width: 42ch;
+  margin-top: 6px;
+  font-size: 0.96rem;
+  line-height: 1.22;
+}
+
+body.author-vintage.author-series-desk .being-human-episodes .author-inline-links {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  align-self: center;
+  justify-content: flex-end;
+  min-width: 112px;
+}
+
+body.author-vintage.author-series-desk .being-human-episodes .author-link {
+  white-space: nowrap;
+}
+
+body.author-vintage.author-contact-desk .contact-hero {
+  grid-template-columns: minmax(0, 0.68fr) minmax(260px, 0.32fr);
+  align-items: stretch;
+}
+
+body.author-vintage.author-contact-desk .contact-note-card,
+body.author-vintage.author-contact-desk .contact-reasons-panel,
+body.author-vintage.author-contact-desk .contact-form-panel {
+  border-radius: 8px;
+  background: rgba(220, 219, 208, 0.4);
+  border: 1px solid rgba(32, 32, 29, 0.2);
+  box-shadow: none;
+}
+
+body.author-vintage.author-contact-desk .contact-form input,
+body.author-vintage.author-contact-desk .contact-form textarea {
+  border: 1px solid rgba(32, 32, 29, 0.28);
+  border-radius: 8px;
+  background: rgba(246, 244, 234, 0.74);
+  box-shadow: none;
+}
+
+body.author-vintage.author-contact-desk .contact-chip-list li {
+  border-radius: 8px;
+  background: rgba(246, 244, 234, 0.58);
+  border: 1px solid rgba(32, 32, 29, 0.14);
+}
+
 @media (max-width: 980px) {
   body.author-vintage.author-desk-page {
     padding: 12px;
@@ -14938,7 +15044,9 @@ body.author-vintage.author-desk-page .author-footer a {
 
   body.author-vintage.author-desk-page .author-page-title {
     max-width: 100%;
-    font-size: clamp(2.4rem, 13vw, 4.2rem);
+    font-size: clamp(2.15rem, 10.4vw, 3.25rem);
+    line-height: 0.96;
+    overflow-wrap: normal;
   }
 
   body.author-vintage.author-desk-page .author-feature-grid,
@@ -14956,5 +15064,21 @@ body.author-vintage.author-desk-page .author-footer a {
   body.author-vintage.author-desk-page .author-footer {
     width: 100%;
     padding: 0 12px 18px;
+  }
+
+  body.author-vintage.author-series-desk .being-human-feature-grid,
+  body.author-vintage.author-contact-desk .contact-hero {
+    grid-template-columns: 1fr;
+  }
+
+  body.author-vintage.author-series-desk .being-human-episodes .author-card {
+    grid-template-columns: 1fr;
+  }
+
+  body.author-vintage.author-series-desk .being-human-episodes .author-inline-links {
+    grid-column: 1;
+    grid-row: auto;
+    justify-content: flex-start;
+    margin-top: 10px;
   }
 }
