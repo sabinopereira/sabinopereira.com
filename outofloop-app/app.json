@@ -10,7 +10,10 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "A OutOfLoop usa a tua biblioteca para escolheres uma foto de perfil."
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -22,7 +25,8 @@
     },
     "plugins": [
       "expo-sqlite",
-      "expo-notifications"
+      "expo-notifications",
+      "expo-image-picker"
     ]
   }
 }

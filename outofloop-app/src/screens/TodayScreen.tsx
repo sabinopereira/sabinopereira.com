@@ -4,9 +4,22 @@ import { Modal, ScrollView, StyleSheet, Text, View } from "react-native";
 import { ActionButton } from "../components/ActionButton";
 import { MissionCard } from "../components/MissionCard";
 import { SmartHint } from "../components/SmartHint";
-import { Mission, selectMissionOfTheDay } from "../data/missions.generated";
+import {
+  Mission,
+  missions,
+  selectMissionOfTheDay
+} from "../data/missions.generated";
 import { AppPreferences } from "../data/preferences";
+import { readStoredValue, writeStoredValue } from "../data/storage";
 import { colors, radius } from "../theme/colors";
+
+function todayStorageKey(suffix: string) {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+  return `outofloop:today:${year}-${month}-${day}:${suffix}`;
+}
 
 export function TodayScreen({
   preferences,
@@ -23,10 +36,28 @@ export function TodayScreen({
   const [completionOpen, setCompletionOpen] = useState(false);
   const [feedbackOpen, setFeedbackOpen] = useState(false);
   const [congratsOpen, setCongratsOpen] = useState(false);
+  const [inviteOpen, setInviteOpen] = useState(false);
+  const [hiddenTodayReason, setHiddenTodayReason] = useState<string | null>(() =>
+    readStoredValue(todayStorageKey("hiddenReason"), null)
+  );
+  const [missionOverrideSlug, setMissionOverrideSlug] = useState<string | null>(
+    () => readStoredValue(todayStorageKey("missionOverrideSlug"), null)
+  );
+  const [skippedMissionSlugs, setSkippedMissionSlugs] = useState<string[]>(() =>
+    readStoredValue(todayStorageKey("skippedMissionSlugs"), [])
+  );
   const [completionResult, setCompletionResult] = useState<string | null>(null);
   const [feedbackResult, setFeedbackResult] = useState<string | null>(null);
   const [memorySaved, setMemorySaved] = useState(false);
-  const todayMission = selectMissionOfTheDay(preferences);
+  const recommendedMission = selectMissionOfTheDay(preferences);
+  const missionOverride =
+    missions.find((mission) => mission.slug === missionOverrideSlug) ?? null;
+  const todayMission = missionOverride ?? recommendedMission;
+  const canInvite =
+    todayMission.pairEnabled ||
+    todayMission.groupEnabled ||
+    todayMission.familyEnabled ||
+    todayMission.slug.includes("convite");
   const minuteLabel =
     todayMission.estimatedMinutes === 1
       ? "1 minuto"
@@ -57,10 +88,65 @@ export function TodayScreen({
     return () => clearInterval(interval);
   }, [accepted, completed]);
 
+  useEffect(() => {
+    writeStoredValue(todayStorageKey("hiddenReason"), hiddenTodayReason);
+  }, [hiddenTodayReason]);
+
+  useEffect(() => {
+    writeStoredValue(todayStorageKey("missionOverrideSlug"), missionOverrideSlug);
+  }, [missionOverrideSlug]);
+
+  useEffect(() => {
+    writeStoredValue(todayStorageKey("skippedMissionSlugs"), skippedMissionSlugs);
+  }, [skippedMissionSlugs]);
+
   function acceptMission() {
     setAccepted(true);
     setAcceptedAt(Date.now());
     setNow(Date.now());
+  }
+
+  function lighterMission(reason: string) {
+    const maxMinutes =
+      reason === "Missao dificil demais"
+        ? Math.max(5, todayMission.estimatedMinutes - 5)
+        : preferences.maxMinutes;
+    const candidates = missions
+      .filter((mission) => mission.slug !== todayMission.slug)
+      .filter((mission) => !skippedMissionSlugs.includes(mission.slug))
+      .filter((mission) => mission.estimatedMinutes <= maxMinutes)
+      .filter((mission) => mission.costTier === "gratis")
+      .filter((mission) => !preferences.privateFirst || mission.soloEnabled);
+
+    return candidates[0] ?? null;
+  }
+
+  function resetMissionState() {
+    setAccepted(false);
+    setAcceptedAt(null);
+    setCompleted(false);
+    setCompletionResult(null);
+    setFeedbackResult(null);
+    setMemorySaved(false);
+  }
+
+  function handleNotToday(reason: string) {
+    if (reason === "Da-me uma mais leve" || reason === "Nao era o tipo certo") {
+      const nextMission = lighterMission(reason);
+      setSkippedMissionSlugs((current) => [...current, todayMission.slug]);
+      setNotTodayOpen(false);
+      resetMissionState();
+
+      if (nextMission) {
+        setMissionOverrideSlug(nextMission.slug);
+        setHiddenTodayReason(null);
+        return;
+      }
+    }
+
+    setHiddenTodayReason(reason);
+    setNotTodayOpen(false);
+    resetMissionState();
   }
 
   function confirmCompletion(result: string) {
@@ -90,7 +176,41 @@ export function TodayScreen({
         </Text>
       </View>
 
-      {completed ? (
+      {hiddenTodayReason ? (
+        <View style={styles.emptyTodayCard}>
+          <Text style={styles.emptyTodayLabel}>Hoje fica leve</Text>
+          <Text style={styles.emptyTodayTitle}>Sem missao ativa agora.</Text>
+          <Text style={styles.emptyTodayText}>
+            Guardado: {hiddenTodayReason}. O ecrã Hoje deve mostrar apenas o
+            que faz sentido.
+          </Text>
+          <View style={styles.acceptedActions}>
+            <ActionButton
+              style={styles.actionGrow}
+              onPress={() => {
+                const nextMission = lighterMission(hiddenTodayReason);
+                setHiddenTodayReason(null);
+                resetMissionState();
+                if (nextMission) {
+                  setMissionOverrideSlug(nextMission.slug);
+                }
+              }}
+            >
+              Ver outra sugestao
+            </ActionButton>
+            <ActionButton
+              variant="secondary"
+              style={styles.actionGrow}
+              onPress={() => {
+                setHiddenTodayReason(null);
+                setMissionOverrideSlug(null);
+              }}
+            >
+              Voltar a mostrar
+            </ActionButton>
+          </View>
+        </View>
+      ) : completed ? (
         <View style={styles.completedCard}>
           <Text style={styles.completedLabel}>Missao concluida</Text>
           <Text style={styles.completedTitle}>{todayMission.title}</Text>
@@ -190,6 +310,7 @@ export function TodayScreen({
           <MissionCard
             mission={todayMission}
             onAccept={acceptMission}
+            onInvite={canInvite ? () => setInviteOpen(true) : undefined}
             onNotToday={() => setNotTodayOpen(true)}
           />
         </>
@@ -225,13 +346,41 @@ export function TodayScreen({
               <ActionButton
                 key={reason}
                 variant="secondary"
-                onPress={() => setNotTodayOpen(false)}
+                onPress={() => handleNotToday(reason)}
               >
                 {reason}
               </ActionButton>
             ))}
             <ActionButton variant="ghost" onPress={() => setNotTodayOpen(false)}>
               Voltar
+            </ActionButton>
+          </View>
+        </View>
+      </Modal>
+
+      <Modal
+        animationType="slide"
+        transparent
+        visible={inviteOpen}
+        onRequestClose={() => setInviteOpen(false)}
+      >
+        <View style={styles.modalBackdrop}>
+          <View style={styles.modalCard}>
+            <Text style={styles.modalKicker}>Convidar</Text>
+            <Text style={styles.modalTitle}>Convite simples</Text>
+            <Text style={styles.modalText}>
+              Esta missao e sobre dar o primeiro passo, nao sobre gerir quem
+              alinha. Usa uma mensagem curta e depois, se houver plano, ele
+              aparece em Alinhar.
+            </Text>
+            <View style={styles.inviteBox}>
+              <Text style={styles.inviteText}>
+                “Queres combinar uma coisa simples esta semana? Pode ser curto e
+                sem complicar.”
+              </Text>
+            </View>
+            <ActionButton onPress={() => setInviteOpen(false)}>
+              Faz sentido
             </ActionButton>
           </View>
         </View>
@@ -449,6 +598,34 @@ const styles = StyleSheet.create({
     padding: 20,
     gap: 14
   },
+  emptyTodayCard: {
+    backgroundColor: colors.surface,
+    borderRadius: radius.lg,
+    padding: 18,
+    gap: 12,
+    borderWidth: 1,
+    borderColor: colors.line
+  },
+  emptyTodayLabel: {
+    color: colors.coral,
+    fontSize: 13,
+    fontWeight: "900",
+    letterSpacing: 0,
+    textTransform: "uppercase"
+  },
+  emptyTodayTitle: {
+    color: colors.ink,
+    fontSize: 24,
+    lineHeight: 29,
+    fontWeight: "900",
+    letterSpacing: 0
+  },
+  emptyTodayText: {
+    color: colors.inkMuted,
+    fontSize: 15,
+    lineHeight: 22,
+    letterSpacing: 0
+  },
   completedLabel: {
     color: colors.green,
     fontSize: 13,
@@ -542,6 +719,18 @@ const styles = StyleSheet.create({
     color: colors.inkMuted,
     fontSize: 16,
     marginBottom: 4,
+    letterSpacing: 0
+  },
+  inviteBox: {
+    backgroundColor: colors.greenSoft,
+    borderRadius: radius.sm,
+    padding: 12
+  },
+  inviteText: {
+    color: colors.ink,
+    fontSize: 15,
+    lineHeight: 22,
+    fontWeight: "700",
     letterSpacing: 0
   },
   centerBackdrop: {

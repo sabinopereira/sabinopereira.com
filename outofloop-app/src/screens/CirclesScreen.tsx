@@ -4,14 +4,17 @@ import { Modal, ScrollView, StyleSheet, Text, View } from "react-native";
 import { ActionButton } from "../components/ActionButton";
 import { MemberPreview } from "../components/MemberPreview";
 import { Pill } from "../components/Pill";
+import { SmartHint } from "../components/SmartHint";
 import {
   circleMembers,
   circles,
   UpcomingPlan
 } from "../data/mockMissions";
+import { AppPreferences } from "../data/preferences";
 import { colors, radius } from "../theme/colors";
 
 type Circle = (typeof circles)[number];
+type PlanTemplate = (typeof planTemplates)[number];
 
 const planTemplates = [
   {
@@ -56,34 +59,69 @@ const planTemplates = [
 ];
 
 export function CirclesScreen({
+  preferences,
   onCreatePlan
 }: {
+  preferences: AppPreferences;
   onCreatePlan: (plan: UpcomingPlan) => void;
 }) {
   const [selectedCircle, setSelectedCircle] = useState<Circle | null>(null);
+  const [selectedTemplate, setSelectedTemplate] = useState<PlanTemplate | null>(
+    null
+  );
   const [safetyCircle, setSafetyCircle] = useState<Circle | null>(null);
   const [mutedCircles, setMutedCircles] = useState<Record<string, string>>({});
 
-  function createPlan(circle: Circle, template: (typeof planTemplates)[number]) {
-    onCreatePlan({
+  function buildPlan(
+    circle: Circle,
+    template: PlanTemplate,
+    useSmartVersion: boolean
+  ): UpcomingPlan {
+    const smartTitle = useSmartVersion
+      ? `${template.title} - versao leve`
+      : template.title;
+    const smartTime = useSmartVersion ? "Hoje, janela flexivel" : template.time;
+    const smartAccessibility = useSmartVersion
+      ? `${template.accessibility}, saida facil`
+      : template.accessibility;
+    const smartChecklist = useSmartVersion
+      ? [
+          "Dizer hora e ponto de encontro",
+          "Avisar que da para sair cedo",
+          "Manter custo e duracao claros"
+        ]
+      : template.checklist;
+
+    return {
       id: `plan-${circle.id}-${Date.now()}`,
-      title: template.title,
+      title: smartTitle,
       circle: circle.name,
-      time: template.time,
+      time: smartTime,
       place: template.place,
       costTier: "gratis",
-      durationLabel: template.durationLabel,
+      durationLabel: useSmartVersion ? "leve" : template.durationLabel,
       acceptedCount: 1,
       capacity: circle.type === "Familia" ? 5 : 6,
-      deadline: "fecha hoje as 21:00",
-      accessibility: template.accessibility,
+      deadline: useSmartVersion ? "responder ate ao fim do dia" : "fecha hoje as 21:00",
+      accessibility: smartAccessibility,
       host: "Tu",
       originMission: template.originMission,
       safetyNote:
         "Plano criado no circulo: hora, local, custo e conforto ficam claros antes de alguem responder.",
-      checklist: template.checklist,
+      checklist: smartChecklist,
       attendees: circleMembers[circle.name] ?? []
+    };
+  }
+
+  function createPlan(
+    circle: Circle,
+    template: PlanTemplate,
+    useSmartVersion = false
+  ) {
+    onCreatePlan({
+      ...buildPlan(circle, template, useSmartVersion)
     });
+    setSelectedTemplate(null);
     setSelectedCircle(null);
   }
 
@@ -177,14 +215,53 @@ export function CirclesScreen({
                   <ActionButton
                     key={template.title}
                     variant="secondary"
-                    onPress={() => createPlan(selectedCircle, template)}
+                    onPress={() => setSelectedTemplate(template)}
                   >
                     {template.title}
                   </ActionButton>
                 ))}
+                {selectedTemplate ? (
+                  <View style={styles.reviewBox}>
+                    <Text style={styles.reviewTitle}>
+                      Rever antes de criar
+                    </Text>
+                    <Text style={styles.reviewPlanTitle}>
+                      {selectedTemplate.title}
+                    </Text>
+                    <Text style={styles.reviewText}>
+                      {selectedTemplate.time} · {selectedTemplate.place}
+                    </Text>
+                    {preferences.smartHelp.improveCreatedPlans ? (
+                      <SmartHint
+                        title="Ajuda inteligente"
+                        text="Sugestao: deixar a hora mais flexivel, reforcar que da para sair cedo e manter custo/duracao claros."
+                      />
+                    ) : null}
+                    <ActionButton
+                      onPress={() =>
+                        createPlan(selectedCircle, selectedTemplate, false)
+                      }
+                    >
+                      Criar este plano
+                    </ActionButton>
+                    {preferences.smartHelp.improveCreatedPlans ? (
+                      <ActionButton
+                        variant="secondary"
+                        onPress={() =>
+                          createPlan(selectedCircle, selectedTemplate, true)
+                        }
+                      >
+                        Criar versao mais leve
+                      </ActionButton>
+                    ) : null}
+                  </View>
+                ) : null}
                 <ActionButton
                   variant="ghost"
-                  onPress={() => setSelectedCircle(null)}
+                  onPress={() => {
+                    setSelectedTemplate(null);
+                    setSelectedCircle(null);
+                  }}
                 >
                   Voltar
                 </ActionButton>
@@ -334,6 +411,34 @@ const styles = StyleSheet.create({
   },
   safetySavedText: {
     color: colors.ink,
+    fontSize: 14,
+    lineHeight: 20,
+    letterSpacing: 0
+  },
+  reviewBox: {
+    backgroundColor: colors.surface,
+    borderRadius: radius.sm,
+    padding: 12,
+    gap: 10,
+    borderWidth: 1,
+    borderColor: colors.line
+  },
+  reviewTitle: {
+    color: colors.coral,
+    fontSize: 13,
+    fontWeight: "900",
+    letterSpacing: 0,
+    textTransform: "uppercase"
+  },
+  reviewPlanTitle: {
+    color: colors.ink,
+    fontSize: 18,
+    lineHeight: 22,
+    fontWeight: "900",
+    letterSpacing: 0
+  },
+  reviewText: {
+    color: colors.inkMuted,
     fontSize: 14,
     lineHeight: 20,
     letterSpacing: 0

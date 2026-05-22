@@ -31,10 +31,12 @@ const intensityLabel: Record<Mission["intensity"], string> = {
 export function MissionCard({
   mission,
   onAccept,
+  onInvite,
   onNotToday
 }: {
   mission: Mission;
   onAccept: () => void;
+  onInvite?: () => void;
   onNotToday: () => void;
 }) {
   const minuteLabel =
@@ -95,14 +97,15 @@ export function MissionCard({
         <ActionButton onPress={onAccept} style={styles.actionGrow}>
           Aceitar
         </ActionButton>
-        <ActionButton variant="secondary" style={styles.actionGrow}>
-          Convidar
-        </ActionButton>
-      </View>
-      <View style={styles.actions}>
-        <ActionButton variant="secondary" style={styles.actionGrow}>
-          Quem alinha?
-        </ActionButton>
+        {onInvite ? (
+          <ActionButton
+            variant="secondary"
+            style={styles.actionGrow}
+            onPress={onInvite}
+          >
+            Convidar
+          </ActionButton>
+        ) : null}
         <ActionButton
           onPress={onNotToday}
           variant="ghost"

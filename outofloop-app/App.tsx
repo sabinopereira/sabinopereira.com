@@ -96,7 +96,12 @@ function renderScreen(
         />
       );
     case "circles":
-      return <CirclesScreen onCreatePlan={onCreatePlan} />;
+      return (
+        <CirclesScreen
+          preferences={preferences}
+          onCreatePlan={onCreatePlan}
+        />
+      );
     case "align":
       return (
         <AlignScreen

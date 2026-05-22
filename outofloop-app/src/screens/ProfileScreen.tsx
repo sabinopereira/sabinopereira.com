@@ -1,5 +1,7 @@
 import { useState } from "react";
+import * as ImagePicker from "expo-image-picker";
 import {
+  Image,
   ScrollView,
   StyleSheet,
   Text,
@@ -63,10 +65,16 @@ export function ProfileScreen({
     user.locality ?? "A tua zona"
   );
   const visibility = user.visibility ?? {
+    showPhoto: true,
     showName: true,
     showUsername: true,
     showLocality: true
   };
+  const avatarInitial = (user.name || user.username || "Tu")
+    .replace("@", "")
+    .trim()
+    .slice(0, 1)
+    .toUpperCase();
   const rhythmChoices = [
     preferences.privateFirst ? "Comecar sozinho/a" : "Comecar com pessoas",
     `${preferences.maxMinutes} min maximo`,
@@ -127,6 +135,32 @@ export function ProfileScreen({
     });
   }
 
+  async function choosePhoto() {
+    const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+    if (!permission.granted) {
+      return;
+    }
+
+    const result = await ImagePicker.launchImageLibraryAsync({
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 0.75,
+      mediaTypes: ImagePicker.MediaTypeOptions.Images
+    });
+
+    if (!result.canceled && result.assets[0]?.uri) {
+      onUserChange({
+        ...user,
+        photoUri: result.assets[0].uri,
+        visibility: {
+          ...visibility,
+          showPhoto: true
+        }
+      });
+    }
+  }
+
   function savePublicProfile() {
     onUserChange({
       ...user,
@@ -156,6 +190,42 @@ export function ProfileScreen({
       </View>
       <View style={styles.accountCard}>
         <Text style={styles.accountKicker}>Conta</Text>
+        <View style={styles.photoRow}>
+          <View style={styles.profilePhoto}>
+            {user.photoUri ? (
+              <Image source={{ uri: user.photoUri }} style={styles.photoImage} />
+            ) : (
+              <Text style={styles.photoInitial}>{avatarInitial || "T"}</Text>
+            )}
+          </View>
+          <View style={styles.photoCopy}>
+            <Text style={styles.photoTitle}>Foto de perfil</Text>
+            <Text style={styles.photoText}>
+              Pode aparecer em circulos e planos se escolheres mostrar.
+            </Text>
+          </View>
+        </View>
+        <View style={styles.photoActions}>
+          <ActionButton
+            variant="secondary"
+            style={styles.photoAction}
+            onPress={choosePhoto}
+          >
+            Alterar foto
+          </ActionButton>
+          <ActionButton
+            variant="ghost"
+            style={styles.photoAction}
+            onPress={() =>
+              onUserChange({
+                ...user,
+                photoUri: undefined
+              })
+            }
+          >
+            Usar iniciais
+          </ActionButton>
+        </View>
         <Text style={styles.accountTitle}>
           {user.entryType === "account"
             ? user.name || "Conta criada"
@@ -236,6 +306,22 @@ export function ProfileScreen({
           Tu escolhes o que aparece.
         </Text>
         <View style={styles.publicProfileBox}>
+          <View style={styles.publicProfileRow}>
+            {visibility.showPhoto ? (
+              <View style={styles.publicPhoto}>
+                {user.photoUri ? (
+                  <Image
+                    source={{ uri: user.photoUri }}
+                    style={styles.publicPhotoImage}
+                  />
+                ) : (
+                  <Text style={styles.publicPhotoInitial}>
+                    {avatarInitial || "T"}
+                  </Text>
+                )}
+              </View>
+            ) : null}
+            <View style={styles.publicCopy}>
           <Text style={styles.publicName}>
             {visibility.showName ? user.name || "O teu nome" : "Nome escondido"}
           </Text>
@@ -246,8 +332,22 @@ export function ProfileScreen({
               ? user.locality ?? "A tua zona"
               : "localidade escondida"}
           </Text>
+            </View>
+          </View>
         </View>
         <View style={styles.toggleGrid}>
+          <ActionButton
+            variant={visibility.showPhoto ? "secondary" : "ghost"}
+            style={styles.toggleButton}
+            onPress={() =>
+              updateVisibility({
+                ...visibility,
+                showPhoto: !visibility.showPhoto
+              })
+            }
+          >
+            Foto
+          </ActionButton>
           <ActionButton
             variant={visibility.showName ? "secondary" : "ghost"}
             style={styles.toggleButton}
@@ -479,11 +579,86 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     letterSpacing: 0
   },
+  photoRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12
+  },
+  profilePhoto: {
+    width: 72,
+    height: 72,
+    borderRadius: 36,
+    backgroundColor: colors.green,
+    alignItems: "center",
+    justifyContent: "center",
+    overflow: "hidden"
+  },
+  photoImage: {
+    width: 72,
+    height: 72
+  },
+  photoInitial: {
+    color: "#FFFFFF",
+    fontSize: 28,
+    fontWeight: "900",
+    letterSpacing: 0
+  },
+  photoCopy: {
+    flex: 1,
+    gap: 3
+  },
+  photoTitle: {
+    color: colors.ink,
+    fontSize: 16,
+    fontWeight: "900",
+    letterSpacing: 0
+  },
+  photoText: {
+    color: colors.inkMuted,
+    fontSize: 13,
+    lineHeight: 18,
+    letterSpacing: 0
+  },
+  photoActions: {
+    flexDirection: "row",
+    gap: 8
+  },
+  photoAction: {
+    flex: 1
+  },
   publicProfileBox: {
     backgroundColor: colors.greenSoft,
     borderRadius: radius.sm,
     padding: 12,
     gap: 3
+  },
+  publicProfileRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10
+  },
+  publicPhoto: {
+    width: 42,
+    height: 42,
+    borderRadius: 21,
+    backgroundColor: colors.green,
+    alignItems: "center",
+    justifyContent: "center",
+    overflow: "hidden"
+  },
+  publicPhotoImage: {
+    width: 42,
+    height: 42
+  },
+  publicPhotoInitial: {
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontWeight: "900",
+    letterSpacing: 0
+  },
+  publicCopy: {
+    flex: 1,
+    gap: 2
   },
   publicName: {
     color: colors.ink,
