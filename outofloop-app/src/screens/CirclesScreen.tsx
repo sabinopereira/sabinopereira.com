@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { Modal, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  Modal,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View
+} from "react-native";
 
 import { ActionButton } from "../components/ActionButton";
 import { MemberPreview } from "../components/MemberPreview";
@@ -70,6 +77,12 @@ export function CirclesScreen({
     null
   );
   const [safetyCircle, setSafetyCircle] = useState<Circle | null>(null);
+  const [inviteCircle, setInviteCircle] = useState<Circle | null>(null);
+  const [createCircleOpen, setCreateCircleOpen] = useState(false);
+  const [skipOpen, setSkipOpen] = useState(false);
+  const [individualMode, setIndividualMode] = useState(false);
+  const [newCircleName, setNewCircleName] = useState("");
+  const [newCircleSaved, setNewCircleSaved] = useState(false);
   const [mutedCircles, setMutedCircles] = useState<Record<string, string>>({});
 
   function buildPlan(
@@ -128,13 +141,41 @@ export function CirclesScreen({
   return (
     <ScrollView contentContainerStyle={styles.content}>
       <View style={styles.header}>
-        <Text style={styles.title}>Os teus circulos</Text>
+        <Text style={styles.title}>
+          {individualMode ? "Modo individual" : "Os teus circulos"}
+        </Text>
         <Text style={styles.subtitle}>
-          Comunidade privada, pequena e com regras claras.
+          {individualMode
+            ? "Usa a app sozinho/a. Sem grupos, sem convites, sem pressao."
+            : "Comunidade privada, pequena e com regras claras."}
         </Text>
       </View>
 
-      {circles.map((circle) => (
+      {individualMode ? (
+        <View style={styles.individualCard}>
+          <Text style={styles.individualKicker}>So tu</Text>
+          <Text style={styles.individualTitle}>Hoje a app fica privada.</Text>
+          <Text style={styles.individualText}>
+            Vais continuar a receber missoes pessoais, memorias privadas e ajuda
+            para sair da rotina sem depender de circulos.
+          </Text>
+          <View style={styles.individualList}>
+            <Text style={styles.individualItem}>OK Missoes privadas no Hoje</Text>
+            <Text style={styles.individualItem}>OK Memorias so tuas</Text>
+            <Text style={styles.individualItem}>OK Sem pessoas visiveis neste ecra</Text>
+          </View>
+          <ActionButton
+            variant="secondary"
+            onPress={() => setCreateCircleOpen(true)}
+          >
+            Criar circulo quando quiser
+          </ActionButton>
+          <ActionButton variant="ghost" onPress={() => setIndividualMode(false)}>
+            Voltar a ver circulos
+          </ActionButton>
+        </View>
+      ) : (
+        circles.map((circle) => (
         <View key={circle.id} style={styles.card}>
           <View style={styles.cardHeader}>
             <View>
@@ -178,7 +219,11 @@ export function CirclesScreen({
             >
               Criar plano
             </ActionButton>
-            <ActionButton variant="ghost" style={styles.actionGrow}>
+            <ActionButton
+              variant="ghost"
+              style={styles.actionGrow}
+              onPress={() => setInviteCircle(circle)}
+            >
               Convidar
             </ActionButton>
             <ActionButton
@@ -190,10 +235,19 @@ export function CirclesScreen({
             </ActionButton>
           </View>
         </View>
-      ))}
+        ))
+      )}
 
-      <ActionButton>Criar circulo</ActionButton>
-      <ActionButton variant="ghost">Saltar grupos por agora</ActionButton>
+      {!individualMode ? (
+        <>
+          <ActionButton onPress={() => setCreateCircleOpen(true)}>
+            Criar circulo
+          </ActionButton>
+          <ActionButton variant="ghost" onPress={() => setSkipOpen(true)}>
+            Saltar grupos por agora
+          </ActionButton>
+        </>
+      ) : null}
 
       <Modal
         animationType="slide"
@@ -324,6 +378,113 @@ export function CirclesScreen({
           </View>
         </View>
       </Modal>
+
+      <Modal
+        animationType="slide"
+        transparent
+        visible={inviteCircle !== null}
+        onRequestClose={() => setInviteCircle(null)}
+      >
+        <View style={styles.modalBackdrop}>
+          <View style={styles.modalCard}>
+            {inviteCircle ? (
+              <>
+                <Text style={styles.modalKicker}>Convidar</Text>
+                <Text style={styles.modalTitle}>{inviteCircle.name}</Text>
+                <Text style={styles.modalText}>
+                  Envia um convite simples a alguem de confianca. Depois ligamos
+                  isto a contactos e links reais.
+                </Text>
+                <View style={styles.inviteBox}>
+                  <Text style={styles.inviteText}>
+                    “Estou a usar a OutOfLoop para combinar coisas simples. Queres
+                    entrar neste circulo comigo?”
+                  </Text>
+                </View>
+                <ActionButton onPress={() => setInviteCircle(null)}>
+                  Convite preparado
+                </ActionButton>
+                <ActionButton variant="ghost" onPress={() => setInviteCircle(null)}>
+                  Voltar
+                </ActionButton>
+              </>
+            ) : null}
+          </View>
+        </View>
+      </Modal>
+
+      <Modal
+        animationType="slide"
+        transparent
+        visible={createCircleOpen}
+        onRequestClose={() => setCreateCircleOpen(false)}
+      >
+        <View style={styles.modalBackdrop}>
+          <View style={styles.modalCard}>
+            <Text style={styles.modalKicker}>Novo circulo</Text>
+            <Text style={styles.modalTitle}>Criar circulo simples</Text>
+            <Text style={styles.modalText}>
+              Um circulo deve ser pequeno, claro e com pessoas que fazem sentido
+              para ti.
+            </Text>
+            <TextInput
+              value={newCircleName}
+              onChangeText={setNewCircleName}
+              placeholder="Nome do circulo"
+              placeholderTextColor={colors.inkMuted}
+              style={styles.input}
+            />
+            {newCircleSaved ? (
+              <Text style={styles.savedText}>Circulo preparado: {newCircleName || "Sem nome"}</Text>
+            ) : null}
+            <ActionButton
+              onPress={() => {
+                setNewCircleSaved(true);
+              }}
+            >
+              Guardar circulo
+            </ActionButton>
+            <ActionButton
+              variant="ghost"
+              onPress={() => {
+                setCreateCircleOpen(false);
+                setNewCircleSaved(false);
+              }}
+            >
+              Fechar
+            </ActionButton>
+          </View>
+        </View>
+      </Modal>
+
+      <Modal
+        animationType="slide"
+        transparent
+        visible={skipOpen}
+        onRequestClose={() => setSkipOpen(false)}
+      >
+        <View style={styles.modalBackdrop}>
+          <View style={styles.modalCard}>
+            <Text style={styles.modalKicker}>Sem pressa</Text>
+            <Text style={styles.modalTitle}>Podes usar sozinho/a</Text>
+            <Text style={styles.modalText}>
+              A app continua a sugerir missoes privadas. Quando quiseres,
+              voltas aqui para criar circulos.
+            </Text>
+            <ActionButton
+              onPress={() => {
+                setIndividualMode(true);
+                setSkipOpen(false);
+              }}
+            >
+              Ativar modo individual
+            </ActionButton>
+            <ActionButton variant="ghost" onPress={() => setSkipOpen(false)}>
+              Voltar
+            </ActionButton>
+          </View>
+        </View>
+      </Modal>
     </ScrollView>
   );
 }
@@ -356,6 +517,45 @@ const styles = StyleSheet.create({
     gap: 14,
     borderWidth: 1,
     borderColor: colors.line
+  },
+  individualCard: {
+    backgroundColor: colors.green,
+    borderRadius: radius.lg,
+    padding: 18,
+    gap: 13
+  },
+  individualKicker: {
+    color: colors.greenSoft,
+    fontSize: 13,
+    fontWeight: "900",
+    letterSpacing: 0,
+    textTransform: "uppercase"
+  },
+  individualTitle: {
+    color: "#FFFFFF",
+    fontSize: 26,
+    lineHeight: 30,
+    fontWeight: "900",
+    letterSpacing: 0
+  },
+  individualText: {
+    color: "#EEF6EF",
+    fontSize: 15,
+    lineHeight: 22,
+    letterSpacing: 0
+  },
+  individualList: {
+    backgroundColor: "rgba(255, 255, 255, 0.12)",
+    borderRadius: radius.sm,
+    padding: 12,
+    gap: 7
+  },
+  individualItem: {
+    color: "#FFFFFF",
+    fontSize: 14,
+    lineHeight: 20,
+    fontWeight: "800",
+    letterSpacing: 0
   },
   cardHeader: {
     flexDirection: "row",
@@ -441,6 +641,36 @@ const styles = StyleSheet.create({
     color: colors.inkMuted,
     fontSize: 14,
     lineHeight: 20,
+    letterSpacing: 0
+  },
+  inviteBox: {
+    backgroundColor: colors.greenSoft,
+    borderRadius: radius.sm,
+    padding: 12
+  },
+  inviteText: {
+    color: colors.ink,
+    fontSize: 15,
+    lineHeight: 22,
+    fontWeight: "700",
+    letterSpacing: 0
+  },
+  input: {
+    minHeight: 46,
+    borderRadius: radius.sm,
+    borderWidth: 1,
+    borderColor: colors.line,
+    backgroundColor: colors.surface,
+    color: colors.ink,
+    paddingHorizontal: 13,
+    fontSize: 15,
+    letterSpacing: 0
+  },
+  savedText: {
+    color: colors.green,
+    fontSize: 14,
+    lineHeight: 20,
+    fontWeight: "800",
     letterSpacing: 0
   },
   membersRow: {

@@ -1,4 +1,12 @@
-import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { useState } from "react";
+import {
+  Modal,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View
+} from "react-native";
 
 import { ActionButton } from "../components/ActionButton";
 import { AppMemory } from "../data/memories";
@@ -11,6 +19,10 @@ export function MemoriesScreen({
   memories: AppMemory[];
   onMemoryNoteChange: (memoryId: string, note: string) => void;
 }) {
+  const [privateMemoryOpen, setPrivateMemoryOpen] = useState(false);
+  const [privateMemory, setPrivateMemory] = useState("");
+  const [privateMemorySaved, setPrivateMemorySaved] = useState(false);
+
   return (
     <ScrollView
       contentContainerStyle={styles.content}
@@ -72,8 +84,53 @@ export function MemoriesScreen({
           Fotos e textos devem ficar acessiveis so a participantes confirmados.
           As memorias ficam guardadas neste telemovel.
         </Text>
-        <ActionButton variant="secondary">Guardar memoria privada</ActionButton>
+        <ActionButton
+          variant="secondary"
+          onPress={() => setPrivateMemoryOpen(true)}
+        >
+          Guardar memoria privada
+        </ActionButton>
       </View>
+
+      <Modal
+        animationType="slide"
+        transparent
+        visible={privateMemoryOpen}
+        onRequestClose={() => setPrivateMemoryOpen(false)}
+      >
+        <View style={styles.modalBackdrop}>
+          <View style={styles.modalCard}>
+            <Text style={styles.modalKicker}>Memoria privada</Text>
+            <Text style={styles.modalTitle}>Guardar uma nota so tua</Text>
+            <Text style={styles.modalText}>
+              Esta nota fica neste telemovel e nao aparece a participantes.
+            </Text>
+            <TextInput
+              multiline
+              value={privateMemory}
+              onChangeText={setPrivateMemory}
+              placeholder="O que queres lembrar?"
+              placeholderTextColor={colors.inkMuted}
+              style={styles.input}
+              textAlignVertical="top"
+            />
+            <ActionButton
+              onPress={() => {
+                setPrivateMemorySaved(true);
+                setPrivateMemoryOpen(false);
+              }}
+            >
+              {privateMemorySaved ? "Memoria guardada" : "Guardar"}
+            </ActionButton>
+            <ActionButton
+              variant="ghost"
+              onPress={() => setPrivateMemoryOpen(false)}
+            >
+              Voltar
+            </ActionButton>
+          </View>
+        </View>
+      </Modal>
     </ScrollView>
   );
 }
@@ -200,6 +257,39 @@ const styles = StyleSheet.create({
     color: colors.ink,
     fontSize: 15,
     lineHeight: 21,
+    letterSpacing: 0
+  },
+  modalBackdrop: {
+    flex: 1,
+    justifyContent: "flex-end",
+    backgroundColor: "rgba(31, 39, 35, 0.42)"
+  },
+  modalCard: {
+    backgroundColor: colors.background,
+    borderTopLeftRadius: radius.lg,
+    borderTopRightRadius: radius.lg,
+    padding: 20,
+    paddingBottom: 30,
+    gap: 12
+  },
+  modalKicker: {
+    color: colors.coral,
+    fontSize: 13,
+    fontWeight: "900",
+    letterSpacing: 0,
+    textTransform: "uppercase"
+  },
+  modalTitle: {
+    color: colors.ink,
+    fontSize: 26,
+    lineHeight: 30,
+    fontWeight: "900",
+    letterSpacing: 0
+  },
+  modalText: {
+    color: colors.inkMuted,
+    fontSize: 15,
+    lineHeight: 22,
     letterSpacing: 0
   }
 });

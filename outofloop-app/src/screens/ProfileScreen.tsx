@@ -2,6 +2,7 @@ import { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 import {
   Image,
+  Modal,
   ScrollView,
   StyleSheet,
   Text,
@@ -60,6 +61,9 @@ export function ProfileScreen({
   const [draftName, setDraftName] = useState(user.name ?? "");
   const [draftEmail, setDraftEmail] = useState(user.email ?? "");
   const [draftPassword, setDraftPassword] = useState("");
+  const [missionsPaused, setMissionsPaused] = useState(false);
+  const [pauseOpen, setPauseOpen] = useState(false);
+  const [securityOpen, setSecurityOpen] = useState(false);
   const [draftUsername, setDraftUsername] = useState(user.username ?? "@tu");
   const [draftLocality, setDraftLocality] = useState(
     user.locality ?? "A tua zona"
@@ -146,7 +150,7 @@ export function ProfileScreen({
       allowsEditing: true,
       aspect: [1, 1],
       quality: 0.75,
-      mediaTypes: ImagePicker.MediaTypeOptions.Images
+      mediaTypes: ["images"]
     });
 
     if (!result.canceled && result.assets[0]?.uri) {
@@ -513,12 +517,76 @@ export function ProfileScreen({
       <View style={styles.card}>
         <Text style={styles.cardTitle}>Hoje nao da</Text>
         <Text style={styles.text}>
-          A app adapta as proximas missoes quando falta tempo, energia ou
-          vontade.
+          {missionsPaused
+            ? "Missoes pausadas. A app nao deve insistir quando precisas de espaco."
+            : "A app adapta as proximas missoes quando falta tempo, energia ou vontade."}
         </Text>
       </View>
-      <ActionButton variant="secondary">Pausar missoes</ActionButton>
-      <ActionButton variant="ghost">Seguranca e bloqueios</ActionButton>
+      <ActionButton variant="secondary" onPress={() => setPauseOpen(true)}>
+        {missionsPaused ? "Retomar missoes" : "Pausar missoes"}
+      </ActionButton>
+      <ActionButton variant="ghost" onPress={() => setSecurityOpen(true)}>
+        Seguranca e bloqueios
+      </ActionButton>
+
+      <Modal
+        animationType="slide"
+        transparent
+        visible={pauseOpen}
+        onRequestClose={() => setPauseOpen(false)}
+      >
+        <View style={styles.modalBackdrop}>
+          <View style={styles.modalCard}>
+            <Text style={styles.modalKicker}>Ritmo</Text>
+            <Text style={styles.modalTitle}>
+              {missionsPaused ? "Retomar missoes?" : "Pausar missoes?"}
+            </Text>
+            <Text style={styles.modalText}>
+              {missionsPaused
+                ? "Voltamos a mostrar sugestoes no Hoje."
+                : "A pausa reduz pressao. Podes voltar quando fizer sentido."}
+            </Text>
+            <ActionButton
+              onPress={() => {
+                setMissionsPaused(!missionsPaused);
+                setPauseOpen(false);
+              }}
+            >
+              {missionsPaused ? "Retomar" : "Pausar"}
+            </ActionButton>
+            <ActionButton variant="ghost" onPress={() => setPauseOpen(false)}>
+              Voltar
+            </ActionButton>
+          </View>
+        </View>
+      </Modal>
+
+      <Modal
+        animationType="slide"
+        transparent
+        visible={securityOpen}
+        onRequestClose={() => setSecurityOpen(false)}
+      >
+        <View style={styles.modalBackdrop}>
+          <View style={styles.modalCard}>
+            <Text style={styles.modalKicker}>Seguranca</Text>
+            <Text style={styles.modalTitle}>Controlos de seguranca</Text>
+            <Text style={styles.modalText}>
+              Podes reduzir convites nos circulos, esconder planos e enviar
+              sinais de seguranca. Esses controlos aparecem em Circulos e
+              Alinhar.
+            </Text>
+            <View style={styles.securityList}>
+              <Text style={styles.securityItem}>OK Nome, foto e localidade controlados por ti.</Text>
+              <Text style={styles.securityItem}>OK Sinais de seguranca sao privados.</Text>
+              <Text style={styles.securityItem}>OK Planos podem ser escondidos.</Text>
+            </View>
+            <ActionButton onPress={() => setSecurityOpen(false)}>
+              Entendi
+            </ActionButton>
+          </View>
+        </View>
+      </Modal>
     </ScrollView>
   );
 }
@@ -720,6 +788,52 @@ const styles = StyleSheet.create({
     color: colors.ink,
     paddingHorizontal: 13,
     fontSize: 15,
+    letterSpacing: 0
+  },
+  modalBackdrop: {
+    flex: 1,
+    justifyContent: "flex-end",
+    backgroundColor: "rgba(31, 39, 35, 0.42)"
+  },
+  modalCard: {
+    backgroundColor: colors.background,
+    borderTopLeftRadius: radius.lg,
+    borderTopRightRadius: radius.lg,
+    padding: 20,
+    paddingBottom: 30,
+    gap: 12
+  },
+  modalKicker: {
+    color: colors.coral,
+    fontSize: 13,
+    fontWeight: "900",
+    letterSpacing: 0,
+    textTransform: "uppercase"
+  },
+  modalTitle: {
+    color: colors.ink,
+    fontSize: 26,
+    lineHeight: 30,
+    fontWeight: "900",
+    letterSpacing: 0
+  },
+  modalText: {
+    color: colors.inkMuted,
+    fontSize: 15,
+    lineHeight: 22,
+    letterSpacing: 0
+  },
+  securityList: {
+    backgroundColor: colors.greenSoft,
+    borderRadius: radius.sm,
+    padding: 12,
+    gap: 7
+  },
+  securityItem: {
+    color: colors.ink,
+    fontSize: 14,
+    lineHeight: 20,
+    fontWeight: "700",
     letterSpacing: 0
   },
   pathCard: {
