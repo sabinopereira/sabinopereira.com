@@ -1,0 +1,49 @@
+{
+  "title": "Chess in the Block",
+  "author": "Sabino Pereira",
+  "language": "English",
+  "format": "Paperback and Kindle eBook",
+  "kdp_setup": {
+    "trim_size": "6 x 9 in",
+    "interior": "Black and white",
+    "paper": "White paper",
+    "bleed": "No bleed for interior",
+    "cover_finish": "Matte recommended",
+    "reading_direction": "Left to Right"
+  },
+  "files": {
+    "paperback_interior_pdf": "paperback/chess-in-the-block-paperback-interior-kdp.pdf",
+    "paperback_cover_pdf": "paperback/chess-in-the-block-paperback-cover-kdp.pdf",
+    "ebook_epub": "ebook/chess-in-the-block-kindle-ebook.epub",
+    "ebook_cover_jpg": "ebook/chess-in-the-block-ebook-cover.jpg",
+    "cover_preview_png": "previews/chess-in-the-block-paperback-spread-preview.png"
+  },
+  "description_en": "Chess in the Block is a reflective book about survival, silence, pressure, love, loss, class, family, and maturity. Using chess as a metaphor for life on the block, each piece becomes a way to understand the invisible strategies people use to survive without losing themselves.",
+  "keywords_suggested": [
+    "chess metaphor",
+    "urban life",
+    "survival",
+    "emotional growth",
+    "personal essays",
+    "resilience",
+    "family",
+    "masculinity",
+    "social class",
+    "self reflection"
+  ],
+  "categories_suggested": [
+    "Literary Collections / Essays",
+    "Self-Help / Personal Growth / General",
+    "Biography & Autobiography / Personal Memoirs",
+    "Social Science / Sociology / Urban"
+  ],
+  "print_specs": {
+    "page_count": 98,
+    "trim_width_in": 6.0,
+    "trim_height_in": 9.0,
+    "bleed_in": 0.125,
+    "spine_width_in": 0.220696,
+    "cover_width_in": 12.470696,
+    "cover_height_in": 9.25
+  }
+}
