@@ -14,6 +14,13 @@ export type AppPreferences = {
   hasChildren: boolean;
   maxMinutes: number;
   accessibility: string[];
+  smartHelp: {
+    suggestMissions: boolean;
+    improveCreatedPlans: boolean;
+    summarizeCircleFeedback: boolean;
+    useHistoryForRecommendations: boolean;
+    flagDiscomfortSignals: boolean;
+  };
 };
 
 export const defaultPreferences: AppPreferences = {
@@ -25,5 +32,12 @@ export const defaultPreferences: AppPreferences = {
   privateFirst: true,
   hasChildren: false,
   maxMinutes: 15,
-  accessibility: ["Locais calmos"]
+  accessibility: ["Locais calmos"],
+  smartHelp: {
+    suggestMissions: true,
+    improveCreatedPlans: true,
+    summarizeCircleFeedback: true,
+    useHistoryForRecommendations: true,
+    flagDiscomfortSignals: true
+  }
 };

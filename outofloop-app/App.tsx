@@ -73,6 +73,7 @@ function renderScreen(
   onMissionComplete: (mission: Mission) => void,
   onMemoryNoteChange: (memoryId: string, note: string) => void,
   onUserChange: (user: AppUser) => void,
+  onPreferencesChange: (preferences: AppPreferences) => void,
   onNavigate: (tab: TabKey) => void,
   notificationPreference: NotificationPreference,
   onEnableNotifications: () => void,
@@ -83,6 +84,7 @@ function renderScreen(
       return (
         <AlertsScreen
           plans={plans}
+          preferences={preferences}
           planStatuses={planStatuses}
           planResponses={planResponses}
           onPlanStatusChange={onPlanStatusChange}
@@ -99,6 +101,7 @@ function renderScreen(
       return (
         <AlignScreen
           plans={plans}
+          preferences={preferences}
           planStatuses={planStatuses}
           planResponses={planResponses}
           onPlanStatusChange={onPlanStatusChange}
@@ -120,6 +123,7 @@ function renderScreen(
           progress={progress}
           user={user}
           onUserChange={onUserChange}
+          onPreferencesChange={onPreferencesChange}
         />
       );
     case "today":
@@ -141,7 +145,11 @@ export default function App() {
   );
   const [preferences, setPreferences] = useState<AppPreferences>(() => ({
     ...defaultPreferences,
-    ...readStoredValue(storageKeys.preferences, defaultPreferences)
+    ...readStoredValue(storageKeys.preferences, defaultPreferences),
+    smartHelp: {
+      ...defaultPreferences.smartHelp,
+      ...readStoredValue(storageKeys.preferences, defaultPreferences).smartHelp
+    }
   }));
   const [user, setUser] = useState<AppUser>(() => ({
     ...defaultUser,
@@ -368,6 +376,7 @@ export default function App() {
           handleMissionComplete,
           handleMemoryNoteChange,
           setUser,
+          setPreferences,
           setActiveTab,
           notificationPreference,
           handleEnableNotifications,

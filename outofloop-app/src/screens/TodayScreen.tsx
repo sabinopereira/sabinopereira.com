@@ -3,6 +3,7 @@ import { Modal, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { ActionButton } from "../components/ActionButton";
 import { MissionCard } from "../components/MissionCard";
+import { SmartHint } from "../components/SmartHint";
 import { Mission, selectMissionOfTheDay } from "../data/missions.generated";
 import { AppPreferences } from "../data/preferences";
 import { colors, radius } from "../theme/colors";
@@ -179,17 +180,27 @@ export function TodayScreen({
           </View>
         </View>
       ) : (
-        <MissionCard
-          mission={todayMission}
-          onAccept={acceptMission}
-          onNotToday={() => setNotTodayOpen(true)}
-        />
+        <>
+          {preferences.smartHelp.suggestMissions ? (
+            <SmartHint
+              title="Ajuda inteligente"
+              text={`Esta missao encaixa no teu limite de ${preferences.maxMinutes} minutos e no foco "${todayMission.mode}".`}
+            />
+          ) : null}
+          <MissionCard
+            mission={todayMission}
+            onAccept={acceptMission}
+            onNotToday={() => setNotTodayOpen(true)}
+          />
+        </>
       )}
 
       <View style={styles.note}>
         <Text style={styles.noteTitle}>Porque esta missao?</Text>
         <Text style={styles.noteText}>
-          Porque uma coisa pequena pode ajudar-te a sair da rotina sem peso.
+          {preferences.smartHelp.suggestMissions
+            ? "Porque combina com as escolhas que fizeste no Perfil."
+            : "Porque uma coisa pequena pode ajudar-te a sair da rotina sem peso."}
         </Text>
       </View>
 

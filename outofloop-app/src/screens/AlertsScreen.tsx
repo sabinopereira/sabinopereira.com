@@ -4,8 +4,10 @@ import { ScrollView, StyleSheet, Text, View } from "react-native";
 import type { TabKey } from "../../App";
 import { ActionButton } from "../components/ActionButton";
 import { Pill } from "../components/Pill";
+import { SmartHint } from "../components/SmartHint";
 import { UpcomingPlan } from "../data/mockMissions";
 import { NotificationPreference } from "../data/notifications";
+import { AppPreferences } from "../data/preferences";
 import {
   PlanResponses,
   PlanStatus,
@@ -53,6 +55,7 @@ export function alertCountForPlans(
 
 export function AlertsScreen({
   plans,
+  preferences,
   planStatuses,
   planResponses,
   onPlanStatusChange,
@@ -63,6 +66,7 @@ export function AlertsScreen({
   onSendPlanReminder
 }: {
   plans: UpcomingPlan[];
+  preferences: AppPreferences;
   planStatuses: PlanStatuses;
   planResponses: PlanResponses;
   onPlanStatusChange: (planId: string, status: PlanStatus) => void;
@@ -184,6 +188,18 @@ export function AlertsScreen({
                   {suggestionFor(response?.notNowReason)}
                 </Text>
               </View>
+            ) : null}
+
+            {hasCreatorFeedback &&
+            preferences.smartHelp.summarizeCircleFeedback ? (
+              <SmartHint
+                title="Resumo inteligente"
+                text={
+                  response?.notNowReason
+                    ? suggestionFor(response.notNowReason)
+                    : "Ha interesse, mas ainda falta clareza. Reforca hora, local e custo."
+                }
+              />
             ) : null}
 
             <View style={styles.actions}>

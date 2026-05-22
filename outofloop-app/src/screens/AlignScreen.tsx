@@ -4,7 +4,9 @@ import { Modal, ScrollView, StyleSheet, Text, View } from "react-native";
 import { ActionButton } from "../components/ActionButton";
 import { MemberPreview } from "../components/MemberPreview";
 import { Pill } from "../components/Pill";
+import { SmartHint } from "../components/SmartHint";
 import { UpcomingPlan } from "../data/mockMissions";
+import { AppPreferences } from "../data/preferences";
 import {
   PlanResponses,
   PlanStatuses,
@@ -23,6 +25,7 @@ const notNowReasons = [
 
 export function AlignScreen({
   plans,
+  preferences,
   planStatuses,
   planResponses,
   onPlanStatusChange,
@@ -30,6 +33,7 @@ export function AlignScreen({
   onCheckIn
 }: {
   plans: UpcomingPlan[];
+  preferences: AppPreferences;
   planStatuses: PlanStatuses;
   planResponses: PlanResponses;
   onPlanStatusChange: (planId: string, status: PlanStatus) => void;
@@ -146,6 +150,20 @@ export function AlignScreen({
             <Text style={styles.detail}>{plan.time}</Text>
             <Text style={styles.detail}>{plan.place}</Text>
             <Text style={styles.accessibility}>{plan.accessibility}</Text>
+            {preferences.smartHelp.improveCreatedPlans &&
+            plan.host === "Tu" ? (
+              <SmartHint
+                title="Sugestao para o plano"
+                text="Antes de enviar outra vez, confirma hora, custo e ponto de encontro. Planos claros recebem respostas melhores."
+              />
+            ) : null}
+            {preferences.smartHelp.useHistoryForRecommendations &&
+            status === "open" ? (
+              <SmartHint
+                title="Pode encaixar contigo"
+                text={`E ${plan.costTier}, dura ${plan.durationLabel} e tem acessibilidade: ${plan.accessibility}.`}
+              />
+            ) : null}
             {safetyConcern ? (
               <View style={styles.safetySavedBox}>
                 <Text style={styles.safetySavedTitle}>
@@ -216,6 +234,12 @@ export function AlignScreen({
                   tirar duvidas.
                 </Text>
               </View>
+            ) : null}
+            {preferences.smartHelp.flagDiscomfortSignals && safetyConcern ? (
+              <SmartHint
+                title="Sinal a rever"
+                text="Este plano ficou marcado por ti. A app vai tratar isto com cuidado e reduzir insistencia."
+              />
             ) : null}
             {status === "checkedIn" ? (
               <View style={styles.doneBox}>

@@ -45,12 +45,14 @@ export function ProfileScreen({
   preferences,
   progress,
   user,
-  onUserChange
+  onUserChange,
+  onPreferencesChange
 }: {
   preferences: AppPreferences;
   progress: ProgressPath;
   user: AppUser;
   onUserChange: (user: AppUser) => void;
+  onPreferencesChange: (preferences: AppPreferences) => void;
 }) {
   const [showAccountForm, setShowAccountForm] = useState(false);
   const [draftName, setDraftName] = useState(user.name ?? "");
@@ -74,6 +76,37 @@ export function ProfileScreen({
     preferences.hasChildren ? "Tenho filhos" : null,
     ...preferences.accessibility
   ].filter(Boolean);
+  const smartHelpOptions: Array<{
+    key: keyof AppPreferences["smartHelp"];
+    label: string;
+    text: string;
+  }> = [
+    {
+      key: "suggestMissions",
+      label: "Sugerir missoes para mim",
+      text: "Ajustar ideias ao teu ritmo, tempo e energia."
+    },
+    {
+      key: "improveCreatedPlans",
+      label: "Melhorar planos que eu crio",
+      text: "Sugerir hora, local, custo e texto mais claro."
+    },
+    {
+      key: "summarizeCircleFeedback",
+      label: "Resumir feedback do circulo",
+      text: "Juntar sinais como hora dificil, custo alto ou falta de detalhes."
+    },
+    {
+      key: "useHistoryForRecommendations",
+      label: "Usar historico para recomendacoes",
+      text: "Aprender com o que aceitaste, adiaste ou completaste."
+    },
+    {
+      key: "flagDiscomfortSignals",
+      label: "Alertar sobre sinais de desconforto",
+      text: "Mostrar avisos suaves quando houver sinais a rever."
+    }
+  ];
 
   function saveAccount() {
     onUserChange({
@@ -100,6 +133,16 @@ export function ProfileScreen({
       username: draftUsername.trim() || "@tu",
       locality: draftLocality.trim() || "A tua zona",
       visibility
+    });
+  }
+
+  function toggleSmartHelp(key: keyof AppPreferences["smartHelp"]) {
+    onPreferencesChange({
+      ...preferences,
+      smartHelp: {
+        ...preferences.smartHelp,
+        [key]: !preferences.smartHelp[key]
+      }
     });
   }
 
@@ -341,6 +384,33 @@ export function ProfileScreen({
         </View>
       </View>
       <View style={styles.card}>
+        <Text style={styles.cardTitle}>Ajuda inteligente</Text>
+        <Text style={styles.text}>
+          A app pode usar ajuda inteligente por tras para sugerir, resumir e
+          melhorar planos. Tu decides o que fica ligado.
+        </Text>
+        <View style={styles.smartList}>
+          {smartHelpOptions.map((option) => {
+            const enabled = preferences.smartHelp[option.key];
+            return (
+              <View key={option.key} style={styles.smartItem}>
+                <View style={styles.smartCopy}>
+                  <Text style={styles.smartTitle}>{option.label}</Text>
+                  <Text style={styles.smartText}>{option.text}</Text>
+                </View>
+                <ActionButton
+                  variant={enabled ? "secondary" : "ghost"}
+                  style={styles.smartButton}
+                  onPress={() => toggleSmartHelp(option.key)}
+                >
+                  {enabled ? "Ligado" : "Desligado"}
+                </ActionButton>
+              </View>
+            );
+          })}
+        </View>
+      </View>
+      <View style={styles.card}>
         <Text style={styles.cardTitle}>Hoje nao da</Text>
         <Text style={styles.text}>
           A app adapta as proximas missoes quando falta tempo, energia ou
@@ -434,6 +504,34 @@ const styles = StyleSheet.create({
   },
   toggleButton: {
     flexGrow: 1
+  },
+  smartList: {
+    gap: 10
+  },
+  smartItem: {
+    backgroundColor: colors.surfaceMuted,
+    borderRadius: radius.sm,
+    padding: 12,
+    gap: 10
+  },
+  smartCopy: {
+    gap: 3
+  },
+  smartTitle: {
+    color: colors.ink,
+    fontSize: 15,
+    fontWeight: "900",
+    letterSpacing: 0
+  },
+  smartText: {
+    color: colors.inkMuted,
+    fontSize: 13,
+    lineHeight: 18,
+    letterSpacing: 0
+  },
+  smartButton: {
+    alignSelf: "flex-start",
+    minWidth: 116
   },
   accountForm: {
     gap: 8
