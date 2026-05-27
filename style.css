@@ -264,6 +264,7 @@ body.author-dark-home .author-language-switch a.is-active {
 }
 
 .dark-work-card strong,
+.dark-track-list a,
 .dark-track-list span {
   display: block;
   color: var(--dark-ink);
@@ -361,9 +362,14 @@ body.author-dark-home .author-language-switch a.is-active {
   border-top: 1px solid var(--dark-line);
 }
 
+.dark-track-list a,
 .dark-track-list span {
   padding: 16px 0;
   border-bottom: 1px solid rgba(246, 239, 229, 0.12);
+}
+
+.dark-track-list a:hover {
+  color: var(--dark-gold);
 }
 
 body.author-dark-home .author-footer {
