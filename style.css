@@ -102,6 +102,38 @@ body.author-dark-home .author-language-switch a.is-active {
   color: var(--dark-gold);
 }
 
+body.author-dark-home .author-nav a.author-nav-music,
+body.author-dark-home .author-nav a.author-nav-music:visited {
+  display: grid !important;
+  gap: 1px !important;
+  padding: 3px 0 !important;
+  color: var(--dark-ink) !important;
+  line-height: 1.05 !important;
+}
+
+body.author-dark-home .author-nav-music strong {
+  display: block;
+  color: var(--dark-ink);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+body.author-dark-home .author-nav-music span {
+  display: block;
+  color: var(--dark-gold);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+body.author-dark-home .author-nav a.author-nav-music:hover strong,
+body.author-dark-home .author-nav a.author-nav-music:hover span {
+  color: var(--dark-gold);
+}
+
 .dark-home-main {
   display: grid;
   gap: 0;
@@ -15612,6 +15644,38 @@ body.author-dark-home .author-nav a:hover,
 body.author-dark-home .author-nav a.is-active,
 body.author-dark-home .author-language-switch a:hover,
 body.author-dark-home .author-language-switch a.is-active {
+  color: var(--dark-gold) !important;
+}
+
+body.author-dark-home .author-nav a.author-nav-music,
+body.author-dark-home .author-nav a.author-nav-music:visited {
+  display: grid !important;
+  gap: 1px !important;
+  padding: 3px 0 !important;
+  color: var(--dark-ink) !important;
+  line-height: 1.05 !important;
+}
+
+body.author-dark-home .author-nav-music strong {
+  display: block !important;
+  color: var(--dark-ink) !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+}
+
+body.author-dark-home .author-nav-music span {
+  display: block !important;
+  color: var(--dark-gold) !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
+
+body.author-dark-home .author-nav a.author-nav-music:hover strong,
+body.author-dark-home .author-nav a.author-nav-music:hover span {
   color: var(--dark-gold) !important;
 }
 
