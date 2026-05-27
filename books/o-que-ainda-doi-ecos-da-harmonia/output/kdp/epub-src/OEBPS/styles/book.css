@@ -1,0 +1,62 @@
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.45;
+  color: #1b1d1f;
+}
+h1, h2 {
+  font-family: sans-serif;
+  font-weight: 300;
+  text-align: center;
+}
+h1 {
+  margin-top: 25%;
+  letter-spacing: 0.04em;
+}
+h2 {
+  margin-top: 18%;
+}
+p {
+  margin: 0 0 0.75em;
+}
+.metadata {
+  font-family: sans-serif;
+  font-size: 0.9em;
+  color: #444;
+}
+.screen {
+  font-family: sans-serif;
+  text-align: center;
+  letter-spacing: 0.08em;
+  font-size: 0.9em;
+}
+.frontmatter {
+  margin-top: 20%;
+  text-align: center;
+}
+.frontmatter-title {
+  font-family: sans-serif;
+  font-size: 1.8em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.frontmatter-subtitle {
+  font-family: sans-serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.frontmatter-author, .frontmatter-text {
+  margin-top: 2em;
+}
+.epigraph-text {
+  margin-top: 35%;
+  font-style: italic;
+  text-align: center;
+}
+.cover {
+  text-align: center;
+}
+.cover img {
+  max-width: 100%;
+  height: auto;
+}

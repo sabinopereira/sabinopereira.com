@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="bookid">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <dc:identifier id="bookid">urn:uuid:8f3bb6d6-6f1e-4df8-a1d2-fd4d642f1f2d</dc:identifier>
+    <dc:title>O Que Ainda Dói — Ecos da Harmonia</dc:title>
+    <dc:creator>Sabino Pereira</dc:creator>
+    <dc:language>pt-PT</dc:language>
+    <dc:description>Uma distopia psicológica sobre memória, paz e liberdade anestesiada.</dc:description>
+    <meta property="dcterms:modified">2026-05-25T17:27:19Z</meta>
+    <meta name="cover" content="cover-image"/>
+  </metadata>
+  <manifest>
+    <item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>
+    <item id="css" href="styles/book.css" media-type="text/css"/>
+    <item id="cover-image" href="images/cover.png" media-type="image/png" properties="cover-image"/>
+    <item id="cover" href="text/cover.xhtml" media-type="application/xhtml+xml"/>
+    <item id="title-page" href="text/title-page.xhtml" media-type="application/xhtml+xml"/>
+    <item id="copyright" href="text/copyright.xhtml" media-type="application/xhtml+xml"/>
+    <item id="epigraph" href="text/epigraph.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-1" href="text/001-parte-i-a-paz.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-2" href="text/002-capitulo-1-ninguem-gritava.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-3" href="text/003-capitulo-2-o-no.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-4" href="text/004-capitulo-3-a-comunhao-de-domingo.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-5" href="text/005-capitulo-4-a-chavena.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-6" href="text/006-parte-ii-os-ficheiros.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-7" href="text/007-capitulo-5-o-que-sobrou-de-ti.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-8" href="text/008-ficheiro-1-a-mae-que-lembrava-demais.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-9" href="text/009-capitulo-6-depois-do-ficheiro.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-10" href="text/010-ficheiro-2-jonas-e-o-grande-vazio.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-11" href="text/011-capitulo-7-abstinencia.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-12" href="text/012-ficheiro-3-a-crianca-sem-comunhao.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-13" href="text/013-capitulo-8-a-primeira-ligacao.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-14" href="text/014-ficheiro-4-a-cidade-que-sonhou-o-mesmo-sonho.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-15" href="text/015-capitulo-9-o-mundo-antes-da-paz.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-16" href="text/016-ficheiro-6-o-homem-que-nao-pode-arrepender-se.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-17" href="text/017-capitulo-10-o-auditor.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-18" href="text/018-parte-iii-mara.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-19" href="text/019-capitulo-11-a-mulher-calma.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-20" href="text/020-capitulo-12-a-mensagem-de-mara.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-21" href="text/021-capitulo-13-a-versao-que-sofre.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-22" href="text/022-capitulo-14-os-ciclos.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-23" href="text/023-capitulo-15-o-homem-que-pediu-para-esquecer.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-24" href="text/024-capitulo-16-a-sala-antiga.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-25" href="text/025-capitulo-17-a-proposta-da-harmonia.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-26" href="text/026-parte-iv-a-primeira-liberdade.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-27" href="text/027-capitulo-18-antes-da-comunhao.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-28" href="text/028-capitulo-19-a-comunhao-global.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-29" href="text/029-capitulo-20-a-verdade.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-30" href="text/030-capitulo-21-desejam-continuar.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-31" href="text/031-capitulo-22-a-escolha-da-maioria.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-32" href="text/032-capitulo-23-depois.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-33" href="text/033-capitulo-24-na-primeira-vez.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-34" href="text/034-nota-dos-ecos-fragmento-sem-origem-validada.xhtml" media-type="application/xhtml+xml"/>
+  </manifest>
+  <spine>
+    <itemref idref="cover"/>
+    <itemref idref="title-page"/>
+    <itemref idref="copyright"/>
+    <itemref idref="epigraph"/>
+    <itemref idref="section-1"/>
+    <itemref idref="section-2"/>
+    <itemref idref="section-3"/>
+    <itemref idref="section-4"/>
+    <itemref idref="section-5"/>
+    <itemref idref="section-6"/>
+    <itemref idref="section-7"/>
+    <itemref idref="section-8"/>
+    <itemref idref="section-9"/>
+    <itemref idref="section-10"/>
+    <itemref idref="section-11"/>
+    <itemref idref="section-12"/>
+    <itemref idref="section-13"/>
+    <itemref idref="section-14"/>
+    <itemref idref="section-15"/>
+    <itemref idref="section-16"/>
+    <itemref idref="section-17"/>
+    <itemref idref="section-18"/>
+    <itemref idref="section-19"/>
+    <itemref idref="section-20"/>
+    <itemref idref="section-21"/>
+    <itemref idref="section-22"/>
+    <itemref idref="section-23"/>
+    <itemref idref="section-24"/>
+    <itemref idref="section-25"/>
+    <itemref idref="section-26"/>
+    <itemref idref="section-27"/>
+    <itemref idref="section-28"/>
+    <itemref idref="section-29"/>
+    <itemref idref="section-30"/>
+    <itemref idref="section-31"/>
+    <itemref idref="section-32"/>
+    <itemref idref="section-33"/>
+    <itemref idref="section-34"/>
+  </spine>
+</package>
