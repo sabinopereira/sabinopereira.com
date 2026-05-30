@@ -404,6 +404,47 @@ body.author-dark-home .author-nav a.author-nav-music:hover span {
   color: var(--dark-gold);
 }
 
+.dark-single-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 760px;
+  margin-top: 30px;
+}
+
+.dark-single-card {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  min-height: 128px;
+  padding: 14px;
+  border: 1px solid rgba(246, 239, 229, 0.14);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.dark-single-card img {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border: 1px solid rgba(246, 239, 229, 0.18);
+}
+
+.dark-single-card strong {
+  display: block;
+  color: var(--dark-ink);
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.dark-single-card span {
+  display: block;
+  margin-top: 8px;
+  color: var(--dark-muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
 body.author-dark-home .author-footer {
   display: flex;
   align-items: center;
@@ -451,6 +492,10 @@ body.author-dark-home .author-footer a:hover {
   .dark-editorial,
   .dark-feature,
   .dark-music {
+    grid-template-columns: 1fr;
+  }
+
+  .dark-single-grid {
     grid-template-columns: 1fr;
   }
 
