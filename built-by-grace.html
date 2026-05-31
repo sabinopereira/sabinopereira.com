@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Built by Grace — Coming Soon | Sabino Pereira</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Built by Grace, a coming-soon spiritual love journey by Sabino Pereira about prayer, healing, love, home, and God in the center.">
+  <meta name="author" content="Sabino Pereira">
+  <link rel="canonical" href="https://sabinopereira.com/built-by-grace.html">
+  <meta property="og:title" content="Built by Grace — Coming Soon">
+  <meta property="og:description" content="A Journey of Prayer, Healing, Love, and God in the Center. Coming soon from Sabino Pereira.">
+  <meta property="og:type" content="book">
+  <meta property="og:url" content="https://sabinopereira.com/built-by-grace.html">
+  <meta property="og:image" content="https://sabinopereira.com/images/built-by-grace-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Built by Grace — Coming Soon">
+  <meta name="twitter:description" content="A Journey of Prayer, Healing, Love, and God in the Center.">
+  <meta name="twitter:image" content="https://sabinopereira.com/images/built-by-grace-cover.jpg">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEVDEH8PGZ"></script>
+  <script src="/analytics.js"></script>
+  <link rel="icon" type="image/svg+xml" href="/images/sp-favicon.svg">
+  <link rel="apple-touch-icon" href="/images/sp-favicon.svg">
+  <link rel="stylesheet" href="/style.css?v=25">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --grace-ink: #f8ecd7;
+      --grace-muted: #d8c1a0;
+      --grace-gold: #d59a44;
+      --grace-amber: #f0c56a;
+      --grace-brown: #1d120b;
+      --grace-deep: #070504;
+      --grace-line: rgba(240, 197, 106, 0.28);
+    }
+
+    body.built-by-grace-page {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        linear-gradient(90deg, rgba(7, 5, 4, 0.96), rgba(7, 5, 4, 0.84) 46%, rgba(7, 5, 4, 0.94)),
+        linear-gradient(180deg, rgba(7, 5, 4, 0.62), rgba(7, 5, 4, 0.98)),
+        url("/images/built-by-grace-cover.jpg");
+      background-size: cover;
+      background-position: center;
+      color: var(--grace-ink);
+      font-family: "EB Garamond", Georgia, serif;
+      overflow-x: hidden;
+    }
+
+    .grace-shell {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      background: radial-gradient(circle at 42% 22%, rgba(213, 154, 68, 0.2), transparent 28rem);
+    }
+
+    .grace-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 22px clamp(18px, 4vw, 64px);
+      border-bottom: 1px solid rgba(248, 236, 215, 0.14);
+      background: rgba(7, 5, 4, 0.62);
+      backdrop-filter: blur(18px);
+    }
+
+    .grace-brand {
+      color: var(--grace-ink);
+      text-decoration: none;
+      font-family: "Cinzel", serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .grace-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .grace-nav a {
+      color: rgba(248, 236, 215, 0.78);
+      font-family: "Courier Prime", monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .grace-nav a:hover,
+    .grace-nav a.is-active {
+      color: var(--grace-amber);
+    }
+
+    .grace-main {
+      display: grid;
+      align-items: center;
+      padding: clamp(34px, 6vw, 76px) clamp(18px, 5vw, 84px);
+    }
+
+    .grace-hero {
+      display: grid;
+      grid-template-columns: minmax(260px, 390px) minmax(0, 660px);
+      gap: clamp(30px, 5vw, 68px);
+      align-items: center;
+      max-width: 1160px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .grace-cover-wrap {
+      position: relative;
+      width: min(100%, 420px);
+      justify-self: center;
+    }
+
+    .grace-cover-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 18px -18px -22px 18px;
+      border: 1px solid var(--grace-line);
+      background: rgba(29, 18, 11, 0.38);
+    }
+
+    .grace-cover {
+      position: relative;
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      box-shadow: 0 34px 90px rgba(0, 0, 0, 0.62);
+      border: 1px solid rgba(248, 236, 215, 0.18);
+    }
+
+    .grace-kicker {
+      margin: 0 0 18px;
+      color: var(--grace-amber);
+      font-family: "Courier Prime", monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .grace-title {
+      max-width: 640px;
+      margin: 0;
+      color: var(--grace-ink);
+      font-family: "Cinzel", serif;
+      font-size: clamp(44px, 5.4vw, 74px);
+      line-height: 0.96;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      text-shadow: 0 14px 44px rgba(0, 0, 0, 0.55);
+      overflow-wrap: normal;
+    }
+
+    .grace-subtitle {
+      max-width: 620px;
+      margin: 22px 0 0;
+      color: #f2d6ab;
+      font-size: clamp(22px, 2.5vw, 30px);
+      font-style: italic;
+      line-height: 1.22;
+    }
+
+    .grace-copy {
+      max-width: 620px;
+      margin: 24px 0 0;
+      color: rgba(248, 236, 215, 0.84);
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.48;
+    }
+
+    .grace-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 28px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .grace-tags li {
+      border: 1px solid rgba(240, 197, 106, 0.34);
+      background: rgba(7, 5, 4, 0.38);
+      color: #f1d2a4;
+      padding: 8px 12px;
+      font-family: "Courier Prime", monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .grace-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .grace-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 22px;
+      border: 1px solid var(--grace-gold);
+      background: var(--grace-gold);
+      color: #160e08;
+      font-family: "Cinzel", serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .grace-button--ghost {
+      background: rgba(7, 5, 4, 0.3);
+      color: var(--grace-ink);
+    }
+
+    .grace-note {
+      max-width: 1160px;
+      margin: clamp(34px, 5vw, 68px) auto 0;
+      padding: 22px clamp(18px, 4vw, 34px);
+      border-left: 3px solid var(--grace-gold);
+      background: rgba(7, 5, 4, 0.48);
+      color: rgba(248, 236, 215, 0.85);
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.5;
+    }
+
+    .grace-footer {
+      padding: 22px clamp(18px, 4vw, 64px);
+      border-top: 1px solid rgba(248, 236, 215, 0.12);
+      color: rgba(248, 236, 215, 0.58);
+      font-family: "Courier Prime", monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 820px) {
+      .grace-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .grace-nav {
+        justify-content: flex-start;
+      }
+
+      .grace-main {
+        align-items: start;
+        padding-top: 34px;
+      }
+
+      .grace-hero {
+        grid-template-columns: 1fr;
+        gap: 26px;
+      }
+
+      .grace-cover-wrap {
+        width: min(78vw, 330px);
+      }
+
+      .grace-title,
+      .grace-subtitle,
+      .grace-copy {
+        max-width: 100%;
+      }
+
+      .grace-title {
+        font-size: clamp(40px, 13vw, 58px);
+        line-height: 0.98;
+        overflow-wrap: anywhere;
+      }
+
+      .grace-subtitle {
+        font-size: 23px;
+      }
+
+      .grace-copy {
+        font-size: 19px;
+      }
+
+      .grace-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .grace-button {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body class="built-by-grace-page">
+  <div class="grace-shell">
+    <header class="grace-header">
+      <a class="grace-brand" href="/">Sabino Pereira</a>
+      <nav class="grace-nav" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a class="is-active" href="/books.html">Books</a>
+        <a href="/series.html">Series</a>
+        <a href="/#music">Music</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main class="grace-main">
+      <section class="grace-hero" aria-labelledby="built-by-grace-title">
+        <div class="grace-cover-wrap">
+          <img class="grace-cover" src="/images/built-by-grace-cover.jpg" alt="Built by Grace book cover">
+        </div>
+        <div class="grace-copy-block">
+          <p class="grace-kicker">Coming Soon · Book + Album Journey</p>
+          <h1 class="grace-title" id="built-by-grace-title">Built by Grace</h1>
+          <p class="grace-subtitle">A Journey of Prayer, Healing, Love, and God in the Center</p>
+          <p class="grace-copy">A short spiritual love journey about a heart being prepared, healed, softened, and taught how to love with prayer, honesty, mercy, home, and God at the center of what is still becoming.</p>
+          <ul class="grace-tags" aria-label="Book themes">
+            <li>Prayer</li>
+            <li>Healing</li>
+            <li>Love</li>
+            <li>Home</li>
+            <li>Grace</li>
+          </ul>
+          <div class="grace-actions">
+            <a class="grace-button" href="/books.html">Back to Books</a>
+            <a class="grace-button grace-button--ghost" href="/#music">Listen to Reira Bin</a>
+          </div>
+        </div>
+      </section>
+
+      <aside class="grace-note">
+        This is not a perfect love story. It is a prayed-over one. Built slowly. Held gently. Covered completely. By grace.
+      </aside>
+    </main>
+
+    <footer class="grace-footer">
+      &copy; 2026 Sabino Pereira. Built by Grace.
+    </footer>
+  </div>
+</body>
+</html>
