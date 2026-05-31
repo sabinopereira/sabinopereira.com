@@ -518,6 +518,112 @@
       color: #554d45;
     }
 
+    .music-repertoire-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .music-release-card {
+      border: 1px solid rgba(61, 35, 20, 0.14);
+      background: rgba(253, 252, 247, 0.64);
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+      min-height: 172px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s, background-color 0.25s;
+    }
+
+    .music-release-card:hover,
+    .music-release-card.is-active {
+      transform: translateY(-3px);
+      border-color: var(--gold-accent);
+      background: #fdfcf7;
+      box-shadow: 0 8px 22px rgba(61, 35, 20, 0.08);
+    }
+
+    .music-release-cover {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 6px;
+      object-fit: cover;
+      border: 1px solid rgba(61, 35, 20, 0.12);
+    }
+
+    .music-release-cover--type {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--forest-green);
+      color: var(--gold-bright);
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-align: center;
+      padding: 12px;
+    }
+
+    .music-release-name {
+      font-family: 'Courier Prime', monospace;
+      font-size: 9px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      line-height: 1.25;
+      font-weight: 700;
+    }
+
+    .music-release-card.is-active .music-release-name {
+      color: var(--gold-accent);
+    }
+
+    .music-release-count {
+      font-family: 'Courier Prime', monospace;
+      font-size: 8px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .music-tracklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 18px;
+      padding: 18px;
+      border: 1px solid rgba(201, 155, 66, 0.24);
+      border-radius: 8px;
+      background: rgba(253, 252, 247, 0.48);
+      max-height: 230px;
+      overflow: auto;
+    }
+
+    .music-track-row {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 8px;
+      align-items: baseline;
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      color: #5e5349;
+      line-height: 1.35;
+    }
+
+    .music-track-row span:first-child {
+      color: var(--gold-accent);
+      font-weight: 700;
+    }
+
+    .music-player-note {
+      font-family: 'Courier Prime', monospace !important;
+      font-size: 12px !important;
+      color: var(--text-muted) !important;
+      margin-top: 0 !important;
+    }
+
     /* THE GORGEOUS VINTAGE TURNTABLE GRAMOPHONE CONSOLE */
     .vintage-turntable-console {
       background: var(--walnut-wood);
@@ -583,6 +689,15 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    .vinyl-center-label[data-label]::after {
+      content: attr(data-label);
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--walnut-wood);
+      letter-spacing: 1px;
     }
 
     .vinyl-spindle-hole {
@@ -1260,6 +1375,15 @@
         gap: 40px;
       }
 
+      .music-repertoire-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .music-tracklist {
+        grid-template-columns: 1fr;
+        max-height: 280px;
+      }
+
       .essay-card-parchment {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -1320,6 +1444,10 @@
       .vinyl-center-label {
         width: 60px;
         height: 60px;
+      }
+
+      .music-repertoire-grid {
+        grid-template-columns: 1fr;
       }
     }
   
@@ -1564,37 +1692,48 @@
   <!-- COZY VINTAGE MUSIC PLAYBACK BLOCK -->
   <section class="cozy-section" id="music">
     <div class="cozy-section-header">
-      <span class="cozy-section-eyebrow">Cinematic Echoes</span>
-      <h2 class="cozy-section-title">The Music Studio</h2>
+      <span class="cozy-section-eyebrow">Reira Bin Music</span>
+      <h2 class="cozy-section-title">The Musical Repertoire</h2>
     </div>
 
     <div class="cozy-music-block">
       <div class="cozy-music-grid">
         <div class="music-cozy-copy">
           <h3 id="m-album-title">Built by Grace</h3>
-          <h4 id="m-track-title" style="font-family: 'Cinzel', serif; font-size: 20px; color: var(--gold-accent); margin-top: -12px;">Track: God Sent Me You</h4>
-          <p id="m-desc">A soaring cinematic gospel album blending rich devotion with classical orchestration, reflecting on absolute grace under pressure.</p>
-          
-          <!-- Gorgeous visual album rack -->
-          <div class="album-brass-selectors" style="display: flex; gap: 20px; margin-top: 24px;">
-            <!-- Album 1: Built by Grace -->
-            <div class="music-rack-item" id="rack-grace" onclick="selectCozyAlbum('grace')" style="cursor: pointer; text-align: center; width: 90px; transition: transform 0.3s, opacity 0.3s;">
-              <img src="/images/optimized/built-by-grace-cover.png" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 6px; border: 2px solid var(--gold-accent); box-shadow: 0 4px 10px rgba(0,0,0,0.15);" alt="Built by Grace">
-              <span style="font-family: 'Courier Prime', monospace; font-size: 8px; color: var(--gold-accent); margin-top: 6px; display: block; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Built by Grace</span>
-            </div>
-            <!-- Album 2: Checkmate in Silence -->
-            <div class="music-rack-item" id="rack-silence" onclick="selectCozyAlbum('silence')" style="cursor: pointer; text-align: center; width: 90px; transition: transform 0.3s, opacity 0.3s; opacity: 0.6;">
-              <img src="/images/optimized/healing-is-coming-single.png" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 10px rgba(0,0,0,0.1);" alt="Checkmate in Silence">
-              <span style="font-family: 'Courier Prime', monospace; font-size: 8px; color: var(--text-muted); margin-top: 6px; display: block; text-transform: uppercase; letter-spacing: 0.5px;">In Silence</span>
-            </div>
-            <!-- Album 3: Everybody Acting Insane -->
-            <div class="music-rack-item" id="rack-insane" onclick="selectCozyAlbum('insane')" style="cursor: pointer; text-align: center; width: 90px; transition: transform 0.3s, opacity 0.3s; opacity: 0.6;">
-              <img src="/images/optimized/goodness-and-mercy-single.png" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 10px rgba(0,0,0,0.1);" alt="Everybody Acting Insane">
-              <span style="font-family: 'Courier Prime', monospace; font-size: 8px; color: var(--text-muted); margin-top: 6px; display: block; text-transform: uppercase; letter-spacing: 0.5px;">Acting Insane</span>
-            </div>
+          <h4 id="m-track-title" style="font-family: 'Cinzel', serif; font-size: 20px; color: var(--gold-accent); margin-top: -12px;">18 tracks</h4>
+          <p id="m-desc">A real repertoire by Reira Bin: albums, singles, and book-inspired music. Select a collection to see the tracks, then listen to the full releases on Spotify, Apple Music, or YouTube.</p>
+
+          <div class="music-repertoire-grid" aria-label="Reira Bin music repertoire">
+            <button class="music-release-card is-active" id="rack-grace" type="button" onclick="selectCozyAlbum('grace')">
+              <img class="music-release-cover" src="/images/optimized/built-by-grace-cover.png" alt="Built by Grace cover">
+              <span class="music-release-name">Built by Grace</span>
+              <span class="music-release-count">18 tracks</span>
+            </button>
+            <button class="music-release-card" id="rack-silence" type="button" onclick="selectCozyAlbum('silence')">
+              <img class="music-release-cover" src="/images/optimized/checkmate-in-silence-cover.png" alt="Checkmate in Silence cover">
+              <span class="music-release-name">Checkmate in Silence</span>
+              <span class="music-release-count">19 tracks</span>
+            </button>
+            <button class="music-release-card" id="rack-insane" type="button" onclick="selectCozyAlbum('insane')">
+              <img class="music-release-cover" src="/images/optimized/everybody-acting-insane-cover.png" alt="Everybody Acting Insane cover">
+              <span class="music-release-name">Everybody Acting Insane</span>
+              <span class="music-release-count">13 tracks</span>
+            </button>
+            <button class="music-release-card" id="rack-cabo" type="button" onclick="selectCozyAlbum('cabo')">
+              <span class="music-release-cover music-release-cover--type">CV</span>
+              <span class="music-release-name">Cabo Verde Campeão</span>
+              <span class="music-release-count">3 tracks</span>
+            </button>
+            <button class="music-release-card" id="rack-xadrez" type="button" onclick="selectCozyAlbum('xadrez')">
+              <img class="music-release-cover" src="/images/optimized/xadrez-no-comando-cover.png" alt="Xadrez no Comando cover">
+              <span class="music-release-name">Xadrez no Comando</span>
+              <span class="music-release-count">9 videos</span>
+            </button>
           </div>
 
-          <p style="font-size: 13px; font-family: 'Courier Prime', monospace; color: var(--text-muted); margin-top: 24px;">Press the golden dial switch on the vintage console to play a preview directly from the selected vinyl deck.</p>
+          <div class="music-tracklist" id="music-tracklist"></div>
+
+          <p class="music-player-note" id="m-player-note">The player keeps a local preview for God Sent Me You. Full albums open on the official platforms.</p>
           
           <!-- Streaming links row -->
           <div class="cozy-music-streaming" style="display: flex; gap: 14px; margin-top: 28px; flex-wrap: wrap;">
@@ -1605,6 +1744,10 @@
             <a href="https://music.apple.com/pt/artist/reira-bin/6774230941?l=en-GB" target="_blank" rel="noopener" class="author-button author-button--secondary" style="padding: 10px 20px; font-size: 11px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm1.062 13.916c-.035.034-.078.055-.123.061-.832.113-1.64.444-2.316.974-.69.54-1.242 1.258-1.597 2.078-.052.12-.132.222-.232.298-.44.33-.99.516-1.554.524-.467-.007-.92-.128-1.32-.352-.393-.223-.715-.551-.933-.948-.211-.383-.314-.816-.301-1.252.016-.867.387-1.693 1.028-2.285.656-.606 1.53-.945 2.436-.947.247.001.493.028.736.082.046.01.092-.001.129-.03.036-.03.056-.073.056-.12V8.92c0-.505.31-.955.787-1.127l3.633-1.312c.5-.181 1.05.19 1.05.727v6.621c0 .034-.009.068-.026.097-.247.411-.38.878-.387 1.354.004.536.177 1.054.493 1.477.306.41.745.71 1.243.85.485.138.995.143 1.483.013a3.52 3.52 0 001.218-.62c.07-.058.115-.143.125-.236.147-.947-.074-1.921-.617-2.72-.519-.766-1.37-1.241-2.295-1.282-.135-.006-.27-.008-.405-.005-.046.001-.092-.01-.129-.03-.036-.03-.056-.073-.056-.12V10.15c0-.056-.046-.102-.102-.102l-3.34.803c-.046.011-.082.048-.093.094-.01.046.002.094.032.129.03.035.046.08.046.127v4.618z"/></svg>
               Listen on Apple Music
+            </a>
+            <a href="https://www.youtube.com/channel/UCD-jI8Sr1hCkif3UHIAGegA" target="_blank" rel="noopener" class="author-button author-button--secondary" style="padding: 10px 20px; font-size: 11px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M21.58 7.19a2.52 2.52 0 00-1.77-1.79C18.25 5 12 5 12 5s-6.25 0-7.81.4a2.52 2.52 0 00-1.77 1.79A26.3 26.3 0 002 12a26.3 26.3 0 00.42 4.81 2.52 2.52 0 001.77 1.79C5.75 19 12 19 12 19s6.25 0 7.81-.4a2.52 2.52 0 001.77-1.79A26.3 26.3 0 0022 12a26.3 26.3 0 00-.42-4.81zM10 15V9l5.2 3L10 15z"/></svg>
+              Watch on YouTube
             </a>
           </div>
           
@@ -1835,21 +1978,113 @@
     const musicData = {
       'grace': {
         album: 'Built by Grace',
-        track: 'God Sent Me You',
-        desc: 'A soaring cinematic gospel album blending rich devotion with classical orchestration, reflecting on absolute grace under pressure.',
-        cover: '/images/optimized/built-by-grace-cover.png'
+        track: '18 tracks',
+        desc: 'A cinematic gospel album about devotion, repair, family prayer, mercy, grace, and love without fear.',
+        cover: '/images/optimized/built-by-grace-cover.png',
+        previewSrc: '/audio/god-sent-me-you.mp3',
+        note: 'The player keeps a local preview for God Sent Me You. Full albums open on the official platforms.',
+        tracks: [
+          'The Prayer Before Love',
+          'A Heart Prepared',
+          'Its Safe to Love Again',
+          'Love Shouldnt Feel Like Fear',
+          'Teach Us Love',
+          'You Stayed',
+          'God in the Center',
+          'Healing Is Coming - Grace Is Still Fighting',
+          'Mercy Over Fear - Let Mercy Rise',
+          'God Sent Me You',
+          'No Silent Walls',
+          'Goodness and Mercy - Mercy Found Me',
+          'Family Prayer - Built by Grace',
+          'The Home Prayer',
+          'Built by Grace',
+          'No Silent Walls - Bonus Version',
+          'God in the Center - Before We Say I Do',
+          'God in the Center - Final Version'
+        ]
       },
       'silence': {
-        album: 'CHECKMATE IN SILENCE',
-        track: 'Healing is Coming',
-        desc: 'A cinematic ambient album reflecting on strategic silence, emotional recovery, and the strength of a quiet mind.',
-        cover: '/images/optimized/healing-is-coming-single.png'
+        album: 'Checkmate in Silence',
+        track: '19 tracks',
+        desc: 'A chess-shaped cinematic project about quiet strategy, pressure, concrete rooms, hidden maps, and endgame movement.',
+        cover: '/images/optimized/checkmate-in-silence-cover.png',
+        note: 'Select the collection here, then open Spotify, Apple Music, or YouTube for the complete album.',
+        tracks: [
+          'Squares Nobody Sees',
+          'One Square Forward',
+          'The Board Is Heavy',
+          'The Knight Moves Different',
+          "The Knight's Move",
+          'L-Shaped Logic',
+          'The Architecture of the Mess',
+          'Gap Between the Words',
+          'The Load-Bearing Wall',
+          'Empire of Stone',
+          'Maps of Her Hands',
+          'Tailored Cage',
+          'Kings Fall Quietly',
+          'Concrete Checkerboard',
+          'Air in My Lungs',
+          'Walking Into the Day',
+          'The Losing Side',
+          'Three Postcodes Behind',
+          'Sunlight on the Tracks'
+        ]
       },
       'insane': {
-        album: 'EVERYBODY ACTING INSANE',
-        track: 'Goodness and Mercy',
-        desc: 'A deep, slightly dramatic and intense cinematic theme observing societal noise, panic, and the search for calm.',
-        cover: '/images/optimized/goodness-and-mercy-single.png'
+        album: 'Everybody Acting Insane',
+        track: '13 tracks',
+        desc: 'A satirical cinematic album about algorithms, social performance, digital noise, and the absurd theatre of modern life.',
+        cover: '/images/optimized/everybody-acting-insane-cover.png',
+        note: 'Select the collection here, then open Spotify, Apple Music, or YouTube for the complete album.',
+        tracks: [
+          'Clown House',
+          'Everybody Acting Insane',
+          'Smile For The Algorithm',
+          'Main Character Syndrome',
+          'Soft Apocalypse',
+          'The Laughing Room',
+          'Beautiful People, Empty Souls',
+          'Offline Feels Illegal',
+          'Relationship DLC',
+          'Church Of Notifications',
+          'Dead Inside But Trending',
+          'End Credits For Humanity',
+          'Everybody Laughs Again'
+        ]
+      },
+      'cabo': {
+        album: 'Cabo Verde Campeão',
+        track: '3 tracks',
+        desc: 'A compact celebration project for Cabo Verde, football pride, blue energy, and collective movement.',
+        cover: '',
+        monogram: 'CV',
+        note: 'This collection is listed from the local music folder. Open the official platforms to listen where available.',
+        tracks: [
+          'Tubarões Azuis - Azul no coração',
+          'Tubarões Subinhadu',
+          'Nu Bai Na Copa'
+        ]
+      },
+      'xadrez': {
+        album: 'Xadrez no Comando',
+        track: '9 videos',
+        desc: 'Portuguese book-inspired music and video chapters built around board logic, command, pressure, and strategic movement.',
+        cover: '/images/optimized/xadrez-no-comando-cover.png',
+        previewSrc: '/output/youtube/xadrez-no-comando/xadrez-no-comando-o-tabuleiro.mp4',
+        note: 'The player can preview O Tabuleiro from the local site files. The full video set is also linked through your YouTube presence.',
+        tracks: [
+          'O Tabuleiro',
+          'O Peao',
+          'O Cavalo',
+          'O Bispo',
+          'A Torre',
+          'A Rainha',
+          'O Rei',
+          'Xeque-Mate',
+          'Fim de Jogo'
+        ]
       }
     };
 
@@ -1863,35 +2098,49 @@
 
       // Update text details
       document.getElementById('m-album-title').innerText = data.album;
-      document.getElementById('m-track-title').innerText = 'Track: ' + data.track;
+      document.getElementById('m-track-title').innerText = data.track;
       document.getElementById('m-desc').innerText = data.desc;
 
-      // Change vinyl record label image
-      document.getElementById('vinyl-label-img').src = data.cover;
+      const tracklist = document.getElementById('music-tracklist');
+      if (tracklist) {
+        tracklist.innerHTML = data.tracks.map((track, index) => {
+          const number = String(index + 1).padStart(2, '0');
+          return `<div class="music-track-row"><span>${number}</span><strong>${track}</strong></div>`;
+        }).join('');
+      }
+
+      const playerNote = document.getElementById('m-player-note');
+      if (playerNote) {
+        playerNote.innerText = data.note;
+      }
+
+      const labelImg = document.getElementById('vinyl-label-img');
+      const labelWrap = labelImg ? labelImg.parentElement : null;
+      if (labelImg && labelWrap) {
+        if (data.cover) {
+          labelImg.src = data.cover;
+          labelImg.style.display = 'block';
+          labelWrap.removeAttribute('data-label');
+        } else {
+          labelImg.style.display = 'none';
+          labelWrap.setAttribute('data-label', data.monogram || 'RB');
+        }
+      }
+
+      if (audio && data.previewSrc && audio.getAttribute('src') !== data.previewSrc) {
+        audio.src = data.previewSrc;
+        audio.load();
+      }
 
       // Update active rack item styling
-      const rackKeys = ['grace', 'silence', 'insane'];
+      const rackKeys = Object.keys(musicData);
       rackKeys.forEach(k => {
         const item = document.getElementById('rack-' + k);
         if (item) {
           if (k === key) {
-            item.style.opacity = '1';
-            const img = item.querySelector('img');
-            if (img) img.style.border = '2px solid var(--gold-accent)';
-            const label = item.querySelector('span');
-            if (label) {
-              label.style.color = 'var(--gold-accent)';
-              label.style.fontWeight = '700';
-            }
+            item.classList.add('is-active');
           } else {
-            item.style.opacity = '0.6';
-            const img = item.querySelector('img');
-            if (img) img.style.border = '1px solid rgba(255,255,255,0.1)';
-            const label = item.querySelector('span');
-            if (label) {
-              label.style.color = 'var(--text-muted)';
-              label.style.fontWeight = 'normal';
-            }
+            item.classList.remove('is-active');
           }
         }
       });
@@ -2183,6 +2432,12 @@
     }
 
     function toggleBrutalistAudio() {
+      const activeRelease = musicData[activeAlbumKey];
+      if (!activeRelease || !activeRelease.previewSrc) {
+        window.open('https://www.youtube.com/channel/UCD-jI8Sr1hCkif3UHIAGegA', '_blank', 'noopener');
+        return;
+      }
+
       initCozyAudio();
       
       if (audioCtx && audioCtx.state === 'suspended') {
@@ -2264,6 +2519,8 @@
       dwBrutalPlayer.classList.remove('is-playing');
       resetNeedle();
     });
+
+    selectCozyAlbum('grace');
   </script>
 </body>
 </html>
