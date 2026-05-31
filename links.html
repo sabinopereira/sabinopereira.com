@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sabino Pereira — Links & Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Official link portfolio for Sabino Pereira (Books, Essays) and Reira Bin (Music).">
+  <meta name="author" content="Sabino Pereira">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="icon" type="image/svg+xml" href="/images/sp-favicon.svg">
+  
+  <style>
+    :root {
+      --bg-dark: #050508;
+      --bg-card: rgba(15, 15, 22, 0.65);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --text-main: #f3f4f6;
+      --text-muted: rgba(255, 255, 255, 0.55);
+      --accent: #a855f7;
+      --accent-glow: rgba(168, 85, 247, 0.3);
+      --amber: #f59e0b;
+      --amber-glow: rgba(245, 158, 11, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 0% 100%, rgba(59, 130, 246, 0.06) 0%, transparent 40%);
+      background-attachment: fixed;
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+      overflow-x: hidden;
+    }
+
+    .portfolio-shell {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    /* HEADER */
+    .profile-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+    }
+
+    .profile-avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border-color);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(168, 85, 247, 0.15);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .profile-avatar:hover {
+      transform: scale(1.08) rotate(3deg);
+    }
+
+    .profile-info h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .profile-info p {
+      font-size: 15px;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    /* SECTION TITLE */
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--text-muted);
+      align-self: flex-start;
+      margin-bottom: -16px;
+      margin-left: 4px;
+      font-weight: 700;
+    }
+
+    /* PREMIUM MUSIC PLAYER CARD */
+    .player-card {
+      width: 100%;
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .player-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .player-body {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .track-art-wrapper {
+      position: relative;
+      width: 68px;
+      height: 68px;
+    }
+
+    .track-art {
+      width: 100%;
+      height: 100%;
+      border-radius: 14px;
+      object-fit: cover;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .player-card.is-playing .track-art {
+      animation: rhythmPulse 1.2s infinite ease-in-out;
+    }
+
+    .track-details {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex-grow: 1;
+    }
+
+    .track-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    .track-artist {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .track-album {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .play-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.15), 0 0 15px rgba(168, 85, 247, 0.2);
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s;
+    }
+
+    .play-btn:hover {
+      transform: scale(1.08);
+      background-color: #f3f4f6;
+    }
+
+    .play-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: #050508;
+      transition: transform 0.1s;
+    }
+
+    /* REAL-TIME AUDIO VISUALIZER CANVAS */
+    .player-visualizer-wrapper {
+      position: relative;
+      width: 100%;
+      height: 38px;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.18);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.02);
+    }
+
+    #visualizer-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .visualizer-overlay-msg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .player-card.is-playing .visualizer-overlay-msg {
+      opacity: 0;
+    }
+
+    /* 3D BOOK CAROUSEL CONTAINER */
+    .books-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .books-carousel {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      padding: 20px 8px 30px 8px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none; /* Firefox */
+    }
+
+    .books-carousel::-webkit-scrollbar {
+      display: none; /* Safari/Chrome */
+    }
+
+    /* 3D BOOK STRUCTURE */
+    .book-wrapper {
+      flex: 0 0 160px;
+      height: 240px;
+      perspective: 1000px;
+      scroll-snap-align: center;
+      cursor: pointer;
+    }
+
+    .book-3d {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .book-wrapper:hover .book-3d {
+      transform: rotateY(-30deg) translateZ(10px);
+    }
+
+    /* The actual cover page */
+    .book-page-front {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 4px 14px 14px 4px;
+      box-shadow: 5px 15px 30px rgba(0, 0, 0, 0.5);
+      z-index: 2;
+      transform-origin: left center;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .book-page-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 4px 14px 14px 4px;
+    }
+
+    /* 3D Spine effect */
+    .book-3d::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 10px;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0.15) 50%, rgba(0,0,0,0.2) 100%);
+      z-index: 5;
+      border-radius: 4px 0 0 4px;
+      transform: translateZ(1px);
+    }
+
+    /* MODAL POPUP FOR DETAILS (To fit mobile seamlessly) */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(5, 5, 8, 0.85);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .modal-overlay.is-active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-container {
+      width: 100%;
+      max-width: 480px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-bottom: none;
+      border-radius: 32px 32px 0 0;
+      padding: 32px 24px;
+      box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.8);
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-overlay.is-active .modal-container {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      display: flex;
+      gap: 20px;
+    }
+
+    .modal-cover {
+      width: 100px;
+      height: 150px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .modal-meta {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .modal-eyebrow {
+      font-size: 11px;
+      color: var(--accent);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+
+    .modal-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .modal-author {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .modal-desc {
+      font-size: 14.5px;
+      color: var(--text-main);
+      line-height: 1.6;
+      opacity: 0.85;
+    }
+
+    .modal-btn-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .modal-btn {
+      width: 100%;
+      padding: 16px;
+      border-radius: 16px;
+      font-size: 15px;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .modal-btn--primary {
+      background: #ffffff;
+      color: #050508;
+      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.08);
+    }
+
+    .modal-btn--primary:hover {
+      background: #f3f4f6;
+      transform: translateY(-2px);
+    }
+
+    .modal-btn--secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: #ffffff;
+      border: 1px solid var(--border-color);
+    }
+
+    .modal-btn--secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .close-modal-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-color);
+      color: #ffffff;
+      font-size: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    /* ESSAYS SECTION */
+    .essays-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .essay-card {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.25s, border-color 0.25s;
+    }
+
+    .essay-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(168, 85, 247, 0.25);
+    }
+
+    .essay-eyebrow {
+      font-size: 11px;
+      color: var(--amber);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .essay-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .essay-card p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .essay-action-label {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    /* PORTABLE ESSAY READER MODAL */
+    .essay-reader-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--bg-dark);
+      z-index: 110;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .essay-reader-modal.is-active {
+      transform: translateX(0);
+    }
+
+    .reader-header {
+      padding: 24px 20px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(15, 15, 22, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .reader-title-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 70%;
+    }
+
+    .back-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .reader-body {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 36px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      line-height: 1.75;
+      font-size: 16px;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .reader-body h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .reader-body p {
+      opacity: 0.88;
+    }
+
+    .reader-body blockquote {
+      border-left: 3px solid var(--accent);
+      padding-left: 20px;
+      font-style: italic;
+      color: var(--text-muted);
+      margin: 10px 0;
+    }
+
+    /* NEWSLETTER BOX */
+    .newsletter-card {
+      width: 100%;
+      background: radial-gradient(circle at top right, rgba(168, 85, 247, 0.08) 0%, transparent 60%), var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+      text-align: center;
+    }
+
+    .newsletter-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .newsletter-card p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .newsletter-input {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--border-color);
+      background: rgba(0, 0, 0, 0.35);
+      color: #ffffff;
+      font-size: 14.5px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .newsletter-input:focus {
+      border-color: var(--accent);
+    }
+
+    .newsletter-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 14px;
+      border: none;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 14.5px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 16px var(--accent-glow);
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .newsletter-btn:hover {
+      background-color: #b55fe6;
+      transform: translateY(-1px);
+    }
+
+    /* SOCIAL ICONS */
+    .social-icons-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .social-icon-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s, background-color 0.2s;
+      text-decoration: none;
+    }
+
+    .social-icon-btn:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      background-color: rgba(255, 255, 255, 0.03);
+    }
+
+    .social-icon-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* ANCHOR LINK BACK TO WEBSITE */
+    .back-website-footer {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      margin-top: 10px;
+    }
+
+    .back-website-footer:hover {
+      color: #ffffff;
+    }
+
+    /* PULSING ANIMATIONS */
+    @keyframes rhythmPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PORTABLE INLINE ESSAY READER MODAL -->
+  <div class="essay-reader-modal" id="essay-reader">
+    <div class="reader-header">
+      <button class="back-btn" onclick="closeEssayReader()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Back
+      </button>
+      <span class="reader-title-label" id="reader-nav-title">Reading Essay</span>
+      <div style="width: 54px;"></div> <!-- Spacing helper -->
+    </div>
+    <div class="reader-body animate-fade-in" id="reader-body-content">
+      <!-- Content populated dynamically -->
+    </div>
+  </div>
+
+  <!-- BOOK DETAILS MODAL -->
+  <div class="modal-overlay" id="book-modal" onclick="closeBookModal(event)">
+    <div class="modal-container" id="book-modal-container">
+      <button class="close-modal-btn" onclick="closeBookModalDirect()">&times;</button>
+      <div class="modal-header">
+        <img src="" id="m-cover" class="modal-cover" alt="Book Cover">
+        <div class="modal-meta">
+          <span class="modal-eyebrow" id="m-eyebrow">English Page</span>
+          <h2 class="modal-title" id="m-title">Book Title</h2>
+          <span class="modal-author">by Sabino Pereira</span>
+        </div>
+      </div>
+      <p class="modal-desc" id="m-desc">Book description here...</p>
+      <div class="modal-btn-grid">
+        <a href="" id="m-buy-link" target="_blank" rel="noopener" class="modal-btn modal-btn--primary">Buy on Amazon</a>
+        <a href="" id="m-read-link" class="modal-btn modal-btn--secondary">Read Excerpt / Explore</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="portfolio-shell">
+
+    <!-- PROFILE HEADER -->
+    <header class="profile-header">
+      <img class="profile-avatar" src="/images/optimized/sabino-in-the-field.jpg" alt="Sabino Pereira">
+      <div class="profile-info">
+        <h1>Sabino Pereira</h1>
+        <p>Books, Essays, and Music</p>
+      </div>
+    </header>
+
+    <!-- SECTION: MUSIC RELEASE -->
+    <h2 class="section-title">Music Release</h2>
+    <div class="player-card" id="premium-player-card">
+      <audio id="main-audio-element" src="/audio/god-sent-me-you.mp3" preload="metadata"></audio>
+      
+      <div class="player-body">
+        <div class="track-art-wrapper">
+          <img class="track-art" src="/images/optimized/god-sent-me-you-single.png" alt="God Sent Me You">
+        </div>
+        <div class="track-details">
+          <span class="track-title">God Sent Me You</span>
+          <span class="track-artist">Reira Bin</span>
+          <span class="track-album">Single • Album: Built by Grace</span>
+        </div>
+        <button class="play-btn" id="play-pause-btn" onclick="toggleAudio()">
+          <svg viewBox="0 0 24 24" id="play-icon">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          <svg viewBox="0 0 24 24" id="pause-icon" style="display: none;">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Visualizer canvas -->
+      <div class="player-visualizer-wrapper">
+        <div class="visualizer-overlay-msg" id="vis-msg">Tap Play to Listen & Visualize</div>
+        <canvas id="visualizer-canvas"></canvas>
+      </div>
+    </div>
+
+    <!-- SECTION: BOOKS -->
+    <h2 class="section-title">Books</h2>
+    <div class="books-section">
+      <div class="books-carousel">
+        
+        <!-- Book 1: Chess in the Block -->
+        <div class="book-wrapper" onclick="openBook('chess-in-the-block')">
+          <div class="book-3d">
+            <div class="book-page-front">
+              <img src="/images/optimized/chess-in-the-block-cover.jpg" alt="Chess in the Block">
+            </div>
+          </div>
+        </div>
+
+        <!-- Book 2: What Still Hurts -->
+        <div class="book-wrapper" onclick="openBook('what-still-hurts')">
+          <div class="book-3d">
+            <div class="book-page-front">
+              <img src="/images/optimized/what-still-hurts-cover.png" alt="What Still Hurts">
+            </div>
+          </div>
+        </div>
+
+        <!-- Book 3: Quiet Power -->
+        <div class="book-wrapper" onclick="openBook('quiet-power')">
+          <div class="book-3d">
+            <div class="book-page-front">
+              <img src="/images/optimized/quiet-power-cover.jpg" alt="Quiet Power">
+            </div>
+          </div>
+        </div>
+
+        <!-- Book 4: Borrow Delay Repeat -->
+        <div class="book-wrapper" onclick="openBook('borrow-delay-repeat')">
+          <div class="book-3d">
+            <div class="book-page-front">
+              <img src="/images/optimized/borrow-delay-repeat-cover.jpg" alt="Borrow. Delay. Repeat.">
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- SECTION: ESSAYS -->
+    <h2 class="section-title">Short Essays</h2>
+    <div class="essays-container">
+      
+      <!-- Essay 1 -->
+      <div class="essay-card" onclick="openEssay('sometimes-leaving-early')">
+        <span class="essay-eyebrow">Reflection</span>
+        <h3>Sometimes Leaving Early is What Saves Us Most</h3>
+        <p>A deep observation on environments, knowing when to walk away, and how exit timing is a protective strategy for self-value...</p>
+        <span class="essay-action-label">
+          Read Essay
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </span>
+      </div>
+
+      <!-- Essay 2 -->
+      <div class="essay-card" onclick="openEssay('being-deleted')">
+        <span class="essay-eyebrow">Human Behaviour</span>
+        <h3>Being Deleted After a Relationship Ends</h3>
+        <p>Exploring the modern quiet erasure in the digital age, social media clearing, and the psychological impact of digital deletions...</p>
+        <span class="essay-action-label">
+          Read Essay
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </span>
+      </div>
+
+      <!-- Essay 3 -->
+      <div class="essay-card" onclick="openEssay('what-is-quiet-power')">
+        <span class="essay-eyebrow">Strategy</span>
+        <h3>What is Quiet Power?</h3>
+        <p>The core concept behind calm execution, keeping your maps private, filtering noise, and maintaining total control under intense pressure...</p>
+        <span class="essay-action-label">
+          Read Essay
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </span>
+      </div>
+
+    </div>
+
+    <!-- SECTION: NEWSLETTER -->
+    <div class="newsletter-card">
+      <h3>Subscribe to the Essays</h3>
+      <p>Direct observations on modern life, pressure, strategy, and human contradictions, sent straight to your inbox.</p>
+      <form class="newsletter-form" onsubmit="handleSubscribe(event)">
+        <input class="newsletter-input" type="email" placeholder="Your email address" required id="sub-email">
+        <button class="newsletter-btn" type="submit" id="sub-btn">Subscribe</button>
+      </form>
+    </div>
+
+    <!-- SOCIAL LINKS WRAPPER -->
+    <div class="social-icons-wrapper">
+      <a href="https://www.youtube.com/@SabinoQuietPower" target="_blank" rel="noopener" class="social-icon-btn" title="YouTube Channel">
+        <svg viewBox="0 0 24 24"><path d="M23.498 6.163gC23.237 5.182 22.46 4.415 21.48 4.152 19.604 3.65 12 3.65 12 3.65s-7.604 0-9.48.502c-.98.263-1.758 1.03-2.019 2.011C0 8.039 0 12 0 12s0 3.961.501 5.837c.261.98.1.758 1.03 2.019 1.758c1.876.502 9.48.502 9.48.502s7.604 0 9.48-.502c.98-.263 1.758-1.03 2.019-2.019c.501-1.876.501-5.837.501-5.837s0-3.961-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+      <a href="/books.html" class="social-icon-btn" title="All Books">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+      </a>
+      <a href="/contact.html" class="social-icon-btn" title="Contact Sabino">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+      </a>
+    </div>
+
+    <!-- BACK TO HOMEPAGE LINK -->
+    <a href="/" class="back-website-footer">← Return to sabinopereira.com homepage</a>
+
+  </div>
+
+  <script>
+    // DATA DICTIONARY
+    const bookData = {
+      'chess-in-the-block': {
+        title: 'Chess in the Block',
+        eyebrow: 'New book • English • Strategy',
+        cover: '/images/optimized/chess-in-the-block-cover.jpg',
+        desc: 'Survival. Silence. Strategy. A deeply reflective book about life on the block through the metaphor of chess. Exploring structural pressure, family, class, love, loss, and learning how to move with absolute stability without losing your identity.',
+        buyLink: 'https://www.amazon.com/dp/B0H2MZKL28',
+        readLink: '/chess-in-the-block.html'
+      },
+      'what-still-hurts': {
+        title: 'What Still Hurts — Echoes of Harmony',
+        eyebrow: 'New Novel • Dystopian Psychology',
+        cover: '/images/optimized/what-still-hurts-cover.png',
+        desc: 'A psychological dystopian novel about memory, comfort, and the high price of painless peace. What happens when a society traded its raw, painful memories for an optimized, calm state of synthetic harmony?',
+        buyLink: 'https://www.amazon.com/dp/B0H2YFWT1Y?ref=sp_email',
+        readLink: '/what-still-hurts/'
+      },
+      'quiet-power': {
+        title: 'Quiet Power',
+        eyebrow: 'Core Book • Personal Strategy',
+        cover: '/images/optimized/quiet-power-cover.jpg',
+        desc: 'The central system for filter control, focus, emotional stability, and high-performance design under extreme pressure. Quiet Power outlines how to act with silent intention and keep your personal maps completely private.',
+        buyLink: 'https://www.amazon.com/dp/B0H2G9L3D3',
+        readLink: '/quiet-power.html'
+      },
+      'borrow-delay-repeat': {
+        title: 'Borrow. Delay. Repeat.',
+        eyebrow: 'Book • English • Satire',
+        cover: '/images/optimized/borrow-delay-repeat-cover.jpg',
+        desc: 'A very unserious, highly satirical guide to not giving money back. A humorous study of excuse-making, social metrics, and the absurdity of financial delays in modern society.',
+        buyLink: 'https://www.amazon.com/dp/B0H2BZS5D7',
+        readLink: '/borrow-delay-repeat.html'
+      }
+    };
+
+    const essayData = {
+      'sometimes-leaving-early': {
+        title: 'Sometimes Leaving Early is What Saves Us Most',
+        content: `<h1>Sometimes Leaving Early is What Saves Us Most</h1>
+                  <p>In a culture that glorifies endurance, we are trained to believe that staying until the bitter end is a badge of honor. We are taught that to exit a room, a relationship, or a system before it formally concludes is a sign of weakness or failure.</p>
+                  <blockquote>"Leaving early is not about surrender; it is about the quiet execution of self-preservation."</blockquote>
+                  <p>But true strategy teaches us otherwise. When an environment begins to decay—when the noise begins to overwhelm the signal—staying is not strength; it is liability. Leaving early represents the conscious decision to value your own quiet attention over the expectations of the crowd.</p>
+                  <p>By exiting when your value is highest and the atmospheric noise is lowest, you preserve your energy, protect your focus, and remain in complete control of your next move. The calmest minds do not wait for the building to collapse before looking for the exit door.</p>`
+      },
+      'being-deleted': {
+        title: 'Being Deleted After a Relationship Ends',
+        content: `<h1>Being Deleted After a Relationship Ends</h1>
+                  <p>The digital age has introduced a new kind of quiet erasure. Historically, when a relationship or friendship ended, the remnants faded slowly through physical distance and the natural passage of time. Today, erasure is a sequence of binary clicks.</p>
+                  <blockquote>"We are cleared from servers, removed from grids, and deleted from profiles in a matter of seconds."</blockquote>
+                  <p>Being deleted is the modern equivalent of social exile. It is an abrupt, mechanical clearing of digital memories that leaves no room for gradual transition. We watch profiles turn into dead links, photos get cropped, and years of shared digital space disappear.</p>
+                  <p>While this binary purge is often marketed as 'moving on' or 'healing,' it carries a deeper psychological weight. It teaches us to treat human connection as cache files to be cleared when the connection gets clogged. True maturity lies in recognizing that even when paths diverge, the shared map remains a real part of who we are.</p>`
+      },
+      'what-is-quiet-power': {
+        title: 'What is Quiet Power?',
+        content: `<h1>What is Quiet Power?</h1>
+                  <p>Quiet Power is the protective wall we build around our mental clarity. It is the ability to observe a chaotic environment, understand its mechanics, and make decisive moves without letting the surrounding noise dictate your path.</p>
+                  <blockquote>"The noisier the world becomes, the more powerful a silent strategy behaves."</blockquote>
+                  <p>Most people react instantly to every notification, trigger, or comment, giving away their focus and maps to anyone who asks. Quiet Power is the opposite: it is keeping your plans private, filtering out irrelevant opinions, and maintaining absolute stability under pressure.</p>
+                  <p>It is not passive silence; it is focused, strategic composure. When you remain quiet, you see the board clearly, while those who shout reveal their hand. Quiet Power is learning how to let your results do the talking while you continue to build in the dark.</p>`
+      }
+    };
+
+    // MODAL CONTROL
+    const bookModal = document.getElementById('book-modal');
+    
+    function openBook(key) {
+      const data = bookData[key];
+      if (!data) return;
+
+      document.getElementById('m-cover').src = data.cover;
+      document.getElementById('m-eyebrow').innerText = data.eyebrow;
+      document.getElementById('m-title').innerText = data.title;
+      document.getElementById('m-desc').innerText = data.desc;
+      document.getElementById('m-buy-link').href = data.buyLink;
+      document.getElementById('m-read-link').href = data.readLink;
+
+      bookModal.classList.add('is-active');
+    }
+
+    function closeBookModalDirect() {
+      bookModal.classList.remove('is-active');
+    }
+
+    function closeBookModal(event) {
+      if (event.target === bookModal) {
+        bookModal.classList.remove('is-active');
+      }
+    }
+
+    // PORTABLE READER
+    const essayReader = document.getElementById('essay-reader');
+    const readerNavTitle = document.getElementById('reader-nav-title');
+    const readerBodyContent = document.getElementById('reader-body-content');
+
+    function openEssay(key) {
+      const essay = essayData[key];
+      if (!essay) return;
+
+      readerNavTitle.innerText = essay.title;
+      readerBodyContent.innerHTML = essay.content;
+      essayReader.classList.add('is-active');
+    }
+
+    function closeEssayReader() {
+      essayReader.classList.remove('is-active');
+    }
+
+    // NEWSLETTER HANDLING
+    function handleSubscribe(event) {
+      event.preventDefault();
+      const email = document.getElementById('sub-email').value;
+      const btn = document.getElementById('sub-btn');
+      
+      btn.innerText = "Subscribed ✓";
+      btn.style.backgroundColor = "#10b981"; // Green success
+      btn.style.boxShadow = "0 8px 16px rgba(16, 185, 129, 0.25)";
+      
+      document.getElementById('sub-email').value = "";
+      document.getElementById('sub-email').disabled = true;
+      btn.disabled = true;
+    }
+
+    // AUDIO LOGIC WITH REAL-TIME AUDIO VISUALIZATION
+    const audio = document.getElementById('main-audio-element');
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    const playIcon = document.getElementById('play-icon');
+    const pauseIcon = document.getElementById('pause-icon');
+    const premiumPlayerCard = document.getElementById('premium-player-card');
+    const visMsg = document.getElementById('vis-msg');
+    
+    // Canvas setup
+    const canvas = document.getElementById('visualizer-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Resize canvas to match display size
+    function resizeCanvas() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    let audioContext = null;
+    let analyser = null;
+    let sourceNode = null;
+    let animationFrameId = null;
+    let dummyWaveInterval = null;
+
+    function initAudioContext() {
+      if (audioContext) return;
+      
+      try {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        audioContext = new AudioContextClass();
+        analyser = audioContext.createAnalyser();
+        analyser.fftSize = 64; // High frequency granularity
+        
+        sourceNode = audioContext.createMediaElementSource(audio);
+        sourceNode.connect(analyser);
+        analyser.connect(audioContext.destination);
+      } catch (err) {
+        console.warn("Web Audio API not fully supported. Falling back to ambient waveform simulator.", err);
+      }
+    }
+
+    function toggleAudio() {
+      initAudioContext();
+      
+      if (audioContext && audioContext.state === 'suspended') {
+        audioContext.resume();
+      }
+
+      if (audio.paused) {
+        audio.play();
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'block';
+        premiumPlayerCard.classList.add('is-playing');
+        
+        if (analyser) {
+          visualizeRealTime();
+        } else {
+          visualizeSimulated();
+        }
+      } else {
+        audio.pause();
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+        premiumPlayerCard.classList.remove('is-playing');
+        
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+        }
+        if (dummyWaveInterval) {
+          clearInterval(dummyWaveInterval);
+        }
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    // DRAW DANCING WAVES FROM REAL FREQUENCY DATA
+    function visualizeRealTime() {
+      const bufferLength = analyser.frequencyBinCount;
+      const dataArray = new Uint8Array(bufferLength);
+      
+      function drawFrame() {
+        if (audio.paused) return;
+        animationFrameId = requestAnimationFrame(drawFrame);
+        
+        analyser.getByteFrequencyData(dataArray);
+        
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        const barWidth = (canvas.width / bufferLength) * 1.5;
+        let barHeight;
+        let x = 0;
+        
+        for (let i = 0; i < bufferLength; i++) {
+          barHeight = dataArray[i] / 2.1; // Scale frequency magnitude
+          if (barHeight < 4) barHeight = 4; // Constant tiny active wave
+          
+          // Draw nice rounded pill equalizer bar
+          ctx.beginPath();
+          const gradient = ctx.createLinearGradient(0, canvas.height, 0, canvas.height - barHeight);
+          gradient.addColorStop(0, 'rgba(168, 85, 247, 0.45)');  // Purple bottom
+          gradient.addColorStop(1, '#ffffff');                   // White glowing top
+          
+          ctx.fillStyle = gradient;
+          
+          const y = canvas.height - barHeight;
+          const r = barWidth / 2; // Pill radius
+          
+          ctx.roundRect(x, y, barWidth - 4, barHeight, 4);
+          ctx.fill();
+          
+          x += barWidth;
+        }
+      }
+      
+      drawFrame();
+    }
+
+    // FALLBACK SIMULATION IF BROWSER BLOCKS DIRECT CORE AUDIO HOOKS
+    function visualizeSimulated() {
+      dummyWaveInterval = setInterval(() => {
+        if (audio.paused) return;
+        
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const barsCount = 20;
+        const barWidth = canvas.width / barsCount;
+        
+        for (let i = 0; i < barsCount; i++) {
+          const randBoost = Math.sin(Date.now() * 0.005 + i * 0.5) * 10;
+          let barHeight = Math.max(Math.min(18 + randBoost + Math.random() * 12, canvas.height - 4), 6);
+          
+          ctx.beginPath();
+          const gradient = ctx.createLinearGradient(0, canvas.height, 0, canvas.height - barHeight);
+          gradient.addColorStop(0, 'rgba(168, 85, 247, 0.45)');
+          gradient.addColorStop(1, '#ffffff');
+          
+          ctx.fillStyle = gradient;
+          ctx.roundRect(i * barWidth, canvas.height - barHeight, barWidth - 4, barHeight, 3);
+          ctx.fill();
+        }
+      }, 70);
+    }
+    
+    // Clear visualizer when audio naturally ends
+    audio.addEventListener('ended', () => {
+      playIcon.style.display = 'block';
+      pauseIcon.style.display = 'none';
+      premiumPlayerCard.classList.remove('is-playing');
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      if (dummyWaveInterval) clearInterval(dummyWaveInterval);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    });
+  </script>
+</body>
+</html>
