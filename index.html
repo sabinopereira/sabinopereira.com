@@ -376,11 +376,20 @@
 
     .stark-books-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
       gap: 40px;
       position: relative;
       z-index: 5;
       padding-bottom: 16px;
+    }
+
+    .books-shelf-top {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .books-shelf-bottom {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 840px;
+      margin: 140px auto 0 auto;
     }
 
     .stark-book-item {
@@ -1143,8 +1152,10 @@
         padding: 60px 20px;
       }
 
-      .stark-books-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .stark-books-grid, .books-shelf-top, .books-shelf-bottom {
+        grid-template-columns: repeat(2, 1fr) !important;
+        margin-top: 30px !important;
+        max-width: 100% !important;
         gap: 30px;
       }
 
@@ -1317,7 +1328,8 @@
     <div class="bookshelf-container">
       <div class="shelf-lamp-glow"></div>
       
-      <div class="stark-books-grid">
+      <!-- TOP SHELF: 4 Books -->
+      <div class="stark-books-grid books-shelf-top">
         <!-- Book 1 -->
         <div class="stark-book-item" onclick="showBrutalistBook('chess-in-the-block')">
           <img src="/images/optimized/chess-in-the-block-cover.jpg" alt="Chess in the Block Cover">
@@ -1337,6 +1349,15 @@
         </div>
 
         <!-- Book 3 -->
+        <div class="stark-book-item" onclick="showBrutalistBook('xadrez-no-comando')">
+          <img src="/images/optimized/xadrez-no-comando-cover.png" alt="Xadrez no Comando Cover">
+          <div class="stark-book-meta">
+            <span class="stark-book-tag">PORTUGUESE BOOK • STRATEGY</span>
+            <strong class="stark-book-title">Xadrez no Comando</strong>
+          </div>
+        </div>
+
+        <!-- Book 4 -->
         <div class="stark-book-item" onclick="showBrutalistBook('quiet-power')">
           <img src="/images/optimized/quiet-power-cover.jpg" alt="Quiet Power Cover">
           <div class="stark-book-meta">
@@ -1344,8 +1365,14 @@
             <strong class="stark-book-title">Quiet Power</strong>
           </div>
         </div>
+      </div>
+      
+      <!-- Top Platter Shelf Plank -->
+      <div class="wood-shelf" style="bottom: auto; top: 278px;"></div>
 
-        <!-- Book 4 -->
+      <!-- BOTTOM SHELF: 3 Books -->
+      <div class="stark-books-grid books-shelf-bottom">
+        <!-- Book 5 -->
         <div class="stark-book-item" onclick="showBrutalistBook('borrow-delay-repeat')">
           <img src="/images/optimized/borrow-delay-repeat-cover.jpg" alt="Borrow. Delay. Repeat. Cover">
           <div class="stark-book-meta">
@@ -1353,10 +1380,28 @@
             <strong class="stark-book-title">Borrow. Delay. Repeat.</strong>
           </div>
         </div>
+
+        <!-- Book 6 -->
+        <div class="stark-book-item" onclick="showBrutalistBook('the-calm-digital-life')">
+          <img src="/images/optimized/the-calm-digital-life.jpg" alt="The Calm Digital Life Cover">
+          <div class="stark-book-meta">
+            <span class="stark-book-tag">PRACTICAL GUIDE • SECURITY</span>
+            <strong class="stark-book-title">The Calm Digital Life</strong>
+          </div>
+        </div>
+
+        <!-- Book 7 -->
+        <div class="stark-book-item" onclick="showBrutalistBook('livro-reclamacoes')">
+          <img src="/images/optimized/livro-reclamacoes-cover.jpg" alt="Livro de Reclamações Cover">
+          <div class="stark-book-meta">
+            <span class="stark-book-tag">PORTUGUESE BOOK • CHRONICLES</span>
+            <strong class="stark-book-title">Livro de Reclamações</strong>
+          </div>
+        </div>
       </div>
 
-      <!-- Platter shelf drawn beneath books -->
-      <div class="wood-shelf"></div>
+      <!-- Bottom Platter Shelf Plank -->
+      <div class="wood-shelf" style="bottom: 50px;"></div>
     </div>
   </section>
 
@@ -1370,9 +1415,18 @@
     <div class="cozy-music-block">
       <div class="cozy-music-grid">
         <div class="music-cozy-copy">
-          <h3>Reira Bin — God Sent Me You</h3>
-          <p>A cinematic gospel theme blending spiritual devotion with sweeping orchestral textures. Designed to evoke stillness, space, and a profound sense of return.</p>
-          <p>Press the golden dial switch on the vintage console to play a preview directly from the studio vinyl deck.</p>
+          <h3 id="m-album-title">Built by Grace</h3>
+          <h4 id="m-track-title" style="font-family: 'Cinzel', serif; font-size: 20px; color: var(--gold-accent); margin-top: -12px;">Track: God Sent Me You</h4>
+          <p id="m-desc">A soaring cinematic gospel album blending rich devotion with classical orchestration, reflecting on absolute grace under pressure.</p>
+          
+          <!-- Vintage brass selectors for active album -->
+          <div class="album-brass-selectors" style="display: flex; gap: 12px; margin-top: 15px; flex-wrap: wrap;">
+            <button class="btn-cozy btn-cozy--solid" id="btn-album-grace" onclick="selectCozyAlbum('grace')">Built by Grace</button>
+            <button class="btn-cozy" id="btn-album-silence" onclick="selectCozyAlbum('silence')">Checkmate in Silence</button>
+            <button class="btn-cozy" id="btn-album-insane" onclick="selectCozyAlbum('insane')">Everybody Acting Insane</button>
+          </div>
+
+          <p style="font-size: 13px; font-family: 'Courier Prime', monospace; color: var(--text-muted); margin-top: 18px;">Press the golden dial switch on the vintage console to play a preview directly from the selected vinyl deck.</p>
           
           <!-- Local hidden audio stream -->
           <audio id="brutal-audio-element" src="/audio/god-sent-me-you.mp3" preload="auto"></audio>
@@ -1385,7 +1439,7 @@
             <!-- Vinyl Record disc -->
             <div class="vinyl-record">
               <div class="vinyl-center-label">
-                <img src="/images/optimized/god-sent-me-you-single.png" alt="Central Record Label">
+                <img id="vinyl-label-img" src="/images/optimized/god-sent-me-you-single.png" alt="Central Record Label">
               </div>
               <div class="vinyl-spindle-hole"></div>
             </div>
@@ -1500,16 +1554,24 @@
         eyebrow: 'FICTION • THRILLER',
         cover: '/images/optimized/chess-in-the-block-cover.jpg',
         desc: 'A strategic, high-stakes thriller where life patterns are treated as chess calculations under extreme focus. Follow the silent strategist navigating blocks of concrete and complex human moves.',
-        buyLink: 'https://www.amazon.com/dp/B0H2ZBLX2V',
+        buyLink: 'https://www.amazon.com/dp/B0H2MZKL28',
         readLink: '/chess-in-the-block.html'
       },
       'what-still-hurts': {
-        title: 'What Still Hurts',
+        title: 'What Still Hurts — Echoes of Harmony',
         eyebrow: 'NEW NOVEL • DYSTOPIA',
         cover: '/images/optimized/what-still-hurts-cover.png',
         desc: 'A psychological dystopian novel about memory, comfort, and the high price of painless peace. What happens when a society traded its raw, painful memories for an optimized, calm state of synthetic harmony?',
         buyLink: 'https://www.amazon.com/dp/B0H2YFWT1Y?ref=sp_email',
         readLink: '/what-still-hurts/'
+      },
+      'xadrez-no-comando': {
+        title: 'Xadrez no Comando',
+        eyebrow: 'PORTUGUESE BOOK • STRATEGY',
+        cover: '/images/optimized/xadrez-no-comando-cover.png',
+        desc: 'A Portuguese book about strategy, emotional survival, pressure, silence, love, loss, and maturity. Learn how to map your choices and retain silent control under extreme family or social pressure.',
+        buyLink: 'https://www.amazon.es/-/en/Sabino-Pereira/dp/B0H2CQ4FFB/ref=tmm_pap_swatch_0',
+        readLink: '/xadrez-no-comando.html'
       },
       'quiet-power': {
         title: 'Quiet Power',
@@ -1526,8 +1588,80 @@
         desc: 'A very unserious, highly satirical guide to not giving money back. A humorous study of excuse-making, social metrics, and the absurdity of financial delays in modern society.',
         buyLink: 'https://www.amazon.com/dp/B0H2BZS5D7',
         readLink: '/borrow-delay-repeat.html'
+      },
+      'the-calm-digital-life': {
+        title: 'The Calm Digital Life',
+        eyebrow: 'PRACTICAL GUIDE • SECURITY',
+        cover: '/images/optimized/the-calm-digital-life.jpg',
+        desc: 'A practical, simple, and direct guide with exercise maps designed to build safer online decisions and filter out digital scams after 60.',
+        buyLink: 'https://www.amazon.com/dp/B0H2D1B9KV',
+        readLink: '/the-calm-digital-life.html'
+      },
+      'livro-reclamacoes': {
+        title: 'Livro de Reclamações para o Mundo',
+        eyebrow: 'PORTUGUESE BOOK • CHRONICLES',
+        cover: '/images/optimized/livro-reclamacoes-cover.jpg',
+        desc: '30 crónicas revistas e ilustradas sobre a frustração moderna, o domínio dos ecrãs, a burocracia dos mercados e o absurdo do comportamento humano no quotidiano.',
+        buyLink: 'https://www.amazon.es/dp/B0GX2ZW3LQ',
+        readLink: '/livro-reclamacao.html'
       }
     };
+
+    const musicData = {
+      'grace': {
+        album: 'Built by Grace',
+        track: 'God Sent Me You',
+        desc: 'A soaring cinematic gospel album blending rich devotion with classical orchestration, reflecting on absolute grace under pressure.',
+        cover: '/images/optimized/god-sent-me-you-single.png'
+      },
+      'silence': {
+        album: 'CHECKMATE IN SILENCE',
+        track: 'Healing is Coming',
+        desc: 'A cinematic ambient album reflecting on strategic silence, emotional recovery, and the strength of a quiet mind.',
+        cover: '/images/optimized/healing-is-coming-single.png'
+      },
+      'insane': {
+        album: 'EVERYBODY ACTING INSANE',
+        track: 'Goodness and Mercy',
+        desc: 'A deep, slightly dramatic and intense cinematic theme observing societal noise, panic, and the search for calm.',
+        cover: '/images/optimized/goodness-and-mercy-single.png'
+      }
+    };
+
+    let activeAlbumKey = 'grace';
+
+    function selectCozyAlbum(key) {
+      const data = musicData[key];
+      if (!data) return;
+
+      activeAlbumKey = key;
+
+      // Update text details
+      document.getElementById('m-album-title').innerText = data.album;
+      document.getElementById('m-track-title').innerText = 'Track: ' + data.track;
+      document.getElementById('m-desc').innerText = data.desc;
+
+      // Change vinyl record label image
+      document.getElementById('vinyl-label-img').src = data.cover;
+
+      // Update active tabs styling
+      document.getElementById('btn-album-grace').classList.remove('btn-cozy--solid');
+      document.getElementById('btn-album-silence').classList.remove('btn-cozy--solid');
+      document.getElementById('btn-album-insane').classList.remove('btn-cozy--solid');
+
+      if (key === 'grace') document.getElementById('btn-album-grace').classList.add('btn-cozy--solid');
+      if (key === 'silence') document.getElementById('btn-album-silence').classList.add('btn-cozy--solid');
+      if (key === 'insane') document.getElementById('btn-album-insane').classList.add('btn-cozy--solid');
+
+      // Pause audio if playing, reset play status
+      if (!audio.paused) {
+        audio.pause();
+        bPlayIcon.style.display = 'none';
+        bPauseIcon.style.display = 'block';
+        dwBrutalPlayer.classList.remove('is-playing');
+        resetNeedle();
+      }
+    }
 
     const essayData = {
       'sometimes-leaving-early': {
