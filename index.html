@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sabino Pereira — Books, Essays, and Music (Cozy Library Concept)</title>
+  <title>Sabino Pereira — Books, Essays, and Music</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Classic cozy library concept for Sabino Pereira.">
   <meta name="author" content="Sabino Pereira">
@@ -1306,9 +1306,6 @@
   <!-- COZY HERO HERO SECTION -->
   <section class="cozy-hero">
     <div class="cozy-hero-left">
-      <div class="cozy-kicker">
-        COZY ARCHIVE CONCEPT 03
-      </div>
       <h1 class="cozy-hero-title">Quiet stories.<br>Acoustic echoes.</h1>
       <p class="cozy-hero-desc">Books, essays, and cinematic music composed for the quiet spaces in between decisions. Pull up a chair and discover the collection.</p>
       <div class="cozy-actions">
@@ -1319,9 +1316,9 @@
     
     <div class="cozy-hero-right">
       <div class="cozy-portrait-frame">
-        <img src="/images/optimized/god-sent-me-you-single.png" alt="Sabino Pereira Portrait Frame">
-        <div class="frame-caption">Reira Bin — God Sent Me You</div>
-        <div class="frame-subcaption">Latest Cinematic Release</div>
+        <img src="/images/optimized/built-by-grace-cover.png" alt="Reira Bin — Built by Grace Album Cover">
+        <div class="frame-caption">Reira Bin — Built by Grace</div>
+        <div class="frame-subcaption">Official Album Cover</div>
       </div>
     </div>
   </section>
@@ -1428,14 +1425,26 @@
           <h4 id="m-track-title" style="font-family: 'Cinzel', serif; font-size: 20px; color: var(--gold-accent); margin-top: -12px;">Track: God Sent Me You</h4>
           <p id="m-desc">A soaring cinematic gospel album blending rich devotion with classical orchestration, reflecting on absolute grace under pressure.</p>
           
-          <!-- Vintage brass selectors for active album -->
-          <div class="album-brass-selectors" style="display: flex; gap: 12px; margin-top: 15px; flex-wrap: wrap;">
-            <button class="btn-cozy btn-cozy--solid" id="btn-album-grace" onclick="selectCozyAlbum('grace')">Built by Grace</button>
-            <button class="btn-cozy" id="btn-album-silence" onclick="selectCozyAlbum('silence')">Checkmate in Silence</button>
-            <button class="btn-cozy" id="btn-album-insane" onclick="selectCozyAlbum('insane')">Everybody Acting Insane</button>
+          <!-- Gorgeous visual album rack -->
+          <div class="album-brass-selectors" style="display: flex; gap: 20px; margin-top: 24px;">
+            <!-- Album 1: Built by Grace -->
+            <div class="music-rack-item" id="rack-grace" onclick="selectCozyAlbum('grace')" style="cursor: pointer; text-align: center; width: 90px; transition: transform 0.3s, opacity 0.3s;">
+              <img src="/images/optimized/built-by-grace-cover.png" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 6px; border: 2px solid var(--gold-accent); box-shadow: 0 4px 10px rgba(0,0,0,0.15);" alt="Built by Grace">
+              <span style="font-family: 'Courier Prime', monospace; font-size: 8px; color: var(--gold-accent); margin-top: 6px; display: block; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Built by Grace</span>
+            </div>
+            <!-- Album 2: Checkmate in Silence -->
+            <div class="music-rack-item" id="rack-silence" onclick="selectCozyAlbum('silence')" style="cursor: pointer; text-align: center; width: 90px; transition: transform 0.3s, opacity 0.3s; opacity: 0.6;">
+              <img src="/images/optimized/healing-is-coming-single.png" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 10px rgba(0,0,0,0.1);" alt="Checkmate in Silence">
+              <span style="font-family: 'Courier Prime', monospace; font-size: 8px; color: var(--text-muted); margin-top: 6px; display: block; text-transform: uppercase; letter-spacing: 0.5px;">In Silence</span>
+            </div>
+            <!-- Album 3: Everybody Acting Insane -->
+            <div class="music-rack-item" id="rack-insane" onclick="selectCozyAlbum('insane')" style="cursor: pointer; text-align: center; width: 90px; transition: transform 0.3s, opacity 0.3s; opacity: 0.6;">
+              <img src="/images/optimized/goodness-and-mercy-single.png" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 10px rgba(0,0,0,0.1);" alt="Everybody Acting Insane">
+              <span style="font-family: 'Courier Prime', monospace; font-size: 8px; color: var(--text-muted); margin-top: 6px; display: block; text-transform: uppercase; letter-spacing: 0.5px;">Acting Insane</span>
+            </div>
           </div>
 
-          <p style="font-size: 13px; font-family: 'Courier Prime', monospace; color: var(--text-muted); margin-top: 18px;">Press the golden dial switch on the vintage console to play a preview directly from the selected vinyl deck.</p>
+          <p style="font-size: 13px; font-family: 'Courier Prime', monospace; color: var(--text-muted); margin-top: 24px;">Press the golden dial switch on the vintage console to play a preview directly from the selected vinyl deck.</p>
           
           <!-- Local hidden audio stream -->
           <audio id="brutal-audio-element" src="/audio/god-sent-me-you.mp3" preload="auto"></audio>
@@ -1448,7 +1457,7 @@
             <!-- Vinyl Record disc -->
             <div class="vinyl-record">
               <div class="vinyl-center-label">
-                <img id="vinyl-label-img" src="/images/optimized/god-sent-me-you-single.png" alt="Central Record Label">
+                <img id="vinyl-label-img" src="/images/optimized/built-by-grace-cover.png" alt="Central Record Label">
               </div>
               <div class="vinyl-spindle-hole"></div>
             </div>
@@ -1503,7 +1512,7 @@
     <div class="cozy-essays-list">
       <!-- Essay 1 -->
       <div class="essay-card-parchment" onclick="openEssayBrutal('sometimes-leaving-early')">
-        <span class="essay-cozy-category">STRATEGY • INTENTION</span>
+        <span class="essay-cozy-category">Being Human (Unfiltered)</span>
         <div class="essay-cozy-middle">
           <h4 class="essay-cozy-title">Sometimes Leaving Early is What Saves Us Most</h4>
           <p class="essay-cozy-excerpt">A tactical study of timing, environmental signals, and the quiet power of exit strategies in a noise-saturated culture.</p>
@@ -1513,7 +1522,7 @@
 
       <!-- Essay 2 -->
       <div class="essay-card-parchment" onclick="openEssayBrutal('being-deleted')">
-        <span class="essay-cozy-category">CULTURE • REFLECTIONS</span>
+        <span class="essay-cozy-category">Being Human (Unfiltered)</span>
         <div class="essay-cozy-middle">
           <h4 class="essay-cozy-title">Being Deleted After a Relationship Ends</h4>
           <p class="essay-cozy-excerpt">An analysis of modern digital erasure, the emotional gravity of binary purge cycles, and preserving private maps.</p>
@@ -1523,10 +1532,30 @@
 
       <!-- Essay 3 -->
       <div class="essay-card-parchment" onclick="openEssayBrutal('what-is-quiet-power')">
-        <span class="essay-cozy-category">SYSTEMS • CLARITY</span>
+        <span class="essay-cozy-category">Quiet Power</span>
         <div class="essay-cozy-middle">
           <h4 class="essay-cozy-title">What is Quiet Power?</h4>
           <p class="essay-cozy-excerpt">Defining focused strategic composure: how keeping plans private allows for complete stability when external systems shake.</p>
+        </div>
+        <span class="essay-cozy-action">Open →</span>
+      </div>
+
+      <!-- Essay 4 -->
+      <div class="essay-card-parchment" onclick="openEssayBrutal('afraid-of-ai')">
+        <span class="essay-cozy-category">Afraid of AI</span>
+        <div class="essay-cozy-middle">
+          <h4 class="essay-cozy-title">Choose Your Field: The Shift of Clarity</h4>
+          <p class="essay-cozy-excerpt">An analysis of how AI changes professions by reducing fog, asymmetry, opacity, and protected confusion.</p>
+        </div>
+        <span class="essay-cozy-action">Open →</span>
+      </div>
+
+      <!-- Essay 5 -->
+      <div class="essay-card-parchment" onclick="openEssayBrutal('life-is-a-bug')">
+        <span class="essay-cozy-category">Life is a Bug</span>
+        <div class="essay-cozy-middle">
+          <h4 class="essay-cozy-title">Life is a Bug</h4>
+          <p class="essay-cozy-excerpt">A satirical and philosophical study of human routines, glitches, and modern behavioral bugs.</p>
         </div>
         <span class="essay-cozy-action">Open →</span>
       </div>
@@ -1592,23 +1621,6 @@
         },
         cover: '/images/optimized/what-still-hurts-cover.png'
       },
-      'xadrez-no-comando': {
-        en: {
-          title: 'Chess in the Block (PT Edition)',
-          eyebrow: 'PORTUGUESE BOOK • AMAZON KDP',
-          desc: 'The Portuguese counterpart to Chess in the Block. A reflective book about life on the block through the metaphor of chess, strategy, and emotional survival.',
-          buyLink: 'https://www.amazon.es/-/en/Sabino-Pereira/dp/B0H2CQ4FFB/ref=tmm_pap_swatch_0',
-          readLink: '/xadrez-no-comando.html'
-        },
-        pt: {
-          title: 'Xadrez no Comando',
-          eyebrow: 'LIVRO EM PORTUGUÊS • ESTRATÉGIA',
-          desc: 'Um livro em português sobre estratégia, sobrevivência emocional, pressão, silêncio, amor, perda e maturidade. Aprenda a mapear as suas escolhas e a reter o controlo silencioso em situações de extrema pressão familiar ou social.',
-          buyLink: 'https://www.amazon.es/-/en/Sabino-Pereira/dp/B0H2CQ4FFB/ref=tmm_pap_swatch_0',
-          readLink: '/xadrez-no-comando.html'
-        },
-        cover: '/images/optimized/xadrez-no-comando-cover.png'
-      },
       'quiet-power': {
         en: {
           title: 'Quiet Power',
@@ -1616,13 +1628,6 @@
           desc: 'The central system for filter control, focus, emotional stability, and high-performance design under extreme pressure. Quiet Power outlines how to act with silent intention and keep your personal maps completely private.',
           buyLink: 'https://www.amazon.com/dp/B0H2G9L3D3',
           readLink: '/quiet-power.html'
-        },
-        pt: {
-          title: 'O Poder dos Quietos',
-          eyebrow: 'SISTEMA CENTRAL • ESTRATÉGIA',
-          desc: 'O sistema central para controle de filtros, foco, estabilidade emocional e design de alto desempenho sob extrema pressão. O Poder dos Quietos ensina como agir com intenção silenciosa e manter os seus mapas privados.',
-          buyLink: 'https://www.amazon.com/dp/B0H2G9L3D3',
-          readLink: '/pt/livros.html'
         },
         cover: '/images/optimized/quiet-power-cover.jpg'
       },
@@ -1634,13 +1639,6 @@
           buyLink: 'https://www.amazon.com/dp/B0H2BZS5D7',
           readLink: '/borrow-delay-repeat.html'
         },
-        pt: {
-          title: 'Pedir. Adiar. Repetir.',
-          eyebrow: 'LIVRO • SATIRA E HUMOR',
-          desc: 'Um guia muito pouco sério e altamente satírico para não devolver dinheiro. Um estudo bem-humorado sobre desculpas, métricas sociais e o absurdo dos atrasos financeiros na sociedade moderna.',
-          buyLink: 'https://www.amazon.com/dp/B0H2BZS5D7',
-          readLink: '/pt/livros.html'
-        },
         cover: '/images/optimized/borrow-delay-repeat-cover.jpg'
       },
       'the-calm-digital-life': {
@@ -1651,23 +1649,9 @@
           buyLink: 'https://www.amazon.com/dp/B0H2D1B9KV',
           readLink: '/the-calm-digital-life.html'
         },
-        pt: {
-          title: 'A Vida Digital Calma',
-          eyebrow: 'GUIA PRÁTICO • SEGURANÇA',
-          desc: 'Um guia prático, simples e direto com mapas de exercícios criados para desenvolver decisões online seguras e filtrar fraudes digitais para maiores de 60 anos.',
-          buyLink: 'https://www.amazon.com/dp/B0H2D1B9KV',
-          readLink: '/pt/livros.html'
-        },
         cover: '/images/optimized/the-calm-digital-life.jpg'
       },
       'livro-reclamacoes': {
-        en: {
-          title: 'Complaint Book for the World',
-          eyebrow: 'illustrated chronicles · PT Edition',
-          desc: '30 revised and illustrated chronicles of modern frustration, systems, screens, markets, and everyday absurdity. A beautiful reflection on human behavior.',
-          buyLink: 'https://www.amazon.es/dp/B0GX2ZW3LQ',
-          readLink: '/livro-reclamacao.html'
-        },
         pt: {
           title: 'Livro de Reclamações para o Mundo',
           eyebrow: 'LIVRO EM PORTUGUÊS • CRÓNICAS',
@@ -1684,7 +1668,7 @@
         album: 'Built by Grace',
         track: 'God Sent Me You',
         desc: 'A soaring cinematic gospel album blending rich devotion with classical orchestration, reflecting on absolute grace under pressure.',
-        cover: '/images/optimized/god-sent-me-you-single.png'
+        cover: '/images/optimized/built-by-grace-cover.png'
       },
       'silence': {
         album: 'CHECKMATE IN SILENCE',
@@ -1716,14 +1700,32 @@
       // Change vinyl record label image
       document.getElementById('vinyl-label-img').src = data.cover;
 
-      // Update active tabs styling
-      document.getElementById('btn-album-grace').classList.remove('btn-cozy--solid');
-      document.getElementById('btn-album-silence').classList.remove('btn-cozy--solid');
-      document.getElementById('btn-album-insane').classList.remove('btn-cozy--solid');
-
-      if (key === 'grace') document.getElementById('btn-album-grace').classList.add('btn-cozy--solid');
-      if (key === 'silence') document.getElementById('btn-album-silence').classList.add('btn-cozy--solid');
-      if (key === 'insane') document.getElementById('btn-album-insane').classList.add('btn-cozy--solid');
+      // Update active rack item styling
+      const rackKeys = ['grace', 'silence', 'insane'];
+      rackKeys.forEach(k => {
+        const item = document.getElementById('rack-' + k);
+        if (item) {
+          if (k === key) {
+            item.style.opacity = '1';
+            const img = item.querySelector('img');
+            if (img) img.style.border = '2px solid var(--gold-accent)';
+            const label = item.querySelector('span');
+            if (label) {
+              label.style.color = 'var(--gold-accent)';
+              label.style.fontWeight = '700';
+            }
+          } else {
+            item.style.opacity = '0.6';
+            const img = item.querySelector('img');
+            if (img) img.style.border = '1px solid rgba(255,255,255,0.1)';
+            const label = item.querySelector('span');
+            if (label) {
+              label.style.color = 'var(--text-muted)';
+              label.style.fontWeight = 'normal';
+            }
+          }
+        }
+      });
 
       // Pause audio if playing, reset play status
       if (!audio.paused) {
@@ -1779,13 +1781,38 @@
                     <blockquote>"The noisier the world becomes, the more powerful a silent strategy behaves."</blockquote>
                     <p>Most people react instantly to every notification, trigger, or comment, giving away their focus and maps to anyone who asks. Quiet Power is the opposite: it is keeping your plans private, filtering out irrelevant opinions, and maintaining absolute stability under pressure.</p>
                     <p>It is not passive silence; it is focused, strategic composure. When you remain quiet, you see the board clearly, while those who shout reveal their hand. Quiet Power is learning how to let your results do the talking while you continue to build in the dark.</p>`
+        }
+      },
+      'afraid-of-ai': {
+        en: {
+          title: 'Choose Your Field: The Shift of Clarity',
+          content: `<h1>Choose Your Field: The Shift of Clarity</h1>
+                    <p>Artificial intelligence is not making every profession irrelevant. But it is forcing many of them to become clearer. When information becomes easier to access, compare, and question, the old value of confusion starts to weaken.</p>
+                    <blockquote>"AI does not erase the human role. It removes the fog around it."</blockquote>
+                    <p>What remains is the harder question: in this profession, what was real value and what was only friction, opacity, or control? Explore the 10 chapters to see how professions shift when asymmetry begins to lose strength.</p>`
         },
         pt: {
-          title: 'O que é o Poder dos Quietos?',
-          content: `<h1>O que é o Poder dos Quietos?</h1>
-                    <p>O Poder dos Quietos é a muralha protetora que construímos em torno da nossa clareza mental. É a capacidade de observar um ambiente caótico, compreender a sua mecânica e tomar decisões sem deixar que o ruído externo dite o rumo.</p>
-                    <blockquote>"Quanto mais barulhento o mundo se torna, mais poderoso se comporta um silêncio estratégico."</blockquote>
-                    <p>A maioria das pessoas reage instantaneamente a cada notificação ou gatilho, revelando o seu jogo. O Poder dos Quietos é o oposto: é manter os seus planos privados e manter estabilidade absoluta sob pressão. Não se trata de silêncio passivo, mas sim de compostura focada.</p>`
+          title: 'Escolha o seu Campo: O Deslocamento da Clareza',
+          content: `<h1>Escolha o seu Campo: O Deslocamento da Clareza</h1>
+                    <p>A inteligência artificial não está a tornar todas as profissões irrelevantes. Mas está a forçá-las a tornarem-se mais claras. Quando a informação se torna mais fácil de aceder, comparar e questionar, o antigo valor da confusão começa a enfraquecer.</p>
+                    <blockquote>"A IA não apaga o papel humano. Remove a névoa ao seu redor."</blockquote>
+                    <p>O que resta é a pergunta mais difícil: nesta profissão, o que era valor real e o que era apenas fricção, opacidade ou controlo? Explore os 10 capítulos para ver como as profissões mudam quando a assimetria começa a perder força.</p>`
+        }
+      },
+      'life-is-a-bug': {
+        en: {
+          title: 'Life is a Bug',
+          content: `<h1>Life is a Bug</h1>
+                    <p>A satirical and philosophical study of human routines, glitches, and modern behavioral bugs. Written like field notes from a badly documented operating system: human life.</p>
+                    <blockquote>"Human OS is running. Stability not guaranteed."</blockquote>
+                    <p>Known issues include social timing errors, forgotten intentions, suspicious fridge checks, and updates arriving exactly when nobody asked for them. Explore the bug index to find the failure mode you recognize too quickly.</p>`
+        },
+        pt: {
+          title: 'A Vida é um Bug',
+          content: `<h1>A Vida é um Bug</h1>
+                    <p>Um estudo satírico e filosófico das rotinas humanas, falhas e bugs comportamentais modernos. Escrito como notas de campo de um sistema operativo mal documentado: a vida humana.</p>
+                    <blockquote>"O SO Humano está a correr. Estabilidade não garantida."</blockquote>
+                    <p>Os problemas conhecidos incluem erros de sincronização social, intenções esquecidas, verificações suspeitas no frigorífico e atualizações que chegam exatamente quando ninguém as pediu. Explore o índice de bugs para encontrar o modo de falha que reconhece demasiado depressa.</p>`
         }
       }
     };
@@ -1796,15 +1823,31 @@
     let currentBookLang = 'en';
 
     function showBrutalistBook(key, lang = 'en') {
+      // Chess in the block & Xadrez no Comando equivalence
+      if (key === 'xadrez-no-comando') {
+        key = 'chess-in-the-block';
+        lang = 'pt';
+      }
+
       currentBookKey = key;
       currentBookLang = lang;
 
       const book = bookData[key];
       if (!book) return;
 
-      // Portuguese books default to PT
-      if ((key === 'xadrez-no-comando' || key === 'livro-reclamacoes') && lang === 'en') {
-        currentBookLang = 'pt';
+      // Check available languages to toggle selectors visibility
+      const modalLangSelector = document.querySelector('.modal-lang-selector');
+      if (modalLangSelector) {
+        if (book.en && book.pt) {
+          modalLangSelector.style.display = 'flex';
+        } else {
+          modalLangSelector.style.display = 'none';
+        }
+      }
+
+      // Default fallback language
+      if (!book[currentBookLang]) {
+        currentBookLang = book.en ? 'en' : 'pt';
       }
 
       const data = book[currentBookLang];
@@ -1821,13 +1864,17 @@
       document.getElementById('b-read-link').innerText = currentBookLang === 'pt' ? 'Ler Excerto' : 'Read Excerpt';
 
       // Highlight active language button
-      document.getElementById('btn-book-lang-en').classList.remove('btn-cozy--solid');
-      document.getElementById('btn-book-lang-pt').classList.remove('btn-cozy--solid');
+      const btnEn = document.getElementById('btn-book-lang-en');
+      const btnPt = document.getElementById('btn-book-lang-pt');
+      if (btnEn && btnPt) {
+        btnEn.classList.remove('btn-cozy--solid');
+        btnPt.classList.remove('btn-cozy--solid');
 
-      if (currentBookLang === 'en') {
-        document.getElementById('btn-book-lang-en').classList.add('btn-cozy--solid');
-      } else {
-        document.getElementById('btn-book-lang-pt').classList.add('btn-cozy--solid');
+        if (currentBookLang === 'en') {
+          btnEn.classList.add('btn-cozy--solid');
+        } else {
+          btnPt.classList.add('btn-cozy--solid');
+        }
       }
 
       bookBrutal.classList.add('is-active');
@@ -1863,18 +1910,37 @@
       const essay = essayData[key];
       if (!essay) return;
 
+      // Check available languages to toggle selectors visibility
+      const essayLangToggle = document.querySelector('.essay-lang-toggle-container');
+      if (essayLangToggle) {
+        if (essay.en && essay.pt) {
+          essayLangToggle.style.display = 'flex';
+        } else {
+          essayLangToggle.style.display = 'none';
+        }
+      }
+
+      // Default fallback language
+      if (!essay[currentEssayLang]) {
+        currentEssayLang = essay.en ? 'en' : 'pt';
+      }
+
       const data = essay[currentEssayLang];
       brutalNavTitle.innerText = data.title;
       brutalBodyContent.innerHTML = data.content;
 
       // Highlight active language button
-      document.getElementById('btn-essay-lang-en').classList.remove('btn-cozy--solid');
-      document.getElementById('btn-essay-lang-pt').classList.remove('btn-cozy--solid');
+      const btnEn = document.getElementById('btn-essay-lang-en');
+      const btnPt = document.getElementById('btn-essay-lang-pt');
+      if (btnEn && btnPt) {
+        btnEn.classList.remove('btn-cozy--solid');
+        btnPt.classList.remove('btn-cozy--solid');
 
-      if (currentEssayLang === 'en') {
-        document.getElementById('btn-essay-lang-en').classList.add('btn-cozy--solid');
-      } else {
-        document.getElementById('btn-essay-lang-pt').classList.add('btn-cozy--solid');
+        if (currentEssayLang === 'en') {
+          btnEn.classList.add('btn-cozy--solid');
+        } else {
+          btnPt.classList.add('btn-cozy--solid');
+        }
       }
 
       // Translate static headings
