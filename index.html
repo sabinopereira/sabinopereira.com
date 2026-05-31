@@ -1241,6 +1241,11 @@
       <button class="book-brutal-close" onclick="closeBrutalistBookDirect()">&times;</button>
       <img src="" id="b-cover" class="drawer-brutal-cover" alt="Book Cover">
       <div class="drawer-brutal-meta">
+        <!-- Bilingual tab switches inside the modal -->
+        <div class="modal-lang-selector" style="display: flex; gap: 8px; margin-bottom: 2px;">
+          <button class="btn-cozy btn-cozy--solid" id="btn-book-lang-en" onclick="toggleBookModalLanguage('en')" style="padding: 4px 12px; font-size: 10px; border-radius: 4px; letter-spacing: 0.5px; border-color: var(--gold-accent);">EN</button>
+          <button class="btn-cozy" id="btn-book-lang-pt" onclick="toggleBookModalLanguage('pt')" style="padding: 4px 12px; font-size: 10px; border-radius: 4px; letter-spacing: 0.5px; border-color: var(--gold-accent);">PT</button>
+        </div>
         <span class="book-item-eyebrow" id="b-eyebrow">NEW BOOK</span>
         <h2 class="drawer-brutal-title" id="b-title">Chess in the Block</h2>
         <span class="modal-author" style="margin-top: -12px; font-family: 'Courier Prime', monospace; font-size: 11px; font-weight: 700; color: var(--gold-accent); text-transform: uppercase;">BY SABINO PEREIRA</span>
@@ -1261,7 +1266,11 @@
           ← Return
         </button>
         <span class="overlay-title-short" id="brutal-nav-title">Manuscript</span>
-        <div style="width: 50px;"></div>
+        <!-- Bilingual tab switches next to content -->
+        <div class="essay-lang-toggle-container" style="display: flex; gap: 6px;">
+          <button class="btn-cozy btn-cozy--solid" id="btn-essay-lang-en" onclick="toggleEssayLanguage('en')" style="padding: 4px 10px; font-size: 9px; border-radius: 4px; letter-spacing: 0.5px; border-color: var(--gold-accent);">EN</button>
+          <button class="btn-cozy" id="btn-essay-lang-pt" onclick="toggleEssayLanguage('pt')" style="padding: 4px 10px; font-size: 9px; border-radius: 4px; letter-spacing: 0.5px; border-color: var(--gold-accent);">PT</button>
+        </div>
       </div>
       <div class="brutal-reader-body" id="brutal-body-content">
         <!-- Essay content -->
@@ -1550,60 +1559,123 @@
     // DATA DICTIONARIES
     const bookData = {
       'chess-in-the-block': {
-        title: 'Chess in the Block',
-        eyebrow: 'FICTION • THRILLER',
-        cover: '/images/optimized/chess-in-the-block-cover.jpg',
-        desc: 'A strategic, high-stakes thriller where life patterns are treated as chess calculations under extreme focus. Follow the silent strategist navigating blocks of concrete and complex human moves.',
-        buyLink: 'https://www.amazon.com/dp/B0H2MZKL28',
-        readLink: '/chess-in-the-block.html'
+        en: {
+          title: 'Chess in the Block',
+          eyebrow: 'FICTION • THRILLER',
+          desc: 'A strategic, high-stakes thriller where life patterns are treated as chess calculations under extreme focus. Follow the silent strategist navigating blocks of concrete and complex human moves.',
+          buyLink: 'https://www.amazon.com/dp/B0H2MZKL28',
+          readLink: '/chess-in-the-block.html'
+        },
+        pt: {
+          title: 'Xadrez no Comando',
+          eyebrow: 'LIVRO EM PORTUGUÊS • ESTRATÉGIA',
+          desc: 'Um livro em português sobre estratégia, sobrevivência emocional, pressão, silêncio, amor, perda e maturidade. Aprenda a mapear as suas escolhas e a reter o controlo silencioso em situações de extrema pressão familiar ou social.',
+          buyLink: 'https://www.amazon.es/-/en/Sabino-Pereira/dp/B0H2CQ4FFB/ref=tmm_pap_swatch_0',
+          readLink: '/xadrez-no-comando.html'
+        },
+        cover: '/images/optimized/chess-in-the-block-cover.jpg'
       },
       'what-still-hurts': {
-        title: 'What Still Hurts — Echoes of Harmony',
-        eyebrow: 'NEW NOVEL • DYSTOPIA',
-        cover: '/images/optimized/what-still-hurts-cover.png',
-        desc: 'A psychological dystopian novel about memory, comfort, and the high price of painless peace. What happens when a society traded its raw, painful memories for an optimized, calm state of synthetic harmony?',
-        buyLink: 'https://www.amazon.com/dp/B0H2YFWT1Y?ref=sp_email',
-        readLink: '/what-still-hurts/'
+        en: {
+          title: 'What Still Hurts — Echoes of Harmony',
+          eyebrow: 'NEW NOVEL • DYSTOPIA',
+          desc: 'A psychological dystopian novel about memory, comfort, and the high price of painless peace. What happens when a society traded its raw, painful memories for an optimized, calm state of synthetic harmony?',
+          buyLink: 'https://www.amazon.com/dp/B0H2YFWT1Y?ref=sp_email',
+          readLink: '/what-still-hurts/'
+        },
+        pt: {
+          title: 'O Que Ainda Dói — Ecos da Harmonia',
+          eyebrow: 'NOVO LIVRO • DISTOPIA PSICOLÓGICA',
+          desc: 'Um romance distópico psicológico sobre memória, conforto e o preço elevado de uma paz sem dor. O que acontece quando uma sociedade troca as suas memórias cruas e dolorosas por um estado otimizado e calmo de harmonia sintética?',
+          buyLink: 'https://www.amazon.es/dp/B0D5Y7P2K5',
+          readLink: '/pt/livros.html'
+        },
+        cover: '/images/optimized/what-still-hurts-cover.png'
       },
       'xadrez-no-comando': {
-        title: 'Xadrez no Comando',
-        eyebrow: 'PORTUGUESE BOOK • STRATEGY',
-        cover: '/images/optimized/xadrez-no-comando-cover.png',
-        desc: 'A Portuguese book about strategy, emotional survival, pressure, silence, love, loss, and maturity. Learn how to map your choices and retain silent control under extreme family or social pressure.',
-        buyLink: 'https://www.amazon.es/-/en/Sabino-Pereira/dp/B0H2CQ4FFB/ref=tmm_pap_swatch_0',
-        readLink: '/xadrez-no-comando.html'
+        en: {
+          title: 'Chess in the Block (PT Edition)',
+          eyebrow: 'PORTUGUESE BOOK • AMAZON KDP',
+          desc: 'The Portuguese counterpart to Chess in the Block. A reflective book about life on the block through the metaphor of chess, strategy, and emotional survival.',
+          buyLink: 'https://www.amazon.es/-/en/Sabino-Pereira/dp/B0H2CQ4FFB/ref=tmm_pap_swatch_0',
+          readLink: '/xadrez-no-comando.html'
+        },
+        pt: {
+          title: 'Xadrez no Comando',
+          eyebrow: 'LIVRO EM PORTUGUÊS • ESTRATÉGIA',
+          desc: 'Um livro em português sobre estratégia, sobrevivência emocional, pressão, silêncio, amor, perda e maturidade. Aprenda a mapear as suas escolhas e a reter o controlo silencioso em situações de extrema pressão familiar ou social.',
+          buyLink: 'https://www.amazon.es/-/en/Sabino-Pereira/dp/B0H2CQ4FFB/ref=tmm_pap_swatch_0',
+          readLink: '/xadrez-no-comando.html'
+        },
+        cover: '/images/optimized/xadrez-no-comando-cover.png'
       },
       'quiet-power': {
-        title: 'Quiet Power',
-        eyebrow: 'CORE SYSTEM • STRATEGY',
-        cover: '/images/optimized/quiet-power-cover.jpg',
-        desc: 'The central system for filter control, focus, emotional stability, and high-performance design under extreme pressure. Quiet Power outlines how to act with silent intention and keep your personal maps completely private.',
-        buyLink: 'https://www.amazon.com/dp/B0H2G9L3D3',
-        readLink: '/quiet-power.html'
+        en: {
+          title: 'Quiet Power',
+          eyebrow: 'CORE SYSTEM • STRATEGY',
+          desc: 'The central system for filter control, focus, emotional stability, and high-performance design under extreme pressure. Quiet Power outlines how to act with silent intention and keep your personal maps completely private.',
+          buyLink: 'https://www.amazon.com/dp/B0H2G9L3D3',
+          readLink: '/quiet-power.html'
+        },
+        pt: {
+          title: 'O Poder dos Quietos',
+          eyebrow: 'SISTEMA CENTRAL • ESTRATÉGIA',
+          desc: 'O sistema central para controle de filtros, foco, estabilidade emocional e design de alto desempenho sob extrema pressão. O Poder dos Quietos ensina como agir com intenção silenciosa e manter os seus mapas privados.',
+          buyLink: 'https://www.amazon.com/dp/B0H2G9L3D3',
+          readLink: '/pt/livros.html'
+        },
+        cover: '/images/optimized/quiet-power-cover.jpg'
       },
       'borrow-delay-repeat': {
-        title: 'Borrow. Delay. Repeat.',
-        eyebrow: 'SATIRE • HUMOUR',
-        cover: '/images/optimized/borrow-delay-repeat-cover.jpg',
-        desc: 'A very unserious, highly satirical guide to not giving money back. A humorous study of excuse-making, social metrics, and the absurdity of financial delays in modern society.',
-        buyLink: 'https://www.amazon.com/dp/B0H2BZS5D7',
-        readLink: '/borrow-delay-repeat.html'
+        en: {
+          title: 'Borrow. Delay. Repeat.',
+          eyebrow: 'SATIRE • HUMOUR',
+          desc: 'A very unserious, highly satirical guide to not giving money back. A humorous study of excuse-making, social metrics, and the absurdity of financial delays in modern society.',
+          buyLink: 'https://www.amazon.com/dp/B0H2BZS5D7',
+          readLink: '/borrow-delay-repeat.html'
+        },
+        pt: {
+          title: 'Pedir. Adiar. Repetir.',
+          eyebrow: 'LIVRO • SATIRA E HUMOR',
+          desc: 'Um guia muito pouco sério e altamente satírico para não devolver dinheiro. Um estudo bem-humorado sobre desculpas, métricas sociais e o absurdo dos atrasos financeiros na sociedade moderna.',
+          buyLink: 'https://www.amazon.com/dp/B0H2BZS5D7',
+          readLink: '/pt/livros.html'
+        },
+        cover: '/images/optimized/borrow-delay-repeat-cover.jpg'
       },
       'the-calm-digital-life': {
-        title: 'The Calm Digital Life',
-        eyebrow: 'PRACTICAL GUIDE • SECURITY',
-        cover: '/images/optimized/the-calm-digital-life.jpg',
-        desc: 'A practical, simple, and direct guide with exercise maps designed to build safer online decisions and filter out digital scams after 60.',
-        buyLink: 'https://www.amazon.com/dp/B0H2D1B9KV',
-        readLink: '/the-calm-digital-life.html'
+        en: {
+          title: 'The Calm Digital Life',
+          eyebrow: 'PRACTICAL GUIDE • SECURITY',
+          desc: 'A practical, simple, and direct guide with exercise maps designed to build safer online decisions and filter out digital scams after 60.',
+          buyLink: 'https://www.amazon.com/dp/B0H2D1B9KV',
+          readLink: '/the-calm-digital-life.html'
+        },
+        pt: {
+          title: 'A Vida Digital Calma',
+          eyebrow: 'GUIA PRÁTICO • SEGURANÇA',
+          desc: 'Um guia prático, simples e direto com mapas de exercícios criados para desenvolver decisões online seguras e filtrar fraudes digitais para maiores de 60 anos.',
+          buyLink: 'https://www.amazon.com/dp/B0H2D1B9KV',
+          readLink: '/pt/livros.html'
+        },
+        cover: '/images/optimized/the-calm-digital-life.jpg'
       },
       'livro-reclamacoes': {
-        title: 'Livro de Reclamações para o Mundo',
-        eyebrow: 'PORTUGUESE BOOK • CHRONICLES',
-        cover: '/images/optimized/livro-reclamacoes-cover.jpg',
-        desc: '30 crónicas revistas e ilustradas sobre a frustração moderna, o domínio dos ecrãs, a burocracia dos mercados e o absurdo do comportamento humano no quotidiano.',
-        buyLink: 'https://www.amazon.es/dp/B0GX2ZW3LQ',
-        readLink: '/livro-reclamacao.html'
+        en: {
+          title: 'Complaint Book for the World',
+          eyebrow: 'illustrated chronicles · PT Edition',
+          desc: '30 revised and illustrated chronicles of modern frustration, systems, screens, markets, and everyday absurdity. A beautiful reflection on human behavior.',
+          buyLink: 'https://www.amazon.es/dp/B0GX2ZW3LQ',
+          readLink: '/livro-reclamacao.html'
+        },
+        pt: {
+          title: 'Livro de Reclamações para o Mundo',
+          eyebrow: 'LIVRO EM PORTUGUÊS • CRÓNICAS',
+          desc: '30 crónicas revistas e ilustradas sobre a frustração moderna, o domínio dos ecrãs, a burocracia dos mercados e o absurdo do comportamento humano no quotidiano.',
+          buyLink: 'https://www.amazon.es/dp/B0GX2ZW3LQ',
+          readLink: '/livro-reclamacao.html'
+        },
+        cover: '/images/optimized/livro-reclamacoes-cover.jpg'
       }
     };
 
@@ -1656,8 +1728,8 @@
       // Pause audio if playing, reset play status
       if (!audio.paused) {
         audio.pause();
-        bPlayIcon.style.display = 'none';
-        bPauseIcon.style.display = 'block';
+        bPlayIcon.style.display = 'block';
+        bPauseIcon.style.display = 'none';
         dwBrutalPlayer.classList.remove('is-playing');
         resetNeedle();
       }
@@ -1665,46 +1737,106 @@
 
     const essayData = {
       'sometimes-leaving-early': {
-        title: 'Sometimes Leaving Early is What Saves Us Most',
-        content: `<h1>Sometimes Leaving Early is What Saves Us Most</h1>
-                  <p>In a culture that glorifies endurance, we are trained to believe that staying until the bitter end is a badge of honor. We are taught that to exit a room, a relationship, or a system before it formally concludes is a sign of weakness or failure.</p>
-                  <blockquote>"Leaving early is not about surrender; it is about the quiet execution of self-preservation."</blockquote>
-                  <p>But true strategy teaches us otherwise. When an environment begins to decay—when the noise begins to overwhelm the signal—staying is not strength; it is liability. Leaving early represents the conscious decision to value your own quiet attention over the expectations of the crowd.</p>
-                  <p>By exiting when your value is highest and the atmospheric noise is lowest, you preserve your energy, protect your focus, and remain in complete control of your next move. The calmest minds do not wait for the building to collapse before looking for the exit door.</p>`
+        en: {
+          title: 'Sometimes Leaving Early is What Saves Us Most',
+          content: `<h1>Sometimes Leaving Early is What Saves Us Most</h1>
+                    <p>In a culture that glorifies endurance, we are trained to believe that staying until the bitter end is a badge of honor. We are taught that to exit a room, a relationship, or a system before it formally concludes is a sign of weakness or failure.</p>
+                    <blockquote>"Leaving early is not about surrender; it is about the quiet execution of self-preservation."</blockquote>
+                    <p>But true strategy teaches us otherwise. When an environment begins to decay—when the noise begins to overwhelm the signal—staying is not strength; it is liability. Leaving early represents the conscious decision to value your own quiet attention over the expectations of the crowd.</p>
+                    <p>By exiting when your value is highest and the atmospheric noise is lowest, you preserve your energy, protect your focus, and remain in complete control of your next move. The calmest minds do not wait for the building to collapse before looking for the exit door.</p>`
+        },
+        pt: {
+          title: 'Às vezes, sair cedo é o que mais nos salva',
+          content: `<h1>Às vezes, sair cedo é o que mais nos salva</h1>
+                    <p>Há uma imagem em que penso muitas vezes: se entrares no comboio errado, sai na estação mais próxima. Quanto mais tempo demorares a sair, mais cara será a viagem de regresso.</p>
+                    <blockquote>"Sair cedo não é fraqueza; é a execução lúcida da preservação de si próprio."</blockquote>
+                    <p>Porque quase toda a gente, em algum momento da vida, entra no comboio errado. Às vezes é uma relação, um trabalho, um projeto, uma amizade, uma rotina.</p>
+                    <p>Só mais tarde começamos a notar aquele desconforto difícil de explicar. A sensação silenciosa de estarmos a insistir em algo que já não combina connosco. E talvez uma das formas mais silenciosas de maturidade seja essa: perceber quando já não pertencemos a um lugar, e sair antes de nos perdermos lá dentro.</p>`
+        }
       },
       'being-deleted': {
-        title: 'Being Deleted After a Relationship Ends',
-        content: `<h1>Being Deleted After a Relationship Ends</h1>
-                  <p>The digital age has introduced a new kind of quiet erasure. Historically, when a relationship or friendship ended, the remnants faded slowly through physical distance and the natural passage of time. Today, erasure is a sequence of binary clicks.</p>
-                  <blockquote>"We are cleared from servers, removed from grids, and deleted from profiles in a matter of seconds."</blockquote>
-                  <p>Being deleted is the modern equivalent of social exile. It is an abrupt, mechanical clearing of digital memories that leaves no room for gradual transition. We watch profiles turn into dead links, photos get cropped, and years of shared digital space disappear.</p>
-                  <p>While this binary purge is often marketed as 'moving on' or 'healing,' it carries a deeper psychological weight. It teaches us to treat human connection as cache files to be cleared when the connection gets clogged. True maturity lies in recognizing that even when paths diverge, the shared map remains a real part of who we are.</p>`
+        en: {
+          title: 'Being Deleted After a Relationship Ends',
+          content: `<h1>Being Deleted After a Relationship Ends</h1>
+                    <p>The digital age has introduced a new kind of quiet erasure. Historically, when a relationship or friendship ended, the remnants faded slowly through physical distance and the natural passage of time. Today, erasure is a sequence of binary clicks.</p>
+                    <blockquote>"We are cleared from servers, removed from grids, and deleted from profiles in a matter of seconds."</blockquote>
+                    <p>Being deleted is the modern equivalent of social exile. It is an abrupt, mechanical clearing of digital memories that leaves no room for gradual transition. We watch profiles turn into dead links, photos get cropped, and years of shared digital space disappear.</p>
+                    <p>While this binary purge is often marketed as 'moving on' or 'healing,' it carries a deeper psychological weight. It teaches us to treat human connection as cache files to be cleared when the connection gets clogged. True maturity lies in recognizing that even when paths diverge, the shared map remains a real part of who we are.</p>`
+        },
+        pt: {
+          title: 'Ser Apagado Depois de um Relacionamento',
+          content: `<h1>Ser Apagado Depois de um Relacionamento</h1>
+                    <p>A era digital introduziu um novo tipo de apagamento silencioso. Antigamente, quando uma relação terminava, os vestígios desvaneciam-se lentamente com a distância física e a passagem do tempo. Hoje, o apagamento é uma sequência de cliques binários.</p>
+                    <blockquote>"Somos limpos dos servidores, removidos das grelhas e eliminados em segundos."</blockquote>
+                    <p>Embora esta purga seja frequentemente vendida como "seguir em frente" ou "curar", ela acarreta um peso psicológico profundo. Ensina-nos a tratar a ligação humana como ficheiros de cache a serem limpos quando a ligação entope. A verdadeira maturidade reside em reconhecer que, mesmo quando os caminhos divergem, o mapa partilhado continua a ser real.</p>`
+        }
       },
       'what-is-quiet-power': {
-        title: 'What is Quiet Power?',
-        content: `<h1>What is Quiet Power?</h1>
-                  <p>Quiet Power is the protective wall we build around our mental clarity. It is the ability to observe a chaotic environment, understand its mechanics, and make decisive moves without letting the surrounding noise dictate your path.</p>
-                  <blockquote>"The noisier the world becomes, the more powerful a silent strategy behaves."</blockquote>
-                  <p>Most people react instantly to every notification, trigger, or comment, giving away their focus and maps to anyone who asks. Quiet Power is the opposite: it is keeping your plans private, filtering out irrelevant opinions, and maintaining absolute stability under pressure.</p>
-                  <p>It is not passive silence; it is focused, strategic composure. When you remain quiet, you see the board clearly, while those who shout reveal their hand. Quiet Power is learning how to let your results do the talking while you continue to build in the dark.</p>`
+        en: {
+          title: 'What is Quiet Power?',
+          content: `<h1>What is Quiet Power?</h1>
+                    <p>Quiet Power is the protective wall we build around our mental clarity. It is the ability to observe a chaotic environment, understand its mechanics, and make decisive moves without letting the surrounding noise dictate your path.</p>
+                    <blockquote>"The noisier the world becomes, the more powerful a silent strategy behaves."</blockquote>
+                    <p>Most people react instantly to every notification, trigger, or comment, giving away their focus and maps to anyone who asks. Quiet Power is the opposite: it is keeping your plans private, filtering out irrelevant opinions, and maintaining absolute stability under pressure.</p>
+                    <p>It is not passive silence; it is focused, strategic composure. When you remain quiet, you see the board clearly, while those who shout reveal their hand. Quiet Power is learning how to let your results do the talking while you continue to build in the dark.</p>`
+        },
+        pt: {
+          title: 'O que é o Poder dos Quietos?',
+          content: `<h1>O que é o Poder dos Quietos?</h1>
+                    <p>O Poder dos Quietos é a muralha protetora que construímos em torno da nossa clareza mental. É a capacidade de observar um ambiente caótico, compreender a sua mecânica e tomar decisões sem deixar que o ruído externo dite o rumo.</p>
+                    <blockquote>"Quanto mais barulhento o mundo se torna, mais poderoso se comporta um silêncio estratégico."</blockquote>
+                    <p>A maioria das pessoas reage instantaneamente a cada notificação ou gatilho, revelando o seu jogo. O Poder dos Quietos é o oposto: é manter os seus planos privados e manter estabilidade absoluta sob pressão. Não se trata de silêncio passivo, mas sim de compostura focada.</p>`
+        }
       }
     };
 
     // VINTAGE BOOK EXPAND SYSTEM
     const bookBrutal = document.getElementById('book-brutal');
-    
-    function showBrutalistBook(key) {
-      const data = bookData[key];
-      if (!data) return;
+    let currentBookKey = '';
+    let currentBookLang = 'en';
 
-      document.getElementById('b-cover').src = data.cover;
+    function showBrutalistBook(key, lang = 'en') {
+      currentBookKey = key;
+      currentBookLang = lang;
+
+      const book = bookData[key];
+      if (!book) return;
+
+      // Portuguese books default to PT
+      if ((key === 'xadrez-no-comando' || key === 'livro-reclamacoes') && lang === 'en') {
+        currentBookLang = 'pt';
+      }
+
+      const data = book[currentBookLang];
+
+      document.getElementById('b-cover').src = book.cover;
       document.getElementById('b-eyebrow').innerText = data.eyebrow;
       document.getElementById('b-title').innerText = data.title;
       document.getElementById('b-desc').innerText = data.desc;
       document.getElementById('b-buy-link').href = data.buyLink;
       document.getElementById('b-read-link').href = data.readLink;
 
+      // Adjust text based on language
+      document.getElementById('b-buy-link').innerText = currentBookLang === 'pt' ? 'Comprar na Amazon' : 'Buy on Amazon';
+      document.getElementById('b-read-link').innerText = currentBookLang === 'pt' ? 'Ler Excerto' : 'Read Excerpt';
+
+      // Highlight active language button
+      document.getElementById('btn-book-lang-en').classList.remove('btn-cozy--solid');
+      document.getElementById('btn-book-lang-pt').classList.remove('btn-cozy--solid');
+
+      if (currentBookLang === 'en') {
+        document.getElementById('btn-book-lang-en').classList.add('btn-cozy--solid');
+      } else {
+        document.getElementById('btn-book-lang-pt').classList.add('btn-cozy--solid');
+      }
+
       bookBrutal.classList.add('is-active');
+    }
+
+    function toggleBookModalLanguage(lang) {
+      if (currentBookKey) {
+        showBrutalistBook(currentBookKey, lang);
+      }
     }
 
     function closeBrutalistBookDirect() {
@@ -1721,14 +1853,48 @@
     const essayBrutal = document.getElementById('essay-brutal');
     const brutalNavTitle = document.getElementById('brutal-nav-title');
     const brutalBodyContent = document.getElementById('brutal-body-content');
+    let currentEssayKey = '';
+    let currentEssayLang = 'en';
 
-    function openEssayBrutal(key) {
+    function openEssayBrutal(key, lang = 'en') {
+      currentEssayKey = key;
+      currentEssayLang = lang;
+
       const essay = essayData[key];
       if (!essay) return;
 
-      brutalNavTitle.innerText = essay.title;
-      brutalBodyContent.innerHTML = essay.content;
+      const data = essay[currentEssayLang];
+      brutalNavTitle.innerText = data.title;
+      brutalBodyContent.innerHTML = data.content;
+
+      // Highlight active language button
+      document.getElementById('btn-essay-lang-en').classList.remove('btn-cozy--solid');
+      document.getElementById('btn-essay-lang-pt').classList.remove('btn-cozy--solid');
+
+      if (currentEssayLang === 'en') {
+        document.getElementById('btn-essay-lang-en').classList.add('btn-cozy--solid');
+      } else {
+        document.getElementById('btn-essay-lang-pt').classList.add('btn-cozy--solid');
+      }
+
+      // Translate static headings
+      const backBtn = document.querySelector('.brutal-reader-back');
+      if (backBtn) {
+        backBtn.innerText = currentEssayLang === 'pt' ? '← Voltar' : '← Return';
+      }
+      
+      const overlayTitle = document.querySelector('.overlay-title-short');
+      if (overlayTitle) {
+        overlayTitle.innerText = currentEssayLang === 'pt' ? 'Manuscrito' : 'Manuscript';
+      }
+
       essayBrutal.classList.add('is-active');
+    }
+
+    function toggleEssayLanguage(lang) {
+      if (currentEssayKey) {
+        openEssayBrutal(currentEssayKey, lang);
+      }
     }
 
     function closeEssayBrutal() {
