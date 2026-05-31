@@ -518,9 +518,68 @@
       color: #554d45;
     }
 
+    .featured-album-layout {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .featured-album-cover {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 2px solid var(--gold-accent);
+      box-shadow: 0 14px 26px rgba(61, 35, 20, 0.16);
+    }
+
+    .featured-album-cover--type {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--forest-green);
+      color: var(--gold-bright);
+      font-family: 'Cinzel', serif;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+
+    .featured-album-kicker {
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      color: var(--gold-accent);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .featured-album-story {
+      margin-top: 12px;
+      padding-left: 18px;
+      border-left: 2px solid rgba(201, 155, 66, 0.45);
+      font-family: 'Lora', serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #5e5349;
+    }
+
+    .music-subsection-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      color: var(--gold-accent);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin: 38px 0 14px;
+    }
+
     .music-repertoire-grid {
       display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 14px;
     }
 
@@ -597,8 +656,14 @@
       border: 1px solid rgba(201, 155, 66, 0.24);
       border-radius: 8px;
       background: rgba(253, 252, 247, 0.48);
-      max-height: 230px;
-      overflow: auto;
+      overflow: visible;
+    }
+
+    .music-links-row {
+      display: flex;
+      gap: 14px;
+      margin-top: 22px;
+      flex-wrap: wrap;
     }
 
     .music-track-row {
@@ -1375,6 +1440,10 @@
         gap: 40px;
       }
 
+      .featured-album-layout {
+        grid-template-columns: 130px 1fr;
+      }
+
       .music-repertoire-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -1448,6 +1517,14 @@
 
       .music-repertoire-grid {
         grid-template-columns: 1fr;
+      }
+
+      .featured-album-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-album-cover {
+        max-width: 180px;
       }
     }
   
@@ -1699,56 +1776,15 @@
     <div class="cozy-music-block">
       <div class="cozy-music-grid">
         <div class="music-cozy-copy">
-          <h3 id="m-album-title">Built by Grace</h3>
-          <h4 id="m-track-title" style="font-family: 'Cinzel', serif; font-size: 20px; color: var(--gold-accent); margin-top: -12px;">18 tracks</h4>
-          <p id="m-desc">A real repertoire by Reira Bin: albums, singles, and book-inspired music. Select a collection to see the tracks, then listen to the full releases on Spotify, Apple Music, or YouTube.</p>
-
-          <div class="music-repertoire-grid" aria-label="Reira Bin music repertoire">
-            <button class="music-release-card is-active" id="rack-grace" type="button" onclick="selectCozyAlbum('grace')">
-              <img class="music-release-cover" src="/images/optimized/built-by-grace-cover.png" alt="Built by Grace cover">
-              <span class="music-release-name">Built by Grace</span>
-              <span class="music-release-count">18 tracks</span>
-            </button>
-            <button class="music-release-card" id="rack-silence" type="button" onclick="selectCozyAlbum('silence')">
-              <img class="music-release-cover" src="/images/optimized/checkmate-in-silence-cover.png" alt="Checkmate in Silence cover">
-              <span class="music-release-name">Checkmate in Silence</span>
-              <span class="music-release-count">19 tracks</span>
-            </button>
-            <button class="music-release-card" id="rack-insane" type="button" onclick="selectCozyAlbum('insane')">
-              <img class="music-release-cover" src="/images/optimized/everybody-acting-insane-cover.png" alt="Everybody Acting Insane cover">
-              <span class="music-release-name">Everybody Acting Insane</span>
-              <span class="music-release-count">13 tracks</span>
-            </button>
-            <button class="music-release-card" id="rack-cabo" type="button" onclick="selectCozyAlbum('cabo')">
-              <span class="music-release-cover music-release-cover--type">CV</span>
-              <span class="music-release-name">Cabo Verde Campeão</span>
-              <span class="music-release-count">3 tracks</span>
-            </button>
-            <button class="music-release-card" id="rack-xadrez" type="button" onclick="selectCozyAlbum('xadrez')">
-              <img class="music-release-cover" src="/images/optimized/xadrez-no-comando-cover.png" alt="Xadrez no Comando cover">
-              <span class="music-release-name">Xadrez no Comando</span>
-              <span class="music-release-count">9 videos</span>
-            </button>
-          </div>
-
-          <div class="music-tracklist" id="music-tracklist"></div>
-
-          <p class="music-player-note" id="m-player-note">The player keeps a local preview for God Sent Me You. Full albums open on the official platforms.</p>
-          
-          <!-- Streaming links row -->
-          <div class="cozy-music-streaming" style="display: flex; gap: 14px; margin-top: 28px; flex-wrap: wrap;">
-            <a href="https://open.spotify.com/artist/0CUmVxNUbIaLa4GMwOoD1C?si=lJMUz-z8RJ6m2GXlkLE6pg" target="_blank" rel="noopener" class="author-button" style="padding: 10px 20px; font-size: 11px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.563.387-.857.207-2.377-1.454-5.37-1.782-8.894-1.002-.336.074-.668-.139-.742-.475-.074-.336.139-.668.475-.742 3.856-.852 7.156-.479 9.81 1.152.295.18.387.563.207.857zm1.225-2.72c-.226.367-.707.487-1.074.26-2.721-1.672-6.87-2.157-10.081-1.182-.413.125-.847-.107-.972-.52-.125-.413.107-.847.52-.972 3.67-1.114 8.238-.574 11.347 1.336.367.226.487.707.26 1.074zm.104-2.851c-3.263-1.937-8.651-2.115-11.758-1.171-.5.152-1.025-.133-1.177-.633-.151-.5.133-1.025.633-1.177 3.616-1.097 9.55-.893 13.3 1.334.45.267.599.845.332 1.295-.267.45-.845.599-1.295.332z"/></svg>
-              Listen on Spotify
-            </a>
-            <a href="https://music.apple.com/pt/artist/reira-bin/6774230941?l=en-GB" target="_blank" rel="noopener" class="author-button author-button--secondary" style="padding: 10px 20px; font-size: 11px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm1.062 13.916c-.035.034-.078.055-.123.061-.832.113-1.64.444-2.316.974-.69.54-1.242 1.258-1.597 2.078-.052.12-.132.222-.232.298-.44.33-.99.516-1.554.524-.467-.007-.92-.128-1.32-.352-.393-.223-.715-.551-.933-.948-.211-.383-.314-.816-.301-1.252.016-.867.387-1.693 1.028-2.285.656-.606 1.53-.945 2.436-.947.247.001.493.028.736.082.046.01.092-.001.129-.03.036-.03.056-.073.056-.12V8.92c0-.505.31-.955.787-1.127l3.633-1.312c.5-.181 1.05.19 1.05.727v6.621c0 .034-.009.068-.026.097-.247.411-.38.878-.387 1.354.004.536.177 1.054.493 1.477.306.41.745.71 1.243.85.485.138.995.143 1.483.013a3.52 3.52 0 001.218-.62c.07-.058.115-.143.125-.236.147-.947-.074-1.921-.617-2.72-.519-.766-1.37-1.241-2.295-1.282-.135-.006-.27-.008-.405-.005-.046.001-.092-.01-.129-.03-.036-.03-.056-.073-.056-.12V10.15c0-.056-.046-.102-.102-.102l-3.34.803c-.046.011-.082.048-.093.094-.01.046.002.094.032.129.03.035.046.08.046.127v4.618z"/></svg>
-              Listen on Apple Music
-            </a>
-            <a href="https://www.youtube.com/channel/UCD-jI8Sr1hCkif3UHIAGegA" target="_blank" rel="noopener" class="author-button author-button--secondary" style="padding: 10px 20px; font-size: 11px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M21.58 7.19a2.52 2.52 0 00-1.77-1.79C18.25 5 12 5 12 5s-6.25 0-7.81.4a2.52 2.52 0 00-1.77 1.79A26.3 26.3 0 002 12a26.3 26.3 0 00.42 4.81 2.52 2.52 0 001.77 1.79C5.75 19 12 19 12 19s6.25 0 7.81-.4a2.52 2.52 0 001.77-1.79A26.3 26.3 0 0022 12a26.3 26.3 0 00-.42-4.81zM10 15V9l5.2 3L10 15z"/></svg>
-              Watch on YouTube
-            </a>
+          <div class="featured-album-layout">
+            <img class="featured-album-cover" id="featured-album-cover" src="/images/optimized/built-by-grace-cover.png" alt="Built by Grace cover">
+            <div>
+              <p class="featured-album-kicker" id="m-kicker">Latest album</p>
+              <h3 id="m-album-title">Built by Grace</h3>
+              <h4 id="m-track-title" style="font-family: 'Cinzel', serif; font-size: 20px; color: var(--gold-accent); margin-top: -12px;">18 tracks</h4>
+              <p id="m-desc">A cinematic gospel album about devotion, repair, family prayer, mercy, grace, and love without fear.</p>
+              <p class="featured-album-story" id="m-story">Built by Grace moves like a journey from prayer to healing, from fear to safety, from private repair to a wider sense of home. It is not just a collection of songs; it is a devotional arc about learning to receive love without losing peace.</p>
+            </div>
           </div>
           
           <!-- Local hidden audio stream -->
@@ -1803,6 +1839,50 @@
             
           </div>
         </div>
+      </div>
+
+      <p class="music-subsection-label">Tracklist</p>
+      <div class="music-tracklist" id="music-tracklist"></div>
+
+      <p class="music-player-note" id="m-player-note">The player keeps a local preview for God Sent Me You. Full albums open on the official platforms.</p>
+
+      <div class="music-links-row">
+        <a href="https://open.spotify.com/artist/0CUmVxNUbIaLa4GMwOoD1C?si=lJMUz-z8RJ6m2GXlkLE6pg" target="_blank" rel="noopener" class="author-button" style="padding: 10px 20px; font-size: 11px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.563.387-.857.207-2.377-1.454-5.37-1.782-8.894-1.002-.336.074-.668-.139-.742-.475-.074-.336.139-.668.475-.742 3.856-.852 7.156-.479 9.81 1.152.295.18.387.563.207.857zm1.225-2.72c-.226.367-.707.487-1.074.26-2.721-1.672-6.87-2.157-10.081-1.182-.413.125-.847-.107-.972-.52-.125-.413.107-.847.52-.972 3.67-1.114 8.238-.574 11.347 1.336.367.226.487.707.26 1.074zm.104-2.851c-3.263-1.937-8.651-2.115-11.758-1.171-.5.152-1.025-.133-1.177-.633-.151-.5.133-1.025.633-1.177 3.616-1.097 9.55-.893 13.3 1.334.45.267.599.845.332 1.295-.267.45-.845.599-1.295.332z"/></svg>
+          Listen on Spotify
+        </a>
+        <a href="https://music.apple.com/pt/artist/reira-bin/6774230941?l=en-GB" target="_blank" rel="noopener" class="author-button author-button--secondary" style="padding: 10px 20px; font-size: 11px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm1.062 13.916c-.035.034-.078.055-.123.061-.832.113-1.64.444-2.316.974-.69.54-1.242 1.258-1.597 2.078-.052.12-.132.222-.232.298-.44.33-.99.516-1.554.524-.467-.007-.92-.128-1.32-.352-.393-.223-.715-.551-.933-.948-.211-.383-.314-.816-.301-1.252.016-.867.387-1.693 1.028-2.285.656-.606 1.53-.945 2.436-.947.247.001.493.028.736.082.046.01.092-.001.129-.03.036-.03.056-.073.056-.12V8.92c0-.505.31-.955.787-1.127l3.633-1.312c.5-.181 1.05.19 1.05.727v6.621c0 .034-.009.068-.026.097-.247.411-.38.878-.387 1.354.004.536.177 1.054.493 1.477.306.41.745.71 1.243.85.485.138.995.143 1.483.013a3.52 3.52 0 001.218-.62c.07-.058.115-.143.125-.236.147-.947-.074-1.921-.617-2.72-.519-.766-1.37-1.241-2.295-1.282-.135-.006-.27-.008-.405-.005-.046.001-.092-.01-.129-.03-.036-.03-.056-.073-.056-.12V10.15c0-.056-.046-.102-.102-.102l-3.34.803c-.046.011-.082.048-.093.094-.01.046.002.094.032.129.03.035.046.08.046.127v4.618z"/></svg>
+          Listen on Apple Music
+        </a>
+        <a href="https://www.youtube.com/channel/UCD-jI8Sr1hCkif3UHIAGegA" target="_blank" rel="noopener" class="author-button author-button--secondary" style="padding: 10px 20px; font-size: 11px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M21.58 7.19a2.52 2.52 0 00-1.77-1.79C18.25 5 12 5 12 5s-6.25 0-7.81.4a2.52 2.52 0 00-1.77 1.79A26.3 26.3 0 002 12a26.3 26.3 0 00.42 4.81 2.52 2.52 0 001.77 1.79C5.75 19 12 19 12 19s6.25 0 7.81-.4a2.52 2.52 0 001.77-1.79A26.3 26.3 0 0022 12a26.3 26.3 0 00-.42-4.81zM10 15V9l5.2 3L10 15z"/></svg>
+          Watch on YouTube
+        </a>
+      </div>
+
+      <p class="music-subsection-label">Other albums</p>
+      <div class="music-repertoire-grid" aria-label="Other Reira Bin albums">
+        <button class="music-release-card" id="rack-silence" type="button" onclick="selectCozyAlbum('silence')">
+          <img class="music-release-cover" src="/images/optimized/checkmate-in-silence-cover.png" alt="Checkmate in Silence cover">
+          <span class="music-release-name">Checkmate in Silence</span>
+          <span class="music-release-count">19 tracks</span>
+        </button>
+        <button class="music-release-card" id="rack-insane" type="button" onclick="selectCozyAlbum('insane')">
+          <img class="music-release-cover" src="/images/optimized/everybody-acting-insane-cover.png" alt="Everybody Acting Insane cover">
+          <span class="music-release-name">Everybody Acting Insane</span>
+          <span class="music-release-count">13 tracks</span>
+        </button>
+        <button class="music-release-card" id="rack-cabo" type="button" onclick="selectCozyAlbum('cabo')">
+          <span class="music-release-cover music-release-cover--type">CV</span>
+          <span class="music-release-name">Cabo Verde Campeão</span>
+          <span class="music-release-count">3 tracks</span>
+        </button>
+        <button class="music-release-card" id="rack-xadrez" type="button" onclick="selectCozyAlbum('xadrez')">
+          <img class="music-release-cover" src="/images/optimized/xadrez-no-comando-cover.png" alt="Xadrez no Comando cover">
+          <span class="music-release-name">Xadrez no Comando</span>
+          <span class="music-release-count">9 videos</span>
+        </button>
       </div>
     </div>
   </section>
@@ -1978,8 +2058,10 @@
     const musicData = {
       'grace': {
         album: 'Built by Grace',
+        kicker: 'Latest album',
         track: '18 tracks',
         desc: 'A cinematic gospel album about devotion, repair, family prayer, mercy, grace, and love without fear.',
+        story: 'Built by Grace moves like a journey from prayer to healing, from fear to safety, from private repair to a wider sense of home. It is not just a collection of songs; it is a devotional arc about learning to receive love without losing peace.',
         cover: '/images/optimized/built-by-grace-cover.png',
         previewSrc: '/audio/god-sent-me-you.mp3',
         note: 'The player keeps a local preview for God Sent Me You. Full albums open on the official platforms.',
@@ -2006,8 +2088,10 @@
       },
       'silence': {
         album: 'Checkmate in Silence',
+        kicker: 'Album',
         track: '19 tracks',
         desc: 'A chess-shaped cinematic project about quiet strategy, pressure, concrete rooms, hidden maps, and endgame movement.',
+        story: 'Checkmate in Silence treats each track like a square on the board: restraint, pressure, sacrifice, and movement without noise. It belongs to the same strategic world as the chess writing, but turns that logic into atmosphere.',
         cover: '/images/optimized/checkmate-in-silence-cover.png',
         note: 'Select the collection here, then open Spotify, Apple Music, or YouTube for the complete album.',
         tracks: [
@@ -2034,8 +2118,10 @@
       },
       'insane': {
         album: 'Everybody Acting Insane',
+        kicker: 'Album',
         track: '13 tracks',
         desc: 'A satirical cinematic album about algorithms, social performance, digital noise, and the absurd theatre of modern life.',
+        story: 'Everybody Acting Insane is the noisy mirror: social performance, algorithms, notification culture, empty spectacle, and the strange comedy of people trying to stay human inside a performance machine.',
         cover: '/images/optimized/everybody-acting-insane-cover.png',
         note: 'Select the collection here, then open Spotify, Apple Music, or YouTube for the complete album.',
         tracks: [
@@ -2056,8 +2142,10 @@
       },
       'cabo': {
         album: 'Cabo Verde Campeão',
+        kicker: 'Project',
         track: '3 tracks',
         desc: 'A compact celebration project for Cabo Verde, football pride, blue energy, and collective movement.',
+        story: 'Cabo Verde Campeão is direct and celebratory: a short, energetic project built around pride, movement, football, and the shared electricity of a country gathering around one feeling.',
         cover: '',
         monogram: 'CV',
         note: 'This collection is listed from the local music folder. Open the official platforms to listen where available.',
@@ -2069,8 +2157,10 @@
       },
       'xadrez': {
         album: 'Xadrez no Comando',
+        kicker: 'Book-inspired music',
         track: '9 videos',
         desc: 'Portuguese book-inspired music and video chapters built around board logic, command, pressure, and strategic movement.',
+        story: 'Xadrez no Comando turns the Portuguese book world into a sequence of musical/video chapters: board, pawn, knight, bishop, tower, queen, king, checkmate, and endgame.',
         cover: '/images/optimized/xadrez-no-comando-cover.png',
         previewSrc: '/output/youtube/xadrez-no-comando/xadrez-no-comando-o-tabuleiro.mp4',
         note: 'The player can preview O Tabuleiro from the local site files. The full video set is also linked through your YouTube presence.',
@@ -2097,9 +2187,38 @@
       activeAlbumKey = key;
 
       // Update text details
+      const kicker = document.getElementById('m-kicker');
+      if (kicker) {
+        kicker.innerText = data.kicker || 'Album';
+      }
       document.getElementById('m-album-title').innerText = data.album;
       document.getElementById('m-track-title').innerText = data.track;
       document.getElementById('m-desc').innerText = data.desc;
+      const story = document.getElementById('m-story');
+      if (story) {
+        story.innerText = data.story || data.desc;
+      }
+
+      const featuredCover = document.getElementById('featured-album-cover');
+      if (featuredCover) {
+        if (data.cover) {
+          if (featuredCover.tagName.toLowerCase() !== 'img') {
+            const img = document.createElement('img');
+            img.id = 'featured-album-cover';
+            img.className = 'featured-album-cover';
+            featuredCover.replaceWith(img);
+          }
+          const updatedCover = document.getElementById('featured-album-cover');
+          updatedCover.src = data.cover;
+          updatedCover.alt = data.album + ' cover';
+        } else {
+          const monogram = document.createElement('span');
+          monogram.id = 'featured-album-cover';
+          monogram.className = 'featured-album-cover featured-album-cover--type';
+          monogram.innerText = data.monogram || 'RB';
+          featuredCover.replaceWith(monogram);
+        }
+      }
 
       const tracklist = document.getElementById('music-tracklist');
       if (tracklist) {
