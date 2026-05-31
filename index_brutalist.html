@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sabino Pereira — Books, Essays, and Music (Brutalist Concept)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Stark Editorial Brutalist portfolio for Sabino Pereira.">
+  <meta name="author" content="Sabino Pereira">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,850;1,600&display=swap" rel="stylesheet">
+  
+  <link rel="icon" type="image/svg+xml" href="/images/sp-favicon.svg">
+  
+  <style>
+    :root {
+      --bg-cream: #fbfaf7;
+      --text-black: #151515;
+      --text-gray: #6b7280;
+      --border-thin: 1px solid rgba(21, 21, 21, 0.12);
+      --border-thick: 2px solid #151515;
+      --accent-red: #dc2626;
+      --accent-red-glow: rgba(220, 38, 38, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      color: var(--text-black);
+      font-family: 'Inter', -apple-system, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* GRID LAYOUT SHELL */
+    .brutalist-grid {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      min-height: 100vh;
+    }
+
+    /* LEFT FIXED SIDEBAR */
+    .sidebar {
+      border-right: var(--border-thin);
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      background: var(--bg-cream);
+      z-index: 10;
+    }
+
+    .sidebar-brand {
+      text-decoration: none;
+      color: var(--text-black);
+    }
+
+    .sidebar-brand h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 850;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+    }
+
+    .sidebar-brand span {
+      font-family: 'Courier Prime', monospace;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-gray);
+      margin-top: 4px;
+      display: block;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: -60px;
+    }
+
+    .sidebar-nav a {
+      text-decoration: none;
+      color: var(--text-black);
+      font-size: 14.5px;
+      font-weight: 600;
+      transition: color 0.2s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sidebar-nav a::before {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 5px solid var(--accent-red);
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      transform: translateX(-4px);
+    }
+
+    .sidebar-nav a:hover {
+      color: var(--accent-red);
+    }
+
+    .sidebar-nav a:hover::before {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .sidebar-nav a.active {
+      color: var(--accent-red);
+    }
+
+    .sidebar-nav a.active::before {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .sidebar-footer {
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      color: var(--text-gray);
+    }
+
+    /* MAIN CONTENT WRAPPER */
+    .main-panel {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* STARK WIDESCREEN HERO GRID */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      border-bottom: var(--border-thin);
+      min-height: 75vh;
+    }
+
+    .hero-left {
+      padding: 80px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 36px;
+      border-right: var(--border-thin);
+      position: relative;
+    }
+
+    .red-dot {
+      width: 14px;
+      height: 14px;
+      background-color: var(--accent-red);
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 10px var(--accent-red-glow);
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 88px;
+      font-weight: 850;
+      line-height: 0.95;
+      letter-spacing: -3px;
+      color: var(--text-black);
+    }
+
+    .hero-meta-list {
+      font-family: 'Courier Prime', monospace;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      color: var(--text-black);
+    }
+
+    .hero-meta-list span {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-desc {
+      font-size: 18px;
+      line-height: 1.65;
+      max-width: 580px;
+      color: #333333;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+    }
+
+    .btn-brutal {
+      padding: 16px 28px;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-decoration: none;
+      border: var(--border-thick);
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s, transform 0.15s;
+      background: none;
+      color: var(--text-black);
+    }
+
+    .btn-brutal--solid {
+      background-color: var(--text-black);
+      color: var(--bg-cream);
+    }
+
+    .btn-brutal:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0 var(--text-black);
+    }
+
+    .btn-brutal--solid:hover {
+      box-shadow: 4px 4px 0 var(--accent-red);
+    }
+
+    .hero-right {
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.015);
+      position: relative;
+    }
+
+    .featured-book-frame {
+      width: 100%;
+      max-width: 320px;
+      background: #ffffff;
+      border: var(--border-thin);
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      transition: transform 0.3s;
+    }
+
+    .featured-book-frame:hover {
+      transform: translateY(-4px);
+    }
+
+    .line-art-book-cover {
+      width: 100%;
+      aspect-ratio: 0.67;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 2px;
+      object-fit: cover;
+      box-shadow: 10px 10px 0 rgba(0,0,0,0.06);
+    }
+
+    .book-frame-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--text-gray);
+      text-transform: uppercase;
+    }
+
+    /* WIDESCREEN SECTION BLOCK */
+    .stark-section {
+      padding: 100px 60px;
+      border-bottom: var(--border-thin);
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
+
+    .stark-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: var(--border-thick);
+      padding-bottom: 16px;
+    }
+
+    .stark-section-eyebrow {
+      font-family: 'Courier Prime', monospace;
+      font-size: 12px;
+      color: var(--accent-red);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .stark-section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      font-weight: 850;
+      letter-spacing: -1px;
+      margin-top: 4px;
+    }
+
+    /* STARK MUSIC EQUALIZER BAR SECTION */
+    .brutalist-music-grid {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .music-artwork-box {
+      width: 100%;
+      aspect-ratio: 1;
+      border: var(--border-thick);
+      background: #ffffff;
+      padding: 15px;
+      box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.05);
+    }
+
+    .music-artwork-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .music-brutalist-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .music-brutalist-copy p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333333;
+    }
+
+    /* Stark Minimalist Audio Widget */
+    .brutalist-audio-player {
+      border: var(--border-thick);
+      background: #ffffff;
+      padding: 24px;
+      box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .player-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .player-info-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .player-info-text strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 850;
+    }
+
+    .player-info-text span {
+      font-family: 'Courier Prime', monospace;
+      font-size: 12px;
+      color: var(--accent-red);
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .play-circle {
+      width: 48px;
+      height: 48px;
+      background-color: var(--text-black);
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .play-circle:hover {
+      transform: scale(1.05);
+      background-color: var(--accent-red);
+    }
+
+    .play-circle svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--bg-cream);
+    }
+
+    .player-canvas-container {
+      width: 100%;
+      height: 38px;
+      background: var(--bg-cream);
+      border: var(--border-thin);
+      position: relative;
+    }
+
+    .player-canvas-container canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    .player-canvas-msg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--text-gray);
+      text-transform: uppercase;
+      font-weight: 700;
+      pointer-events: none;
+    }
+
+    .brutalist-audio-player.is-playing .player-canvas-msg {
+      opacity: 0;
+    }
+
+    /* STARK BRUTALIST BOOKS SHELF */
+    .stark-books-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    .stark-book-item {
+      border: var(--border-thin);
+      background: #ffffff;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.03);
+      cursor: pointer;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+
+    .stark-book-item:hover {
+      border-color: var(--accent-red);
+      transform: translate(-3px, -3px);
+      box-shadow: 8px 8px 0 rgba(220, 38, 38, 0.1);
+    }
+
+    .stark-book-item img {
+      width: 100%;
+      aspect-ratio: 0.67;
+      object-fit: cover;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .stark-book-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .stark-book-tag {
+      font-family: 'Courier Prime', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-gray);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .stark-book-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 850;
+      line-height: 1.25;
+    }
+
+    /* BRUTALIST ESSAYS LIST */
+    .brutalist-essays-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-top: var(--border-thin);
+    }
+
+    .essay-row {
+      border-bottom: var(--border-thin);
+      padding: 30px 10px;
+      display: grid;
+      grid-template-columns: 180px 1fr 140px;
+      gap: 40px;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .essay-row:hover {
+      background-color: rgba(220, 38, 38, 0.02);
+    }
+
+    .essay-row-category {
+      font-family: 'Courier Prime', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-red);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .essay-row-middle {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .essay-row-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 850;
+    }
+
+    .essay-row-excerpt {
+      font-size: 14px;
+      color: #555555;
+      line-height: 1.5;
+    }
+
+    .essay-row-action {
+      font-family: 'Courier Prime', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-black);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .essay-row:hover .essay-row-action {
+      color: var(--accent-red);
+    }
+
+    /* PORTABLE BRUTALIST ESSAY OVERLAY */
+    .essay-brutal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(251, 250, 247, 0.96);
+      z-index: 200;
+      display: flex;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .essay-brutal-overlay.is-active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .essay-brutal-drawer {
+      width: 100%;
+      max-width: 780px;
+      background: var(--bg-cream);
+      border-left: var(--border-thin);
+      border-right: var(--border-thin);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transform: translateY(20px);
+      transition: transform 0.3s ease-out;
+    }
+
+    .essay-brutal-overlay.is-active .essay-brutal-drawer {
+      transform: translateY(0);
+    }
+
+    .brutal-reader-header {
+      padding: 30px 40px;
+      border-bottom: var(--border-thick);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--bg-cream);
+    }
+
+    .brutal-reader-back {
+      background: none;
+      border: var(--border-thin);
+      padding: 8px 16px;
+      font-family: 'Courier Prime', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .brutal-reader-back:hover {
+      background-color: var(--text-black);
+      color: var(--bg-cream);
+    }
+
+    .brutal-reader-body {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      line-height: 1.8;
+      font-size: 16.5px;
+    }
+
+    .brutal-reader-body h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 44px;
+      font-weight: 850;
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+    }
+
+    .brutal-reader-body blockquote {
+      border-left: 3px solid var(--accent-red);
+      padding-left: 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-style: italic;
+      color: #444444;
+      margin: 15px 0;
+    }
+
+    /* NEWSLETTER FOOTER */
+    .stark-newsletter-row {
+      border-top: var(--border-thick);
+      border-bottom: var(--border-thick);
+      padding: 60px 0;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .newsletter-brutal-copy h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 850;
+    }
+
+    .newsletter-brutal-copy p {
+      font-size: 14.5px;
+      color: #333333;
+      margin-top: 10px;
+    }
+
+    .newsletter-brutal-form {
+      display: flex;
+      gap: 12px;
+    }
+
+    .newsletter-brutal-input {
+      flex-grow: 1;
+      padding: 16px;
+      border: var(--border-thick);
+      background: none;
+      font-size: 14.5px;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .newsletter-brutal-input:focus {
+      border-color: var(--accent-red);
+    }
+
+    /* DETAIL DRAWER POPUP */
+    .book-brutal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(21, 21, 21, 0.4);
+      z-index: 210;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .book-brutal-overlay.is-active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .book-brutal-card {
+      width: 90%;
+      max-width: 760px;
+      background: var(--bg-cream);
+      border: var(--border-thick);
+      padding: 40px;
+      box-shadow: 16px 16px 0 var(--text-black);
+      transform: scale(0.96);
+      transition: transform 0.3s ease-out;
+      position: relative;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 40px;
+    }
+
+    .book-brutal-overlay.is-active .book-brutal-card {
+      transform: scale(1);
+    }
+
+    .book-brutal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 32px;
+      height: 32px;
+      border: var(--border-thin);
+      background: none;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .book-brutal-close:hover {
+      background-color: var(--text-black);
+      color: var(--bg-cream);
+    }
+
+    .drawer-brutal-cover {
+      width: 100%;
+      aspect-ratio: 0.67;
+      border: var(--border-thin);
+      object-fit: cover;
+      box-shadow: 8px 8px 0 rgba(0,0,0,0.06);
+    }
+
+    .drawer-brutal-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .drawer-brutal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 850;
+    }
+
+    .drawer-brutal-desc {
+      font-size: 14.5px;
+      color: #333333;
+      line-height: 1.6;
+    }
+
+    .drawer-brutal-btn-row {
+      display: flex;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    /* MOBILE RESPONSIVE STYLES (EDITORIAL BRUTALIST) */
+    @media (max-width: 992px) {
+      .brutalist-grid {
+        display: block; /* Stack layout on mobile */
+      }
+
+      /* Sticky Editorial Top Bar instead of sidebar */
+      .sidebar {
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: var(--border-thin);
+        padding: 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .sidebar-brand h2 {
+        font-size: 20px;
+      }
+
+      .sidebar-brand span {
+        display: none; /* Hide subtitle on mobile topbar for clean look */
+      }
+
+      .sidebar-nav {
+        margin-top: 0;
+        flex-direction: row;
+        gap: 15px;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 5px;
+        max-width: 60%;
+        scrollbar-width: none; /* Firefox */
+      }
+
+      .sidebar-nav::-webkit-scrollbar {
+        display: none; /* Safari and Chrome */
+      }
+
+      .sidebar-nav a {
+        font-size: 13px;
+      }
+
+      .sidebar-nav a::before {
+        display: none; /* Remove red arrow hover for clean mobile topbar */
+      }
+
+      .sidebar-footer {
+        display: none; /* Handled separately or hidden on top header */
+      }
+
+      /* Hero Section */
+      .hero-grid {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-left {
+        padding: 50px 20px;
+        gap: 24px;
+        border-right: none;
+        border-bottom: var(--border-thin);
+      }
+
+      .hero-title {
+        font-size: 52px;
+        letter-spacing: -1.5px;
+      }
+
+      .hero-desc {
+        font-size: 16px;
+      }
+
+      .hero-right {
+        padding: 40px 20px;
+      }
+
+      /* Sections */
+      .stark-section {
+        padding: 60px 20px;
+        gap: 36px;
+      }
+
+      .stark-section-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      /* Music Section */
+      .brutalist-music-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .music-artwork-box {
+        max-width: 320px;
+        margin: 0 auto;
+      }
+
+      /* Books Grid */
+      .stark-books-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .stark-book-item {
+        padding: 16px;
+      }
+
+      .stark-book-title {
+        font-size: 16px;
+      }
+
+      /* Essays List */
+      .essay-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 24px 10px;
+      }
+
+      .essay-row-category {
+        font-size: 11px;
+      }
+
+      .essay-row-title {
+        font-size: 20px;
+      }
+
+      .essay-row-action {
+        justify-content: flex-start;
+        margin-top: 4px;
+      }
+
+      /* Newsletter Row */
+      .stark-newsletter-row {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 40px 0;
+      }
+
+      .newsletter-brutal-form {
+        flex-direction: column;
+      }
+
+      /* Drawer Card overlay on mobile */
+      .book-brutal-card {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 30px 20px;
+        width: 95%;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .drawer-brutal-cover {
+        max-width: 140px;
+        margin: 0 auto;
+      }
+
+      .drawer-brutal-title {
+        font-size: 22px;
+      }
+
+      /* Reader Drawer */
+      .brutal-reader-header {
+        padding: 20px;
+      }
+
+      .brutal-reader-body {
+        padding: 40px 20px;
+      }
+
+      .brutal-reader-body h1 {
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sidebar {
+        padding: 15px;
+      }
+
+      .sidebar-brand h2 {
+        font-size: 18px;
+      }
+
+      .sidebar-nav {
+        max-width: 50%;
+        gap: 12px;
+      }
+
+      .hero-title {
+        font-size: 40px;
+      }
+
+      .stark-books-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stark-book-item {
+        max-width: 280px;
+        margin: 0 auto;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STARK WIDESCREEN BOOK DETAILS POPUP -->
+  <div class="book-brutal-overlay" id="book-brutal" onclick="closeBrutalistBook(event)">
+    <div class="book-brutal-card" id="book-brutal-card">
+      <button class="book-brutal-close" onclick="closeBrutalistBookDirect()">&times;</button>
+      <img src="" id="b-cover" class="drawer-brutal-cover" alt="Book Cover">
+      <div class="drawer-brutal-meta">
+        <span class="book-item-eyebrow" id="b-eyebrow">NEW BOOK</span>
+        <h2 class="drawer-brutal-title" id="b-title">Chess in the Block</h2>
+        <span class="modal-author" style="margin-top: -12px; font-family: 'Courier Prime', monospace; font-size: 12px; font-weight: 700; color: var(--text-gray);">BY SABINO PEREIRA</span>
+        <p class="drawer-brutal-desc" id="b-desc">Description...</p>
+        <div class="drawer-brutal-btn-row">
+          <a href="" id="b-buy-link" target="_blank" rel="noopener" class="btn-brutal btn-brutal--solid">Buy on Amazon</a>
+          <a href="" id="b-read-link" class="btn-brutal">Read Excerpt</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PORTABLE BRUTALIST ESSAY OVERLAY -->
+  <div class="essay-brutal-overlay" id="essay-brutal">
+    <div class="essay-brutal-drawer">
+      <div class="brutal-reader-header">
+        <button class="brutal-reader-back" onclick="closeEssayBrutal()">
+          ← Back
+        </button>
+        <span class="overlay-title-short" id="brutal-nav-title">Reading Essay</span>
+        <div style="width: 50px;"></div>
+      </div>
+      <div class="brutal-reader-body" id="brutal-body-content">
+        <!-- Essay content -->
+      </div>
+    </div>
+  </div>
+
+  <!-- BRUTALIST MAIN GRID SHELL -->
+  <div class="brutalist-grid">
+    
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <a class="sidebar-brand" href="/">
+          <h2>Sabino<br>Pereira</h2>
+          <span>Books, Essays, Music</span>
+        </a>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <a class="active" href="/">Home</a>
+        <a href="#books">Books</a>
+        <a href="#music">Music</a>
+        <a href="#essays">Essays</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/links.html">Link-in-Bio</a>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <div class="lang-switch" style="width: fit-content; margin-bottom: 12px;">
+          <a href="/pt/" lang="pt">PT</a>
+          <a class="active" href="#" lang="en">EN</a>
+        </div>
+        <span>&copy; 2026 Sabino Pereira</span>
+      </div>
+    </aside>
+
+    <!-- RIGHT MAIN PANEL -->
+    <main class="main-panel">
+      
+      <!-- HERO GRID -->
+      <section class="hero-grid">
+        <div class="hero-left">
+          <div class="hero-kicker">
+            <span class="red-dot"></span>
+            PORTFOLIO CONCEPT 01
+          </div>
+          <h1 class="hero-title">Quiet work.<br>Real stories.</h1>
+          <div class="hero-meta-list">
+            <span><span class="red-dot" style="width: 6px; height: 6px;"></span> BOOKS</span>
+            <span><span class="red-dot" style="width: 6px; height: 6px;"></span> ESSAYS</span>
+            <span><span class="red-dot" style="width: 6px; height: 6px;"></span> MUSIC</span>
+          </div>
+          <p class="hero-desc">Books, essays, and cinematic music designed for deep thinkers who observe before they make their move.</p>
+          <div class="hero-actions">
+            <a class="btn-brutal btn-brutal--solid" href="#books">Browse Shelf</a>
+            <a class="btn-brutal" href="#essays">Read Essays</a>
+          </div>
+        </div>
+        
+        <div class="hero-right">
+          <div class="featured-book-frame" onclick="showBrutalistBook('chess-in-the-block')">
+            <span class="book-frame-label">NEWEST RELEASE</span>
+            <img class="line-art-book-cover" src="/images/optimized/chess-in-the-block-cover.jpg" alt="Chess in the Block">
+            <span class="btn-brutal btn-brutal--solid" style="padding: 10px 20px; font-size: 11px;">Explore Cover</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOOKS SHELF SECTION -->
+      <section class="stark-section" id="books">
+        <div class="stark-section-header">
+          <div>
+            <span class="stark-section-eyebrow">SHELF</span>
+            <h2 class="stark-section-title">Printed Publications</h2>
+          </div>
+          <span class="hero-meta-list" style="font-size: 13px;"><span><span class="red-dot" style="width: 6px; height: 6px;"></span> 04 TITLES IN FOCUS</span></span>
+        </div>
+        
+        <div class="stark-books-grid">
+          
+          <!-- Book 1 -->
+          <div class="stark-book-item" onclick="showBrutalistBook('chess-in-the-block')">
+            <img src="/images/optimized/chess-in-the-block-cover.jpg" alt="Chess in the Block">
+            <div class="stark-book-meta">
+              <span class="stark-book-tag">English · Strategy</span>
+              <h3 class="stark-book-title">Chess in the Block</h3>
+            </div>
+          </div>
+
+          <!-- Book 2 -->
+          <div class="stark-book-item" onclick="showBrutalistBook('what-still-hurts')">
+            <img src="/images/optimized/what-still-hurts-cover.png" alt="What Still Hurts">
+            <div class="stark-book-meta">
+              <span class="stark-book-tag">English · Dystopia</span>
+              <h3 class="stark-book-title">What Still Hurts</h3>
+            </div>
+          </div>
+
+          <!-- Book 3 -->
+          <div class="stark-book-item" onclick="showBrutalistBook('quiet-power')">
+            <img src="/images/optimized/quiet-power-cover.jpg" alt="Quiet Power">
+            <div class="stark-book-meta">
+              <span class="stark-book-tag">English · Core system</span>
+              <h3 class="stark-book-title">Quiet Power</h3>
+            </div>
+          </div>
+
+          <!-- Book 4 -->
+          <div class="stark-book-item" onclick="showBrutalistBook('borrow-delay-repeat')">
+            <img src="/images/optimized/borrow-delay-repeat-cover.jpg" alt="Borrow Delay Repeat">
+            <div class="stark-book-meta">
+              <span class="stark-book-tag">English · Satire</span>
+              <h3 class="stark-book-title">Borrow. Delay. Repeat.</h3>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- MUSIC SECTION -->
+      <section class="stark-section" id="music">
+        <div class="stark-section-header">
+          <div>
+            <span class="stark-section-eyebrow">SOUNDTRACK</span>
+            <h2 class="stark-section-title">Music under Reira Bin</h2>
+          </div>
+          <span class="hero-meta-list" style="font-size: 13px;"><span><span class="red-dot" style="width: 6px; height: 6px;"></span> BEATS & EQUALIZER</span></span>
+        </div>
+        
+        <div class="brutalist-music-grid">
+          <div class="music-artwork-box">
+            <img src="/images/optimized/god-sent-me-you-single.png" alt="God Sent Me You">
+          </div>
+          <div class="music-brutalist-copy">
+            <p>A gospel-inspired journey from prayer to healing, from love to family, all built by grace. Tap Play to listen to our custom sound wave in real-time, extracted dynamically directly from the audio frequency.</p>
+            
+            <!-- Brutalist minimal player -->
+            <div class="brutalist-audio-player" id="dw-brutal-player">
+              <audio id="brutal-audio-element" src="/audio/god-sent-me-you.mp3" preload="metadata"></audio>
+              
+              <div class="player-row">
+                <div class="player-info-text">
+                  <strong>God Sent Me You</strong>
+                  <span>REIRA BIN • SINGLE PREVIEW</span>
+                </div>
+                <button class="play-circle" onclick="toggleBrutalistAudio()">
+                  <svg viewBox="0 0 24 24" id="b-play-icon">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                  <svg viewBox="0 0 24 24" id="b-pause-icon" style="display: none;">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                  </svg>
+                </button>
+              </div>
+              
+              <div class="player-canvas-container">
+                <div class="player-canvas-msg" id="b-vis-msg">Click play to visualize track</div>
+                <canvas id="brutal-canvas"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ESSAYS LIST SECTION -->
+      <section class="stark-section" id="essays">
+        <div class="stark-section-header">
+          <div>
+            <span class="stark-section-eyebrow">ESSAYS</span>
+            <h2 class="stark-section-title">Quiet thought logs</h2>
+          </div>
+          <span class="hero-meta-list" style="font-size: 13px;"><span><span class="red-dot" style="width: 6px; height: 6px;"></span> 03 RECENT OBSERVATIONS</span></span>
+        </div>
+        
+        <div class="brutalist-essays-list">
+          
+          <!-- Row 1 -->
+          <div class="essay-row" onclick="openEssayBrutal('sometimes-leaving-early')">
+            <span class="essay-row-category">
+              <span class="red-dot" style="width: 8px; height: 8px;"></span> Reflection
+            </span>
+            <div class="essay-row-middle">
+              <h3 class="essay-row-title">Sometimes Leaving Early is What Saves Us Most</h3>
+              <p class="essay-row-excerpt">A deep observation on environments, knowing when to walk away, and how exit timing is a protective strategy for self-value. Why staying is often a liability...</p>
+            </div>
+            <span class="essay-row-action">Read ←</span>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="essay-row" onclick="openEssayBrutal('being-deleted')">
+            <span class="essay-row-category">
+              <span class="red-dot" style="width: 8px; height: 8px;"></span> Behaviour
+            </span>
+            <div class="essay-row-middle">
+              <h3 class="essay-row-title">Being Deleted After a Relationship Ends</h3>
+              <p class="essay-row-excerpt">Exploring the modern quiet erasure in the digital age, social media clearing, and the psychological impact of digital deletions. Cache files to be cleared in clicks...</p>
+            </div>
+            <span class="essay-row-action">Read ←</span>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="essay-row" onclick="openEssayBrutal('what-is-quiet-power')">
+            <span class="essay-row-category">
+              <span class="red-dot" style="width: 8px; height: 8px;"></span> Strategy
+            </span>
+            <div class="essay-row-middle">
+              <h3 class="essay-row-title">What is Quiet Power?</h3>
+              <p class="essay-row-excerpt">The core concept behind calm execution, keeping your maps private, filtering noise, and maintaining total control under intense pressure. Why the silent strategies win...</p>
+            </div>
+            <span class="essay-row-action">Read ←</span>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- STARK NEWSLETTER ROW -->
+      <section class="stark-section">
+        <div class="stark-newsletter-row">
+          <div class="newsletter-brutal-copy">
+            <h3>Subscribe to the Essays</h3>
+            <p>Direct observations on modern life, pressure, strategy, and human contradictions, sent straight to your inbox.</p>
+          </div>
+          <form class="newsletter-brutal-form" onsubmit="handleBrutalSubscribe(event)">
+            <input class="newsletter-brutal-input" type="email" placeholder="Your email address" required id="br-email">
+            <button class="btn-brutal btn-brutal--solid" type="submit" id="br-btn">Subscribe</button>
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script>
+    // DATA DICTIONARIES
+    const bookData = {
+      'chess-in-the-block': {
+        title: 'Chess in the Block',
+        eyebrow: 'NEW BOOK • STRATEGY',
+        cover: '/images/optimized/chess-in-the-block-cover.jpg',
+        desc: 'Survival. Silence. Strategy. A deeply reflective book about life on the block through the metaphor of chess. Exploring structural pressure, family, class, love, loss, and learning how to move with absolute stability without losing your identity.',
+        buyLink: 'https://www.amazon.com/dp/B0H2MZKL28',
+        readLink: '/chess-in-the-block.html'
+      },
+      'what-still-hurts': {
+        title: 'What Still Hurts — Echoes of Harmony',
+        eyebrow: 'NEW NOVEL • DYSTOPIA',
+        cover: '/images/optimized/what-still-hurts-cover.png',
+        desc: 'A psychological dystopian novel about memory, comfort, and the high price of painless peace. What happens when a society traded its raw, painful memories for an optimized, calm state of synthetic harmony?',
+        buyLink: 'https://www.amazon.com/dp/B0H2YFWT1Y?ref=sp_email',
+        readLink: '/what-still-hurts/'
+      },
+      'quiet-power': {
+        title: 'Quiet Power',
+        eyebrow: 'CORE SYSTEM • STRATEGY',
+        cover: '/images/optimized/quiet-power-cover.jpg',
+        desc: 'The central system for filter control, focus, emotional stability, and high-performance design under extreme pressure. Quiet Power outlines how to act with silent intention and keep your personal maps completely private.',
+        buyLink: 'https://www.amazon.com/dp/B0H2G9L3D3',
+        readLink: '/quiet-power.html'
+      },
+      'borrow-delay-repeat': {
+        title: 'Borrow. Delay. Repeat.',
+        eyebrow: 'SATIRE • HUMOUR',
+        cover: '/images/optimized/borrow-delay-repeat-cover.jpg',
+        desc: 'A very unserious, highly satirical guide to not giving money back. A humorous study of excuse-making, social metrics, and the absurdity of financial delays in modern society.',
+        buyLink: 'https://www.amazon.com/dp/B0H2BZS5D7',
+        readLink: '/borrow-delay-repeat.html'
+      }
+    };
+
+    const essayData = {
+      'sometimes-leaving-early': {
+        title: 'Sometimes Leaving Early is What Saves Us Most',
+        content: `<h1>Sometimes Leaving Early is What Saves Us Most</h1>
+                  <p>In a culture that glorifies endurance, we are trained to believe that staying until the bitter end is a badge of honor. We are taught that to exit a room, a relationship, or a system before it formally concludes is a sign of weakness or failure.</p>
+                  <blockquote>"Leaving early is not about surrender; it is about the quiet execution of self-preservation."</blockquote>
+                  <p>But true strategy teaches us otherwise. When an environment begins to decay—when the noise begins to overwhelm the signal—staying is not strength; it is liability. Leaving early represents the conscious decision to value your own quiet attention over the expectations of the crowd.</p>
+                  <p>By exiting when your value is highest and the atmospheric noise is lowest, you preserve your energy, protect your focus, and remain in complete control of your next move. The calmest minds do not wait for the building to collapse before looking for the exit door.</p>`
+      },
+      'being-deleted': {
+        title: 'Being Deleted After a Relationship Ends',
+        content: `<h1>Being Deleted After a Relationship Ends</h1>
+                  <p>The digital age has introduced a new kind of quiet erasure. Historically, when a relationship or friendship ended, the remnants faded slowly through physical distance and the natural passage of time. Today, erasure is a sequence of binary clicks.</p>
+                  <blockquote>"We are cleared from servers, removed from grids, and deleted from profiles in a matter of seconds."</blockquote>
+                  <p>Being deleted is the modern equivalent of social exile. It is an abrupt, mechanical clearing of digital memories that leaves no room for gradual transition. We watch profiles turn into dead links, photos get cropped, and years of shared digital space disappear.</p>
+                  <p>While this binary purge is often marketed as 'moving on' or 'healing,' it carries a deeper psychological weight. It teaches us to treat human connection as cache files to be cleared when the connection gets clogged. True maturity lies in recognizing that even when paths diverge, the shared map remains a real part of who we are.</p>`
+      },
+      'what-is-quiet-power': {
+        title: 'What is Quiet Power?',
+        content: `<h1>What is Quiet Power?</h1>
+                  <p>Quiet Power is the protective wall we build around our mental clarity. It is the ability to observe a chaotic environment, understand its mechanics, and make decisive moves without letting the surrounding noise dictate your path.</p>
+                  <blockquote>"The noisier the world becomes, the more powerful a silent strategy behaves."</blockquote>
+                  <p>Most people react instantly to every notification, trigger, or comment, giving away their focus and maps to anyone who asks. Quiet Power is the opposite: it is keeping your plans private, filtering out irrelevant opinions, and maintaining absolute stability under pressure.</p>
+                  <p>It is not passive silence; it is focused, strategic composure. When you remain quiet, you see the board clearly, while those who shout reveal their hand. Quiet Power is learning how to let your results do the talking while you continue to build in the dark.</p>`
+      }
+    };
+
+    // 3D BRUTALIST BOOK DRAWER
+    const bookBrutal = document.getElementById('book-brutal');
+    
+    function showBrutalistBook(key) {
+      const data = bookData[key];
+      if (!data) return;
+
+      document.getElementById('b-cover').src = data.cover;
+      document.getElementById('b-eyebrow').innerText = data.eyebrow;
+      document.getElementById('b-title').innerText = data.title;
+      document.getElementById('b-desc').innerText = data.desc;
+      document.getElementById('b-buy-link').href = data.buyLink;
+      document.getElementById('b-read-link').href = data.readLink;
+
+      bookBrutal.classList.add('is-active');
+    }
+
+    function closeBrutalistBookDirect() {
+      bookBrutal.classList.remove('is-active');
+    }
+
+    function closeBrutalistBook(event) {
+      if (event.target === bookBrutal) {
+        bookBrutal.classList.remove('is-active');
+      }
+    }
+
+    // ESSAY OVERLAY SYSTEM
+    const essayBrutal = document.getElementById('essay-brutal');
+    const brutalNavTitle = document.getElementById('brutal-nav-title');
+    const brutalBodyContent = document.getElementById('brutal-body-content');
+
+    function openEssayBrutal(key) {
+      const essay = essayData[key];
+      if (!essay) return;
+
+      brutalNavTitle.innerText = essay.title;
+      brutalBodyContent.innerHTML = essay.content;
+      essayBrutal.classList.add('is-active');
+    }
+
+    function closeEssayBrutal() {
+      essayBrutal.classList.remove('is-active');
+    }
+
+    // SUBSCRIBE SUCCESS HANDLING
+    function handleBrutalSubscribe(event) {
+      event.preventDefault();
+      const email = document.getElementById('br-email').value;
+      const btn = document.getElementById('br-btn');
+      
+      btn.innerText = "Subscribed ✓";
+      btn.style.backgroundColor = "#dc2626"; // Success Vermilion Red
+      btn.style.boxShadow = "4px 4px 0 rgba(0, 0, 0, 0.4)";
+      
+      document.getElementById('br-email').value = "";
+      document.getElementById('br-email').disabled = true;
+      btn.disabled = true;
+    }
+
+    // REAL-TIME AUDIO VISUALIZER (BRUTALIST BLACK & WHITE SPECTROGRAM)
+    const audio = document.getElementById('brutal-audio-element');
+    const bPlayIcon = document.getElementById('b-play-icon');
+    const bPauseIcon = document.getElementById('b-pause-icon');
+    const dwBrutalPlayer = document.getElementById('dw-brutal-player');
+    const bVisMsg = document.getElementById('b-vis-msg');
+    
+    // Canvas setup
+    const canvas = document.getElementById('brutal-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    function resizeBrutalCanvas() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    
+    window.addEventListener('resize', resizeBrutalCanvas);
+    resizeBrutalCanvas();
+
+    let audioCtx = null;
+    let analyser = null;
+    let sourceNode = null;
+    let animationId = null;
+    let dummyInterval = null;
+
+    function initBrutalistAudio() {
+      if (audioCtx) return;
+      
+      try {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContextClass();
+        analyser = audioCtx.createAnalyser();
+        analyser.fftSize = 64;
+        
+        sourceNode = audioCtx.createMediaElementSource(audio);
+        sourceNode.connect(analyser);
+        analyser.connect(audioCtx.destination);
+      } catch (err) {
+        console.warn("Web Audio API not supported. Falling back to visualizer simulation.", err);
+      }
+    }
+
+    function toggleBrutalistAudio() {
+      initBrutalistAudio();
+      
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      if (audio.paused) {
+        audio.play();
+        bPlayIcon.style.display = 'none';
+        bPauseIcon.style.display = 'block';
+        dwBrutalPlayer.classList.add('is-playing');
+        
+        if (analyser) {
+          visualizeRealTimeBrutal();
+        } else {
+          visualizeSimulatedBrutal();
+        }
+      } else {
+        audio.pause();
+        bPlayIcon.style.display = 'block';
+        bPauseIcon.style.display = 'none';
+        dwBrutalPlayer.classList.remove('is-playing');
+        
+        if (animationId) cancelAnimationFrame(animationId);
+        if (dummyInterval) clearInterval(dummyInterval);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    // DRAW STARK BLACK AND WHITE WAVES
+    function visualizeRealTimeBrutal() {
+      const bufferLength = analyser.frequencyBinCount;
+      const dataArray = new Uint8Array(bufferLength);
+      
+      function drawFrame() {
+        if (audio.paused) return;
+        animationId = requestAnimationFrame(drawFrame);
+        
+        analyser.getByteFrequencyData(dataArray);
+        
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        const barWidth = (canvas.width / bufferLength) * 1.5;
+        let barHeight;
+        let x = 0;
+        
+        for (let i = 0; i < bufferLength; i++) {
+          barHeight = dataArray[i] / 2.0; // Dynamic scale height
+          if (barHeight < 3) barHeight = 3;
+          
+          ctx.fillStyle = '#151515'; // Matte Black
+          ctx.fillRect(x, canvas.height - barHeight, barWidth - 6, barHeight);
+          
+          x += barWidth;
+        }
+      }
+      
+      drawFrame();
+    }
+
+    // STARK WAVE SIMULATOR FALLBACK
+    function visualizeSimulatedBrutal() {
+      dummyInterval = setInterval(() => {
+        if (audio.paused) return;
+        
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const barsCount = 20;
+        const barWidth = canvas.width / barsCount;
+        
+        for (let i = 0; i < barsCount; i++) {
+          const waveHeight = Math.sin(Date.now() * 0.007 + i * 0.5) * 12;
+          let barHeight = Math.max(Math.min(14 + waveHeight + Math.random() * 10, canvas.height - 4), 6);
+          
+          ctx.fillStyle = '#151515';
+          ctx.fillRect(i * barWidth, canvas.height - barHeight, barWidth - 6, barHeight);
+        }
+      }, 70);
+    }
+
+    // Audio naturally ended handler
+    audio.addEventListener('ended', () => {
+      bPlayIcon.style.display = 'block';
+      bPauseIcon.style.display = 'none';
+      dwBrutalPlayer.classList.remove('is-playing');
+      if (animationId) cancelAnimationFrame(animationId);
+      if (dummyInterval) clearInterval(dummyInterval);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    });
+  </script>
+</body>
+</html>
