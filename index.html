@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sabino Pereira — Books, Essays, and Music</title>
+  <title>Sabino Pereira — Books, Series, and Music</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Classic cozy library concept for Sabino Pereira.">
   <meta name="author" content="Sabino Pereira">
@@ -739,11 +739,93 @@
       transition: fill 0.2s;
     }
 
-    /* COZY ESSAYS PARCHMENT LIST */
+    /* COZY SERIES PARCHMENT LIST */
     .cozy-essays-list {
       display: flex;
       flex-direction: column;
       gap: 30px;
+    }
+
+    .cozy-series-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .series-card-parchment {
+      background: #fdfcf7;
+      border: var(--border-thin);
+      border-top: 4px solid var(--gold-accent);
+      border-radius: 8px;
+      padding: 34px 30px;
+      box-shadow: 0 8px 24px rgba(61, 35, 20, 0.05);
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      min-height: 260px;
+      transition: transform 0.3s, box-shadow 0.3s, border-top-color 0.3s;
+    }
+
+    .series-card-parchment:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 34px rgba(61, 35, 20, 0.09);
+      border-top-color: var(--forest-green);
+    }
+
+    .series-card-count {
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      color: var(--gold-accent);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .series-card-title {
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      color: var(--leather-brown);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .series-card-copy {
+      font-family: 'Lora', serif;
+      font-size: 15px;
+      color: #61564c;
+      line-height: 1.65;
+      flex-grow: 1;
+    }
+
+    .series-card-action {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-dark);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .cozy-featured-divider {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 10px 0 -4px;
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      color: var(--gold-accent);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .cozy-featured-divider::after {
+      content: '';
+      height: 1px;
+      flex: 1;
+      background: rgba(201, 155, 66, 0.35);
     }
 
     .essay-card-parchment {
@@ -1179,6 +1261,10 @@
         padding: 30px 20px;
       }
 
+      .cozy-series-grid {
+        grid-template-columns: 1fr;
+      }
+
       .essay-cozy-action {
         justify-content: flex-start;
       }
@@ -1341,7 +1427,7 @@
       <div class="seal-monogram">SP</div>
       <div class="seal-text">
         <h1>Sabino Pereira</h1>
-        <span>Books, Essays, Music</span>
+        <span>Books, Series, Music</span>
       </div>
     </a>
     
@@ -1356,25 +1442,20 @@
             <span>Music</span>
           </span>
         </a>
-      <a href="#essays">Essays</a>
+      <a href="#series">Series</a>
       <a href="/contact.html">Contact</a>
       <a href="/links.html">Bio Links</a>
     </nav>
-
-    <div class="cozy-lang">
-      <a href="/pt/" lang="pt">PT</a>
-      <a class="active" href="#" lang="en">EN</a>
-    </div>
   </header>
 
   <!-- COZY HERO HERO SECTION -->
   <section class="cozy-hero">
     <div class="cozy-hero-left">
       <h1 class="cozy-hero-title">Quiet stories.<br>Acoustic echoes.</h1>
-      <p class="cozy-hero-desc">Books, essays, and cinematic music composed for the quiet spaces in between decisions. Pull up a chair and discover the collection.</p>
+      <p class="cozy-hero-desc">Books, series, and cinematic music composed for the quiet spaces in between decisions. Pull up a chair and discover the collection.</p>
       <div class="cozy-actions">
         <a class="btn-cozy btn-cozy--solid" href="#books">Explore Library</a>
-        <a class="btn-cozy" href="#essays">Read Manuscripts</a>
+        <a class="btn-cozy" href="#series">Explore Series</a>
       </div>
     </div>
     
@@ -1578,15 +1659,40 @@
     </div>
   </section>
 
-  <!-- COZY PARCHMENT MANUSCRIPTS BLOCK -->
-  <section class="cozy-section" id="essays">
+  <!-- COZY PARCHMENT SERIES BLOCK -->
+  <section class="cozy-section" id="series">
     <div class="cozy-section-header">
-      <span class="cozy-section-eyebrow">Philosophical Inks</span>
-      <h2 class="cozy-section-title">The Manuscripts</h2>
+      <span class="cozy-section-eyebrow">Ongoing Rooms</span>
+      <h2 class="cozy-section-title">The Series</h2>
     </div>
 
     <div class="cozy-essays-list">
-      <!-- Essay 1 -->
+      <div class="cozy-series-grid">
+        <a class="series-card-parchment" href="/series.html">
+          <span class="series-card-count">01 · Intimacy</span>
+          <strong class="series-card-title">Being Human (Unfiltered)</strong>
+          <span class="series-card-copy">Personal writing about love, timing, memory, closeness, tenderness, and the quiet moments where people reveal themselves.</span>
+          <span class="series-card-action">Open series →</span>
+        </a>
+
+        <a class="series-card-parchment" href="/life-is-a-bug.html">
+          <span class="series-card-count">02 · Human glitches</span>
+          <strong class="series-card-title">Life is a Bug</strong>
+          <span class="series-card-copy">A satirical and philosophical index of strange routines, emotional loops, social errors, and the systems humans pretend are normal.</span>
+          <span class="series-card-action">Open series →</span>
+        </a>
+
+        <a class="series-card-parchment" href="/afraid-of-ai.html">
+          <span class="series-card-count">03 · AI and work</span>
+          <strong class="series-card-title">Afraid of AI</strong>
+          <span class="series-card-copy">Field-by-field reflections on what AI exposes when information becomes easier to access, compare, and question.</span>
+          <span class="series-card-action">Open series →</span>
+        </a>
+      </div>
+
+      <div class="cozy-featured-divider">Featured entries</div>
+
+      <!-- Entry 1 -->
       <div class="essay-card-parchment" onclick="openEssayBrutal('sometimes-leaving-early')">
         <span class="essay-cozy-category">Being Human (Unfiltered)</span>
         <div class="essay-cozy-middle">
@@ -1596,7 +1702,7 @@
         <span class="essay-cozy-action">Open →</span>
       </div>
 
-      <!-- Essay 2 -->
+      <!-- Entry 2 -->
       <div class="essay-card-parchment" onclick="openEssayBrutal('being-deleted')">
         <span class="essay-cozy-category">Being Human (Unfiltered)</span>
         <div class="essay-cozy-middle">
@@ -1606,7 +1712,7 @@
         <span class="essay-cozy-action">Open →</span>
       </div>
 
-      <!-- Essay 3 -->
+      <!-- Entry 3 -->
       <div class="essay-card-parchment" onclick="openEssayBrutal('what-is-quiet-power')">
         <span class="essay-cozy-category">Quiet Power</span>
         <div class="essay-cozy-middle">
@@ -1616,7 +1722,7 @@
         <span class="essay-cozy-action">Open →</span>
       </div>
 
-      <!-- Essay 4 -->
+      <!-- Entry 4 -->
       <div class="essay-card-parchment" onclick="openEssayBrutal('afraid-of-ai')">
         <span class="essay-cozy-category">Afraid of AI</span>
         <div class="essay-cozy-middle">
@@ -1626,7 +1732,7 @@
         <span class="essay-cozy-action">Open →</span>
       </div>
 
-      <!-- Essay 5 -->
+      <!-- Entry 5 -->
       <div class="essay-card-parchment" onclick="openEssayBrutal('life-is-a-bug')">
         <span class="essay-cozy-category">Life is a Bug</span>
         <div class="essay-cozy-middle">
