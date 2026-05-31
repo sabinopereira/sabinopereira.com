@@ -233,6 +233,63 @@
     .author-footer a:hover {
       color: var(--gold-accent) !important;
     }
+  
+    /* Cozy Nav Music Button Override */
+    .cozy-nav-music {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      border: 1px dashed rgba(201, 155, 66, 0.4) !important;
+      padding: 4px 10px !important;
+      border-radius: 6px !important;
+      transition: all 0.3s ease !important;
+      text-decoration: none !important;
+    }
+    .cozy-nav-music::after {
+      display: none !important;
+    }
+    .cozy-nav-music:hover {
+      border-color: var(--gold-bright) !important;
+      background: rgba(201, 155, 66, 0.08) !important;
+      box-shadow: 0 0 10px var(--gold-accent-glow) !important;
+    }
+    .cozy-nav-music-mark {
+      font-family: 'Cinzel', serif !important;
+      font-size: 10px !important;
+      font-weight: 700 !important;
+      color: var(--gold-bright) !important;
+      border: 1px solid var(--gold-accent) !important;
+      width: 20px !important;
+      height: 20px !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      border-radius: 50% !important;
+      background: var(--walnut-wood) !important;
+    }
+    .cozy-nav-music-text {
+      display: flex !important;
+      flex-direction: column !important;
+      line-height: 1 !important;
+      text-align: left !important;
+    }
+    .cozy-nav-music-text strong {
+      font-family: 'Cinzel', serif !important;
+      font-size: 10px !important;
+      letter-spacing: 0.5px !important;
+      color: #ffffff !important;
+      text-transform: uppercase !important;
+      font-weight: 700 !important;
+    }
+    .cozy-nav-music-text span {
+      font-family: 'Courier Prime', monospace !important;
+      font-size: 7px !important;
+      letter-spacing: 0.5px !important;
+      color: var(--gold-accent) !important;
+      text-transform: uppercase !important;
+      font-weight: 700 !important;
+    }
+
   </style>
 </head>
 <body class="author-hub-body">
@@ -251,7 +308,13 @@
         <a href="/">Home</a>
         <a href="/books.html">Books</a>
         <a href="/series.html">Series</a>
-        <a href="/en/#music">Music</a>
+        <a href="/#music" class="cozy-nav-music">
+          <span class="cozy-nav-music-mark">RB</span>
+          <span class="cozy-nav-music-text">
+            <strong>Reira Bin</strong>
+            <span>Music</span>
+          </span>
+        </a>
         <a href="/contact.html">Contact</a>
         <a href="/links.html">Bio Links</a>
       </nav>
