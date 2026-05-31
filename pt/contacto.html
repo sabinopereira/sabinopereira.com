@@ -15,27 +15,348 @@
   <link rel="icon" type="image/svg+xml" href="/images/sp-favicon.svg">
   <link rel="apple-touch-icon" href="/images/sp-favicon.svg">
   <link rel="stylesheet" href="/style.css?v=25">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Cinzel:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-parchment: #f5f1e6;
+      --bg-parchment-dark: #ebe6d5;
+      --leather-brown: #3d2314;
+      --leather-brown-light: #5c4033;
+      --walnut-wood: #2c1a0e;
+      --forest-green: #1c2e22;
+      --forest-green-glow: rgba(28, 46, 34, 0.15);
+      --gold-accent: #c99b42;
+      --gold-bright: #e5b85c;
+      --gold-accent-glow: rgba(201, 155, 66, 0.2);
+      --text-dark: #2c251e;
+      --text-muted: #665b50;
+      --border-thin: 1px solid rgba(61, 35, 20, 0.12);
+      --border-gold: 1px solid rgba(201, 155, 66, 0.35);
+    }
+
+    body {
+      background-color: var(--bg-parchment) !important;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E") !important;
+      color: var(--text-dark) !important;
+      font-family: 'EB Garamond', serif !important;
+    }
+
+    .author-shell, .author-main, .author-panel, .author-book, .author-page-hero, .author-book-intro {
+      background: transparent !important;
+      color: var(--text-dark) !important;
+    }
+
+    .cozy-header {
+      background: var(--forest-green);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+      border-bottom: 3px double var(--gold-accent);
+      padding: 24px 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .header-seal {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+    }
+
+    .seal-monogram {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--gold-accent);
+      background: var(--walnut-wood);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold-bright);
+      box-shadow: inset 0 0 8px rgba(0,0,0,0.6), 0 0 10px var(--gold-accent-glow);
+    }
+
+    .seal-text h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      color: #ffffff;
+      letter-spacing: 1px;
+      line-height: 1.1;
+    }
+
+    .seal-text span {
+      font-family: 'Courier Prime', monospace;
+      font-size: 10px;
+      color: var(--gold-accent);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .cozy-nav {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .cozy-nav a {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 15px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-family: 'Cinzel', serif;
+      transition: color 0.3s, text-shadow 0.3s;
+      position: relative;
+    }
+
+    .cozy-nav a:hover, .cozy-nav a.active {
+      color: var(--gold-bright);
+      text-shadow: 0 0 8px rgba(229, 184, 92, 0.4);
+    }
+
+    .cozy-nav a.active::after {
+      content: '•';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--gold-bright);
+      font-size: 14px;
+    }
+
+    .cozy-lang {
+      display: flex;
+      gap: 8px;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(201, 155, 66, 0.2);
+    }
+
+    .cozy-lang a {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 11px;
+      font-family: 'Courier Prime', monospace;
+      padding: 2px 6px;
+      border-radius: 2px;
+    }
+
+    .cozy-lang a.active {
+      background: var(--gold-accent);
+      color: var(--walnut-wood);
+      font-weight: 700;
+    }
+
+    .author-kicker {
+      font-family: 'Courier Prime', monospace !important;
+      font-size: 12px !important;
+      color: var(--gold-accent) !important;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .author-page-title, .author-section-title, h1, h2, h3 {
+      font-family: 'Cinzel', serif !important;
+      color: var(--text-dark) !important;
+      font-weight: 700 !important;
+    }
+
+    .author-page-intro, .author-card-text, .author-book-intro-subtitle, p, li {
+      font-family: 'EB Garamond', Georgia, serif !important;
+      font-size: 18px !important;
+      line-height: 1.6 !important;
+      color: var(--text-muted) !important;
+    }
+
+    .author-button, .btn-cozy {
+      display: inline-block;
+      text-decoration: none;
+      padding: 12px 30px;
+      font-family: 'Cinzel', serif !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      letter-spacing: 1.5px !important;
+      text-transform: uppercase;
+      border-radius: 30px !important;
+      transition: all 0.3s ease !important;
+      cursor: pointer;
+    }
+
+    .author-button:not(.author-button--secondary), .btn-cozy--solid {
+      background: var(--forest-green) !important;
+      color: var(--gold-bright) !important;
+      border: 1px solid var(--forest-green) !important;
+      box-shadow: 0 4px 15px rgba(28, 46, 34, 0.15);
+    }
+
+    .author-button:not(.author-button--secondary):hover, .btn-cozy--solid:hover {
+      background: var(--walnut-wood) !important;
+      border-color: var(--gold-accent) !important;
+      color: #ffffff !important;
+      box-shadow: 0 6px 20px rgba(44, 26, 14, 0.3);
+    }
+
+    .author-button--secondary {
+      background: transparent !important;
+      color: var(--text-dark) !important;
+      border: 1px solid var(--gold-accent) !important;
+    }
+
+    .author-button--secondary:hover {
+      background: rgba(201, 155, 66, 0.1) !important;
+      color: var(--gold-accent) !important;
+      border-color: var(--gold-bright) !important;
+    }
+
+    .author-panel, .author-book, .author-card {
+      background: #faf8f5 !important;
+      border: 1px solid rgba(201, 155, 66, 0.25) !important;
+      box-shadow: 0 4px 12px rgba(61, 35, 20, 0.05) !important;
+      padding: 30px !important;
+      border-radius: 8px !important;
+      transition: transform 0.3s, box-shadow 0.3s !important;
+    }
+
+    .author-panel:hover, .author-book:hover, .author-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(61, 35, 20, 0.1) !important;
+      border-color: var(--gold-accent) !important;
+    }
+
+    .author-footer {
+      border-top: var(--border-gold) !important;
+      background: #faf8f5 !important;
+      padding: 30px 80px !important;
+      font-family: 'Courier Prime', monospace !important;
+      font-size: 11px !important;
+      color: var(--text-muted) !important;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .author-footer a {
+      color: var(--text-dark) !important;
+      text-decoration: none;
+      margin-left: 16px;
+    }
+
+    .author-footer a:hover {
+      color: var(--gold-accent) !important;
+    }
+
+    /* Cozy Nav Music Button Override */
+    .cozy-nav-music {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      border: 1px dashed rgba(201, 155, 66, 0.4) !important;
+      padding: 4px 10px !important;
+      border-radius: 6px !important;
+      transition: all 0.3s ease !important;
+      text-decoration: none !important;
+    }
+    .cozy-nav-music::after {
+      display: none !important;
+    }
+    .cozy-nav-music:hover {
+      border-color: var(--gold-bright) !important;
+      background: rgba(201, 155, 66, 0.08) !important;
+      box-shadow: 0 0 10px var(--gold-accent-glow) !important;
+    }
+    .cozy-nav-music-mark {
+      font-family: 'Cinzel', serif !important;
+      font-size: 10px !important;
+      font-weight: 700 !important;
+      color: var(--gold-bright) !important;
+      border: 1px solid var(--gold-accent) !important;
+      width: 20px !important;
+      height: 20px !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      border-radius: 50% !important;
+      background: var(--walnut-wood) !important;
+    }
+    .cozy-nav-music-text {
+      display: flex !important;
+      flex-direction: column !important;
+      line-height: 1 !important;
+      text-align: left !important;
+    }
+    .cozy-nav-music-text strong {
+      font-family: 'Cinzel', serif !important;
+      font-size: 10px !important;
+      letter-spacing: 0.5px !important;
+      color: #ffffff !important;
+      text-transform: uppercase !important;
+      font-weight: 700 !important;
+    }
+    .cozy-nav-music-text span {
+      font-family: 'Courier Prime', monospace !important;
+      font-size: 7px !important;
+      letter-spacing: 0.5px !important;
+      color: var(--gold-accent) !important;
+      text-transform: uppercase !important;
+      font-weight: 700 !important;
+    }
+    
+    /* Contact form cozy overrides */
+    .author-contact-form input, .author-contact-form textarea {
+      background: #faf8f5 !important;
+      border: 1px solid rgba(201, 155, 66, 0.3) !important;
+      color: var(--text-dark) !important;
+      border-radius: 8px !important;
+      font-family: 'EB Garamond', serif !important;
+      font-size: 16px !important;
+    }
+    .author-contact-form input:focus, .author-contact-form textarea:focus {
+      border-color: var(--gold-bright) !important;
+      box-shadow: 0 0 8px var(--gold-accent-glow) !important;
+      outline: none !important;
+    }
+  </style>
+
 </head>
 <body class="author-hub-body author-dark-home author-dark-page author-contact-desk">
   <div class="author-shell">
-    <header class="author-header">
-      <a class="author-brand" href="/pt/">
-        <span>
-          <span class="author-brand-name">Sabino Pereira</span>
-          <span class="author-brand-line">Livros, ensaios e música</span>
-        </span>
+        <!-- MAIN COZY HEADER BAR -->
+    <header class="cozy-header">
+      <a class="header-seal" href="/pt/">
+        <div class="seal-monogram">SP</div>
+        <div class="seal-text">
+          <h1>Sabino Pereira</h1>
+          <span>Livros, Ensaios, Música</span>
+        </div>
       </a>
-      <nav class="author-nav" aria-label="Navegação principal">
-        <span class="author-language-switch" aria-label="Idioma">
-          <a class="is-active" href="/pt/contacto.html" lang="pt">PT</a>
-          <a href="/contact.html" lang="en">EN</a>
-        </span>
-        <a href="/pt/">Início</a>
-        <a href="/pt/livros.html">Livros</a>
-        <a href="/pt/series.html">Séries</a>
-        <a class="author-nav-music" href="/pt/#reira-bin"><strong>Reira Bin</strong><span>Música</span></a>
-        <a class="is-active" href="/pt/contacto.html">Contacto</a>
+      
+      <nav class="cozy-nav">
+        <a  href="/pt/">Início</a>
+        <a  href="/pt/livros.html">Livros</a>
+        <a  href="/pt/series.html">Séries</a>
+        <a href="/#music" class="cozy-nav-music">
+          <span class="cozy-nav-music-mark">RB</span>
+          <span class="cozy-nav-music-text">
+            <strong>Reira Bin</strong>
+            <span>Música</span>
+          </span>
+        </a>
+        <a class='active' href="/pt/contacto.html">Contacto</a>
       </nav>
+
+      <div class="cozy-lang">
+        <a class="active" href="#" lang="pt">PT</a>
+        <a href="/contact.html" lang="en">EN</a>
+      </div>
     </header>
 
     <main class="author-main">
@@ -90,10 +411,10 @@
     </main>
   </div>
 
+    <!-- FOOTER SIGNATURE -->
   <footer class="author-footer">
-    <span>&copy; 2026 Sabino Pereira</span>
-    <span><a href="/pt/">Início</a> · <a href="/pt/livros.html">Livros</a> · <a href="/pt/series.html">Séries</a> · <a href="/pt/#reira-bin">Música</a> · <a href="/pt/comecar.html">Começar</a>
-        · <a href="/contact.html">English</a></span>
+    <div class="cozy-footer-brand" style="font-family: 'Cinzel', serif; font-size: 14px; font-weight: 700; color: var(--text-dark); letter-spacing: 1px;">SABINO PEREIRA</div>
+    <span>&copy; 2026 Sabino Pereira. Built by Grace.</span>
   </footer>
 </body>
 </html>

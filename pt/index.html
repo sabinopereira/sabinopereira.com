@@ -2,143 +2,2162 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <title>Sabino Pereira — Livros, ensaios, histórias e música</title>
+  <title>Sabino Pereira — Livros, Ensaios, Histórias e Música</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Livros, ensaios, histórias curtas e música de Sabino Pereira, com música lançada como Reira Bin.">
   <meta name="author" content="Sabino Pereira">
-  <link rel="canonical" href="https://sabinopereira.com/pt/">
-  <link rel="alternate" hreflang="en" href="https://sabinopereira.com/">
-  <link rel="alternate" hreflang="pt" href="https://sabinopereira.com/pt/">
-  <link rel="alternate" hreflang="x-default" href="https://sabinopereira.com/">
-  <meta property="og:title" content="Sabino Pereira — Livros, ensaios, histórias e música">
-  <meta property="og:description" content="Livros, ensaios, histórias curtas e música de Sabino Pereira, com música lançada como Reira Bin.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://sabinopereira.com/pt/">
-  <meta property="og:image" content="https://sabinopereira.com/images/optimized/sabino-in-the-field.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Sabino Pereira — Livros, ensaios, histórias e música">
-  <meta name="twitter:description" content="Livros, ensaios, histórias curtas e música de Sabino Pereira, com música lançada como Reira Bin.">
-  <meta name="twitter:image" content="https://sabinopereira.com/images/optimized/sabino-in-the-field.jpg">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEVDEH8PGZ"></script>
-  <script src="/analytics.js"></script>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Cinzel:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  
   <link rel="icon" type="image/svg+xml" href="/images/sp-favicon.svg">
-  <link rel="apple-touch-icon" href="/images/sp-favicon.svg">
-  <link rel="stylesheet" href="/style.css?v=26">
+  
+  <style>
+    :root {
+      --bg-parchment: #f5f1e6;
+      --bg-parchment-dark: #ebe6d5;
+      --leather-brown: #3d2314;
+      --leather-brown-light: #5c4033;
+      --walnut-wood: #2c1a0e;
+      --forest-green: #1c2e22;
+      --forest-green-glow: rgba(28, 46, 34, 0.15);
+      --gold-accent: #c99b42;
+      --gold-bright: #e5b85c;
+      --gold-accent-glow: rgba(201, 155, 66, 0.2);
+      --text-dark: #2c251e;
+      --text-muted: #665b50;
+      --border-thin: 1px solid rgba(61, 35, 20, 0.12);
+      --border-gold: 1px solid rgba(201, 155, 66, 0.35);
+      --wood-shadow: 0 16px 32px rgba(15, 8, 4, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-parchment);
+      /* Subtle Paper Grain Texture Overlay */
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+      color: var(--text-dark);
+      font-family: 'EB Garamond', serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* COZY CLASSIC NAVIGATION HEADER */
+    .cozy-header {
+      background: var(--forest-green);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+      border-bottom: 3px double var(--gold-accent);
+      padding: 24px 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .header-seal {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+    }
+
+    .seal-monogram {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--gold-accent);
+      background: var(--walnut-wood);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold-bright);
+      box-shadow: inset 0 0 8px rgba(0,0,0,0.6), 0 0 10px var(--gold-accent-glow);
+    }
+
+    .seal-text h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      color: #ffffff;
+      letter-spacing: 1px;
+      line-height: 1.1;
+    }
+
+    .seal-text span {
+      font-family: 'Courier Prime', monospace;
+      font-size: 10px;
+      color: var(--gold-accent);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .cozy-nav {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .cozy-nav a {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 15px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-family: 'Cinzel', serif;
+      transition: color 0.3s, text-shadow 0.3s;
+      position: relative;
+    }
+
+    .cozy-nav a:hover, .cozy-nav a.active {
+      color: var(--gold-bright);
+      text-shadow: 0 0 8px rgba(229, 184, 92, 0.4);
+    }
+
+    .cozy-nav a.active::after {
+      content: '•';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--gold-bright);
+      font-size: 14px;
+    }
+
+    .cozy-lang {
+      display: flex;
+      gap: 8px;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(201, 155, 66, 0.2);
+    }
+
+    .cozy-lang a {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 11px;
+      font-family: 'Courier Prime', monospace;
+      padding: 2px 6px;
+      border-radius: 2px;
+    }
+
+    .cozy-lang a.active {
+      background: var(--gold-accent);
+      color: var(--walnut-wood);
+      font-weight: 700;
+    }
+
+    /* COZY HERO SECTION */
+    .cozy-hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      min-height: 80vh;
+      border-bottom: 2px double rgba(61, 35, 20, 0.15);
+      background-image: radial-gradient(circle at 100% 0%, rgba(201, 155, 66, 0.04) 0%, transparent 60%);
+    }
+
+    .cozy-hero-left {
+      padding: 100px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .cozy-kicker {
+      font-family: 'Courier Prime', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold-accent);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cozy-kicker::after {
+      content: '';
+      flex-grow: 1;
+      max-width: 80px;
+      height: 1px;
+      background: var(--gold-accent);
+    }
+
+    .cozy-hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: 58px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--leather-brown);
+      text-shadow: 1px 1px 0 rgba(255,255,255,0.8);
+    }
+
+    .cozy-hero-desc {
+      font-family: 'Lora', serif;
+      font-size: 19px;
+      line-height: 1.7;
+      color: #4a3e35;
+      max-width: 580px;
+    }
+
+    .cozy-actions {
+      display: flex;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .btn-cozy {
+      padding: 14px 28px;
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--leather-brown);
+      border-radius: 30px;
+      background: transparent;
+      color: var(--leather-brown);
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+    }
+
+    .btn-cozy--solid {
+      background: var(--forest-green);
+      color: var(--bg-parchment);
+      border: 1px solid var(--forest-green);
+      box-shadow: 0 4px 15px var(--forest-green-glow);
+    }
+
+    .btn-cozy:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(61, 35, 20, 0.15);
+    }
+
+    .btn-cozy--solid:hover {
+      background: var(--walnut-wood);
+      border-color: var(--walnut-wood);
+      box-shadow: 0 6px 20px rgba(44, 26, 14, 0.3);
+    }
+
+    .cozy-hero-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px;
+      background: rgba(61, 35, 20, 0.015);
+      border-left: var(--border-thin);
+    }
+
+    .cozy-portrait-frame {
+      background: #ffffff;
+      border: 12px solid var(--walnut-wood);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15), inset 0 0 10px rgba(0,0,0,0.05);
+      padding: 24px;
+      max-width: 380px;
+      width: 100%;
+      text-align: center;
+      transform: rotate(2deg);
+      transition: transform 0.5s ease;
+    }
+
+    .cozy-portrait-frame:hover {
+      transform: rotate(0deg) scale(1.02);
+    }
+
+    .cozy-portrait-frame img {
+      width: 100%;
+      aspect-ratio: 0.67;
+      object-fit: cover;
+      border: 1px solid rgba(0,0,0,0.1);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+    }
+
+    .frame-caption {
+      margin-top: 16px;
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--walnut-wood);
+      letter-spacing: 1px;
+    }
+
+    .frame-subcaption {
+      font-family: 'Courier Prime', monospace;
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* COZY LIBRARY BLOCK */
+    .cozy-section {
+      padding: 120px 80px;
+      border-bottom: var(--border-thin);
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
+
+    .cozy-section-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cozy-section-eyebrow {
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      color: var(--gold-accent);
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .cozy-section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 38px;
+      color: var(--leather-brown);
+      position: relative;
+      padding-bottom: 16px;
+    }
+
+    .cozy-section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 1px;
+      background: var(--gold-accent);
+    }
+
+    /* REALISTIC 3D WOODEN SHELF SYSTEM */
+    .bookshelf-container {
+      position: relative;
+      padding: 40px 20px 80px 20px;
+      background: rgba(0,0,0,0.01);
+      border-radius: 12px;
+    }
+
+    .shelf-lamp-glow {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(201, 155, 66, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .stark-books-grid {
+      display: grid;
+      gap: 40px;
+      position: relative;
+      z-index: 5;
+      padding-bottom: 16px;
+    }
+
+    .books-shelf-top {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .books-shelf-bottom {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 840px;
+      margin: 140px auto 0 auto;
+    }
+
+    .stark-book-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .stark-book-item img {
+      width: 100%;
+      max-width: 160px;
+      aspect-ratio: 0.67;
+      object-fit: cover;
+      border-radius: 3px 6px 6px 3px;
+      box-shadow: 3px 6px 12px rgba(0, 0, 0, 0.25), 
+                  inset 5px 0 10px rgba(0,0,0,0.1),
+                  1px 0 0 rgba(255,255,255,0.2) inset;
+      border-left: 3px solid rgba(0,0,0,0.15);
+      transition: box-shadow 0.4s;
+    }
+
+    /* Hover elevation of book from shelf */
+    .stark-book-item:hover {
+      transform: translateY(-16px) scale(1.03);
+    }
+
+    .stark-book-item:hover img {
+      box-shadow: 10px 20px 30px rgba(15, 8, 4, 0.35);
+    }
+
+    /* CSS Drawn Wooden Shelf Planks */
+    .wood-shelf {
+      position: absolute;
+      bottom: 50px;
+      left: -10px;
+      right: -10px;
+      height: 26px;
+      background: var(--walnut-wood);
+      border-radius: 4px;
+      box-shadow: var(--wood-shadow);
+      z-index: 2;
+    }
+
+    .wood-shelf::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.08); /* Highlight wood top grain */
+    }
+
+    .wood-shelf::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 8px;
+      right: 8px;
+      height: 12px;
+      background: rgba(0, 0, 0, 0.35); /* Shadow thrown by shelf */
+      filter: blur(4px);
+    }
+
+    .stark-book-meta {
+      text-align: center;
+      margin-top: 36px; /* Leave space for wood shelf */
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .stark-book-tag {
+      font-family: 'Courier Prime', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--gold-accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .stark-book-title {
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--leather-brown);
+      line-height: 1.25;
+    }
+
+    /* VINTAGE RECORD PLAYER MUSIC GRID */
+    .cozy-music-block {
+      background: var(--bg-parchment-dark);
+      border: var(--border-thin);
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.03);
+      padding: 60px;
+      border-radius: 12px;
+    }
+
+    .cozy-music-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .music-cozy-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .music-cozy-copy h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 28px;
+      color: var(--leather-brown);
+    }
+
+    .music-cozy-copy p {
+      font-family: 'Lora', serif;
+      font-size: 17px;
+      line-height: 1.65;
+      color: #554d45;
+    }
+
+    /* THE GORGEOUS VINTAGE TURNTABLE GRAMOPHONE CONSOLE */
+    .vintage-turntable-console {
+      background: var(--walnut-wood);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+      border: 3px solid var(--gold-accent);
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      position: relative;
+    }
+
+    .turntable-platter-area {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.05);
+      height: 280px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* SPINNING VINYL RECORD */
+    .vinyl-record {
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      background: #0d0d0d;
+      /* Concentric grooves */
+      background-image: 
+        radial-gradient(circle, transparent 20%, #151515 21%, transparent 22%, #151515 25%, transparent 26%, #1a1a1a 30%, transparent 32%, #151515 35%, transparent 36%, #1a1a1a 45%, transparent 47%, #1a1a1a 55%, transparent 56%, #111 65%, transparent 66%, #111 75%, transparent 76%, #151515 85%, transparent 86%);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5), inset 0 0 10px rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      transition: transform 0.5s;
+    }
+
+    /* Animation class */
+    .vintage-turntable-console.is-playing .vinyl-record {
+      animation: spinVinyl 8s linear infinite;
+    }
+
+    .vinyl-center-label {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: var(--gold-accent);
+      border: 2px solid #000000;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: inset 0 0 8px rgba(0,0,0,0.4);
+    }
+
+    .vinyl-center-label img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .vinyl-spindle-hole {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #ffffff;
+      border: 1.5px solid #000000;
+      border-radius: 50%;
+      z-index: 10;
+      box-shadow: 0 0 3px rgba(0,0,0,0.8);
+    }
+
+    /* VINTAGE BRASS TONEARM */
+    .vinyl-tonearm {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      width: 110px;
+      height: 110px;
+      pointer-events: none;
+      transform-origin: 90px 20px;
+      transform: rotate(0deg);
+      transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      z-index: 15;
+    }
+
+    .vintage-turntable-console.is-playing .vinyl-tonearm {
+      transform: rotate(26deg); /* Swing arm onto record */
+    }
+
+    /* CSS drawing of physical brass arm */
+    .arm-base {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--gold-accent);
+      border: 2px solid var(--walnut-wood);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    }
+
+    .arm-shaft {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 4px;
+      height: 90px;
+      background: var(--gold-accent);
+      transform: rotate(-35deg);
+      transform-origin: top center;
+      border-radius: 2px;
+      box-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .arm-cartridge {
+      position: absolute;
+      bottom: 2px;
+      left: 10px;
+      width: 12px;
+      height: 20px;
+      background: #222222;
+      border: 1px solid var(--gold-accent);
+      border-radius: 2px;
+      transform: rotate(10deg);
+    }
+
+    /* COZY ANALOG DECK PANELS */
+    .turntable-deck-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.02);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 20px;
+    }
+
+    .analog-dial-box {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .analog-dial-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 9px;
+      color: var(--gold-accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Analog Needle Volume Meter */
+    .analog-meter-frame {
+      width: 90px;
+      height: 44px;
+      border: 2px solid var(--gold-accent);
+      background: #fbfbf9;
+      border-radius: 22px 22px 0 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .analog-meter-scale {
+      position: absolute;
+      top: 2px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Courier Prime', monospace;
+      font-size: 8px;
+      color: #665b50;
+    }
+
+    .analog-meter-needle {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      height: 34px;
+      background: #dc2626; /* Crimson classic needle */
+      transform-origin: bottom center;
+      transform: rotate(-45deg); /* Start at far left */
+      transition: transform 0.15s ease-out;
+      box-shadow: 1px 0 2px rgba(0,0,0,0.1);
+    }
+
+    /* Vintage golden dial switches */
+    .play-brass-button {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--gold-bright) 0%, var(--gold-accent) 100%);
+      border: 3px solid var(--walnut-wood);
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.4);
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .play-brass-button:active {
+      transform: scale(0.96);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .play-brass-button svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--walnut-wood);
+      transition: fill 0.2s;
+    }
+
+    /* COZY ESSAYS PARCHMENT LIST */
+    .cozy-essays-list {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .essay-card-parchment {
+      background: #fdfcf7;
+      border: var(--border-thin);
+      border-left: 4px solid var(--forest-green);
+      border-radius: 8px;
+      padding: 40px;
+      box-shadow: 0 6px 20px rgba(61, 35, 20, 0.04);
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: 180px 1fr 120px;
+      gap: 40px;
+      align-items: center;
+      transition: transform 0.3s, box-shadow 0.3s, border-left-color 0.3s;
+    }
+
+    .essay-card-parchment:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(61, 35, 20, 0.08);
+      border-left-color: var(--gold-accent);
+    }
+
+    .essay-cozy-category {
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      color: var(--gold-accent);
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .essay-cozy-middle {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .essay-cozy-title {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      color: var(--leather-brown);
+      font-weight: 700;
+    }
+
+    .essay-cozy-excerpt {
+      font-family: 'Lora', serif;
+      font-size: 15px;
+      color: #61564c;
+      line-height: 1.6;
+    }
+
+    .essay-cozy-action {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-dark);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+      transition: color 0.3s;
+    }
+
+    .essay-card-parchment:hover .essay-cozy-action {
+      color: var(--gold-accent);
+    }
+
+    /* PARCHMENT ESSAY READER OVERLAY */
+    .essay-brutal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(44, 26, 14, 0.4);
+      backdrop-filter: blur(8px);
+      z-index: 200;
+      display: flex;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .essay-brutal-overlay.is-active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .essay-brutal-drawer {
+      width: 100%;
+      max-width: 780px;
+      background: var(--bg-parchment);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+      border-left: 2px solid var(--gold-accent);
+      border-right: 2px solid var(--gold-accent);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transform: scaleY(0.96);
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .essay-brutal-overlay.is-active .essay-brutal-drawer {
+      transform: scaleY(1);
+    }
+
+    .brutal-reader-header {
+      padding: 30px 40px;
+      border-bottom: var(--border-gold);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--bg-parchment);
+    }
+
+    .brutal-reader-back {
+      background: none;
+      border: 1px solid var(--leather-brown);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--leather-brown);
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .brutal-reader-back:hover {
+      background-color: var(--leather-brown);
+      color: var(--bg-parchment);
+    }
+
+    .overlay-title-short {
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      color: var(--gold-accent);
+      font-weight: 700;
+    }
+
+    .brutal-reader-body {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      line-height: 1.8;
+      font-size: 18px;
+    }
+
+    .brutal-reader-body h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 38px;
+      color: var(--leather-brown);
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      border-bottom: 1px solid rgba(201, 155, 66, 0.2);
+      padding-bottom: 20px;
+    }
+
+    .brutal-reader-body blockquote {
+      border-left: 3px solid var(--gold-accent);
+      padding-left: 24px;
+      font-family: 'Cinzel', serif;
+      font-size: 19px;
+      font-style: italic;
+      color: var(--leather-brown-light);
+      margin: 20px 0;
+    }
+
+    /* EMBOSSED NEWSLETTER CARD */
+    .cozy-newsletter-card {
+      background: var(--forest-green);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+      border: 2px solid var(--gold-accent);
+      border-radius: 12px;
+      padding: 60px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+    }
+
+    .newsletter-cozy-copy h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 32px;
+      color: #ffffff;
+    }
+
+    .newsletter-cozy-copy p {
+      font-family: 'Lora', serif;
+      font-size: 15.5px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 10px;
+    }
+
+    .newsletter-cozy-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .newsletter-cozy-input {
+      padding: 16px;
+      border: 1px solid rgba(201, 155, 66, 0.4);
+      background: rgba(0,0,0,0.2);
+      border-radius: 30px;
+      font-size: 15px;
+      color: #ffffff;
+      outline: none;
+      font-family: 'Lora', serif;
+      text-align: center;
+    }
+
+    .newsletter-cozy-input::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    .newsletter-cozy-input:focus {
+      border-color: var(--gold-bright);
+    }
+
+    /* LEATHER GOLD EMBOSSED DETAILS POPUP */
+    .book-brutal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(44, 26, 14, 0.55);
+      backdrop-filter: blur(6px);
+      z-index: 210;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .book-brutal-overlay.is-active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .book-brutal-card {
+      width: 90%;
+      max-width: 760px;
+      background: var(--bg-parchment);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+      border: 3px solid var(--gold-accent);
+      border-radius: 8px;
+      padding: 50px;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.3);
+      transform: scale(0.95);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 40px;
+    }
+
+    .book-brutal-overlay.is-active .book-brutal-card {
+      transform: scale(1);
+    }
+
+    .book-brutal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--gold-accent);
+      border-radius: 50%;
+      background: none;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--leather-brown);
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .book-brutal-close:hover {
+      background-color: var(--gold-accent);
+      color: var(--bg-parchment);
+    }
+
+    .drawer-brutal-cover {
+      width: 100%;
+      aspect-ratio: 0.67;
+      border-radius: 4px;
+      object-fit: cover;
+      box-shadow: 5px 10px 20px rgba(0,0,0,0.25);
+    }
+
+    .drawer-brutal-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .drawer-brutal-title {
+      font-family: 'Cinzel', serif;
+      font-size: 28px;
+      color: var(--leather-brown);
+      font-weight: 700;
+    }
+
+    .drawer-brutal-desc {
+      font-family: 'Lora', serif;
+      font-size: 15.5px;
+      color: #554d45;
+      line-height: 1.6;
+    }
+
+    .drawer-brutal-btn-row {
+      display: flex;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    /* FOOTER SIGNATURE */
+    .cozy-footer {
+      background: var(--walnut-wood);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+      border-top: 3px double var(--gold-accent);
+      padding: 60px 80px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .cozy-footer-brand {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      color: #ffffff;
+      letter-spacing: 2px;
+    }
+
+    .cozy-footer span {
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      color: var(--gold-accent);
+    }
+
+    /* ANIMATIONS */
+    @keyframes spinVinyl {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* MOBILE RESPONSIVENESS */
+    @media (max-width: 992px) {
+      .cozy-header {
+        padding: 20px;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .cozy-nav {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .cozy-hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .cozy-hero-left {
+        padding: 50px 20px;
+      }
+
+      .cozy-hero-title {
+        font-size: 42px;
+      }
+
+      .cozy-hero-right {
+        padding: 40px 20px;
+        border-left: none;
+        border-top: var(--border-thin);
+      }
+
+      .cozy-section {
+        padding: 60px 20px;
+      }
+
+      .stark-books-grid, .books-shelf-top, .books-shelf-bottom {
+        grid-template-columns: repeat(2, 1fr) !important;
+        margin-top: 30px !important;
+        max-width: 100% !important;
+        gap: 30px;
+      }
+
+      /* Wood shelves collapse neatly to stacked plates on mobile */
+      .wood-shelf {
+        display: none; /* Hide 3D bar, stack cards neatly */
+      }
+
+      .stark-book-meta {
+        margin-top: 10px;
+      }
+
+      .cozy-music-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .essay-card-parchment {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 30px 20px;
+      }
+
+      .essay-cozy-action {
+        justify-content: flex-start;
+      }
+
+      .cozy-newsletter-card {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 40px 20px;
+      }
+
+      .book-brutal-card {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 30px 20px;
+        width: 95%;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .drawer-brutal-cover {
+        max-width: 140px;
+        margin: 0 auto;
+      }
+
+      .brutal-reader-body {
+        padding: 40px 20px;
+      }
+
+      .brutal-reader-body h1 {
+        font-size: 28px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stark-books-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .stark-book-item img {
+        max-width: 180px;
+      }
+
+      .vinyl-record {
+        width: 180px;
+        height: 180px;
+      }
+
+      .vinyl-center-label {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  
+    /* Cozy Nav Music Button Override */
+    .cozy-nav-music {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      border: 1px dashed rgba(201, 155, 66, 0.4) !important;
+      padding: 4px 10px !important;
+      border-radius: 6px !important;
+      transition: all 0.3s ease !important;
+      text-decoration: none !important;
+    }
+    .cozy-nav-music::after {
+      display: none !important;
+    }
+    .cozy-nav-music:hover {
+      border-color: var(--gold-bright) !important;
+      background: rgba(201, 155, 66, 0.08) !important;
+      box-shadow: 0 0 10px var(--gold-accent-glow) !important;
+    }
+    .cozy-nav-music-mark {
+      font-family: 'Cinzel', serif !important;
+      font-size: 10px !important;
+      font-weight: 700 !important;
+      color: var(--gold-bright) !important;
+      border: 1px solid var(--gold-accent) !important;
+      width: 20px !important;
+      height: 20px !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      border-radius: 50% !important;
+      background: var(--walnut-wood) !important;
+    }
+    .cozy-nav-music-text {
+      display: flex !important;
+      flex-direction: column !important;
+      line-height: 1 !important;
+      text-align: left !important;
+    }
+    .cozy-nav-music-text strong {
+      font-family: 'Cinzel', serif !important;
+      font-size: 10px !important;
+      letter-spacing: 0.5px !important;
+      color: #ffffff !important;
+      text-transform: uppercase !important;
+      font-weight: 700 !important;
+    }
+    .cozy-nav-music-text span {
+      font-family: 'Courier Prime', monospace !important;
+      font-size: 7px !important;
+      letter-spacing: 0.5px !important;
+      color: var(--gold-accent) !important;
+      text-transform: uppercase !important;
+      font-weight: 700 !important;
+    }
+
+  </style>
 </head>
-<body class="author-hub-body author-dark-home">
-  <div class="author-shell">
-    <header class="author-header">
-      <a class="author-brand" href="/pt/">
-        <span>
-          <span class="author-brand-name">Sabino Pereira</span>
-          <span class="author-brand-line">Livros, ensaios e música</span>
-        </span>
-      </a>
+<body>
 
-      <nav class="author-nav" aria-label="Navegação principal">
-        <span class="author-language-switch" aria-label="Idioma">
-          <a class="is-active" href="/pt/" lang="pt">PT</a>
-        <a href="/" lang="en">EN</a>
-        </span>
-        <a class="is-active" href="/pt/">Início</a>
-        <a href="/pt/livros.html">Livros</a>
-        <a href="/pt/series.html">Séries</a>
-        <a class="author-nav-music" href="#reira-bin"><strong>Reira Bin</strong><span>Música</span></a>
-        <a href="/pt/contacto.html">Contacto</a>
-      </nav>
-    </header>
-
-    <main class="dark-home-main">
-      <section class="dark-hero" aria-labelledby="pt-home-hero-title">
-        <div class="dark-hero-copy">
-          <p class="dark-kicker">Sabino Pereira</p>
-          <h1 id="pt-home-hero-title">Trabalho quieto. Histórias reais.</h1>
-          <p>Livros, ensaios, short stories, experiências práticas e música para quem pensa fundo antes de se mover.</p>
-          <div class="dark-actions">
-            <a class="dark-button" href="/pt/livros.html">Ler os livros</a>
-            <a class="dark-button dark-button--ghost" href="/pt/series.html">Abrir séries</a>
-            <a class="dark-button dark-button--ghost" href="#reira-bin">Música por Reira Bin</a>
-          </div>
+  <!-- BRUTALIST VINTAGE BOOK DETAILS POPUP -->
+  <div class="book-brutal-overlay" id="book-brutal" onclick="closeBrutalistBook(event)">
+    <div class="book-brutal-card" id="book-brutal-card">
+      <button class="book-brutal-close" onclick="closeBrutalistBookDirect()">&times;</button>
+      <img src="" id="b-cover" class="drawer-brutal-cover" alt="Book Cover">
+      <div class="drawer-brutal-meta">
+        <!-- Bilingual tab switches inside the modal -->
+        <div class="modal-lang-selector" style="display: flex; gap: 8px; margin-bottom: 2px;">
+          <button class="btn-cozy btn-cozy--solid" id="btn-book-lang-en" onclick="toggleBookModalLanguage('en')" style="padding: 4px 12px; font-size: 10px; border-radius: 4px; letter-spacing: 0.5px; border-color: var(--gold-accent);">EN</button>
+          <button class="btn-cozy" id="btn-book-lang-pt" onclick="toggleBookModalLanguage('pt')" style="padding: 4px 12px; font-size: 10px; border-radius: 4px; letter-spacing: 0.5px; border-color: var(--gold-accent);">PT</button>
         </div>
-      </section>
-
-      <section class="dark-editorial" aria-labelledby="pt-editorial-title">
-        <div class="dark-editorial-copy">
-          <p class="dark-kicker">Site de autor</p>
-          <h2 id="pt-editorial-title">Trabalho calmo para tempos ruidosos.</h2>
-          <p>Este é o espaço de Sabino Pereira: livros, histórias curtas, ensaios, música e pequenas perguntas que acabam por abrir mapas maiores.</p>
-          <div class="dark-work-grid">
-            <a class="dark-work-card" href="/pt/livros.html">
-              <strong>Livros</strong>
-              <span>Ficção, estratégia, pressão, sobrevivência, silêncio.</span>
-            </a>
-            <a class="dark-work-card" href="/pt/series.html">
-              <strong>Séries</strong>
-              <span>Vida moderna, comportamento humano, IA, dinheiro, trabalho.</span>
-            </a>
-            <a class="dark-work-card" href="#reira-bin">
-              <strong>Música</strong>
-              <span>Peças cinematográficas assinadas como Reira Bin.</span>
-            </a>
-          </div>
+        <span class="book-item-eyebrow" id="b-eyebrow">NEW BOOK</span>
+        <h2 class="drawer-brutal-title" id="b-title">Chess in the Block</h2>
+        <span class="modal-author" style="margin-top: -12px; font-family: 'Courier Prime', monospace; font-size: 11px; font-weight: 700; color: var(--gold-accent); text-transform: uppercase;">BY SABINO PEREIRA</span>
+        <p class="drawer-brutal-desc" id="b-desc">Description...</p>
+        <div class="drawer-brutal-btn-row">
+          <a href="" id="b-buy-link" target="_blank" rel="noopener" class="btn-cozy btn-cozy--solid">Buy on Amazon</a>
+          <a href="" id="b-read-link" class="btn-cozy">Read Excerpt</a>
         </div>
-        <figure class="dark-portrait">
-          <img src="/images/optimized/sabino-in-the-field.jpg" alt="Sabino Pereira entre flores sob um céu azul">
-        </figure>
-      </section>
-
-      <section class="dark-feature" aria-labelledby="pt-featured-book-title">
-        <div>
-          <p class="dark-kicker">Último livro</p>
-          <h2 id="pt-featured-book-title">Xadrez no Comando</h2>
-          <p>Estratégia, sobrevivência emocional e maturidade. Um livro sobre pressão, silêncio, amor, perda e decisões difíceis, usando o xadrez como metáfora para a vida.</p>
-          <div class="dark-actions">
-            <a class="dark-button" href="/xadrez-no-comando.html">Ler amostra</a>
-            <a class="dark-button dark-button--ghost" href="https://www.amazon.es/-/en/Sabino-Pereira/dp/B0H2CQ4FFB/ref=tmm_pap_swatch_0" target="_blank" rel="noopener">Comprar na Amazon</a>
-          </div>
-        </div>
-        <a class="dark-book-cover" href="/xadrez-no-comando.html" aria-label="Ler Xadrez no Comando">
-          <img src="/images/optimized/xadrez-no-comando-cover.png" alt="Capa do livro Xadrez no Comando" loading="lazy">
-        </a>
-      </section>
-
-      <section class="dark-music" id="reira-bin" aria-labelledby="pt-reira-bin-title">
-        <div class="dark-album">
-          <img src="/images/optimized/healing-is-coming-single.png" alt="Capa do single Healing Is Coming de Reira Bin">
-        </div>
-        <div class="dark-music-copy">
-          <p class="dark-kicker">Música por Reira Bin</p>
-          <h2 id="pt-reira-bin-title">Built by Grace</h2>
-          <p>Uma viagem inspirada no gospel: da oração à cura, do amor à família, tudo construído pela graça. A mensagem do álbum é simples: from prayer, to healing, to love, to home — built by grace.</p>
-          <div class="dark-single-grid" aria-label="Singles de Built by Grace">
-            <article class="dark-single-card">
-              <img src="/images/optimized/healing-is-coming-single.png" alt="Capa do single Healing Is Coming">
-              <div>
-                <strong>Healing Is Coming — Grace Is Still Fighting</strong>
-                <span>Vídeo single preparado para YouTube com capa oficial.</span>
-              </div>
-            </article>
-            <article class="dark-single-card">
-              <img src="/images/optimized/goodness-and-mercy-single.png" alt="Capa do single Goodness and Mercy">
-              <div>
-                <strong>Goodness and Mercy — Mercy Found Me</strong>
-                <span>Vídeo single preparado para YouTube com capa oficial.</span>
-              </div>
-            </article>
-          </div>
-          <div class="dark-track-list" aria-label="Projetos musicais">
-            <span>Novo álbum: Built by Grace</span>
-            <a href="https://www.youtube.com/playlist?list=PL2fjTz8iZs_bPGQZP7eG6jIa4nphDdJH7" target="_blank" rel="noopener">Música para Xadrez no Comando</a>
-            <a href="https://www.youtube.com/playlist?list=PL2fjTz8iZs_arXeYgd1bngkHfMZJtRU1F" target="_blank" rel="noopener">Música para Chess in the Block</a>
-          </div>
-        </div>
-      </section>
-    </main>
+      </div>
+    </div>
   </div>
 
-  <footer class="author-footer">
-    <span>&copy; 2026 Sabino Pereira</span>
-    <span><a href="/pt/comecar.html">Começar</a> · <a href="/pt/livros.html">Livros</a> · <a href="/pt/series.html">Séries</a> · <a href="#reira-bin">Música</a> · <a href="/pt/contacto.html">Contacto</a> · <a href="/">English</a></span>
+  <!-- VINTAGE PARCHMENT ESSAY OVERLAY -->
+  <div class="essay-brutal-overlay" id="essay-brutal">
+    <div class="essay-brutal-drawer">
+      <div class="brutal-reader-header">
+        <button class="brutal-reader-back" onclick="closeEssayBrutal()">
+          ← Return
+        </button>
+        <span class="overlay-title-short" id="brutal-nav-title">Manuscript</span>
+        <!-- Bilingual tab switches next to content -->
+        <div class="essay-lang-toggle-container" style="display: flex; gap: 6px;">
+          <button class="btn-cozy btn-cozy--solid" id="btn-essay-lang-en" onclick="toggleEssayLanguage('en')" style="padding: 4px 10px; font-size: 9px; border-radius: 4px; letter-spacing: 0.5px; border-color: var(--gold-accent);">EN</button>
+          <button class="btn-cozy" id="btn-essay-lang-pt" onclick="toggleEssayLanguage('pt')" style="padding: 4px 10px; font-size: 9px; border-radius: 4px; letter-spacing: 0.5px; border-color: var(--gold-accent);">PT</button>
+        </div>
+      </div>
+      <div class="brutal-reader-body" id="brutal-body-content">
+        <!-- Essay content -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN COZY HEADER BAR -->
+  <header class="cozy-header">
+    <a class="header-seal" href="/pt/">
+      <div class="seal-monogram">SP</div>
+      <div class="seal-text">
+        <h1>Sabino Pereira</h1>
+        <span>Books, Essays, Music</span>
+      </div>
+    </a>
+    
+    <nav class="cozy-nav">
+      <a class="active" href="/pt/">Início</a>
+      <a href="#books">Livros</a>
+      <a href="#music" class="cozy-nav-music">
+          <span class="cozy-nav-music-mark">RB</span>
+          <span class="cozy-nav-music-text">
+            <strong>Reira Bin</strong>
+            <span>Music</span>
+          </span>
+        </a>
+      <a href="#essays">Crónicas</a>
+      <a href="/pt/contacto.html">Contacto</a>
+      <a href="/links.html">Links</a>
+    </nav>
+
+    <div class="cozy-lang">
+      <a class="active" href="#" lang="pt">PT</a>
+      <a href="/" lang="en">EN</a>
+    </div>
+  </header>
+
+  <!-- COZY HERO HERO SECTION -->
+  <section class="cozy-hero">
+    <div class="cozy-hero-left">
+      <h1 class="cozy-hero-title">Histórias tranquilas.<br>Ecos acústicos.</h1>
+      <p class="cozy-hero-desc">Livros, crónicas e música cinematográfica compostos para os espaços de silêncio no meio das decisões. Puxe uma cadeira e descubra a coleção.</p>
+      <div class="cozy-actions">
+        <a class="btn-cozy btn-cozy--solid" href="#books">Explorar Biblioteca</a>
+        <a class="btn-cozy" href="#essays">Ler Manuscritos</a>
+      </div>
+    </div>
+    
+    <div class="cozy-hero-right">
+      <div class="cozy-portrait-frame">
+        <img src="/images/optimized/built-by-grace-cover.png" alt="Reira Bin — Built by Grace Album Cover">
+        <div class="frame-caption">Reira Bin — Built by Grace</div>
+        <div class="frame-subcaption">Capa Oficial do Álbum</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIBRARY SHELF BLOCK -->
+  <section class="cozy-section" id="books">
+    <div class="cozy-section-header">
+      <span class="cozy-section-eyebrow">A Biblioteca Acolhedora</span>
+      <h2 class="cozy-section-title">A Estante</h2>
+    </div>
+
+    <!-- Wood Shelf System -->
+    <div class="bookshelf-container">
+      <div class="shelf-lamp-glow"></div>
+      
+      <!-- TOP SHELF: 4 Books -->
+      <div class="stark-books-grid books-shelf-top">
+        <!-- Book 1 -->
+        <div class="stark-book-item" onclick="showBrutalistBook('chess-in-the-block')">
+          <img src="/images/optimized/chess-in-the-block-cover.jpg" alt="Chess in the Block Cover">
+          <div class="stark-book-meta">
+            <span class="stark-book-tag">ROMANCE • THRILLER</span>
+            <strong class="stark-book-title">Chess in the Block</strong>
+          </div>
+        </div>
+
+        <!-- Book 2 -->
+        <div class="stark-book-item" onclick="showBrutalistBook('what-still-hurts')">
+          <img src="/images/optimized/what-still-hurts-cover.png" alt="What Still Hurts Cover">
+          <div class="stark-book-meta">
+            <span class="stark-book-tag">ROMANCE • DISTOPIA</span>
+            <strong class="stark-book-title">What Still Hurts</strong>
+          </div>
+        </div>
+
+        <!-- Book 3 -->
+        <div class="stark-book-item" onclick="showBrutalistBook('xadrez-no-comando')">
+          <img src="/images/optimized/xadrez-no-comando-cover.png" alt="Xadrez no Comando Cover">
+          <div class="stark-book-meta">
+            <span class="stark-book-tag">LIVRO EM PORTUGUÊS • ESTRATÉGIA</span>
+            <strong class="stark-book-title">Xadrez no Comando</strong>
+          </div>
+        </div>
+
+        <!-- Book 4 -->
+        <div class="stark-book-item" onclick="showBrutalistBook('quiet-power')">
+          <img src="/images/optimized/quiet-power-cover.jpg" alt="Quiet Power Cover">
+          <div class="stark-book-meta">
+            <span class="stark-book-tag">ESTRATÉGIA • PERFORMANCE</span>
+            <strong class="stark-book-title">Quiet Power</strong>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Top Platter Shelf Plank -->
+      <div class="wood-shelf" style="bottom: auto; top: 278px;"></div>
+
+      <!-- BOTTOM SHELF: 3 Books -->
+      <div class="stark-books-grid books-shelf-bottom">
+        <!-- Book 5 -->
+        <div class="stark-book-item" onclick="showBrutalistBook('borrow-delay-repeat')">
+          <img src="/images/optimized/borrow-delay-repeat-cover.jpg" alt="Borrow. Delay. Repeat. Cover">
+          <div class="stark-book-meta">
+            <span class="stark-book-tag">SÁTIRA • HUMOR</span>
+            <strong class="stark-book-title">Borrow. Delay. Repeat.</strong>
+          </div>
+        </div>
+
+        <!-- Book 6 -->
+        <div class="stark-book-item" onclick="showBrutalistBook('the-calm-digital-life')">
+          <img src="/images/optimized/the-calm-digital-life.jpg" alt="The Calm Digital Life Cover">
+          <div class="stark-book-meta">
+            <span class="stark-book-tag">GUIA PRÁTICO • SEGURANÇA</span>
+            <strong class="stark-book-title">The Calm Digital Life</strong>
+          </div>
+        </div>
+
+        <!-- Book 7 -->
+        <div class="stark-book-item" onclick="showBrutalistBook('livro-reclamacoes')">
+          <img src="/images/optimized/livro-reclamacoes-cover.jpg" alt="Livro de Reclamações Cover">
+          <div class="stark-book-meta">
+            <span class="stark-book-tag">LIVRO EM PORTUGUÊS • CRÓNICAS</span>
+            <strong class="stark-book-title">Livro de Reclamações</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Platter Shelf Plank -->
+      <div class="wood-shelf" style="bottom: 50px;"></div>
+    </div>
+  </section>
+
+  <!-- COZY VINTAGE MUSIC PLAYBACK BLOCK -->
+  <section class="cozy-section" id="music">
+    <div class="cozy-section-header">
+      <span class="cozy-section-eyebrow">Ecos Cinematográficos</span>
+      <h2 class="cozy-section-title">O Estúdio de Música</h2>
+    </div>
+
+    <div class="cozy-music-block">
+      <div class="cozy-music-grid">
+        <div class="music-cozy-copy">
+          <h3 id="m-album-title">Built by Grace</h3>
+          <h4 id="m-track-title" style="font-family: 'Cinzel', serif; font-size: 20px; color: var(--gold-accent); margin-top: -12px;">Faixa: God Sent Me You</h4>
+          <p id="m-desc">A soaring cinematic gospel album blending rich devotion with classical orchestration, reflecting on absolute grace under pressure.</p>
+          
+          <!-- Gorgeous visual album rack -->
+          <div class="album-brass-selectors" style="display: flex; gap: 20px; margin-top: 24px;">
+            <!-- Album 1: Built by Grace -->
+            <div class="music-rack-item" id="rack-grace" onclick="selectCozyAlbum('grace')" style="cursor: pointer; text-align: center; width: 90px; transition: transform 0.3s, opacity 0.3s;">
+              <img src="/images/optimized/built-by-grace-cover.png" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 6px; border: 2px solid var(--gold-accent); box-shadow: 0 4px 10px rgba(0,0,0,0.15);" alt="Built by Grace">
+              <span style="font-family: 'Courier Prime', monospace; font-size: 8px; color: var(--gold-accent); margin-top: 6px; display: block; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Built by Grace</span>
+            </div>
+            <!-- Album 2: Checkmate in Silence -->
+            <div class="music-rack-item" id="rack-silence" onclick="selectCozyAlbum('silence')" style="cursor: pointer; text-align: center; width: 90px; transition: transform 0.3s, opacity 0.3s; opacity: 0.6;">
+              <img src="/images/optimized/healing-is-coming-single.png" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 10px rgba(0,0,0,0.1);" alt="Checkmate in Silence">
+              <span style="font-family: 'Courier Prime', monospace; font-size: 8px; color: var(--text-muted); margin-top: 6px; display: block; text-transform: uppercase; letter-spacing: 0.5px;">In Silence</span>
+            </div>
+            <!-- Album 3: Everybody Acting Insane -->
+            <div class="music-rack-item" id="rack-insane" onclick="selectCozyAlbum('insane')" style="cursor: pointer; text-align: center; width: 90px; transition: transform 0.3s, opacity 0.3s; opacity: 0.6;">
+              <img src="/images/optimized/goodness-and-mercy-single.png" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 10px rgba(0,0,0,0.1);" alt="Everybody Acting Insane">
+              <span style="font-family: 'Courier Prime', monospace; font-size: 8px; color: var(--text-muted); margin-top: 6px; display: block; text-transform: uppercase; letter-spacing: 0.5px;">Acting Insane</span>
+            </div>
+          </div>
+
+          <p style="font-size: 13px; font-family: 'Courier Prime', monospace; color: var(--text-muted); margin-top: 24px;">Rode o botão dourado na consola vintage para ouvir uma amostra diretamente do prato de vinil selecionado.</p>
+          
+          <!-- Local hidden audio stream -->
+          <audio id="brutal-audio-element" src="/audio/god-sent-me-you.mp3" preload="auto"></audio>
+        </div>
+
+        <!-- Vintage Platter Console -->
+        <div class="vintage-turntable-console" id="dw-brutal-player">
+          <div class="turntable-platter-area">
+            
+            <!-- Vinyl Record disc -->
+            <div class="vinyl-record">
+              <div class="vinyl-center-label">
+                <img id="vinyl-label-img" src="/images/optimized/built-by-grace-cover.png" alt="Central Record Label">
+              </div>
+              <div class="vinyl-spindle-hole"></div>
+            </div>
+
+            <!-- Tone Arm -->
+            <div class="vinyl-tonearm">
+              <div class="arm-base"></div>
+              <div class="arm-shaft">
+                <div class="arm-cartridge"></div>
+              </div>
+            </div>
+            
+          </div>
+
+          <!-- Bottom Control Deck Panel -->
+          <div class="turntable-deck-controls">
+            
+            <!-- Analog Meter -->
+            <div class="analog-dial-box">
+              <span class="analog-dial-label">Decibel VU</span>
+              <div class="analog-meter-frame">
+                <div class="analog-meter-scale">VU</div>
+                <div class="analog-meter-needle" id="analog-needle"></div>
+              </div>
+            </div>
+
+            <!-- Golden Switch Button -->
+            <button class="play-brass-button" onclick="toggleBrutalistAudio()">
+              <!-- Play Icon -->
+              <svg id="b-play-icon" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              <!-- Pause Icon -->
+              <svg id="b-pause-icon" viewBox="0 0 24 24" style="display: none;">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+              </svg>
+            </button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COZY PARCHMENT MANUSCRIPTS BLOCK -->
+  <section class="cozy-section" id="essays">
+    <div class="cozy-section-header">
+      <span class="cozy-section-eyebrow">Tintas Filosóficas</span>
+      <h2 class="cozy-section-title">Os Manuscritos</h2>
+    </div>
+
+    <div class="cozy-essays-list">
+      <!-- Essay 1 -->
+      <div class="essay-card-parchment" onclick="openEssayBrutal('sometimes-leaving-early')">
+        <span class="essay-cozy-category">Being Human (Unfiltered)</span>
+        <div class="essay-cozy-middle">
+          <h4 class="essay-cozy-title">Sometimes Leaving Early is What Saves Us Most</h4>
+          <p class="essay-cozy-excerpt">A tactical study of timing, environmental signals, and the quiet power of exit strategies in a noise-saturated culture.</p>
+        </div>
+        <span class="essay-cozy-action">Open →</span>
+      </div>
+
+      <!-- Essay 2 -->
+      <div class="essay-card-parchment" onclick="openEssayBrutal('being-deleted')">
+        <span class="essay-cozy-category">Being Human (Unfiltered)</span>
+        <div class="essay-cozy-middle">
+          <h4 class="essay-cozy-title">Being Deleted After a Relationship Ends</h4>
+          <p class="essay-cozy-excerpt">An analysis of modern digital erasure, the emotional gravity of binary purge cycles, and preserving private maps.</p>
+        </div>
+        <span class="essay-cozy-action">Open →</span>
+      </div>
+
+      <!-- Essay 3 -->
+      <div class="essay-card-parchment" onclick="openEssayBrutal('what-is-quiet-power')">
+        <span class="essay-cozy-category">Quiet Power</span>
+        <div class="essay-cozy-middle">
+          <h4 class="essay-cozy-title">What is Quiet Power?</h4>
+          <p class="essay-cozy-excerpt">Defining focused strategic composure: how keeping plans private allows for complete stability when external systems shake.</p>
+        </div>
+        <span class="essay-cozy-action">Open →</span>
+      </div>
+
+      <!-- Essay 4 -->
+      <div class="essay-card-parchment" onclick="openEssayBrutal('afraid-of-ai')">
+        <span class="essay-cozy-category">Afraid of AI</span>
+        <div class="essay-cozy-middle">
+          <h4 class="essay-cozy-title">Choose Your Field: The Shift of Clarity</h4>
+          <p class="essay-cozy-excerpt">An analysis of how AI changes professions by reducing fog, asymmetry, opacity, and protected confusion.</p>
+        </div>
+        <span class="essay-cozy-action">Open →</span>
+      </div>
+
+      <!-- Essay 5 -->
+      <div class="essay-card-parchment" onclick="openEssayBrutal('life-is-a-bug')">
+        <span class="essay-cozy-category">Life is a Bug</span>
+        <div class="essay-cozy-middle">
+          <h4 class="essay-cozy-title">Life is a Bug</h4>
+          <p class="essay-cozy-excerpt">A satirical and philosophical study of human routines, glitches, and modern behavioral bugs.</p>
+        </div>
+        <span class="essay-cozy-action">Open →</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMBOSSED FOREST GREEN NEWSLETTER BLOCK -->
+  <section class="cozy-section">
+    <div class="cozy-newsletter-card">
+      <div class="newsletter-cozy-copy">
+        <h3>Junte-se ao Cozy Study</h3>
+        <p>Subscreva para receber despachos estratégicos privados escritos à mão e anúncios de lançamentos enviados diretamente da secretária de Sabino Pereira.</p>
+      </div>
+      
+      <form class="newsletter-cozy-form" onsubmit="handleCozySubscribe(event)">
+        <input class="newsletter-cozy-input" type="email" id="cozy-email" placeholder="O seu endereço de e-mail principal" required>
+        <button class="btn-cozy btn-cozy--solid" style="width: 100%; border-radius: 30px;" type="submit" id="cozy-btn">Solicitar Convite</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER SIGNATURE -->
+  <footer class="cozy-footer">
+    <div class="cozy-footer-brand">SABINO PEREIRA</div>
+    <span>&copy; 2026 Sabino Pereira. Built by Grace.</span>
   </footer>
+
+  <!-- SCRIPTING LOGIC -->
+  <script>
+    // DATA DICTIONARIES
+    const bookData = {
+      'chess-in-the-block': {
+        en: {
+          title: 'Chess in the Block',
+          eyebrow: 'FICTION • THRILLER',
+          desc: 'A strategic, high-stakes thriller where life patterns are treated as chess calculations under extreme focus. Follow the silent strategist navigating blocks of concrete and complex human moves.',
+          buyLink: 'https://www.amazon.com/dp/B0H2MZKL28',
+          readLink: '/chess-in-the-block.html'
+        },
+        pt: {
+          title: 'Xadrez no Comando',
+          eyebrow: 'LIVRO EM PORTUGUÊS • ESTRATÉGIA',
+          desc: 'Um livro em português sobre estratégia, sobrevivência emocional, pressão, silêncio, amor, perda e maturidade. Aprenda a mapear as suas escolhas e a reter o controlo silencioso em situações de extrema pressão familiar ou social.',
+          buyLink: 'https://www.amazon.es/-/en/Sabino-Pereira/dp/B0H2CQ4FFB/ref=tmm_pap_swatch_0',
+          readLink: '/xadrez-no-comando.html'
+        },
+        cover: '/images/optimized/chess-in-the-block-cover.jpg'
+      },
+      'what-still-hurts': {
+        en: {
+          title: 'What Still Hurts — Echoes of Harmony',
+          eyebrow: 'NEW ROMANCE • DISTOPIA',
+          desc: 'A psychological dystopian novel about memory, comfort, and the high price of painless peace. What happens when a society traded its raw, painful memories for an optimized, calm state of synthetic harmony?',
+          buyLink: 'https://www.amazon.com/dp/B0H2YFWT1Y?ref=sp_email',
+          readLink: '/what-still-hurts/'
+        },
+        pt: {
+          title: 'O Que Ainda Dói — Ecos da Harmonia',
+          eyebrow: 'NOVO LIVRO • DISTOPIA PSICOLÓGICA',
+          desc: 'Um romance distópico psicológico sobre memória, conforto e o preço elevado de uma paz sem dor. O que acontece quando uma sociedade troca as suas memórias cruas e dolorosas por um estado otimizado e calmo de harmonia sintética?',
+          buyLink: 'https://www.amazon.es/dp/B0D5Y7P2K5',
+          readLink: '/pt/livros.html'
+        },
+        cover: '/images/optimized/what-still-hurts-cover.png'
+      },
+      'quiet-power': {
+        en: {
+          title: 'Quiet Power',
+          eyebrow: 'CORE SYSTEM • STRATEGY',
+          desc: 'The central system for filter control, focus, emotional stability, and high-performance design under extreme pressure. Quiet Power outlines how to act with silent intention and keep your personal maps completely private.',
+          buyLink: 'https://www.amazon.com/dp/B0H2G9L3D3',
+          readLink: '/quiet-power.html'
+        },
+        cover: '/images/optimized/quiet-power-cover.jpg'
+      },
+      'borrow-delay-repeat': {
+        en: {
+          title: 'Borrow. Delay. Repeat.',
+          eyebrow: 'SÁTIRA • HUMOR',
+          desc: 'A very unserious, highly satirical guide to not giving money back. A humorous study of excuse-making, social metrics, and the absurdity of financial delays in modern society.',
+          buyLink: 'https://www.amazon.com/dp/B0H2BZS5D7',
+          readLink: '/borrow-delay-repeat.html'
+        },
+        cover: '/images/optimized/borrow-delay-repeat-cover.jpg'
+      },
+      'the-calm-digital-life': {
+        en: {
+          title: 'The Calm Digital Life',
+          eyebrow: 'GUIA PRÁTICO • SEGURANÇA',
+          desc: 'A practical, simple, and direct guide with exercise maps designed to build safer online decisions and filter out digital scams after 60.',
+          buyLink: 'https://www.amazon.com/dp/B0H2D1B9KV',
+          readLink: '/the-calm-digital-life.html'
+        },
+        cover: '/images/optimized/the-calm-digital-life.jpg'
+      },
+      'livro-reclamacoes': {
+        pt: {
+          title: 'Livro de Reclamações para o Mundo',
+          eyebrow: 'LIVRO EM PORTUGUÊS • CRÓNICAS',
+          desc: '30 crónicas revistas e ilustradas sobre a frustração moderna, o domínio dos ecrãs, a burocracia dos mercados e o absurdo do comportamento humano no quotidiano.',
+          buyLink: 'https://www.amazon.es/dp/B0GX2ZW3LQ',
+          readLink: '/livro-reclamacao.html'
+        },
+        cover: '/images/optimized/livro-reclamacoes-cover.jpg'
+      }
+    };
+
+    const musicData = {
+      'grace': {
+        album: 'Built by Grace',
+        track: 'God Sent Me You',
+        desc: 'A soaring cinematic gospel album blending rich devotion with classical orchestration, reflecting on absolute grace under pressure.',
+        cover: '/images/optimized/built-by-grace-cover.png'
+      },
+      'silence': {
+        album: 'CHECKMATE IN SILENCE',
+        track: 'Healing is Coming',
+        desc: 'A cinematic ambient album reflecting on strategic silence, emotional recovery, and the strength of a quiet mind.',
+        cover: '/images/optimized/healing-is-coming-single.png'
+      },
+      'insane': {
+        album: 'EVERYBODY ACTING INSANE',
+        track: 'Goodness and Mercy',
+        desc: 'A deep, slightly dramatic and intense cinematic theme observing societal noise, panic, and the search for calm.',
+        cover: '/images/optimized/goodness-and-mercy-single.png'
+      }
+    };
+
+    let activeAlbumKey = 'grace';
+
+    function selectCozyAlbum(key) {
+      const data = musicData[key];
+      if (!data) return;
+
+      activeAlbumKey = key;
+
+      // Update text details
+      document.getElementById('m-album-title').innerText = data.album;
+      document.getElementById('m-track-title').innerText = 'Track: ' + data.track;
+      document.getElementById('m-desc').innerText = data.desc;
+
+      // Change vinyl record label image
+      document.getElementById('vinyl-label-img').src = data.cover;
+
+      // Update active rack item styling
+      const rackKeys = ['grace', 'silence', 'insane'];
+      rackKeys.forEach(k => {
+        const item = document.getElementById('rack-' + k);
+        if (item) {
+          if (k === key) {
+            item.style.opacity = '1';
+            const img = item.querySelector('img');
+            if (img) img.style.border = '2px solid var(--gold-accent)';
+            const label = item.querySelector('span');
+            if (label) {
+              label.style.color = 'var(--gold-accent)';
+              label.style.fontWeight = '700';
+            }
+          } else {
+            item.style.opacity = '0.6';
+            const img = item.querySelector('img');
+            if (img) img.style.border = '1px solid rgba(255,255,255,0.1)';
+            const label = item.querySelector('span');
+            if (label) {
+              label.style.color = 'var(--text-muted)';
+              label.style.fontWeight = 'normal';
+            }
+          }
+        }
+      });
+
+      // Pause audio if playing, reset play status
+      if (!audio.paused) {
+        audio.pause();
+        bPlayIcon.style.display = 'block';
+        bPauseIcon.style.display = 'none';
+        dwBrutalPlayer.classList.remove('is-playing');
+        resetNeedle();
+      }
+    }
+
+    const essayData = {
+      'sometimes-leaving-early': {
+        en: {
+          title: 'Sometimes Leaving Early is What Saves Us Most',
+          content: `<h1>Sometimes Leaving Early is What Saves Us Most</h1>
+                    <p>In a culture that glorifies endurance, we are trained to believe that staying until the bitter end is a badge of honor. We are taught that to exit a room, a relationship, or a system before it formally concludes is a sign of weakness or failure.</p>
+                    <blockquote>"Leaving early is not about surrender; it is about the quiet execution of self-preservation."</blockquote>
+                    <p>But true strategy teaches us otherwise. When an environment begins to decay—when the noise begins to overwhelm the signal—staying is not strength; it is liability. Leaving early represents the conscious decision to value your own quiet attention over the expectations of the crowd.</p>
+                    <p>By exiting when your value is highest and the atmospheric noise is lowest, you preserve your energy, protect your focus, and remain in complete control of your next move. The calmest minds do not wait for the building to collapse before looking for the exit door.</p>`
+        },
+        pt: {
+          title: 'Às vezes, sair cedo é o que mais nos salva',
+          content: `<h1>Às vezes, sair cedo é o que mais nos salva</h1>
+                    <p>Há uma imagem em que penso muitas vezes: se entrares no comboio errado, sai na estação mais próxima. Quanto mais tempo demorares a sair, mais cara será a viagem de regresso.</p>
+                    <blockquote>"Sair cedo não é fraqueza; é a execução lúcida da preservação de si próprio."</blockquote>
+                    <p>Porque quase toda a gente, em algum momento da vida, entra no comboio errado. Às vezes é uma relação, um trabalho, um projeto, uma amizade, uma rotina.</p>
+                    <p>Só mais tarde começamos a notar aquele desconforto difícil de explicar. A sensação silenciosa de estarmos a insistir em algo que já não combina connosco. E talvez uma das formas mais silenciosas de maturidade seja essa: perceber quando já não pertencemos a um lugar, e sair antes de nos perdermos lá dentro.</p>`
+        }
+      },
+      'being-deleted': {
+        en: {
+          title: 'Being Deleted After a Relationship Ends',
+          content: `<h1>Being Deleted After a Relationship Ends</h1>
+                    <p>The digital age has introduced a new kind of quiet erasure. Historically, when a relationship or friendship ended, the remnants faded slowly through physical distance and the natural passage of time. Today, erasure is a sequence of binary clicks.</p>
+                    <blockquote>"We are cleared from servers, removed from grids, and deleted from profiles in a matter of seconds."</blockquote>
+                    <p>Being deleted is the modern equivalent of social exile. It is an abrupt, mechanical clearing of digital memories that leaves no room for gradual transition. We watch profiles turn into dead links, photos get cropped, and years of shared digital space disappear.</p>
+                    <p>While this binary purge is often marketed as 'moving on' or 'healing,' it carries a deeper psychological weight. It teaches us to treat human connection as cache files to be cleared when the connection gets clogged. True maturity lies in recognizing that even when paths diverge, the shared map remains a real part of who we are.</p>`
+        },
+        pt: {
+          title: 'Ser Apagado Depois de um Relacionamento',
+          content: `<h1>Ser Apagado Depois de um Relacionamento</h1>
+                    <p>A era digital introduziu um novo tipo de apagamento silencioso. Antigamente, quando uma relação terminava, os vestígios desvaneciam-se lentamente com a distância física e a passagem do tempo. Hoje, o apagamento é uma sequência de cliques binários.</p>
+                    <blockquote>"Somos limpos dos servidores, removidos das grelhas e eliminados em segundos."</blockquote>
+                    <p>Embora esta purga seja frequentemente vendida como "seguir em frente" ou "curar", ela acarreta um peso psicológico profundo. Ensina-nos a tratar a ligação humana como ficheiros de cache a serem limpos quando a ligação entope. A verdadeira maturidade reside em reconhecer que, mesmo quando os caminhos divergem, o mapa partilhado continua a ser real.</p>`
+        }
+      },
+      'what-is-quiet-power': {
+        en: {
+          title: 'What is Quiet Power?',
+          content: `<h1>What is Quiet Power?</h1>
+                    <p>Quiet Power is the protective wall we build around our mental clarity. It is the ability to observe a chaotic environment, understand its mechanics, and make decisive moves without letting the surrounding noise dictate your path.</p>
+                    <blockquote>"The noisier the world becomes, the more powerful a silent strategy behaves."</blockquote>
+                    <p>Most people react instantly to every notification, trigger, or comment, giving away their focus and maps to anyone who asks. Quiet Power is the opposite: it is keeping your plans private, filtering out irrelevant opinions, and maintaining absolute stability under pressure.</p>
+                    <p>It is not passive silence; it is focused, strategic composure. When you remain quiet, you see the board clearly, while those who shout reveal their hand. Quiet Power is learning how to let your results do the talking while you continue to build in the dark.</p>`
+        }
+      },
+      'afraid-of-ai': {
+        en: {
+          title: 'Choose Your Field: The Shift of Clarity',
+          content: `<h1>Choose Your Field: The Shift of Clarity</h1>
+                    <p>Artificial intelligence is not making every profession irrelevant. But it is forcing many of them to become clearer. When information becomes easier to access, compare, and question, the old value of confusion starts to weaken.</p>
+                    <blockquote>"AI does not erase the human role. It removes the fog around it."</blockquote>
+                    <p>What remains is the harder question: in this profession, what was real value and what was only friction, opacity, or control? Explore the 10 chapters to see how professions shift when asymmetry begins to lose strength.</p>`
+        },
+        pt: {
+          title: 'Escolha o seu Campo: O Deslocamento da Clareza',
+          content: `<h1>Escolha o seu Campo: O Deslocamento da Clareza</h1>
+                    <p>A inteligência artificial não está a tornar todas as profissões irrelevantes. Mas está a forçá-las a tornarem-se mais claras. Quando a informação se torna mais fácil de aceder, comparar e questionar, o antigo valor da confusão começa a enfraquecer.</p>
+                    <blockquote>"A IA não apaga o papel humano. Remove a névoa ao seu redor."</blockquote>
+                    <p>O que resta é a pergunta mais difícil: nesta profissão, o que era valor real e o que era apenas fricção, opacidade ou controlo? Explore os 10 capítulos para ver como as profissões mudam quando a assimetria começa a perder força.</p>`
+        }
+      },
+      'life-is-a-bug': {
+        en: {
+          title: 'Life is a Bug',
+          content: `<h1>Life is a Bug</h1>
+                    <p>A satirical and philosophical study of human routines, glitches, and modern behavioral bugs. Written like field notes from a badly documented operating system: human life.</p>
+                    <blockquote>"Human OS is running. Stability not guaranteed."</blockquote>
+                    <p>Known issues include social timing errors, forgotten intentions, suspicious fridge checks, and updates arriving exactly when nobody asked for them. Explore the bug index to find the failure mode you recognize too quickly.</p>`
+        },
+        pt: {
+          title: 'A Vida é um Bug',
+          content: `<h1>A Vida é um Bug</h1>
+                    <p>Um estudo satírico e filosófico das rotinas humanas, falhas e bugs comportamentais modernos. Escrito como notas de campo de um sistema operativo mal documentado: a vida humana.</p>
+                    <blockquote>"O SO Humano está a correr. Estabilidade não garantida."</blockquote>
+                    <p>Os problemas conhecidos incluem erros de sincronização social, intenções esquecidas, verificações suspeitas no frigorífico e atualizações que chegam exatamente quando ninguém as pediu. Explore o índice de bugs para encontrar o modo de falha que reconhece demasiado depressa.</p>`
+        }
+      }
+    };
+
+    // VINTAGE BOOK EXPAND SYSTEM
+    const bookBrutal = document.getElementById('book-brutal');
+    let currentBookKey = '';
+    let currentBookLang = 'pt';
+
+    function showBrutalistBook(key, lang = 'pt') {
+      // Chess in the block & Xadrez no Comando equivalence
+      if (key === 'xadrez-no-comando') {
+        key = 'chess-in-the-block';
+        lang = 'pt';
+      }
+
+      currentBookKey = key;
+      currentBookLang = lang;
+
+      const book = bookData[key];
+      if (!book) return;
+
+      // Check available languages to toggle selectors visibility
+      const modalLangSelector = document.querySelector('.modal-lang-selector');
+      if (modalLangSelector) {
+        if (book.en && book.pt) {
+          modalLangSelector.style.display = 'flex';
+        } else {
+          modalLangSelector.style.display = 'none';
+        }
+      }
+
+      // Default fallback language
+      if (!book[currentBookLang]) {
+        currentBookLang = book.en ? 'en' : 'pt';
+      }
+
+      const data = book[currentBookLang];
+
+      document.getElementById('b-cover').src = book.cover;
+      document.getElementById('b-eyebrow').innerText = data.eyebrow;
+      document.getElementById('b-title').innerText = data.title;
+      document.getElementById('b-desc').innerText = data.desc;
+      document.getElementById('b-buy-link').href = data.buyLink;
+      document.getElementById('b-read-link').href = data.readLink;
+
+      // Adjust text based on language
+      document.getElementById('b-buy-link').innerText = currentBookLang === 'pt' ? 'Comprar na Amazon' : 'Buy on Amazon';
+      document.getElementById('b-read-link').innerText = currentBookLang === 'pt' ? 'Ler Excerto' : 'Read Excerpt';
+
+      // Highlight active language button
+      const btnEn = document.getElementById('btn-book-lang-en');
+      const btnPt = document.getElementById('btn-book-lang-pt');
+      if (btnEn && btnPt) {
+        btnEn.classList.remove('btn-cozy--solid');
+        btnPt.classList.remove('btn-cozy--solid');
+
+        if (currentBookLang === 'en') {
+          btnEn.classList.add('btn-cozy--solid');
+        } else {
+          btnPt.classList.add('btn-cozy--solid');
+        }
+      }
+
+      bookBrutal.classList.add('is-active');
+    }
+
+    function toggleBookModalLanguage(lang) {
+      if (currentBookKey) {
+        showBrutalistBook(currentBookKey, lang);
+      }
+    }
+
+    function closeBrutalistBookDirect() {
+      bookBrutal.classList.remove('is-active');
+    }
+
+    function closeBrutalistBook(event) {
+      if (event.target === bookBrutal) {
+        bookBrutal.classList.remove('is-active');
+      }
+    }
+
+    // MANUSCRIPT DRAWER SYSTEM
+    const essayBrutal = document.getElementById('essay-brutal');
+    const brutalNavTitle = document.getElementById('brutal-nav-title');
+    const brutalBodyContent = document.getElementById('brutal-body-content');
+    let currentEssayKey = '';
+    let currentEssayLang = 'pt';
+
+    function openEssayBrutal(key, lang = 'pt') {
+      currentEssayKey = key;
+      currentEssayLang = lang;
+
+      const essay = essayData[key];
+      if (!essay) return;
+
+      // Check available languages to toggle selectors visibility
+      const essayLangToggle = document.querySelector('.essay-lang-toggle-container');
+      if (essayLangToggle) {
+        if (essay.en && essay.pt) {
+          essayLangToggle.style.display = 'flex';
+        } else {
+          essayLangToggle.style.display = 'none';
+        }
+      }
+
+      // Default fallback language
+      if (!essay[currentEssayLang]) {
+        currentEssayLang = essay.en ? 'en' : 'pt';
+      }
+
+      const data = essay[currentEssayLang];
+      brutalNavTitle.innerText = data.title;
+      brutalBodyContent.innerHTML = data.content;
+
+      // Highlight active language button
+      const btnEn = document.getElementById('btn-essay-lang-en');
+      const btnPt = document.getElementById('btn-essay-lang-pt');
+      if (btnEn && btnPt) {
+        btnEn.classList.remove('btn-cozy--solid');
+        btnPt.classList.remove('btn-cozy--solid');
+
+        if (currentEssayLang === 'en') {
+          btnEn.classList.add('btn-cozy--solid');
+        } else {
+          btnPt.classList.add('btn-cozy--solid');
+        }
+      }
+
+      // Translate static headings
+      const backBtn = document.querySelector('.brutal-reader-back');
+      if (backBtn) {
+        backBtn.innerText = currentEssayLang === 'pt' ? '← Voltar' : '← Return';
+      }
+      
+      const overlayTitle = document.querySelector('.overlay-title-short');
+      if (overlayTitle) {
+        overlayTitle.innerText = currentEssayLang === 'pt' ? 'Manuscrito' : 'Manuscript';
+      }
+
+      essayBrutal.classList.add('is-active');
+    }
+
+    function toggleEssayLanguage(lang) {
+      if (currentEssayKey) {
+        openEssayBrutal(currentEssayKey, lang);
+      }
+    }
+
+    function closeEssayBrutal() {
+      essayBrutal.classList.remove('is-active');
+    }
+
+    // COZY SUBSCRIBE HANDLER
+    function handleCozySubscribe(event) {
+      event.preventDefault();
+      const email = document.getElementById('cozy-email').value;
+      const btn = document.getElementById('cozy-btn');
+      
+      btn.innerText = "Invitation Requested ✓";
+      btn.style.backgroundColor = "var(--walnut-wood)";
+      btn.style.color = "var(--gold-bright)";
+      btn.style.borderColor = "var(--gold-accent)";
+      
+      document.getElementById('cozy-email').value = "";
+      document.getElementById('cozy-email').disabled = true;
+      btn.disabled = true;
+    }
+
+    // AUDIO GRAPHICS ANALOG VU METER ENGINE
+    const audio = document.getElementById('brutal-audio-element');
+    const bPlayIcon = document.getElementById('b-play-icon');
+    const bPauseIcon = document.getElementById('b-pause-icon');
+    const dwBrutalPlayer = document.getElementById('dw-brutal-player');
+    const needle = document.getElementById('analog-needle');
+    
+    let audioCtx = null;
+    let analyser = null;
+    let sourceNode = null;
+    let animationId = null;
+    let dummyInterval = null;
+
+    function initCozyAudio() {
+      if (audioCtx) return;
+      
+      try {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContextClass();
+        analyser = audioCtx.createAnalyser();
+        analyser.fftSize = 32;
+        
+        sourceNode = audioCtx.createMediaElementSource(audio);
+        sourceNode.connect(analyser);
+        analyser.connect(audioCtx.destination);
+      } catch (err) {
+        console.warn("Web Audio API not supported. Falling back to needle simulation.", err);
+      }
+    }
+
+    function toggleBrutalistAudio() {
+      initCozyAudio();
+      
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      if (audio.paused) {
+        audio.play();
+        bPlayIcon.style.display = 'none';
+        bPauseIcon.style.display = 'block';
+        dwBrutalPlayer.classList.add('is-playing');
+        
+        if (analyser) {
+          animateAnalogNeedleRealTime();
+        } else {
+          animateAnalogNeedleSimulation();
+        }
+      } else {
+        audio.pause();
+        bPlayIcon.style.display = 'block';
+        bPauseIcon.style.display = 'none';
+        dwBrutalPlayer.classList.remove('is-playing');
+        
+        resetNeedle();
+      }
+    }
+
+    // Real Web Audio Amplitude Engine for VU needle
+    function animateAnalogNeedleRealTime() {
+      const bufferLength = analyser.frequencyBinCount;
+      const dataArray = new Uint8Array(bufferLength);
+      
+      function drawNeedle() {
+        if (audio.paused) return;
+        animationId = requestAnimationFrame(drawNeedle);
+        
+        analyser.getByteFrequencyData(dataArray);
+        
+        // Calculate average volume (amplitude)
+        let sum = 0;
+        for (let i = 0; i < bufferLength; i++) {
+          sum += dataArray[i];
+        }
+        const average = sum / bufferLength;
+        
+        // Map average volume (0 - 255) to rotation degree (-45 to 35 deg)
+        // With a dynamic slight inertia
+        const targetDeg = -45 + (average / 255) * 85 + (Math.random() * 6 - 3);
+        needle.style.transform = `rotate(${targetDeg}deg)`;
+      }
+      
+      drawNeedle();
+    }
+
+    // Physics Simulation Fallback for VU needle
+    function animateAnalogNeedleSimulation() {
+      dummyInterval = setInterval(() => {
+        if (audio.paused) return;
+        
+        // Simulate music beat peaks
+        const base = Math.sin(Date.now() * 0.005) * 15;
+        const randomPeak = Math.random() > 0.85 ? Math.random() * 25 : Math.random() * 10;
+        const targetDeg = -25 + base + randomPeak;
+        
+        needle.style.transform = `rotate(${targetDeg}deg)`;
+      }, 80);
+    }
+
+    function resetNeedle() {
+      if (animationId) cancelAnimationFrame(animationId);
+      if (dummyInterval) clearInterval(dummyInterval);
+      needle.style.transform = 'rotate(-45deg)'; // Rest needle back to extreme left
+    }
+
+    // Handle end of playback
+    audio.addEventListener('ended', () => {
+      bPlayIcon.style.display = 'block';
+      bPauseIcon.style.display = 'none';
+      dwBrutalPlayer.classList.remove('is-playing');
+      resetNeedle();
+    });
+  </script>
 </body>
 </html>
