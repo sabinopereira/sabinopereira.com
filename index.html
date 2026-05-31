@@ -520,18 +520,19 @@
 
     .featured-album-layout {
       display: grid;
-      grid-template-columns: 170px 1fr;
-      gap: 28px;
+      grid-template-columns: minmax(260px, 0.42fr) 1fr;
+      gap: 42px;
       align-items: start;
     }
 
     .featured-album-cover {
       width: 100%;
       aspect-ratio: 1;
-      border-radius: 8px;
-      object-fit: cover;
-      border: 2px solid var(--gold-accent);
-      box-shadow: 0 14px 26px rgba(61, 35, 20, 0.16);
+      border-radius: 10px;
+      object-fit: contain;
+      background: #111111;
+      border: 3px solid var(--gold-accent);
+      box-shadow: 0 18px 34px rgba(61, 35, 20, 0.2);
     }
 
     .featured-album-cover--type {
@@ -608,7 +609,8 @@
       width: 100%;
       aspect-ratio: 1;
       border-radius: 6px;
-      object-fit: cover;
+      object-fit: contain;
+      background: #111111;
       border: 1px solid rgba(61, 35, 20, 0.12);
     }
 
@@ -1441,7 +1443,12 @@
       }
 
       .featured-album-layout {
-        grid-template-columns: 130px 1fr;
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .featured-album-cover {
+        max-width: 320px;
       }
 
       .music-repertoire-grid {
@@ -1524,7 +1531,7 @@
       }
 
       .featured-album-cover {
-        max-width: 180px;
+        max-width: 260px;
       }
     }
   
@@ -1863,6 +1870,11 @@
 
       <p class="music-subsection-label">Other albums</p>
       <div class="music-repertoire-grid" aria-label="Other Reira Bin albums">
+        <button class="music-release-card" id="rack-grace" type="button" onclick="selectCozyAlbum('grace')" hidden>
+          <img class="music-release-cover" src="/images/optimized/built-by-grace-cover.png" alt="Built by Grace cover">
+          <span class="music-release-name">Built by Grace</span>
+          <span class="music-release-count">18 tracks</span>
+        </button>
         <button class="music-release-card" id="rack-silence" type="button" onclick="selectCozyAlbum('silence')">
           <img class="music-release-cover" src="/images/optimized/checkmate-in-silence-cover.png" alt="Checkmate in Silence cover">
           <span class="music-release-name">Checkmate in Silence</span>
@@ -1872,9 +1884,9 @@
           <img class="music-release-cover" src="/images/optimized/everybody-acting-insane-cover.png" alt="Everybody Acting Insane cover">
           <span class="music-release-name">Everybody Acting Insane</span>
           <span class="music-release-count">13 tracks</span>
-        </button>
-        <button class="music-release-card" id="rack-cabo" type="button" onclick="selectCozyAlbum('cabo')">
-          <span class="music-release-cover music-release-cover--type">CV</span>
+            </button>
+            <button class="music-release-card" id="rack-cabo" type="button" onclick="selectCozyAlbum('cabo')">
+          <img class="music-release-cover" src="/images/optimized/cabo-verde-campeao-cover.svg" alt="Cabo Verde Campeão cover">
           <span class="music-release-name">Cabo Verde Campeão</span>
           <span class="music-release-count">3 tracks</span>
         </button>
@@ -2146,8 +2158,7 @@
         track: '3 tracks',
         desc: 'A compact celebration project for Cabo Verde, football pride, blue energy, and collective movement.',
         story: 'Cabo Verde Campeão is direct and celebratory: a short, energetic project built around pride, movement, football, and the shared electricity of a country gathering around one feeling.',
-        cover: '',
-        monogram: 'CV',
+        cover: '/images/optimized/cabo-verde-campeao-cover.svg',
         note: 'This collection is listed from the local music folder. Open the official platforms to listen where available.',
         tracks: [
           'Tubarões Azuis - Azul no coração',
@@ -2256,6 +2267,7 @@
       rackKeys.forEach(k => {
         const item = document.getElementById('rack-' + k);
         if (item) {
+          item.hidden = k === key;
           if (k === key) {
             item.classList.add('is-active');
           } else {

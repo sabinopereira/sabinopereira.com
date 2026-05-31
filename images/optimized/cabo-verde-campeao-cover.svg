@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Cabo Verde Campeao album cover</title>
+  <desc id="desc">A cinematic blue and gold album cover for Cabo Verde Campeao by Reira Bin.</desc>
+  <defs>
+    <radialGradient id="sun" cx="50%" cy="68%" r="55%">
+      <stop offset="0" stop-color="#f9d26d"/>
+      <stop offset="0.26" stop-color="#ca9441"/>
+      <stop offset="0.62" stop-color="#123251"/>
+      <stop offset="1" stop-color="#05111f"/>
+    </radialGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d3150"/>
+      <stop offset="0.5" stop-color="#071b2c"/>
+      <stop offset="1" stop-color="#c7943f"/>
+    </linearGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.16"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+  <rect width="1200" height="1200" fill="#071321"/>
+  <rect width="1200" height="1200" fill="url(#sun)"/>
+  <rect y="680" width="1200" height="520" fill="url(#sea)" opacity="0.82"/>
+  <g opacity="0.38" fill="none" stroke="#e8b85d" stroke-width="2">
+    <path d="M60 760 C210 700 340 760 500 718 C670 674 802 712 940 670 C1040 638 1110 662 1170 630"/>
+    <path d="M30 828 C210 778 380 824 548 780 C710 736 868 786 1042 736 C1100 720 1146 724 1190 710"/>
+    <path d="M0 902 C180 858 330 910 520 866 C724 818 858 886 1038 832 C1110 810 1160 818 1200 796"/>
+  </g>
+  <g fill="#f3c96a" opacity="0.92">
+    <path d="M174 223 l64 -24 45 43 -24 61 -72 13 -42 -45z"/>
+    <path d="M348 276 l58 -21 42 32 -16 58 -70 22 -42 -42z"/>
+    <path d="M513 228 l48 -18 39 36 -20 50 -54 14 -36 -38z"/>
+    <path d="M770 250 l62 -20 44 50 -24 62 -70 8 -38 -46z"/>
+    <path d="M940 204 l48 -18 36 32 -14 56 -58 18 -38 -34z"/>
+    <path d="M855 435 l78 -24 52 44 -22 74 -82 24 -54 -54z"/>
+  </g>
+  <g opacity="0.2" fill="#ffffff">
+    <circle cx="118" cy="1080" r="78"/>
+    <circle cx="1058" cy="1090" r="96"/>
+  </g>
+  <circle cx="600" cy="770" r="72" fill="#d9a44c" stroke="#ffe19a" stroke-width="6"/>
+  <path d="M540 750 h120 M552 810 c38 -24 68 -24 96 0 M600 698 c-18 48 -18 96 0 144 M548 724 c42 18 82 18 104 0" fill="none" stroke="#5a3218" stroke-width="6" opacity="0.75"/>
+  <g fill="#f2c76a" font-family="Cinzel, Georgia, serif" text-anchor="middle">
+    <text x="600" y="180" font-size="58" letter-spacing="18">REIRA BIN</text>
+    <text x="600" y="475" font-size="118" letter-spacing="10">CABO VERDE</text>
+    <text x="600" y="610" font-size="132" font-weight="700" letter-spacing="6">CAMPEAO</text>
+    <text x="600" y="655" font-size="34" letter-spacing="8">CAMPEAO</text>
+  </g>
+  <g fill="#f7d477" opacity="0.9">
+    <path d="M138 980 l22 52 56 4 -42 36 12 56 -48 -30 -48 30 12 -56 -42 -36 56 -4z"/>
+    <path d="M1044 980 l22 52 56 4 -42 36 12 56 -48 -30 -48 30 12 -56 -42 -36 56 -4z"/>
+  </g>
+  <rect width="1200" height="1200" filter="url(#grain)" opacity="0.32"/>
+  <rect x="26" y="26" width="1148" height="1148" fill="none" stroke="#d7a34e" stroke-width="4" opacity="0.7"/>
+</svg>
