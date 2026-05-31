@@ -279,24 +279,31 @@
       }
 
       .grace-main {
+        display: block;
         align-items: start;
-        padding-top: 34px;
+        padding: 34px 24px;
+        overflow: hidden;
       }
 
       .grace-hero {
-        grid-template-columns: 1fr;
-        gap: 26px;
+        display: block;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        overflow: hidden;
       }
 
       .grace-cover-wrap {
-        width: min(74vw, 300px);
+        width: min(68vw, 270px);
+        margin: 0 auto 28px;
       }
 
       .grace-copy-block {
-        width: 100%;
-        max-width: 100%;
+        display: block;
+        width: min(100%, 310px) !important;
+        max-width: 310px !important;
         min-width: 0;
-        overflow: hidden;
+        overflow: visible;
       }
 
       .grace-title,
@@ -307,7 +314,7 @@
 
       .grace-title {
         width: 100%;
-        max-width: 100%;
+        max-width: 310px;
         font-size: clamp(34px, 10vw, 42px) !important;
         line-height: 1.04 !important;
         letter-spacing: 0 !important;
@@ -318,8 +325,8 @@
 
       .grace-subtitle {
         width: 100%;
-        max-width: 100%;
-        font-size: 21px !important;
+        max-width: 310px;
+        font-size: 19px !important;
         line-height: 1.25 !important;
         white-space: normal !important;
         overflow-wrap: anywhere;
@@ -327,8 +334,8 @@
 
       .grace-copy {
         width: 100%;
-        max-width: 100%;
-        font-size: 19px !important;
+        max-width: 310px;
+        font-size: 18px !important;
         white-space: normal !important;
         overflow-wrap: anywhere;
       }
@@ -342,6 +349,29 @@
         width: 100%;
         box-sizing: border-box;
         text-align: center;
+      }
+
+      .grace-tags {
+        width: 310px;
+        max-width: 310px;
+        box-sizing: border-box;
+      }
+
+      .grace-tags li {
+        flex: 1 1 auto;
+        min-width: 84px;
+        text-align: center;
+      }
+
+      .grace-note {
+        width: auto;
+        max-width: 310px;
+        box-sizing: border-box;
+        margin-left: 0;
+        margin-right: 0;
+        font-size: 19px !important;
+        white-space: normal !important;
+        overflow-wrap: anywhere;
       }
     }
   </style>
