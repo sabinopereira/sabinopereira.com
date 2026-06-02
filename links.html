@@ -116,6 +116,79 @@
       width: 100%;
     }
 
+    /* PRIMARY LINK-IN-BIO BUTTONS */
+    .link-hub {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .link-hub-card {
+      width: 100%;
+      min-height: 64px;
+      padding: 14px 18px;
+      border-radius: 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 8px 20px rgba(61, 35, 20, 0.04);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .link-hub-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold-accent);
+      box-shadow: 0 12px 24px rgba(61, 35, 20, 0.08);
+    }
+
+    .link-hub-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 155, 66, 0.35);
+      background: rgba(201, 155, 66, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex: 0 0 auto;
+    }
+
+    .link-hub-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .link-hub-label {
+      font-family: 'Cinzel', serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .link-hub-desc {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+
+    .link-hub-arrow {
+      color: var(--gold-accent);
+      font-size: 22px;
+      line-height: 1;
+      flex: 0 0 auto;
+    }
+
     /* PREMIUM MUSIC PLAYER CARD */
     .player-card {
       width: 100%;
@@ -835,6 +908,55 @@
         <p>Books, Essays, and Music</p>
       </div>
     </header>
+
+    <!-- SECTION: MAIN LINKS -->
+    <h2 class="section-title">Official Links</h2>
+    <nav class="link-hub" aria-label="Official links">
+      <a class="link-hub-card" href="https://open.spotify.com/artist/0CUmVxNUbIaLa4GMwOoD1C?si=mpMLorOKT9-90I7hV61jkg" target="_blank" rel="noopener">
+        <span class="link-hub-icon" aria-hidden="true">🎵</span>
+        <span class="link-hub-copy">
+          <span class="link-hub-label">Spotify</span>
+          <span class="link-hub-desc">Listen to Reira Bin on Spotify.</span>
+        </span>
+        <span class="link-hub-arrow" aria-hidden="true">›</span>
+      </a>
+
+      <a class="link-hub-card" href="https://www.youtube.com/@SabinoQuietPower" target="_blank" rel="noopener">
+        <span class="link-hub-icon" aria-hidden="true">📺</span>
+        <span class="link-hub-copy">
+          <span class="link-hub-label">YouTube</span>
+          <span class="link-hub-desc">Music, videos, and Quiet Power ideas.</span>
+        </span>
+        <span class="link-hub-arrow" aria-hidden="true">›</span>
+      </a>
+
+      <a class="link-hub-card" href="/books.html">
+        <span class="link-hub-icon" aria-hidden="true">📚</span>
+        <span class="link-hub-copy">
+          <span class="link-hub-label">Books</span>
+          <span class="link-hub-desc">Explore the books and latest releases.</span>
+        </span>
+        <span class="link-hub-arrow" aria-hidden="true">›</span>
+      </a>
+
+      <a class="link-hub-card" href="/">
+        <span class="link-hub-icon" aria-hidden="true">🌐</span>
+        <span class="link-hub-copy">
+          <span class="link-hub-label">Website</span>
+          <span class="link-hub-desc">Visit the full Sabino Pereira site.</span>
+        </span>
+        <span class="link-hub-arrow" aria-hidden="true">›</span>
+      </a>
+
+      <a class="link-hub-card" href="https://www.instagram.com/sabinoquietpower/" target="_blank" rel="noopener">
+        <span class="link-hub-icon" aria-hidden="true">📸</span>
+        <span class="link-hub-copy">
+          <span class="link-hub-label">Instagram</span>
+          <span class="link-hub-desc">Follow the visual side of the work.</span>
+        </span>
+        <span class="link-hub-arrow" aria-hidden="true">›</span>
+      </a>
+    </nav>
 
     <!-- SECTION: MUSIC RELEASE -->
     <h2 class="section-title">Music Release</h2>
