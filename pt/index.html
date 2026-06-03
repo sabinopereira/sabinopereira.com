@@ -522,6 +522,70 @@
       color: #554d45;
     }
 
+    .summer-coming-soon {
+      margin-top: 36px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(201, 155, 66, 0.28);
+    }
+
+    .summer-coming-soon-intro {
+      max-width: 720px;
+      font-family: 'Lora', serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: #5e5349;
+      margin-bottom: 18px;
+    }
+
+    .summer-release-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .summer-release-card {
+      display: grid;
+      grid-template-columns: 118px 1fr;
+      gap: 18px;
+      align-items: center;
+      padding: 14px;
+      border: 1px solid rgba(61, 35, 20, 0.14);
+      border-radius: 8px;
+      background: rgba(253, 252, 247, 0.68);
+    }
+
+    .summer-release-card img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 2px solid rgba(201, 155, 66, 0.42);
+      box-shadow: 0 8px 18px rgba(61, 35, 20, 0.12);
+    }
+
+    .summer-release-badge {
+      display: inline-block;
+      font-family: 'Courier Prime', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--gold-accent);
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .summer-release-card h3 {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .summer-release-card p {
+      font-family: 'Lora', serif;
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--text-muted);
+    }
+
     /* THE GORGEOUS VINTAGE TURNTABLE GRAMOPHONE CONSOLE */
     .vintage-turntable-console {
       background: var(--walnut-wood);
@@ -1177,6 +1241,10 @@
         gap: 40px;
       }
 
+      .summer-release-grid {
+        grid-template-columns: 1fr;
+      }
+
       .essay-card-parchment {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -1219,6 +1287,11 @@
     @media (max-width: 480px) {
       .stark-books-grid {
         grid-template-columns: 1fr;
+      }
+
+      .summer-release-card {
+        grid-template-columns: 92px 1fr;
+        gap: 14px;
       }
       
       .stark-book-item img {
@@ -1528,6 +1601,29 @@
               <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M21.58 7.19a2.52 2.52 0 00-1.77-1.79C18.25 5 12 5 12 5s-6.25 0-7.81.4a2.52 2.52 0 00-1.77 1.79A26.3 26.3 0 002 12a26.3 26.3 0 00.42 4.81 2.52 2.52 0 001.77 1.79C5.75 19 12 19 12 19s6.25 0 7.81-.4a2.52 2.52 0 001.77-1.79A26.3 26.3 0 0022 12a26.3 26.3 0 00-.42-4.81zM10 15V9l5.2 3L10 15z"/></svg>
               Ver no YouTube
             </a>
+          </div>
+
+          <div class="summer-coming-soon" aria-label="Músicas de verão em breve">
+            <p style="font-family: 'Courier Prime', monospace; font-size: 11px; color: var(--gold-accent); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px;">Em breve</p>
+            <p class="summer-coming-soon-intro">Músicas de verão a caminho. Duas novas faixas de Reira Bin, Solta e Estrada Sagrada, estão a ser preparadas para Spotify e YouTube.</p>
+            <div class="summer-release-grid">
+              <article class="summer-release-card">
+                <img src="/images/optimized/solta-summer-2026-cover.png" alt="Capa de Solta">
+                <div>
+                  <span class="summer-release-badge">Verão 2026</span>
+                  <h3>Solta</h3>
+                  <p>Uma faixa Afrohouse de verão com movimento atlântico, calor e uma energia mais livre.</p>
+                </div>
+              </article>
+              <article class="summer-release-card">
+                <img src="/images/optimized/estrada-sagrada-summer-2026-cover.png" alt="Capa de Estrada Sagrada">
+                <div>
+                  <span class="summer-release-badge">Verão 2026</span>
+                  <h3>Estrada Sagrada</h3>
+                  <p>Uma estrada sonora de sol e ritmo, entre costa, movimento e uma força sagrada.</p>
+                </div>
+              </article>
+            </div>
           </div>
           
           <!-- Local hidden audio stream -->
