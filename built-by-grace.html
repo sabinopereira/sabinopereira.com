@@ -306,13 +306,83 @@
 
     .grace-note {
       max-width: 1160px;
-      margin: clamp(34px, 5vw, 68px) auto 0;
+      margin: clamp(28px, 4vw, 46px) auto 0;
       padding: 22px clamp(18px, 4vw, 34px);
       border-left: 3px solid var(--grace-gold);
       background: rgba(7, 5, 4, 0.48);
       color: rgba(248, 236, 215, 0.85);
       font-size: clamp(18px, 2vw, 22px);
       line-height: 1.5;
+    }
+
+    .grace-preview {
+      max-width: 1160px;
+      margin: clamp(24px, 4vw, 38px) auto 0;
+      padding-top: clamp(28px, 4vw, 44px);
+      border-top: 1px solid rgba(248, 236, 215, 0.14);
+    }
+
+    .grace-preview-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(260px, 0.62fr);
+      gap: clamp(24px, 5vw, 64px);
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    .grace-preview h2 {
+      margin: 0;
+      color: var(--grace-ink);
+      font-family: "Cinzel", serif;
+      font-size: clamp(34px, 4.8vw, 58px);
+      line-height: 1;
+    }
+
+    .grace-preview-head p {
+      margin: 0;
+      color: rgba(248, 236, 215, 0.74);
+      font-size: clamp(17px, 1.8vw, 21px);
+      line-height: 1.5;
+    }
+
+    .grace-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .grace-preview-card {
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 26px;
+      padding: clamp(18px, 3vw, 28px);
+      border: 1px solid rgba(248, 236, 215, 0.14);
+      background: rgba(7, 5, 4, 0.42);
+    }
+
+    .grace-preview-card p {
+      margin: 0;
+      color: var(--grace-ink);
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.15;
+    }
+
+    .grace-preview-card span {
+      color: var(--grace-amber);
+      font-family: "Courier Prime", monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .grace-preview-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
     }
 
     .grace-footer {
@@ -437,6 +507,27 @@
         white-space: normal !important;
         overflow-wrap: anywhere;
       }
+
+      .grace-preview {
+        width: auto;
+        max-width: 310px;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .grace-preview-head,
+      .grace-preview-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .grace-preview-card {
+        min-height: 0;
+      }
+
+      .grace-preview-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -489,6 +580,31 @@
       <aside class="grace-note">
         This is not a perfect love story. It is a prayed-over one. Built slowly. Held gently. Covered completely. By grace.
       </aside>
+
+      <section class="grace-preview" aria-labelledby="grace-preview-title">
+        <div class="grace-preview-head">
+          <h2 id="grace-preview-title">Read a preview</h2>
+          <p>A small look inside the digital book: short reflections written to sit beside the album, with prayer, healing, love, home, and grace at the center.</p>
+        </div>
+        <div class="grace-preview-grid">
+          <article class="grace-preview-card">
+            <p>Before love had a name, there was a prayer.</p>
+            <span>Opening note</span>
+          </article>
+          <article class="grace-preview-card">
+            <p>God, before You send love, prepare me for it.</p>
+            <span>Prayer</span>
+          </article>
+          <article class="grace-preview-card">
+            <p>Grace did not rush the story. It held the heart while it became ready.</p>
+            <span>Reflection</span>
+          </article>
+        </div>
+        <div class="grace-preview-actions">
+          <a class="grace-button" href="https://quiet-power-shop.fourthwall.com/products/new-digital-product" target="_blank" rel="noopener">Buy Digital Book</a>
+          <a class="grace-button grace-button--ghost" href="https://open.spotify.com/artist/0CUmVxNUbIaLa4GMwOoD1C?si=wvVjpa1sSxKnPAdaqdKvVQ" target="_blank" rel="noopener">Listen on Spotify</a>
+        </div>
+      </section>
     </main>
 
     <footer class="grace-footer">

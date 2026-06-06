@@ -521,7 +521,19 @@
 
     @media (max-width: 920px) {
       .main-nav {
-        display: none;
+        display: flex;
+        width: 100%;
+        gap: 16px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+      }
+
+      .nav-wrap {
+        height: auto;
+        min-height: 68px;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
       }
 
       .hero-inner,
@@ -565,7 +577,7 @@
       }
 
       .nav-wrap {
-        height: 66px;
+        height: auto;
       }
 
       .brand-name {
@@ -573,7 +585,7 @@
       }
 
       .hero {
-        padding-top: 66px;
+        padding-top: 112px;
       }
 
       .hero-media {
@@ -643,6 +655,7 @@
       <nav class="main-nav" aria-label="Primary navigation">
         <a href="#music">Music</a>
         <a href="#books">Books</a>
+        <a href="/series.html">Series</a>
         <a href="#visuals">Visuals</a>
         <a href="/contact.html">Contact</a>
       </nav>
