@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Built by Grace — Coming Soon | Sabino Pereira</title>
+  <title>Built by Grace — Available Now | Sabino Pereira</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Built by Grace, a coming-soon spiritual love journey by Sabino Pereira about prayer, healing, love, home, and God in the center.">
+  <meta name="description" content="Built by Grace, a spiritual love journey by Sabino Pereira about prayer, healing, love, home, and God in the center. Listen on Spotify and YouTube.">
   <meta name="author" content="Sabino Pereira">
   <link rel="canonical" href="https://sabinopereira.com/built-by-grace.html">
-  <meta property="og:title" content="Built by Grace — Coming Soon">
-  <meta property="og:description" content="A Journey of Prayer, Healing, Love, and God in the Center. Coming soon from Sabino Pereira.">
+  <meta property="og:title" content="Built by Grace — Available Now">
+  <meta property="og:description" content="A Journey of Prayer, Healing, Love, and God in the Center. Listen on Spotify and YouTube.">
   <meta property="og:type" content="book">
   <meta property="og:url" content="https://sabinopereira.com/built-by-grace.html">
   <meta property="og:image" content="https://sabinopereira.com/images/built-by-grace-cover.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Built by Grace — Coming Soon">
+  <meta name="twitter:title" content="Built by Grace — Available Now">
   <meta name="twitter:description" content="A Journey of Prayer, Healing, Love, and God in the Center.">
   <meta name="twitter:image" content="https://sabinopereira.com/images/built-by-grace-cover.jpg">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEVDEH8PGZ"></script>
@@ -222,6 +222,29 @@
       margin-top: 34px;
     }
 
+    .grace-platforms {
+      display: grid;
+      gap: 12px;
+      max-width: 640px;
+      margin-top: 30px;
+    }
+
+    .grace-platform-label {
+      margin: 0;
+      color: var(--grace-amber);
+      font-family: "Courier Prime", monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .grace-platform-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
     .grace-button {
       display: inline-flex;
       align-items: center;
@@ -239,9 +262,22 @@
       text-transform: uppercase;
     }
 
+    .grace-button--spotify {
+      background: #1db954;
+      border-color: #1db954;
+      color: #06110a;
+    }
+
     .grace-button--ghost {
       background: rgba(7, 5, 4, 0.3);
       color: var(--grace-ink);
+    }
+
+    .grace-button--muted {
+      border-color: rgba(248, 236, 215, 0.2);
+      background: rgba(248, 236, 215, 0.08);
+      color: rgba(248, 236, 215, 0.58);
+      cursor: default;
     }
 
     .grace-note {
@@ -345,6 +381,10 @@
         grid-template-columns: 1fr;
       }
 
+      .grace-platform-grid {
+        grid-template-columns: 1fr;
+      }
+
       .grace-button {
         width: 100%;
         box-sizing: border-box;
@@ -396,7 +436,7 @@
           <img class="grace-cover" src="/images/built-by-grace-cover.jpg" alt="Built by Grace book cover">
         </div>
         <div class="grace-copy-block">
-          <p class="grace-kicker">Coming Soon · Book + Album Journey</p>
+          <p class="grace-kicker">Available · Book + Album Journey</p>
           <h1 class="grace-title" id="built-by-grace-title">Built by Grace</h1>
           <p class="grace-subtitle">A Journey of Prayer, Healing, Love, and God in the Center</p>
           <p class="grace-copy">A short spiritual love journey about a heart being prepared, healed, softened, and taught how to love with prayer, honesty, mercy, home, and God at the center of what is still becoming.</p>
@@ -407,9 +447,16 @@
             <li>Home</li>
             <li>Grace</li>
           </ul>
+          <div class="grace-platforms" aria-label="Listen to Built by Grace">
+            <p class="grace-platform-label">Listen now</p>
+            <div class="grace-platform-grid">
+              <a class="grace-button grace-button--spotify" href="https://open.spotify.com/artist/0CUmVxNUbIaLa4GMwOoD1C?si=wvVjpa1sSxKnPAdaqdKvVQ" target="_blank" rel="noopener">Spotify</a>
+              <a class="grace-button grace-button--ghost" href="https://youtu.be/qXvtM76gMik" target="_blank" rel="noopener">YouTube</a>
+              <span class="grace-button grace-button--muted" aria-disabled="true">Apple Music</span>
+            </div>
+          </div>
           <div class="grace-actions">
-            <a class="grace-button" href="/books.html">Back to Books</a>
-            <a class="grace-button grace-button--ghost" href="https://youtu.be/qXvtM76gMik" target="_blank" rel="noopener">Listen on YouTube</a>
+            <a class="grace-button grace-button--ghost" href="/books.html">Back to Books</a>
           </div>
         </div>
       </section>
