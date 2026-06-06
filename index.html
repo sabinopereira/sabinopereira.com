@@ -374,16 +374,28 @@
     .book-rail {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+      gap: 22px;
+      margin-top: 38px;
     }
 
     .book-item {
       display: grid;
       gap: 18px;
+      align-content: start;
+      padding: 16px;
+      border: 1px solid var(--line);
+      background: rgba(246, 239, 228, 0.025);
+      transition: border-color 180ms ease, transform 180ms ease, background 180ms ease;
+    }
+
+    .book-item:hover {
+      transform: translateY(-3px);
+      border-color: rgba(218, 178, 92, 0.56);
+      background: rgba(218, 178, 92, 0.055);
     }
 
     .book-cover {
-      aspect-ratio: 0.66;
+      height: clamp(310px, 31vw, 430px);
       border: 1px solid var(--line);
       background: var(--panel);
       overflow: hidden;
@@ -404,7 +416,7 @@
       margin: 0;
       color: var(--text);
       font-family: "Playfair Display", Georgia, serif;
-      font-size: 28px;
+      font-size: 32px;
       line-height: 1.05;
       letter-spacing: 0;
     }
@@ -414,6 +426,14 @@
       color: var(--muted);
       font-size: 15px;
       line-height: 1.55;
+    }
+
+    .book-meta {
+      color: var(--quiet);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
     }
 
     .closing {
@@ -652,7 +672,7 @@
 
     <section class="section" id="books">
       <div class="section-head">
-        <h2 class="section-title">Books with the same pulse.</h2>
+        <h2 class="section-title">Books with pulse.</h2>
         <p class="section-intro">The writing side of the universe: emotional fiction, reflective guides, and books about life, quiet strength, love, technology, and healing.</p>
       </div>
       <div class="book-rail">
@@ -660,20 +680,23 @@
           <div class="book-cover">
             <img src="/images/quiet-power-cover.jpg" alt="Quiet Power book cover">
           </div>
+          <span class="book-meta">Reflective guide</span>
           <h3>Quiet Power</h3>
-          <p>A thoughtful guide to strength without noise.</p>
+          <p>A thoughtful guide to strength, patience, and presence without noise.</p>
         </a>
         <a class="book-item" href="/what-still-hurts/">
           <div class="book-cover">
             <img src="/books/o-que-ainda-doi-ecos-da-harmonia/tmp/preview-cover.png" alt="What Still Hurts book cover">
           </div>
+          <span class="book-meta">Emotional fiction</span>
           <h3>What Still Hurts</h3>
-          <p>A story about memory, healing, and the echoes we carry.</p>
+          <p>A story about memory, healing, and the quiet echoes people carry.</p>
         </a>
         <a class="book-item" href="/chess-in-the-block.html">
           <div class="book-cover">
             <img src="/books/chess-in-the-block/ebook/chess-in-the-block-ebook-cover.jpg" alt="Chess in the Block book cover">
           </div>
+          <span class="book-meta">Strategy world</span>
           <h3>Chess in the Block</h3>
           <p>A strategic, urban, and cinematic book-world.</p>
         </a>
