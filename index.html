@@ -436,6 +436,48 @@
       text-transform: uppercase;
     }
 
+    .music-book-feature {
+      display: grid;
+      grid-template-columns: minmax(180px, 260px) minmax(0, 1fr);
+      gap: 28px;
+      align-items: center;
+      margin-top: 46px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      background: rgba(246, 239, 228, 0.026);
+    }
+
+    .music-book-cover {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      overflow: hidden;
+    }
+
+    .music-book-cover img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+
+    .music-book-copy h3 {
+      max-width: 620px;
+      margin: 10px 0 0;
+      color: var(--text);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(32px, 4vw, 54px);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .music-book-copy p {
+      max-width: 680px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
     .closing {
       padding: 112px 0 82px;
       text-align: center;
@@ -502,6 +544,10 @@
       }
 
       .book-rail {
+        grid-template-columns: 1fr;
+      }
+
+      .music-book-feature {
         grid-template-columns: 1fr;
       }
 
@@ -668,6 +714,20 @@
         <a class="btn primary" href="/built-by-grace.html">Latest music</a>
         <a class="btn" href="/links.html">All links</a>
       </div>
+      <article class="music-book-feature" aria-labelledby="built-by-grace-book-title">
+        <a class="music-book-cover" href="https://quiet-power-shop.fourthwall.com/products/new-digital-product" target="_blank" rel="noopener">
+          <img src="/images/built-by-grace-cover.jpg" alt="Built by Grace digital book cover">
+        </a>
+        <div class="music-book-copy">
+          <span class="book-meta">Digital book · Album companion</span>
+          <h3 id="built-by-grace-book-title">Read the journey behind Built by Grace.</h3>
+          <p>A short spiritual reflection book about prayer, healing, love, home, family, and God at the center. Written as the companion to the album journey.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="https://quiet-power-shop.fourthwall.com/products/new-digital-product" target="_blank" rel="noopener">Buy digital book</a>
+            <a class="btn" href="/built-by-grace.html">Open release page</a>
+          </div>
+        </div>
+      </article>
     </section>
 
     <section class="section" id="books">
