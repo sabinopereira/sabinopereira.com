@@ -136,49 +136,31 @@
     }
 
     .hero {
-      min-height: 100vh;
       padding-top: 74px;
-      display: flex;
-      align-items: stretch;
-      position: relative;
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
       border-bottom: 1px solid var(--line);
     }
 
     .hero-media {
-      position: absolute;
-      inset: 74px 0 0;
-      z-index: 0;
+      margin-top: 72px;
+      border: 1px solid var(--line);
       overflow: hidden;
+      background: var(--panel);
     }
 
     .hero-media img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      opacity: 0.72;
-      filter: saturate(0.95) contrast(1.04);
-    }
-
-    .hero-media::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(9, 8, 6, 0.94) 0%, rgba(9, 8, 6, 0.72) 31%, rgba(9, 8, 6, 0.25) 66%, rgba(9, 8, 6, 0.52) 100%),
-        linear-gradient(180deg, rgba(9, 8, 6, 0.28) 0%, rgba(9, 8, 6, 0.42) 55%, #090806 100%);
+      height: auto;
+      display: block;
     }
 
     .hero-inner {
-      width: min(var(--max), calc(100% - 48px));
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
       display: grid;
-      grid-template-columns: minmax(0, 0.85fr) minmax(240px, 0.55fr);
+      grid-template-columns: minmax(0, 0.9fr) minmax(260px, 0.52fr);
       align-items: end;
-      gap: 80px;
-      padding: 92px 0 76px;
+      gap: 56px;
+      padding: 68px 0 86px;
     }
 
     .hero-copy {
@@ -385,6 +367,10 @@
       text-transform: uppercase;
     }
 
+    .hero .meta-line {
+      margin-top: 28px;
+    }
+
     .book-rail {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -476,10 +462,6 @@
         display: none;
       }
 
-      .hero {
-        min-height: 900px;
-      }
-
       .hero-inner,
       .section-head,
       .music-feature {
@@ -526,19 +508,14 @@
 
       .hero {
         padding-top: 66px;
-        min-height: 820px;
       }
 
       .hero-media {
-        inset-top: 66px;
-      }
-
-      .hero-media img {
-        object-position: 62% center;
+        margin-top: 46px;
       }
 
       .hero-inner {
-        padding: 72px 0 46px;
+        padding: 42px 0 64px;
       }
 
       .hero h1 {
@@ -613,11 +590,16 @@
       </div>
       <div class="hero-inner">
         <div class="hero-copy">
-          <h1>Music, books <span>and worlds to feel.</span></h1>
-          <p>Songs, stories, and sonic ideas shaped by emotion, memory, faith, and the quiet power of becoming.</p>
+          <h1>Music that feelings cannot explain.</h1>
+          <p>From intimate reflections to warm summer records, the music carries the same signature: rhythm, honesty, and a sense that something inside is finally moving.</p>
+          <div class="meta-line">
+            <span>Afro fusion</span>
+            <span>Songwriting</span>
+            <span>Visualizers</span>
+          </div>
           <div class="hero-actions">
-            <a class="btn primary" href="#music">Listen</a>
-            <a class="btn" href="#books">Read</a>
+            <a class="btn primary" href="/built-by-grace.html">Latest music</a>
+            <a class="btn" href="/links.html">All links</a>
           </div>
         </div>
         <aside class="hero-note">
@@ -653,27 +635,18 @@
     </section>
 
     <section class="section" id="music">
-      <div class="music-feature">
-        <div class="feature-image">
-          <img src="/images/reira-bin-studio-banner-2660x1140.png" alt="Reira Bin music studio banner">
-        </div>
-        <div class="feature-copy">
-          <div>
-            <h2>Music that feelings cannot explain.</h2>
-            <p>From intimate reflections to warm summer records, the music carries the same signature: rhythm, honesty, and a sense that something inside is finally moving.</p>
-          </div>
-          <div>
-            <div class="meta-line">
-              <span>Afro fusion</span>
-              <span>Songwriting</span>
-              <span>Visualizers</span>
-            </div>
-            <div class="hero-actions">
-              <a class="btn primary" href="/built-by-grace.html">Latest music</a>
-              <a class="btn" href="/links.html">All links</a>
-            </div>
-          </div>
-        </div>
+      <div class="section-head">
+        <h2 class="section-title">Songs made to feel.</h2>
+        <p class="section-intro">Original music, visualizers, and release pages gathered in one place, from intimate reflections to warm summer records.</p>
+      </div>
+      <div class="meta-line">
+        <span>Afro fusion</span>
+        <span>Songwriting</span>
+        <span>Visualizers</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn primary" href="/built-by-grace.html">Latest music</a>
+        <a class="btn" href="/links.html">All links</a>
       </div>
     </section>
 
