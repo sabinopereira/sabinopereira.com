@@ -156,22 +156,21 @@
     }
 
     .hero-inner {
-      display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(260px, 0.52fr);
-      align-items: end;
-      gap: 56px;
-      padding: 68px 0 86px;
+      display: flex;
+      flex-direction: column;
+      gap: 42px;
+      padding: 62px 0 78px;
     }
 
     .hero-copy {
-      max-width: 760px;
+      max-width: 1120px;
       min-width: 0;
     }
 
     .hero h1 {
       margin: 0;
       font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(52px, 6.7vw, 94px);
+      font-size: clamp(52px, 4.8vw, 64px);
       line-height: 0.95;
       font-weight: 700;
       letter-spacing: 0;
@@ -184,7 +183,7 @@
 
     .hero p {
       margin: 28px 0 0;
-      max-width: 600px;
+      max-width: 980px;
       color: rgba(246, 239, 228, 0.78);
       font-size: clamp(18px, 2vw, 23px);
       line-height: 1.55;
@@ -224,7 +223,8 @@
     }
 
     .hero-note {
-      align-self: end;
+      align-self: start;
+      max-width: 640px;
       border-left: 1px solid var(--line-strong);
       padding-left: 24px;
       color: var(--muted);
