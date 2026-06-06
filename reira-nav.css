@@ -1,0 +1,262 @@
+:root {
+  --reira-bg: #090806;
+  --reira-text: #f6efe4;
+  --reira-muted: #b9aa96;
+  --reira-quiet: #7d715f;
+  --reira-gold: #d9a84f;
+  --reira-line: rgba(246, 239, 228, 0.13);
+  --reira-line-strong: rgba(217, 168, 79, 0.35);
+  --reira-max: 1180px;
+}
+
+body .cozy-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  height: 74px !important;
+  margin: 0 !important;
+  padding: 0 max(24px, calc((100vw - var(--reira-max)) / 2)) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 28px !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(246, 239, 228, 0.08) !important;
+  border-radius: 0 !important;
+  background: #090806 !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(18px) !important;
+  z-index: 1000 !important;
+}
+
+body .author-shell {
+  padding-top: 74px !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+body .header-seal {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  min-width: max-content !important;
+}
+
+body .seal-monogram,
+body .cozy-nav-music-mark {
+  width: 34px !important;
+  height: 34px !important;
+  border: 1px solid var(--reira-line-strong) !important;
+  border-radius: 0 !important;
+  display: grid !important;
+  place-items: center !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--reira-gold) !important;
+  font: 800 0/1 Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  letter-spacing: 0.08em !important;
+}
+
+body .seal-monogram::after,
+body .cozy-nav-music-mark::after {
+  content: "RB";
+  font-size: 12px;
+}
+
+body .seal-text h1 {
+  margin: 0 !important;
+  color: var(--reira-text) !important;
+  font: 800 0/1 Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+}
+
+body .seal-text h1::after {
+  content: "Reira Bin";
+  font-size: 14px;
+}
+
+body .seal-text span {
+  display: none !important;
+}
+
+body .cozy-nav {
+  display: flex !important;
+  align-items: center !important;
+  gap: 28px !important;
+  margin: 0 !important;
+}
+
+body .cozy-nav a,
+body .cozy-nav a:visited {
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: rgba(246, 239, 228, 0.72) !important;
+  font: 800 12px/1.2 Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  text-shadow: none !important;
+  white-space: nowrap !important;
+  transition: color 180ms ease !important;
+}
+
+body .cozy-nav a:hover,
+body .cozy-nav a.active,
+body .cozy-nav a.is-active {
+  color: var(--reira-gold) !important;
+  text-shadow: none !important;
+}
+
+body .cozy-nav a.active::after,
+body .cozy-nav a.is-active::after {
+  display: none !important;
+}
+
+body .cozy-nav-music {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  border: 1px dashed rgba(217, 168, 79, 0.32) !important;
+  padding: 5px 10px !important;
+}
+
+body .cozy-nav-music-text strong {
+  color: var(--reira-text) !important;
+  font: 800 10px/1 Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  letter-spacing: 0.08em !important;
+}
+
+body .cozy-nav-music-text span {
+  color: var(--reira-gold) !important;
+  font: 800 7px/1 Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  letter-spacing: 0.08em !important;
+}
+
+body .cozy-lang {
+  display: none !important;
+}
+
+@media (max-width: 1100px) {
+  body .cozy-nav {
+    gap: 18px !important;
+  }
+
+  body .cozy-nav a,
+  body .cozy-nav a:visited {
+    font-size: 11px !important;
+  }
+}
+
+@media (max-width: 920px) {
+  body .cozy-header {
+    height: 66px !important;
+    padding: 0 16px !important;
+  }
+
+  body .author-shell {
+    padding-top: 66px !important;
+  }
+
+  body .cozy-nav {
+    display: none !important;
+  }
+
+  body .seal-text h1::after {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 620px) {
+  html,
+  body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  body .author-shell,
+  body .author-shell * {
+    box-sizing: border-box !important;
+  }
+
+  body .author-shell {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 66px 16px 24px !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-radius: 0 !important;
+    overflow-x: hidden !important;
+  }
+
+  body .author-main,
+  body .author-hero,
+  body .author-page-hero,
+  body .author-feature-grid,
+  body .author-two-column,
+  body .author-books-grid {
+    display: grid !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-inline-size: calc(100vw - 32px) !important;
+    min-width: 0 !important;
+    grid-template-columns: 1fr !important;
+    overflow-x: hidden !important;
+  }
+
+  body .author-main > *,
+  body .author-hero > *,
+  body .author-page-hero > *,
+  body .author-feature-grid > *,
+  body .author-two-column > *,
+  body .author-books-grid > *,
+  body .author-panel,
+  body .author-card,
+  body .author-book {
+    width: 100% !important;
+    max-width: calc(100vw - 32px) !important;
+    max-inline-size: calc(100vw - 32px) !important;
+    min-width: 0 !important;
+  }
+
+  body .author-page-title,
+  body .author-section-title,
+  body .author-card-title,
+  body .author-hero h1,
+  body .author-page-hero h1 {
+    max-width: 100% !important;
+    max-inline-size: calc(100vw - 32px) !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    display: block !important;
+    font-size: clamp(30px, 9.4vw, 38px) !important;
+    line-height: 1.05 !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+    white-space: normal !important;
+    hyphens: auto !important;
+  }
+
+  body .author-page-intro,
+  body .author-card-text,
+  body .author-main p,
+  body .author-main li {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+  }
+
+  body .author-main img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+}
