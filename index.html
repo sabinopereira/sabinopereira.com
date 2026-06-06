@@ -334,14 +334,12 @@
     }
 
     .music-feature {
-      display: grid;
-      grid-template-columns: minmax(280px, 0.74fr) minmax(0, 1fr);
-      gap: 54px;
-      align-items: stretch;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
     }
 
     .feature-image {
-      min-height: 420px;
       border: 1px solid var(--line);
       background: var(--panel);
       overflow: hidden;
@@ -349,15 +347,15 @@
 
     .feature-image img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
+      display: block;
     }
 
     .feature-copy {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 36px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(280px, 0.58fr);
+      gap: 42px;
+      align-items: end;
       padding: 8px 0;
     }
 
@@ -489,6 +487,10 @@
         gap: 42px;
       }
 
+      .feature-copy {
+        grid-template-columns: 1fr;
+      }
+
       .hero-inner {
         align-content: end;
       }
@@ -585,9 +587,6 @@
         font-size: 44px;
       }
 
-      .feature-image {
-        min-height: 320px;
-      }
     }
   </style>
 </head>
