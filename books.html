@@ -252,6 +252,7 @@
     .feature-cover {
       display: block;
       width: min(100%, 390px);
+      padding: 16px;
       border: 1px solid var(--line);
       background: var(--panel);
       box-shadow: 0 34px 90px rgba(0, 0, 0, 0.35);
@@ -260,8 +261,10 @@
 
     .feature-cover img {
       width: 100%;
-      aspect-ratio: 1;
-      object-fit: cover;
+      aspect-ratio: 2 / 3;
+      object-fit: contain;
+      border: 1px solid rgba(246, 239, 228, 0.13);
+      background: #050403;
     }
 
     .feature-copy h2 {
@@ -568,7 +571,7 @@
         </div>
         <div class="actions">
           <a class="btn primary" href="https://quiet-power-shop.fourthwall.com/products/new-digital-product-2" target="_blank" rel="noopener">Buy Digital Book</a>
-          <a class="btn" href="/bad-girl-gospel.html">Preview Book</a>
+          <a class="btn" href="/bad-girl-gospel.html#read-preview">Preview Book</a>
         </div>
       </div>
     </section>
