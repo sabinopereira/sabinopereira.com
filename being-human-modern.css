@@ -1,0 +1,367 @@
+:root {
+  --reira-bg: #050504;
+  --reira-panel: rgba(255, 250, 239, 0.035);
+  --reira-panel-strong: rgba(255, 250, 239, 0.065);
+  --reira-text: #fff8ea;
+  --reira-muted: #b7ac9b;
+  --reira-quiet: #8e8375;
+  --reira-gold: #d6ad5a;
+  --reira-line: rgba(214, 173, 90, 0.24);
+  --reira-line-soft: rgba(255, 248, 234, 0.12);
+}
+
+html {
+  background: var(--reira-bg);
+}
+
+body.being-human-page {
+  margin: 0 !important;
+  min-height: 100vh;
+  color: var(--reira-text) !important;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(214, 173, 90, 0.12), transparent 34rem),
+    linear-gradient(180deg, #080806 0%, #040403 52%, #080705 100%) !important;
+  font-family: Inter, Arial, sans-serif !important;
+  overflow-x: hidden;
+}
+
+.being-human-page * {
+  box-sizing: border-box;
+}
+
+.being-human-page .author-shell,
+.being-human-page .author-main {
+  background: transparent !important;
+  color: var(--reira-text) !important;
+}
+
+.being-human-page .author-shell {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.being-human-page .author-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  min-height: 86px;
+  padding: 0 max(28px, calc((100vw - 1240px) / 2));
+  border-bottom: 1px solid var(--reira-line-soft);
+  background: rgba(5, 5, 4, 0.94) !important;
+  backdrop-filter: blur(18px);
+}
+
+.being-human-page .author-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--reira-text) !important;
+  text-decoration: none;
+}
+
+.being-human-page .author-brand::before {
+  content: "RB";
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--reira-line);
+  color: var(--reira-gold);
+  font: 800 13px/1 Inter, Arial, sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.being-human-page .author-brand-name {
+  display: block;
+  color: var(--reira-text) !important;
+  font: 800 13px/1 Inter, Arial, sans-serif !important;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.being-human-page .author-brand-line {
+  display: none !important;
+}
+
+.being-human-page .author-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.being-human-page .author-nav a,
+.being-human-page .author-language-switch a {
+  color: rgba(255, 248, 234, 0.72) !important;
+  font: 800 12px/1 Inter, Arial, sans-serif !important;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.being-human-page .author-nav a:hover,
+.being-human-page .author-nav a.is-active,
+.being-human-page .author-language-switch a.is-active {
+  color: var(--reira-gold) !important;
+}
+
+.being-human-page .author-language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid var(--reira-line);
+  background: rgba(214, 173, 90, 0.05);
+}
+
+.being-human-page .author-main {
+  width: min(1240px, calc(100% - 56px));
+  margin: 0 auto;
+  padding: 78px 0 0 !important;
+}
+
+.being-human-page .author-page-hero {
+  display: block;
+  min-height: 420px;
+  padding: 58px 0 70px !important;
+  border-bottom: 1px solid var(--reira-line-soft);
+  background: transparent !important;
+}
+
+.being-human-page .author-kicker,
+.being-human-page .library-label {
+  color: var(--reira-gold) !important;
+  font: 800 12px/1.4 Inter, Arial, sans-serif !important;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+}
+
+.being-human-page .author-page-title {
+  max-width: 1040px;
+  margin: 22px 0 0;
+  color: var(--reira-text) !important;
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-size: clamp(54px, 7vw, 104px) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0 !important;
+  line-height: 0.96 !important;
+  overflow-wrap: normal;
+}
+
+.being-human-page .author-page-intro {
+  max-width: 720px;
+  margin: 28px 0 0;
+  color: var(--reira-muted) !important;
+  font: 700 clamp(18px, 2vw, 25px)/1.5 Inter, Arial, sans-serif !important;
+}
+
+.being-human-page .author-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 32px;
+}
+
+.being-human-page .author-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--reira-line);
+  color: var(--reira-quiet) !important;
+  background: rgba(255, 248, 234, 0.025);
+  font: 800 11px/1 Inter, Arial, sans-serif !important;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.being-human-page .thought-article-shell {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 58px 0 96px !important;
+}
+
+.being-human-page .thought-article-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.being-human-page .thought-backlink,
+.being-human-page .idea-read-link {
+  color: var(--reira-gold) !important;
+  font: 800 12px/1 Inter, Arial, sans-serif !important;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.being-human-page .thought-backlink:hover,
+.being-human-page .idea-read-link:hover {
+  color: var(--reira-text) !important;
+}
+
+.being-human-page .being-human-hero-art {
+  width: 100%;
+  max-width: 980px !important;
+  margin: 0 0 56px !important;
+  overflow: hidden;
+  border: 1px solid var(--reira-line-soft) !important;
+  border-radius: 0 !important;
+  background: var(--reira-panel) !important;
+  box-shadow: none !important;
+}
+
+.being-human-page .being-human-hero-art img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9 !important;
+  object-fit: cover;
+}
+
+.being-human-page .thought-article {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.being-human-page .thought-article p {
+  margin: 0 0 1.05em;
+  color: var(--reira-muted) !important;
+  font: 500 clamp(18px, 1.7vw, 22px)/1.72 Inter, Arial, sans-serif !important;
+}
+
+.being-human-page .thought-article strong {
+  color: var(--reira-text);
+}
+
+.being-human-page .thought-next-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 70px;
+}
+
+.being-human-page .thought-next-card {
+  min-height: 230px;
+  padding: 28px;
+  border: 1px solid var(--reira-line-soft);
+  background: var(--reira-panel);
+}
+
+.being-human-page .thought-next-card h3 {
+  margin: 18px 0 12px;
+  color: var(--reira-text) !important;
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-size: clamp(30px, 4vw, 52px) !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+}
+
+.being-human-page .thought-next-card p:not(.library-label) {
+  color: var(--reira-muted) !important;
+  font: 600 16px/1.55 Inter, Arial, sans-serif !important;
+}
+
+.being-human-page .author-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  width: min(1240px, calc(100% - 56px));
+  margin: 0 auto;
+  padding: 34px 0 48px !important;
+  border-top: 1px solid var(--reira-line-soft);
+  color: var(--reira-quiet) !important;
+  background: transparent !important;
+  font: 700 12px/1.5 Inter, Arial, sans-serif !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.being-human-page .author-footer a {
+  color: var(--reira-muted) !important;
+  text-decoration: none;
+}
+
+.being-human-page .author-footer a:hover {
+  color: var(--reira-gold) !important;
+}
+
+@media (max-width: 860px) {
+  .being-human-page .author-header {
+    position: static;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 22px;
+    max-width: 100vw;
+    overflow: hidden;
+  }
+
+  .being-human-page .author-nav {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    justify-content: flex-start;
+    column-gap: 18px;
+    row-gap: 16px;
+    width: 100%;
+  }
+
+  .being-human-page .author-nav a,
+  .being-human-page .author-language-switch a {
+    font-size: 11px !important;
+    letter-spacing: 0.14em;
+  }
+
+  .being-human-page .author-main,
+  .being-human-page .author-footer {
+    width: min(100% - 32px, 1240px);
+  }
+
+  .being-human-page .author-page-hero {
+    min-height: 0;
+    padding: 46px 0 48px !important;
+  }
+
+  .being-human-page .author-page-title {
+    width: 100%;
+    max-width: min(300px, calc(100vw - 54px)) !important;
+    font-size: 28px !important;
+    line-height: 1.06 !important;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  .being-human-page .author-page-intro {
+    max-width: calc(100vw - 54px);
+    font-size: 14px !important;
+  }
+
+  .being-human-page .thought-article p {
+    max-width: calc(100vw - 54px);
+    font-size: 16px !important;
+  }
+
+  .being-human-page .thought-article-top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .being-human-page .thought-next-grid {
+    grid-template-columns: 1fr;
+  }
+}
