@@ -385,6 +385,53 @@
       margin-top: 22px;
     }
 
+    .grace-reading-sample {
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(280px, 0.58fr);
+      gap: clamp(24px, 5vw, 60px);
+      margin-top: clamp(28px, 4vw, 46px);
+      padding: clamp(22px, 4vw, 36px);
+      border: 1px solid rgba(248, 236, 215, 0.14);
+      background: rgba(7, 5, 4, 0.46);
+    }
+
+    .grace-reading-sample h3 {
+      margin: 0;
+      color: var(--grace-ink);
+      font-family: "Cinzel", serif;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1;
+    }
+
+    .grace-reading-sample p {
+      margin: 0;
+      color: rgba(248, 236, 215, 0.82);
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.55;
+    }
+
+    .grace-reading-copy {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grace-reading-side {
+      display: grid;
+      align-content: start;
+      gap: 18px;
+      padding-left: 24px;
+      border-left: 1px solid var(--grace-line);
+    }
+
+    .grace-reading-side span {
+      color: var(--grace-amber);
+      font-family: "Courier Prime", monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
     .grace-footer {
       width: 100% !important;
       max-width: none !important;
@@ -528,6 +575,18 @@
         display: grid;
         grid-template-columns: 1fr;
       }
+
+      .grace-reading-sample {
+        grid-template-columns: 1fr;
+        padding: 18px;
+      }
+
+      .grace-reading-side {
+        padding-left: 0;
+        border-left: 0;
+        border-top: 1px solid var(--grace-line);
+        padding-top: 18px;
+      }
     }
   </style>
 </head>
@@ -600,6 +659,19 @@
             <span>Reflection</span>
           </article>
         </div>
+        <article class="grace-reading-sample" aria-label="Built by Grace book sample">
+          <div class="grace-reading-copy">
+            <h3>Sample pages</h3>
+            <p>Before love had a name, there was a prayer. Not a loud prayer. Not the kind spoken to impress anyone. It was the quiet kind, the one said when the heart is tired of pretending it is ready for what it still does not know how to hold.</p>
+            <p>I asked God not only for love, but for the capacity to receive it without turning fear into distance. I asked for a heart that could be soft without becoming careless, honest without becoming hard, and open without forgetting what peace had already taught me.</p>
+            <p>Built by Grace is not the story of a perfect heart. It is the record of a prepared one. A heart being healed slowly, corrected gently, and reminded that love is safest when God stays at the center of it.</p>
+            <p>Some seasons do not arrive to give us what we want immediately. They arrive to make us honest enough to understand what we are asking for. That is where this journey begins: not with arrival, but with preparation.</p>
+          </div>
+          <div class="grace-reading-side">
+            <span>Digital book preview</span>
+            <p>This is a readable sample from the tone and opening world of the book. The full digital edition continues through prayer, healing, love, home, family, and grace.</p>
+          </div>
+        </article>
         <div class="grace-preview-actions">
           <a class="grace-button" href="https://quiet-power-shop.fourthwall.com/products/new-digital-product" target="_blank" rel="noopener">Buy Digital Book</a>
           <a class="grace-button grace-button--ghost" href="https://open.spotify.com/artist/0CUmVxNUbIaLa4GMwOoD1C?si=wvVjpa1sSxKnPAdaqdKvVQ" target="_blank" rel="noopener">Listen on Spotify</a>

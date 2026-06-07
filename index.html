@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Reira Bin — Music, Books, and Worlds to Feel</title>
-  <meta name="description" content="Reira Bin creates music, books, and visual worlds shaped by feeling, memory, faith, and quiet power.">
+  <meta name="description" content="Reira Bin creates music, books, release pages, and artwork shaped by feeling, memory, faith, and quiet power.">
   <meta name="author" content="Sabino Pereira / Reira Bin">
   <link rel="canonical" href="https://sabinopereira.com/">
   <link rel="alternate" hreflang="en" href="https://sabinopereira.com/">
@@ -395,16 +395,21 @@
     }
 
     .book-cover {
+      display: grid;
+      place-items: center;
       height: clamp(310px, 31vw, 430px);
+      padding: 16px;
       border: 1px solid var(--line);
-      background: var(--panel);
+      background:
+        radial-gradient(circle at 50% 24%, rgba(217, 168, 79, 0.08), transparent 15rem),
+        #0d0b08;
       overflow: hidden;
     }
 
     .book-cover img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       transition: transform 360ms ease;
     }
 
@@ -565,6 +570,7 @@
 
       .book-cover {
         max-width: 360px;
+        padding: 12px;
       }
     }
 
@@ -656,7 +662,7 @@
         <a href="#music">Music</a>
         <a href="#books">Books</a>
         <a href="/series.html">Series</a>
-        <a href="#visuals">Visuals</a>
+        <a href="/links.html">Links</a>
         <a href="/contact.html">Contact</a>
       </nav>
     </div>
@@ -683,7 +689,7 @@
         </div>
         <aside class="hero-note">
           <strong>Create. Feel. Share.</strong>
-          Reira Bin is the music identity of Sabino Pereira, built for songs, books, visuals, and creative worlds that carry a human pulse.
+          Reira Bin is the music identity of Sabino Pereira, built for songs, books, release pages, and creative worlds that carry a human pulse.
         </aside>
       </div>
     </section>
@@ -691,7 +697,7 @@
     <section class="section" aria-label="Creative index">
       <div class="section-head">
         <h2 class="section-title">One name. Many forms.</h2>
-        <p class="section-intro">A clean entry point for everything Reira Bin creates: music releases, books, visual worlds, videos, links, and official pages.</p>
+        <p class="section-intro">A clean entry point for everything Reira Bin creates: music releases, books, release pages, videos, links, and official pages.</p>
       </div>
       <div class="work-index">
         <a class="work-link" href="#music">
@@ -702,13 +708,13 @@
           <h2>Books</h2>
           <span>Stories, essays, and emotional worlds that continue after the music stops.</span>
         </a>
-        <a class="work-link" href="#visuals">
-          <h2>Visuals</h2>
-          <span>Covers, banners, music videos, and image-led identities for each creative era.</span>
-        </a>
         <a class="work-link" href="/links.html">
           <h2>Links</h2>
-          <span>Streaming, books, videos, and places to follow the work.</span>
+          <span>Streaming, books, videos, and official places to follow the work.</span>
+        </a>
+        <a class="work-link" href="#release-hub">
+          <h2>Release hub</h2>
+          <span>Album pages, book companions, and the artwork that connects each release.</span>
         </a>
       </div>
     </section>
@@ -759,7 +765,7 @@
         </a>
         <a class="book-item" href="/what-still-hurts/">
           <div class="book-cover">
-            <img src="/books/o-que-ainda-doi-ecos-da-harmonia/tmp/preview-cover.png" alt="What Still Hurts book cover">
+            <img src="/images/optimized/what-still-hurts-cover.png" alt="What Still Hurts book cover">
           </div>
           <span class="book-meta">Emotional fiction</span>
           <h3>What Still Hurts</h3>
@@ -780,10 +786,10 @@
       </div>
     </section>
 
-    <section class="section" id="visuals">
+    <section class="section" id="release-hub">
       <div class="section-head">
-        <h2 class="section-title">A visual world for every release.</h2>
-        <p class="section-intro">Covers, YouTube visualizers, banners, and artwork that give each song or book its own atmosphere before the first word or note lands.</p>
+        <h2 class="section-title">Release hub.</h2>
+        <p class="section-intro">A simple place to move from the music to the books, from the album to the companion text, and from the official links to the wider body of work.</p>
       </div>
       <div class="work-index">
         <a class="work-link" href="/links.html">
@@ -798,8 +804,8 @@
     </section>
 
     <section class="closing">
-      <h2>For songs, books, visuals, and ideas with a pulse.</h2>
-      <p>Follow the songs, books, release concepts, and visual worlds that keep the Reira Bin universe moving.</p>
+      <h2>For songs, books, and ideas with a pulse.</h2>
+      <p>Follow the songs, books, release pages, and creative worlds that keep the Reira Bin universe moving.</p>
       <div class="hero-actions" style="justify-content: center;">
         <a class="btn primary" href="/links.html">Follow the work</a>
         <a class="btn" href="/about.html">About the creator</a>
@@ -810,7 +816,7 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <span>Reira Bin / Sabino Pereira</span>
-      <span>Music. Books. Visual worlds.</span>
+      <span>Music. Books. Release worlds.</span>
     </div>
   </footer>
 
