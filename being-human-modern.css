@@ -346,7 +346,8 @@ body.being-human-page {
   }
 
   .being-human-page .author-page-intro {
-    max-width: calc(100vw - 54px);
+    width: min(300px, calc(100vw - 54px)) !important;
+    max-width: min(300px, calc(100vw - 54px));
     font-size: 14px !important;
   }
 
