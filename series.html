@@ -2,462 +2,478 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Series by Sabino Pereira — Being Human, Life is a Bug, and Afraid of AI</title>
+  <title>Series by Sabino Pereira - Being Human, Life is a Bug, and Afraid of AI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Editorial series by Sabino Pereira: Being Human (Unfiltered), Life is a Bug, and Afraid of AI.">
+  <meta name="description" content="Editorial series by Sabino Pereira and Reira Bin: Being Human (Unfiltered), Life is a Bug, and Afraid of AI. Essays about intimacy, human glitches, technology, work, and modern pressure.">
   <meta name="author" content="Sabino Pereira">
   <link rel="canonical" href="https://sabinopereira.com/series.html">
   <link rel="alternate" hreflang="en" href="https://sabinopereira.com/series.html">
   <link rel="alternate" hreflang="pt" href="https://sabinopereira.com/pt/series.html">
   <link rel="alternate" hreflang="x-default" href="https://sabinopereira.com/series.html">
-  <meta property="og:title" content="Series by Sabino Pereira — Being Human, Life is a Bug, and Afraid of AI">
-  <meta property="og:description" content="Three editorial series about intimacy, human glitches, technology, work, pressure, and modern life.">
+  <meta property="og:title" content="Series by Sabino Pereira - Being Human, Life is a Bug, and Afraid of AI">
+  <meta property="og:description" content="Ongoing editorial series about intimacy, technology, behaviour, and pressure.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sabinopereira.com/series.html">
-  <meta property="og:image" content="https://sabinopereira.com/images/og-quiet-thoughts-index.svg">
+  <meta property="og:image" content="https://sabinopereira.com/images/being-human-unfiltered-episode-4.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Series by Sabino Pereira — Being Human, Life is a Bug, and Afraid of AI">
-  <meta name="twitter:description" content="Three editorial series about intimacy, human glitches, technology, work, pressure, and modern life.">
-  <meta name="twitter:image" content="https://sabinopereira.com/images/og-quiet-thoughts-index.svg">
+  <meta name="twitter:title" content="Series by Sabino Pereira">
+  <meta name="twitter:description" content="Being Human (Unfiltered), Life is a Bug, and Afraid of AI.">
+  <meta name="twitter:image" content="https://sabinopereira.com/images/being-human-unfiltered-episode-4.png">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEVDEH8PGZ"></script>
   <script src="/analytics.js"></script>
   <link rel="icon" type="image/svg+xml" href="/images/sp-favicon.svg">
   <link rel="apple-touch-icon" href="/images/sp-favicon.svg">
-  <link rel="stylesheet" href="/style.css?v=25">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Cinzel:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-parchment: #f5f1e6;
-      --bg-parchment-dark: #ebe6d5;
-      --leather-brown: #3d2314;
-      --leather-brown-light: #5c4033;
-      --walnut-wood: #2c1a0e;
-      --forest-green: #1c2e22;
-      --forest-green-glow: rgba(28, 46, 34, 0.15);
-      --gold-accent: #c99b42;
-      --gold-bright: #e5b85c;
-      --gold-accent-glow: rgba(201, 155, 66, 0.2);
-      --text-dark: #2c251e;
-      --text-muted: #665b50;
-      --border-thin: 1px solid rgba(61, 35, 20, 0.12);
-      --border-gold: 1px solid rgba(201, 155, 66, 0.35);
+      --bg: #090806;
+      --panel: #17130f;
+      --text: #f6efe4;
+      --muted: #b9aa96;
+      --quiet: #7d715f;
+      --gold: #d9a84f;
+      --line: rgba(246, 239, 228, 0.13);
+      --line-strong: rgba(217, 168, 79, 0.35);
+      --max: 1180px;
     }
 
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      background-color: var(--bg-parchment) !important;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E") !important;
-      color: var(--text-dark) !important;
-      font-family: 'EB Garamond', serif !important;
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 78% 8%, rgba(217, 168, 79, 0.14), transparent 30rem),
+        linear-gradient(180deg, #0d0b08 0%, var(--bg) 46%, #050403 100%);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
     }
 
-    .author-shell, .author-main, .author-panel, .author-book, .author-page-hero {
-      background: transparent !important;
-      color: var(--text-dark) !important;
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+      opacity: 0.45;
+      z-index: 30;
     }
 
-    .cozy-header {
-      background: var(--forest-green);
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
-      border-bottom: 3px double var(--gold-accent);
-      padding: 24px 80px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .site-header {
+      position: fixed;
       top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      left: 0;
+      right: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(246, 239, 228, 0.08);
+      background: rgba(9, 8, 6, 0.72);
+      backdrop-filter: blur(18px);
     }
 
-    .header-seal {
+    .nav-wrap {
+      width: min(var(--max), calc(100% - 48px));
+      height: 74px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
-      gap: 16px;
-      text-decoration: none;
+      justify-content: space-between;
+      gap: 28px;
     }
 
-    .seal-monogram {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: 2px solid var(--gold-accent);
-      background: var(--walnut-wood);
+    .brand {
       display: flex;
-      justify-content: center;
       align-items: center;
-      font-family: 'Cinzel', serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--gold-bright);
-      box-shadow: inset 0 0 8px rgba(0,0,0,0.6), 0 0 10px var(--gold-accent-glow);
+      gap: 14px;
+      min-width: max-content;
     }
 
-    .seal-text h1 {
-      font-family: 'Cinzel', serif;
-      font-size: 22px;
-      color: #ffffff;
-      letter-spacing: 1px;
-      line-height: 1.1;
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line-strong);
+      display: grid;
+      place-items: center;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
     }
 
-    .seal-text span {
-      font-family: 'Courier Prime', monospace;
-      font-size: 10px;
-      color: var(--gold-accent);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-
-    .cozy-nav {
-      display: flex;
-      gap: 36px;
-      align-items: center;
-    }
-
-    .cozy-nav a {
-      text-decoration: none;
-      color: rgba(255, 255, 255, 0.75);
-      font-size: 15px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      font-family: 'Cinzel', serif;
-      transition: color 0.3s, text-shadow 0.3s;
-      position: relative;
-    }
-
-    .cozy-nav a:hover, .cozy-nav a.active {
-      color: var(--gold-bright);
-      text-shadow: 0 0 8px rgba(229, 184, 92, 0.4);
-    }
-
-    .cozy-nav a.active::after {
-      content: '•';
-      position: absolute;
-      bottom: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: var(--gold-bright);
+    .brand-name {
       font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
     }
 
-    .cozy-lang {
+    .main-nav {
       display: flex;
-      gap: 8px;
-      background: rgba(0, 0, 0, 0.25);
-      padding: 4px 8px;
-      border-radius: 4px;
-      border: 1px solid rgba(201, 155, 66, 0.2);
-    }
-
-    .cozy-lang a {
-      text-decoration: none;
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 11px;
-      font-family: 'Courier Prime', monospace;
-      padding: 2px 6px;
-      border-radius: 2px;
-    }
-
-    .cozy-lang a.active {
-      background: var(--gold-accent);
-      color: var(--walnut-wood);
+      align-items: center;
+      gap: 28px;
+      color: rgba(246, 239, 228, 0.72);
+      font-size: 12px;
       font-weight: 700;
-    }
-
-    .author-kicker {
-      font-family: 'Courier Prime', monospace !important;
-      font-size: 12px !important;
-      color: var(--gold-accent) !important;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 2px;
     }
 
-    .author-page-title, .author-section-title, h1, h2, h3 {
-      font-family: 'Cinzel', serif !important;
-      color: var(--text-dark) !important;
-      font-weight: 700 !important;
+    .main-nav a:hover,
+    .main-nav a.is-active { color: var(--gold); }
+
+    .page {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+      padding-top: 74px;
     }
 
-    .author-page-intro, .author-card-text, p {
-      font-family: 'EB Garamond', Georgia, serif !important;
-      font-size: 18px !important;
-      line-height: 1.6 !important;
-      color: var(--text-muted) !important;
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(300px, 0.62fr);
+      gap: 64px;
+      align-items: end;
+      padding: 88px 0 58px;
+      border-bottom: 1px solid var(--line);
     }
 
-    .author-button, .btn-cozy {
-      display: inline-block;
-      text-decoration: none;
-      padding: 12px 30px;
-      font-family: 'Cinzel', serif !important;
-      font-size: 13px !important;
-      font-weight: 700 !important;
-      letter-spacing: 1.5px !important;
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      border-radius: 30px !important;
-      transition: all 0.3s ease !important;
-      cursor: pointer;
     }
 
-    .author-button:not(.author-button--secondary), .btn-cozy--solid {
-      background: var(--forest-green) !important;
-      color: var(--gold-bright) !important;
-      border: 1px solid var(--forest-green) !important;
-      box-shadow: 0 4px 15px rgba(28, 46, 34, 0.15);
+    h1, h2, h3 {
+      font-family: "Playfair Display", Georgia, serif;
+      letter-spacing: 0;
     }
 
-    .author-button:not(.author-button--secondary):hover, .btn-cozy--solid:hover {
-      background: var(--walnut-wood) !important;
-      border-color: var(--gold-accent) !important;
-      color: #ffffff !important;
-      box-shadow: 0 6px 20px rgba(44, 26, 14, 0.3);
+    h1 {
+      max-width: 820px;
+      margin: 0;
+      font-size: clamp(56px, 7vw, 108px);
+      line-height: 0.95;
     }
 
-    .author-button--secondary {
-      background: transparent !important;
-      color: var(--text-dark) !important;
-      border: 1px solid var(--gold-accent) !important;
+    .hero p,
+    .feature-copy p,
+    .series-card p {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.65;
     }
 
-    .author-button--secondary:hover {
-      background: rgba(201, 155, 66, 0.1) !important;
-      color: var(--gold-accent) !important;
-      border-color: var(--gold-bright) !important;
+    .feature {
+      display: grid;
+      grid-template-columns: minmax(300px, 0.74fr) minmax(0, 1fr);
+      gap: clamp(28px, 5vw, 60px);
+      align-items: center;
+      padding: 58px 0;
+      border-bottom: 1px solid var(--line);
     }
 
-    .author-panel, .author-book, .author-card {
-      background: #faf8f5 !important;
-      border: 1px solid rgba(201, 155, 66, 0.25) !important;
-      box-shadow: 0 4px 12px rgba(61, 35, 20, 0.05) !important;
-      padding: 30px !important;
-      border-radius: 8px !important;
-      transition: transform 0.3s, box-shadow 0.3s !important;
+    .feature-media {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      overflow: hidden;
     }
 
-    .author-panel:hover, .author-book:hover, .author-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 24px rgba(61, 35, 20, 0.1) !important;
-      border-color: var(--gold-accent) !important;
+    .feature-media img {
+      width: 100%;
+      aspect-ratio: 1.35;
+      object-fit: cover;
     }
 
-    .author-book-cover {
-      border-radius: 4px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.15) !important;
-      border: 1px solid rgba(0,0,0,0.05);
-      margin-bottom: 20px;
+    .feature-copy h2 {
+      margin: 0;
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: 0.96;
     }
 
-    .author-footer {
-      border-top: var(--border-gold) !important;
-      background: #faf8f5 !important;
-      padding: 30px 80px !important;
-      font-family: 'Courier Prime', monospace !important;
-      font-size: 11px !important;
-      color: var(--text-muted) !important;
+    .episode-grid,
+    .series-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .series-card {
+      display: grid;
+      align-content: start;
+      gap: 14px;
+      min-height: 260px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      background: rgba(246, 239, 228, 0.026);
+      overflow: hidden;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .series-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(217, 168, 79, 0.52);
+      background: rgba(217, 168, 79, 0.055);
+    }
+
+    .series-card h3 {
+      margin: 0;
+      font-size: clamp(28px, 3vw, 38px);
+      line-height: 1.04;
+      overflow-wrap: break-word;
+    }
+
+    .episode-grid .series-card h3 {
+      font-size: clamp(24px, 2.2vw, 31px);
+      line-height: 1.05;
+    }
+
+    .series-card p { margin: 0; }
+
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: auto;
+    }
+
+    .text-link {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .section {
+      padding: 74px 0 94px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
       display: flex;
       justify-content: space-between;
+      align-items: end;
+      gap: 36px;
+      margin-bottom: 32px;
     }
 
-    .author-footer a {
-      color: var(--text-dark) !important;
-      text-decoration: none;
-      margin-left: 16px;
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: 0.98;
     }
 
-    .author-footer a:hover {
-      color: var(--gold-accent) !important;
-    }
-  
-    /* Cozy Nav Music Button Override */
-    .cozy-nav-music {
-      display: inline-flex !important;
-      align-items: center !important;
-      gap: 8px !important;
-      border: 1px dashed rgba(201, 155, 66, 0.4) !important;
-      padding: 4px 10px !important;
-      border-radius: 6px !important;
-      transition: all 0.3s ease !important;
-      text-decoration: none !important;
-    }
-    .cozy-nav-music::after {
-      display: none !important;
-    }
-    .cozy-nav-music:hover {
-      border-color: var(--gold-bright) !important;
-      background: rgba(201, 155, 66, 0.08) !important;
-      box-shadow: 0 0 10px var(--gold-accent-glow) !important;
-    }
-    .cozy-nav-music-mark {
-      font-family: 'Cinzel', serif !important;
-      font-size: 10px !important;
-      font-weight: 700 !important;
-      color: var(--gold-bright) !important;
-      border: 1px solid var(--gold-accent) !important;
-      width: 20px !important;
-      height: 20px !important;
-      display: flex !important;
-      justify-content: center !important;
-      align-items: center !important;
-      border-radius: 50% !important;
-      background: var(--walnut-wood) !important;
-    }
-    .cozy-nav-music-text {
-      display: flex !important;
-      flex-direction: column !important;
-      line-height: 1 !important;
-      text-align: left !important;
-    }
-    .cozy-nav-music-text strong {
-      font-family: 'Cinzel', serif !important;
-      font-size: 10px !important;
-      letter-spacing: 0.5px !important;
-      color: #ffffff !important;
-      text-transform: uppercase !important;
-      font-weight: 700 !important;
-    }
-    .cozy-nav-music-text span {
-      font-family: 'Courier Prime', monospace !important;
-      font-size: 7px !important;
-      letter-spacing: 0.5px !important;
-      color: var(--gold-accent) !important;
-      text-transform: uppercase !important;
-      font-weight: 700 !important;
+    .section-head p {
+      max-width: 420px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.6;
     }
 
+    .site-footer {
+      padding: 34px 0;
+      color: var(--quiet);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .footer-inner {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 860px) {
+      .nav-wrap {
+        width: min(100% - 28px, var(--max));
+        height: auto;
+        min-height: 68px;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .main-nav {
+        width: 100%;
+        gap: 16px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+      }
+
+      .page {
+        width: min(100% - 28px, var(--max));
+        padding-top: 112px;
+      }
+
+      .hero,
+      .feature,
+      .section-head {
+        display: block;
+      }
+
+      .hero {
+        padding: 48px 0 36px;
+      }
+
+      h1 {
+        max-width: 330px;
+        font-size: 43px;
+        line-height: 1;
+      }
+
+      .hero p,
+      .section-head p,
+      .feature-copy p {
+        max-width: 320px;
+      }
+
+      .feature {
+        padding: 42px 0;
+      }
+
+      .feature-copy {
+        margin-top: 24px;
+      }
+
+      .feature-copy h2,
+      .section-head h2 {
+        max-width: 330px;
+        font-size: 42px;
+        line-height: 1;
+      }
+
+      .episode-grid,
+      .series-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .episode-grid .series-card h3 {
+        max-width: 280px;
+        font-size: 25px;
+        overflow-wrap: anywhere;
+      }
+    }
   </style>
-  <link rel="stylesheet" href="/reira-nav.css?v=5">
 </head>
-<body class="author-hub-body author-series-desk">
-  <div class="author-shell">
-    <!-- MAIN COZY HEADER BAR -->
-    <header class="cozy-header">
-      <a class="header-seal" href="/">
-        <div class="seal-monogram">SP</div>
-        <div class="seal-text">
-          <h1>Sabino Pereira</h1>
-          <span>Books, Essays, Music</span>
-        </div>
+<body>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="/" aria-label="Reira Bin home">
+        <span class="brand-mark">RB</span>
+        <span class="brand-name">Reira Bin</span>
       </a>
-      
-      <nav class="cozy-nav">
+      <nav class="main-nav" aria-label="Primary navigation">
         <a href="/">Home</a>
         <a href="/about.html">About</a>
         <a href="/books.html">Books</a>
-        <a class="active" href="/series.html">Series</a>
-        <a href="/#music" class="cozy-nav-music">
-          <span class="cozy-nav-music-mark">RB</span>
-          <span class="cozy-nav-music-text">
-            <strong>Reira Bin</strong>
-            <span>Music</span>
-          </span>
-        </a>
+        <a class="is-active" href="/series.html">Series</a>
+        <a href="/#music">Music</a>
         <a href="/contact.html">Contact</a>
-        <a href="/links.html">Bio Links</a>
       </nav>
+    </div>
+  </header>
 
-      <div class="cozy-lang">
-        <a href="/pt/series.html" lang="pt">PT</a>
-        <a class="active" href="#" lang="en">EN</a>
+  <main class="page">
+    <section class="hero" aria-labelledby="series-title">
+      <div>
+        <p class="eyebrow">Series</p>
+        <h1 id="series-title">Ongoing worlds for recurring thoughts.</h1>
       </div>
-    </header>
+      <p>Some themes need more than one page. These are the returning lines: intimacy, human glitches, digital pressure, AI, work, and the small behaviours people reveal when life gets louder.</p>
+    </section>
 
-    <main class="author-main">
-      <section class="author-page-hero author-series-hero">
-        <p class="author-kicker">Series</p>
-        <h1 class="author-page-title">Three lines to return to when a theme needs room.</h1>
-        <p class="author-page-intro">Some pieces need more than one page. These are the ongoing series: intimacy, human glitches, and the pressure AI puts on old professions.</p>
-      </section>
-
-      <section class="author-panel being-human-feature author-series-feature">
-        <div class="being-human-feature-grid">
-          <figure class="being-human-feature-media">
-            <img src="/images/being-human-unfiltered-episode-4.png" alt="A person sitting by the sea at sunset while fragments of photos and videos drift away">
-          </figure>
-          <div>
-            <p class="author-card-eyebrow">Featured</p>
-            <h2 class="author-section-title">Being Human (Unfiltered)</h2>
-            <p class="author-page-intro">More intimate writing about love, fear, tenderness, timing, memory, closeness, and the quiet reactions that reveal who people are.</p>
-            <div class="author-card-grid being-human-episodes">
-              <div class="author-card">
-                <p class="author-card-eyebrow">Episode 4</p>
-                <h3 class="author-card-title">Being Deleted After a Relationship Ends</h3>
-                <p class="author-card-text">A personal essay about memory, deletion, self-respect, and letting go without disappearing.</p>
-                <div class="author-inline-links">
-                  <a class="author-link" href="/being-deleted-after-a-relationship-ends.html">Read essay</a>
-                  <a class="author-link" href="/pt/ser-apagado-depois-de-um-relacionamento.html">Ler em português</a>
-                </div>
-              </div>
-              <div class="author-card">
-                <p class="author-card-eyebrow">Episode 3</p>
-                <h3 class="author-card-title">When Intensity Pretends It Is Love</h3>
-                <p class="author-card-text">A personal essay about urgency, projection, emotional safety, and love without games.</p>
-                <div class="author-inline-links">
-                  <a class="author-link" href="/when-intensity-pretends-it-is-love.html">Read essay</a>
-                  <a class="author-link" href="/pt/quando-a-intensidade-finge-ser-amor.html">Ler em português</a>
-                </div>
-              </div>
-              <div class="author-card">
-                <p class="author-card-eyebrow">Episode 2</p>
-                <h3 class="author-card-title">Sometimes Leaving Early Is What Saves Us Most</h3>
-                <p class="author-card-text">A personal essay about wrong trains, clarity, and the quiet maturity of leaving before we lose ourselves.</p>
-                <div class="author-inline-links">
-                  <a class="author-link" href="/sometimes-leaving-early-is-what-saves-us-most.html">Read essay</a>
-                  <a class="author-link" href="/pt/as-vezes-sair-cedo-e-o-que-mais-nos-salva.html">Ler em português</a>
-                </div>
-              </div>
-              <div class="author-card" hidden>
-                <p class="author-card-eyebrow">Related note</p>
-                <h3 class="author-card-title">Why Do People Say Hurtful Things Online?</h3>
-                <p class="author-card-text">A compact piece on distance, inhibition, and what online cruelty reveals.</p>
-                <a class="author-link" href="/quiet-thought-why-do-people-say-hurtful-things-online.html">Read note</a>
-              </div>
+    <section class="feature" aria-labelledby="being-human-title">
+      <figure class="feature-media">
+        <img src="/images/being-human-unfiltered-episode-4.png" alt="Being Human Unfiltered episode artwork">
+      </figure>
+      <div class="feature-copy">
+        <p class="eyebrow">Featured Series</p>
+        <h2 id="being-human-title">Being Human (Unfiltered)</h2>
+        <p>Intimate writing about love, fear, tenderness, timing, memory, closeness, and the quiet reactions that reveal who people are.</p>
+        <div class="episode-grid">
+          <article class="series-card">
+            <p class="eyebrow">Episode 4</p>
+            <h3>Being Deleted After a Relationship Ends</h3>
+            <p>Memory, deletion, self-respect, and letting go without disappearing.</p>
+            <div class="link-row">
+              <a class="text-link" href="/being-deleted-after-a-relationship-ends.html">Read essay</a>
             </div>
+          </article>
+          <article class="series-card">
+            <p class="eyebrow">Episode 3</p>
+            <h3>When Intensity Pretends It Is Love</h3>
+            <p>Urgency, projection, emotional safety, and love without games.</p>
+            <div class="link-row">
+              <a class="text-link" href="/when-intensity-pretends-it-is-love.html">Read essay</a>
+            </div>
+          </article>
+          <article class="series-card">
+            <p class="eyebrow">Episode 2</p>
+            <h3>Sometimes Leaving Early Is What Saves Us Most</h3>
+            <p>Wrong trains, clarity, and leaving before we lose ourselves.</p>
+            <div class="link-row">
+              <a class="text-link" href="/sometimes-leaving-early-is-what-saves-us-most.html">Read essay</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="series-index-title">
+      <div class="section-head">
+        <h2 id="series-index-title">Series index</h2>
+        <p>Different doors into the same wider body of work: behaviour, technology, intimacy, pressure, and modern life.</p>
+      </div>
+      <div class="series-grid">
+        <article class="series-card">
+          <p class="eyebrow">01 - AI and work</p>
+          <h3>Afraid of AI</h3>
+          <p>What AI exposes when information becomes easier to access, compare, and question.</p>
+          <div class="link-row">
+            <a class="text-link" href="/afraid-of-ai.html">Open series</a>
+            <a class="text-link" href="/quiet-thought-while-you-wait-they-build.html">Read intro</a>
           </div>
-        </div>
-      </section>
+        </article>
+        <article class="series-card">
+          <p class="eyebrow">02 - Human glitches</p>
+          <h3>Life is a Bug</h3>
+          <p>Small bugs in human behaviour and the strange systems we pretend are normal.</p>
+          <div class="link-row">
+            <a class="text-link" href="/life-is-a-bug.html">Open series</a>
+          </div>
+        </article>
+        <article class="series-card">
+          <p class="eyebrow">03 - Intimacy</p>
+          <h3>Being Human (Unfiltered)</h3>
+          <p>Personal writing about closeness, healing, timing, and the courage to leave what no longer fits.</p>
+          <div class="link-row">
+            <a class="text-link" href="/being-deleted-after-a-relationship-ends.html">Start here</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
 
-      <section class="author-panel author-series-shelf">
-        <p class="author-card-eyebrow">Series index</p>
-        <h2 class="author-section-title">Choose the series.</h2>
-        <div class="author-card-grid author-card-grid--series">
-          <article class="author-card">
-            <p class="author-card-eyebrow">01 · AI and work</p>
-            <h3 class="author-card-title">Afraid of AI</h3>
-            <p class="author-card-text">What AI exposes when information becomes easier to access, compare, and question. “While You Wait, They Build” now works as the opening pressure note for this world.</p>
-            <div class="author-inline-links">
-              <a class="author-link" href="/afraid-of-ai.html">Open series</a>
-              <a class="author-link" href="/quiet-thought-while-you-wait-they-build.html">Read intro note</a>
-            </div>
-          </article>
-
-          <article class="author-card">
-            <p class="author-card-eyebrow">02 · Human glitches</p>
-            <h3 class="author-card-title">Life is a Bug</h3>
-            <p class="author-card-text">Small bugs in human behaviour and the strange systems we pretend are normal.</p>
-            <div class="author-inline-links">
-              <a class="author-link" href="/life-is-a-bug.html">Open series</a>
-              <a class="author-link" href="/pt/life-is-a-bug.html">Ler em português</a>
-            </div>
-          </article>
-
-          <article class="author-card">
-            <p class="author-card-eyebrow">03 · Intimacy</p>
-            <h3 class="author-card-title">Being Human (Unfiltered)</h3>
-            <p class="author-card-text">Personal writing about closeness, tenderness, desire, healing, timing, and the courage to leave what no longer fits.</p>
-            <a class="author-link" href="/being-deleted-after-a-relationship-ends.html">Start with episode 4</a>
-          </article>
-        </div>
-      </section>
-
-    </main>
-  </div>
-
-  <!-- FOOTER SIGNATURE -->
-  <footer class="author-footer">
-    <div class="cozy-footer-brand" style="font-family: 'Cinzel', serif; font-size: 14px; font-weight: 700; color: var(--text-dark); letter-spacing: 1px;">SABINO PEREIRA</div>
-    <span>&copy; 2026 Sabino Pereira. Built by Grace.</span>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>Reira Bin / Sabino Pereira</span>
+      <span>Series. Essays. Observations.</span>
+    </div>
   </footer>
 </body>
 </html>
