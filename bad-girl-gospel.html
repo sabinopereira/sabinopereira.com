@@ -48,6 +48,27 @@
       "url": "https://quiet-power-shop.fourthwall.com/products/new-digital-product-2",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock"
+    },
+    "isPartOf": {
+      "@type": "BookSeries",
+      "name": "Bad Girl Gospel",
+      "hasPart": [
+        {
+          "@type": "Book",
+          "name": "Bad Girl Gospel: The Story of Selah",
+          "position": 1
+        },
+        {
+          "@type": "Book",
+          "name": "Bad Girl Gospel: The Story of Diana",
+          "position": 2
+        },
+        {
+          "@type": "Book",
+          "name": "Bad Girl Gospel: The Story of Noa",
+          "position": 3
+        }
+      ]
     }
   }
   </script>
@@ -416,6 +437,66 @@
       margin-top: 30px;
     }
 
+    .series-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .series-card {
+      min-height: 100%;
+      display: grid;
+      gap: 18px;
+      align-content: start;
+      padding: 24px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(145deg, rgba(217, 168, 79, 0.07), transparent 36%),
+        rgba(246, 239, 228, 0.024);
+    }
+
+    .series-card.is-current {
+      border-color: var(--line-strong);
+      background:
+        linear-gradient(145deg, rgba(217, 168, 79, 0.12), transparent 38%),
+        rgba(246, 239, 228, 0.035);
+    }
+
+    .series-kicker {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .series-card h3 {
+      margin: 0;
+      color: var(--text);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 28px;
+      line-height: 1.05;
+    }
+
+    .series-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .series-status {
+      width: fit-content;
+      padding: 8px 11px;
+      border: 1px solid rgba(217, 168, 79, 0.32);
+      color: var(--text);
+      background: rgba(217, 168, 79, 0.08);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
     .album-block {
       display: grid;
       grid-template-columns: minmax(260px, 440px) minmax(0, 1fr);
@@ -494,7 +575,8 @@
       .hero,
       .section-head,
       .album-block,
-      .three-points {
+      .three-points,
+      .series-grid {
         grid-template-columns: 1fr;
       }
 
@@ -573,6 +655,14 @@
         max-width: 100%;
         font-size: 18px;
         line-height: 1.48;
+      }
+
+      .series-card {
+        padding: 20px;
+      }
+
+      .series-card h3 {
+        font-size: 25px;
       }
 
       .album-cover {
@@ -667,6 +757,33 @@
           <p>My name is Selah. And this is my gospel.</p>
         </div>
       </article>
+    </section>
+
+    <section class="section" aria-labelledby="series-title">
+      <div class="section-head">
+        <h2 id="series-title">The Bad Girl Gospel series.</h2>
+        <p>Three confessions about women the world judged before it understood them. Selah begins the series. Diana and Noa are coming soon.</p>
+      </div>
+      <div class="series-grid" aria-label="Bad Girl Gospel books">
+        <article class="series-card is-current">
+          <span class="series-kicker">Book One</span>
+          <h3>Bad Girl Gospel: The Story of Selah</h3>
+          <p>A confession about the cost of freedom.</p>
+          <span class="series-status">Available now</span>
+        </article>
+        <article class="series-card">
+          <span class="series-kicker">Book Two</span>
+          <h3>Bad Girl Gospel: The Story of Diana</h3>
+          <p>A confession about love, marriage, memory, and the man she never stopped trying to forget.</p>
+          <span class="series-status">Coming soon</span>
+        </article>
+        <article class="series-card">
+          <span class="series-kicker">Book Three</span>
+          <h3>Bad Girl Gospel: The Story of Noa</h3>
+          <p>A confession about the name she had to survive.</p>
+          <span class="series-status">Coming soon</span>
+        </article>
+      </div>
     </section>
 
     <section class="section" aria-labelledby="album-title">
