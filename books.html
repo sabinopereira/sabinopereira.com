@@ -2,22 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Books by Sabino Pereira — Bad Girl Gospel, Built by Grace, Quiet Power, and More</title>
+  <title>Books by Sabino Pereira | Bad Girl Gospel, Built by Grace, Quiet Power, and More</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Explore books by Sabino Pereira, including Bad Girl Gospel, Built by Grace, Quiet Power, What Still Hurts, Chess in the Block, Borrow. Delay. Repeat., and modern stories about faith, pressure, technology, and human behaviour.">
+  <meta name="description" content="Explore books by Sabino Pereira, including the Bad Girl Gospel series, Built by Grace, Quiet Power, What Still Hurts, Chess in the Block, Borrow. Delay. Repeat., and modern stories about faith, pressure, technology, and human behaviour.">
   <meta name="author" content="Sabino Pereira">
   <link rel="canonical" href="https://sabinopereira.com/books.html">
   <link rel="alternate" hreflang="en" href="https://sabinopereira.com/books.html">
   <link rel="alternate" hreflang="pt" href="https://sabinopereira.com/pt/livros.html">
   <link rel="alternate" hreflang="x-default" href="https://sabinopereira.com/books.html">
-  <meta property="og:title" content="Books by Sabino Pereira — Bad Girl Gospel, Built by Grace, Quiet Power, and More">
-  <meta property="og:description" content="Digital books, fiction, practical clarity, and reflective guides by Sabino Pereira.">
+  <meta property="og:title" content="Books by Sabino Pereira | Bad Girl Gospel, Built by Grace, Quiet Power, and More">
+  <meta property="og:description" content="Digital books, fiction, practical clarity, reflective guides, and the Bad Girl Gospel series by Sabino Pereira.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sabinopereira.com/books.html">
   <meta property="og:image" content="https://sabinopereira.com/images/bad-girl-gospel-book-cover.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Books by Sabino Pereira — Bad Girl Gospel, Built by Grace, Quiet Power, and More">
-  <meta name="twitter:description" content="Digital books, fiction, practical clarity, and reflective guides by Sabino Pereira.">
+  <meta name="twitter:title" content="Books by Sabino Pereira | Bad Girl Gospel, Built by Grace, Quiet Power, and More">
+  <meta name="twitter:description" content="Digital books, fiction, practical clarity, reflective guides, and the Bad Girl Gospel series by Sabino Pereira.">
   <meta name="twitter:image" content="https://sabinopereira.com/images/bad-girl-gospel-book-cover.jpg">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEVDEH8PGZ"></script>
   <script src="/analytics.js"></script>
@@ -32,7 +32,7 @@
     "@type": "CollectionPage",
     "name": "Books by Sabino Pereira",
     "url": "https://sabinopereira.com/books.html",
-    "description": "Books by Sabino Pereira, including Bad Girl Gospel, Built by Grace, Quiet Power, What Still Hurts, Chess in the Block, Borrow. Delay. Repeat., and more.",
+    "description": "Books by Sabino Pereira, including the Bad Girl Gospel series, Built by Grace, Quiet Power, What Still Hurts, Chess in the Block, Borrow. Delay. Repeat., and more.",
     "mainEntity": {
       "@type": "ItemList",
       "itemListElement": [
@@ -52,6 +52,28 @@
           "position": 2,
           "item": {
             "@type": "Book",
+            "name": "Bad Girl Gospel: The Story of Diana",
+            "author": { "@type": "Person", "name": "Sabino Pereira" },
+            "url": "https://sabinopereira.com/bad-girl-gospel.html#series-title",
+            "image": "https://sabinopereira.com/images/bad-girl-gospel-diana-cover.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Book",
+            "name": "Bad Girl Gospel: The Story of Noa",
+            "author": { "@type": "Person", "name": "Sabino Pereira" },
+            "url": "https://sabinopereira.com/bad-girl-gospel.html#series-title",
+            "image": "https://sabinopereira.com/images/bad-girl-gospel-noa-cover.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "Book",
             "name": "Built by Grace",
             "author": { "@type": "Person", "name": "Sabino Pereira" },
             "url": "https://sabinopereira.com/built-by-grace.html",
@@ -60,7 +82,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 3,
+          "position": 5,
           "item": {
             "@type": "Book",
             "name": "Quiet Power",
@@ -328,6 +350,83 @@
       color: #130e08;
     }
 
+    .series-block {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .series-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .series-card {
+      min-width: 0;
+      display: grid;
+      gap: 16px;
+      align-content: start;
+      padding: 16px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(145deg, rgba(217, 168, 79, 0.07), transparent 36%),
+        rgba(246, 239, 228, 0.026);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .series-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(217, 168, 79, 0.52);
+      background: rgba(217, 168, 79, 0.055);
+    }
+
+    .series-cover {
+      display: grid;
+      place-items: center;
+      aspect-ratio: 2 / 3;
+      padding: 12px;
+      border: 1px solid var(--line);
+      background: #0d0b08;
+      overflow: hidden;
+    }
+
+    .series-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 360ms ease;
+    }
+
+    .series-card:hover .series-cover img {
+      transform: scale(1.03);
+    }
+
+    .series-status {
+      width: fit-content;
+      padding: 8px 10px;
+      border: 1px solid rgba(217, 168, 79, 0.32);
+      color: var(--text);
+      background: rgba(217, 168, 79, 0.08);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .series-card h3 {
+      margin: 0;
+      font-size: clamp(24px, 2.5vw, 34px);
+      line-height: 1.06;
+      overflow-wrap: anywhere;
+    }
+
+    .series-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
     .shelf {
       padding: 76px 0 96px;
     }
@@ -434,7 +533,7 @@
 
     @media (max-width: 860px) {
       .nav-wrap {
-        width: min(100% - 28px, var(--max));
+        width: min(calc(100% - 28px), var(--max));
         height: auto;
         min-height: 68px;
         align-items: flex-start;
@@ -450,7 +549,7 @@
       }
 
       .page {
-        width: min(100% - 28px, var(--max));
+        width: min(calc(100% - 28px), var(--max));
         padding-top: 112px;
       }
 
@@ -509,8 +608,32 @@
         font-size: 10px;
       }
 
+      .series-grid,
       .book-grid {
-        grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 100%;
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .series-card,
+      .book-card {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+      }
+
+      .series-card h3,
+      .book-card h3 {
+        max-width: 100%;
+        font-size: 25px;
+        line-height: 1.1;
+        overflow-wrap: anywhere;
+        word-break: normal;
+      }
+
+      .series-cover {
+        width: 100%;
+        max-width: 100%;
       }
 
       .book-card-cover {
@@ -560,19 +683,56 @@
         <img src="/images/bad-girl-gospel-book-cover.jpg" alt="Bad Girl Gospel: The Story of Selah digital book cover">
       </a>
       <div class="feature-copy">
-        <p class="eyebrow">Newest Digital Book</p>
-        <h2 id="bad-girl-gospel-feature-title">Bad Girl Gospel is available now.</h2>
-        <p>A fictional literary confession about beauty, desire, faith, guilt, power, and the difficult cost of becoming free.</p>
+        <p class="eyebrow">Latest Book Series</p>
+        <h2 id="bad-girl-gospel-feature-title">The latest book world is Bad Girl Gospel.</h2>
+        <p>Start with Selah, then watch for Diana and Noa. This is the newest literary fiction world from Sabino Pereira.</p>
         <div class="meta-line" aria-label="Bad Girl Gospel themes">
           <span>Digital book</span>
           <span>Literary fiction</span>
           <span>Spiritual noir</span>
           <span>Selah</span>
+          <span>Diana and Noa coming soon</span>
         </div>
         <div class="actions">
           <a class="btn primary" href="https://quiet-power-shop.fourthwall.com/products/new-digital-product-2" target="_blank" rel="noopener">Buy Digital Book</a>
-          <a class="btn" href="/bad-girl-gospel.html#read-preview">Preview Book</a>
+          <a class="btn" href="#bad-girl-series-title">View Series</a>
         </div>
+      </div>
+    </section>
+
+    <section class="series-block" aria-labelledby="bad-girl-series-title">
+      <div class="section-head">
+        <h2 id="bad-girl-series-title">Bad Girl Gospel series</h2>
+        <p>Start with Selah, then watch for Diana and Noa. Three confessions about women the world judged before it understood them.</p>
+      </div>
+      <div class="series-grid" aria-label="Bad Girl Gospel series books">
+        <a class="series-card" href="/bad-girl-gospel.html" aria-label="Open Bad Girl Gospel: The Story of Selah">
+          <div class="series-cover">
+            <img src="/images/bad-girl-gospel-book-cover.jpg" alt="Bad Girl Gospel: The Story of Selah book cover">
+          </div>
+          <span class="meta-line">Book One · Literary Fiction</span>
+          <h3>The Story of Selah</h3>
+          <p>A confession about the cost of freedom.</p>
+          <span class="series-status">Available now</span>
+        </a>
+        <a class="series-card" href="/bad-girl-gospel.html#series-title" aria-label="View Bad Girl Gospel: The Story of Diana coming soon">
+          <div class="series-cover">
+            <img src="/images/bad-girl-gospel-diana-cover.jpg" alt="Bad Girl Gospel: The Story of Diana book cover">
+          </div>
+          <span class="meta-line">Book Two · Coming Soon</span>
+          <h3>The Story of Diana</h3>
+          <p>A confession about love, marriage, memory, and the man she never stopped trying to forget.</p>
+          <span class="series-status">Coming soon</span>
+        </a>
+        <a class="series-card" href="/bad-girl-gospel.html#series-title" aria-label="View Bad Girl Gospel: The Story of Noa coming soon">
+          <div class="series-cover">
+            <img src="/images/bad-girl-gospel-noa-cover.jpg" alt="Bad Girl Gospel: The Story of Noa book cover">
+          </div>
+          <span class="meta-line">Book Three · Coming Soon</span>
+          <h3>The Story of Noa</h3>
+          <p>A confession about the name she had to survive.</p>
+          <span class="series-status">Coming soon</span>
+        </a>
       </div>
     </section>
 
