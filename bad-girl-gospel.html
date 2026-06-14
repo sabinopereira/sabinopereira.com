@@ -56,17 +56,20 @@
         {
           "@type": "Book",
           "name": "Bad Girl Gospel: The Story of Selah",
-          "position": 1
+          "position": 1,
+          "image": "https://sabinopereira.com/images/bad-girl-gospel-book-cover.jpg"
         },
         {
           "@type": "Book",
           "name": "Bad Girl Gospel: The Story of Diana",
-          "position": 2
+          "position": 2,
+          "image": "https://sabinopereira.com/images/bad-girl-gospel-diana-cover.jpg"
         },
         {
           "@type": "Book",
           "name": "Bad Girl Gospel: The Story of Noa",
-          "position": 3
+          "position": 3,
+          "image": "https://sabinopereira.com/images/bad-girl-gospel-noa-cover.jpg"
         }
       ]
     }
@@ -448,11 +451,31 @@
       display: grid;
       gap: 18px;
       align-content: start;
-      padding: 24px;
+      padding: 18px;
       border: 1px solid var(--line);
       background:
         linear-gradient(145deg, rgba(217, 168, 79, 0.07), transparent 36%),
         rgba(246, 239, 228, 0.024);
+    }
+
+    .series-cover {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      border: 1px solid rgba(246, 239, 228, 0.13);
+      background: #050403;
+      overflow: hidden;
+    }
+
+    .series-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .series-copy {
+      display: grid;
+      gap: 14px;
+      align-content: start;
     }
 
     .series-card.is-current {
@@ -658,7 +681,11 @@
       }
 
       .series-card {
-        padding: 20px;
+        padding: 14px;
+      }
+
+      .series-cover {
+        max-width: 260px;
       }
 
       .series-card h3 {
@@ -766,22 +793,37 @@
       </div>
       <div class="series-grid" aria-label="Bad Girl Gospel books">
         <article class="series-card is-current">
-          <span class="series-kicker">Book One</span>
-          <h3>Bad Girl Gospel: The Story of Selah</h3>
-          <p>A confession about the cost of freedom.</p>
-          <span class="series-status">Available now</span>
+          <div class="series-cover">
+            <img src="/images/bad-girl-gospel-book-cover.jpg" alt="Bad Girl Gospel: The Story of Selah book cover">
+          </div>
+          <div class="series-copy">
+            <span class="series-kicker">Book One</span>
+            <h3>Bad Girl Gospel: The Story of Selah</h3>
+            <p>A confession about the cost of freedom.</p>
+            <span class="series-status">Available now</span>
+          </div>
         </article>
         <article class="series-card">
-          <span class="series-kicker">Book Two</span>
-          <h3>Bad Girl Gospel: The Story of Diana</h3>
-          <p>A confession about love, marriage, memory, and the man she never stopped trying to forget.</p>
-          <span class="series-status">Coming soon</span>
+          <div class="series-cover">
+            <img src="/images/bad-girl-gospel-diana-cover.jpg" alt="Bad Girl Gospel: The Story of Diana book cover">
+          </div>
+          <div class="series-copy">
+            <span class="series-kicker">Book Two</span>
+            <h3>Bad Girl Gospel: The Story of Diana</h3>
+            <p>A confession about love, marriage, memory, and the man she never stopped trying to forget.</p>
+            <span class="series-status">Coming soon</span>
+          </div>
         </article>
         <article class="series-card">
-          <span class="series-kicker">Book Three</span>
-          <h3>Bad Girl Gospel: The Story of Noa</h3>
-          <p>A confession about the name she had to survive.</p>
-          <span class="series-status">Coming soon</span>
+          <div class="series-cover">
+            <img src="/images/bad-girl-gospel-noa-cover.jpg" alt="Bad Girl Gospel: The Story of Noa book cover">
+          </div>
+          <div class="series-copy">
+            <span class="series-kicker">Book Three</span>
+            <h3>Bad Girl Gospel: The Story of Noa</h3>
+            <p>A confession about the name she had to survive.</p>
+            <span class="series-status">Coming soon</span>
+          </div>
         </article>
       </div>
     </section>
