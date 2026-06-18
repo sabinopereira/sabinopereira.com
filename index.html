@@ -495,6 +495,32 @@
       line-height: 1.6;
     }
 
+    .album-player {
+      width: 100%;
+      margin-top: 26px;
+      border: 0;
+      border-radius: 8px;
+    }
+
+    .album-tracklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 22px;
+      margin: 26px 0 0;
+      padding: 22px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      list-style-position: inside;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .album-tracklist li::marker {
+      color: var(--gold);
+      font-variant-numeric: tabular-nums;
+    }
+
     .closing {
       padding: 112px 0 82px;
       text-align: center;
@@ -577,6 +603,10 @@
       }
 
       .music-book-feature {
+        grid-template-columns: 1fr;
+      }
+
+      .album-tracklist {
         grid-template-columns: 1fr;
       }
 
@@ -695,7 +725,7 @@
             <span>Visualizers</span>
           </div>
           <div class="hero-actions">
-            <a class="btn primary" href="/built-by-grace.html">Latest music</a>
+            <a class="btn primary" href="#everybody-acting-insane">Latest music</a>
             <a class="btn" href="/links.html">All links</a>
           </div>
         </div>
@@ -742,9 +772,39 @@
         <span>Visualizers</span>
       </div>
       <div class="hero-actions">
-        <a class="btn primary" href="/built-by-grace.html">Latest music</a>
+        <a class="btn primary" href="#everybody-acting-insane">Latest music</a>
         <a class="btn" href="/links.html">All links</a>
       </div>
+      <article class="music-book-feature" id="everybody-acting-insane" aria-labelledby="everybody-acting-insane-title">
+        <a class="music-book-cover" href="https://open.spotify.com/album/7l7QUMTgrARJcVeUK719Xf?si=q_ez22ncRTy0batpCyWBsg" target="_blank" rel="noopener">
+          <img src="/images/optimized/everybody-acting-insane-cover.png" alt="Everybody Acting Insane album cover by Reira Bin">
+        </a>
+        <div class="music-book-copy">
+          <span class="book-meta">Latest album · Reira Bin</span>
+          <h3 id="everybody-acting-insane-title">Everybody Acting Insane</h3>
+          <p>A cinematic descent into modern madness, digital obsession, and emotional collapse. Industrial metal, gothic rock, dark electronics, and cyberpunk anxiety become the soundtrack of a civilization smiling while quietly falling apart.</p>
+          <iframe class="album-player" data-testid="embed-iframe" src="https://open.spotify.com/embed/album/7l7QUMTgrARJcVeUK719Xf?utm_source=generator&si=03b2e1ef74b64cea" height="352" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Everybody Acting Insane on Spotify"></iframe>
+          <ol class="album-tracklist" aria-label="Everybody Acting Insane tracklist">
+            <li>Clown House</li>
+            <li>Everybody Acting Insane</li>
+            <li>Smile For The Algorithm</li>
+            <li>Main Character Syndrome</li>
+            <li>Soft Apocalypse</li>
+            <li>The Laughing Room</li>
+            <li>Beautiful People, Empty Souls</li>
+            <li>Offline Feels Illegal</li>
+            <li>Relationship DLC</li>
+            <li>Church Of Notifications</li>
+            <li>Dead Inside But Trending</li>
+            <li>End Credits For Humanity</li>
+            <li>Everybody Laughs Again</li>
+          </ol>
+          <div class="hero-actions">
+            <a class="btn primary" href="https://open.spotify.com/album/7l7QUMTgrARJcVeUK719Xf?si=q_ez22ncRTy0batpCyWBsg" target="_blank" rel="noopener">Listen on Spotify</a>
+          </div>
+        </div>
+      </article>
+
       <article class="music-book-feature" aria-labelledby="built-by-grace-book-title">
         <a class="music-book-cover" href="https://quiet-power-shop.fourthwall.com/products/new-digital-product" target="_blank" rel="noopener">
           <img src="/images/built-by-grace-cover.jpg" alt="Built by Grace digital book cover">
