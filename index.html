@@ -470,6 +470,17 @@
       overflow: hidden;
     }
 
+    #everybody-acting-insane {
+      grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+      align-items: start;
+    }
+
+    #everybody-acting-insane .music-book-cover {
+      align-self: start;
+      position: sticky;
+      top: 104px;
+    }
+
     .music-book-cover img {
       width: 100%;
       display: block;
@@ -604,6 +615,16 @@
 
       .music-book-feature {
         grid-template-columns: 1fr;
+      }
+
+      #everybody-acting-insane {
+        grid-template-columns: 1fr;
+      }
+
+      #everybody-acting-insane .music-book-cover {
+        position: static;
+        width: min(100%, 360px);
+        margin: 0 auto;
       }
 
       .album-tracklist {
