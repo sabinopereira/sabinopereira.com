@@ -532,6 +532,91 @@
       font-variant-numeric: tabular-nums;
     }
 
+    .album-merch {
+      margin-top: 34px;
+      padding-top: 30px;
+      border-top: 1px solid var(--line);
+    }
+
+    .album-merch-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+
+    .album-merch-head h4 {
+      margin: 0;
+      color: var(--text);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(28px, 3vw, 42px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .album-merch-head p {
+      max-width: 440px;
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .album-merch-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .album-merch-card {
+      min-width: 0;
+      display: grid;
+      gap: 12px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      background: rgba(246, 239, 228, 0.026);
+      text-decoration: none;
+      transition: border-color 180ms ease, transform 180ms ease, background 180ms ease;
+    }
+
+    .album-merch-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(218, 178, 92, 0.56);
+      background: rgba(218, 178, 92, 0.055);
+    }
+
+    .album-merch-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1.16;
+      object-fit: cover;
+      display: block;
+      background: #0d0d0f;
+    }
+
+    .album-merch-card span {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      line-height: 1.25;
+      text-transform: uppercase;
+    }
+
+    .album-merch-card span::after {
+      content: "Buy";
+      flex: 0 0 auto;
+      padding: 7px 9px;
+      border: 1px solid rgba(218, 178, 92, 0.55);
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+    }
+
     .closing {
       padding: 112px 0 82px;
       text-align: center;
@@ -631,6 +716,14 @@
         grid-template-columns: 1fr;
       }
 
+      .album-merch-head {
+        grid-template-columns: 1fr;
+      }
+
+      .album-merch-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .book-cover {
         max-width: 360px;
         padding: 12px;
@@ -709,6 +802,10 @@
 
       .work-link h2 {
         font-size: 44px;
+      }
+
+      .album-merch-grid {
+        grid-template-columns: 1fr;
       }
 
     }
@@ -820,6 +917,37 @@
             <li>End Credits For Humanity</li>
             <li>Everybody Laughs Again</li>
           </ol>
+          <div class="album-merch" aria-labelledby="everybody-insane-merch-title">
+            <div class="album-merch-head">
+              <div>
+                <span class="book-meta">Album merch</span>
+                <h4 id="everybody-insane-merch-title">Wear the Album</h4>
+                <p>For soft hearts surviving a strange timeline.</p>
+              </div>
+            </div>
+            <div class="album-merch-grid">
+              <a class="album-merch-card" href="https://www.redbubble.com/people/sp-dezigns/shop" target="_blank" rel="noopener">
+                <img src="/images/merch/everybody-is-insane-tee.png" alt="Everybody Is Insane t-shirt mockup">
+                <span>T-Shirt</span>
+              </a>
+              <a class="album-merch-card" href="https://www.redbubble.com/people/sp-dezigns/shop" target="_blank" rel="noopener">
+                <img src="/images/merch/everybody-is-insane-hoodie.png" alt="Everybody Is Insane hoodie mockup">
+                <span>Hoodie</span>
+              </a>
+              <a class="album-merch-card" href="https://www.redbubble.com/people/sp-dezigns/shop" target="_blank" rel="noopener">
+                <img src="/images/merch/everybody-is-insane-sticker.png" alt="Everybody Is Insane sticker mockup">
+                <span>Sticker</span>
+              </a>
+              <a class="album-merch-card" href="https://www.redbubble.com/people/sp-dezigns/shop" target="_blank" rel="noopener">
+                <img src="/images/merch/everybody-is-insane-poster.png" alt="Everybody Is Insane poster mockup">
+                <span>Poster</span>
+              </a>
+              <a class="album-merch-card" href="https://www.redbubble.com/people/sp-dezigns/shop" target="_blank" rel="noopener">
+                <img src="/images/merch/everybody-is-insane-tote.png" alt="Everybody Is Insane tote bag mockup">
+                <span>Tote</span>
+              </a>
+            </div>
+          </div>
           <div class="hero-actions">
             <a class="btn primary" href="https://open.spotify.com/album/7l7QUMTgrARJcVeUK719Xf?si=q_ez22ncRTy0batpCyWBsg" target="_blank" rel="noopener">Listen on Spotify</a>
           </div>
