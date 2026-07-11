@@ -237,6 +237,17 @@
 
     .series-card p { margin: 0; }
 
+    .manifesto-quote {
+      margin: 24px 0 22px;
+      padding: 22px 24px;
+      border-left: 1px solid var(--line-strong);
+      background: rgba(217, 168, 79, 0.055);
+      color: var(--text);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(28px, 3.3vw, 44px);
+      line-height: 1.08;
+    }
+
     .truth-files-notes {
       grid-template-columns: 1fr;
       gap: 14px;
@@ -394,9 +405,9 @@
 <body>
   <header class="site-header">
     <div class="nav-wrap">
-      <a class="brand" href="/" aria-label="Reira Bin home">
-        <span class="brand-mark">RB</span>
-        <span class="brand-name">Reira Bin</span>
+      <a class="brand" href="/" aria-label="Sabino Pereira home">
+        <span class="brand-mark">SP</span>
+        <span class="brand-name">Sabino Pereira</span>
       </a>
       <nav class="main-nav" aria-label="Primary navigation">
         <a href="/">Home</a>
@@ -425,8 +436,8 @@
       <div class="feature-copy">
         <p class="eyebrow">Case 001</p>
         <h2 id="truth-files-feature-title">In God we trust. Others we must investigate.</h2>
-        <p>Truth Files is not a call to live suspiciously. It is a call to live awake. Faith keeps the heart anchored; discernment keeps the eyes open.</p>
-        <p>The foundation is simple: examine everything, hold fast to what is good. Not every voice deserves access. Not every promise deserves blind trust. Wisdom asks for fruit, patterns, evidence, and time.</p>
+        <blockquote class="manifesto-quote">Truth Files is not a call to live suspiciously. It is a call to live awake.</blockquote>
+        <p>Faith keeps the heart anchored; discernment keeps the eyes open. Examine everything. Hold fast to what is good.</p>
         <div class="episode-grid truth-files-notes">
           <article class="series-card">
             <p class="eyebrow">Scripture</p>
@@ -449,8 +460,8 @@
 
     <section class="section" aria-labelledby="truth-files-path-title">
       <div class="section-head">
-        <h2 id="truth-files-path-title">The line.</h2>
-        <p>Truth Files lives inside the wider work as the sharper editorial path for faith, facts, behaviour, and practical discernment.</p>
+        <h2 id="truth-files-path-title">Where Truth Files Fits</h2>
+        <p>A sharper editorial path inside the wider work: faith, facts, behaviour, and practical discernment.</p>
       </div>
       <div class="series-grid">
         <article class="series-card">
@@ -470,12 +481,30 @@
         </article>
       </div>
     </section>
+
+    <section class="section" aria-labelledby="truth-files-next-title">
+      <div class="section-head">
+        <h2 id="truth-files-next-title">Follow the cases.</h2>
+        <p>Read the notes. Examine everything. Hold fast to what is good.</p>
+      </div>
+      <div class="series-grid">
+        <article class="series-card">
+          <p class="eyebrow">Next step</p>
+          <h3>Read Case 001</h3>
+          <p>Start with the manifesto and the first principle: discernment is not distrust.</p>
+          <div class="link-row">
+            <a class="text-link" href="#truth-files-feature-title">Read Case 001</a>
+            <a class="text-link" href="/series.html">Explore series</a>
+          </div>
+        </article>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <span>Reira Bin / Sabino Pereira</span>
-      <span>Series. Essays. Release worlds.</span>
+      <span>Sabino Pereira</span>
+      <span>Truth Files. Faith. Facts. Discernment.</span>
     </div>
   </footer>
 </body>
