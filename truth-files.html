@@ -338,9 +338,12 @@
     .case-label .eyebrow { margin-bottom: 14px; }
 
     .case-label h2 {
+      max-width: 100%;
       margin: 0 0 16px;
-      font-size: clamp(32px, 4vw, 54px);
+      font-size: clamp(30px, 3.2vw, 46px);
       line-height: 0.98;
+      overflow-wrap: break-word;
+      text-wrap: balance;
     }
 
     .case-label p {
