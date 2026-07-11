@@ -242,6 +242,52 @@
       text-transform: uppercase;
     }
 
+    .truth-spotlight {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+      padding: 86px 0;
+      display: grid;
+      grid-template-columns: minmax(280px, 0.74fr) minmax(0, 1fr);
+      gap: clamp(32px, 5vw, 70px);
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .truth-spotlight-media {
+      margin: 0;
+      border: 1px solid var(--line-strong);
+      background: #090806;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+    }
+
+    .truth-spotlight-media img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+    }
+
+    .truth-spotlight-copy {
+      min-width: 0;
+    }
+
+    .truth-spotlight-copy h2 {
+      max-width: 720px;
+      margin: 0;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .truth-spotlight-copy p {
+      max-width: 620px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
     .section {
       width: min(var(--max), calc(100% - 48px));
       margin: 0 auto;
@@ -677,9 +723,14 @@
 
       .hero-inner,
       .section-head,
-      .music-feature {
+      .music-feature,
+      .truth-spotlight {
         grid-template-columns: 1fr;
         gap: 42px;
+      }
+
+      .truth-spotlight-media {
+        max-width: 440px;
       }
 
       .feature-copy {
@@ -734,6 +785,7 @@
       .nav-wrap,
       .hero-inner,
       .section,
+      .truth-spotlight,
       .footer-inner {
         width: min(100% - 32px, var(--max));
       }
@@ -777,6 +829,7 @@
 
       .section-title,
       .feature-copy h2,
+      .truth-spotlight-copy h2,
       .closing h2 {
         font-size: 34px;
         line-height: 1.02;
@@ -851,6 +904,21 @@
           <strong>Featured now: Truth Files.</strong>
           Volume One is a reflective series on faith, truth, and discernment: twelve cases about trust, evidence, patterns, clarity, and self-awareness.
         </aside>
+      </div>
+    </section>
+
+    <section class="truth-spotlight" aria-labelledby="truth-spotlight-title">
+      <figure class="truth-spotlight-media">
+        <img src="/images/truth-files.png" alt="Truth Files artwork with the phrase In God we trust, others we must investigate">
+      </figure>
+      <div class="truth-spotlight-copy">
+        <p class="book-meta">Featured Series</p>
+        <h2 id="truth-spotlight-title">Truth Files</h2>
+        <p><strong>Faith. Facts. Discernment.</strong> Volume One is a reflective series about trust, evidence, patterns, clarity, and the wisdom to examine everything without becoming cynical.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="/truth-files.html">Read Truth Files</a>
+          <a class="btn" href="/truth-files.html#case-001">Start with Case 001</a>
+        </div>
       </div>
     </section>
 
