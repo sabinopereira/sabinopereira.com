@@ -154,17 +154,30 @@
     }
 
     .studio {
-      height: 218px;
+      position: relative;
+      height: clamp(260px, 30vw, 430px);
       overflow: hidden;
       background: #090705;
       border-bottom: 1px solid rgba(213, 166, 87, 0.22);
     }
 
+    .studio::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.46;
+      filter: blur(14px) saturate(0.86);
+      transform: scale(1.06);
+      background: url("/images/reira-bin-studio-banner-en.png") center / cover no-repeat;
+    }
+
     .studio img {
+      position: relative;
+      z-index: 1;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center 49%;
+      object-fit: contain;
+      object-position: center center;
     }
 
     .search-area {
@@ -717,11 +730,13 @@
       }
 
       .studio {
-        height: 156px;
+        height: 202px;
       }
 
       .studio img {
+        object-fit: contain;
         object-position: center;
+        background: #050403;
       }
 
       .search-area {
@@ -739,14 +754,14 @@
       }
 
       .search-card svg {
-        left: 14px;
-        right: auto;
+        right: 14px;
+        left: auto;
         width: 22px;
         height: 22px;
       }
 
       .search-card input {
-        padding: 0 14px 0 44px;
+        padding: 0 48px 0 16px;
         font-size: 15px;
       }
 
