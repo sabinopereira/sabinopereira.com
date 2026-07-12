@@ -573,6 +573,29 @@
       line-height: 1.7;
     }
 
+    .tracklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 22px;
+      max-width: 760px;
+      margin: 28px 0 0;
+      padding: 0;
+      list-style: none;
+      color: rgba(246, 239, 228, 0.82);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .tracklist li {
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(246, 239, 228, 0.09);
+    }
+
+    .tracklist .bonus {
+      color: var(--gold);
+    }
+
     .site-footer {
       border-top: 1px solid var(--line);
       padding: 34px 0;
@@ -703,6 +726,11 @@
         padding: 14px;
       }
 
+      .tracklist {
+        grid-template-columns: 1fr;
+        max-width: 340px;
+      }
+
       .series-cover {
         max-width: 260px;
       }
@@ -808,7 +836,7 @@
     <section class="section" aria-labelledby="series-title">
       <div class="section-head">
         <h2 id="series-title">The Bad Girl Gospel series.</h2>
-        <p>Four confessions about women the world judged before it understood them. Selah begins the series. Diana, Noa, and Naomi are coming soon.</p>
+        <p>Four confessions about women the world judged before it understood them. Selah opens the series; Diana, Noa, and Naomi extend the same gospel from different wounds.</p>
       </div>
       <div class="series-grid" aria-label="Bad Girl Gospel books">
         <article class="series-card is-current">
@@ -823,7 +851,7 @@
             <span class="series-status">Available now</span>
           </div>
         </article>
-        <article class="series-card">
+        <a class="series-card" href="https://www.amazon.com/dp/B0H5NH3XXR" target="_blank" rel="noopener" aria-label="Buy Bad Girl Gospel: The Story of Diana on Amazon">
           <div class="series-cover">
             <img src="/images/bad-girl-gospel-diana-cover.jpg" alt="Bad Girl Gospel: The Story of Diana book cover">
           </div>
@@ -832,10 +860,10 @@
             <h3>Bad Girl Gospel: The Story of Diana</h3>
             <p>A confession about love, marriage, memory, and the man she never stopped trying to forget.</p>
             <p class="series-preview">“Diana did not marry many times because she loved too easily. She married many times because one man never left her.”</p>
-            <span class="series-status">Coming soon</span>
+            <span class="series-status">Available on Amazon</span>
           </div>
-        </article>
-        <article class="series-card">
+        </a>
+        <a class="series-card" href="https://www.amazon.com/dp/B0H5YVMGFR" target="_blank" rel="noopener" aria-label="Buy Bad Girl Gospel: The Story of Noa on Amazon">
           <div class="series-cover">
             <img src="/images/bad-girl-gospel-noa-cover.jpg" alt="Bad Girl Gospel: The Story of Noa book cover">
           </div>
@@ -844,9 +872,9 @@
             <h3>Bad Girl Gospel: The Story of Noa</h3>
             <p>A confession about the name she had to survive.</p>
             <p class="series-preview">“They called me a bad girl because I refused to keep living as a good lie.”</p>
-            <span class="series-status">Coming soon</span>
+            <span class="series-status">Available on Amazon</span>
           </div>
-        </article>
+        </a>
         <a class="series-card" href="https://www.amazon.com/dp/B0H3TCM81T" target="_blank" rel="noopener" aria-label="Pre-order Bad Girl Gospel: The Story of Naomi on Amazon">
           <div class="series-cover">
             <img src="/images/bad-girl-gospel-naomi-cover.png" alt="Bad Girl Gospel: The Story of Naomi book cover">
@@ -865,12 +893,33 @@
     <section class="section" aria-labelledby="album-title">
       <div class="album-block">
         <div class="album-cover">
-          <img src="/images/being-a-bad-girl-album-coming-soon.png" alt="BEING A BAD GIRL concept album cover coming soon">
+          <img src="/images/bad-girl-gospel-album-cover.jpg" alt="Bad Girl Gospel album cover by Reira Bin">
         </div>
         <div class="album-copy">
-          <p class="eyebrow">Music Project In Development</p>
-          <h2 id="album-title">Companion music is coming later.</h2>
-          <p>The album artwork stays here as a visual note from Selah’s world. The playlist is hidden for now while the music direction is refined.</p>
+          <p class="eyebrow">Album Locked for Distribution</p>
+          <h2 id="album-title">Bad Girl Gospel now has its sound.</h2>
+          <p>The companion album is closed and prepared for DistroKid submission: nineteen tracks from the wider Bad Girl Gospel universe, with the two bonus versions kept at the end.</p>
+          <ol class="tracklist" aria-label="Bad Girl Gospel album tracklist">
+            <li>00 - She Walks In</li>
+            <li>01 - She Prays After Midnight</li>
+            <li>02 - Pretty Dangerous</li>
+            <li>03 - Don’t Call Me Baby</li>
+            <li>04 - The Face She Wears</li>
+            <li>05 - No Apology</li>
+            <li>06 - Good Girls Break Too</li>
+            <li>07 - No One Clapped When I Got Home</li>
+            <li>08 - Bad Girls Don't Cry in Public</li>
+            <li>09 - She Was Never Yours</li>
+            <li>10 - Exits Like a Queen</li>
+            <li>11 - Counting Shadows</li>
+            <li>12 - Good Lie</li>
+            <li>13 - I Answer Now</li>
+            <li>14 - The Gospel of Selah</li>
+            <li>15 - Scent and Alibis</li>
+            <li>16 - Love Me Properly</li>
+            <li class="bonus">17 - No One Clapped When I Got Home Bonus</li>
+            <li class="bonus">18 - Good Girls Break Too Bonus</li>
+          </ol>
         </div>
       </div>
     </section>
