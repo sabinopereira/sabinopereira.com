@@ -932,6 +932,9 @@
       .music-mobile-panel {
         margin-top: 30px;
         padding: 16px;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
         border: 1px solid rgba(255,255,255,0.18);
         border-radius: 13px;
         background:
@@ -948,6 +951,10 @@
         justify-content: space-between;
         gap: 14px;
         margin-bottom: 14px;
+      }
+
+      .music-title .section-link {
+        display: none;
       }
 
       .music-title h2 {
@@ -967,19 +974,25 @@
 
       .album-mobile-grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 10px;
+        grid-template-columns: 1fr;
+        gap: 9px;
         align-items: start;
       }
 
       .album-mobile {
         min-width: 0;
         display: grid;
-        gap: 7px;
+        grid-template-columns: 58px minmax(0, 1fr);
+        gap: 11px;
+        align-items: center;
+        padding: 8px;
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 8px;
+        background: rgba(8, 6, 4, 0.22);
       }
 
       .album-mobile img {
-        width: 100%;
+        width: 58px;
         aspect-ratio: 1;
         object-fit: cover;
         border: 1px solid rgba(255,255,255,0.15);
@@ -993,12 +1006,12 @@
       }
 
       .album-mobile h3 {
-        font-size: 10px;
+        font-size: 13px;
       }
 
       .album-mobile p {
         margin-top: 2px;
-        font-size: 9px;
+        font-size: 10px;
       }
 
       .footer {
@@ -1103,9 +1116,9 @@
               <a class="feature-card feature-small book-mini" href="/bad-girl-gospel.html">
                 <img src="/images/bad-girl-gospel-book-cover.jpg" alt="Bad Girl Gospel book cover">
                 <div>
-                  <span class="item-label">Featured book</span>
+                  <span class="item-label">Current universe</span>
                   <h2>Bad Girl Gospel</h2>
-                  <p>Shame, grace, identity, and becoming whole.</p>
+                  <p>Books, companion album, shame, grace, and survival.</p>
                 </div>
               </a>
             </div>
@@ -1129,13 +1142,18 @@
           <div class="music-head">
             <div>
               <h2>REIRA BIN</h2>
-              <p>Music projects and sound worlds.</p>
+              <p>Music projects and story worlds.</p>
             </div>
             <a class="music-link" href="/links.html">All music</a>
           </div>
 
           <div class="album-display">
-            <a class="album-tile featured" href="/built-by-grace.html">
+            <a class="album-tile featured" href="/bad-girl-gospel.html#album-title">
+              <img src="/images/bad-girl-gospel-album-cover.jpg" alt="Bad Girl Gospel album cover">
+              <h3>Bad Girl Gospel</h3>
+              <p>Companion album complete.</p>
+            </a>
+            <a class="album-tile" href="/built-by-grace.html">
               <img src="/images/optimized/built-by-grace-cover.png" alt="Built by Grace">
               <h3>Built by Grace</h3>
               <p>Gospel, healing, faith.</p>
@@ -1145,16 +1163,11 @@
               <h3>Everybody Acting Insane</h3>
               <p>Industrial, cinematic, intense.</p>
             </a>
-            <a class="album-tile" href="/xadrez-no-comando.html">
-              <img src="/images/optimized/xadrez-no-comando-cover.png" alt="Strategy Soundtrack">
-              <h3>Strategy Soundtrack</h3>
-              <p>Strategy, focus, movement.</p>
-            </a>
           </div>
 
-          <a class="music-cta" href="/links.html">
-            <strong>Open an album page.</strong>
-            <span>Find playlists, Spotify, YouTube, related books, notes, and merch from the Quiet Power shop.</span>
+          <a class="music-cta" href="/bad-girl-gospel.html#album-title">
+            <strong>Open Bad Girl Gospel.</strong>
+            <span>See the closed tracklist, album cover, book series, and release note for the companion music.</span>
           </a>
 
           <div class="bars" aria-hidden="true">
@@ -1198,7 +1211,7 @@
             <div>
               <span class="label">Book</span>
               <h3>Bad Girl Gospel</h3>
-              <p>Shame, grace, and becoming whole.</p>
+              <p>Books, album, and survival.</p>
             </div>
           </a>
         </div>
@@ -1208,13 +1221,18 @@
         <div class="music-title">
           <div>
             <h2>REIRA BIN</h2>
-            <p>Music projects and sound worlds.</p>
+            <p>Music projects and story worlds.</p>
           </div>
           <a class="section-link" href="/links.html">All music</a>
         </div>
 
         <div class="album-mobile-grid">
-          <a class="album-mobile featured" href="/built-by-grace.html">
+          <a class="album-mobile featured" href="/bad-girl-gospel.html#album-title">
+            <img src="/images/bad-girl-gospel-album-cover.jpg" alt="Bad Girl Gospel album cover">
+            <h3>Bad Girl Gospel</h3>
+            <p>Complete</p>
+          </a>
+          <a class="album-mobile" href="/built-by-grace.html">
             <img src="/images/optimized/built-by-grace-cover.png" alt="Built by Grace">
             <h3>Built by Grace</h3>
             <p>Faith</p>
@@ -1224,16 +1242,11 @@
             <h3>Everybody Acting Insane</h3>
             <p>Industrial</p>
           </a>
-          <a class="album-mobile" href="/xadrez-no-comando.html">
-            <img src="/images/optimized/xadrez-no-comando-cover.png" alt="Strategy Soundtrack">
-            <h3>Strategy Soundtrack</h3>
-            <p>Focus</p>
-          </a>
         </div>
 
-        <a class="music-cta" href="/links.html">
-          <strong>Open an album page.</strong>
-          <span>Playlists, Spotify, YouTube, related books, notes, and merch.</span>
+        <a class="music-cta" href="/bad-girl-gospel.html#album-title">
+          <strong>Open Bad Girl Gospel.</strong>
+          <span>Tracklist, cover, book series, and companion music note.</span>
         </a>
       </section>
     </section>
@@ -1255,8 +1268,9 @@
       { title: 'Truth Files', type: 'Series', description: 'Faith. Facts. Discernment.', url: '/truth-files.html' },
       { title: 'Truth Files / Case 001', type: 'Case', description: 'In God we trust. Others we must investigate.', url: '/truth-files.html#case-001' },
       { title: 'Being Human', type: 'Series', description: 'Unfiltered notes on identity, emotion, and modern life.', url: '/series.html' },
-      { title: 'Bad Girl Gospel', type: 'Book', description: 'Shame, grace, identity, and becoming whole.', url: '/bad-girl-gospel.html' },
+      { title: 'Bad Girl Gospel', type: 'Universe', description: 'Books, companion album, shame, grace, and survival.', url: '/bad-girl-gospel.html' },
       { title: 'Books', type: 'Library', description: 'Selected books by Sabino Pereira.', url: '/books.html' },
+      { title: 'Bad Girl Gospel Album', type: 'Music', description: 'Companion album complete. Streaming details soon.', url: '/bad-girl-gospel.html#album-title' },
       { title: 'Built by Grace', type: 'Music', description: 'Gospel, healing, faith.', url: '/built-by-grace.html' },
       { title: 'Everybody Acting Insane', type: 'Music', description: 'Industrial, cinematic, intense.', url: 'https://open.spotify.com/album/7l7QUMTgrARJcVeUK719Xf?si=q_ez22ncRTy0batpCyWBsg' },
       { title: 'Strategy Soundtrack', type: 'Music', description: 'Strategy, focus, movement.', url: '/xadrez-no-comando.html' },
