@@ -898,6 +898,29 @@
         height: 30px;
       }
 
+      .book-mobile-card {
+        grid-column: 1 / -1;
+        min-height: 166px;
+        grid-template-columns: 96px minmax(0, 1fr);
+        align-items: center;
+        align-content: center;
+        gap: 14px;
+      }
+
+      .book-mobile-card img {
+        width: 96px;
+        height: 136px;
+        margin-bottom: 0;
+      }
+
+      .book-mobile-card h3 {
+        font-size: 21px;
+      }
+
+      .book-mobile-card p {
+        font-size: 13px;
+      }
+
       .small-card h3 {
         font-size: 16px;
       }
@@ -1170,11 +1193,13 @@
             <p>Identity, emotion, and modern life.</p>
           </a>
 
-          <a class="small-card" href="/bad-girl-gospel.html">
+          <a class="small-card book-mobile-card" href="/bad-girl-gospel.html">
             <img src="/images/bad-girl-gospel-book-cover.jpg" alt="Bad Girl Gospel book cover">
-            <span class="label">Book</span>
-            <h3>Bad Girl Gospel</h3>
-            <p>Shame, grace, and becoming whole.</p>
+            <div>
+              <span class="label">Book</span>
+              <h3>Bad Girl Gospel</h3>
+              <p>Shame, grace, and becoming whole.</p>
+            </div>
           </a>
         </div>
       </div>
