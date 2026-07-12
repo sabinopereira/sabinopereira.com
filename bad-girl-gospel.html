@@ -596,6 +596,44 @@
       color: var(--gold);
     }
 
+    .path-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .path-card {
+      min-width: 0;
+      display: grid;
+      align-content: start;
+      gap: 12px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(145deg, rgba(217, 168, 79, 0.08), transparent 42%),
+        rgba(246, 239, 228, 0.026);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .path-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(217, 168, 79, 0.52);
+      background: rgba(217, 168, 79, 0.055);
+    }
+
+    .path-card h3 {
+      margin: 0;
+      font-size: clamp(28px, 3vw, 38px);
+      line-height: 1.04;
+    }
+
+    .path-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
     .site-footer {
       border-top: 1px solid var(--line);
       padding: 34px 0;
@@ -641,7 +679,8 @@
       .section-head,
       .album-block,
       .three-points,
-      .series-grid {
+      .series-grid,
+      .path-grid {
         grid-template-columns: 1fr;
       }
 
@@ -921,6 +960,30 @@
             <li class="bonus">18 - Good Girls Break Too Bonus</li>
           </ol>
         </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="paths-title">
+      <div class="section-head">
+        <h2 id="paths-title">Read it, hear it, follow it.</h2>
+        <p>Bad Girl Gospel is the clearest bridge between the site’s three layers: fiction, music, and reflective series.</p>
+      </div>
+      <div class="path-grid">
+        <a class="path-card" href="/books.html">
+          <p class="eyebrow">Books</p>
+          <h3>The four confessions</h3>
+          <p>Selah opens the world. Diana, Noa, and Naomi extend it through love, memory, identity, money, hunger, faith, and survival.</p>
+        </a>
+        <a class="path-card" href="#album-title">
+          <p class="eyebrow">Music</p>
+          <h3>The companion album</h3>
+          <p>Nineteen tracks turn the same world into a sound: prayer after midnight, public armor, exits, alibis, and gospel.</p>
+        </a>
+        <a class="path-card" href="/series.html">
+          <p class="eyebrow">Series</p>
+          <h3>The thinking layer</h3>
+          <p>Truth Files and Being Human hold the wider questions behind the story: discernment, intimacy, image, faith, and pressure.</p>
+        </a>
       </div>
     </section>
   </main>

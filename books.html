@@ -497,6 +497,45 @@
       line-height: 1.55;
     }
 
+    .world-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .world-card {
+      min-width: 0;
+      display: grid;
+      align-content: start;
+      gap: 12px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(145deg, rgba(217, 168, 79, 0.08), transparent 42%),
+        rgba(246, 239, 228, 0.026);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .world-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(217, 168, 79, 0.52);
+      background: rgba(217, 168, 79, 0.055);
+    }
+
+    .world-card h3 {
+      margin: 0;
+      font-size: clamp(28px, 3vw, 38px);
+      line-height: 1.04;
+    }
+
+    .world-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
     .site-footer {
       border-top: 1px solid var(--line);
       padding: 34px 0;
@@ -594,14 +633,16 @@
       }
 
       .series-grid,
-      .book-grid {
+      .book-grid,
+      .world-grid {
         width: 100%;
         max-width: 100%;
         grid-template-columns: minmax(0, 1fr);
       }
 
       .series-card,
-      .book-card {
+      .book-card,
+      .world-card {
         width: 100%;
         max-width: 100%;
         overflow: hidden;
@@ -611,6 +652,8 @@
       .book-card h3,
       .series-card p,
       .book-card p,
+      .world-card p,
+      .world-card h3,
       .series-card .meta-line,
       .book-card .meta-line {
         max-width: 280px;
@@ -619,7 +662,8 @@
       }
 
       .series-card h3,
-      .book-card h3 {
+      .book-card h3,
+      .world-card h3 {
         font-size: 25px;
         line-height: 1.1;
       }
@@ -763,6 +807,30 @@
       </div>
       <div class="actions" style="margin-top: 36px;">
         <a class="btn primary" href="https://www.amazon.com/stores/Sabino-Zeferino-Pereira/author/B0GN52LCM9/allbooks?ccs_id=3c672332-31c2-4258-b474-207e9ab479b3" target="_blank" rel="noopener">View all books on Amazon</a>
+      </div>
+    </section>
+
+    <section class="shelf" aria-labelledby="worlds-title">
+      <div class="section-head">
+        <h2 id="worlds-title">Story worlds, not separate shelves.</h2>
+        <p>The books, music, and editorial series are meant to cross-reference each other: read the story, hear the atmosphere, then follow the essay trail behind the theme.</p>
+      </div>
+      <div class="world-grid">
+        <a class="world-card" href="/bad-girl-gospel.html#album-title">
+          <p class="eyebrow">Listen</p>
+          <h3>Bad Girl Gospel album</h3>
+          <p>The companion album turns the book universe into sound: confession, rumor, prayer, exits, and survival.</p>
+        </a>
+        <a class="world-card" href="/series.html">
+          <p class="eyebrow">Follow</p>
+          <h3>Related series</h3>
+          <p>Truth Files and Being Human carry the essay layer behind faith, discernment, intimacy, pressure, and identity.</p>
+        </a>
+        <a class="world-card" href="/links.html">
+          <p class="eyebrow">Start</p>
+          <h3>One link hub</h3>
+          <p>Use the link page when you want the fast route into Spotify, books, YouTube, the website, and the visual side of the work.</p>
+        </a>
       </div>
     </section>
   </main>

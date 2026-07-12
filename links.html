@@ -189,6 +189,98 @@
       flex: 0 0 auto;
     }
 
+    .universe-card {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 118px minmax(0, 1fr);
+      gap: 18px;
+      padding: 18px;
+      border-radius: 24px;
+      border: 3px double var(--gold-accent);
+      background:
+        linear-gradient(145deg, rgba(201, 155, 66, 0.14), transparent 46%),
+        var(--bg-card);
+      box-shadow: 0 10px 24px rgba(61, 35, 20, 0.07);
+    }
+
+    .universe-card img {
+      width: 118px;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(201, 155, 66, 0.35);
+      box-shadow: 0 8px 18px rgba(44, 26, 14, 0.12);
+    }
+
+    .universe-copy {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .universe-kicker {
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      color: var(--gold-accent);
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .universe-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      line-height: 1.15;
+      color: var(--text-main);
+    }
+
+    .universe-card p {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .universe-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .universe-actions a {
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(201, 155, 66, 0.32);
+      color: var(--accent);
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      background: rgba(201, 155, 66, 0.08);
+    }
+
+    @media (max-width: 640px) {
+      .universe-card {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 14px;
+      }
+
+      .universe-card img {
+        width: 100%;
+        max-width: 190px;
+        border-radius: 12px;
+      }
+
+      .universe-card h3 {
+        font-size: 17px;
+      }
+    }
+
     /* 3D BOOK CAROUSEL CONTAINER */
     .books-section {
       width: 100%;
@@ -804,6 +896,22 @@
         <span class="link-hub-arrow" aria-hidden="true">›</span>
       </a>
     </nav>
+
+    <!-- SECTION: CURRENT UNIVERSE -->
+    <h2 class="section-title">Current Universe</h2>
+    <section class="universe-card" aria-labelledby="links-bgg-title">
+      <img src="/images/bad-girl-gospel-album-cover.jpg" alt="Bad Girl Gospel album cover">
+      <div class="universe-copy">
+        <span class="universe-kicker">Books + Music + Series</span>
+        <h3 id="links-bgg-title">Bad Girl Gospel</h3>
+        <p>The active story world: four books, a companion album, and the essay themes behind faith, image, pressure, and survival.</p>
+        <div class="universe-actions" aria-label="Bad Girl Gospel links">
+          <a href="/bad-girl-gospel.html">Read</a>
+          <a href="/bad-girl-gospel.html#album-title">Listen</a>
+          <a href="/series.html">Follow</a>
+        </div>
+      </div>
+    </section>
 
     <!-- SECTION: BOOKS -->
     <h2 class="section-title">Books</h2>

@@ -252,6 +252,63 @@
       text-transform: uppercase;
     }
 
+    .bridge-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(240px, 0.72fr);
+      gap: clamp(24px, 4vw, 52px);
+      align-items: center;
+      padding: clamp(24px, 4vw, 42px);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(145deg, rgba(217, 168, 79, 0.09), transparent 48%),
+        rgba(246, 239, 228, 0.026);
+    }
+
+    .bridge-card h2 {
+      margin: 0;
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 0.98;
+    }
+
+    .bridge-card p {
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .bridge-links {
+      display: grid;
+      gap: 12px;
+    }
+
+    .bridge-link {
+      display: block;
+      padding: 16px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      background: rgba(0, 0, 0, 0.12);
+      font-size: 15px;
+      line-height: 1.45;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .bridge-link:hover {
+      transform: translateY(-2px);
+      border-color: rgba(217, 168, 79, 0.52);
+      background: rgba(217, 168, 79, 0.055);
+    }
+
+    .bridge-link strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
     .section {
       padding: 74px 0 94px;
       border-bottom: 1px solid var(--line);
@@ -321,7 +378,8 @@
 
       .hero,
       .feature,
-      .section-head {
+      .section-head,
+      .bridge-card {
         display: block;
       }
 
@@ -359,6 +417,10 @@
       .episode-grid,
       .series-grid {
         grid-template-columns: 1fr;
+      }
+
+      .bridge-links {
+        margin-top: 24px;
       }
 
       .episode-grid .series-card h3 {
@@ -471,6 +533,30 @@
             <a class="text-link" href="/life-is-a-bug.html">Open series</a>
           </div>
         </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="bridge-title">
+      <div class="bridge-card">
+        <div>
+          <p class="eyebrow">How it connects</p>
+          <h2 id="bridge-title">The essays explain the pressure behind the worlds.</h2>
+          <p>Music gives the atmosphere. Books give the characters. Series give the thinking underneath: discernment, intimacy, technology, behavior, faith, and the patterns people keep repeating.</p>
+        </div>
+        <div class="bridge-links" aria-label="Connected work">
+          <a class="bridge-link" href="/bad-girl-gospel.html">
+            <strong>Read the world</strong>
+            Bad Girl Gospel carries the fiction side: Selah, Diana, Noa, Naomi, and the companion album.
+          </a>
+          <a class="bridge-link" href="/bad-girl-gospel.html#album-title">
+            <strong>Hear the world</strong>
+            The album collects the emotional sound of the same universe.
+          </a>
+          <a class="bridge-link" href="/books.html">
+            <strong>Browse the books</strong>
+            The book shelf shows which stories are active, available, and connected.
+          </a>
+        </div>
       </div>
     </section>
   </main>
