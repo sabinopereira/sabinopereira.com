@@ -198,12 +198,10 @@
     }
 
     .books-carousel {
-      display: flex;
-      gap: 24px;
-      overflow-x: auto;
-      padding: 20px 8px 30px 8px;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: none; /* Firefox */
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      padding: 8px 0 2px;
     }
 
     .books-carousel::-webkit-scrollbar {
@@ -212,10 +210,9 @@
 
     /* 3D BOOK STRUCTURE */
     .book-wrapper {
-      flex: 0 0 160px;
-      height: 240px;
+      width: 100%;
+      aspect-ratio: 2 / 3;
       perspective: 1000px;
-      scroll-snap-align: center;
       cursor: pointer;
     }
 
