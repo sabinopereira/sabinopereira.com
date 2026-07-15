@@ -2,16 +2,645 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Redirecting — Sabino Pereira</title>
+  <title>Quiet Power Shop | Tees and Hoodies by Sabino Pereira</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex, follow">
-  <meta http-equiv="refresh" content="0; url=/">
-  <link rel="canonical" href="https://sabinopereira.com/">
-  <script>
-    window.location.replace("/");
+  <meta name="description" content="Shop Quiet Power tees and hoodies by Sabino Pereira and Reira Bin, including Built by Grace, Checkmate in Silence, and Everybody Acting Insane designs.">
+  <link rel="canonical" href="https://sabinopereira.com/shop.html">
+  <meta property="og:title" content="Quiet Power Shop | Tees and Hoodies">
+  <meta property="og:description" content="Original tees and hoodies shaped by quiet power, faith, strategy, pressure, music, books, and modern emotional survival.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sabinopereira.com/shop.html">
+  <meta property="og:image" content="https://sabinopereira.com/images/merch/built-by-grace-oversized-t-shirt.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Quiet Power Shop | Tees and Hoodies">
+  <meta name="twitter:description" content="Original tees and hoodies by Sabino Pereira and Reira Bin.">
+  <meta name="twitter:image" content="https://sabinopereira.com/images/merch/built-by-grace-oversized-t-shirt.png">
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --ink: #12110f;
+      --muted: #686159;
+      --line: rgba(18, 17, 15, 0.14);
+      --soft: #ebe6dc;
+      --dark: #151513;
+      --gold: #9f7b32;
+      --white: #fffaf0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: 0;
+    }
+
+    a { color: inherit; }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 22px clamp(18px, 4vw, 56px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(244, 241, 234, 0.92);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(14px);
+    }
+
+    .brand {
+      display: grid;
+      gap: 2px;
+      text-decoration: none;
+    }
+
+    .brand strong {
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 18px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--muted);
+    }
+
+    .nav a[aria-current="page"],
+    .nav a:hover {
+      color: var(--ink);
+    }
+
+    main {
+      width: min(1220px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(360px, 1.08fr);
+      gap: clamp(28px, 5vw, 72px);
+      align-items: center;
+      min-height: min(820px, calc(100vh - 78px));
+      padding: 54px 0 44px;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--gold);
+      font: 700 12px/1.3 Arial, Helvetica, sans-serif;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(54px, 9vw, 118px);
+      line-height: 0.9;
+      font-weight: 500;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.45;
+    }
+
+    .hero-actions,
+    .section-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border: 1px solid var(--ink);
+      border-radius: 4px;
+      background: var(--ink);
+      color: var(--white);
+      font: 700 13px/1 Arial, Helvetica, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .hero-panel {
+      display: grid;
+      grid-template-columns: 1fr 0.92fr;
+      gap: 14px;
+      align-items: end;
+    }
+
+    .feature-card {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      min-height: 420px;
+    }
+
+    .feature-card.dark {
+      background: #111;
+      color: var(--white);
+      transform: translateY(40px);
+    }
+
+    .feature-card img {
+      display: block;
+      width: 100%;
+      height: 430px;
+      object-fit: contain;
+      padding: 18px;
+    }
+
+    .feature-card.dark img {
+      height: 500px;
+    }
+
+    .feature-label {
+      border-top: 1px solid var(--line);
+      padding: 16px 18px 18px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .feature-label strong {
+      display: block;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .feature-label span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .feature-card.dark .feature-label span {
+      color: rgba(255, 250, 240, 0.68);
+    }
+
+    .shop-section {
+      padding: 74px 0 30px;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.55fr);
+      gap: 34px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(36px, 5vw, 72px);
+      line-height: 0.95;
+      font-weight: 500;
+    }
+
+    .section-head p,
+    .seo-block p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 26px;
+    }
+
+    .filter-chip {
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 10px 13px;
+      background: rgba(255, 250, 240, 0.42);
+      color: var(--muted);
+      font: 700 12px/1 Arial, Helvetica, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .product-card {
+      display: flex;
+      min-height: 100%;
+      flex-direction: column;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: rgba(255, 250, 240, 0.44);
+    }
+
+    .product-media {
+      display: grid;
+      place-items: center;
+      aspect-ratio: 4 / 5;
+      background: #0a0a09;
+      overflow: hidden;
+    }
+
+    .product-media.light {
+      background: #eee8dd;
+    }
+
+    .product-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 10px;
+      transition: transform 220ms ease;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.025);
+    }
+
+    .product-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 18px;
+    }
+
+    .product-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+      color: var(--gold);
+      font: 700 11px/1 Arial, Helvetica, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .product-card h3 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.08;
+      font-weight: 500;
+    }
+
+    .product-card p {
+      flex: 1;
+      margin: 12px 0 18px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .product-link {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 0 14px;
+      border: 1px solid var(--ink);
+      border-radius: 4px;
+      background: var(--ink);
+      color: var(--white);
+      font: 700 12px/1 Arial, Helvetica, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+    }
+
+    .seo-block {
+      display: grid;
+      grid-template-columns: minmax(0, 0.7fr) minmax(280px, 0.5fr);
+      gap: 34px;
+      align-items: start;
+      margin: 74px 0;
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+
+    .seo-block h2 {
+      font-size: clamp(30px, 4vw, 54px);
+    }
+
+    .site-footer {
+      width: min(1220px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 48px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font: 13px/1.5 Arial, Helvetica, sans-serif;
+    }
+
+    .site-footer a {
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .section-head,
+      .seo-block {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 0;
+      }
+
+      .hero-panel {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .site-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      main {
+        width: min(100% - 24px, 1220px);
+      }
+
+      .hero {
+        padding-top: 38px;
+      }
+
+      .hero-panel,
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card.dark {
+        transform: none;
+      }
+
+      .feature-card img,
+      .feature-card.dark img {
+        height: 390px;
+      }
+
+      .seo-block {
+        padding: 24px;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Quiet Power Shop",
+    "description": "Original tees and hoodies by Sabino Pereira and Reira Bin.",
+    "url": "https://sabinopereira.com/shop.html",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "url": "https://quiet-power-shop.fourthwall.com/products/built-by-grace-oversized-t-shirt", "name": "Built by Grace Oversized T-Shirt"},
+        {"@type": "ListItem", "position": 2, "url": "https://quiet-power-shop.fourthwall.com/products/checkmate-in-silence-tee", "name": "Checkmate in Silence Tee"},
+        {"@type": "ListItem", "position": 3, "url": "https://quiet-power-shop.fourthwall.com/products/everybody-acting-insane-mask-tee", "name": "Everybody Acting Insane Mask Tee"},
+        {"@type": "ListItem", "position": 4, "url": "https://quiet-power-shop.fourthwall.com/products/everybody-is-insane-premium-hoodie", "name": "Everybody Is Insane Premium Hoodie"},
+        {"@type": "ListItem", "position": 5, "url": "https://quiet-power-shop.fourthwall.com/products/everybody-is-insane-premium-tee", "name": "Everybody Is Insane Premium Tee Black"},
+        {"@type": "ListItem", "position": 6, "url": "https://quiet-power-shop.fourthwall.com/products/everybody-is-insane-premium-tee-2", "name": "Everybody Is Insane Premium Tee Cream"},
+        {"@type": "ListItem", "position": 7, "url": "https://quiet-power-shop.fourthwall.com/products/everybody-acting-insane-wake-up-tee", "name": "Everybody Acting Insane Wake Up Tee"},
+        {"@type": "ListItem", "position": 8, "url": "https://quiet-power-shop.fourthwall.com/products/everybody-acting-insane-wake-up-hoodie", "name": "Everybody Acting Insane Wake Up Hoodie"}
+      ]
+    }
+  }
   </script>
 </head>
 <body>
-  <p>The shop is not available right now. Redirecting to the homepage...</p>
+  <header class="site-header">
+    <a class="brand" href="/">
+      <strong>Sabino Pereira</strong>
+      <span>Quiet Power</span>
+    </a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="/books.html">Books</a>
+      <a href="/series.html">Series</a>
+      <a href="/#music">Music</a>
+      <a href="/shop.html" aria-current="page">Shop</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="shop-title">
+      <div>
+        <p class="eyebrow">Quiet Power Shop</p>
+        <h1 id="shop-title">Wear the ideas.</h1>
+        <p class="hero-copy">Tees and hoodies shaped by faith, strategy, pressure, noise, silence, tenderness, and the work of becoming yourself without losing your center.</p>
+        <div class="hero-actions">
+          <a class="button" href="#products">Shop designs</a>
+          <a class="button secondary" href="/books.html">Explore the books</a>
+        </div>
+      </div>
+      <div class="hero-panel" aria-label="Featured merch designs">
+        <article class="feature-card">
+          <img src="/images/merch/built-by-grace-oversized-t-shirt.png" alt="Built by Grace oversized white t-shirt">
+          <div class="feature-label">
+            <strong>Built by Grace</strong>
+            <span>Faith, healing, purpose, and legacy.</span>
+          </div>
+        </article>
+        <article class="feature-card dark">
+          <img src="/images/merch/everybody-acting-insane-wake-up-hoodie.png" alt="Everybody Acting Insane Wake Up black hoodie">
+          <div class="feature-label">
+            <strong>Wake Up</strong>
+            <span>Noise, chaos, and clarity under pressure.</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="shop-section" id="products" aria-labelledby="products-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Available now</p>
+          <h2 id="products-title">Tees and hoodies.</h2>
+        </div>
+        <p>Each piece connects to the wider Sabino Pereira and Reira Bin universe: books, music, faith, chess, quiet power, emotional survival, and the strange noise of modern life.</p>
+      </div>
+
+      <div class="filter-row" aria-label="Product categories">
+        <span class="filter-chip">T-Shirts</span>
+        <span class="filter-chip">Hoodies</span>
+        <span class="filter-chip">Faith</span>
+        <span class="filter-chip">Strategy</span>
+        <span class="filter-chip">Quiet Power</span>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card">
+          <div class="product-media light">
+            <img src="/images/merch/built-by-grace-oversized-t-shirt.png" alt="Built by Grace Oversized T-Shirt">
+          </div>
+          <div class="product-body">
+            <div class="product-meta"><span>T-Shirt</span><span>Faith</span></div>
+            <h3>Built by Grace Oversized T-Shirt</h3>
+            <p>A faith-inspired oversized tee about grace, healing, purpose, and becoming whole.</p>
+            <a class="product-link" href="https://quiet-power-shop.fourthwall.com/products/built-by-grace-oversized-t-shirt" target="_blank" rel="noopener">View item</a>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media">
+            <img src="/images/merch/checkmate-in-silence-tee.png" alt="Checkmate in Silence black t-shirt">
+          </div>
+          <div class="product-body">
+            <div class="product-meta"><span>T-Shirt</span><span>Strategy</span></div>
+            <h3>Checkmate in Silence Tee</h3>
+            <p>A chess-inspired tee about silence, strategy, pressure, and making the right move without noise.</p>
+            <a class="product-link" href="https://quiet-power-shop.fourthwall.com/products/checkmate-in-silence-tee" target="_blank" rel="noopener">View item</a>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media">
+            <img src="/images/merch/everybody-acting-insane-mask-tee.png" alt="Everybody Acting Insane Mask black t-shirt">
+          </div>
+          <div class="product-body">
+            <div class="product-meta"><span>T-Shirt</span><span>Noise</span></div>
+            <h3>Everybody Acting Insane Mask Tee</h3>
+            <p>A dark statement tee about noise, pressure, performance, and keeping your mind when the world feels unstable.</p>
+            <a class="product-link" href="https://quiet-power-shop.fourthwall.com/products/everybody-acting-insane-mask-tee" target="_blank" rel="noopener">View item</a>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media">
+            <img src="/images/merch/everybody-is-insane-premium-hoodie.png" alt="Everybody Is Insane Premium black hoodie">
+          </div>
+          <div class="product-body">
+            <div class="product-meta"><span>Hoodie</span><span>Stay Tender</span></div>
+            <h3>Everybody Is Insane Premium Hoodie</h3>
+            <p>A premium hoodie for soft hearts in a strange world. Stay tender, even when everything feels insane.</p>
+            <a class="product-link" href="https://quiet-power-shop.fourthwall.com/products/everybody-is-insane-premium-hoodie" target="_blank" rel="noopener">View item</a>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media">
+            <img src="/images/merch/everybody-is-insane-premium-tee-black.png" alt="Everybody Is Insane Premium black t-shirt">
+          </div>
+          <div class="product-body">
+            <div class="product-meta"><span>T-Shirt</span><span>Stay Tender</span></div>
+            <h3>Everybody Is Insane Premium Tee - Black</h3>
+            <p>A premium statement tee for soft hearts moving through a strange world. Stay tender without losing yourself.</p>
+            <a class="product-link" href="https://quiet-power-shop.fourthwall.com/products/everybody-is-insane-premium-tee" target="_blank" rel="noopener">View item</a>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media light">
+            <img src="/images/merch/everybody-is-insane-premium-tee-cream.png" alt="Everybody Is Insane Premium cream t-shirt">
+          </div>
+          <div class="product-body">
+            <div class="product-meta"><span>T-Shirt</span><span>Cream</span></div>
+            <h3>Everybody Is Insane Premium Tee - Cream</h3>
+            <p>A clean cream version of the Everybody Is Insane tee, made for soft hearts trying to stay tender in a strange world.</p>
+            <a class="product-link" href="https://quiet-power-shop.fourthwall.com/products/everybody-is-insane-premium-tee-2" target="_blank" rel="noopener">View item</a>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media">
+            <img src="/images/merch/everybody-acting-insane-wake-up-tee.png" alt="Everybody Acting Insane Wake Up black t-shirt">
+          </div>
+          <div class="product-body">
+            <div class="product-meta"><span>T-Shirt</span><span>Wake Up</span></div>
+            <h3>Everybody Acting Insane Wake Up Tee</h3>
+            <p>A warning-signal tee about media noise, chaos, and waking up before the world decides for you.</p>
+            <a class="product-link" href="https://quiet-power-shop.fourthwall.com/products/everybody-acting-insane-wake-up-tee" target="_blank" rel="noopener">View item</a>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media">
+            <img src="/images/merch/everybody-acting-insane-wake-up-hoodie.png" alt="Everybody Acting Insane Wake Up black hoodie">
+          </div>
+          <div class="product-body">
+            <div class="product-meta"><span>Hoodie</span><span>Wake Up</span></div>
+            <h3>Everybody Acting Insane Wake Up Hoodie</h3>
+            <p>A dark premium hoodie about noise, control, media chaos, and the moment you decide to wake up.</p>
+            <a class="product-link" href="https://quiet-power-shop.fourthwall.com/products/everybody-acting-insane-wake-up-hoodie" target="_blank" rel="noopener">View item</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="seo-block" aria-labelledby="meaning-title">
+      <div>
+        <p class="eyebrow">The collection</p>
+        <h2 id="meaning-title">Clothing for the inner work.</h2>
+      </div>
+      <div>
+        <p>These tees and hoodies are original merch designs connected to Sabino Pereira books, Reira Bin music, and Quiet Power ideas. The collection moves through faith-inspired apparel, chess shirts, strategy tees, dark statement graphics, premium hoodies, and everyday pieces for people learning to stay calm, tender, and clear in a loud world.</p>
+        <div class="section-actions">
+          <a class="button" href="#products">View products</a>
+          <a class="button secondary" href="/links.html">More links</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>&copy; 2026 Sabino Pereira. Quiet Power Shop.</span>
+    <span> <a href="/books.html">Books</a> · <a href="/series.html">Series</a> · <a href="/#music">Music</a> · <a href="/contact.html">Contact</a></span>
+  </footer>
 </body>
 </html>
