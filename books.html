@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Selected Books by Sabino Pereira | Bad Girl Gospel, What Still Hurts, Chess in the Block</title>
+  <title>Books by Sabino Pereira | Bad Girl Gospel, Chess in the Block, Built by Grace</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Explore selected books by Sabino Pereira: the Bad Girl Gospel series, What Still Hurts, and Chess in the Block. Find the complete catalogue on Amazon.">
+  <meta name="description" content="Explore books by Sabino Pereira through connected story worlds: Bad Girl Gospel, Chess in the Block, Built by Grace, music companions, and the complete Amazon catalogue.">
   <meta name="author" content="Sabino Pereira">
   <link rel="canonical" href="https://sabinopereira.com/books.html">
   <link rel="alternate" hreflang="en" href="https://sabinopereira.com/books.html">
   <link rel="alternate" hreflang="x-default" href="https://sabinopereira.com/books.html">
   <meta property="og:title" content="Books by Sabino Pereira | Bad Girl Gospel, Built by Grace, Quiet Power, and More">
-  <meta property="og:description" content="Selected fiction and strategy books by Sabino Pereira, including Bad Girl Gospel, What Still Hurts, and Chess in the Block.">
+  <meta property="og:description" content="Books, story worlds, and music companions by Sabino Pereira, including Bad Girl Gospel, Chess in the Block, and Built by Grace.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sabinopereira.com/books.html">
   <meta property="og:image" content="https://sabinopereira.com/images/bad-girl-gospel-book-cover.jpg">
@@ -31,7 +31,7 @@
     "@type": "CollectionPage",
     "name": "Selected Books by Sabino Pereira",
     "url": "https://sabinopereira.com/books.html",
-    "description": "Selected works by Sabino Pereira: the Bad Girl Gospel series, What Still Hurts, and Chess in the Block.",
+    "description": "Selected works by Sabino Pereira: the Bad Girl Gospel series, Chess in the Block, Built by Grace, and connected music companions.",
     "mainEntity": {
       "@type": "ItemList",
       "itemListElement": [
@@ -50,9 +50,9 @@
           "position": 2,
           "item": {
             "@type": "Book",
-            "name": "What Still Hurts: Echoes of Harmony",
+            "name": "Chess in the Block",
             "author": { "@type": "Person", "name": "Sabino Pereira" },
-            "url": "https://sabinopereira.com/what-still-hurts/"
+            "url": "https://sabinopereira.com/chess-in-the-block.html"
           }
         },
         {
@@ -60,9 +60,9 @@
           "position": 3,
           "item": {
             "@type": "Book",
-            "name": "Chess in the Block",
+            "name": "Built by Grace",
             "author": { "@type": "Person", "name": "Sabino Pereira" },
-            "url": "https://sabinopereira.com/chess-in-the-block.html"
+            "url": "https://sabinopereira.com/built-by-grace.html"
           }
         }
       ]
@@ -205,6 +205,11 @@
       border-bottom: 1px solid var(--line);
     }
 
+    .hero-side {
+      display: grid;
+      gap: 22px;
+    }
+
     .eyebrow {
       margin: 0 0 18px;
       color: var(--gold);
@@ -278,6 +283,28 @@
       color: var(--muted);
       font-size: 18px;
       line-height: 1.7;
+    }
+
+    .cover-pair {
+      display: grid;
+      grid-template-columns: 0.92fr 1fr;
+      gap: 14px;
+      align-items: center;
+      margin-top: 28px;
+    }
+
+    .cover-pair a {
+      display: block;
+      padding: 10px;
+      border: 1px solid var(--line);
+      background: rgba(246, 239, 228, 0.028);
+    }
+
+    .cover-pair img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: contain;
+      background: #050403;
     }
 
     .meta-line {
@@ -444,6 +471,10 @@
       gap: 22px;
     }
 
+    .book-grid.focus-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .book-card {
       display: grid;
       gap: 18px;
@@ -531,6 +562,32 @@
 
     .world-card p {
       margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .quiet-catalogue {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 22px;
+      align-items: center;
+      padding: 24px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(145deg, rgba(217, 168, 79, 0.055), transparent 45%),
+        rgba(246, 239, 228, 0.026);
+    }
+
+    .quiet-catalogue h3 {
+      margin: 0;
+      font-size: clamp(30px, 3.4vw, 48px);
+      line-height: 1;
+    }
+
+    .quiet-catalogue p {
+      max-width: 650px;
+      margin: 10px 0 0;
       color: var(--muted);
       font-size: 15px;
       line-height: 1.55;
@@ -634,9 +691,15 @@
 
       .series-grid,
       .book-grid,
+      .book-grid.focus-grid,
       .world-grid {
         width: 100%;
         max-width: 100%;
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .cover-pair,
+      .quiet-catalogue {
         grid-template-columns: minmax(0, 1fr);
       }
 
@@ -692,15 +755,17 @@
 <body>
   <header class="site-header">
     <div class="nav-wrap">
-      <a class="brand" href="/" aria-label="Reira Bin home">
-        <span class="brand-mark">RB</span>
-        <span class="brand-name">Reira Bin</span>
+      <a class="brand" href="/" aria-label="Sabino Pereira home">
+        <span class="brand-mark">SP</span>
+        <span class="brand-name">Sabino Pereira</span>
       </a>
       <nav class="main-nav" aria-label="Primary navigation">
-        <a href="/music.html">Music</a>
+        <a href="/">Home</a>
+        <a href="/truth-files.html">Truth Files</a>
         <a class="is-active" href="/books.html">Books</a>
         <a href="/series.html">Series</a>
-        <a href="/links.html">Links</a>
+        <a href="/music.html">Music</a>
+        <a href="/shop.html">Shop</a>
         <a href="/contact.html">Contact</a>
       </nav>
     </div>
@@ -709,10 +774,16 @@
   <main class="page">
     <section class="hero" aria-labelledby="books-title">
       <div>
-        <p class="eyebrow">Books</p>
-        <h1 id="books-title">Selected works.</h1>
+        <p class="eyebrow">Books / Story Worlds</p>
+        <h1 id="books-title">Read the world. Then hear it.</h1>
       </div>
-      <p>The latest and defining books by Sabino Pereira. For the complete catalogue, visit the official Amazon author page.</p>
+      <div class="hero-side">
+        <p>Start with the books that carry the strongest worlds: confession, strategy, faith, survival, grace, pressure, and the music that extends the atmosphere beyond the page.</p>
+        <div class="actions">
+          <a class="btn primary" href="#bad-girl-gospel-feature-title">Start with Bad Girl Gospel</a>
+          <a class="btn" href="#book-soundtracks">Books + music</a>
+        </div>
+      </div>
     </section>
 
     <section class="feature" aria-labelledby="bad-girl-gospel-feature-title">
@@ -723,6 +794,14 @@
         <p class="eyebrow">Featured Story World</p>
         <h2 id="bad-girl-gospel-feature-title">Bad Girl Gospel is the current universe.</h2>
         <p>Four literary confessions about Selah, Diana, Noa, and Naomi, plus a companion album built from the same faith, rumor, desire, and survival.</p>
+        <div class="cover-pair" aria-label="Bad Girl Gospel book and album">
+          <a href="/bad-girl-gospel.html" aria-label="Open Bad Girl Gospel book universe">
+            <img src="/images/bad-girl-gospel-book-cover.jpg" alt="Bad Girl Gospel book cover">
+          </a>
+          <a href="/bad-girl-gospel.html#album-title" aria-label="Open Bad Girl Gospel companion album">
+            <img src="/images/bad-girl-gospel-album-cover.jpg" alt="Bad Girl Gospel album cover">
+          </a>
+        </div>
         <div class="meta-line" aria-label="Bad Girl Gospel themes">
           <span>Digital book</span>
           <span>Literary fiction</span>
@@ -733,6 +812,7 @@
         <div class="actions">
           <a class="btn primary" href="https://www.amazon.com/dp/B0H5MQBP1W" target="_blank" rel="noopener">Buy on Amazon</a>
           <a class="btn" href="/bad-girl-gospel.html">Open Universe</a>
+          <a class="btn" href="/bad-girl-gospel.html#album-title">Hear the Album</a>
         </div>
       </div>
     </section>
@@ -786,27 +866,31 @@
       </div>
     </section>
 
-    <section class="shelf" aria-labelledby="shelf-title">
+    <section class="shelf" id="book-soundtracks" aria-labelledby="shelf-title">
       <div class="section-head">
-        <h2 id="shelf-title">Other featured works</h2>
-        <p>Two books that represent the emotional and strategic sides of the wider catalogue.</p>
+        <h2 id="shelf-title">Books with soundtracks</h2>
+        <p>These are the best bridges between the writing and the music: each book has a sound, a pressure, and a world around it.</p>
       </div>
-      <div class="book-grid">
-        <a class="book-card" href="/what-still-hurts/" aria-label="Open What Still Hurts">
-          <div class="book-card-cover"><img src="/images/optimized/what-still-hurts-cover.png" alt="What Still Hurts book cover"></div>
-          <span class="meta-line">Emotional Fiction</span>
-          <h3>What Still Hurts</h3>
-          <p>A speculative emotional novel about memory, pain, systems, silence, and what cannot be erased.</p>
-        </a>
+      <div class="book-grid focus-grid">
         <a class="book-card" href="/chess-in-the-block.html" aria-label="Open Chess in the Block">
           <div class="book-card-cover"><img src="/books/chess-in-the-block/ebook/chess-in-the-block-ebook-cover.jpg" alt="Chess in the Block book cover"></div>
           <span class="meta-line">Strategy · Survival</span>
           <h3>Chess in the Block</h3>
-          <p>A sharp survival book about silence, pressure, strategy, and learning when to move.</p>
+          <p>A sharp survival book about silence, pressure, strategy, and learning when to move. Its music companion is Checkmate in Silence.</p>
+          <span class="series-status">Book + soundtrack</span>
+        </a>
+        <a class="book-card" href="/built-by-grace.html" aria-label="Open Built by Grace">
+          <div class="book-card-cover"><img src="/images/built-by-grace-cover.jpg" alt="Built by Grace book cover"></div>
+          <span class="meta-line">Faith · Healing</span>
+          <h3>Built by Grace</h3>
+          <p>A spiritual reflection book and album journey about prayer, healing, love, home, and God in the center.</p>
+          <span class="series-status">Book + album</span>
         </a>
       </div>
       <div class="actions" style="margin-top: 36px;">
-        <a class="btn primary" href="https://www.amazon.com/stores/Sabino-Zeferino-Pereira/author/B0GN52LCM9/allbooks?ccs_id=3c672332-31c2-4258-b474-207e9ab479b3" target="_blank" rel="noopener">View all books on Amazon</a>
+        <a class="btn primary" href="/chess-in-the-block.html">Open Chess in the Block</a>
+        <a class="btn" href="https://open.spotify.com/album/3YcfGl4CXyfH00GwUR9YXC?si=xiNGbVO9QiSwo_b_7yF_7Q" target="_blank" rel="noopener">Listen to Checkmate in Silence</a>
+        <a class="btn" href="/built-by-grace.html">Open Built by Grace</a>
       </div>
     </section>
 
@@ -821,16 +905,27 @@
           <h3>Bad Girl Gospel album</h3>
           <p>The companion album turns the book universe into sound: confession, rumor, prayer, exits, and survival.</p>
         </a>
+        <a class="world-card" href="https://open.spotify.com/album/3YcfGl4CXyfH00GwUR9YXC?si=xiNGbVO9QiSwo_b_7yF_7Q" target="_blank" rel="noopener">
+          <p class="eyebrow">Soundtrack</p>
+          <h3>Checkmate in Silence</h3>
+          <p>The strategic sound world connected to Chess in the Block: restraint, movement, pressure, and quiet consequence.</p>
+        </a>
         <a class="world-card" href="/series.html">
           <p class="eyebrow">Follow</p>
           <h3>Related series</h3>
           <p>Truth Files and Being Human carry the essay layer behind faith, discernment, intimacy, pressure, and identity.</p>
         </a>
-        <a class="world-card" href="/links.html">
-          <p class="eyebrow">Start</p>
-          <h3>One link hub</h3>
-          <p>Use the link page when you want the fast route into Spotify, books, YouTube, the website, and the visual side of the work.</p>
-        </a>
+      </div>
+    </section>
+
+    <section class="shelf" aria-labelledby="catalogue-title">
+      <div class="quiet-catalogue">
+        <div>
+          <p class="eyebrow">Catalogue</p>
+          <h3 id="catalogue-title">More books live in the full Amazon shelf.</h3>
+          <p>Works like What Still Hurts remain part of the wider catalogue, but this page now keeps the main attention on the strongest connected worlds.</p>
+        </div>
+        <a class="btn primary" href="https://www.amazon.com/stores/Sabino-Zeferino-Pereira/author/B0GN52LCM9/allbooks?ccs_id=3c672332-31c2-4258-b474-207e9ab479b3" target="_blank" rel="noopener">View all books</a>
       </div>
     </section>
   </main>
