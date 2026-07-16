@@ -662,6 +662,100 @@
       display: none;
     }
 
+    .home-shop {
+      padding: 34px 0 38px;
+      border-top: 1px solid rgba(213, 166, 87, 0.13);
+    }
+
+    .home-shop-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 18px;
+    }
+
+    .home-shop-head h2 {
+      margin: 0;
+      color: #fff3df;
+      font-family: Cinzel, Georgia, serif;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.05;
+    }
+
+    .home-shop-head p {
+      margin: 5px 0 0;
+      max-width: 520px;
+      color: var(--soft);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .home-shop-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .home-shop-card {
+      min-width: 0;
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+      gap: 14px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid rgba(247, 234, 216, 0.15);
+      border-radius: 8px;
+      background:
+        linear-gradient(145deg, rgba(213, 166, 87, 0.12), transparent 52%),
+        #10100e;
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.22);
+      transition: transform 160ms ease, border-color 160ms ease;
+    }
+
+    .home-shop-card > div {
+      min-width: 0;
+    }
+
+    .home-shop-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold-line);
+    }
+
+    .home-shop-card img {
+      width: 112px;
+      aspect-ratio: 4 / 5;
+      object-fit: contain;
+      border: 1px solid rgba(213, 166, 87, 0.24);
+      border-radius: 6px;
+      background:
+        radial-gradient(circle at 50% 38%, rgba(255, 250, 240, 0.7), transparent 58%),
+        #e7e1d7;
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.24);
+    }
+
+    .home-shop-card h3 {
+      margin: 0;
+      color: #fff3df;
+      font-family: Cinzel, Georgia, serif;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.15;
+    }
+
+    .home-shop-card p {
+      margin: 7px 0 0;
+      color: var(--soft);
+      font-size: 11px;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    .home-shop-card .tag {
+      margin-top: 12px;
+    }
+
     .footer {
       height: 44px;
       display: flex;
@@ -1014,6 +1108,51 @@
         font-size: 10px;
       }
 
+      .home-shop {
+        padding: 28px 0 8px;
+      }
+
+      .home-shop-head {
+        display: block;
+        margin-bottom: 14px;
+      }
+
+      .home-shop-head h2 {
+        font-size: 21px;
+      }
+
+      .home-shop-head p {
+        display: none;
+      }
+
+      .home-shop-head .section-link {
+        display: inline-flex;
+        margin-top: 12px;
+      }
+
+      .home-shop-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .home-shop-card {
+        grid-template-columns: 76px minmax(0, 1fr);
+        gap: 11px;
+        padding: 10px;
+      }
+
+      .home-shop-card img {
+        width: 76px;
+      }
+
+      .home-shop-card h3 {
+        font-size: 14px;
+      }
+
+      .home-shop-card p {
+        display: none;
+      }
+
       .footer {
         height: auto;
         display: block;
@@ -1070,6 +1209,49 @@
           </svg>
         </label>
         <div class="search-results" id="search-results" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="home-shop shell" aria-labelledby="home-shop-title">
+      <div class="home-shop-head">
+        <div>
+          <span class="item-label">Official merch</span>
+          <h2 id="home-shop-title">Wear the work.</h2>
+          <p>Selected tees and hoodies from the Quiet Power shop, connected to the books, music, faith, strategy, and emotional survival themes across the Sabino Pereira universe.</p>
+        </div>
+        <a class="section-link" href="/shop.html">View full shop</a>
+      </div>
+
+      <div class="home-shop-grid">
+        <a class="home-shop-card" href="https://quiet-power-shop.fourthwall.com/products/built-by-grace-oversized-t-shirt" target="_blank" rel="noopener">
+          <img src="/images/merch/built-by-grace-oversized-t-shirt.png" alt="Built by Grace oversized t-shirt">
+          <div>
+            <span class="item-label">Faith tee</span>
+            <h3>Built by Grace</h3>
+            <p>Grace, healing, purpose, and legacy in one oversized tee.</p>
+            <span class="tag">Shop tee</span>
+          </div>
+        </a>
+
+        <a class="home-shop-card" href="https://quiet-power-shop.fourthwall.com/products/checkmate-in-silence-tee" target="_blank" rel="noopener">
+          <img src="/images/merch/checkmate-in-silence-tee.png" alt="Checkmate in Silence black t-shirt">
+          <div>
+            <span class="item-label">Strategy tee</span>
+            <h3>Checkmate in Silence</h3>
+            <p>Silence, pressure, and the discipline of the right move.</p>
+            <span class="tag">Shop tee</span>
+          </div>
+        </a>
+
+        <a class="home-shop-card" href="https://quiet-power-shop.fourthwall.com/products/everybody-acting-insane-wake-up-hoodie" target="_blank" rel="noopener">
+          <img src="/images/merch/everybody-acting-insane-wake-up-hoodie.png" alt="Everybody Acting Insane Wake Up hoodie">
+          <div>
+            <span class="item-label">Wake up hoodie</span>
+            <h3>Everybody Acting Insane</h3>
+            <p>Noise, control, media chaos, and choosing clarity.</p>
+            <span class="tag">Shop hoodie</span>
+          </div>
+        </a>
       </div>
     </section>
 
