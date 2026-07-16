@@ -303,6 +303,62 @@
       line-height: 1.02;
     }
 
+    .case-detail-grid {
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .case-detail {
+      display: none;
+      padding: 22px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(145deg, rgba(213, 166, 87, 0.075), transparent 46%),
+        rgba(9, 8, 6, 0.72);
+      scroll-margin-top: 96px;
+    }
+
+    .case-detail:first-child,
+    .case-detail:target {
+      display: block;
+    }
+
+    .case-detail-grid:has(.case-detail:target) .case-detail {
+      display: none;
+    }
+
+    .case-detail-grid:has(.case-detail:target) .case-detail:target {
+      display: block;
+    }
+
+    .case-detail span {
+      display: block;
+      color: var(--gold-2);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .case-detail h3 {
+      margin-top: 9px;
+      font-size: clamp(30px, 4vw, 54px);
+      line-height: 0.98;
+    }
+
+    .case-detail p {
+      max-width: 760px;
+      margin: 12px 0 0;
+      color: var(--soft);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .case-detail strong {
+      color: var(--text);
+    }
+
     .method {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -398,7 +454,7 @@
         <a href="/">Home</a>
         <a class="active" href="/truth-files.html">Truth Files</a>
         <a href="/books.html">Books</a>
-        <a href="/#music">Music</a>
+        <a href="/music.html">Music</a>
         <a href="/contact.html">Contact</a>
       </div>
       <svg class="hamburger" width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -459,18 +515,93 @@
         <p>Pick the theme you need. The cases can be read in any order.</p>
       </div>
       <div class="case-grid">
-        <a class="case" id="case-001" href="#case-001"><span>001</span><h3>Trust vs Discernment</h3></a>
-        <a class="case" id="case-002" href="#case-002"><span>002</span><h3>Words vs Actions</h3></a>
-        <a class="case" id="case-003" href="#case-003"><span>003</span><h3>Intentions vs Patterns</h3></a>
-        <a class="case" id="case-004" href="#case-004"><span>004</span><h3>Reputation vs Reality</h3></a>
-        <a class="case" id="case-005" href="#case-005"><span>005</span><h3>Apology vs Change</h3></a>
-        <a class="case" id="case-006" href="#case-006"><span>006</span><h3>Forgiveness vs Access</h3></a>
-        <a class="case" id="case-007" href="#case-007"><span>007</span><h3>Time vs Consistency</h3></a>
-        <a class="case" id="case-008" href="#case-008"><span>008</span><h3>Emotion vs Evidence</h3></a>
-        <a class="case" id="case-009" href="#case-009"><span>009</span><h3>Familiarity vs Truth</h3></a>
-        <a class="case" id="case-010" href="#case-010"><span>010</span><h3>Clarity vs Confusion</h3></a>
-        <a class="case" id="case-011" href="#case-011"><span>011</span><h3>Why Good People Lie</h3></a>
-        <a class="case" id="case-012" href="#case-012"><span>012</span><h3>Self-Image vs Self-Awareness</h3></a>
+        <a class="case" href="#case-001"><span>001</span><h3>Trust vs Discernment</h3></a>
+        <a class="case" href="#case-002"><span>002</span><h3>Words vs Actions</h3></a>
+        <a class="case" href="#case-003"><span>003</span><h3>Intentions vs Patterns</h3></a>
+        <a class="case" href="#case-004"><span>004</span><h3>Reputation vs Reality</h3></a>
+        <a class="case" href="#case-005"><span>005</span><h3>Apology vs Change</h3></a>
+        <a class="case" href="#case-006"><span>006</span><h3>Forgiveness vs Access</h3></a>
+        <a class="case" href="#case-007"><span>007</span><h3>Time vs Consistency</h3></a>
+        <a class="case" href="#case-008"><span>008</span><h3>Emotion vs Evidence</h3></a>
+        <a class="case" href="#case-009"><span>009</span><h3>Familiarity vs Truth</h3></a>
+        <a class="case" href="#case-010"><span>010</span><h3>Clarity vs Confusion</h3></a>
+        <a class="case" href="#case-011"><span>011</span><h3>Why Good People Lie</h3></a>
+        <a class="case" href="#case-012"><span>012</span><h3>Self-Image vs Self-Awareness</h3></a>
+      </div>
+
+      <div class="case-detail-grid" aria-label="Truth Files case notes">
+        <article class="case-detail" id="case-001">
+          <span>Case 001</span>
+          <h3>Trust vs Discernment</h3>
+          <p><strong>Question:</strong> Am I trusting this person, or am I refusing to examine what is in front of me?</p>
+          <p>Trust is not blindness. Discernment is the quiet discipline of comparing words, actions, timing, and repeated patterns before giving someone access to your peace.</p>
+        </article>
+        <article class="case-detail" id="case-002">
+          <span>Case 002</span>
+          <h3>Words vs Actions</h3>
+          <p><strong>Question:</strong> Do the actions carry the same truth as the words?</p>
+          <p>Words can explain intention. Actions reveal direction. When the two keep disagreeing, follow the pattern, not the performance.</p>
+        </article>
+        <article class="case-detail" id="case-003">
+          <span>Case 003</span>
+          <h3>Intentions vs Patterns</h3>
+          <p><strong>Question:</strong> Is this a mistake, or is this a repeated system?</p>
+          <p>Good intentions matter, but repeated behavior tells you what a person has learned to permit in themselves.</p>
+        </article>
+        <article class="case-detail" id="case-004">
+          <span>Case 004</span>
+          <h3>Reputation vs Reality</h3>
+          <p><strong>Question:</strong> Am I responding to who they are, or to who people say they are?</p>
+          <p>Reputation can open the door. Reality decides whether the door should stay open.</p>
+        </article>
+        <article class="case-detail" id="case-005">
+          <span>Case 005</span>
+          <h3>Apology vs Change</h3>
+          <p><strong>Question:</strong> Did the apology produce repair, or only relief?</p>
+          <p>An apology names harm. Change removes the conditions that keep recreating it.</p>
+        </article>
+        <article class="case-detail" id="case-006">
+          <span>Case 006</span>
+          <h3>Forgiveness vs Access</h3>
+          <p><strong>Question:</strong> Have I confused releasing bitterness with restoring access?</p>
+          <p>Forgiveness can happen in your heart. Access is a boundary decision based on wisdom, safety, and fruit.</p>
+        </article>
+        <article class="case-detail" id="case-007">
+          <span>Case 007</span>
+          <h3>Time vs Consistency</h3>
+          <p><strong>Question:</strong> Has time passed, or has consistency been proven?</p>
+          <p>Time alone does not heal a pattern. Consistency shows whether a person has become different when nobody is forcing the performance.</p>
+        </article>
+        <article class="case-detail" id="case-008">
+          <span>Case 008</span>
+          <h3>Emotion vs Evidence</h3>
+          <p><strong>Question:</strong> What do I feel, and what do I actually know?</p>
+          <p>Emotion is data, not the full case file. Evidence helps you honor your feelings without being ruled by fear, hope, or nostalgia.</p>
+        </article>
+        <article class="case-detail" id="case-009">
+          <span>Case 009</span>
+          <h3>Familiarity vs Truth</h3>
+          <p><strong>Question:</strong> Do I trust this because it is true, or because it is familiar?</p>
+          <p>Familiar pain can feel safer than unfamiliar freedom. Truth often asks you to stop calling repetition home.</p>
+        </article>
+        <article class="case-detail" id="case-010">
+          <span>Case 010</span>
+          <h3>Clarity vs Confusion</h3>
+          <p><strong>Question:</strong> Does this relationship make truth clearer or harder to name?</p>
+          <p>Confusion is sometimes a signal that too many contradictions are being managed instead of examined.</p>
+        </article>
+        <article class="case-detail" id="case-011">
+          <span>Case 011</span>
+          <h3>Why Good People Lie</h3>
+          <p><strong>Question:</strong> What is the lie protecting: image, comfort, control, or fear?</p>
+          <p>Good people can still lie when honesty threatens the version of themselves they need others to believe.</p>
+        </article>
+        <article class="case-detail" id="case-012">
+          <span>Case 012</span>
+          <h3>Self-Image vs Self-Awareness</h3>
+          <p><strong>Question:</strong> Am I defending who I think I am, or examining what I actually do?</p>
+          <p>Self-image wants protection. Self-awareness wants truth. Growth begins where defensiveness loses the argument.</p>
+        </article>
       </div>
     </section>
   </main>
