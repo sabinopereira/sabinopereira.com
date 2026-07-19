@@ -313,6 +313,12 @@
       overflow: hidden;
     }
 
+    .world.relationship {
+      grid-column: 2 / 4;
+      grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1fr);
+      grid-template-rows: 1fr;
+    }
+
     .world.featured {
       grid-row: span 2;
       min-height: 760px;
@@ -418,6 +424,11 @@
       .cover-stage { min-height: 520px; }
       .world,
       .world.featured { min-height: 0; grid-row: auto; }
+      .world.relationship {
+        grid-column: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: minmax(280px, 1fr) auto;
+      }
     }
   </style>
 </head>
@@ -468,8 +479,8 @@
 
     <section class="worlds shell" id="worlds">
       <div class="section-head">
-        <h2>Three front doors.</h2>
-        <p>Keep the page focused. Lead with the strongest active universes, then let the full catalogue exist as the deeper shelf.</p>
+        <h2>Four front doors.</h2>
+        <p>Choose between confession, strategy, healing, and a speculative story about what it means to choose the same person again.</p>
       </div>
 
       <div class="world-grid">
@@ -515,6 +526,21 @@
             <div class="mini-actions">
               <a class="btn primary" href="/built-by-grace.html">Open</a>
               <a class="btn" href="https://open.spotify.com/album/5VZMT4ufcqb5UcI3k7EcaG?si=S01T7HxbRImivfwl9Gggdg" target="_blank" rel="noopener">Listen</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="world relationship">
+          <a class="world-art" href="/yes-i-do-again.html">
+            <img src="/books/yes-i-do-again/direct-sale/english/yes-i-do-again-digital-cover.jpg" alt="Yes, I Do... Again. book cover">
+          </a>
+          <div class="world-body">
+            <p class="kicker">Love / Choice / Routine</p>
+            <h3>Yes, I Do... Again.</h3>
+            <p>After ten years together, Tomás and Leonor must decide whether remaining is still an act of love—or merely the path of least resistance.</p>
+            <div class="mini-actions">
+              <a class="btn primary" href="/yes-i-do-again.html">Open book</a>
+              <a class="btn" href="https://quiet-power-shop.fourthwall.com/en-eur/products/yes-i-do-again-premium-digital-edition" target="_blank" rel="noopener">Buy ebook</a>
             </div>
           </div>
         </article>
