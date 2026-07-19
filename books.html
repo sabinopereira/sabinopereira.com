@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Books by Sabino Pereira | Bad Girl Gospel, Chess in the Block, Built by Grace</title>
-  <meta name="description" content="Explore books by Sabino Pereira through connected story worlds: Bad Girl Gospel, Chess in the Block, Built by Grace, music companions, and the complete Amazon catalogue.">
+  <title>Books by Sabino Pereira | Chess on the Block, Bad Girl Gospel, and More</title>
+  <meta name="description" content="Explore books by Sabino Pereira through connected story worlds, including Chess on the Block — Director’s Cut, Yes, I Do... Again., Bad Girl Gospel, and Built by Grace.">
   <meta name="author" content="Sabino Pereira">
   <link rel="canonical" href="https://sabinopereira.com/books.html">
   <link rel="alternate" hreflang="en" href="https://sabinopereira.com/books.html">
   <link rel="alternate" hreflang="x-default" href="https://sabinopereira.com/books.html">
-  <meta property="og:title" content="Books by Sabino Pereira | Bad Girl Gospel, Chess in the Block, Built by Grace">
-  <meta property="og:description" content="Books, story worlds, and music companions by Sabino Pereira, including Bad Girl Gospel, Chess in the Block, and Built by Grace.">
+  <meta property="og:title" content="Books by Sabino Pereira | Chess on the Block and More">
+  <meta property="og:description" content="Books and connected story worlds by Sabino Pereira, including Chess on the Block — Director’s Cut, Yes, I Do... Again., Bad Girl Gospel, and Built by Grace.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sabinopereira.com/books.html">
-  <meta property="og:image" content="https://sabinopereira.com/images/bad-girl-gospel-book-cover.jpg">
+  <meta property="og:image" content="https://sabinopereira.com/books/chess-in-the-block/premium/chess-on-the-block-directors-cut-cover.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Books by Sabino Pereira | Bad Girl Gospel, Chess in the Block, Built by Grace">
+  <meta name="twitter:title" content="Books by Sabino Pereira | Chess on the Block and More">
   <meta name="twitter:description" content="Books, music companions, fiction, strategy, faith, and connected story worlds by Sabino Pereira.">
-  <meta name="twitter:image" content="https://sabinopereira.com/images/bad-girl-gospel-book-cover.jpg">
+  <meta name="twitter:image" content="https://sabinopereira.com/books/chess-in-the-block/premium/chess-on-the-block-directors-cut-cover.jpg">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEVDEH8PGZ"></script>
   <script src="/analytics.js"></script>
   <link rel="icon" type="image/svg+xml" href="/images/sp-favicon.svg">
@@ -28,13 +28,23 @@
     "@type": "CollectionPage",
     "name": "Books by Sabino Pereira",
     "url": "https://sabinopereira.com/books.html",
-    "description": "Selected books by Sabino Pereira across connected story worlds, including Bad Girl Gospel, Chess in the Block, and Built by Grace.",
+    "description": "Selected books by Sabino Pereira across connected story worlds, including Chess on the Block — Director’s Cut, Yes, I Do... Again., Bad Girl Gospel, and Built by Grace.",
     "mainEntity": {
       "@type": "ItemList",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
+          "item": {
+            "@type": "Book",
+            "name": "Yes, I Do... Again.",
+            "author": { "@type": "Person", "name": "Sabino Pereira" },
+            "url": "https://sabinopereira.com/yes-i-do-again.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
           "item": {
             "@type": "BookSeries",
             "name": "Bad Girl Gospel",
@@ -44,17 +54,17 @@
         },
         {
           "@type": "ListItem",
-          "position": 2,
+          "position": 3,
           "item": {
             "@type": "Book",
-            "name": "Chess in the Block",
+            "name": "Chess on the Block — Director’s Cut",
             "author": { "@type": "Person", "name": "Sabino Pereira" },
             "url": "https://sabinopereira.com/chess-in-the-block.html"
           }
         },
         {
           "@type": "ListItem",
-          "position": 3,
+          "position": 4,
           "item": {
             "@type": "Book",
             "name": "Built by Grace",
@@ -298,7 +308,7 @@
 
     .world-grid {
       display: grid;
-      grid-template-columns: 1.25fr 0.9fr 0.9fr;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
     }
 
@@ -314,14 +324,13 @@
     }
 
     .world.relationship {
-      grid-column: 2 / 4;
-      grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1fr);
+      grid-column: 1 / -1;
+      grid-template-columns: minmax(300px, 0.72fr) minmax(0, 1.28fr);
       grid-template-rows: 1fr;
     }
 
     .world.featured {
-      grid-row: span 2;
-      min-height: 760px;
+      min-height: 510px;
     }
 
     .world-art {
@@ -335,11 +344,15 @@
     }
 
     .world-art img {
-      width: 100%;
-      height: 100%;
-      max-height: 520px;
+      width: auto;
+      height: min(340px, 38vw);
+      max-width: 100%;
       object-fit: contain;
       filter: drop-shadow(0 22px 34px rgba(0, 0, 0, 0.4));
+    }
+
+    .world.relationship .world-art img {
+      height: min(440px, 48vw);
     }
 
     .world-body {
@@ -429,6 +442,11 @@
         grid-template-columns: 1fr;
         grid-template-rows: minmax(280px, 1fr) auto;
       }
+
+      .world-art img,
+      .world.relationship .world-art img {
+        height: min(430px, 105vw);
+      }
     }
   </style>
 </head>
@@ -464,7 +482,7 @@
           <img src="/images/bad-girl-gospel-album-cover.jpg" alt="Bad Girl Gospel album cover">
         </a>
         <a class="cover-card chess" href="/chess-in-the-block.html">
-          <img src="/books/chess-in-the-block/ebook/chess-in-the-block-ebook-cover.jpg" alt="Chess in the Block book cover">
+          <img src="/books/chess-in-the-block/premium/chess-on-the-block-directors-cut-cover.jpg" alt="Chess on the Block — Director’s Cut book cover">
         </a>
       </div>
     </section>
@@ -502,14 +520,15 @@
 
         <article class="world">
           <a class="world-art" href="/chess-in-the-block.html">
-            <img src="/books/chess-in-the-block/ebook/chess-in-the-block-ebook-cover.jpg" alt="Chess in the Block book cover">
+            <img src="/books/chess-in-the-block/premium/chess-on-the-block-directors-cut-cover.jpg" alt="Chess on the Block — Director’s Cut book cover">
           </a>
           <div class="world-body">
-            <p class="kicker">Strategy / Survival</p>
-            <h3>Chess in the Block</h3>
-            <p>Pressure, silence, class, family, and the discipline of moving without losing yourself.</p>
+            <p class="kicker">New · Premium Digital Edition</p>
+            <h3>Chess on the Block — Director’s Cut</h3>
+            <p>Survival, family, pressure—and the discipline of moving without losing yourself. Includes the premium PDF and EPUB.</p>
             <div class="mini-actions">
-              <a class="btn primary" href="/chess-in-the-block.html">Read</a>
+              <a class="btn primary" href="https://quiet-power-shop.fourthwall.com/products/chess-on-the-block-directors-cut" target="_blank" rel="noopener">Buy ebook</a>
+              <a class="btn" href="/chess-in-the-block.html">Explore</a>
               <a class="btn" href="https://open.spotify.com/album/3YcfGl4CXyfH00GwUR9YXC?si=xiNGbVO9QiSwo_b_7yF_7Q" target="_blank" rel="noopener">Soundtrack</a>
             </div>
           </div>
@@ -560,7 +579,7 @@
           <span>I want strategy</span>
           <div>
             <h3>Move in silence.</h3>
-            <p>For pressure, survival, and emotional discipline.</p>
+            <p>Enter the Director’s Cut: pressure, survival, and emotional discipline.</p>
           </div>
         </a>
         <a class="path" href="/built-by-grace.html">
