@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Books by Sabino Pereira | Chess on the Block, Bad Girl Gospel, and More</title>
-  <meta name="description" content="Explore books by Sabino Pereira through connected story worlds, including Chess on the Block — Director’s Cut, Yes, I Do... Again., Bad Girl Gospel, and Built by Grace.">
+  <meta name="description" content="Explore books by Sabino Pereira, including Borrow. Delay. Repeat. — Director’s Cut, Chess on the Block, Yes, I Do... Again., Bad Girl Gospel, and Built by Grace.">
   <meta name="author" content="Sabino Pereira">
   <link rel="canonical" href="https://sabinopereira.com/books.html">
   <link rel="alternate" hreflang="en" href="https://sabinopereira.com/books.html">
   <link rel="alternate" hreflang="x-default" href="https://sabinopereira.com/books.html">
   <meta property="og:title" content="Books by Sabino Pereira | Chess on the Block and More">
-  <meta property="og:description" content="Books and connected story worlds by Sabino Pereira, including Chess on the Block — Director’s Cut, Yes, I Do... Again., Bad Girl Gospel, and Built by Grace.">
+  <meta property="og:description" content="Books and connected story worlds by Sabino Pereira, including Borrow. Delay. Repeat. — Director’s Cut, Chess on the Block, Yes, I Do... Again., Bad Girl Gospel, and Built by Grace.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sabinopereira.com/books.html">
   <meta property="og:image" content="https://sabinopereira.com/books/chess-in-the-block/cover/chess-on-the-block-directors-cut-web.jpg?v=20260719-2">
@@ -28,7 +28,7 @@
     "@type": "CollectionPage",
     "name": "Books by Sabino Pereira",
     "url": "https://sabinopereira.com/books.html",
-    "description": "Selected books by Sabino Pereira across connected story worlds, including Chess on the Block — Director’s Cut, Yes, I Do... Again., Bad Girl Gospel, and Built by Grace.",
+    "description": "Selected books by Sabino Pereira across satire, fiction, strategy, faith, and connected story worlds.",
     "mainEntity": {
       "@type": "ItemList",
       "itemListElement": [
@@ -70,6 +70,16 @@
             "name": "Built by Grace",
             "author": { "@type": "Person", "name": "Sabino Pereira" },
             "url": "https://sabinopereira.com/built-by-grace.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "Book",
+            "name": "Borrow. Delay. Repeat. — Director’s Cut",
+            "author": { "@type": "Person", "name": "Sabino Pereira" },
+            "url": "https://sabinopereira.com/borrow-delay-repeat.html"
           }
         }
       ]
@@ -449,6 +459,319 @@
       }
     }
   </style>
+  <style>
+    /* 2026 editorial catalogue redesign */
+    :root {
+      --catalog-ivory: #f4efe6;
+      --catalog-paper: #fffdf8;
+      --catalog-ink: #171512;
+      --catalog-muted: #6f675d;
+      --catalog-red: #9d2927;
+      --catalog-gold: #bd8d3f;
+      --catalog-line: rgba(23, 21, 18, 0.14);
+    }
+
+    body {
+      background: var(--catalog-ivory);
+      color: var(--catalog-ink);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .shell { width: min(1180px, calc(100% - 48px)); }
+
+    .topbar {
+      background: rgba(244, 239, 230, 0.92);
+      border-bottom-color: var(--catalog-line);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav { min-height: 78px; }
+
+    .brand {
+      color: var(--catalog-ink);
+      font-size: 14px;
+      letter-spacing: 0.16em;
+    }
+
+    .brand span { color: var(--catalog-red); }
+
+    .links {
+      color: var(--catalog-muted);
+      font-size: 11px;
+    }
+
+    .links a:hover,
+    .links .active { color: var(--catalog-red); }
+
+    .hero {
+      min-height: 760px;
+      grid-template-columns: minmax(0, .9fr) minmax(460px, .75fr);
+      padding: 72px 0 84px;
+    }
+
+    .hero .kicker,
+    .section-head .kicker { color: var(--catalog-red); }
+
+    h1,
+    h2,
+    h3 { color: var(--catalog-ink); }
+
+    h1 {
+      max-width: 720px;
+      font-size: clamp(72px, 8vw, 116px);
+      line-height: .88;
+      letter-spacing: -.055em;
+    }
+
+    .hero-copy {
+      color: var(--catalog-muted);
+      font-size: 21px;
+      line-height: 1.52;
+    }
+
+    .btn {
+      min-height: 46px;
+      border-color: var(--catalog-ink);
+      border-radius: 999px;
+      color: var(--catalog-ink);
+      transition: transform .2s ease, background .2s ease, color .2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn.primary {
+      background: var(--catalog-ink);
+      border-color: var(--catalog-ink);
+      color: var(--catalog-paper);
+    }
+
+    .cover-stage {
+      min-height: 620px;
+      border: 1px solid var(--catalog-line);
+      border-radius: 36px;
+      background:
+        radial-gradient(circle at 68% 20%, rgba(189, 141, 63, .35), transparent 23rem),
+        linear-gradient(145deg, #2c2721, #100e0c);
+      box-shadow: 0 38px 80px rgba(41, 31, 21, .22);
+      overflow: hidden;
+    }
+
+    .cover-stage::after {
+      content: "SABINO PEREIRA / SELECTED WORKS";
+      position: absolute;
+      right: -126px;
+      bottom: 168px;
+      color: rgba(255, 255, 255, .34);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .26em;
+      transform: rotate(-90deg);
+    }
+
+    .cover-card {
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 5px;
+      box-shadow: 0 28px 60px rgba(0, 0, 0, .48);
+    }
+
+    .cover-card.main {
+      width: 48%;
+      left: 26%;
+      top: 54px;
+      transform: rotate(-1deg);
+    }
+
+    .cover-card.album {
+      width: 35%;
+      right: 5%;
+      top: 300px;
+      transform: rotate(5deg);
+    }
+
+    .cover-card.chess {
+      width: 33%;
+      left: 5%;
+      top: 330px;
+      transform: rotate(-6deg);
+    }
+
+    .cover-card.borrow {
+      width: 31%;
+      right: 4%;
+      top: 28px;
+      z-index: 2;
+      transform: rotate(4deg);
+    }
+
+    .route-strip {
+      padding: 15px 0;
+      border: 0;
+      background: var(--catalog-red);
+      color: #fff8ec;
+    }
+
+    .route-strip .shell { justify-content: center; gap: clamp(22px, 7vw, 90px); }
+
+    .worlds { padding: 108px 0 70px; }
+
+    .section-head {
+      grid-template-columns: minmax(0, 1fr) minmax(280px, .46fr);
+      margin-bottom: 48px;
+    }
+
+    .section-head h2 {
+      max-width: 760px;
+      font-size: clamp(54px, 7vw, 92px);
+      line-height: .9;
+      letter-spacing: -.045em;
+    }
+
+    .section-head p { color: var(--catalog-muted); }
+
+    .world-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px;
+    }
+
+    .world,
+    .world.featured,
+    .world.relationship {
+      min-height: 0;
+      grid-column: auto;
+      display: grid;
+      grid-template-columns: minmax(190px, .62fr) minmax(0, 1fr);
+      grid-template-rows: 1fr;
+      border: 1px solid var(--catalog-line);
+      border-radius: 24px;
+      background: var(--catalog-paper);
+      box-shadow: 0 18px 50px rgba(50, 39, 27, .07);
+    }
+
+    .world-art {
+      min-height: 440px;
+      padding: 30px 22px;
+      background:
+        radial-gradient(circle at 50% 22%, rgba(255, 255, 255, .92), transparent 12rem),
+        #e6ddcf;
+    }
+
+    .world-art img,
+    .world.relationship .world-art img {
+      height: min(350px, 32vw);
+      filter: drop-shadow(0 24px 26px rgba(38, 29, 20, .24));
+    }
+
+    .world-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 34px 30px;
+      border-top: 0;
+      border-left: 1px solid var(--catalog-line);
+    }
+
+    .world-body h3 {
+      font-size: clamp(32px, 3.1vw, 50px);
+      line-height: .96;
+      letter-spacing: -.035em;
+    }
+
+    .world-body p {
+      color: var(--catalog-muted);
+      font-size: 16px;
+    }
+
+    .world-body .kicker {
+      color: var(--catalog-red);
+      font-size: 10px;
+    }
+
+    .mini-actions { margin-top: 24px; }
+
+    .mini-actions .btn {
+      border-color: var(--catalog-line);
+      color: var(--catalog-ink);
+    }
+
+    .mini-actions .btn.primary {
+      border-color: var(--catalog-ink);
+      color: var(--catalog-paper);
+    }
+
+    .world.borrow-world {
+      grid-column: 1 / -1;
+      grid-template-columns: minmax(320px, .65fr) minmax(0, 1.35fr);
+      background: var(--catalog-ink);
+      border-color: var(--catalog-ink);
+    }
+
+    .borrow-world .world-art { background: #d6c4a8; }
+    .borrow-world .world-art img { height: min(470px, 44vw); }
+    .borrow-world .world-body { border-left-color: rgba(255,255,255,.14); }
+    .borrow-world .world-body h3 { color: #fff8ec; font-size: clamp(48px, 6vw, 86px); }
+    .borrow-world .world-body p { color: #cfc3b2; font-size: 18px; max-width: 46ch; }
+    .borrow-world .world-body .kicker { color: #e0b35f; }
+    .borrow-world .mini-actions .btn { border-color: rgba(255,255,255,.34); color: #fff8ec; }
+    .borrow-world .mini-actions .btn.primary { background: #fff8ec; color: var(--catalog-ink); }
+
+    .pathways { padding: 42px 0 104px; }
+
+    .path-grid {
+      padding: 18px;
+      border-radius: 28px;
+      background: #ded3c3;
+      gap: 1px;
+    }
+
+    .path {
+      min-height: 210px;
+      border: 0;
+      background: var(--catalog-paper);
+    }
+
+    .path span { color: var(--catalog-red); }
+    .path p { color: var(--catalog-muted); }
+
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; min-height: 0; }
+      .cover-stage { min-height: 600px; }
+      .world-grid { grid-template-columns: 1fr; }
+      .world.borrow-world { grid-column: auto; }
+      .path-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      .shell { width: min(100% - 28px, 1180px); }
+      .nav { align-items: flex-start; padding: 16px 0; }
+      .links { gap: 13px; }
+      .hero { padding: 54px 0 60px; }
+      h1 { font-size: clamp(54px, 18vw, 76px); }
+      .hero-copy { font-size: 18px; }
+      .cover-stage { min-height: 470px; border-radius: 24px; }
+      .cover-card.main { width: 48%; left: 24%; top: 38px; }
+      .cover-card.borrow { width: 34%; right: 3%; top: 20px; }
+      .cover-card.chess { width: 35%; top: 276px; }
+      .cover-card.album { width: 37%; top: 260px; }
+      .worlds { padding-top: 72px; }
+      .section-head { grid-template-columns: 1fr; }
+      .world,
+      .world.featured,
+      .world.relationship,
+      .world.borrow-world {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+      }
+      .world-art { min-height: 370px; }
+      .world-art img,
+      .world.relationship .world-art img,
+      .borrow-world .world-art img { height: min(330px, 88vw); }
+      .world-body,
+      .borrow-world .world-body { border-left: 0; border-top: 1px solid var(--catalog-line); }
+      .borrow-world .world-body h3 { font-size: 46px; }
+      .path-grid { grid-template-columns: 1fr; }
+      .route-strip .shell { justify-content: flex-start; }
+    }
+  </style>
 </head>
 <body>
   <header class="topbar">
@@ -466,9 +789,9 @@
   <main>
     <section class="hero shell">
       <div>
-        <p class="kicker">Books That Behave Like Albums</p>
-        <h1>Choose the world you need tonight.</h1>
-        <p class="hero-copy">Not a bookshelf. A set of doors: confession, faith, strategy, pressure, healing, and the soundtracks that keep the stories alive after the last page.</p>
+        <p class="kicker">The Sabino Pereira Library</p>
+        <h1>Books with a pulse.</h1>
+        <p class="hero-copy">Stories, satire, faith, strategy and music-led worlds—each book made to leave a different kind of echo.</p>
         <div class="actions">
           <a class="btn primary" href="#worlds">Enter the worlds</a>
           <a class="btn" href="https://www.amazon.com/stores/Sabino-Zeferino-Pereira/author/B0GN52LCM9/allbooks?ccs_id=3c672332-31c2-4258-b474-207e9ab479b3" target="_blank" rel="noopener">All books</a>
@@ -484,21 +807,24 @@
         <a class="cover-card chess" href="/chess-in-the-block.html">
           <img src="/books/chess-in-the-block/cover/chess-on-the-block-directors-cut-web.jpg?v=20260719-2" alt="Chess on the Block — Director’s Cut book cover">
         </a>
+        <a class="cover-card borrow" href="/borrow-delay-repeat.html">
+          <img src="/books/borrow-delay-repeat/directors-cut/premium-edition/ebook/borrow-delay-repeat-directors-cut-cover.jpg?v=20260720" alt="Borrow. Delay. Repeat. — Director’s Cut book cover">
+        </a>
       </div>
     </section>
 
     <div class="route-strip">
       <div class="shell">
-        <span>Start with a story</span>
-        <span>Continue with the album</span>
-        <span>Wear the idea</span>
+        <span>Read the story</span>
+        <span>Enter the world</span>
+        <span>Keep the echo</span>
       </div>
     </div>
 
     <section class="worlds shell" id="worlds">
       <div class="section-head">
-        <h2>Four front doors.</h2>
-        <p>Choose between confession, strategy, healing, and a speculative story about what it means to choose the same person again.</p>
+        <h2>Five front doors.</h2>
+        <p>Choose between confession, strategy, healing, speculative love—and a masterclass in saying “tomorrow” with unreasonable confidence.</p>
       </div>
 
       <div class="world-grid">
@@ -560,6 +886,21 @@
             <div class="mini-actions">
               <a class="btn primary" href="/yes-i-do-again.html">Open book</a>
               <a class="btn" href="https://quiet-power-shop.fourthwall.com/en-eur/products/yes-i-do-again-premium-digital-edition" target="_blank" rel="noopener">Buy ebook</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="world relationship borrow-world">
+          <a class="world-art" href="/borrow-delay-repeat.html">
+            <img src="/books/borrow-delay-repeat/directors-cut/premium-edition/ebook/borrow-delay-repeat-directors-cut-cover.jpg?v=20260720" alt="Borrow. Delay. Repeat. — Director’s Cut satirical book cover">
+          </a>
+          <div class="world-body">
+            <p class="kicker">Satire · New Director’s Cut</p>
+            <h3>Borrow. Delay. Repeat.</h3>
+            <p>A very unserious guide to not giving money back. Revised in prose, with director’s commentary, the lender’s side, and a receipt for every excuse.</p>
+            <div class="mini-actions">
+              <a class="btn primary" href="https://www.amazon.com/dp/B0H2BZS5D7" target="_blank" rel="noopener">Buy on Amazon</a>
+              <a class="btn" href="/borrow-delay-repeat.html">Meet the expert</a>
             </div>
           </div>
         </article>
