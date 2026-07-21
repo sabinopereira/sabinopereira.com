@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Chess on the Block — Director’s Cut is a premium digital book by Sabino Pereira about survival, family, pressure, silence, love, loss, and learning how to move without losing yourself.">
   <meta name="author" content="Sabino Pereira">
+  <link rel="alternate" hreflang="en" href="https://sabinopereira.com/chess-in-the-block.html">
+  <link rel="alternate" hreflang="pt" href="https://sabinopereira.com/xadrez-no-comando.html">
   <link rel="canonical" href="https://sabinopereira.com/chess-in-the-block.html">
   <meta property="og:title" content="Chess on the Block — Director’s Cut">
   <meta property="og:description" content="A premium digital edition about survival, family, pressure—and learning how to move without losing yourself.">
@@ -199,6 +201,29 @@
       font-weight: 900;
       letter-spacing: 0.34em;
       text-transform: uppercase;
+    }
+
+    .language-choice {
+      display: inline-flex;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 5px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+    }
+
+    .language-choice a {
+      padding: 7px 12px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .12em;
+    }
+
+    .language-choice a[aria-current="page"] {
+      background: var(--gold);
+      color: #090806;
     }
 
     h1,
@@ -489,6 +514,10 @@
       </div>
 
       <div>
+        <div class="language-choice" aria-label="Book language">
+          <a href="/chess-in-the-block.html" lang="en" aria-current="page">EN</a>
+          <a href="/xadrez-no-comando.html" lang="pt">PT</a>
+        </div>
         <p class="eyebrow">Premium digital edition · English</p>
         <h1>Chess on the Block</h1>
         <p class="subtitle">Director’s Cut</p>
