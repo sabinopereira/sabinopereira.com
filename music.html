@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Music by Reira Bin | Sabino Pereira</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore music projects by Reira Bin and Sabino Pereira, including Built by Grace, Bad Girl Gospel, Everybody Acting Insane, and soundtrack worlds connected to the books.">
+  <meta name="author" content="Sabino Pereira">
+  <link rel="canonical" href="https://sabinopereira.com/music.html">
+  <meta property="og:title" content="Music by Reira Bin | Sabino Pereira">
+  <meta property="og:description" content="Albums, soundtrack worlds, and music projects connected to Sabino Pereira books and Reira Bin releases.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sabinopereira.com/music.html">
+  <meta property="og:image" content="https://sabinopereira.com/images/optimized/built-by-grace-cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Music by Reira Bin | Sabino Pereira">
+  <meta name="twitter:description" content="Albums, soundtrack worlds, and music projects connected to the books.">
+  <meta name="twitter:image" content="https://sabinopereira.com/images/optimized/built-by-grace-cover.png">
+  <link rel="icon" type="image/svg+xml" href="/images/sp-favicon.svg">
+  <link rel="apple-touch-icon" href="/images/sp-favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080604;
+      --panel: #11100e;
+      --text: #f7ead8;
+      --soft: #c8b397;
+      --muted: #8d775b;
+      --gold: #d5a657;
+      --gold-2: #efcb7c;
+      --line: rgba(247, 234, 216, 0.14);
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 52% 0%, rgba(213, 166, 87, 0.2), transparent 420px),
+        linear-gradient(180deg, #050403 0%, #1a1109 52%, #060403 100%);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .shell {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: rgba(3, 3, 2, 0.96);
+      border-bottom: 1px solid rgba(213, 166, 87, 0.28);
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      font-family: Cinzel, Georgia, serif;
+      color: var(--gold-2);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+
+    .brand span:first-child {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(213, 166, 87, 0.5);
+      font-size: 14px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      color: rgba(247, 234, 216, 0.78);
+      font: 700 12px/1 Inter, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .nav-links a[aria-current="page"],
+    .nav-links a:hover {
+      color: var(--gold-2);
+    }
+
+    .hero {
+      min-height: 520px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(340px, 0.7fr);
+      gap: clamp(30px, 6vw, 78px);
+      align-items: center;
+      padding: 72px 0 54px;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--gold-2);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      font-family: Cinzel, Georgia, serif;
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 800px;
+      font-size: clamp(54px, 8vw, 118px);
+      line-height: 0.9;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 24px 0 0;
+      color: var(--soft);
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.45;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border: 1px solid rgba(213, 166, 87, 0.55);
+      border-radius: 4px;
+      color: var(--gold-2);
+      background: rgba(213, 166, 87, 0.08);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .cover-stack {
+      display: grid;
+      grid-template-columns: 1fr 0.82fr;
+      gap: 16px;
+      align-items: end;
+    }
+
+    .cover-card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(247, 234, 216, 0.06);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+    }
+
+    .cover-card img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+
+    .cover-card.small {
+      transform: translateY(34px);
+    }
+
+    .music-section {
+      padding: 58px 0 72px;
+      border-top: 1px solid rgba(247, 234, 216, 0.1);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 24px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(34px, 5vw, 72px);
+      line-height: 0.96;
+    }
+
+    .section-head p {
+      max-width: 480px;
+      margin: 0;
+      color: var(--soft);
+      line-height: 1.55;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .project-card {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background:
+        linear-gradient(145deg, rgba(213, 166, 87, 0.1), transparent 50%),
+        rgba(17, 16, 14, 0.86);
+      transition: transform 160ms ease, border-color 160ms ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(213, 166, 87, 0.56);
+    }
+
+    .project-card img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .project-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 18px;
+    }
+
+    .project-body h3 {
+      font-size: 22px;
+      line-height: 1.1;
+    }
+
+    .project-body p {
+      margin: 10px 0 0;
+      color: var(--soft);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .project-body .button {
+      width: fit-content;
+      min-height: 38px;
+      margin-top: auto;
+      padding: 0 13px;
+      font-size: 10px;
+    }
+
+    footer {
+      padding: 28px 0 38px;
+      border-top: 1px solid rgba(247, 234, 216, 0.1);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .nav {
+        height: auto;
+        align-items: flex-start;
+        padding: 18px 0;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 48px 0 42px;
+      }
+
+      .cover-stack {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cover-card.small {
+        transform: none;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 12px;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav shell" aria-label="Main navigation">
+      <a class="brand" href="/"><span>SP</span><span>Sabino Pereira</span></a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/truth-files.html">Truth Files</a>
+        <a href="/books.html">Books</a>
+        <a href="/music.html" aria-current="page">Music</a>
+        <a href="/shop.html">Shop</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero shell">
+      <div>
+        <p class="eyebrow">Reira Bin Music</p>
+        <h1>Music for the inner worlds.</h1>
+        <p>Albums, companion soundtracks, and sonic chapters connected to Sabino Pereira books, faith, pressure, healing, strategy, and the strange noise of modern life.</p>
+        <div class="actions">
+          <a class="button" href="#projects">Explore projects</a>
+          <a class="button" href="/built-by-grace.html">Built by Grace</a>
+        </div>
+      </div>
+      <div class="cover-stack" aria-label="Featured Reira Bin music covers">
+        <a class="cover-card" href="/built-by-grace.html">
+          <img src="/images/optimized/built-by-grace-cover.png" alt="Built by Grace album cover">
+        </a>
+        <a class="cover-card small" href="https://open.spotify.com/album/7l7QUMTgrARJcVeUK719Xf?si=q_ez22ncRTy0batpCyWBsg" target="_blank" rel="noopener">
+          <img src="/images/optimized/everybody-acting-insane-cover.png" alt="Everybody Acting Insane album cover">
+        </a>
+      </div>
+    </section>
+
+    <section class="music-section shell" id="projects">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Projects</p>
+          <h2>Albums and story worlds.</h2>
+        </div>
+        <p>Start with the world that matches your season: grace and healing, spiritual noir, industrial pressure, or strategy-focused soundtrack work.</p>
+      </div>
+
+      <div class="project-grid">
+        <a class="project-card" href="/built-by-grace.html">
+          <img src="/images/optimized/built-by-grace-cover.png" alt="Built by Grace album cover">
+          <div class="project-body">
+            <span class="eyebrow">Faith / Healing</span>
+            <h3>Built by Grace</h3>
+            <p>Gospel, prayer, healing, love, home, and God in the center.</p>
+            <span class="button">Open project</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="/bad-girl-gospel.html#album-title">
+          <img src="/images/bad-girl-gospel-album-cover.jpg" alt="Bad Girl Gospel album cover">
+          <div class="project-body">
+            <span class="eyebrow">Companion album</span>
+            <h3>Bad Girl Gospel</h3>
+            <p>A companion album for the book universe: shame, grace, survival, and becoming free.</p>
+            <span class="button">Open album</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://open.spotify.com/album/7l7QUMTgrARJcVeUK719Xf?si=q_ez22ncRTy0batpCyWBsg" target="_blank" rel="noopener">
+          <img src="/images/optimized/everybody-acting-insane-cover.png" alt="Everybody Acting Insane album cover">
+          <div class="project-body">
+            <span class="eyebrow">Industrial / Cinematic</span>
+            <h3>Everybody Acting Insane</h3>
+            <p>Pressure, media noise, control, performance, and trying to stay awake.</p>
+            <span class="button">Listen now</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://open.spotify.com/album/3YcfGl4CXyfH00GwUR9YXC?si=xiNGbVO9QiSwo_b_7yF_7Q" target="_blank" rel="noopener">
+          <img src="/images/optimized/checkmate-in-silence-cover.png" alt="Checkmate in Silence soundtrack cover">
+          <div class="project-body">
+            <span class="eyebrow">Strategy soundtrack</span>
+            <h3>Checkmate in Silence</h3>
+            <p>Original soundtrack inspired by Chess in the Block: chess, pressure, silence, focus, and movement without noise.</p>
+            <span class="button">Listen now</span>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <span>&copy; 2026 Sabino Pereira. Music by Reira Bin.</span>
+  </footer>
+</body>
+</html>

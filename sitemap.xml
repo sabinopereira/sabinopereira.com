@@ -39,6 +39,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://sabinopereira.com/yes-i-do-again.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://sabinopereira.com/o-que-ainda-doi.html</loc>
     <lastmod>2026-05-24</lastmod>
   </url>
@@ -201,5 +207,13 @@
   <url>
     <loc>https://sabinopereira.com/truth-files.html</loc>
     <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://sabinopereira.com/music.html</loc>
+    <lastmod>2026-07-16</lastmod>
+  </url>
+  <url>
+    <loc>https://sabinopereira.com/shop.html</loc>
+    <lastmod>2026-07-15</lastmod>
   </url>
 </urlset>
