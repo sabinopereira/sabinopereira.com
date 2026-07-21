@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="bookid" xml:lang="en-US">
+<metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <dc:identifier id="bookid">urn:uuid:93354762-21d2-5792-95cf-b5a9cb8f9749</dc:identifier><dc:title>Yes, I Do... Again.</dc:title>
+  <dc:creator>Sabino Pereira</dc:creator><dc:language>en-US</dc:language>
+  <dc:publisher>Sabino Pereira</dc:publisher><dc:description>Knowing everything you know now, would you still choose the same person?</dc:description>
+  <meta property="dcterms:modified">2026-07-19T15:06:03Z</meta><meta name="cover" content="cover-image"/>
+</metadata>
+<manifest>
+  <item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>
+  <item id="style" href="styles.css" media-type="text/css"/>
+  <item id="cover" href="cover.xhtml" media-type="application/xhtml+xml"/>
+  <item id="cover-image" href="images/cover.jpg" media-type="image/jpeg" properties="cover-image"/>
+    <item id="section-01" href="section-01.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-02" href="section-02.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-03" href="section-03.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-04" href="section-04.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-05" href="section-05.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-06" href="section-06.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-07" href="section-07.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-08" href="section-08.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-09" href="section-09.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-10" href="section-10.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-11" href="section-11.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-12" href="section-12.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-13" href="section-13.xhtml" media-type="application/xhtml+xml"/>
+</manifest>
+<spine><itemref idref="cover" linear="no"/>    <itemref idref="section-01"/>
+    <itemref idref="section-02"/>
+    <itemref idref="section-03"/>
+    <itemref idref="section-04"/>
+    <itemref idref="section-05"/>
+    <itemref idref="section-06"/>
+    <itemref idref="section-07"/>
+    <itemref idref="section-08"/>
+    <itemref idref="section-09"/>
+    <itemref idref="section-10"/>
+    <itemref idref="section-11"/>
+    <itemref idref="section-12"/>
+    <itemref idref="section-13"/></spine>
+</package>

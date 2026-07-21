@@ -1,0 +1,9 @@
+body { color: #171717; font-family: serif; line-height: 1.55; margin: 0 6%; }
+p { margin: 0; text-indent: 1.25em; }
+p.first, p.dialogue, p.message { text-indent: 0; }
+p.message { font-style: italic; margin: 0.55em 1.2em; }
+h1 { font-size: 1.55em; line-height: 1.2; margin: 1.8em 0 1.4em; text-align: center; }
+.chapter { break-before: page; page-break-before: always; }
+.cover { margin: 0; padding: 0; text-align: center; }
+.cover img { height: auto; max-height: 100%; max-width: 100%; }
+nav ol { line-height: 1.8; }

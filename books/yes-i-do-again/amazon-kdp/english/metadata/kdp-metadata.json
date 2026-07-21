@@ -1,0 +1,40 @@
+{
+  "title": "Yes, I Do... Again.",
+  "subtitle": "",
+  "author": "Sabino Pereira",
+  "language": "English",
+  "edition": "First English edition",
+  "description": "Ten years into their marriage, Tomás and Leonor have built a life that works—but they no longer know whether they are still choosing it. In a society where couples must periodically renew, renegotiate, or end their relationships, their ten-year Identity Review forces every quiet resentment, hidden sacrifice, temptation, and unrealized future into the open. Yes, I Do... Again. is an intimate speculative novel about love after passion, the comfort of routine, and the courage required to choose consciously.",
+  "keywords": [
+    "marriage fiction",
+    "relationship novel",
+    "speculative romance",
+    "second chance marriage",
+    "domestic fiction",
+    "love after passion",
+    "emotional infidelity"
+  ],
+  "suggested_categories": [
+    "FICTION / Family Life / Marriage & Divorce",
+    "FICTION / Romance / Later in Life",
+    "FICTION / Science Fiction / Social Science Fiction"
+  ],
+  "audience": "Adult",
+  "territories": "Worldwide rights, if owned by the author",
+  "files": {
+    "ebook_epub": "../ebook/yes-i-do-again-kindle.epub",
+    "ebook_cover": "../ebook/yes-i-do-again-ebook-cover.jpg",
+    "paperback_interior": "../paperback/yes-i-do-again-paperback-interior.pdf",
+    "paperback_cover": "../paperback/yes-i-do-again-paperback-cover.pdf"
+  },
+  "print_specs": {
+    "page_count": 48,
+    "trim_size": "6 x 9 in",
+    "paper": "White paper",
+    "interior": "Black & white, no bleed",
+    "cover_finish": "Matte recommended",
+    "spine_width_in": 0.108096,
+    "cover_width_in": 12.358096,
+    "cover_height_in": 9.25
+  }
+}

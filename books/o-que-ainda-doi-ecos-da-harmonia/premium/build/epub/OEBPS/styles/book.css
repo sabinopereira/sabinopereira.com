@@ -1,0 +1,30 @@
+:root { color-scheme: light dark; }
+body { font-family: Georgia, "Times New Roman", serif; line-height: 1.55; margin: 5%; color: #202326; }
+p { margin: 0; }
+.prose, .dialogue { text-indent: 1.25em; widows: 2; orphans: 2; }
+.first, .screen + .prose, h2 + .first { text-indent: 0; }
+.first::first-letter { float: left; font-size: 3.25em; line-height: .82; padding: .08em .12em 0 0; color: #8f563b; }
+h1, h2 { font-family: Avenir, "Helvetica Neue", sans-serif; font-weight: 500; text-align: center; page-break-after: avoid; }
+h1 { font-size: 1.7em; margin: 16vh 0 .45em; letter-spacing: .035em; }
+h2 { font-size: 1.35em; margin: 12vh 0 2em; }
+.kicker { font-family: Avenir, "Helvetica Neue", sans-serif; text-align: center; text-transform: uppercase; letter-spacing: .16em; color: #8f563b; margin-top: 10vh; }
+.ornament { text-align: center; color: #8f563b; margin: 1.5em 0; }
+.front { text-align: center; margin-top: 18vh; }
+.front .title { font-family: Avenir, "Helvetica Neue", sans-serif; font-size: 2em; letter-spacing: .04em; }
+.front .subtitle { font-style: italic; font-size: 1.2em; margin-top: .6em; }
+.front .edition { font-family: Avenir, "Helvetica Neue", sans-serif; color: #8f563b; letter-spacing: .13em; text-transform: uppercase; margin-top: 2.2em; }
+.front .author { margin-top: 3em; }
+.copyright { margin-top: 22vh; font-size: .88em; }
+.epigraph { margin: 30vh auto 0; max-width: 24em; text-align: center; font-style: italic; }
+.part { text-align: center; margin-top: 30vh; }
+.part .number { font-family: Avenir, "Helvetica Neue", sans-serif; color: #8f563b; letter-spacing: .17em; text-transform: uppercase; }
+.part .name { font-family: Avenir, "Helvetica Neue", sans-serif; font-size: 1.8em; margin-top: .5em; }
+.screen { border-left: .22em solid #8f563b; margin: 1.35em 1em; padding: .8em 1em; background: #f2eee9; font-family: "Courier New", monospace; font-size: .86em; line-height: 1.35; page-break-inside: avoid; }
+.screen p + p { margin-top: .28em; }
+.contents ol { list-style: none; padding: 0; }
+.contents li { margin: .55em 0; }
+.contents .part-link { font-family: Avenir, "Helvetica Neue", sans-serif; font-weight: bold; margin-top: 1.2em; }
+.note { max-width: 32em; margin: 0 auto; }
+.note p + p { margin-top: .8em; }
+a { color: #8f563b; text-decoration: none; }
+@media (prefers-color-scheme: dark) { body { color: #eeeae4; } .screen { background: #292724; } }

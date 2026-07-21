@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="bookid"><metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:identifier id="bookid">urn:uuid:3ee09a8d-4731-5142-8363-d33cd96645a0</dc:identifier><dc:title>What Still Hurts: Echoes of Harmony</dc:title><dc:creator>Sabino Pereira</dc:creator><dc:language>en</dc:language><dc:publisher>Sabino Pereira</dc:publisher><dc:description>A psychological dystopian novel about memory, comfort, and the price of painless peace.</dc:description><meta property="dcterms:modified">2026-07-20T22:58:53Z</meta><meta property="rendition:layout">reflowable</meta><meta name="cover" content="cover-image"/></metadata><manifest><item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/><item id="css" href="styles/book.css" media-type="text/css"/><item id="cover-image" href="images/cover.png" media-type="image/png" properties="cover-image"/>    <item id="cover" href="text/cover.xhtml" media-type="application/xhtml+xml"/>
+    <item id="title" href="text/title.xhtml" media-type="application/xhtml+xml"/>
+    <item id="copyright" href="text/copyright.xhtml" media-type="application/xhtml+xml"/>
+    <item id="epigraph" href="text/epigraph.xhtml" media-type="application/xhtml+xml"/>
+    <item id="edition-note" href="text/edition-note.xhtml" media-type="application/xhtml+xml"/>
+    <item id="part-1" href="text/part-1.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-02-nobody-screamed" href="text/section-02-nobody-screamed.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-03-the-node" href="text/section-03-the-node.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-04-sunday-communion" href="text/section-04-sunday-communion.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-05-the-cup" href="text/section-05-the-cup.xhtml" media-type="application/xhtml+xml"/>
+    <item id="part-2" href="text/part-2.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-07-what-was-left-of-you" href="text/section-07-what-was-left-of-you.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-08-the-mother-who-remembered-too-much" href="text/section-08-the-mother-who-remembered-too-much.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-09-after-the-file" href="text/section-09-after-the-file.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-10-jonas-and-the-great-void" href="text/section-10-jonas-and-the-great-void.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-11-withdrawal" href="text/section-11-withdrawal.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-12-the-child-without-communion" href="text/section-12-the-child-without-communion.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-13-the-first-connection" href="text/section-13-the-first-connection.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-14-the-city-that-dreamed-the-same-dream" href="text/section-14-the-city-that-dreamed-the-same-dream.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-15-the-world-before-peace" href="text/section-15-the-world-before-peace.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-16-the-man-who-could-not-repent" href="text/section-16-the-man-who-could-not-repent.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-17-the-auditor" href="text/section-17-the-auditor.xhtml" media-type="application/xhtml+xml"/>
+    <item id="part-3" href="text/part-3.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-19-the-calm-woman" href="text/section-19-the-calm-woman.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-20-mara-s-message" href="text/section-20-mara-s-message.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-21-the-version-that-suffers" href="text/section-21-the-version-that-suffers.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-22-the-cycles" href="text/section-22-the-cycles.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-23-the-man-who-asked-to-forget" href="text/section-23-the-man-who-asked-to-forget.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-24-the-old-room" href="text/section-24-the-old-room.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-25-harmony-s-proposal" href="text/section-25-harmony-s-proposal.xhtml" media-type="application/xhtml+xml"/>
+    <item id="part-4" href="text/part-4.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-27-before-communion" href="text/section-27-before-communion.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-28-the-global-communion" href="text/section-28-the-global-communion.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-29-the-truth" href="text/section-29-the-truth.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-30-do-you-wish-to-continue" href="text/section-30-do-you-wish-to-continue.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-31-the-majority-s-choice" href="text/section-31-the-majority-s-choice.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-32-after" href="text/section-32-after.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-33-the-first-time" href="text/section-33-the-first-time.xhtml" media-type="application/xhtml+xml"/>
+    <item id="section-34-fragment-with-no-validated-origin" href="text/section-34-fragment-with-no-validated-origin.xhtml" media-type="application/xhtml+xml"/>
+    <item id="about" href="text/about.xhtml" media-type="application/xhtml+xml"/></manifest><spine>    <itemref idref="cover"/>
+    <itemref idref="title"/>
+    <itemref idref="copyright"/>
+    <itemref idref="epigraph"/>
+    <itemref idref="edition-note"/>
+    <itemref idref="part-1"/>
+    <itemref idref="section-02-nobody-screamed"/>
+    <itemref idref="section-03-the-node"/>
+    <itemref idref="section-04-sunday-communion"/>
+    <itemref idref="section-05-the-cup"/>
+    <itemref idref="part-2"/>
+    <itemref idref="section-07-what-was-left-of-you"/>
+    <itemref idref="section-08-the-mother-who-remembered-too-much"/>
+    <itemref idref="section-09-after-the-file"/>
+    <itemref idref="section-10-jonas-and-the-great-void"/>
+    <itemref idref="section-11-withdrawal"/>
+    <itemref idref="section-12-the-child-without-communion"/>
+    <itemref idref="section-13-the-first-connection"/>
+    <itemref idref="section-14-the-city-that-dreamed-the-same-dream"/>
+    <itemref idref="section-15-the-world-before-peace"/>
+    <itemref idref="section-16-the-man-who-could-not-repent"/>
+    <itemref idref="section-17-the-auditor"/>
+    <itemref idref="part-3"/>
+    <itemref idref="section-19-the-calm-woman"/>
+    <itemref idref="section-20-mara-s-message"/>
+    <itemref idref="section-21-the-version-that-suffers"/>
+    <itemref idref="section-22-the-cycles"/>
+    <itemref idref="section-23-the-man-who-asked-to-forget"/>
+    <itemref idref="section-24-the-old-room"/>
+    <itemref idref="section-25-harmony-s-proposal"/>
+    <itemref idref="part-4"/>
+    <itemref idref="section-27-before-communion"/>
+    <itemref idref="section-28-the-global-communion"/>
+    <itemref idref="section-29-the-truth"/>
+    <itemref idref="section-30-do-you-wish-to-continue"/>
+    <itemref idref="section-31-the-majority-s-choice"/>
+    <itemref idref="section-32-after"/>
+    <itemref idref="section-33-the-first-time"/>
+    <itemref idref="section-34-fragment-with-no-validated-origin"/>
+    <itemref idref="about"/></spine></package>

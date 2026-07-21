@@ -504,13 +504,13 @@ Elias stopped breathing.
 
 The next line took longer.
 
-SHE HID THE FIRST FILE WHERE PAIN STILL TOUCHED.
+SHE HID THE FIRST FILE WHERE PAIN COULD STILL TOUCH.
 
 The screen failed.
 
 Then returned.
 
-LOOK FOR THE SON’S NAME.
+FIND THE SON’S NAME.
 
 The light went out.
 
