@@ -304,33 +304,32 @@
     }
 
     .case-detail-grid {
-      display: grid;
-      gap: 14px;
-      margin-top: 24px;
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      place-items: center;
+      padding: 24px;
+      background: rgba(3, 3, 2, 0.82);
+      backdrop-filter: blur(14px);
+      overflow-y: auto;
     }
+
+    .case-detail-grid.is-open { display: grid; }
 
     .case-detail {
       display: none;
-      padding: 22px;
-      border: 1px solid var(--line);
+      position: relative;
+      width: min(760px, 100%);
+      padding: clamp(28px, 6vw, 58px);
+      border: 1px solid var(--gold-line);
       background:
-        linear-gradient(145deg, rgba(213, 166, 87, 0.075), transparent 46%),
-        rgba(9, 8, 6, 0.72);
-      scroll-margin-top: 96px;
+        linear-gradient(145deg, rgba(213, 166, 87, 0.11), transparent 46%),
+        #0d0b08;
+      box-shadow: 0 34px 100px rgba(0, 0, 0, 0.55);
     }
 
-    .case-detail:first-child,
-    .case-detail:target {
-      display: block;
-    }
-
-    .case-detail-grid:has(.case-detail:target) .case-detail {
-      display: none;
-    }
-
-    .case-detail-grid:has(.case-detail:target) .case-detail:target {
-      display: block;
-    }
+    .case-detail.is-open { display: block; }
 
     .case-detail span {
       display: block;
@@ -357,6 +356,39 @@
 
     .case-detail strong {
       color: var(--text);
+    }
+
+    .case-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--text);
+      font: 600 22px/1 Inter, sans-serif;
+      cursor: pointer;
+    }
+
+    .case-close:hover,
+    .case-close:focus-visible {
+      border-color: var(--gold-2);
+      color: var(--gold-2);
+    }
+
+    body.case-reader-open { overflow: hidden; }
+
+    .case::after {
+      content: "Open case →";
+      display: block;
+      margin-top: 18px;
+      color: var(--gold-2);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
     }
 
     .method {
@@ -529,7 +561,7 @@
         <a class="case" href="#case-012"><span>012</span><h3>Self-Image vs Self-Awareness</h3></a>
       </div>
 
-      <div class="case-detail-grid" aria-label="Truth Files case notes">
+      <div class="case-detail-grid" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Truth Files case reader">
         <article class="case-detail" id="case-001">
           <span>Case 001</span>
           <h3>Trust vs Discernment</h3>
@@ -609,5 +641,57 @@
   <footer class="shell">
     <span>Truth Files by Sabino Pereira</span>
   </footer>
+  <script>
+    const caseReader = document.querySelector('.case-detail-grid');
+    const caseLinks = [...document.querySelectorAll('.case[href^="#case-"]')];
+    const caseDetails = [...document.querySelectorAll('.case-detail')];
+    let lastCaseTrigger = null;
+
+    caseDetails.forEach(detail => {
+      const closeButton = document.createElement('button');
+      closeButton.className = 'case-close';
+      closeButton.type = 'button';
+      closeButton.setAttribute('aria-label', 'Close case');
+      closeButton.textContent = '×';
+      detail.prepend(closeButton);
+    });
+
+    function openCase(caseId, trigger) {
+      const selectedCase = document.getElementById(caseId);
+      if (!selectedCase) return;
+      lastCaseTrigger = trigger || null;
+      caseDetails.forEach(detail => detail.classList.toggle('is-open', detail === selectedCase));
+      caseReader.classList.add('is-open');
+      caseReader.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('case-reader-open');
+      history.replaceState(null, '', `#${caseId}`);
+      selectedCase.querySelector('.case-close').focus();
+    }
+
+    function closeCase() {
+      caseReader.classList.remove('is-open');
+      caseReader.setAttribute('aria-hidden', 'true');
+      caseDetails.forEach(detail => detail.classList.remove('is-open'));
+      document.body.classList.remove('case-reader-open');
+      history.replaceState(null, '', `${location.pathname}${location.search}#cases`);
+      if (lastCaseTrigger) lastCaseTrigger.focus();
+    }
+
+    caseLinks.forEach(link => link.addEventListener('click', event => {
+      event.preventDefault();
+      openCase(link.hash.slice(1), link);
+    }));
+
+    caseReader.addEventListener('click', event => {
+      if (event.target === caseReader || event.target.closest('.case-close')) closeCase();
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && caseReader.classList.contains('is-open')) closeCase();
+    });
+
+    const initialCase = location.hash.match(/^#case-(00[1-9]|01[0-2])$/);
+    if (initialCase) openCase(initialCase[0].slice(1));
+  </script>
 </body>
 </html>
