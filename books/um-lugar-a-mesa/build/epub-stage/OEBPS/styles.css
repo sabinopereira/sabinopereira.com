@@ -1,0 +1,31 @@
+@page { margin: 6%; }
+html, body { margin: 0; padding: 0; }
+body { background: #FFFFFF; color: #171513; font-family: Georgia, "Times New Roman", serif; font-size: 1em; line-height: 1.52; }
+p { margin: 0 0 0.48em 0; text-indent: 1.25em; text-align: justify; orphans: 2; widows: 2; }
+p.dialogue { text-indent: 0; margin: 0 0 0.42em 0; }
+p.display { text-indent: 0; text-align: center; letter-spacing: 0.08em; color: #5A1F27; margin: 1em 8%; }
+.chapter-title-page { margin: 0; padding: 0; }
+.chapter-opener { display: table; width: 100%; height: 92vh; min-height: 30em; text-align: center; }
+.opener-inner { display: table-cell; width: 100%; vertical-align: middle; text-align: center; }
+.chapter-opener h1 { font-family: Georgia, "Times New Roman", serif; font-size: 1.5em; font-weight: normal; letter-spacing: 0.14em; color: #5A1F27; margin: 0.5em 0; }
+.chapter-opener h2 { font-family: Georgia, "Times New Roman", serif; font-size: 1em; font-weight: normal; font-style: italic; color: #49413B; margin: 0.55em 0 1em; }
+.chapter-text { margin: 0; padding: 0; }
+.ornament { color: #A77A35; font-size: 0.72em; }
+.rule { width: 4.5em; height: 1px; background: #A77A35; margin: 1em auto 0; }
+.scene-break { text-align: center; color: #A77A35; font-size: 0.65em; margin: 2em 0; }
+.front { text-align: center; }
+.front h1 { color: #5A1F27; font-size: 2.1em; font-weight: normal; letter-spacing: 0.08em; margin: 25vh 0 0.4em; }
+.front .author { color: #A77A35; letter-spacing: 0.14em; text-indent: 0; text-align: center; }
+.front-page { margin: 7vh auto 0; max-width: 32em; }
+.front-page h1 { color: #5A1F27; font-weight: normal; text-align: center; letter-spacing: 0.06em; }
+.front-page p { text-indent: 0; text-align: left; margin-bottom: 0.9em; }
+.dedication p, .epigraph p { text-align: center; text-indent: 0; margin: 28vh 12% 0; }
+.epigraph p { font-style: italic; }
+.toc ul { list-style: none; margin: 1.4em 0 0; padding: 0; }
+.toc li { margin: 0.36em 0; padding: 0; text-align: left; border-bottom: 1px solid #E7E1DA; }
+.toc a { display: block; color: #241E1A; text-decoration: none; padding: 0.22em 0; }
+.toc .num { display: inline-block; width: 5.8em; color: #5A1F27; font-size: 0.78em; letter-spacing: 0.06em; }
+.toc .name { color: #241E1A; }
+.note p { text-indent: 0; text-align: left; }
+.cover { background: #FFFFFF; margin: 0; padding: 0; text-align: center; }
+.cover img { display: block; width: 100%; height: auto; margin: 0 auto; }
