@@ -78,6 +78,8 @@
     .shelf { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 20px; }
     .book-card { min-width: 0; display: flex; flex-direction: column; background: var(--cream); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; transition: transform .25s, box-shadow .25s; }
     .book-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(48,38,28,.12); }
+    .book-card.coming-soon:hover { transform: none; box-shadow: none; }
+    .book-card.coming-soon .text-link::after { content: ""; }
     .book-card.featured { grid-column: span 2; display: grid; grid-template-columns: minmax(220px,.78fr) minmax(0,1fr); background: var(--ink); color: var(--cream); }
     .book-cover { min-height: 390px; display: grid; place-items: center; padding: 28px; background: #dfd5c6; }
     .book-cover img { width: auto; max-height: 340px; filter: drop-shadow(0 20px 22px rgba(38,29,20,.25)); }
@@ -199,6 +201,11 @@
         <p>New Director’s Cuts, premium digital editions, and connected books made for readers who want more than a quick escape.</p>
       </div>
       <div class="shelf">
+        <article class="book-card coming-soon">
+          <div class="book-cover"><img src="/books/a-seat-at-the-table/assets/a-seat-at-the-table-cover-web.jpg?v=20260723" alt="A Seat at the Table book cover"></div>
+          <div class="book-info"><span class="book-tag">Coming Soon · Psychological Thriller</span><h3>A Seat at the Table</h3><p>One dinner. One table. A truth with every course. As the masks fall, power becomes the most dangerous seat in the room.</p><span class="text-link">Coming soon</span></div>
+        </article>
+
         <a class="book-card featured" href="/borrow-delay-repeat.html">
           <div class="book-cover"><img src="/books/borrow-delay-repeat/directors-cut/premium-edition/ebook/borrow-delay-repeat-directors-cut-cover.jpg?v=20260721" alt="Borrow. Delay. Repeat. — Director’s Cut cover"></div>
           <div class="book-info"><span class="book-tag">New Director’s Cut · Satire</span><h3>Borrow. Delay. Repeat.</h3><p>A very unserious guide to not giving money back—revised in prose, with director’s commentary, the lender’s side, and a receipt for every excuse.</p><span class="text-link">Meet the expert</span></div>
