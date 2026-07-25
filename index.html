@@ -71,6 +71,23 @@
     .book-float.yes:hover { transform: rotate(2deg) translateY(-8px); }
     .marquee { overflow: hidden; background: var(--red); color: #fff8eb; border-block: 1px solid rgba(0,0,0,.12); }
     .marquee-inner { min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 28px; white-space: nowrap; font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+    .design-showcase { padding: 80px 0; border-bottom: 1px solid var(--line); background: #171411; color: var(--cream); }
+    .design-showcase-head { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 32px; align-items: end; margin-bottom: 34px; }
+    .design-showcase h2 { max-width: 760px; font-size: clamp(44px, 6vw, 78px); line-height: .9; letter-spacing: -.04em; }
+    .design-showcase .eyebrow { color: #e3b766; }
+    .design-showcase .button { border-color: rgba(255,255,255,.48); color: var(--cream); }
+    .design-showcase .button:hover { border-color: #e3b766; color: #e3b766; }
+    .design-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
+    .design-card { display: grid; grid-template-rows: minmax(280px, 1fr) auto; overflow: hidden; border: 1px solid rgba(255,255,255,.15); border-radius: 20px; background: #29241f; transition: transform .25s, border-color .25s; }
+    .design-card:hover { transform: translateY(-5px); border-color: rgba(227,183,102,.65); }
+    .design-card-media { display: grid; place-items: center; min-height: 330px; padding: 22px; background: radial-gradient(circle at 50% 42%, #eee3d0 0, #c9baa3 44%, #8c7b68 100%); }
+    .design-card:nth-child(2) .design-card-media { background: radial-gradient(circle at 50% 42%, #dbd1c0 0, #9c8d78 48%, #4f4439 100%); }
+    .design-card:nth-child(3) .design-card-media { background: radial-gradient(circle at 50% 42%, #d4cab8 0, #786b5b 50%, #302a24 100%); }
+    .design-card img { width: 100%; height: 330px; object-fit: contain; filter: drop-shadow(0 22px 28px rgba(0,0,0,.32)); }
+    .design-card-copy { padding: 20px 22px 22px; }
+    .design-card-copy span { color: #e3b766; font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+    .design-card-copy h3 { margin-top: 9px; font-size: 28px; line-height: 1; }
+    .design-card-copy p { margin: 10px 0 0; color: #bcb0a1; font-size: 13px; line-height: 1.5; }
     .library { padding: 112px 0 92px; }
     .section-head { display: grid; grid-template-columns: minmax(0,1fr) minmax(280px,.46fr); align-items: end; gap: 40px; margin-bottom: 48px; }
     .section-head h2 { max-width: 850px; font-size: clamp(54px, 7vw, 96px); line-height: .88; letter-spacing: -.045em; }
@@ -119,6 +136,7 @@
       .hero-art { min-height: 620px; }
       .shelf { grid-template-columns: repeat(2,minmax(0,1fr)); }
       .book-card.featured { grid-column: span 2; }
+      .design-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
       .statement-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 700px) {
@@ -136,6 +154,14 @@
       .book-float.chess { width: 36%; left: 3%; top: 255px; }
       .book-float.yes { width: 35%; right: 3%; top: 270px; }
       .marquee-inner span:nth-child(even) { display: none; }
+      .design-showcase { padding: 58px 0; }
+      .design-showcase-head { grid-template-columns: 1fr; align-items: start; }
+      .design-grid { grid-template-columns: 1fr; }
+      .design-card { grid-template-columns: minmax(130px,.75fr) 1fr; grid-template-rows: auto; }
+      .design-card-media { min-height: 220px; padding: 12px; }
+      .design-card img { height: 220px; }
+      .design-card-copy { align-self: center; padding: 18px; }
+      .design-card-copy h3 { font-size: 23px; }
       .library { padding: 74px 0 64px; }
       .section-head { grid-template-columns: 1fr; margin-bottom: 34px; }
       .section-head h2 { font-size: 57px; }
@@ -180,6 +206,7 @@
         <div class="actions">
           <a class="button primary" href="#library">Enter the library</a>
           <a class="button" href="/books.html">Browse every book</a>
+          <a class="button" href="#designs">Shop designs</a>
         </div>
       </div>
       <div class="hero-art" aria-label="New books by Sabino Pereira">
@@ -198,6 +225,29 @@
     <div class="marquee" aria-hidden="true">
       <div class="marquee-inner shell"><span>Literary fiction</span><span>·</span><span>Satire</span><span>·</span><span>Faith &amp; healing</span><span>·</span><span>Strategy</span><span>·</span><span>Story worlds</span></div>
     </div>
+
+    <section class="design-showcase" id="designs" aria-labelledby="designs-title">
+      <div class="shell">
+        <div class="design-showcase-head">
+          <div><p class="eyebrow">Quiet Power Shop</p><h2 id="designs-title">Wear the ideas.</h2></div>
+          <a class="button" href="/shop.html">See every design</a>
+        </div>
+        <div class="design-grid">
+          <a class="design-card" href="/shop.html#products">
+            <div class="design-card-media"><img src="/images/merch/built-by-grace-oversized-t-shirt.png" alt="Built by Grace oversized white t-shirt"></div>
+            <div class="design-card-copy"><span>Faith · Healing · Purpose</span><h3>Built by Grace</h3><p>A design about becoming, surviving, and remembering what carried you.</p></div>
+          </a>
+          <a class="design-card" href="/shop.html#products">
+            <div class="design-card-media"><img src="/images/merch/checkmate-in-silence-tee.png" alt="Checkmate in Silence black t-shirt"></div>
+            <div class="design-card-copy"><span>Strategy · Quiet power</span><h3>Checkmate in Silence</h3><p>For people who do not need noise to make the decisive move.</p></div>
+          </a>
+          <a class="design-card" href="/shop.html#products">
+            <div class="design-card-media"><img src="/images/merch/everybody-acting-insane-mask-tee.png" alt="Everybody Acting Insane Mask black t-shirt"></div>
+            <div class="design-card-copy"><span>Modern life · Reira Bin</span><h3>Everybody Acting Insane</h3><p>A dark statement from the louder, stranger side of the world.</p></div>
+          </a>
+        </div>
+      </div>
+    </section>
 
     <section class="library shell" id="library">
       <div class="section-head">
