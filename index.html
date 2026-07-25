@@ -105,6 +105,8 @@
     .statement-card span { color: #e3b766; font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
     .statement-card h3 { margin-top: 38px; font-size: 31px; }
     .statement-card p { color: #bcb0a1; font-size: 14px; line-height: 1.55; }
+    .statement-card.shop-door { grid-column: 1 / -1; min-height: 190px; background: linear-gradient(110deg, rgba(227,183,102,.13), transparent 58%); }
+    .statement-card.shop-door h3 { margin-top: 24px; font-size: clamp(34px, 4vw, 50px); }
     .closing { padding: 92px 0; }
     .closing-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 46px; border: 1px solid var(--line); border-radius: 28px; background: var(--cream); }
     .closing h2 { font-size: clamp(40px,5vw,66px); line-height: .95; }
@@ -125,7 +127,7 @@
       .brand { font-size: 13px; }
       .brand small { display: none; }
       .nav-links { gap: 12px; font-size: 10px; }
-      .nav-links a:nth-child(1), .nav-links a:nth-child(5), .nav-links a:nth-child(6), .nav-cta { display: none; }
+      .nav-links a:nth-child(1), .nav-links a:nth-child(5), .nav-links a:nth-child(6), .nav-links a:nth-child(7) { display: none; }
       .hero { padding: 54px 0 62px; gap: 42px; }
       h1 { font-size: clamp(60px, 20vw, 88px); }
       .lede { font-size: 18px; }
@@ -144,6 +146,7 @@
       .featured .book-info { padding: 28px; }
       .statement { padding: 68px 0; }
       .statement-copy { grid-template-columns: 1fr; }
+      .statement-card.shop-door { grid-column: auto; }
       .closing { padding: 60px 0; }
       .closing-inner { align-items: flex-start; flex-direction: column; padding: 30px; }
       .footer-inner { flex-direction: column; }
@@ -162,7 +165,8 @@
         <a href="/music.html">Music</a>
         <a href="/truth-files.html">Truth Files</a>
         <a href="/about.html">About</a>
-        <a class="nav-cta" href="/contact.html">Contact</a>
+        <a href="/contact.html">Contact</a>
+        <a class="nav-cta" href="/shop.html">Shop</a>
       </div>
     </nav>
   </header>
@@ -249,6 +253,7 @@
         <div class="statement-copy">
           <a class="statement-card" href="/truth-files.html"><span>For the curious</span><h3>Truth Files</h3><p>Faith, facts, discernment, and the discipline to examine everything without becoming cynical.</p></a>
           <a class="statement-card" href="/music.html"><span>For the listeners</span><h3>Reira Bin</h3><p>Companion albums and music that extend the emotional worlds of the books.</p></a>
+          <a class="statement-card shop-door" href="/shop.html"><span>For those who wear the ideas</span><h3>Quiet Power Designs</h3><p>Original tees and hoodies shaped by faith, strategy, pressure, silence, music, books, and modern emotional survival. Explore every design in the Shop.</p></a>
         </div>
       </div>
     </section>
@@ -262,7 +267,7 @@
   </main>
 
   <footer>
-    <div class="footer-inner shell"><span>© 2026 Sabino Pereira</span><span class="footer-links"><a href="/books.html">Books</a><a href="/series.html">Series</a><a href="/music.html">Music</a><a href="/about.html">About</a><a href="https://quiet-power-shop.fourthwall.com" target="_blank" rel="noopener">Shop</a><a href="/contact.html">Contact</a></span></div>
+    <div class="footer-inner shell"><span>© 2026 Sabino Pereira</span><span class="footer-links"><a href="/books.html">Books</a><a href="/series.html">Series</a><a href="/music.html">Music</a><a href="/about.html">About</a><a href="/shop.html">Shop</a><a href="/contact.html">Contact</a></span></div>
   </footer>
 </body>
 </html>
