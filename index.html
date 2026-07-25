@@ -73,12 +73,16 @@
     .marquee-inner { min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 28px; white-space: nowrap; font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
     .design-showcase { padding: 80px 0; border-bottom: 1px solid var(--line); background: #171411; color: var(--cream); }
     .design-showcase-head { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 32px; align-items: end; margin-bottom: 34px; }
+    .design-showcase-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 10px; }
+    .design-rotate-btn { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.34); border-radius: 50%; background: transparent; color: var(--cream); cursor: pointer; font: 22px/1 Georgia, serif; transition: border-color .2s, color .2s, transform .2s; }
+    .design-rotate-btn:hover, .design-rotate-btn:focus-visible { border-color: #e3b766; color: #e3b766; transform: translateY(-2px); }
     .design-showcase h2 { max-width: 760px; font-size: clamp(44px, 6vw, 78px); line-height: .9; letter-spacing: -.04em; }
     .design-showcase .eyebrow { color: #e3b766; }
     .design-showcase .button { border-color: rgba(255,255,255,.48); color: var(--cream); }
     .design-showcase .button:hover { border-color: #e3b766; color: #e3b766; }
     .design-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
-    .design-card { display: grid; grid-template-rows: minmax(280px, 1fr) auto; overflow: hidden; border: 1px solid rgba(255,255,255,.15); border-radius: 20px; background: #29241f; transition: transform .25s, border-color .25s; }
+    .design-card { display: grid; grid-template-rows: minmax(280px, 1fr) auto; overflow: hidden; border: 1px solid rgba(255,255,255,.15); border-radius: 20px; background: #29241f; transition: transform .25s, border-color .25s, opacity .22s; }
+    .design-card.is-changing { opacity: .18; transform: translateY(8px); }
     .design-card:hover { transform: translateY(-5px); border-color: rgba(227,183,102,.65); }
     .design-card-media { display: grid; place-items: center; min-height: 330px; padding: 22px; background: radial-gradient(circle at 50% 42%, #eee3d0 0, #c9baa3 44%, #8c7b68 100%); }
     .design-card:nth-child(2) .design-card-media { background: radial-gradient(circle at 50% 42%, #dbd1c0 0, #9c8d78 48%, #4f4439 100%); }
@@ -230,18 +234,22 @@
       <div class="shell">
         <div class="design-showcase-head">
           <div><p class="eyebrow">Quiet Power Shop</p><h2 id="designs-title">Wear the ideas.</h2></div>
-          <a class="button" href="/shop.html">See every design</a>
+          <div class="design-showcase-actions">
+            <button class="design-rotate-btn" type="button" data-design-prev aria-label="Previous designs">←</button>
+            <button class="design-rotate-btn" type="button" data-design-next aria-label="Next designs">→</button>
+            <a class="button" href="/shop.html">See every design</a>
+          </div>
         </div>
         <div class="design-grid">
-          <a class="design-card" href="/shop.html#products">
+          <a class="design-card" data-design-slot="0" href="/shop.html#products">
             <div class="design-card-media"><img src="/images/merch/built-by-grace-oversized-t-shirt.png" alt="Built by Grace oversized white t-shirt"></div>
             <div class="design-card-copy"><span>Faith · Healing · Purpose</span><h3>Built by Grace</h3><p>A design about becoming, surviving, and remembering what carried you.</p></div>
           </a>
-          <a class="design-card" href="/shop.html#products">
+          <a class="design-card" data-design-slot="1" href="/shop.html#products">
             <div class="design-card-media"><img src="/images/merch/checkmate-in-silence-tee.png" alt="Checkmate in Silence black t-shirt"></div>
             <div class="design-card-copy"><span>Strategy · Quiet power</span><h3>Checkmate in Silence</h3><p>For people who do not need noise to make the decisive move.</p></div>
           </a>
-          <a class="design-card" href="/shop.html#products">
+          <a class="design-card" data-design-slot="2" href="/shop.html#products">
             <div class="design-card-media"><img src="/images/merch/everybody-acting-insane-mask-tee.png" alt="Everybody Acting Insane Mask black t-shirt"></div>
             <div class="design-card-copy"><span>Modern life · Reira Bin</span><h3>Everybody Acting Insane</h3><p>A dark statement from the louder, stranger side of the world.</p></div>
           </a>
@@ -319,5 +327,64 @@
   <footer>
     <div class="footer-inner shell"><span>© 2026 Sabino Pereira</span><span class="footer-links"><a href="/books.html">Books</a><a href="/series.html">Series</a><a href="/music.html">Music</a><a href="/about.html">About</a><a href="/shop.html">Shop</a><a href="/contact.html">Contact</a></span></div>
   </footer>
+  <script>
+    (() => {
+      const showcase = document.querySelector('.design-showcase');
+      const cards = [...document.querySelectorAll('[data-design-slot]')];
+      if (!showcase || cards.length !== 3) return;
+
+      const designs = [
+        { image: '/images/merch/built-by-grace-oversized-t-shirt.png', alt: 'Built by Grace oversized white t-shirt', tag: 'Faith · Healing · Purpose', title: 'Built by Grace', copy: 'A design about becoming, surviving, and remembering what carried you.' },
+        { image: '/images/merch/checkmate-in-silence-tee.png', alt: 'Checkmate in Silence black t-shirt', tag: 'Strategy · Quiet power', title: 'Checkmate in Silence', copy: 'For people who do not need noise to make the decisive move.' },
+        { image: '/images/merch/everybody-acting-insane-mask-tee.png', alt: 'Everybody Acting Insane Mask black t-shirt', tag: 'Modern life · Reira Bin', title: 'Everybody Acting Insane', copy: 'A dark statement from the louder, stranger side of the world.' },
+        { image: '/images/merch/everybody-is-insane-premium-hoodie.png', alt: 'Everybody Is Insane premium black hoodie', tag: 'Statement · Premium hoodie', title: 'Everybody Is Insane', copy: 'A warmer layer for when the world confirms the diagnosis.' },
+        { image: '/images/merch/everybody-is-insane-premium-tee-cream.png', alt: 'Everybody Is Insane premium cream t-shirt', tag: 'Statement · Premium tee', title: 'Everybody Is Insane — Cream', copy: 'The same uncomfortable observation in a softer colour.' },
+        { image: '/images/merch/everybody-acting-insane-wake-up-tee.png', alt: 'Everybody Acting Insane Wake Up black t-shirt', tag: 'Wake up · Reira Bin', title: 'Wake Up', copy: 'A visual alarm for a culture sleepwalking through the noise.' },
+        { image: '/images/merch/everybody-acting-insane-wake-up-hoodie.png', alt: 'Everybody Acting Insane Wake Up black hoodie', tag: 'Wake up · Premium hoodie', title: 'Wake Up Hoodie', copy: 'The louder version of a quiet refusal to look away.' },
+        { image: '/images/merch/everybody-is-insane-rb-tote.png', alt: 'Everybody Is Insane Reira Bin tote bag', tag: 'Reira Bin · Everyday carry', title: 'Everybody Is Insane Tote', copy: 'Carry the observation with everything else the day demands.' },
+        { image: '/images/merch/everybody-is-insane-poster.png', alt: 'Everybody Is Insane poster', tag: 'Wall art · Reira Bin', title: 'Everybody Is Insane Poster', copy: 'A statement piece for the wall that has seen enough.' }
+      ];
+
+      let page = 0;
+      let timer;
+      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function render(direction = 1) {
+        cards.forEach(card => card.classList.add('is-changing'));
+        window.setTimeout(() => {
+          cards.forEach((card, slot) => {
+            const item = designs[(page * 3 + slot + designs.length) % designs.length];
+            const image = card.querySelector('img');
+            image.src = item.image;
+            image.alt = item.alt;
+            card.querySelector('span').textContent = item.tag;
+            card.querySelector('h3').textContent = item.title;
+            card.querySelector('p').textContent = item.copy;
+            card.classList.remove('is-changing');
+          });
+        }, reduceMotion ? 0 : 220);
+      }
+
+      function move(direction) {
+        page = (page + direction + Math.ceil(designs.length / 3)) % Math.ceil(designs.length / 3);
+        render(direction);
+        restart();
+      }
+
+      function restart() {
+        window.clearInterval(timer);
+        if (!reduceMotion) timer = window.setInterval(() => move(1), 5200);
+      }
+
+      document.querySelector('[data-design-prev]').addEventListener('click', () => move(-1));
+      document.querySelector('[data-design-next]').addEventListener('click', () => move(1));
+      showcase.addEventListener('mouseenter', () => window.clearInterval(timer));
+      showcase.addEventListener('mouseleave', restart);
+      showcase.addEventListener('focusin', () => window.clearInterval(timer));
+      showcase.addEventListener('focusout', restart);
+      document.addEventListener('visibilitychange', () => document.hidden ? window.clearInterval(timer) : restart());
+      restart();
+    })();
+  </script>
 </body>
 </html>
