@@ -11,7 +11,7 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import (
     BaseDocTemplate, Frame, Image, KeepTogether, PageBreak, PageTemplate,
-    Paragraph, Spacer
+    Paragraph, Spacer, Flowable
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -70,10 +70,23 @@ def draw_page(canvas, doc):
     canvas.restoreState()
 
 
+class FullPageImage(Flowable):
+    def __init__(self, path):
+        super().__init__()
+        self.path = str(path)
+
+    def wrap(self, avail_width, avail_height):
+        return 0, 0
+
+    def drawOn(self, canvas, x, y, _sW=0):
+        canvas.drawImage(
+            ImageReader(self.path), 0, 0, width=PAGE_W, height=PAGE_H,
+            preserveAspectRatio=False, mask="auto"
+        )
+
+
 def full_page_image(path):
-    img = Image(str(path), width=PAGE_W, height=PAGE_H)
-    img.hAlign = "CENTER"
-    return img
+    return FullPageImage(path)
 
 
 def split_sections(text):
