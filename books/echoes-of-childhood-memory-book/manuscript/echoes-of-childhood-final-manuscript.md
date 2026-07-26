@@ -63,6 +63,7 @@ The journey begins with a world that had not yet become noisy.
 
 Introduction  
 Before You Begin  
+Part 1 — Where It All Began
 One — Before the World Got Loud  
 Two — Saturday Mornings  
 Three — The Long Summer  
@@ -71,11 +72,18 @@ Five — Until the Streetlights Came On
 Six — The Bell Between Lessons  
 Seven — The First Butterfly  
 Eight — The Hands That Held Ours  
+Part 2 — The Echoes We Carry
 Nine — Christmas Morning  
 Ten — One Last Summer Evening  
 Eleven — Echoes of Childhood  
 Epilogue — Home Was Never a Place  
 Acknowledgements
+
+---
+
+# Part 1
+
+## Where It All Began
 
 ---
 
@@ -512,6 +520,12 @@ The hands that once held ours eventually let go.
 Not because they stopped loving us.
 
 But because one day they trusted that we were ready to keep walking on our own.
+
+---
+
+# Part 2
+
+## The Echoes We Carry
 
 ---
 

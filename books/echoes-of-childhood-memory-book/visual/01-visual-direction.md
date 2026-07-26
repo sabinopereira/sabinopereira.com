@@ -25,7 +25,7 @@ The reader should recognise a page by five recurring features:
 - warm ivory field rather than pure white;
 - deep midnight-navy typography;
 - restrained sepia/gold accents;
-- full-bleed cinematic chapter openings contrasted with quiet text pages;
+- full-page watercolour chapter openings contrasted with quiet text pages;
 - found objects entering from margins as though resting between pages.
 
 ## Palette
@@ -83,16 +83,12 @@ Production limitations:
 - a printed hardcover wrap cannot be finalised until page count, paper, binding, spine width, and printer template are locked;
 - the front design must later be extended into spine and back cover rather than merely enlarged.
 
-## Listening integration
+## Music integration
 
-Each chapter should use a discreet line:
+The first premium eBook edition contains no QR codes and no music links. Permanent track links may be considered in a later edition after the author supplies them.
 
-> **Listen:** *Track title*
+The present edition must remain complete and coherent as a standalone book.
 
-The digital PDF should hyperlink the title. The printed edition may include a small QR code only after permanent destination URLs exist. Codes must be tested at final printed size and should not appear on the cover.
+## Interior image policy
 
-## Illustration medium
-
-Recommended direction: cinematic photographic still life with softly aged analogue character, not heavy fake distressing. Human figures should be absent, distant, silhouetted, or obscured. Objects and spaces carry the story.
-
-The work should feel like a memory reconstructed with care, not a literal archival photograph and not a children's-book illustration.
+The supplied two-part overview boards are reference sheets, not finished spreads. Their twelve visual ideas have been recreated as individual 2:3 portrait illustrations in a consistent watercolour-and-gouache language. Each illustration opens its corresponding chapter without embedded titles, captions, logos, or numbering. The overview boards do not appear in the finished eBook.

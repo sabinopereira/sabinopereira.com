@@ -9,7 +9,9 @@ Premium editorial companion to the album *Echoes of Childhood*.
 
 ## Production status
 
-The manuscript is structurally complete. The project is now in editorial development: structural revision, visual identity, illustration planning, music integration, final manuscript lock, and premium PDF/print production.
+The Final Manuscript and the premium eBook edition are complete. The official author-supplied cover is paired with twelve bespoke chapter illustrations developed from the supplied visual reference boards. The overview boards themselves are not used as interior pages. The edition contains no QR codes or music links and is organised into two parts: **Where It All Began** and **The Echoes We Carry**.
+
+Final eBook: `output/echoes-of-childhood-a-memory-book-premium-ebook.pdf`
 
 ## Directory map
 

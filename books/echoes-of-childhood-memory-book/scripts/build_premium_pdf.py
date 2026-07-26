@@ -17,8 +17,22 @@ from reportlab.platypus import (
 ROOT = Path(__file__).resolve().parents[1]
 MANUSCRIPT = ROOT / "manuscript" / "echoes-of-childhood-final-manuscript.md"
 COVER = ROOT / "assets" / "cover" / "echoes-of-childhood-memory-book-cover-prototype-1800x2700.png"
-CH1_IMAGE = ROOT / "assets" / "illustrations" / "01-before-the-world-got-loud-style-proof.png"
-OUTPUT = ROOT / "output" / "echoes-of-childhood-memory-book-premium-prototype.pdf"
+OUTPUT = ROOT / "output" / "echoes-of-childhood-a-memory-book-premium-ebook.pdf"
+
+CHAPTER_IMAGES = {
+    "Chapter One": ROOT / "assets" / "illustrations" / "01-before-the-world-got-loud.png",
+    "Chapter Two": ROOT / "assets" / "illustrations" / "02-saturday-mornings.png",
+    "Chapter Three": ROOT / "assets" / "illustrations" / "03-the-long-summer.png",
+    "Chapter Four": ROOT / "assets" / "illustrations" / "04-the-toy-we-couldnt-put-down.png",
+    "Chapter Five": ROOT / "assets" / "illustrations" / "05-until-the-streetlights-came-on.png",
+    "Chapter Six": ROOT / "assets" / "illustrations" / "06-the-bell-between-lessons.png",
+    "Chapter Seven": ROOT / "assets" / "illustrations" / "07-the-first-butterfly.png",
+    "Chapter Eight": ROOT / "assets" / "illustrations" / "08-the-hands-that-held-ours.png",
+    "Chapter Nine": ROOT / "assets" / "illustrations" / "09-christmas-morning.png",
+    "Chapter Ten": ROOT / "assets" / "illustrations" / "10-one-last-summer-evening.png",
+    "Chapter Eleven": ROOT / "assets" / "illustrations" / "11-echoes-of-childhood.png",
+    "Epilogue": ROOT / "assets" / "illustrations" / "12-home-was-never-a-place.png",
+}
 
 PAGE_W, PAGE_H = 6 * inch, 9 * inch
 IVORY = HexColor("#F3E8D0")
@@ -48,7 +62,7 @@ class MemoryBookDoc(BaseDocTemplate):
             bottomMargin=0.68 * inch,
             title="Echoes of Childhood - A Memory Book",
             author="Sabino Pereira",
-            subject="Premium prototype",
+            subject="Premium eBook edition",
         )
         frame = Frame(
             self.leftMargin, self.bottomMargin,
@@ -87,6 +101,17 @@ class FullPageImage(Flowable):
 
 def full_page_image(path):
     return FullPageImage(path)
+
+
+class HideFolio(Flowable):
+    def wrap(self, avail_width, avail_height):
+        return 0, 0
+
+    def drawOn(self, canvas, x, y, _sW=0):
+        canvas.saveState()
+        canvas.setFillColor(IVORY)
+        canvas.rect(0, 0, PAGE_W, 0.55 * inch, fill=1, stroke=0)
+        canvas.restoreState()
 
 
 def split_sections(text):
@@ -143,6 +168,18 @@ SECTION_TITLE = ParagraphStyle(
     "SectionTitle", fontName="Georgia", fontSize=24, leading=29,
     textColor=NAVY, alignment=TA_CENTER, spaceAfter=22,
 )
+PART_NUMBER = ParagraphStyle(
+    "PartNumber", fontName="Georgia", fontSize=10, leading=13,
+    textColor=GOLD, alignment=TA_CENTER, spaceAfter=20,
+)
+PART_TITLE = ParagraphStyle(
+    "PartTitle", fontName="Georgia", fontSize=29, leading=34,
+    textColor=NAVY, alignment=TA_CENTER, spaceAfter=22,
+)
+PART_TEXT = ParagraphStyle(
+    "PartText", fontName="Georgia-Italic", fontSize=11.5, leading=18,
+    textColor=SEPIA, alignment=TA_CENTER, leftIndent=24, rightIndent=24,
+)
 FINAL = ParagraphStyle(
     "Final", fontName="Georgia-Bold", fontSize=17, leading=25,
     textColor=NAVY, alignment=TA_CENTER, spaceAfter=16,
@@ -197,7 +234,7 @@ def build():
     story.extend([Spacer(1, 2.0 * inch), Paragraph("ECHOES OF CHILDHOOD", TITLE),
                   Paragraph("A MEMORY BOOK", SMALL_CAP), Spacer(1, 0.45 * inch),
                   Paragraph("Music by RB", SUBTITLE), Paragraph("Written by Sabino Pereira", SUBTITLE),
-                  PageBreak()])
+                  HideFolio(), PageBreak()])
 
     for name, body in sections:
         if name == "ECHOES OF CHILDHOOD":
@@ -208,6 +245,20 @@ def build():
                 story.append(Paragraph(clean_inline(line), CONTENTS))
             story.append(PageBreak())
             continue
+        if name in {"Part 1", "Part 2"}:
+            part_title_match = re.search(r"(?m)^## (.+)$", body)
+            part_title = part_title_match.group(1).strip() if part_title_match else ""
+            part_copy = paragraphs_from_body(body)
+            story.extend([
+                Spacer(1, 2.15 * inch),
+                Paragraph(name.upper(), PART_NUMBER),
+                Paragraph(clean_inline(part_title), PART_TITLE),
+                Spacer(1, 0.15 * inch),
+            ])
+            for paragraph in part_copy:
+                story.append(Paragraph(clean_inline(paragraph), PART_TEXT))
+            story.extend([HideFolio(), PageBreak()])
+            continue
         if name in {"Introduction", "Before You Begin", "Acknowledgements"}:
             story.extend([Spacer(1, 0.65 * inch), Paragraph(name, SECTION_TITLE)])
             add_prose(story, paragraphs_from_body(body))
@@ -216,13 +267,14 @@ def build():
         if name == "Final Page":
             story.extend([Spacer(1, 2.65 * inch),
                           Paragraph("One day, someone will remember today.", FINAL),
-                          Paragraph("Make it a beautiful memory.", FINAL_ITALIC)])
+                          Paragraph("Make it a beautiful memory.", FINAL_ITALIC),
+                          HideFolio()])
             continue
         if name.startswith("Chapter") or name == "Epilogue":
             title, subtitle, fragment = chapter_meta(name, body)
-            if name == "Chapter One" and CH1_IMAGE.exists():
-                story.append(full_page_image(CH1_IMAGE))
-                story.append(PageBreak())
+            illustration = CHAPTER_IMAGES.get(name)
+            if illustration:
+                story.extend([full_page_image(illustration), HideFolio(), PageBreak()])
             story.extend([
                 Spacer(1, 1.45 * inch),
                 Paragraph(name.upper(), CHAPTER_NO),
@@ -231,6 +283,7 @@ def build():
                 Spacer(1, 0.3 * inch),
                 Paragraph("MEMORY FRAGMENT", SMALL_CAP),
                 Paragraph("“" + fragment + "”", FRAGMENT),
+                HideFolio(),
                 PageBreak(),
             ])
             add_prose(story, paragraphs_from_body(body))

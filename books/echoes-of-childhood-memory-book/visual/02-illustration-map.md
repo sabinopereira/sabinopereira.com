@@ -4,7 +4,7 @@
 
 - Portrait 2:3 master composition with safe crop flexibility.
 - Warm natural light; restrained sepia and navy shadows.
-- Cinematic photographic realism with tactile analogue texture.
+- Refined nostalgic watercolour and gouache on textured cream paper.
 - No legible brands, logos, copyrighted characters, or modern platform marks.
 - Avoid clearly identifiable faces; memories remain open to the reader.
 - Objects must look handled and loved, not arranged as pristine product photography.
@@ -12,18 +12,18 @@
 
 ## Chapter openings
 
-1. **Before the World Got Loud** — an empty residential street at first light; open window glow; no traffic; the sense of a day before demands.
+1. **Before the World Got Loud** — teddy bear on a bed beside a sunlit curtained window and a small red toy car.
 2. **Saturday Mornings** — CRT television glow, cereal bowl, blanket and soft window light in a quiet living room; no recognisable programme on screen.
-3. **The Long Summer** — two well-used bicycles leaning against a tree in late-afternoon light; open field beyond; heat and distance.
-4. **The Toy We Couldn't Put Down** — a single worn toy resting near an open memory box; visible repairs and signs of affection; no specific franchise.
-5. **Until the Streetlights Came On** — a quiet neighbourhood at blue hour as amber streetlights first illuminate; ball and two backpacks left as goalposts.
-6. **The Bell Between Lessons** — empty school corridor after the bell; soft daylight; a dropped pencil, traded sticker, or folded note near a classroom door.
-7. **The First Butterfly** — two long shadows crossing a schoolyard, or a folded note beside a pressed flower; intimate but non-romantic.
+3. **The Long Summer** — lakeside tree, rope swing and small wooden jetty at sunset.
+4. **The Toy We Couldn't Put Down** — a beloved teddy bear surrounded by children's drawings and crayons.
+5. **Until the Streetlights Came On** — a quiet neighbourhood at sunset as amber streetlights first illuminate; a bicycle rests by the pavement.
+6. **The Bell Between Lessons** — empty classroom after the bell; wooden desks, chalkboard and warm window light.
+7. **The First Butterfly** — a pale butterfly resting on a daisy in a luminous summer meadow.
 8. **The Hands That Held Ours** — an adult hand and a child's hand, identities unseen, in warm natural light; safety rather than sentimentality.
 9. **Christmas Morning** — living room before sunrise, illuminated only by tree lights; unopened gifts; no people; warm expectancy.
-10. **One Last Summer Evening** — bicycles or a ball left on an empty street just after sunset; the unnoticed ending of play.
-11. **Echoes of Childhood** — adult reflection in glass layered subtly with an old childhood photograph; identity indistinct; past and present sharing one frame.
-12. **Home Was Never a Place** — no full-page chapter image. Use ivory field, faint window light, and perhaps one nearly invisible key or thread motif.
+10. **One Last Summer Evening** — a child seen from behind at the end of a lakeside dock, bicycle nearby, watching sunset.
+11. **Echoes of Childhood** — an open wooden music box with a tiny ballerina, vintage photographs and childhood keepsakes in golden light.
+12. **Home Was Never a Place** — a night window, open memory album, framed family photograph, warm mug and distant house lights.
 
 ## Found-object sequence
 

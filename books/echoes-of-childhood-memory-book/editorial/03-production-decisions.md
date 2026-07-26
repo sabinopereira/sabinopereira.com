@@ -19,11 +19,11 @@
 - 48–64 page editorial target, subject to print-platform minimums.
 - Warm photographic still-life illustrations with analogue texture.
 - Cormorant Garamond or EB Garamond for display; EB Garamond, Source Serif 4, or Libre Baskerville for body.
-- Discreet “Listen” cue per chapter.
+- No QR codes or music links in the first premium eBook edition.
 
 ## Pending external dependencies
 
-- Permanent streaming URLs for tracks and QR codes.
+- Permanent music links, if added in a later edition.
 - Final album Memory Fragment audio scripts confirmation.
 - Final print supplier and binding specification.
 - Final page count, required before hardcover wrap/spine production.
