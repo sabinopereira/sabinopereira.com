@@ -4,20 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Echoes of Childhood | Album by Reira Bin & Memory Book</title>
-  <meta name="description" content="Discover Echoes of Childhood: a cinematic instrumental album by Reira Bin and a companion Memory Book by Sabino Pereira. Book out 30 October 2026; album out 6 November 2026.">
+  <meta name="description" content="Discover Echoes of Childhood: a cinematic instrumental album by Reira Bin and a companion Memory Book by Sabino Pereira. Premium digital edition available 13 October 2026; pre-order on Amazon.">
   <meta name="author" content="Sabino Pereira">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://sabinopereira.com/echoes-of-childhood.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Sabino Pereira">
   <meta property="og:title" content="Echoes of Childhood | Music and Memory Book">
-  <meta property="og:description" content="Close your eyes. Go back. Feel again. A cinematic instrumental album by Reira Bin and a companion book by Sabino Pereira.">
+  <meta property="og:description" content="Close your eyes. Go back. Feel again. Pre-order the Memory Book on Amazon or discover the premium digital edition from 13 October 2026.">
   <meta property="og:url" content="https://sabinopereira.com/echoes-of-childhood.html">
   <meta property="og:image" content="https://sabinopereira.com/images/echoes-of-childhood/album-cover.jpg">
   <meta property="og:image:alt" content="Echoes of Childhood album cover by Reira Bin">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Echoes of Childhood | Music and Memory Book">
-  <meta name="twitter:description" content="A cinematic journey through the memories that made us. Book out 30 October 2026; album out 6 November 2026.">
+  <meta name="twitter:description" content="A cinematic journey through the memories that made us. Premium digital edition available 13 October 2026; Amazon pre-order open now.">
   <meta name="twitter:image" content="https://sabinopereira.com/images/echoes-of-childhood/album-cover.jpg">
   <link rel="icon" type="image/svg+xml" href="/images/sp-favicon.svg">
   <link rel="apple-touch-icon" href="/images/sp-favicon.svg">
@@ -66,7 +66,25 @@
         "inLanguage": "en",
         "author": { "@type": "Person", "name": "Sabino Pereira" },
         "about": "Childhood memories, gratitude, belonging and the emotional meaning of home",
-        "description": "A premium visual companion to the album, with twelve reflective chapters and memory fragments."
+        "description": "A premium visual companion to the album, with twelve reflective chapters and memory fragments.",
+        "sameAs": [
+          "https://a.co/d/0gxhiE7S",
+          "https://quiet-power-shop.fourthwall.com/products/echoes-of-childhood-premium-digital-edition"
+        ],
+        "workExample": [
+          {
+            "@type": "Book",
+            "bookFormat": "https://schema.org/EBook",
+            "name": "Echoes of Childhood — Premium Digital Edition",
+            "url": "https://quiet-power-shop.fourthwall.com/products/echoes-of-childhood-premium-digital-edition",
+            "datePublished": "2026-10-13"
+          },
+          {
+            "@type": "Book",
+            "name": "Echoes of Childhood: A Memory Book — Amazon Edition",
+            "url": "https://a.co/d/0gxhiE7S"
+          }
+        ]
       }
     ]
   }
@@ -123,7 +141,8 @@
     .hero { position: relative; overflow: hidden; background: #12100d; color: #f7ead6; }
     .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14,12,9,.96) 0%, rgba(14,12,9,.75) 44%, rgba(14,12,9,.16) 72%, rgba(14,12,9,.38) 100%); }
     .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 58% center; opacity: .74; }
-    .hero-inner { position: relative; z-index: 2; min-height: 760px; display: grid; align-content: center; padding-block: 90px; }
+    .hero-inner { position: relative; z-index: 2; min-height: 760px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, 340px); gap: clamp(45px, 8vw, 110px); align-items: center; padding-block: 90px; }
+    .hero-copy-wrap { min-width: 0; }
     .eyebrow { margin: 0 0 18px; color: #e2b873; font-size: 11px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; }
     h1, h2, h3 { margin: 0; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; }
     h1 { max-width: 760px; font-size: clamp(66px, 10vw, 132px); line-height: .76; letter-spacing: -.035em; }
@@ -136,6 +155,13 @@
     .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
     .button { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; padding: 0 19px; border: 1px solid rgba(226,184,115,.5); color: #f4ddb8; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; transition: 180ms ease; }
     .button:hover { background: #e2b873; color: #18120d; transform: translateY(-2px); }
+    .hero-book { position: relative; display: block; width: min(100%, 320px); justify-self: end; padding: 11px 11px 18px; border: 1px solid rgba(226,184,115,.35); background: rgba(17,16,14,.68); box-shadow: 0 32px 80px rgba(0,0,0,.5); backdrop-filter: blur(12px); transform: rotate(1.2deg); transition: transform 180ms ease, border-color 180ms ease; }
+    .hero-book:hover { transform: rotate(0) translateY(-4px); border-color: rgba(226,184,115,.8); }
+    .hero-book img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; }
+    .hero-book-meta { padding: 15px 7px 0; }
+    .hero-book-meta span { display: block; color: #d4aa6c; font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+    .hero-book-meta strong { display: block; margin-top: 6px; color: #f6ead8; font: 600 22px/1.05 "Cormorant Garamond", Georgia, serif; }
+    .hero-book-meta small { display: block; margin-top: 6px; color: rgba(247,234,214,.66); font-size: 10px; letter-spacing: .05em; }
 
     .intro { display: grid; grid-template-columns: minmax(0, .75fr) minmax(340px, 1.25fr); gap: clamp(44px, 8vw, 110px); align-items: center; padding-block: 110px; }
     .album-cover { border: 12px solid rgba(255,250,240,.5); box-shadow: 0 34px 80px rgba(65,43,24,.25); transform: rotate(-1.2deg); }
@@ -162,6 +188,10 @@
     .book-cover-wrap::before { content: ""; position: absolute; inset: 7% 8% -5% 0; border: 1px solid rgba(74,53,37,.22); }
     .book-cover { position: relative; width: min(100%, 450px); box-shadow: 0 40px 90px rgba(65,43,24,.3); }
     .book-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 31px 0 0; }
+    .book-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .book-actions .button { border-color: rgba(74,53,37,.35); color: var(--brown); }
+    .book-actions .button:hover { border-color: var(--brown); background: var(--brown); color: #f7ead6; }
+    .availability-note { margin: 14px 0 0; color: rgba(74,53,37,.72); font-size: 12px; letter-spacing: .03em; }
     .feature { padding: 17px; border-top: 1px solid var(--line); color: rgba(49,34,23,.75); font-size: 13px; line-height: 1.55; }
     .feature strong { display: block; margin-bottom: 5px; color: var(--ink); font: 600 19px/1.15 "Cormorant Garamond", Georgia, serif; }
 
@@ -175,7 +205,7 @@
     @media (max-width: 900px) {
       .nav-links { gap: 15px; }
       .nav-links a:nth-child(-n+2), .nav-links a:nth-last-child(-n+2) { display: none; }
-      .hero-inner { min-height: 680px; }
+      .hero-inner { min-height: 680px; grid-template-columns: minmax(0, 1fr) minmax(210px, 280px); gap: 35px; }
       .intro, .track-layout, .book-layout { grid-template-columns: 1fr; }
       .intro { padding-block: 80px; }
       .album-cover { width: min(620px, 100%); margin-inline: auto; }
@@ -190,7 +220,8 @@
       .nav-links a[aria-current="page"] { display: block; }
       .hero-bg { object-position: 63% center; opacity: .55; }
       .hero::after { background: linear-gradient(90deg, rgba(14,12,9,.94), rgba(14,12,9,.5)); }
-      .hero-inner { min-height: 640px; padding-block: 70px; }
+      .hero-inner { min-height: 640px; grid-template-columns: 1fr; padding-block: 70px; }
+      .hero-book { width: min(230px, 70vw); justify-self: start; margin-top: 14px; transform: rotate(1deg); }
       h1 { font-size: clamp(58px, 19vw, 88px); }
       .release-chip { flex: 1 1 100%; }
       .intro, .track-section, .book-section, .closing { padding-block: 72px; }
@@ -220,24 +251,34 @@
 
   <main>
     <section class="hero" aria-labelledby="page-title">
-      <img class="hero-bg" src="/images/echoes-of-childhood/album-cover.jpg" alt="" fetchpriority="high">
+      <img class="hero-bg" src="images/echoes-of-childhood/album-cover.jpg" alt="" fetchpriority="high">
       <div class="hero-inner shell">
-        <p class="eyebrow">A music and book experience</p>
-        <h1 id="page-title">Echoes <em>of</em> Childhood</h1>
-        <p class="hero-copy">A cinematic journey through the memories that made us—and the quiet discovery that the child we were never truly left.</p>
-        <div class="release-row" aria-label="Release dates">
-          <div class="release-chip"><span>Memory Book</span><strong>30 October 2026</strong></div>
-          <div class="release-chip"><span>Album</span><strong>6 November 2026</strong></div>
+        <div class="hero-copy-wrap">
+          <p class="eyebrow">A music and book experience</p>
+          <h1 id="page-title">Echoes <em>of</em> Childhood</h1>
+          <p class="hero-copy">A cinematic journey through the memories that made us—and the quiet discovery that the child we were never truly left.</p>
+          <div class="release-row" aria-label="Release dates">
+            <div class="release-chip"><span>Premium Digital Book</span><strong>13 October 2026</strong></div>
+            <div class="release-chip"><span>Album</span><strong>6 November 2026</strong></div>
+          </div>
+          <div class="actions">
+            <a class="button" href="#book">Discover the Memory Book</a>
+            <a class="button" href="#album">Explore the album</a>
+          </div>
         </div>
-        <div class="actions">
-          <a class="button" href="#album">Discover the album</a>
-          <a class="button" href="#book">Enter the Memory Book</a>
-        </div>
+        <a class="hero-book" href="#book" aria-label="Discover Echoes of Childhood: A Memory Book by Sabino Pereira">
+          <img src="images/echoes-of-childhood/memory-book-cover.jpg" alt="Echoes of Childhood: A Memory Book cover" fetchpriority="high">
+          <span class="hero-book-meta">
+            <span>Companion Memory Book</span>
+            <strong>Written by Sabino Pereira</strong>
+            <small>Amazon pre-order available now</small>
+          </span>
+        </a>
       </div>
     </section>
 
     <section class="intro shell" id="album">
-      <img class="album-cover" src="/images/echoes-of-childhood/album-cover.jpg" alt="Echoes of Childhood album cover by Reira Bin" loading="lazy">
+      <img class="album-cover" src="images/echoes-of-childhood/album-cover.jpg" alt="Echoes of Childhood album cover by Reira Bin" loading="lazy">
       <div>
         <p class="section-label">Album · Reira Bin · 6 November 2026</p>
         <h2>Music made to awaken memory.</h2>
@@ -268,7 +309,7 @@
           </ol>
         </div>
         <figure class="track-art">
-          <img src="/images/echoes-of-childhood/album-cover.jpg" alt="Echoes of Childhood album artwork by Reira Bin" loading="lazy">
+          <img src="images/echoes-of-childhood/album-cover.jpg" alt="Echoes of Childhood album artwork by Reira Bin" loading="lazy">
         </figure>
       </div>
     </section>
@@ -276,10 +317,10 @@
     <section class="book-section" id="book" aria-labelledby="book-title">
       <div class="book-layout shell">
         <div class="book-cover-wrap">
-          <img class="book-cover" src="/images/echoes-of-childhood/memory-book-cover.jpg" alt="Echoes of Childhood: A Memory Book cover by Sabino Pereira" loading="lazy">
+          <img class="book-cover" src="images/echoes-of-childhood/memory-book-cover.jpg" alt="Echoes of Childhood: A Memory Book cover by Sabino Pereira" loading="lazy">
         </div>
         <div>
-          <p class="section-label">Memory Book · Sabino Pereira · 30 October 2026</p>
+          <p class="section-label">Memory Book · Sabino Pereira · Amazon pre-order open</p>
           <h2 id="book-title">A book to read slowly.</h2>
           <p class="lead">A premium visual companion that gives the music room to become personal.</p>
           <p class="body-copy">Each of the album's twelve memories becomes a reflective chapter. A full-page illustration opens the door, the narrated <em>Memory Fragment</em> connects the book to the music, and an intimate essay explores the universal feeling beneath it. This is not a memoir and it does not prescribe what childhood should have looked like. It leaves space for your own people, places and keepsakes to return.</p>
@@ -289,6 +330,11 @@
             <div class="feature"><strong>Music and words</strong>The same Memory Fragments connect both works without making either dependent on the other.</div>
             <div class="feature"><strong>A universal journey</strong>Not one childhood, but an invitation to recognise what your own left behind.</div>
           </div>
+          <div class="book-actions" aria-label="Order Echoes of Childhood: A Memory Book">
+            <a class="button" href="https://a.co/d/0gxhiE7S" target="_blank" rel="noopener">Pre-order on Amazon</a>
+            <a class="button" href="https://quiet-power-shop.fourthwall.com/products/echoes-of-childhood-premium-digital-edition" target="_blank" rel="noopener">Premium Digital Edition</a>
+          </div>
+          <p class="availability-note">The premium digital edition will be available from 13 October 2026.</p>
         </div>
       </div>
     </section>
@@ -301,7 +347,7 @@
     <section class="closing shell">
       <p class="section-label">The journey begins this autumn</p>
       <h2>Remember. Then carry it forward.</h2>
-      <p>The Memory Book arrives first on 30 October 2026. The album follows on 6 November 2026. Together, they form one quiet experience about wonder, gratitude and the homes we carry within us.</p>
+      <p>The premium digital edition arrives on 13 October 2026, with the Memory Book available to pre-order on Amazon. The album follows on 6 November 2026. Together, they form one quiet experience about wonder, gratitude and the homes we carry within us.</p>
     </section>
   </main>
 
