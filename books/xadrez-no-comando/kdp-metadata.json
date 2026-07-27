@@ -34,12 +34,12 @@
     "Biography & Autobiography / Personal Memoirs"
   ],
   "print_specs": {
-    "page_count": 52,
+    "page_count": 48,
     "trim_width_in": 6.0,
     "trim_height_in": 9.0,
     "bleed_in": 0.125,
-    "spine_width_in": 0.117104,
-    "cover_width_in": 12.367104,
+    "spine_width_in": 0.10809600000000001,
+    "cover_width_in": 12.358096,
     "cover_height_in": 9.25
   }
 }

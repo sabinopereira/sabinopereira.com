@@ -28,6 +28,7 @@ from reportlab.platypus import BaseDocTemplate, Flowable, Frame, PageBreak, Page
 
 ROOT = Path(__file__).resolve().parents[1]
 MANUSCRIPTS = ROOT / "manuscripts"
+CLEAN_MANUSCRIPTS = MANUSCRIPTS / "clean"
 DIRECT = ROOT / "direct-sale"
 SITE = "sabinopereira.com"
 AUTHOR = "Sabino Pereira"
@@ -158,6 +159,30 @@ def section_content(section: Section) -> list[tuple[str, bool]]:
     return [(markup(text), keep) for text, keep in reflow(section.blocks)]
 
 
+def write_clean_manuscript(book: Book, sections: list[Section]) -> Path:
+    """Write a canonical, readable source matching the generated editions."""
+    CLEAN_MANUSCRIPTS.mkdir(parents=True, exist_ok=True)
+    output = CLEAN_MANUSCRIPTS / f"{book.slug}-clean.md"
+    lines = [f"# {book.title}", f"## {book.subtitle}", "", f"By {AUTHOR}", ""]
+    for section in sections:
+        lines.extend(["---", "", f"## {section.heading}"])
+        if section.subtitle:
+            lines.append(f"### {section.subtitle}")
+        lines.append("")
+        if section.verse:
+            for block in section.blocks:
+                clean_lines = [clean(line) for line in block if clean(line)]
+                if clean_lines:
+                    lines.append("  \n".join(clean_lines))
+                    lines.append("")
+        else:
+            for text, _ in reflow(section.blocks):
+                if text:
+                    lines.extend([text, ""])
+    output.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
+    return output
+
+
 def register_fonts() -> None:
     folder = Path("/System/Library/Fonts/Supplemental")
     for name, filename in {"Georgia": "Georgia.ttf", "Georgia-Bold": "Georgia Bold.ttf", "Georgia-Italic": "Georgia Italic.ttf"}.items():
@@ -250,7 +275,7 @@ def build_epub(book: Book, sections: list[Section]) -> Path:
         prop=' properties="nav"' if name=="nav.xhtml" else ''
         manifest.append(f'<item id="p{i}" href="{name}" media-type="application/xhtml+xml"{prop}/>'); spine.append(f'<itemref idref="p{i}"/>')
     ident=uuid.uuid5(uuid.NAMESPACE_URL, f"https://{SITE}/bad-girl-gospel/{book.slug}/premium-prose")
-    opf=f'''<?xml version="1.0"?><package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="id"><metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:identifier id="id">urn:uuid:{ident}</dc:identifier><dc:title>{html.escape(book.title)}</dc:title><dc:creator>{AUTHOR}</dc:creator><dc:language>en</dc:language><meta property="dcterms:modified">2026-07-20T00:00:00Z</meta></metadata><manifest>{''.join(manifest)}</manifest><spine>{''.join(spine)}</spine></package>'''
+    opf=f'''<?xml version="1.0"?><package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="id"><metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:identifier id="id">urn:uuid:{ident}</dc:identifier><dc:title>{html.escape(book.title)}</dc:title><dc:creator>{AUTHOR}</dc:creator><dc:language>en</dc:language><meta property="dcterms:modified">2026-07-27T00:00:00Z</meta></metadata><manifest>{''.join(manifest)}</manifest><spine>{''.join(spine)}</spine></package>'''
     (build/"OEBPS/content.opf").write_text(opf, encoding="utf-8")
     out=folder/f"bad-girl-gospel-the-story-of-{book.slug}-premium-ebook.epub"
     with zipfile.ZipFile(out,"w") as z:
@@ -264,6 +289,7 @@ def main() -> None:
     for book in BOOKS:
         sections = epub_sections(book.source) if book.source.suffix == ".epub" else markdown_sections(book.source)
         print(f"{book.slug}: {len(sections)} sections")
+        print(write_clean_manuscript(book, sections))
         print(build_pdf(book, sections)); print(build_epub(book, sections))
 
 

@@ -99,7 +99,10 @@ def extract_chapters(source: str) -> list[Chapter]:
             stanza_texts = [clean_text(p) for p in re.findall(r"<p>(.*?)</p>", match.group(2), re.S)]
             stanza_texts = [text for text in stanza_texts if text]
             if stanza_texts:
-                blocks.append(Block(kind, "<br/>".join(stanza_texts)))
+                # Stanzas in the legacy source are rhetorical prose lists, not
+                # poetry. Keep this fallback readable as prose if an old source
+                # file is ever passed to the generator again.
+                blocks.append(Block(kind, " ".join(stanza_texts)))
             pos = match.end()
         for p in re.findall(r"<p>(.*?)</p>", content[pos:], re.S):
             text = clean_text(p)
@@ -299,7 +302,7 @@ def build_interior(chapters: list[Chapter], output_pdf: Path) -> int:
             paragraph("Copyright © 2026 Sabino Pereira. Todos os direitos reservados.", styles["Toc"]),
             paragraph("Nenhuma parte deste livro pode ser reproduzida sem autorização do autor, exceto em breves citações para crítica ou divulgação.", styles["Toc"]),
             Spacer(1, 0.3 * inch),
-            paragraph("Primeira edição paperback.", styles["Toc"]),
+            paragraph("Primeira edição em capa mole.", styles["Toc"]),
             PageBreak(),
             paragraph("Índice", styles["ChapterTitle"]),
         ]

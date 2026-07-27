@@ -70,7 +70,7 @@ def block_to_html(kind: str, text: str) -> str:
     if kind == "quote":
         return f'<blockquote class="quote"><p>{safe}</p></blockquote>'
     if kind == "stanza":
-        return f'<div class="stanza"><p>{safe}</p></div>'
+        return f"<p>{safe}</p>"
     return f"<p>{safe}</p>"
 
 
@@ -146,7 +146,7 @@ def build_opf(chapters: list[Chapter]) -> str:
     <dc:language>{LANGUAGE}</dc:language>
     <dc:publisher>{html.escape(AUTHOR)}</dc:publisher>
     <meta name="cover" content="cover-image"/>
-    <meta property="dcterms:modified">2026-05-19T09:30:00Z</meta>
+    <meta property="dcterms:modified">2026-07-27T00:00:00Z</meta>
   </metadata>
   <manifest>
     <item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>
@@ -198,7 +198,6 @@ h1 {
 p {
   margin: 0 0 0.85em;
 }
-.stanza,
 .quote {
   margin: 1em 0 1.1em 1.2em;
   font-style: italic;

@@ -26,9 +26,9 @@ For paperback, upload the two PDF files. For Kindle/eBook, upload the EPUB manus
 
 ## Generated dimensions
 
-- Interior page count: 52
-- Spine width: 0.1171 in
-- Full cover width: 12.3671 in
+- Interior page count: 48
+- Spine width: 0.1081 in
+- Full cover width: 12.3581 in
 - Full cover height: 9.2500 in
 
 ## Before publishing
