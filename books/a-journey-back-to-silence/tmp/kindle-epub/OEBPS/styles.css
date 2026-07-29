@@ -1,0 +1,21 @@
+@charset "UTF-8";
+body { margin: 0 5%; }
+p { margin: 0 0 1em; }
+h1, h2 { text-align: left; font-weight: normal; }
+h1 { font-size: 1.8em; line-height: 1.15; margin: 1.8em 0 1em; }
+h2 { font-size: 1.12em; margin: 1.5em 0 0.7em; }
+.cover { margin: 0; padding: 0; text-align: center; }
+.cover img { display: block; width: 100%; height: auto; margin: 0 auto; }
+.title-page, .part-page { text-align: center; padding-top: 18%; break-after: page; page-break-after: always; }
+.title-page h1, .part-page h1 { text-align: center; }
+.eyebrow { text-align: center; font-size: 0.75em; letter-spacing: 0.15em; text-transform: uppercase; }
+.credits { margin-top: 22%; }
+.credits p { text-align: center; }
+.section { break-before: page; page-break-before: always; }
+.passage header { text-align: center; padding-top: 8%; }
+.passage header h1 { text-align: center; }
+.opening { font-variant: small-caps; letter-spacing: 0.04em; }
+blockquote { margin: 1.2em 8%; font-style: italic; text-align: center; }
+nav ol { list-style: none; padding: 0; }
+nav li { margin: 0.65em 0; }
+nav a { text-decoration: none; }
