@@ -140,10 +140,33 @@ def build_paperback_cover(page_count: int):
     source = Image.open(SOURCE_COVER).convert("RGB")
     front = fit_cover_panel(source, panel_w, full_h)
 
+    # The original front artwork places the dedication over a textured part of
+    # the watercolour. Give it a quiet, high-contrast reading panel so the
+    # printed text remains legible after KDP's compression and ink gain.
+    front_rgba = front.convert("RGBA")
+    front_overlay = Image.new("RGBA", front_rgba.size, (0, 0, 0, 0))
+    front_overlay_draw = ImageDraw.Draw(front_overlay)
+    dedication_box = (
+        round(1.30 * PRINT_DPI),
+        round(7.48 * PRINT_DPI),
+        panel_w - round(1.30 * PRINT_DPI),
+        round(8.78 * PRINT_DPI),
+    )
+    front_overlay_draw.rounded_rectangle(
+        dedication_box,
+        radius=round(0.08 * PRINT_DPI),
+        fill=(246, 241, 233, 255),
+    )
+    front = Image.alpha_composite(front_rgba, front_overlay).convert("RGB")
+
     # Back cover uses the same watercolour language without repeating the title art.
-    back_source = source.crop((0, 0, source.width, round(source.height * 0.72)))
-    back = fit_cover_panel(back_source, panel_w, full_h).filter(ImageFilter.GaussianBlur(radius=12))
-    wash = Image.new("RGBA", back.size, (244, 238, 228, 218))
+    # Sample only the text-free landscape band. This prevents the faint title
+    # from being mistaken by KDP's automated checks for unreadable cover text.
+    back_source = source.crop(
+        (0, round(source.height * 0.50), source.width, round(source.height * 0.76))
+    )
+    back = fit_cover_panel(back_source, panel_w, full_h).filter(ImageFilter.GaussianBlur(radius=20))
+    wash = Image.new("RGBA", back.size, (244, 238, 228, 232))
     back = Image.alpha_composite(back.convert("RGBA"), wash).convert("RGB")
 
     wrap = Image.new("RGB", (full_w, full_h), "#EEE7DC")
@@ -160,7 +183,7 @@ def build_paperback_cover(page_count: int):
 
     safe = round(0.38 * PRINT_DPI)
     back_right = panel_w - safe
-    draw.text((safe, round(0.75 * PRINT_DPI)), "A QUIET BOOK FOR A LOUD WORLD", font=font(georgia_bold, 29), fill=navy)
+    draw.text((safe, round(0.75 * PRINT_DPI)), "A QUIET BOOK FOR A LOUD WORLD", font=font(georgia_bold, 36), fill=navy)
     draw.line((safe, round(1.18 * PRINT_DPI), back_right, round(1.18 * PRINT_DPI)), fill="#8095A0", width=2)
 
     blurb = (
@@ -169,23 +192,47 @@ def build_paperback_cover(page_count: int):
         "Across eight passages inspired by the companion album by Reira Bin, Sabino Pereira explores attention, memory, waiting, control, and the courage to hear yourself again.\n\n"
         "This is not a book about escaping life. It is an invitation to return to it with less noise inside you."
     )
-    body_font = font(georgia, 25)
+    body_font = font(georgia, 31)
     y = round(1.48 * PRINT_DPI)
     for paragraph in blurb.split("\n\n"):
         lines = textwrap.wrap(paragraph, width=48)
         for line in lines:
             draw.text((safe, y), line, font=body_font, fill=navy)
-            y += 36
-        y += 28
+            y += 43
+        y += 31
 
     quote = "“The world will be loud again.\nYou do not have to lose yourself inside it.”"
     draw_centred_multiline(
         draw,
         (safe, round(6.45 * PRINT_DPI), back_right, round(7.55 * PRINT_DPI)),
         quote,
-        font(georgia_italic, 25), muted, spacing=9,
+        font(georgia_italic, 31), navy, spacing=12,
     )
-    draw.text((safe, round(8.28 * PRINT_DPI)), "SABINO PEREIRA", font=font(georgia_bold, 24), fill=navy)
+    draw.text((safe, round(8.28 * PRINT_DPI)), "SABINO PEREIRA", font=font(georgia_bold, 30), fill=navy)
+
+    # Redraw the front dedication over the contrast panel. The source image's
+    # original lettering remains underneath but is fully obscured by the wash.
+    front_left = front_x
+    dedication = (
+        "For those who are tired.\n"
+        "May this journey remind you\n"
+        "that silence is not emptiness.\n"
+        "Sometimes, it is where we\n"
+        "finally find ourselves."
+    )
+    draw_centred_multiline(
+        draw,
+        (
+            front_left + dedication_box[0],
+            dedication_box[1] + round(0.08 * PRINT_DPI),
+            front_left + dedication_box[2],
+            dedication_box[3] - round(0.08 * PRINT_DPI),
+        ),
+        dedication,
+        font(georgia_italic, 31),
+        navy,
+        spacing=10,
+    )
 
     # Leave a clean barcode zone on the lower-right area of the back cover.
     barcode_w = round(2.0 * PRINT_DPI)
