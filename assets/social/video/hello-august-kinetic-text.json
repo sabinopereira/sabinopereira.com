@@ -1,0 +1,25 @@
+{
+  "title": "Hello, August — Kinetic Text",
+  "sourceImage": "/Users/binopereira/Downloads/Design sem nome.png",
+  "sourceAudio": "audio/god-sent-me-you.mp3",
+  "output": "hello-august-kinetic-text.mp4",
+  "format": "MP4 / H.264 / AAC",
+  "dimensions": "1080x1920",
+  "aspectRatio": "9:16",
+  "durationSeconds": 16,
+  "frameRate": 30,
+  "treatment": [
+    "blurred and darkened source artwork as background",
+    "six large kinetic-text scenes",
+    "slow background push-in",
+    "fade and rise transitions",
+    "persistent REIRA BIN signature in the lower safe zone",
+    "music fade-in and fade-out"
+  ],
+  "intendedPlatforms": [
+    "TikTok",
+    "Instagram Reels",
+    "Facebook Reels",
+    "YouTube Shorts"
+  ]
+}

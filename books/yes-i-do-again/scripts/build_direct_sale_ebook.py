@@ -315,15 +315,35 @@ p{margin:0;text-indent:1.25em;} p.first{margin-top:0;text-indent:0;} p.message{f
     nav = f'<nav epub:type="toc" id="toc"><h1>Contents</h1><ol><li><a href="about-book.xhtml">About This Book</a></li>{nav_items}<li><a href="about-author.xhtml">About the Author</a></li></ol></nav>'
     (root / "OEBPS/nav.xhtml").write_text(epub_page("Contents", nav), encoding="utf-8")
 
+    ncx_points = [
+        '<navPoint id="nav-about" playOrder="1"><navLabel><text>About This Book</text></navLabel><content src="about-book.xhtml"/></navPoint>'
+    ]
+    for i, section in enumerate(sections, 1):
+        ncx_points.append(
+            f'<navPoint id="nav-section-{i:02d}" playOrder="{i + 1}">'
+            f'<navLabel><text>{html.escape(section.title)}</text></navLabel>'
+            f'<content src="section-{i:02d}.xhtml"/></navPoint>'
+        )
+    ncx_points.append(
+        f'<navPoint id="nav-author" playOrder="{len(sections) + 2}"><navLabel><text>About the Author</text></navLabel><content src="about-author.xhtml"/></navPoint>'
+    )
+    ncx = f'''<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE ncx PUBLIC "-//NISO//DTD ncx 2005-1//EN" "http://www.daisy.org/z3986/2005/ncx-2005-1.dtd">
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+<head><meta name="dtb:uid" content="{BOOK_ID}"/><meta name="dtb:depth" content="1"/><meta name="dtb:totalPageCount" content="0"/><meta name="dtb:maxPageNumber" content="0"/></head>
+<docTitle><text>{html.escape(TITLE)}</text></docTitle><docAuthor><text>{html.escape(AUTHOR)}</text></docAuthor>
+<navMap>{''.join(ncx_points)}</navMap></ncx>'''
+    (root / "OEBPS/toc.ncx").write_text(ncx, encoding="utf-8")
+
     files = ["cover.xhtml", "title.xhtml", "copyright.xhtml", "about-book.xhtml", "nav.xhtml"] + [f"section-{i:02d}.xhtml" for i in range(1, len(sections)+1)] + ["about-author.xhtml"]
-    manifest = ['<item id="cover-image" href="images/cover.jpg" media-type="image/jpeg" properties="cover-image"/>', '<item id="css" href="styles.css" media-type="text/css"/>']
+    manifest = ['<item id="cover-image" href="images/cover.jpg" media-type="image/jpeg" properties="cover-image"/>', '<item id="css" href="styles.css" media-type="text/css"/>', '<item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>']
     spine = []
     for idx, name in enumerate(files):
         props = ' properties="nav"' if name == "nav.xhtml" else ""
         manifest.append(f'<item id="item-{idx}" href="{name}" media-type="application/xhtml+xml"{props}/>')
         spine.append(f'<itemref idref="item-{idx}"/>')
     opf = f'''<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="book-id" xml:lang="en-US"><metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:identifier id="book-id">{BOOK_ID}</dc:identifier><dc:title>{html.escape(TITLE)}</dc:title><dc:creator>{html.escape(AUTHOR)}</dc:creator><dc:language>en-US</dc:language><dc:publisher>{html.escape(AUTHOR)}</dc:publisher><dc:description>{html.escape(TAGLINE)}</dc:description><meta property="dcterms:modified">2026-07-19T00:00:00Z</meta></metadata><manifest>{''.join(manifest)}</manifest><spine>{''.join(spine)}</spine></package>'''
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="book-id" xml:lang="en-US"><metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:identifier id="book-id">{BOOK_ID}</dc:identifier><dc:title>{html.escape(TITLE)}</dc:title><dc:creator>{html.escape(AUTHOR)}</dc:creator><dc:language>en-US</dc:language><dc:publisher>{html.escape(AUTHOR)}</dc:publisher><dc:description>{html.escape(TAGLINE)}</dc:description><meta property="dcterms:modified">2026-08-01T00:00:00Z</meta></metadata><manifest>{''.join(manifest)}</manifest><spine toc="ncx">{''.join(spine)}</spine></package>'''
     (root / "OEBPS/content.opf").write_text(opf, encoding="utf-8")
     with zipfile.ZipFile(EPUB_PATH, "w") as z:
         z.write(root / "mimetype", "mimetype", compress_type=zipfile.ZIP_STORED)

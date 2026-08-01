@@ -1,0 +1,23 @@
+{
+  "title": "Hello, August — Vertical Preview",
+  "source": "/Users/binopereira/Downloads/Design sem nome.png",
+  "output": "hello-august-vertical-preview.mp4",
+  "format": "MP4 / H.264",
+  "dimensions": "1080x1920",
+  "aspectRatio": "9:16",
+  "durationSeconds": 9,
+  "frameRate": 30,
+  "audio": false,
+  "treatment": [
+    "slow push-in",
+    "blurred full-frame background",
+    "preserved Canva artwork",
+    "short fade in and fade out"
+  ],
+  "intendedPlatforms": [
+    "TikTok",
+    "Instagram Reels",
+    "Facebook Reels",
+    "YouTube Shorts"
+  ]
+}

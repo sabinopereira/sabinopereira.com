@@ -416,11 +416,23 @@ nav a { text-decoration: none; }
     write(STAGE / "OEBPS/nav.xhtml", xhtml("Contents", nav, "navigation"))
 
     uid = "urn:uuid:" + str(uuid.UUID(hashlib.md5(markdown.encode("utf-8")).hexdigest()))
+    ncx_points = "".join(
+        f'''<navPoint id="navPoint-{index}" playOrder="{index}"><navLabel><text>{html.escape(title)}</text></navLabel><content src="{href}"/></navPoint>'''
+        for index, (href, title) in enumerate(nav_entries, 1)
+    )
+    ncx = f'''<?xml version="1.0" encoding="utf-8"?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+<head><meta name="dtb:uid" content="{uid}"/><meta name="dtb:depth" content="1"/><meta name="dtb:totalPageCount" content="0"/><meta name="dtb:maxPageNumber" content="0"/></head>
+<docTitle><text>A Journey Back to Silence</text></docTitle>
+<docAuthor><text>Sabino Pereira</text></docAuthor>
+<navMap>{ncx_points}</navMap>
+</ncx>'''
+    write(STAGE / "OEBPS/toc.ncx", ncx)
     opf = f'''<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="book-id" xml:lang="en">
 <metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:identifier id="book-id">{uid}</dc:identifier><dc:title>A Journey Back to Silence</dc:title><dc:creator>Sabino Pereira</dc:creator><dc:contributor>Reira Bin</dc:contributor><dc:language>en</dc:language><dc:publisher>Sabino Pereira</dc:publisher><dc:description>Eight reflective passages from noise to stillness, written by Sabino Pereira with companion music by Reira Bin.</dc:description><meta property="dcterms:modified">2026-07-29T00:00:00Z</meta></metadata>
-<manifest><item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/><item id="cover" href="cover.xhtml" media-type="application/xhtml+xml"/><item id="title" href="title.xhtml" media-type="application/xhtml+xml"/><item id="copyright" href="copyright.xhtml" media-type="application/xhtml+xml"/><item id="cover-image" href="images/cover.jpg" media-type="image/jpeg" properties="cover-image"/><item id="css" href="styles.css" media-type="text/css"/>{''.join(manifest_items)}</manifest>
-<spine><itemref idref="cover"/><itemref idref="title"/><itemref idref="copyright"/>{''.join(spine_items)}</spine></package>'''
+<manifest><item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/><item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/><item id="cover" href="cover.xhtml" media-type="application/xhtml+xml"/><item id="title" href="title.xhtml" media-type="application/xhtml+xml"/><item id="copyright" href="copyright.xhtml" media-type="application/xhtml+xml"/><item id="cover-image" href="images/cover.jpg" media-type="image/jpeg" properties="cover-image"/><item id="css" href="styles.css" media-type="text/css"/>{''.join(manifest_items)}</manifest>
+<spine toc="ncx"><itemref idref="cover"/><itemref idref="title"/><itemref idref="copyright"/>{''.join(spine_items)}</spine></package>'''
     write(STAGE / "OEBPS/content.opf", opf)
 
     if EPUB.exists():
