@@ -12,12 +12,14 @@ META = STAGE / "META-INF"
 COVER = ROOT / "assets" / "um-lugar-a-mesa-cover-premium-1600x2560.jpg"
 BOOK_ID = "urn:uuid:53e8f3c6-f319-4e66-9466-f2542f640bda"
 
-CHAPTERS = [ROOT / "source" / f"capitulo-{n:02d}-completo.md" for n in range(1, 13)]
-EPILOGUE = ROOT / "source" / "epilogo-completo.md"
+REVISION = ROOT / "revisao-emocional"
+CHAPTERS = [REVISION / "capitulos" / f"capitulo-{n:02d}.md" for n in range(1, 7)]
+CHAPTERS += [REVISION / "generated" / f"capitulo-{n:02d}.md" for n in range(7, 13)]
+EPILOGUE = REVISION / "generated" / "epilogo.md"
 CHAPTER_TITLES = [
-    "A Mesa", "A Entrada", "O Apetite", "O Ás", "A Rainha", "O Rei",
-    "O Homem do Avental", "A Cadeira Sem Nome", "O Envelope Azul",
-    "A Mulher na Escada", "Perder de Propósito", "A Porta",
+    "A Mesa", "Valete de Paus", "Ás de Copas", "Rainha de Espadas",
+    "Rei de Ouros", "Joker", "O Homem do Avental", "A Cadeira Sem Nome",
+    "A Mulher na Escada", "A Escolha", "Ninguém Vence", "A Porta Aberta",
 ]
 
 def reset_stage():
@@ -185,7 +187,7 @@ spine.extend(['epilogue', 'epiloguetext'])
 
 opf = f'''<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="bookid" xml:lang="pt-PT">
-<metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:identifier id="bookid">{BOOK_ID}</dc:identifier><dc:title>Um Lugar à Mesa</dc:title><dc:creator>Sabino Pereira</dc:creator><dc:language>pt-PT</dc:language><dc:date>2026-07-22</dc:date><dc:publisher>Sabino Pereira</dc:publisher><dc:subject>Thriller psicológico</dc:subject><meta property="dcterms:modified">2026-07-22T20:00:00Z</meta></metadata>
+<metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:identifier id="bookid">{BOOK_ID}</dc:identifier><dc:title>Um Lugar à Mesa</dc:title><dc:creator>Sabino Pereira</dc:creator><dc:language>pt-PT</dc:language><dc:date>2026-08-02</dc:date><dc:publisher>Sabino Pereira</dc:publisher><dc:subject>Thriller psicológico</dc:subject><meta property="dcterms:modified">2026-08-02T12:00:00Z</meta></metadata>
 <manifest>{''.join(manifest)}</manifest><spine>{''.join(f'<itemref idref="{x}"/>' for x in spine)}</spine></package>'''
 (OEBPS / "content.opf").write_text(opf, encoding="utf-8")
 

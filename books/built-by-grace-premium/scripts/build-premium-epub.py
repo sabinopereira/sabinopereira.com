@@ -141,12 +141,14 @@ nav a { color: #513f2d; text-decoration: none; }
 
         manifest_items = [
             '<item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>',
+            '<item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>',
             '<item id="css" href="styles.css" media-type="text/css"/>',
             '<item id="cover-image" href="cover.png" media-type="image/png" properties="cover-image"/>',
             '<item id="cover" href="cover.xhtml" media-type="application/xhtml+xml"/>',
         ]
         spine_items = ['<itemref idref="cover" linear="yes"/>']
         nav_entries: list[str] = []
+        ncx_entries: list[str] = []
 
         for index, lines in enumerate(sections, start=1):
             title = section_title(lines)
@@ -157,10 +159,24 @@ nav a { color: #513f2d; text-decoration: none; }
             manifest_items.append(f'<item id="{item_id}" href="{filename}" media-type="application/xhtml+xml"/>')
             spine_items.append(f'<itemref idref="{item_id}"/>')
             nav_entries.append(f'<li><a href="{filename}">{html.escape(title)}</a></li>')
+            ncx_entries.append(
+                f'<navPoint id="navPoint-{index}" playOrder="{index}"><navLabel><text>{html.escape(title)}</text></navLabel><content src="{filename}"/></navPoint>'
+            )
 
         nav = xhtml("Contents", f'''<nav epub:type="toc" id="toc">
 <h1>Contents</h1><ol>{''.join(nav_entries)}</ol></nav>''')
         (epub / "nav.xhtml").write_text(nav, encoding="utf-8")
+
+        ncx = f'''<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ncx PUBLIC "-//NISO//DTD ncx 2005-1//EN" "http://www.daisy.org/z3986/2005/ncx-2005-1.dtd">
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+  <head><meta name="dtb:uid" content="{book_id}"/><meta name="dtb:depth" content="1"/><meta name="dtb:totalPageCount" content="0"/><meta name="dtb:maxPageNumber" content="0"/></head>
+  <docTitle><text>Built by Grace</text></docTitle>
+  <docAuthor><text>Sabino Pereira</text></docAuthor>
+  <navMap>{''.join(ncx_entries)}</navMap>
+</ncx>
+'''
+        (epub / "toc.ncx").write_text(ncx, encoding="utf-8")
 
         package = f'''<?xml version="1.0" encoding="UTF-8"?>
 <package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="book-id" xml:lang="en">
@@ -177,7 +193,7 @@ nav a { color: #513f2d; text-decoration: none; }
     <meta property="dcterms:modified">2026-08-01T00:00:00Z</meta>
   </metadata>
   <manifest>{''.join(manifest_items)}</manifest>
-  <spine>{''.join(spine_items)}</spine>
+  <spine toc="ncx">{''.join(spine_items)}</spine>
 </package>
 '''
         (epub / "package.opf").write_text(package, encoding="utf-8")

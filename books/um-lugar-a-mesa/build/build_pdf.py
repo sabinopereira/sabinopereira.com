@@ -20,13 +20,15 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT.parents[1] / "output" / "pdf" / "um-lugar-a-mesa"
 OUT = OUT_DIR / "Um Lugar à Mesa - Edicao Premium.pdf"
 COVER = ROOT / "assets" / "um-lugar-a-mesa-cover-premium-1600x2560.jpg"
-CHAPTERS = [ROOT / "source" / f"capitulo-{n:02d}-completo.md" for n in range(1, 13)]
-EPILOGUE = ROOT / "source" / "epilogo-completo.md"
+REVISION = ROOT / "revisao-emocional"
+CHAPTERS = [REVISION / "capitulos" / f"capitulo-{n:02d}.md" for n in range(1, 7)]
+CHAPTERS += [REVISION / "generated" / f"capitulo-{n:02d}.md" for n in range(7, 13)]
+EPILOGUE = REVISION / "generated" / "epilogo.md"
 
 CHAPTER_TITLES = [
-    "A Mesa", "A Entrada", "O Apetite", "O Ás", "A Rainha", "O Rei",
-    "O Homem do Avental", "A Cadeira Sem Nome", "O Envelope Azul",
-    "A Mulher na Escada", "Perder de Propósito", "A Porta",
+    "A Mesa", "Valete de Paus", "Ás de Copas", "Rainha de Espadas",
+    "Rei de Ouros", "Joker", "O Homem do Avental", "A Cadeira Sem Nome",
+    "A Mulher na Escada", "A Escolha", "Ninguém Vence", "A Porta Aberta",
 ]
 
 PAGE_W, PAGE_H = 6.25 * inch, 10 * inch
