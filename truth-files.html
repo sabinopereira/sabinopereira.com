@@ -278,7 +278,7 @@
     }
 
     .case {
-      min-height: 116px;
+      min-height: 216px;
       padding: 17px;
       border: 1px solid var(--line);
       background:
@@ -301,6 +301,36 @@
     .case h3 {
       font-size: 25px;
       line-height: 1.02;
+    }
+
+    .case-visual {
+      position: relative;
+      height: 76px;
+      margin: 2px 0 16px;
+      overflow: hidden;
+      border: 1px solid rgba(213, 166, 87, 0.22);
+      background:
+        radial-gradient(circle at 50% 50%, rgba(239, 203, 124, 0.12), transparent 38%),
+        repeating-linear-gradient(135deg, transparent 0 13px, rgba(213, 166, 87, 0.035) 13px 14px),
+        #080705;
+    }
+
+    .case-visual::before {
+      content: attr(data-symbol);
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: var(--gold-2);
+      font: 500 38px/1 Georgia, serif;
+      text-shadow: 0 0 30px rgba(239, 203, 124, 0.28);
+    }
+
+    .case-visual::after {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      border: 1px solid rgba(247, 234, 216, 0.07);
     }
 
     .case-detail-grid {
@@ -394,6 +424,39 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
     }
+
+    .case-scene {
+      margin-top: 22px;
+      padding: 20px;
+      border-left: 2px solid var(--gold);
+      background: rgba(213, 166, 87, 0.055);
+    }
+
+    .case-scene h4,
+    .case-takeaway h4 {
+      margin: 0 0 10px;
+      color: var(--gold-2);
+      font: 800 11px/1 Inter, sans-serif;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .case-scene p { margin-top: 0; color: var(--text); }
+
+    .case-takeaway {
+      margin-top: 24px;
+      padding: 22px;
+      border: 1px solid var(--gold-line);
+      background: linear-gradient(135deg, rgba(213, 166, 87, 0.09), rgba(213, 166, 87, 0.025));
+    }
+
+    .case-takeaway blockquote {
+      margin: 0;
+      color: var(--text);
+      font: 500 clamp(23px, 3vw, 34px)/1.12 Georgia, serif;
+    }
+
+    .case-takeaway p { margin-bottom: 0; }
 
     .case-close {
       position: absolute;
@@ -543,7 +606,7 @@
       <div>
         <p class="eyebrow">Volume One</p>
         <h1>Truth Files</h1>
-        <p class="tagline"><strong>Faith. Facts. Discernment.</strong> A reflective series about trust, evidence, patterns, and the wisdom to examine everything without becoming cynical.</p>
+        <p class="tagline"><strong>Faith. Facts. Discernment.</strong> Truth Files investigates the distance between what people say, what we want to believe, and what patterns reveal.</p>
         <div class="actions">
           <a class="button" href="#cases">Choose a case</a>
           <a class="ghost" href="#method">The method</a>
@@ -597,18 +660,18 @@
         <p>Pick the theme you need. The cases can be read in any order.</p>
       </div>
       <div class="case-grid">
-        <a class="case" href="#case-001"><span>001</span><h3>Trust vs Discernment</h3></a>
-        <a class="case" href="#case-002"><span>002</span><h3>Words vs Actions</h3></a>
-        <a class="case" href="#case-003"><span>003</span><h3>Intentions vs Patterns</h3></a>
-        <a class="case" href="#case-004"><span>004</span><h3>Reputation vs Reality</h3></a>
-        <a class="case" href="#case-005"><span>005</span><h3>Apology vs Change</h3></a>
-        <a class="case" href="#case-006"><span>006</span><h3>Forgiveness vs Access</h3></a>
-        <a class="case" href="#case-007"><span>007</span><h3>Time vs Consistency</h3></a>
-        <a class="case" href="#case-008"><span>008</span><h3>Emotion vs Evidence</h3></a>
-        <a class="case" href="#case-009"><span>009</span><h3>Familiarity vs Truth</h3></a>
-        <a class="case" href="#case-010"><span>010</span><h3>Clarity vs Confusion</h3></a>
-        <a class="case" href="#case-011"><span>011</span><h3>Why Good People Lie</h3></a>
-        <a class="case" href="#case-012"><span>012</span><h3>Self-Image vs Self-Awareness</h3></a>
+        <a class="case" href="#case-001"><span>001</span><div class="case-visual" data-symbol="◉" aria-hidden="true"></div><h3>Trust vs Discernment</h3></a>
+        <a class="case" href="#case-002"><span>002</span><div class="case-visual" data-symbol="↔" aria-hidden="true"></div><h3>Words vs Actions</h3></a>
+        <a class="case" href="#case-003"><span>003</span><div class="case-visual" data-symbol="⟳" aria-hidden="true"></div><h3>Intentions vs Patterns</h3></a>
+        <a class="case" href="#case-004"><span>004</span><div class="case-visual" data-symbol="◐" aria-hidden="true"></div><h3>Reputation vs Reality</h3></a>
+        <a class="case" href="#case-005"><span>005</span><div class="case-visual" data-symbol="△" aria-hidden="true"></div><h3>Apology vs Change</h3></a>
+        <a class="case" href="#case-006"><span>006</span><div class="case-visual" data-symbol="◇" aria-hidden="true"></div><h3>Forgiveness vs Access</h3></a>
+        <a class="case" href="#case-007"><span>007</span><div class="case-visual" data-symbol="⌛" aria-hidden="true"></div><h3>Time vs Consistency</h3></a>
+        <a class="case" href="#case-008"><span>008</span><div class="case-visual" data-symbol="≈" aria-hidden="true"></div><h3>Emotion vs Evidence</h3></a>
+        <a class="case" href="#case-009"><span>009</span><div class="case-visual" data-symbol="⌂" aria-hidden="true"></div><h3>Familiarity vs Truth</h3></a>
+        <a class="case" href="#case-010"><span>010</span><div class="case-visual" data-symbol="?" aria-hidden="true"></div><h3>Clarity vs Confusion</h3></a>
+        <a class="case" href="#case-011"><span>011</span><div class="case-visual" data-symbol="∴" aria-hidden="true"></div><h3>Why Good People Lie</h3></a>
+        <a class="case" href="#case-012"><span>012</span><div class="case-visual" data-symbol="◎" aria-hidden="true"></div><h3>Self-Image vs Self-Awareness</h3></a>
       </div>
 
       <div class="case-detail-grid" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Truth Files case reader">
@@ -616,6 +679,7 @@
           <span>Case 001</span>
           <h3>Trust vs Discernment</h3>
           <p class="case-line">In God we trust. Others we must investigate.</p>
+          <div class="case-scene"><h4>The Scene</h4><p>He knows the right words, remembers the right verses, and makes you feel guilty for asking a second question. Everyone calls him trustworthy. Yet every time pressure arrives, his story changes—and you keep blaming yourself for noticing.</p></div>
           <p>Faith does not ask us to become blind.</p>
           <p>Trust matters. But trust without discernment can become permission for repeated disappointment.</p>
           <p>People should not be judged by one mistake, one rumour, or one bad day. But they should not be trusted only because they speak well, pray loudly, smile warmly, or make convincing promises.</p>
@@ -642,12 +706,14 @@
             <h4>The Question</h4>
             <p>Have you ever trusted the words while ignoring the pattern?</p>
           </div>
+          <div class="case-takeaway"><h4>Keep this</h4><blockquote>Trust is not owed to an impression. It is earned by a pattern.</blockquote><p><strong>Next step:</strong> Write down one promise and the actions that followed it.</p></div>
           <p class="case-signature">Inspired by 1 Thessalonians 5:21 · Faith. Facts. Discernment.</p>
         </article>
         <article class="case-detail" id="case-002">
           <span>Case 002</span>
           <h3>Words vs Actions</h3>
           <p class="case-line">Words make promises. Actions reveal priorities.</p>
+          <div class="case-scene"><h4>The Scene</h4><p>She says you matter. She says she will call, show up, make time, and do better. For a moment, the words settle everything. Then another week passes, and her calendar tells a different story.</p></div>
           <p>Words matter. They can express hope, intention, affection, and regret.</p>
           <p>But actions show what someone is willing to repeat, protect, sacrifice, and choose when it costs them something.</p>
           <div class="case-block">
@@ -673,12 +739,14 @@
             <h4>The Question</h4>
             <p>What action told you the truth before the words did?</p>
           </div>
+          <div class="case-takeaway"><h4>Keep this</h4><blockquote>Words describe intention. Repeated actions disclose priority.</blockquote><p><strong>Next step:</strong> Translate the promise into one observable action.</p></div>
           <p class="case-signature">Inspired by 1 Thessalonians 5:21 · Faith. Facts. Discernment.</p>
         </article>
         <article class="case-detail" id="case-003">
           <span>Case 003</span>
           <h3>Intentions vs Patterns</h3>
           <p class="case-line">Good intentions do not erase repeated behavior.</p>
+          <div class="case-scene"><h4>The Scene</h4><p>He never intended to hurt you. He was tired, afraid, overwhelmed, misunderstood. Each explanation makes sense on its own. But this is the fourth time the same wound has arrived wearing a different excuse.</p></div>
           <p>People can mean well and still repeat the same choices.</p>
           <p>Intention explains what someone wanted to do. Patterns reveal what they keep choosing to do.</p>
           <div class="case-block">
@@ -704,12 +772,14 @@
             <h4>The Question</h4>
             <p>What pattern have you been excusing because the intention sounded good?</p>
           </div>
+          <div class="case-takeaway"><h4>Keep this</h4><blockquote>Intentions explain a moment. Patterns explain a direction.</blockquote><p><strong>Next step:</strong> Name the repeated effect without debating the claimed intention.</p></div>
           <p class="case-signature">Inspired by 1 Thessalonians 5:21 · Faith. Facts. Discernment.</p>
         </article>
         <article class="case-detail" id="case-004">
           <span>Case 004</span>
           <h3>Reputation vs Reality</h3>
           <p class="case-line">A good reputation is not the same as good character.</p>
+          <div class="case-scene"><h4>The Scene</h4><p>The room applauds him. He is generous on stage, patient in photographs, and admired by people who barely know him. Backstage, one person absorbs the contempt that never reaches the audience.</p></div>
           <p>Reputation is what people believe about someone. Character is what remains when there is no audience, no applause, and no advantage to protect.</p>
           <p>A polished image can hide inconsistent behavior. Image can be built. Character is revealed.</p>
           <div class="case-block">
@@ -735,12 +805,14 @@
             <h4>The Question</h4>
             <p>Have you ever discovered that someone's reputation was stronger than their character?</p>
           </div>
+          <div class="case-takeaway"><h4>Keep this</h4><blockquote>Reputation is witnessed. Character is experienced.</blockquote><p><strong>Next step:</strong> Observe how the person treats someone who offers no advantage.</p></div>
           <p class="case-signature">Inspired by 1 Thessalonians 5:21 · Faith. Facts. Discernment.</p>
         </article>
         <article class="case-detail" id="case-005">
           <span>Case 005</span>
           <h3>Apology vs Change</h3>
           <p class="case-line">An apology explains the past. Change protects the future.</p>
+          <div class="case-scene"><h4>The Scene</h4><p>The fifth apology sounds almost identical to the first. There are tears, promises, and a request to start again. You want to believe this time is different. Then you realise the speech has evolved more than the behaviour.</p></div>
           <p>An apology can be sincere. It can come with regret, emotion, and the right words.</p>
           <p>But sincerity alone does not repair a repeated pattern. Regret is a feeling. Change is evidence.</p>
           <div class="case-block">
@@ -766,12 +838,14 @@
             <h4>The Question</h4>
             <p>Have you ever accepted an apology that was never followed by different behavior?</p>
           </div>
+          <div class="case-takeaway"><h4>Keep this</h4><blockquote>An apology asks for another chance. Change gives that chance evidence.</blockquote><p><strong>Next step:</strong> Identify the behaviour that must become different.</p></div>
           <p class="case-signature">Inspired by 1 Thessalonians 5:21 · Faith. Facts. Discernment.</p>
         </article>
         <article class="case-detail" id="case-006">
           <span>Case 006</span>
           <h3>Forgiveness vs Access</h3>
           <p class="case-line">Forgiveness does not require unlimited access.</p>
+          <div class="case-scene"><h4>The Scene</h4><p>You have released the anger, stopped seeking revenge, and prayed for peace. Still, someone insists that real forgiveness means answering every call and reopening the same door. Your boundary is treated as bitterness.</p></div>
           <p>Forgiveness can release bitterness. It can end the need for revenge.</p>
           <p>But forgiveness does not erase history, remove consequences, or automatically restore the same level of access.</p>
           <div class="case-block">
@@ -797,12 +871,14 @@
             <h4>The Question</h4>
             <p>Have you ever confused forgiveness with giving someone the same access again?</p>
           </div>
+          <div class="case-takeaway"><h4>Keep this</h4><blockquote>Forgiveness releases the debt. Wisdom decides the access.</blockquote><p><strong>Next step:</strong> Define one boundary that protects peace without seeking punishment.</p></div>
           <p class="case-signature">Inspired by 1 Thessalonians 5:21 · Faith. Facts. Discernment.</p>
         </article>
         <article class="case-detail" id="case-007">
           <span>Case 007</span>
           <h3>Time vs Consistency</h3>
           <p class="case-line">Time alone does not prove change. Consistency does.</p>
+          <div class="case-scene"><h4>The Scene</h4><p>“That was a long time ago,” they say. The distance sounds like proof. But nothing comparable has tested the change, and when a small frustration arrives, the old response returns as if no time passed at all.</p></div>
           <p>Time can create distance from a mistake. It can soften emotions and make things feel different.</p>
           <p>But change is not proven by how long it has been. It is proven by what has been repeated during that time.</p>
           <div class="case-block">
@@ -828,12 +904,14 @@
             <h4>The Question</h4>
             <p>Have you ever believed time had changed someone, only to see the same pattern return?</p>
           </div>
+          <div class="case-takeaway"><h4>Keep this</h4><blockquote>Time records distance. Consistency records direction.</blockquote><p><strong>Next step:</strong> Look for change across calm, pressure, and disappointment.</p></div>
           <p class="case-signature">Inspired by 1 Thessalonians 5:21 · Faith. Facts. Discernment.</p>
         </article>
         <article class="case-detail" id="case-008">
           <span>Case 008</span>
           <h3>Emotion vs Evidence</h3>
           <p class="case-line">Feelings are real. They are not always reliable.</p>
+          <div class="case-scene"><h4>The Scene</h4><p>Your chest tightens before the message is even opened. Fear supplies the ending, shame supplies the meaning, and within seconds a feeling has become a verdict. The facts have not yet had a chance to speak.</p></div>
           <p>Emotions can be intense, persuasive, and immediate.</p>
           <p>Emotion reveals what is happening inside you. Evidence helps reveal what is happening around you.</p>
           <div class="case-block">
@@ -859,12 +937,14 @@
             <h4>The Question</h4>
             <p>Have you ever trusted a feeling that later proved misleading?</p>
           </div>
+          <div class="case-takeaway"><h4>Keep this</h4><blockquote>A feeling is evidence of an inner experience, not always of an outer fact.</blockquote><p><strong>Next step:</strong> Separate what you feel, what you know, and what you assume.</p></div>
           <p class="case-signature">Inspired by 1 Thessalonians 5:21 · Faith. Facts. Discernment.</p>
         </article>
         <article class="case-detail" id="case-009">
           <span>Case 009</span>
           <h3>Familiarity vs Truth</h3>
           <p class="case-line">What feels familiar is not always what is true.</p>
+          <div class="case-scene"><h4>The Scene</h4><p>The chaos feels strangely like home. The calm person seems boring; the unavailable person feels magnetic. Your nervous system recognises the pattern before your wisdom has decided whether it is safe.</p></div>
           <p>Familiarity can make a person, pattern, or environment feel safe simply because it is known.</p>
           <p>But what is familiar can still be unhealthy. Normal does not mean healthy.</p>
           <div class="case-block">
@@ -890,12 +970,14 @@
             <h4>The Question</h4>
             <p>Have you ever mistaken familiarity for safety?</p>
           </div>
+          <div class="case-takeaway"><h4>Keep this</h4><blockquote>Familiarity says, “I know this.” Truth asks, “Is this good?”</blockquote><p><strong>Next step:</strong> Question one thing you call normal simply because it is known.</p></div>
           <p class="case-signature">Inspired by 1 Thessalonians 5:21 · Faith. Facts. Discernment.</p>
         </article>
         <article class="case-detail" id="case-010">
           <span>Case 010</span>
           <h3>Clarity vs Confusion</h3>
           <p class="case-line">Confusion is not always a lack of answers.</p>
+          <div class="case-scene"><h4>The Scene</h4><p>Every conversation appears to resolve the problem. By morning, you are translating another contradiction, rereading messages, and wondering whether you asked too much. The answer keeps changing, but the confusion stays remarkably consistent.</p></div>
           <p>Sometimes it appears when words and actions do not align, when answers change, or when explanations create more doubt instead of resolving it.</p>
           <p>Mixed signals are not neutral. They are information.</p>
           <div class="case-block">
@@ -921,12 +1003,14 @@
             <h4>The Question</h4>
             <p>Have you ever stayed in confusion, hoping time would turn it into clarity?</p>
           </div>
+          <div class="case-takeaway"><h4>Keep this</h4><blockquote>Repeated confusion is not the absence of information. It is information.</blockquote><p><strong>Next step:</strong> Ask one direct question and preserve the answer.</p></div>
           <p class="case-signature">Inspired by 1 Thessalonians 5:21 · Faith. Facts. Discernment.</p>
         </article>
         <article class="case-detail" id="case-011">
           <span>Case 011</span>
           <h3>Why Good People Lie</h3>
           <p class="case-line">A good heart can still make a dishonest choice.</p>
+          <div class="case-scene"><h4>The Scene</h4><p>She is kind, generous, and afraid of disappointing you. When the truth surfaces, you struggle to hold both realities at once: a person can have genuine goodness and still choose a lie to protect herself.</p></div>
           <p>People do not always lie because they are cruel. Sometimes they lie because they are afraid.</p>
           <p>But a lie does not become harmless because the person telling it means well.</p>
           <div class="case-block">
@@ -952,12 +1036,14 @@
             <h4>The Question</h4>
             <p>Have you ever trusted someone's goodness more than the evidence in front of you?</p>
           </div>
+          <div class="case-takeaway"><h4>Keep this</h4><blockquote>Goodness does not make dishonesty harmless. Responsibility makes honesty possible again.</blockquote><p><strong>Next step:</strong> Examine what happened after the lie was discovered.</p></div>
           <p class="case-signature">Inspired by 1 Thessalonians 5:21 · Faith. Facts. Discernment.</p>
         </article>
         <article class="case-detail" id="case-012">
           <span>Case 012</span>
           <h3>Self-Image vs Self-Awareness</h3>
           <p class="case-line">Sometimes, the person you need to investigate is yourself.</p>
+          <div class="case-scene"><h4>The Scene</h4><p>You call yourself honest, so their criticism feels impossible. You begin explaining your motives before hearing their experience. The identity you want to defend is now preventing the self-awareness you need.</p></div>
           <p>It is easier to examine someone else's behavior than to question our own.</p>
           <p>Self-image can protect us from evidence that threatens the story we tell about ourselves.</p>
           <div class="case-block">
@@ -983,6 +1069,7 @@
             <h4>The Question</h4>
             <p>What truth about yourself became visible only after you stopped defending your image?</p>
           </div>
+          <div class="case-takeaway"><h4>Keep this</h4><blockquote>Self-image asks to be protected. Self-awareness asks to be corrected.</blockquote><p><strong>Next step:</strong> Ask one trusted person how your behaviour affects them—and only listen.</p></div>
           <p class="case-signature">Inspired by 1 Thessalonians 5:21 · Faith. Facts. Discernment.</p>
         </article>
       </div>
