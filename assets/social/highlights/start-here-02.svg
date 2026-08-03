@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs><linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#111817"/><stop offset="1" stop-color="#050707"/></linearGradient></defs>
+  <rect width="1080" height="1920" fill="url(#bg2)"/>
+  <text x="110" y="350" fill="#b98a50" font-family="Georgia, serif" font-size="30" letter-spacing="7">ONE CREATIVE UNIVERSE</text>
+  <text x="110" y="675" fill="#f2ede4" font-family="Georgia, serif" font-size="92">Books.</text>
+  <text x="110" y="815" fill="#f2ede4" font-family="Georgia, serif" font-size="92">Original series.</text>
+  <text x="110" y="955" fill="#f2ede4" font-family="Georgia, serif" font-size="92">Stories.</text>
+  <text x="110" y="1095" fill="#f2ede4" font-family="Georgia, serif" font-size="92">Experiences.</text>
+  <line x1="110" y1="1215" x2="970" y2="1215" stroke="#b98a50" stroke-width="2" opacity=".7"/>
+  <text x="110" y="1320" fill="#c9c1b4" font-family="Arial, sans-serif" font-size="34" letter-spacing="2">Different forms. One home.</text>
+  <circle cx="890" cy="1540" r="105" fill="none" stroke="#b98a50" stroke-width="2" opacity=".35"/>
+  <circle cx="890" cy="1540" r="72" fill="none" stroke="#b98a50" stroke-width="1" opacity=".65"/>
+</svg>

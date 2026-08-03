@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <rect width="1080" height="1080" fill="#080b0b"/>
+  <circle cx="540" cy="540" r="340" fill="none" stroke="#b8894e" stroke-width="8"/>
+  <text x="540" y="500" text-anchor="middle" fill="#f3eee5" font-family="Georgia, serif" font-size="180">SP</text>
+  <text x="540" y="625" text-anchor="middle" fill="#bd8c50" font-family="Arial, sans-serif" font-size="38" letter-spacing="10">START HERE</text>
+</svg>

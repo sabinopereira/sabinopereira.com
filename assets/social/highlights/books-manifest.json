@@ -1,0 +1,10 @@
+{
+  "campaign": "Instagram Highlight — BOOKS",
+  "platform": "Instagram Stories",
+  "dimensions": "1080x1920",
+  "language": "English",
+  "created": "2026-08-03",
+  "source_preservation": "Book covers are embedded without generative alteration.",
+  "stories": ["books-01", "books-02", "books-03", "books-04"],
+  "destination": "https://sabinopereira.com/books.html"
+}

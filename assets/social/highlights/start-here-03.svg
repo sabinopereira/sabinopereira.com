@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs><radialGradient id="bg3" cx="50%" cy="50%" r="70%"><stop stop-color="#1a211f"/><stop offset="1" stop-color="#060808"/></radialGradient></defs>
+  <rect width="1080" height="1920" fill="url(#bg3)"/>
+  <path d="M220 610 C390 510 690 510 860 610 M220 1310 C390 1410 690 1410 860 1310" fill="none" stroke="#bd8c50" stroke-width="2" opacity=".35"/>
+  <text x="540" y="760" text-anchor="middle" fill="#bd8c50" font-family="Arial, sans-serif" font-size="30" letter-spacing="8">MUSIC BY</text>
+  <text x="540" y="940" text-anchor="middle" fill="#f3eee5" font-family="Georgia, serif" font-size="118" letter-spacing="7">REIRA BIN</text>
+  <text x="540" y="1075" text-anchor="middle" fill="#d2cabd" font-family="Georgia, serif" font-size="38" font-style="italic">The musical voice of the universe.</text>
+  <line x1="350" y1="1170" x2="730" y2="1170" stroke="#bd8c50" stroke-width="2"/>
+  <text x="540" y="1285" text-anchor="middle" fill="#e2d8ca" font-family="Arial, sans-serif" font-size="32" letter-spacing="3">ORIGINAL WORLDS TO</text>
+  <text x="540" y="1345" text-anchor="middle" fill="#e2d8ca" font-family="Arial, sans-serif" font-size="32" letter-spacing="3">READ, HEAR AND FEEL.</text>
+</svg>

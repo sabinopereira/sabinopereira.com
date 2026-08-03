@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs><radialGradient id="b4" cx="50%" cy="45%" r="75%"><stop stop-color="#1b2422"/><stop offset="1" stop-color="#060808"/></radialGradient></defs>
+  <rect width="1080" height="1920" fill="url(#b4)"/>
+  <circle cx="540" cy="920" r="400" fill="none" stroke="#bd8c50" stroke-width="2" opacity=".3"/>
+  <text x="540" y="720" text-anchor="middle" fill="#bd8c50" font-family="Arial, sans-serif" font-size="28" letter-spacing="8">YOUR NEXT WORLD IS WAITING</text>
+  <text x="540" y="900" text-anchor="middle" fill="#f4efe6" font-family="Georgia, serif" font-size="72">Find the story</text>
+  <text x="540" y="985" text-anchor="middle" fill="#f4efe6" font-family="Georgia, serif" font-size="72">that belongs to you.</text>
+  <line x1="350" y1="1090" x2="730" y2="1090" stroke="#bd8c50" stroke-width="2"/>
+  <text x="540" y="1205" text-anchor="middle" fill="#d8d0c4" font-family="Arial, sans-serif" font-size="32" letter-spacing="4">EXPLORE ALL BOOKS</text>
+  <text x="540" y="1275" text-anchor="middle" fill="#e8e1d7" font-family="Arial, sans-serif" font-size="34">sabinopereira.com/books.html</text>
+  <text x="540" y="1445" text-anchor="middle" fill="#ae8560" font-family="Georgia, serif" font-size="28" font-style="italic">Written by Sabino Pereira.</text>
+</svg>

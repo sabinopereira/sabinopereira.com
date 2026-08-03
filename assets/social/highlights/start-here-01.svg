@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="35%" r="80%"><stop offset="0" stop-color="#18201e"/><stop offset="1" stop-color="#070a0a"/></radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e2c28a"/><stop offset="1" stop-color="#9b6d38"/></linearGradient>
+  </defs>
+  <rect width="1080" height="1920" fill="url(#bg)"/>
+  <circle cx="540" cy="960" r="420" fill="none" stroke="url(#gold)" stroke-width="2" opacity=".45"/>
+  <circle cx="540" cy="960" r="455" fill="none" stroke="#c99b5e" stroke-width="1" opacity=".15"/>
+  <text x="540" y="760" text-anchor="middle" fill="#d9b87b" font-family="Georgia, serif" font-size="28" letter-spacing="8">START HERE</text>
+  <text x="540" y="930" text-anchor="middle" fill="#f4efe5" font-family="Georgia, serif" font-size="86" letter-spacing="2">SABINO</text>
+  <text x="540" y="1025" text-anchor="middle" fill="#f4efe5" font-family="Georgia, serif" font-size="86" letter-spacing="2">PEREIRA</text>
+  <line x1="390" y1="1090" x2="690" y2="1090" stroke="#bd8f54" stroke-width="2"/>
+  <text x="540" y="1170" text-anchor="middle" fill="#d7d0c3" font-family="Arial, sans-serif" font-size="32" letter-spacing="5">AUTHOR · CREATOR</text>
+</svg>

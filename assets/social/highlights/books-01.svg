@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs><radialGradient id="b1" cx="50%" cy="42%" r="75%"><stop stop-color="#1b2422"/><stop offset="1" stop-color="#060808"/></radialGradient></defs>
+  <rect width="1080" height="1920" fill="url(#b1)"/>
+  <path d="M190 540 H890 M190 1380 H890" stroke="#b98a50" stroke-width="2" opacity=".35"/>
+  <text x="540" y="760" text-anchor="middle" fill="#be8f53" font-family="Arial, sans-serif" font-size="30" letter-spacing="10">ENTER THE LIBRARY</text>
+  <text x="540" y="990" text-anchor="middle" fill="#f4efe6" font-family="Georgia, serif" font-size="142" letter-spacing="10">BOOKS</text>
+  <text x="540" y="1105" text-anchor="middle" fill="#d2cabe" font-family="Georgia, serif" font-size="38" font-style="italic">Original worlds by Sabino Pereira.</text>
+  <text x="540" y="1260" text-anchor="middle" fill="#e8e1d7" font-family="Arial, sans-serif" font-size="30" letter-spacing="4">STORIES TO READ, HEAR AND FEEL.</text>
+</svg>

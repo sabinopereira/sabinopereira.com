@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <rect width="1080" height="1920" fill="#090c0c"/>
+  <text x="80" y="170" fill="#bd8c50" font-family="Arial, sans-serif" font-size="28" letter-spacing="8">FICTION · STRATEGY · MODERN LIFE</text>
+  <text x="80" y="285" fill="#f4efe6" font-family="Georgia, serif" font-size="64">Three doors. Three different worlds.</text>
+  <image href="file:///Users/binopereira/Desktop/Site%20SabinoPereira.com/sabinopereira.com/books/a-seat-at-the-table/assets/a-seat-at-the-table-cover-web.jpg" x="70" y="460" width="290" height="465" preserveAspectRatio="xMidYMid meet"/>
+  <image href="file:///Users/binopereira/Desktop/Site%20SabinoPereira.com/sabinopereira.com/books/borrow-delay-repeat/directors-cut/premium-edition/ebook/borrow-delay-repeat-directors-cut-cover.jpg" x="395" y="460" width="290" height="465" preserveAspectRatio="xMidYMid meet"/>
+  <image href="file:///Users/binopereira/Desktop/Site%20SabinoPereira.com/sabinopereira.com/books/chess-in-the-block/cover/chess-on-the-block-directors-cut-cover.png" x="720" y="460" width="290" height="465" preserveAspectRatio="xMidYMid meet"/>
+  <text x="215" y="1010" text-anchor="middle" fill="#f0e8dc" font-family="Georgia, serif" font-size="34">A Seat at the Table</text>
+  <text x="540" y="1010" text-anchor="middle" fill="#f0e8dc" font-family="Georgia, serif" font-size="31">Borrow. Delay. Repeat.</text>
+  <text x="865" y="1010" text-anchor="middle" fill="#f0e8dc" font-family="Georgia, serif" font-size="32">Chess on the Block</text>
+  <line x1="80" y1="1160" x2="1000" y2="1160" stroke="#bd8c50" stroke-width="2" opacity=".5"/>
+  <text x="540" y="1280" text-anchor="middle" fill="#cfc6b8" font-family="Arial, sans-serif" font-size="30" letter-spacing="3">POWER CHANGES SHAPE.</text>
+  <text x="540" y="1340" text-anchor="middle" fill="#cfc6b8" font-family="Arial, sans-serif" font-size="30" letter-spacing="3">THE CONSEQUENCES REMAIN.</text>
+</svg>
