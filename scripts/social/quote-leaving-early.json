@@ -1,0 +1,37 @@
+{
+  "backgroundImage": "/Users/binopereira/Desktop/Site SabinoPereira.com/sabinopereira.com/images/sabino-in-the-field.jpeg",
+  "audioFile": "/Users/binopereira/Desktop/Site SabinoPereira.com/sabinopereira.com/audio/siempre-nosotros/02-cafe-para-dos.mp3",
+  "outputFile": "/Users/binopereira/Desktop/Site SabinoPereira.com/sabinopereira.com/scripts/social/quote-leaving-early.mp4",
+  "duration": 14.0,
+  "brandName": "SABINO PEREIRA",
+  "brandSubtitle": "BOOKS • ESSAYS • STORIES",
+  "scenes": [
+    {
+      "start": 0.0,
+      "end": 4.5,
+      "text": "SOMETIMES LEAVING EARLY\nIS WHAT SAVES US MOST.",
+      "fontName": "Didot",
+      "fontSize": 82,
+      "tracking": 3.0,
+      "lineSpacing": 12
+    },
+    {
+      "start": 4.2,
+      "end": 9.0,
+      "text": "NOT BECAUSE WE GAVE UP,\nBUT BECAUSE WE CHOSE\nTO SURVIVE.",
+      "fontName": "Didot",
+      "fontSize": 76,
+      "tracking": 2.5,
+      "lineSpacing": 12
+    },
+    {
+      "start": 8.7,
+      "end": 14.0,
+      "text": "READ EPISODE 2 OF\nBEING HUMAN (UNFILTERED)\nON SABINOPEREIRA.COM",
+      "fontName": "Avenir Next Demi Bold",
+      "fontSize": 48,
+      "tracking": 2.0,
+      "lineSpacing": 15
+    }
+  ]
+}

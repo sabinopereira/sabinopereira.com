@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Truth Files by Sabino Pereira - Faith, Facts, Discernment</title>
-  <meta name="description" content="Truth Files is a reflective series by Sabino Pereira about faith, facts, discernment, trust, evidence, patterns, and the wisdom to examine everything without becoming cynical.">
+  <meta name="description" content="Truth Files investigates the distance between what people say, what we want to believe, and what patterns reveal. A weekly series about faith, facts, and discernment.">
   <meta name="author" content="Sabino Pereira">
   <link rel="canonical" href="https://sabinopereira.com/truth-files.html">
   <link rel="alternate" hreflang="en" href="https://sabinopereira.com/truth-files.html">
@@ -458,6 +458,39 @@
 
     .case-takeaway p { margin-bottom: 0; }
 
+    .share-case {
+      margin-top: 16px;
+      padding: 10px 13px;
+      color: var(--gold-2);
+      border: 1px solid rgba(213, 166, 87, 0.38);
+      border-radius: 3px;
+      background: rgba(5, 4, 3, 0.58);
+      font: 800 10px/1 Inter, sans-serif;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .share-case:hover,
+    .share-case:focus-visible { border-color: var(--gold-2); }
+
+    .ecosystem {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .format-card {
+      min-height: 190px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: rgba(9, 8, 6, 0.62);
+    }
+
+    .format-card h3 { font-size: 31px; }
+    .format-card p { color: var(--soft); line-height: 1.55; }
+    .format-card .ghost { margin-top: 6px; }
+
     .case-close {
       position: absolute;
       top: 16px;
@@ -551,7 +584,8 @@
       h1 { font-size: clamp(56px, 17vw, 86px); }
       .tagline { font-size: 16px; }
       .case-grid,
-      .method {
+      .method,
+      .ecosystem {
         grid-template-columns: 1fr;
       }
       .section {
@@ -1074,6 +1108,33 @@
         </article>
       </div>
     </section>
+
+    <section class="section shell" id="follow">
+      <div class="section-head">
+        <h2>One case. More than one form.</h2>
+        <p>Truth Files is being built as an editorial world, not a single page.</p>
+      </div>
+      <div class="ecosystem">
+        <article class="format-card">
+          <p class="eyebrow">Read</p>
+          <h3>A weekly investigation</h3>
+          <p>One recognisable scene, one pattern to examine, and one practical step—published as a case you can return to.</p>
+          <a class="ghost" href="#cases">Open the files</a>
+        </article>
+        <article class="format-card">
+          <p class="eyebrow">Watch &amp; listen</p>
+          <h3>Narrated reflections</h3>
+          <p>Selected cases will become short narrated films and audio reflections, preserving the quiet, investigative voice of the series.</p>
+          <a class="ghost" href="https://www.youtube.com/@SabinoQuietPower" target="_blank" rel="noopener">YouTube</a>
+        </article>
+        <article class="format-card">
+          <p class="eyebrow">Collect</p>
+          <h3>The future volume</h3>
+          <p>As the archive grows, the strongest cases will form a collected Truth Files volume with expanded reflections and field notes.</p>
+          <a class="ghost" href="/books.html">Explore the books</a>
+        </article>
+      </div>
+    </section>
   </main>
 
   <footer class="shell">
@@ -1092,6 +1153,32 @@
       closeButton.setAttribute('aria-label', 'Close case');
       closeButton.textContent = '×';
       detail.prepend(closeButton);
+
+      const takeaway = detail.querySelector('.case-takeaway');
+      if (takeaway) {
+        const shareButton = document.createElement('button');
+        shareButton.className = 'share-case';
+        shareButton.type = 'button';
+        shareButton.textContent = 'Share this truth';
+        shareButton.addEventListener('click', async () => {
+          const quote = takeaway.querySelector('blockquote')?.textContent.trim() || '';
+          const title = detail.querySelector('h3')?.textContent.trim() || 'Truth Files';
+          const url = `${location.origin}${location.pathname}#${detail.id}`;
+          const shareData = { title: `Truth Files — ${title}`, text: quote, url };
+          try {
+            if (navigator.share) {
+              await navigator.share(shareData);
+            } else {
+              await navigator.clipboard.writeText(`${quote}\n${url}`);
+              shareButton.textContent = 'Copied';
+              setTimeout(() => { shareButton.textContent = 'Share this truth'; }, 1800);
+            }
+          } catch (error) {
+            if (error.name !== 'AbortError') shareButton.textContent = 'Try again';
+          }
+        });
+        takeaway.append(shareButton);
+      }
     });
 
     function openCase(caseId, trigger) {
