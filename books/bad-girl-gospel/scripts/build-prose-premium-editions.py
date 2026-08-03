@@ -270,12 +270,19 @@ def build_epub(book: Book, sections: list[Section]) -> Path:
         name=f"section-{i:02d}.xhtml"; files.append(name); nav_items.append(f'<li><a href="{name}">{html.escape(section.heading)}</a></li>')
         (build/f"OEBPS/{name}").write_text(xhtml(section.heading, f'<section class="chapter"><h1>{html.escape(section.heading)}</h1>{f"<h2>{html.escape(section.subtitle)}</h2>" if section.subtitle else ""}{"".join(paras)}</section>'), encoding="utf-8")
     (build/"OEBPS/nav.xhtml").write_text(xhtml("Contents", f'<nav epub:type="toc"><h1>Contents</h1><ol>{"".join(nav_items)}</ol></nav>'), encoding="utf-8"); files.append("nav.xhtml")
-    manifest=['<item id="cover-img" href="images/cover.jpg" media-type="image/jpeg" properties="cover-image"/>','<item id="css" href="styles.css" media-type="text/css"/>']; spine=[]
+    ncx_points = ''.join(
+        f'<navPoint id="navPoint-{i}" playOrder="{i}"><navLabel><text>{html.escape(section.heading)}</text></navLabel><content src="section-{i:02d}.xhtml"/></navPoint>'
+        for i, section in enumerate(sections, 1)
+    )
+    ncx_uid = uuid.uuid5(uuid.NAMESPACE_URL, f"https://{SITE}/bad-girl-gospel/{book.slug}/premium-prose")
+    ncx = f'''<?xml version="1.0" encoding="utf-8"?><ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1"><head><meta name="dtb:uid" content="urn:uuid:{ncx_uid}"/></head><docTitle><text>{html.escape(book.title)}</text></docTitle><navMap>{ncx_points}</navMap></ncx>'''
+    (build/"OEBPS/toc.ncx").write_text(ncx, encoding="utf-8")
+    manifest=['<item id="cover-img" href="images/cover.jpg" media-type="image/jpeg" properties="cover-image"/>','<item id="css" href="styles.css" media-type="text/css"/>','<item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>']; spine=[]
     for i,name in enumerate(files):
         prop=' properties="nav"' if name=="nav.xhtml" else ''
         manifest.append(f'<item id="p{i}" href="{name}" media-type="application/xhtml+xml"{prop}/>'); spine.append(f'<itemref idref="p{i}"/>')
     ident=uuid.uuid5(uuid.NAMESPACE_URL, f"https://{SITE}/bad-girl-gospel/{book.slug}/premium-prose")
-    opf=f'''<?xml version="1.0"?><package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="id"><metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:identifier id="id">urn:uuid:{ident}</dc:identifier><dc:title>{html.escape(book.title)}</dc:title><dc:creator>{AUTHOR}</dc:creator><dc:language>en</dc:language><meta property="dcterms:modified">2026-07-27T00:00:00Z</meta></metadata><manifest>{''.join(manifest)}</manifest><spine>{''.join(spine)}</spine></package>'''
+    opf=f'''<?xml version="1.0"?><package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="id"><metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:identifier id="id">urn:uuid:{ident}</dc:identifier><dc:title>{html.escape(book.title)}</dc:title><dc:creator>{AUTHOR}</dc:creator><dc:language>en</dc:language><meta property="dcterms:modified">2026-08-03T00:00:00Z</meta></metadata><manifest>{''.join(manifest)}</manifest><spine toc="ncx">{''.join(spine)}</spine></package>'''
     (build/"OEBPS/content.opf").write_text(opf, encoding="utf-8")
     out=folder/f"bad-girl-gospel-the-story-of-{book.slug}-premium-ebook.epub"
     with zipfile.ZipFile(out,"w") as z:
