@@ -1,0 +1,77 @@
+/* REIRA BIN Creative Studio — shared visual language */
+:root{
+  --reira-forest:#14241f;
+  --reira-forest-deep:#0d1513;
+  --reira-paper:#f1eee7;
+  --reira-cream:#faf8f2;
+  --reira-sage:#aebdb4;
+  --reira-ink:#18201e;
+  --reira-line:rgba(24,32,30,.18);
+  --reira-serif:"Gloock","Cormorant Garamond","Playfair Display","EB Garamond",Georgia,serif;
+  --reira-sans:"DM Sans",Inter,Arial,sans-serif;
+}
+
+html{scroll-behavior:smooth}
+body{background:var(--reira-paper);color:var(--reira-ink)}
+
+/* One recognizable studio frame, while project interiors keep their own mood. */
+.studio-header,.author-header,.topbar,.cozy-header,.grace-header,.site-header,body>header{
+  background:var(--reira-forest-deep)!important;
+  color:var(--reira-cream)!important;
+  border-bottom:1px solid rgba(255,255,255,.16)!important;
+  box-shadow:none!important;
+}
+.studio-nav,.author-header-inner,.topbar .nav,.cozy-header-inner,.grace-header,.site-header .header-inner,body>header>.nav{
+  min-height:76px;
+}
+.studio-brand,.author-brand,.topbar .brand,.cozy-brand,.grace-brand,.site-header .brand,body>header .brand{
+  color:var(--reira-cream)!important;
+  font-family:var(--reira-serif)!important;
+  letter-spacing:.04em;
+}
+.studio-links a,.author-nav a,.topbar nav a,.cozy-nav a,.grace-nav a,.main-nav a,.nav-links a{
+  color:var(--reira-cream)!important;
+  font-family:var(--reira-sans)!important;
+  font-size:.72rem!important;
+  letter-spacing:.12em!important;
+  text-transform:uppercase;
+}
+.studio-links a:hover,.author-nav a:hover,.topbar nav a:hover,.cozy-nav a:hover,.grace-nav a:hover,.main-nav a:hover,.nav-links a:hover{
+  color:var(--reira-sage)!important;
+}
+
+/* Shared editorial typography and actions. */
+h1,h2,.display-title,.hero-title{font-family:var(--reira-serif)}
+.eyebrow,.kicker,.section-label,.album-kind,.world-label{font-family:var(--reira-sans);letter-spacing:.16em;text-transform:uppercase}
+.btn,.button,.primary-button,.secondary-button,.grace-button,.book-buy-button,.author-button,.text-link{
+  border-radius:0!important;
+  box-shadow:none!important;
+  font-family:var(--reira-sans)!important;
+  letter-spacing:.08em!important;
+}
+.btn,.button,.primary-button,.grace-button,.book-buy-button,.author-button{
+  min-height:46px;
+}
+.btn.primary,.button.primary,.primary-button,.grace-button.primary,.book-buy-button{
+  background:var(--reira-forest)!important;
+  border-color:var(--reira-forest)!important;
+  color:var(--reira-cream)!important;
+}
+.text-link{color:inherit;text-decoration:underline;text-underline-offset:.35em}
+
+/* A consistent ending to every world. */
+.studio-footer,.author-footer,.site-footer,.grace-footer,body>footer,footer{
+  background:var(--reira-forest-deep)!important;
+  color:var(--reira-cream)!important;
+  border-top:1px solid rgba(255,255,255,.14)!important;
+}
+.studio-footer a,.author-footer a,.site-footer a,.grace-footer a,footer a{color:var(--reira-cream)!important}
+
+/* General catalogue pages belong unmistakably to the green studio. */
+body.reira-studio-page,.library-page,.series-page,.music-page,.shop-page{background:var(--reira-paper)!important}
+.library-hero,.series-hero,.music-hero,.shop-hero{background-color:var(--reira-forest)!important;color:var(--reira-cream)!important}
+
+@media(max-width:720px){
+  .studio-nav,.author-header-inner,.topbar .nav,.cozy-header-inner,.grace-header,.site-header .header-inner,body>header>.nav{min-height:68px}
+  .studio-links a,.author-nav a,.topbar nav a,.cozy-nav a,.grace-nav a,.main-nav a,.nav-links a{min-height:44px;display:flex;align-items:center}
+}
