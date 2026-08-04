@@ -1,445 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SP × RB — Creative Studio</title>
-  <meta name="description" content="SP × RB is an independent creative studio building worlds through stories, cinematic music and meaningful experiences.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Reira Bin — Original Worlds to Read, Hear and Feel</title>
+  <meta name="description" content="Reira Bin is a creative studio for original series, books by Sabino Pereira, music by Reira Bin, and connected experiences.">
   <meta name="author" content="Sabino Pereira">
-  <meta name="theme-color" content="#f1ebdf">
+  <meta name="theme-color" content="#0d2435">
   <link rel="canonical" href="https://sabinopereira.com/">
   <link rel="icon" type="image/svg+xml" href="/images/sp-favicon.svg">
-  <meta property="og:title" content="SP × RB — Creative Studio">
-  <meta property="og:description" content="Building worlds through stories, music and meaningful experiences.">
+  <meta property="og:title" content="Reira Bin — Original Worlds to Read, Hear and Feel">
+  <meta property="og:description" content="Original series, books, music and connected experiences by SP and RB.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sabinopereira.com/">
-  <meta property="og:image" content="https://sabinopereira.com/books/borrow-delay-repeat/directors-cut/premium-edition/ebook/borrow-delay-repeat-directors-cut-cover.jpg?v=20260721">
+  <meta property="og:image" content="https://sabinopereira.com/images/optimized/a-journey-back-to-silence-social-post.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SP × RB — Creative Studio">
-  <meta name="twitter:description" content="Building worlds through stories, music and meaningful experiences.">
-  <meta name="twitter:image" content="https://sabinopereira.com/books/borrow-delay-repeat/directors-cut/premium-edition/ebook/borrow-delay-repeat-directors-cut-cover.jpg?v=20260721">
+  <meta name="twitter:title" content="Reira Bin — Original Worlds to Read, Hear and Feel">
+  <meta name="twitter:description" content="Original series, books, music and connected experiences by SP and RB.">
+  <meta name="twitter:image" content="https://sabinopereira.com/images/optimized/a-journey-back-to-silence-social-post.jpg">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEVDEH8PGZ"></script>
   <script src="/analytics.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet">
   <style>
-    :root {
-      --ink: #14283c;
-      --paper: #eee8dc;
-      --cream: #f8f3e9;
-      --muted: #64717a;
-      --red: #58748a;
-      --gold: #a48762;
-      --blue: #8da5b6;
-      --deep-blue: #18334a;
-      --line: rgba(20, 40, 60, .16);
-      --max: 1240px;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; background: var(--paper); color: var(--ink); font-family: "DM Sans", Arial, sans-serif; background-image: radial-gradient(circle at 14% 8%, rgba(255,255,255,.8), transparent 32rem), radial-gradient(circle at 92% 34%, rgba(126,153,173,.2), transparent 30rem); }
-    body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .2; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E"); mix-blend-mode: multiply; }
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-    .shell { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
-    .topbar { position: sticky; top: 0; z-index: 20; background: rgba(238,232,220,.88); border-bottom: 1px solid var(--line); backdrop-filter: blur(18px); }
-    .nav { min-height: 86px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
-    .brand { display: grid; gap: 0; color: var(--ink); font: 500 31px/1 "Cormorant Garamond", Georgia, serif; letter-spacing: .08em; text-transform: uppercase; }
-    .brand small { margin-top: 5px; color: var(--muted); font: 600 8px/1 "DM Sans", sans-serif; letter-spacing: .38em; }
-    .nav-links { display: flex; align-items: center; gap: 26px; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-    .nav-links a:hover, .nav-links a:focus-visible { color: #31556f; }
-    .nav-cta { padding: 11px 16px; border: 1px solid var(--ink); border-radius: 0; color: var(--ink); }
-    .hero { min-height: calc(100vh - 86px); display: grid; grid-template-columns: minmax(0, .92fr) minmax(440px, .68fr); gap: clamp(44px, 7vw, 110px); align-items: center; padding: 82px 0 96px; }
-    .eyebrow { margin: 0 0 18px; color: var(--red); font-size: 11px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
-    h1, h2, h3 { margin: 0; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 500; }
-    h1 { max-width: 820px; font-size: clamp(58px, 7.3vw, 108px); line-height: .88; letter-spacing: -.035em; text-transform: uppercase; }
-    h1 em { color: var(--red); font-weight: 400; }
-    .lede { max-width: 620px; margin: 30px 0 0; color: var(--muted); font: 20px/1.55 "Playfair Display", Georgia, serif; }
-    .hero-note { max-width: 480px; margin: 27px 0 0; color: var(--muted); font: italic 22px/1.45 "Cormorant Garamond", Georgia, serif; }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
-    .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; padding: 0 21px; border: 1px solid var(--ink); border-radius: 0; font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; transition: transform .2s, background .2s, color .2s; }
-    .button:hover { transform: translateY(-2px); }
-    .button.primary { background: var(--ink); color: var(--cream); }
-    .hero-art { position: relative; min-height: 690px; overflow: hidden; border: 1px solid rgba(20,40,60,.18); background: linear-gradient(180deg, rgba(244,238,226,.06), rgba(20,40,60,.28)), url("/books/a-journey-back-to-silence/assets/cover/a-journey-back-to-silence-book-cover.png") center/cover; box-shadow: 0 36px 76px rgba(28,48,63,.18); }
-    .hero-art::before { content: "SABINO PEREIRA / REIRA BIN"; position: absolute; top: 25px; left: 28px; right: 28px; z-index: 2; color: rgba(20,40,60,.7); font-size: 9px; font-weight: 600; letter-spacing: .28em; }
-    .hero-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 38%, rgba(13,32,48,.78)); pointer-events: none; }
-    .hero-portals { position: absolute; z-index: 3; right: 24px; bottom: 24px; left: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .hero-portal { min-height: 162px; display: flex; flex-direction: column; justify-content: space-between; padding: 20px; border: 1px solid rgba(248,243,233,.5); background: rgba(245,240,230,.9); color: var(--ink); backdrop-filter: blur(12px); transition: transform .2s, background .2s; }
-    .hero-portal.rb { background: rgba(20,40,60,.9); color: var(--cream); }
-    .hero-portal:hover { transform: translateY(-4px); }
-    .portal-monogram { font: 500 48px/1 "Cormorant Garamond", Georgia, serif; }
-    .hero-portal strong { display: block; font: 500 21px/1.05 "Cormorant Garamond", Georgia, serif; }
-    .hero-portal small { display: block; margin-top: 5px; font-size: 8px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; opacity: .72; }
-    .marquee { overflow: hidden; background: var(--deep-blue); color: var(--cream); border-block: 1px solid rgba(0,0,0,.12); }
-    .marquee-inner { min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 28px; white-space: nowrap; font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
-    .design-showcase { padding: 96px 0; border-bottom: 1px solid var(--line); background: var(--deep-blue); color: var(--cream); }
-    .design-showcase-head { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 32px; align-items: end; margin-bottom: 34px; }
-    .design-showcase-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 10px; }
-    .design-rotate-btn { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.34); border-radius: 50%; background: transparent; color: var(--cream); cursor: pointer; font: 22px/1 Georgia, serif; transition: border-color .2s, color .2s, transform .2s; }
-    .design-rotate-btn:hover, .design-rotate-btn:focus-visible { border-color: #cbd8df; color: #cbd8df; transform: translateY(-2px); }
-    .design-showcase h2 { max-width: 760px; font-size: clamp(44px, 6vw, 78px); line-height: .9; letter-spacing: -.04em; }
-    .design-showcase .eyebrow { color: #b9cbd6; }
-    .design-showcase .button { border-color: rgba(255,255,255,.48); color: var(--cream); }
-    .design-showcase .button:hover { border-color: #cbd8df; color: #cbd8df; }
-    .design-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
-    .design-card { display: grid; grid-template-rows: minmax(280px, 1fr) auto; overflow: hidden; border: 1px solid rgba(255,255,255,.15); border-radius: 0; background: #203b50; transition: transform .25s, border-color .25s, opacity .22s; }
-    .design-card.is-changing { opacity: .18; transform: translateY(8px); }
-    .design-card:hover { transform: translateY(-5px); border-color: rgba(203,216,223,.68); }
-    .design-card-media { display: grid; place-items: center; min-height: 330px; padding: 22px; background: radial-gradient(circle at 50% 42%, #eee3d0 0, #c9baa3 44%, #8c7b68 100%); }
-    .design-card:nth-child(2) .design-card-media { background: radial-gradient(circle at 50% 42%, #dbd1c0 0, #9c8d78 48%, #4f4439 100%); }
-    .design-card:nth-child(3) .design-card-media { background: radial-gradient(circle at 50% 42%, #d4cab8 0, #786b5b 50%, #302a24 100%); }
-    .design-card img { width: 100%; height: 330px; object-fit: contain; filter: drop-shadow(0 22px 28px rgba(0,0,0,.32)); }
-    .design-card-copy { padding: 20px 22px 22px; }
-    .design-card-copy span { color: #cbd8df; font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
-    .design-card-copy h3 { margin-top: 9px; font-size: 28px; line-height: 1; }
-    .design-card-copy p { margin: 10px 0 0; color: #bcb0a1; font-size: 13px; line-height: 1.5; }
-    .library { padding: 112px 0 92px; }
-    .section-head { display: grid; grid-template-columns: minmax(0,1fr) minmax(280px,.46fr); align-items: end; gap: 40px; margin-bottom: 48px; }
-    .section-head h2 { max-width: 850px; font-size: clamp(54px, 7vw, 96px); line-height: .88; letter-spacing: -.045em; }
-    .section-head p { margin: 0; color: var(--muted); font: 18px/1.55 "Playfair Display", Georgia, serif; }
-    .shelf { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 20px; }
-    .book-card { min-width: 0; display: flex; flex-direction: column; background: rgba(248,243,233,.76); border: 1px solid var(--line); border-radius: 0; overflow: hidden; transition: transform .25s, box-shadow .25s; }
-    .book-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(48,38,28,.12); }
-    .book-card.coming-soon:hover { transform: none; box-shadow: none; }
-    .book-card.coming-soon .text-link::after { content: ""; }
-    .book-card.featured { grid-column: span 2; display: grid; grid-template-columns: minmax(220px,.78fr) minmax(0,1fr); background: var(--deep-blue); color: var(--cream); }
-    .book-cover { min-height: 390px; display: grid; place-items: center; padding: 28px; background: #dfd5c6; }
-    .book-cover img { width: auto; max-height: 340px; filter: drop-shadow(0 20px 22px rgba(38,29,20,.25)); }
-    .featured .book-cover { min-height: 550px; background: #d8c5a6; }
-    .featured .book-cover img { max-height: 470px; }
-    .book-info { display: flex; flex: 1; flex-direction: column; padding: 25px; }
-    .featured .book-info { justify-content: center; padding: 38px; }
-    .book-tag { color: var(--red); font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
-    .featured .book-tag { color: #e3b766; }
-    .book-info h3 { margin-top: 12px; font-size: 31px; line-height: .98; letter-spacing: -.025em; }
-    .featured .book-info h3 { font-size: clamp(45px, 5vw, 72px); }
-    .book-info p { margin: 14px 0 22px; color: var(--muted); font-size: 14px; line-height: 1.55; }
-    .featured .book-info p { color: #c8bcad; font-size: 17px; }
-    .text-link { margin-top: auto; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-    .text-link::after { content: " →"; color: var(--red); }
-    .featured .text-link::after { color: #e3b766; }
-    .statement { padding: 102px 0; background: #dce4e7; color: var(--ink); border-block: 1px solid var(--line); }
-    .statement-grid { display: grid; grid-template-columns: minmax(0,.72fr) minmax(0,1fr); gap: 80px; align-items: center; }
-    .statement h2 { font-size: clamp(54px, 7vw, 96px); line-height: .9; letter-spacing: -.04em; }
-    .statement h2 em { color: var(--red); }
-    .statement-copy { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .statement-card { min-height: 220px; padding: 26px; border: 1px solid var(--line); border-radius: 0; background: rgba(248,243,233,.55); }
-    .statement-card span { color: var(--red); font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
-    .statement-card h3 { margin-top: 38px; font-size: 31px; }
-    .statement-card p { color: var(--muted); font-size: 14px; line-height: 1.55; }
-    .statement-card.shop-door { grid-column: 1 / -1; min-height: 190px; background: linear-gradient(110deg, rgba(88,116,138,.13), rgba(248,243,233,.55) 58%); }
-    .statement-card.shop-door h3 { margin-top: 24px; font-size: clamp(34px, 4vw, 50px); }
-    .about-studio { padding: clamp(76px,10vw,150px) 0; border-bottom: 1px solid var(--line); text-align: center; }
-    .about-studio-grid { max-width: 980px; margin: 0 auto; }
-    .about-studio h2 { font-size: clamp(54px,8vw,108px); line-height: .88; letter-spacing: -.04em; }
-    .about-studio h2 em { color: var(--red); font-weight: 400; }
-    .about-copy { max-width: 590px; margin: 30px auto 0; }
-    .about-copy p { margin: 0; color: var(--muted); font: 400 clamp(19px,2.1vw,25px)/1.5 "Cormorant Garamond", Georgia, serif; }
-    .about-link { display: inline-block; margin-top: 28px; padding-bottom: 5px; border-bottom: 1px solid var(--ink); font-size: 9px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
-    .universes { padding: 100px 0; background: var(--cream); border-bottom: 1px solid var(--line); }
-    .universe-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; margin-top: 42px; }
-    .universe-card { min-height: 410px; display: flex; flex-direction: column; padding: clamp(30px,4vw,52px); border: 1px solid var(--line); border-radius: 0; background: var(--paper); transition: transform .25s, border-color .25s; }
-    .universe-card:nth-child(2) { background: var(--deep-blue); color: var(--cream); }
-    .universe-card:nth-child(2) p { color: #b9cbd6; }
-    .universe-card:nth-child(2) .universe-mark { color: #b9cbd6; }
-    .universe-card:nth-child(3) { grid-column: 1 / -1; min-height: 250px; background: linear-gradient(110deg,#dce5e8,var(--cream)); }
-    .universe-card:hover { transform: translateY(-5px); border-color: rgba(49,85,111,.5); }
-    .universe-mark { color: var(--red); font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
-    .universe-card h3 { margin-top: 68px; font-size: clamp(52px,6vw,82px); line-height: .88; }
-    .universe-card:nth-child(3) h3 { margin-top: 42px; }
-    .universe-card p { margin: 16px 0 0; color: var(--muted); font-size: 15px; line-height: 1.65; }
-    .universe-card .text-link { margin-top: auto; padding-top: 24px; }
-    .mission { padding: 112px 0; background: var(--deep-blue); color: var(--cream); text-align: center; }
-    .mission .eyebrow { color: #b9cbd6; }
-    .mission blockquote { max-width: 1040px; margin: 22px auto 0; font: 500 clamp(38px,5.7vw,76px)/1.04 "Cormorant Garamond", Georgia, serif; letter-spacing: -.025em; }
-    .closing { padding: 92px 0; }
-    .closing-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 46px; border: 1px solid var(--line); border-radius: 0; background: rgba(248,243,233,.7); }
-    .closing h2 { font-size: clamp(40px,5vw,66px); line-height: .95; }
-    .closing p { margin: 10px 0 0; color: var(--muted); }
-    footer { padding: 30px 0 42px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
-    .footer-inner { display: flex; justify-content: space-between; gap: 24px; }
-    .footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
-    @media (max-width: 1050px) {
-      .hero { grid-template-columns: 1fr; min-height: 0; }
-      .hero-art { min-height: 620px; }
-      .shelf { grid-template-columns: repeat(2,minmax(0,1fr)); }
-      .book-card.featured { grid-column: span 2; }
-      .design-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
-      .statement-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 700px) {
-      .shell { width: min(100% - 28px, var(--max)); }
-      .nav { min-height: 70px; }
-      .brand { font-size: 13px; }
-      .brand small { display: none; }
-      .nav-links { gap: 12px; font-size: 10px; }
-      .nav-links a:nth-child(1), .nav-links a:nth-child(5), .nav-links a:nth-child(6), .nav-links a:nth-child(7) { display: none; }
-      .hero { padding: 54px 0 62px; gap: 42px; }
-      h1 { font-size: clamp(60px, 20vw, 88px); }
-      .lede { font-size: 18px; }
-      .hero-art { min-height: 590px; }
-      .hero-portals { right: 12px; bottom: 12px; left: 12px; }
-      .hero-portal { min-height: 145px; padding: 16px; }
-      .portal-monogram { font-size: 38px; }
-      .marquee-inner span:nth-child(even) { display: none; }
-      .design-showcase { padding: 58px 0; }
-      .design-showcase-head { grid-template-columns: 1fr; align-items: start; }
-      .design-grid { grid-template-columns: 1fr; }
-      .design-card { grid-template-columns: minmax(130px,.75fr) 1fr; grid-template-rows: auto; }
-      .design-card-media { min-height: 220px; padding: 12px; }
-      .design-card img { height: 220px; }
-      .design-card-copy { align-self: center; padding: 18px; }
-      .design-card-copy h3 { font-size: 23px; }
-      .library { padding: 74px 0 64px; }
-      .section-head { grid-template-columns: 1fr; margin-bottom: 34px; }
-      .section-head h2 { font-size: 57px; }
-      .shelf { grid-template-columns: 1fr; }
-      .book-card.featured { grid-column: auto; grid-template-columns: 1fr; }
-      .featured .book-cover, .book-cover { min-height: 390px; }
-      .featured .book-cover img, .book-cover img { max-height: 340px; }
-      .featured .book-info { padding: 28px; }
-      .statement { padding: 68px 0; }
-      .statement-copy { grid-template-columns: 1fr; }
-      .about-studio { padding: 74px 0; }
-      .universe-grid { grid-template-columns: 1fr; }
-      .universe-card:nth-child(3) { grid-column: auto; }
-      .universes, .mission { padding: 68px 0; }
-      .statement-card.shop-door { grid-column: auto; }
-      .closing { padding: 60px 0; }
-      .closing-inner { align-items: flex-start; flex-direction: column; padding: 30px; }
-      .footer-inner { flex-direction: column; }
-    }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+    :root{--ink:#10283b;--night:#0d2435;--sea:#5f7e91;--mist:#d9e3e5;--paper:#f2ede2;--cream:#fbf7ef;--line:rgba(16,40,59,.17);--max:1320px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif}a{color:inherit;text-decoration:none}img{display:block;width:100%}.shell{width:min(var(--max),calc(100% - 56px));margin:auto}
+    body:before{content:"";position:fixed;inset:0;z-index:-1;opacity:.16;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E");mix-blend-mode:multiply}
+    header{position:absolute;inset:0 0 auto;z-index:10;color:var(--ink)}.nav{height:92px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.logo{font:500 27px/1 "Cormorant Garamond",serif;letter-spacing:.16em;text-transform:uppercase}.logo small{display:block;margin-top:7px;font:500 7px/1 "DM Sans",sans-serif;letter-spacing:.36em;opacity:.65}.links{display:flex;align-items:center;gap:28px;font-size:10px;font-weight:600;letter-spacing:.17em;text-transform:uppercase}.links a{opacity:.72}.links a:hover{opacity:1}.enter{padding:12px 17px;border:1px solid var(--ink)}
+    .hero{position:relative;min-height:100vh;display:grid;align-items:end;overflow:hidden;color:var(--ink);background:linear-gradient(112deg,#f7f2e8 0%,#f1ecdf 48%,rgba(228,232,229,.94) 72%,rgba(194,209,216,.92) 100%)}.hero:before{content:"";position:absolute;inset:92px 0 0 43%;background:linear-gradient(90deg,#f2ede2 0%,rgba(242,237,226,.82) 12%,rgba(242,237,226,.12) 44%,rgba(242,237,226,0) 68%),linear-gradient(0deg,rgba(242,237,226,.96),transparent 30%),url('/images/optimized/a-journey-back-to-silence-social-post.jpg') center/cover;opacity:.82;filter:saturate(.72) contrast(.92)}.hero:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 17% 46%,rgba(255,255,255,.64),transparent 34%),linear-gradient(90deg,rgba(95,126,145,.08) 1px,transparent 1px);background-size:auto,22vw 100%;pointer-events:none}.hero-inner{position:relative;z-index:2;padding:180px 0 76px}.kicker{margin:0 0 23px;font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--sea)}.hero h1{max-width:840px;margin:0;font:500 clamp(68px,10vw,142px)/.78 "Cormorant Garamond",serif;letter-spacing:-.045em;text-transform:uppercase}.hero h1 em{display:block;color:var(--sea);font-weight:400}.tagline{max-width:490px;margin:28px 0 0;font:italic 24px/1.45 "Cormorant Garamond",serif;color:#526b7b}.hero-actions{display:flex;gap:10px;margin-top:34px}.btn{min-height:48px;display:inline-flex;align-items:center;padding:0 20px;border:1px solid var(--ink);font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}.btn.primary{background:var(--ink);border-color:var(--ink);color:var(--cream)}.hero-index{position:absolute;right:28px;bottom:28px;z-index:3;display:grid;gap:8px;text-align:right;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:rgba(16,40,59,.68)}
+    .intro{display:grid;grid-template-columns:.54fr 1fr;gap:80px;align-items:end;padding:115px 0;border-bottom:1px solid var(--line)}.eyebrow{margin:0 0 18px;color:var(--sea);font-size:9px;font-weight:600;letter-spacing:.26em;text-transform:uppercase}.intro h2,.section-title{margin:0;font:500 clamp(52px,7vw,94px)/.88 "Cormorant Garamond",serif;letter-spacing:-.035em}.intro-copy{max-width:650px}.intro-copy p{margin:0;color:#5e6f79;font:400 clamp(20px,2.3vw,28px)/1.48 "Cormorant Garamond",serif}.signatures{display:flex;gap:34px;margin-top:32px}.signature{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center}.monogram{font:500 38px/1 "Cormorant Garamond",serif}.signature small{display:block;color:#71808a;font-size:8px;letter-spacing:.16em;text-transform:uppercase}.signature strong{font:500 16px/1.2 "Cormorant Garamond",serif}
+    .series{padding:105px 0 120px;background:var(--cream)}.section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:42px}.section-head>a{padding-bottom:5px;border-bottom:1px solid;font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}.series-grid{display:grid;grid-template-columns:1.2fr .65fr .65fr;grid-template-rows:1fr 1fr;gap:16px;min-height:760px}.world{position:relative;overflow:hidden;color:#fff;background:var(--night)}.world:first-child{grid-row:1/-1}.world img{height:100%;object-fit:cover;transition:transform .7s ease}.world:hover img{transform:scale(1.025)}.world:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,19,30,.92),transparent 65%)}.world-copy{position:absolute;z-index:2;right:0;bottom:0;left:0;padding:clamp(22px,3vw,44px)}.world-label{font-size:8px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#d4e0e5}.world h3{margin:12px 0 4px;font:500 clamp(36px,5vw,70px)/.9 "Cormorant Garamond",serif}.world:not(:first-child) h3{font-size:clamp(27px,3vw,43px)}.world p{max-width:460px;margin:11px 0 0;color:#d8e1e4;font:italic 18px/1.4 "Cormorant Garamond",serif}.world-meta{display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;font-size:8px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#bfcdd3}.world.filthy{background:radial-gradient(circle at 78% 22%,rgba(222,190,127,.22),transparent 28%),linear-gradient(145deg,#0a1720,#253742 52%,#090f13)}.world.filthy:before{content:"FILTHY\A RICH";white-space:pre;position:absolute;top:9%;left:8%;color:rgba(245,230,196,.92);font:500 clamp(70px,8vw,124px)/.68 "Cormorant Garamond",serif;letter-spacing:-.06em}.episode-now{display:inline-block;margin-top:18px;padding:10px 13px;border:1px solid rgba(255,255,255,.38);font-size:8px;font-weight:600;letter-spacing:.17em;text-transform:uppercase}
+    .channels{padding:110px 0}.channel-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line)}.channel{min-height:330px;display:flex;flex-direction:column;padding:30px;border-right:1px solid var(--line);transition:background .25s,color .25s}.channel:last-child{border:0}.channel:not(.is-soon):hover{background:var(--night);color:#fff}.channel-no{font:italic 15px "Cormorant Garamond",serif;color:var(--sea)}.channel h3{margin:auto 0 12px;font:500 41px/1 "Cormorant Garamond",serif}.channel p{margin:0;color:#72818a;font-size:12px;line-height:1.55}.channel:not(.is-soon):hover p{color:#bdcbd1}.channel-arrow{margin-top:26px;font-size:20px}.channel.is-soon{background:#e7e0d4}.soon{display:inline-block;align-self:flex-start;margin-top:24px;padding:8px 10px;border:1px solid var(--line);font-size:8px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+    .music-shelf{padding:110px 0;background:#dce5e7}.album-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.album-card{display:flex;flex-direction:column;min-width:0;background:var(--cream);border:1px solid var(--line)}.album-card img{aspect-ratio:1;object-fit:cover}.album-copy{display:flex;flex:1;flex-direction:column;padding:22px}.album-kind{color:var(--sea);font-size:8px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}.album-card h3{margin:11px 0 8px;font:500 30px/1 "Cormorant Garamond",serif}.album-card p{margin:0;color:#6b7a83;font-size:11px;line-height:1.5}.album-links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:auto;padding-top:22px}.album-links a{min-height:34px;display:inline-flex;align-items:center;gap:6px;padding:6px 0 4px;border-bottom:2px solid var(--ink);color:var(--ink);font-size:10px;font-weight:600;letter-spacing:.1em;line-height:1.25;text-transform:uppercase;transition:color .2s,border-color .2s}.album-links a:after{content:"↗";font-size:12px}.album-links a:hover,.album-links a:focus-visible{border-color:var(--sea);color:var(--sea)}.album-links a:focus-visible{outline:2px solid rgba(95,126,145,.3);outline-offset:3px}
+    .feature{display:grid;grid-template-columns:1fr 1fr;min-height:720px;background:var(--night);color:#fff}.feature-art{background:url('/images/echoes-of-childhood/album-cover.jpg') center/cover}.feature-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(48px,8vw,120px)}.feature h2{margin:0;font:500 clamp(58px,7vw,104px)/.82 "Cormorant Garamond",serif}.feature p{max-width:500px;color:#b9c9d1;font:400 21px/1.5 "Cormorant Garamond",serif}.feature .btn{align-self:flex-start;margin-top:18px}
+    footer{padding:54px 0;background:#091d2c;color:#afc0c8}.foot{display:flex;justify-content:space-between;gap:30px;align-items:end}.foot-logo{color:#fff;font:500 34px/1 "Cormorant Garamond",serif;letter-spacing:.12em}.foot p{margin:8px 0 0;font-size:8px;letter-spacing:.2em;text-transform:uppercase}.foot-links{display:flex;gap:22px;font-size:8px;letter-spacing:.18em;text-transform:uppercase}
+    @media(max-width:1050px){.series-grid{grid-template-columns:1fr 1fr;grid-template-rows:600px repeat(2,340px)}.world:first-child{grid-column:1/-1;grid-row:auto}.album-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:900px){.links a:nth-child(-n+3){display:none}.hero:before{inset:92px 0 0 34%;opacity:.55}.hero h1{font-size:clamp(62px,15vw,104px)}.intro{grid-template-columns:1fr;gap:30px}.channel-grid{grid-template-columns:1fr 1fr}.channel:nth-child(2){border-right:0}.channel:nth-child(-n+2){border-bottom:1px solid var(--line)}.feature{grid-template-columns:1fr}.feature-art{min-height:520px}}
+    @media(max-width:600px){.shell{width:min(100% - 28px,var(--max))}.nav{height:76px}.logo{font-size:23px}.links{gap:12px}.links a{display:none}.links .enter{display:block}.hero{min-height:860px}.hero:before{inset:76px 0 0 20%;background-position:58% center;opacity:.36}.hero-inner{padding-bottom:60px}.hero h1{font-size:58px}.tagline{font-size:20px}.hero-index{display:none}.intro{padding:78px 0}.signatures{display:grid}.series,.music-shelf{padding:76px 0}.section-head{display:block}.section-head>a{display:inline-block;margin-top:22px}.series-grid{grid-template-columns:1fr;grid-template-rows:520px repeat(4,320px)}.world:first-child{grid-column:auto}.album-grid{grid-template-columns:1fr}.album-links a{min-height:44px}.channel-grid{grid-template-columns:1fr}.channel{min-height:230px;border-right:0;border-bottom:1px solid var(--line)!important}.feature-art{min-height:400px}.feature-copy{padding:60px 28px}.foot{display:grid}.foot-links{flex-wrap:wrap}}
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <nav class="nav shell" aria-label="Main navigation">
-      <a class="brand" href="/">SP × RB<small>Creative Studio</small></a>
-      <div class="nav-links">
-        <a href="#library">New books</a>
-        <a href="/books.html">All books</a>
-        <a href="/series.html">Series</a>
-        <a href="/music.html">RB — Reira Bin</a>
-        <a href="/truth-files.html">Truth Files</a>
-        <a href="/about.html">About</a>
-        <a href="/contact.html">Contact</a>
-        <a class="nav-cta" href="/shop.html">Shop</a>
-      </div>
-    </nav>
-  </header>
-
+  <header><nav class="nav shell"><a class="logo" href="#">Reira Bin<small>Creative Studio</small></a><div class="links"><a href="#series">Series</a><a href="#books">Books</a><a href="#music">Music</a><a href="/shop.html">Shop</a><a href="#experiences">Experiences</a><a class="enter" href="#series">Enter the worlds</a></div></nav></header>
   <main>
-    <section class="hero shell">
-      <div>
-        <p class="eyebrow">SP × RB · Creative Studio</p>
-        <h1>Stories.<br><em>Soundtracks.</em><br>Worlds.</h1>
-        <p class="hero-note">Two identities. One creative universe.</p>
-        <div class="actions">
-          <a class="button primary" href="#universes">Choose your world</a>
-        </div>
-      </div>
-      <div class="hero-art" role="img" aria-label="Watercolour coastline from A Journey Back to Silence">
-        <div class="hero-portals">
-          <a class="hero-portal sp" href="/books.html">
-            <span class="portal-monogram">SP</span>
-            <span><strong>Sabino Pereira</strong><small>Books · Essays · Stories</small></span>
-          </a>
-          <a class="hero-portal rb" href="/music.html">
-            <span class="portal-monogram">RB</span>
-            <span><strong>Reira Bin</strong><small>Music · Albums · Soundtracks</small></span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-inner shell"><span>Stories you can read</span><span>·</span><span>Music you can feel</span><span>·</span><span>Objects with meaning</span><span>·</span><span>Worlds worth returning to</span></div>
-    </div>
-
-    <section class="about-studio" id="about" aria-labelledby="studio-title">
-      <div class="about-studio-grid shell">
-        <p class="eyebrow">The studio</p>
-        <h2 id="studio-title">One creator.<br><em>Two signatures.</em></h2>
-        <div class="about-copy">
-          <p>Sabino Pereira writes the stories. Reira Bin composes the music. Each stands on its own; together, they share a universe.</p>
-          <a class="about-link" href="/about.html">Discover the story</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="universes" id="universes" aria-labelledby="universes-title">
-      <div class="shell">
-        <p class="eyebrow">Creative universes</p>
-        <div class="section-head"><h2 id="universes-title">Three ways into the work.</h2><p>Distinct forms, connected by the same emotional and imaginative world.</p></div>
-        <div class="universe-grid">
-          <a class="universe-card" href="/books.html"><span class="universe-mark">SP · Books</span><h3>Stories</h3><p>Original fiction and non-fiction exploring human nature, healing, relationships, spirituality and the quiet questions that stay with us long after the final page.</p><span class="text-link">Explore books</span></a>
-          <a class="universe-card" href="/music.html"><span class="universe-mark">RB · Music</span><h3>Soundtracks</h3><p>Cinematic albums, instrumental soundscapes and songs created to accompany moments of reflection, imagination and emotion.</p><span class="text-link">Listen to RB</span></a>
-          <a class="universe-card" href="/shop.html"><span class="universe-mark">Collections</span><h3>Objects</h3><p>Limited apparel, prints and meaningful objects inspired by the worlds, stories and music. Designed to be lived with, not simply owned.</p><span class="text-link">View collections</span></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="design-showcase" id="designs" aria-labelledby="designs-title">
-      <div class="shell">
-        <div class="design-showcase-head">
-          <div><p class="eyebrow">Quiet Power Shop</p><h2 id="designs-title">Wear the ideas.</h2></div>
-          <div class="design-showcase-actions">
-            <button class="design-rotate-btn" type="button" data-design-prev aria-label="Previous designs">←</button>
-            <button class="design-rotate-btn" type="button" data-design-next aria-label="Next designs">→</button>
-            <a class="button" href="/shop.html">See every design</a>
-          </div>
-        </div>
-        <div class="design-grid">
-          <a class="design-card" data-design-slot="0" href="/shop.html#products">
-            <div class="design-card-media"><img src="/images/merch/built-by-grace-oversized-t-shirt.png" alt="Built by Grace oversized white t-shirt"></div>
-            <div class="design-card-copy"><span>Faith · Healing · Purpose</span><h3>Built by Grace</h3><p>A design about becoming, surviving, and remembering what carried you.</p></div>
-          </a>
-          <a class="design-card" data-design-slot="1" href="/shop.html#products">
-            <div class="design-card-media"><img src="/images/merch/checkmate-in-silence-tee.png" alt="Checkmate in Silence black t-shirt"></div>
-            <div class="design-card-copy"><span>Strategy · Quiet power</span><h3>Checkmate in Silence</h3><p>For people who do not need noise to make the decisive move.</p></div>
-          </a>
-          <a class="design-card" data-design-slot="2" href="/shop.html#products">
-            <div class="design-card-media"><img src="/images/merch/everybody-acting-insane-mask-tee.png" alt="Everybody Acting Insane Mask black t-shirt"></div>
-            <div class="design-card-copy"><span>Modern life · Reira Bin</span><h3>Everybody Acting Insane</h3><p>A dark statement from the louder, stranger side of the world.</p></div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="library shell" id="library">
-      <div class="section-head">
-        <div><p class="eyebrow">The new shelf</p><h2>Choose your next world.</h2></div>
-        <p>New Director’s Cuts, premium digital editions, and connected books made for readers who want more than a quick escape.</p>
-      </div>
-      <div class="shelf">
-        <article class="book-card coming-soon">
-          <div class="book-cover"><img src="/books/a-seat-at-the-table/assets/a-seat-at-the-table-cover-web.jpg?v=20260723" alt="A Seat at the Table book cover"></div>
-          <div class="book-info"><span class="book-tag">Coming Soon · Psychological Thriller</span><h3>A Seat at the Table</h3><p>One dinner. One table. A truth with every course. As the masks fall, power becomes the most dangerous seat in the room.</p><span class="text-link">Coming soon</span></div>
-        </article>
-
-        <a class="book-card featured" href="/borrow-delay-repeat.html">
-          <div class="book-cover"><img src="/books/borrow-delay-repeat/directors-cut/premium-edition/ebook/borrow-delay-repeat-directors-cut-cover.jpg?v=20260721" alt="Borrow. Delay. Repeat. — Director’s Cut cover"></div>
-          <div class="book-info"><span class="book-tag">New Director’s Cut · Satire</span><h3>Borrow. Delay. Repeat.</h3><p>A very unserious guide to not giving money back—revised in prose, with director’s commentary, the lender’s side, and a receipt for every excuse.</p><span class="text-link">Meet the expert</span></div>
-        </a>
-
-        <a class="book-card" href="/chess-in-the-block.html">
-          <div class="book-cover"><img src="/books/chess-in-the-block/cover/chess-on-the-block-directors-cut-web.jpg?v=20260721" alt="Chess on the Block — Director’s Cut cover"></div>
-          <div class="book-info"><span class="book-tag">Premium edition · Strategy</span><h3>Chess on the Block</h3><p>Pressure, family, survival—and learning how to move without losing yourself.</p><span class="text-link">Explore the book</span></div>
-        </a>
-
-        <a class="book-card" href="/bad-girl-gospel.html">
-          <div class="book-cover"><img src="/images/bad-girl-gospel-book-cover.jpg?v=20260721" alt="Bad Girl Gospel: The Story of Selah cover"></div>
-          <div class="book-info"><span class="book-tag">Four-book universe · Fiction</span><h3>Bad Girl Gospel</h3><p>Four confessions about beauty, power, faith, desire, reputation, and freedom.</p><span class="text-link">Enter the universe</span></div>
-        </a>
-
-        <a class="book-card" href="/yes-i-do-again.html">
-          <div class="book-cover"><img src="/books/yes-i-do-again/direct-sale/english/yes-i-do-again-digital-cover.jpg?v=20260721" alt="Yes, I Do... Again. cover"></div>
-          <div class="book-info"><span class="book-tag">Premium edition · Novel</span><h3>Yes, I Do... Again.</h3><p>After ten years together, staying becomes a choice they must make all over again.</p><span class="text-link">Open the story</span></div>
-        </a>
-
-        <a class="book-card" href="/built-by-grace.html">
-          <div class="book-cover"><img src="/books/built-by-grace-premium/assets/built-by-grace-premium-cover-v2.png?v=20260721-2" alt="Built by Grace premium digital edition cover"></div>
-          <div class="book-info"><span class="book-tag">Premium edition · Faith</span><h3>Built by Grace</h3><p>A prayerful book and album journey about healing, love, home, and God at the center.</p><span class="text-link">Return to grace</span></div>
-        </a>
-
-        <a class="book-card" href="/livro-reclamacao.html">
-          <div class="book-cover"><img src="/images/optimized/livro-reclamacoes-cover.jpg?v=20260721" alt="Livro de Reclamações para o Mundo cover"></div>
-          <div class="book-info"><span class="book-tag">Premium edition · Portuguese</span><h3>Livro de Reclamações para o Mundo</h3><p>Thirty chronicles about the small and large absurdities of everyday life.</p><span class="text-link">Read in Portuguese</span></div>
-        </a>
-
-        <a class="book-card" href="/what-still-hurts/">
-          <div class="book-cover"><img src="/books/o-que-ainda-doi-ecos-da-harmonia/images/optimized/what-still-hurts-cover.png?v=20260721" alt="What Still Hurts — Echoes of Harmony cover"></div>
-          <div class="book-info"><span class="book-tag">Healing · Reflection</span><h3>What Still Hurts</h3><p>Echoes of harmony for the wounds that remain after the noise is gone.</p><span class="text-link">Enter the book</span></div>
-        </a>
-      </div>
-    </section>
-
-    <section class="statement">
-      <div class="statement-grid shell">
-        <h2>One studio.<br><em>Many doors.</em></h2>
-        <div class="statement-copy">
-          <a class="statement-card" href="/truth-files.html"><span>For the curious</span><h3>Truth Files</h3><p>Faith, facts, discernment, and the discipline to examine everything without becoming cynical.</p></a>
-          <a class="statement-card" href="/music.html"><span>For the listeners</span><h3>Reira Bin</h3><p>Companion albums and music that extend the emotional worlds of the books.</p></a>
-          <a class="statement-card shop-door" href="/shop.html"><span>For those who wear the ideas</span><h3>Quiet Power Designs</h3><p>Original tees and hoodies shaped by faith, strategy, pressure, silence, music, books, and modern emotional survival. Explore every design in the Shop.</p></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="closing shell">
-      <div class="closing-inner">
-        <div><p class="eyebrow">The complete catalogue</p><h2>There is more on the shelf.</h2><p>Explore every book, language, edition, and connected world.</p></div>
-        <a class="button primary" href="/books.html">See all books</a>
-      </div>
-    </section>
-
-    <section class="mission" aria-labelledby="mission-title">
-      <div class="shell"><p class="eyebrow" id="mission-title">Mission</p><blockquote>Creating stories you can read, music you can feel and experiences you’ll want to return to.</blockquote></div>
-    </section>
+    <section class="hero"><div class="hero-inner shell"><p class="kicker">Reira Bin · Original worlds</p><h1>Read. Hear.<em>Feel.</em></h1><p class="tagline">Stories become soundtracks. Soundtracks become places you can return to.</p><div class="hero-actions"><a class="btn primary" href="#series">Explore series</a><a class="btn" href="#channels">Browse the studio</a></div></div><div class="hero-index"><span>Featured experience</span><strong>A Journey Back to Silence</strong><span>Book by SP · Album by RB</span></div></section>
+    <section class="intro shell"><div><p class="eyebrow">The studio</p><h2>One universe.<br>Two signatures.</h2></div><div class="intro-copy"><p>Original worlds designed to move between pages, music, objects and lived experiences.</p><div class="signatures"><div class="signature"><span class="monogram">SP</span><span><strong>Sabino Pereira</strong><small>Books &amp; stories</small></span></div><div class="signature"><span class="monogram">RB</span><span><strong>Reira Bin</strong><small>Music &amp; soundtracks</small></span></div></div></div></section>
+    <section class="series" id="series"><div class="shell"><div class="section-head"><div><p class="eyebrow">Publishing now</p><h2 class="section-title">Editorial series</h2></div><a href="/series.html">View series</a></div><div class="series-grid">
+      <a class="world filthy" href="/filthy-rich.html"><div class="world-copy"><span class="world-label">New original series · Season one</span><h3>Filthy Rich</h3><p>Modern ambition, expensive performances and the stories people tell when appearance becomes identity.</p><div class="world-meta"><span>The Performance</span><span>New episodes weekly or fortnightly</span></div><span class="episode-now">Episode 01 · Financially Delusional</span></div></a>
+      <a class="world" href="/truth-files.html"><img src="/images/truth-files.png" alt="Truth Files"><div class="world-copy"><span class="world-label">Faith · Facts · Discernment</span><h3>Truth Files</h3><div class="world-meta"><span>Published cases only</span></div></div></a>
+      <a class="world" href="/being-deleted-after-a-relationship-ends.html"><img src="/images/being-human-unfiltered-episode-4.png" alt="Being Human"><div class="world-copy"><span class="world-label">Intimacy · Healing</span><h3>Being Human</h3><div class="world-meta"><span>Published essays only</span></div></div></a>
+      <a class="world" href="/afraid-of-ai.html"><img src="/images/optimized/afraid-of-ai-cover.jpg" alt="Afraid of AI"><div class="world-copy"><span class="world-label">Technology · Work · Fear</span><h3>Afraid of AI</h3><div class="world-meta"><span>Published episodes only</span></div></div></a>
+      <a class="world" href="/life-is-a-bug.html"><img src="/images/optimized/life-is-a-bug-cover.jpg" alt="Life is a Bug"><div class="world-copy"><span class="world-label">Human glitches</span><h3>Life is a Bug</h3><div class="world-meta"><span>Published episodes only</span></div></div></a>
+    </div></div></section>
+    <section class="channels shell" id="channels"><div class="section-head"><div><p class="eyebrow">Explore by form</p><h2 class="section-title">The studio</h2></div></div><div class="channel-grid">
+      <a class="channel" id="books" href="/books.html"><span class="channel-no">01</span><h3>Books</h3><p>Novels, essays and stories by SP.</p><span class="channel-arrow">↗</span></a>
+      <a class="channel" id="music" href="#albums"><span class="channel-no">02</span><h3>Music</h3><p>Connected and independent albums, singles and soundtracks by RB.</p><span class="channel-arrow">↓</span></a>
+      <a class="channel is-soon" id="shop" href="/shop.html"><span class="channel-no">03</span><h3>Shop</h3><p>A new collection connected to the studio worlds is taking shape.</p><span class="soon">Coming soon</span></a>
+      <a class="channel" id="experiences" href="#experience"><span class="channel-no">04</span><h3>Experiences</h3><p>Immersive ways to read, listen, reflect and remember.</p><span class="channel-arrow">↗</span></a>
+    </div></section>
+    <section class="music-shelf" id="albums"><div class="shell"><div class="section-head"><div><p class="eyebrow">RB · Reira Bin</p><h2 class="section-title">Albums &amp; soundtracks</h2></div><a href="/music.html">Explore all music</a></div><div class="album-grid">
+      <article class="album-card"><img src="/images/optimized/a-journey-back-to-silence-social-post.jpg" alt="A Journey Back to Silence album artwork"><div class="album-copy"><span class="album-kind">Companion album · A Journey Back to Silence</span><h3>A Journey Back to Silence</h3><p>The musical path from noise to stillness, created by RB alongside the book by SP.</p><div class="album-links"><a href="/a-journey-back-to-silence.html">Album details</a><a href="https://music.apple.com/pt/artist/reira-bin/6774230941?l=en-GB" target="_blank" rel="noopener">Reira Bin on Apple Music</a></div></div></article>
+      <article class="album-card"><img src="/images/optimized/checkmate-in-silence-cover.png" alt="Checkmate in Silence album cover"><div class="album-copy"><span class="album-kind">Companion soundtrack · Chess on the Block</span><h3>Checkmate in Silence</h3><p>Strategy, pressure and movement without noise.</p><div class="album-links"><a href="https://open.spotify.com/album/3YcfGl4CXyfH00GwUR9YXC" target="_blank" rel="noopener">Spotify</a><a href="https://www.youtube.com/playlist?list=PL2fjTz8iZs_arXeYgd1bngkHfMZJtRU1F" target="_blank" rel="noopener">YouTube</a><a href="https://music.apple.com/pt/artist/reira-bin/6774230941?l=en-GB" target="_blank" rel="noopener">Reira Bin on Apple Music</a></div></div></article>
+      <article class="album-card"><img src="/books/built-by-grace-premium/assets/built-by-grace-album-cover.jpg" alt="Built by Grace album cover"><div class="album-copy"><span class="album-kind">Companion album · Built by Grace</span><h3>Built by Grace</h3><p>A musical journey through faith, healing, love and home.</p><div class="album-links"><a href="https://open.spotify.com/album/5VZMT4ufcqb5UcI3k7EcaG" target="_blank" rel="noopener">Spotify</a><a href="https://www.youtube.com/playlist?list=OLAK5uy_mV1wuPKoL3hBgiCUiDucBDhLGoarjk3gA" target="_blank" rel="noopener">YouTube</a><a href="https://music.apple.com/pt/album/built-by-grace/6777487526?l=en-GB" target="_blank" rel="noopener">Apple Music</a></div></div></article>
+      <article class="album-card"><img src="/images/echoes-of-childhood/album-cover.jpg" alt="Echoes of Childhood album cover"><div class="album-copy"><span class="album-kind">Connected album · Echoes of Childhood</span><h3>Echoes of Childhood</h3><p>An instrumental album connected to the memory book.</p><div class="album-links"><a href="/music.html">Album details</a></div></div></article>
+      <article class="album-card"><img src="/images/bad-girl-gospel-album-cover.jpg" alt="Bad Girl Gospel album cover"><div class="album-copy"><span class="album-kind">Companion album · Book series</span><h3>Bad Girl Gospel</h3><p>Nineteen tracks from the wider Bad Girl Gospel universe.</p><div class="album-links"><a href="/bad-girl-gospel.html">Enter the universe</a></div></div></article>
+      <article class="album-card"><img src="/images/optimized/everybody-acting-insane-cover.png" alt="Everybody Acting Insane album cover"><div class="album-copy"><span class="album-kind">Independent album · RB</span><h3>Everybody Acting Insane</h3><p>An independent Reira Bin release with its own visual and emotional identity.</p><div class="album-links"><a href="https://open.spotify.com/album/7l7QUMTgrARJcVeUK719Xf" target="_blank" rel="noopener">Spotify</a><a href="https://music.apple.com/pt/artist/reira-bin/6774230941?l=en-GB" target="_blank" rel="noopener">Reira Bin on Apple Music</a></div></div></article>
+      <article class="album-card"><img src="/images/siempre-nosotros/album-cover.png" alt="Siempre Nosotros EP cover"><div class="album-copy"><span class="album-kind">Upcoming independent EP · Spanish</span><h3>Siempre Nosotros</h3><p>Six songs about love in the small things, arriving at the end of August 2026.</p><div class="album-links"><a href="/siempre-nosotros.html">Enter the EP</a><a href="https://music.apple.com/pt/artist/reira-bin/6774230941?l=en-GB" target="_blank" rel="noopener">Reira Bin on Apple Music</a></div></div></article>
+    </div></div></section>
+    <section class="feature" id="experience"><div class="feature-art" role="img" aria-label="Echoes of Childhood album artwork"></div><div class="feature-copy"><p class="eyebrow">A connected experience</p><h2>Echoes of Childhood</h2><p>A memory book and an instrumental album created as two doors into the same emotional world.</p><a class="btn" href="/music.html">Enter the experience</a></div></section>
   </main>
-
-  <footer>
-    <div class="footer-inner shell"><span>© 2026 Sabino Pereira</span><span class="footer-links"><a href="/books.html">Books</a><a href="/series.html">Series</a><a href="/music.html">RB — Reira Bin</a><a href="/about.html">About</a><a href="/shop.html">Shop</a><a href="/contact.html">Contact</a></span></div>
-  </footer>
-  <script>
-    (() => {
-      const showcase = document.querySelector('.design-showcase');
-      const cards = [...document.querySelectorAll('[data-design-slot]')];
-      if (!showcase || cards.length !== 3) return;
-
-      const designs = [
-        { image: '/images/merch/built-by-grace-oversized-t-shirt.png', alt: 'Built by Grace oversized white t-shirt', tag: 'Faith · Healing · Purpose', title: 'Built by Grace', copy: 'A design about becoming, surviving, and remembering what carried you.' },
-        { image: '/images/merch/checkmate-in-silence-tee.png', alt: 'Checkmate in Silence black t-shirt', tag: 'Strategy · Quiet power', title: 'Checkmate in Silence', copy: 'For people who do not need noise to make the decisive move.' },
-        { image: '/images/merch/everybody-acting-insane-mask-tee.png', alt: 'Everybody Acting Insane Mask black t-shirt', tag: 'Modern life · Reira Bin', title: 'Everybody Acting Insane', copy: 'A dark statement from the louder, stranger side of the world.' },
-        { image: '/images/merch/everybody-is-insane-premium-hoodie.png', alt: 'Everybody Is Insane premium black hoodie', tag: 'Statement · Premium hoodie', title: 'Everybody Is Insane', copy: 'A warmer layer for when the world confirms the diagnosis.' },
-        { image: '/images/merch/everybody-is-insane-premium-tee-cream.png', alt: 'Everybody Is Insane premium cream t-shirt', tag: 'Statement · Premium tee', title: 'Everybody Is Insane — Cream', copy: 'The same uncomfortable observation in a softer colour.' },
-        { image: '/images/merch/everybody-acting-insane-wake-up-tee.png', alt: 'Everybody Acting Insane Wake Up black t-shirt', tag: 'Wake up · Reira Bin', title: 'Wake Up', copy: 'A visual alarm for a culture sleepwalking through the noise.' },
-        { image: '/images/merch/everybody-acting-insane-wake-up-hoodie.png', alt: 'Everybody Acting Insane Wake Up black hoodie', tag: 'Wake up · Premium hoodie', title: 'Wake Up Hoodie', copy: 'The louder version of a quiet refusal to look away.' },
-        { image: '/images/merch/everybody-is-insane-rb-tote.png', alt: 'Everybody Is Insane Reira Bin tote bag', tag: 'Reira Bin · Everyday carry', title: 'Everybody Is Insane Tote', copy: 'Carry the observation with everything else the day demands.' },
-        { image: '/images/merch/everybody-is-insane-poster.png', alt: 'Everybody Is Insane poster', tag: 'Wall art · Reira Bin', title: 'Everybody Is Insane Poster', copy: 'A statement piece for the wall that has seen enough.' }
-      ];
-
-      let page = 0;
-      let timer;
-      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      function render(direction = 1) {
-        cards.forEach(card => card.classList.add('is-changing'));
-        window.setTimeout(() => {
-          cards.forEach((card, slot) => {
-            const item = designs[(page * 3 + slot + designs.length) % designs.length];
-            const image = card.querySelector('img');
-            image.src = item.image;
-            image.alt = item.alt;
-            card.querySelector('span').textContent = item.tag;
-            card.querySelector('h3').textContent = item.title;
-            card.querySelector('p').textContent = item.copy;
-            card.classList.remove('is-changing');
-          });
-        }, reduceMotion ? 0 : 220);
-      }
-
-      function move(direction) {
-        page = (page + direction + Math.ceil(designs.length / 3)) % Math.ceil(designs.length / 3);
-        render(direction);
-        restart();
-      }
-
-      function restart() {
-        window.clearInterval(timer);
-        if (!reduceMotion) timer = window.setInterval(() => move(1), 5200);
-      }
-
-      document.querySelector('[data-design-prev]').addEventListener('click', () => move(-1));
-      document.querySelector('[data-design-next]').addEventListener('click', () => move(1));
-      showcase.addEventListener('mouseenter', () => window.clearInterval(timer));
-      showcase.addEventListener('mouseleave', restart);
-      showcase.addEventListener('focusin', () => window.clearInterval(timer));
-      showcase.addEventListener('focusout', restart);
-      document.addEventListener('visibilitychange', () => document.hidden ? window.clearInterval(timer) : restart());
-      restart();
-    })();
-  </script>
+  <footer><div class="foot shell"><div><div class="foot-logo">Reira Bin</div><p>Original worlds to read, hear and feel.</p></div><div class="foot-links"><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="https://www.instagram.com/sabinoquietpower/" target="_blank" rel="noopener">Instagram</a><a href="https://www.youtube.com/@SabinoQuietPower" target="_blank" rel="noopener">YouTube</a><a href="https://open.spotify.com/artist/0CUmVxNUbIaLa4GMwOoD1C" target="_blank" rel="noopener">Spotify</a><a href="https://music.apple.com/pt/artist/reira-bin/6774230941?l=en-GB" target="_blank" rel="noopener">Apple Music</a></div></div></footer>
 </body>
 </html>

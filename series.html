@@ -90,6 +90,8 @@
     .series-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; }
     .series-card { min-height: 430px; display: grid; grid-template-columns: minmax(180px,.62fr) minmax(0,1fr); overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: var(--paper); transition: transform .25s,box-shadow .25s; }
     .series-card:hover { transform: translateY(-5px); box-shadow: 0 24px 46px rgba(48,38,28,.12); }
+    .series-card.filthy .card-art { position: relative; overflow: hidden; background: radial-gradient(circle at 75% 20%, rgba(210,185,130,.24), transparent 12rem), linear-gradient(145deg,#09151d,#263b47 58%,#080e12); }
+    .series-card.filthy .card-art::before { content: "FILTHY\A RICH"; white-space: pre; position: absolute; top: 14%; left: 10%; color: #ead8ae; font: 600 clamp(50px,6vw,82px)/.7 "Playfair Display",Georgia,serif; letter-spacing: -.06em; }
     .card-art { min-height: 100%; background: #ddd2c2; overflow: hidden; }
     .card-art img { width: 100%; height: 100%; object-fit: cover; }
     .card-copy { display: flex; flex-direction: column; padding: 28px; }
@@ -150,21 +152,13 @@
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
   </style>
+  <link rel="stylesheet" href="/reira-studio.css">
 </head>
 <body>
-  <header class="topbar">
-    <nav class="nav shell" aria-label="Main navigation">
-      <a class="brand" href="/">Sabino Pereira<small>Books · Music · Story worlds</small></a>
-      <div class="nav-links">
-        <a href="/#library">New books</a>
-        <a href="/books.html">All books</a>
-        <a class="active" href="/series.html">Series</a>
-        <a href="/music.html">RB — Reira Bin</a>
-        <a href="/truth-files.html">Truth Files</a>
-        <a href="/about.html">About</a>
-        <a href="/shop.html">Shop</a>
-        <a class="nav-cta" href="/contact.html">Contact</a>
-      </div>
+  <header class="studio-header">
+    <nav class="studio-nav" aria-label="Main navigation">
+      <a class="studio-brand" href="/">Reira Bin<small>Creative Studio</small></a>
+      <div class="studio-links"><a href="/series.html" aria-current="page">Series</a><a href="/books.html">Books</a><a href="/music.html">Music</a><a href="/about.html">About</a><a href="/shop.html">Shop</a><a class="studio-contact" href="/contact.html">Contact</a></div>
     </nav>
   </header>
 
@@ -207,10 +201,11 @@
       <div class="shell">
         <div class="section-head"><div><p class="eyebrow">The series shelf</p><h2 id="index-title">Choose the lens.<br>Follow the question.</h2></div><p>Each series begins in a different place, but all of them ask what our habits, fears, relationships, and beliefs reveal about us.</p></div>
         <div class="series-grid">
-          <a class="series-card" href="/truth-files.html"><div class="card-art"><img src="/images/truth-files.png?v=20260721" alt="Truth Files artwork"></div><div class="card-copy"><span class="number">01 · Faith, facts, discernment</span><h3>Truth Files</h3><p>Trust, evidence, red flags, patterns, Scripture, and the wisdom to investigate without losing faith.</p><span class="text-link">Open series</span></div></a>
-          <a class="series-card" href="/being-deleted-after-a-relationship-ends.html"><div class="card-art"><img src="/images/being-human-unfiltered-episode-2.png?v=20260721" alt="Being Human Unfiltered artwork"></div><div class="card-copy"><span class="number">02 · Intimacy</span><h3>Being Human</h3><p>Personal writing about closeness, healing, timing, online cruelty, and the courage to leave what no longer fits.</p><span class="text-link">Start reading</span></div></a>
-          <a class="series-card" href="/afraid-of-ai.html"><div class="card-art"><img src="/images/optimized/afraid-of-ai-cover.jpg?v=20260721" alt="Afraid of AI artwork"></div><div class="card-copy"><span class="number">03 · Technology, work, fear</span><h3>Afraid of AI</h3><p>What technology reveals about professions, power, insecurity, reinvention, and the fog gathering around work.</p><span class="text-link">Open series</span></div></a>
-          <a class="series-card" href="/life-is-a-bug.html"><div class="card-art"><img src="/images/optimized/life-is-a-bug-cover.jpg?v=20260721" alt="Life is a Bug artwork"></div><div class="card-copy"><span class="number">04 · Human glitches</span><h3>Life is a Bug</h3><p>Small failures in human behavior and the strange systems we keep pretending are completely normal.</p><span class="text-link">Open series</span></div></a>
+          <a class="series-card filthy" href="/filthy-rich.html"><div class="card-art" role="img" aria-label="Filthy Rich series artwork"></div><div class="card-copy"><span class="number">01 · Wealth, image, performance</span><h3>Filthy Rich</h3><p>Modern ambition, expensive appearances, and the stories people tell when performance becomes identity.</p><span class="text-link">Read episode 01</span></div></a>
+          <a class="series-card" href="/truth-files.html"><div class="card-art"><img src="/images/truth-files.png?v=20260721" alt="Truth Files artwork"></div><div class="card-copy"><span class="number">02 · Faith, facts, discernment</span><h3>Truth Files</h3><p>Trust, evidence, red flags, patterns, Scripture, and the wisdom to investigate without losing faith.</p><span class="text-link">Open series</span></div></a>
+          <a class="series-card" href="/being-deleted-after-a-relationship-ends.html"><div class="card-art"><img src="/images/being-human-unfiltered-episode-2.png?v=20260721" alt="Being Human Unfiltered artwork"></div><div class="card-copy"><span class="number">03 · Intimacy</span><h3>Being Human</h3><p>Personal writing about closeness, healing, timing, online cruelty, and the courage to leave what no longer fits.</p><span class="text-link">Start reading</span></div></a>
+          <a class="series-card" href="/afraid-of-ai.html"><div class="card-art"><img src="/images/optimized/afraid-of-ai-cover.jpg?v=20260721" alt="Afraid of AI artwork"></div><div class="card-copy"><span class="number">04 · Technology, work, fear</span><h3>Afraid of AI</h3><p>What technology reveals about professions, power, insecurity, reinvention, and the fog gathering around work.</p><span class="text-link">Open series</span></div></a>
+          <a class="series-card" href="/life-is-a-bug.html"><div class="card-art"><img src="/images/optimized/life-is-a-bug-cover.jpg?v=20260721" alt="Life is a Bug artwork"></div><div class="card-copy"><span class="number">05 · Human glitches</span><h3>Life is a Bug</h3><p>Small failures in human behavior and the strange systems we keep pretending are completely normal.</p><span class="text-link">Open series</span></div></a>
         </div>
       </div>
     </section>
