@@ -137,11 +137,17 @@ def build() -> None:
         write(BUILD / f"OEBPS/chapter-{i:02d}.xhtml", render_section(section, i))
     nav_items = "".join(f'<li><a href="chapter-{i:02d}.xhtml">{html.escape(s["title"])}</a></li>' for i, s in enumerate(data, 1))
     write(BUILD / "OEBPS/nav.xhtml", xhtml("Contents", f'<nav epub:type="toc" id="toc"><h1>Contents</h1><ol>{nav_items}</ol></nav>'))
+    ncx_points = "".join(
+        f'<navPoint id="navPoint-{i}" playOrder="{i}"><navLabel><text>{html.escape(s["title"])}</text></navLabel><content src="chapter-{i:02d}.xhtml"/></navPoint>'
+        for i, s in enumerate(data, 1)
+    )
+    write(BUILD / "OEBPS/toc.ncx", f'''<?xml version="1.0" encoding="UTF-8"?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1"><head><meta name="dtb:uid" content="{IDENTIFIER}"/><meta name="dtb:depth" content="1"/><meta name="dtb:totalPageCount" content="0"/><meta name="dtb:maxPageNumber" content="0"/></head><docTitle><text>{TITLE} — {EDITION}</text></docTitle><navMap>{ncx_points}</navMap></ncx>''')
     manifest = "".join(f'<item id="c{i}" href="chapter-{i:02d}.xhtml" media-type="application/xhtml+xml"/>' for i in range(1, len(data)+1))
     spine = "".join(f'<itemref idref="c{i}"/>' for i in range(1, len(data)+1))
     modified = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     opf = f'''<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="bookid" xml:lang="en"><metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:identifier id="bookid">{IDENTIFIER}</dc:identifier><dc:title>{TITLE} — {EDITION}</dc:title><dc:creator>{AUTHOR}</dc:creator><dc:language>en</dc:language><dc:description>{SUBTITLE}. Premium Director’s Cut edition.</dc:description><dc:publisher>Sabino Pereira</dc:publisher><meta property="dcterms:modified">{modified}</meta></metadata><manifest><item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/><item id="css" href="styles.css" media-type="text/css"/><item id="cover" href="cover.xhtml" media-type="application/xhtml+xml"/><item id="cover-image" href="images/cover.jpg" media-type="image/jpeg" properties="cover-image"/>{manifest}</manifest><spine><itemref idref="cover" linear="no"/>{spine}</spine></package>'''
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="bookid" xml:lang="en"><metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:identifier id="bookid">{IDENTIFIER}</dc:identifier><dc:title>{TITLE} — {EDITION}</dc:title><dc:creator>{AUTHOR}</dc:creator><dc:language>en</dc:language><dc:description>{SUBTITLE}. Premium Director’s Cut edition.</dc:description><dc:publisher>Sabino Pereira</dc:publisher><meta property="dcterms:modified">{modified}</meta></metadata><manifest><item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/><item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/><item id="css" href="styles.css" media-type="text/css"/><item id="cover" href="cover.xhtml" media-type="application/xhtml+xml"/><item id="cover-image" href="images/cover.jpg" media-type="image/jpeg" properties="cover-image"/>{manifest}</manifest><spine toc="ncx"><itemref idref="cover"/>{spine}</spine></package>'''
     write(BUILD / "OEBPS/content.opf", opf)
     if EPUB.exists(): EPUB.unlink()
     with zipfile.ZipFile(EPUB, "w") as z:

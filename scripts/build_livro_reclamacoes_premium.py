@@ -405,19 +405,28 @@ def build_epub(preface: list[str], parts: list[Part], author_note: list[str]) ->
     files.append(("author-note.xhtml", "authornote", xhtml("Nota do autor", '<p class="kicker">DEPOIS DA ÚLTIMA RECLAMAÇÃO</p><h1>Nota do autor</h1>' + epub_paragraphs(author_note))))
     files.append(("discover.xhtml", "discover", xhtml("Continua a descobrir", f'<p class="kicker">CONTINUA A DESCOBRIR</p><h1>Mais livros, ensaios e música</h1><p>Visita o site do autor para descobrires os outros projetos.</p><div class="cta"><p><a href="{SITE}">Visitar sabinopereira.com</a></p><p><a href="{AMAZON}">Comprar a edição impressa na Amazon</a></p></div>')))
     nav_items.extend(['<li><a href="author-note.xhtml">Nota do autor</a></li>', '<li><a href="discover.xhtml">Continua a descobrir</a></li>'])
+    book_id = str(uuid.uuid4())
     nav = xhtml("Índice", '<nav epub:type="toc" xmlns:epub="http://www.idpf.org/2007/ops"><h1>Índice</h1><ol>' + "".join(nav_items) + '</ol></nav>')
     (build / "OEBPS/nav.xhtml").write_text(nav, encoding="utf-8")
     for filename, _, content in files:
         (build / "OEBPS" / filename).write_text(content, encoding="utf-8")
 
-    book_id = str(uuid.uuid4())
-    manifest = ['<item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>', '<item id="css" href="styles.css" media-type="text/css"/>', '<item id="cover" href="images/cover.jpg" media-type="image/jpeg" properties="cover-image"/>']
+    ncx_points = []
+    for order, (filename, item_id, content) in enumerate(files, 1):
+        heading = re.search(r"<h1>(.*?)</h1>", content, flags=re.DOTALL)
+        label = html.unescape(re.sub(r"<[^>]+>", "", heading.group(1))) if heading else item_id
+        ncx_points.append(f'<navPoint id="navPoint-{order}" playOrder="{order}"><navLabel><text>{html.escape(label)}</text></navLabel><content src="{filename}"/></navPoint>')
+    ncx = f'''<?xml version="1.0" encoding="UTF-8"?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1"><head><meta name="dtb:uid" content="urn:uuid:{book_id}"/><meta name="dtb:depth" content="1"/><meta name="dtb:totalPageCount" content="0"/><meta name="dtb:maxPageNumber" content="0"/></head><docTitle><text>{TITLE}</text></docTitle><navMap>{''.join(ncx_points)}</navMap></ncx>'''
+    (build / "OEBPS/toc.ncx").write_text(ncx, encoding="utf-8")
+
+    manifest = ['<item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>', '<item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>', '<item id="css" href="styles.css" media-type="text/css"/>', '<item id="cover" href="images/cover.jpg" media-type="image/jpeg" properties="cover-image"/>']
     spine = []
     for filename, item_id, _ in files:
         manifest.append(f'<item id="{item_id}" href="{filename}" media-type="application/xhtml+xml"/>')
         spine.append(f'<itemref idref="{item_id}"/>')
     opf = f'''<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="bookid"><metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:identifier id="bookid">urn:uuid:{book_id}</dc:identifier><dc:title>{TITLE}</dc:title><dc:creator>{AUTHOR}</dc:creator><dc:language>pt</dc:language><dc:description>{SUBTITLE} — {EDITION}</dc:description><meta property="dcterms:modified">2026-07-20T00:00:00Z</meta></metadata><manifest>{''.join(manifest)}</manifest><spine>{''.join(spine)}</spine></package>'''
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="bookid"><metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:identifier id="bookid">urn:uuid:{book_id}</dc:identifier><dc:title>{TITLE}</dc:title><dc:creator>{AUTHOR}</dc:creator><dc:language>pt</dc:language><dc:description>{SUBTITLE} — {EDITION}</dc:description><meta property="dcterms:modified">2026-07-20T00:00:00Z</meta></metadata><manifest>{''.join(manifest)}</manifest><spine toc="ncx">{''.join(spine)}</spine></package>'''
     (build / "OEBPS/content.opf").write_text(opf, encoding="utf-8")
 
     EPUB_OUT.parent.mkdir(parents=True, exist_ok=True)
