@@ -92,6 +92,8 @@
     .series-card:hover { transform: translateY(-5px); box-shadow: 0 24px 46px rgba(48,38,28,.12); }
     .series-card.filthy .card-art { position: relative; overflow: hidden; background: radial-gradient(circle at 75% 20%, rgba(210,185,130,.24), transparent 12rem), linear-gradient(145deg,#09151d,#263b47 58%,#080e12); }
     .series-card.filthy .card-art::before { content: "FILTHY\A RICH"; white-space: pre; position: absolute; top: 14%; left: 10%; color: #ead8ae; font: 600 clamp(50px,6vw,82px)/.7 "Playfair Display",Georgia,serif; letter-spacing: -.06em; }
+    .series-card.filthy .card-art::before { display: none; }
+    .series-card.filthy .card-art img { object-position: center top; }
     .card-art { min-height: 100%; background: #ddd2c2; overflow: hidden; }
     .card-art img { width: 100%; height: 100%; object-fit: cover; }
     .card-copy { display: flex; flex-direction: column; padding: 28px; }
@@ -202,7 +204,7 @@
       <div class="shell">
         <div class="section-head"><div><p class="eyebrow">The series shelf</p><h2 id="index-title">Choose the lens.<br>Follow the question.</h2></div><p>Each series begins in a different place, but all of them ask what our habits, fears, relationships, and beliefs reveal about us.</p></div>
         <div class="series-grid">
-          <a class="series-card filthy" href="/filthy-rich.html"><div class="card-art" role="img" aria-label="Filthy Rich series artwork"></div><div class="card-copy"><span class="number">01 · Wealth, image, performance</span><h3>Filthy Rich</h3><p>Modern ambition, expensive appearances, and the stories people tell when performance becomes identity.</p><span class="text-link">Read episode 01</span></div></a>
+          <a class="series-card filthy" href="/filthy-rich.html"><div class="card-art"><img src="/assets/filthy-rich/season-01-the-performance-cover-web.jpg" alt="Filthy Rich — Season One: The Performance cover" width="1024" height="1536"></div><div class="card-copy"><span class="number">01 · Wealth, image, performance</span><h3>Filthy Rich</h3><p>Modern ambition, expensive appearances, and the stories people tell when performance becomes identity.</p><span class="text-link">Read episode 01</span></div></a>
           <a class="series-card" href="/truth-files.html"><div class="card-art"><img src="/images/truth-files.png?v=20260721" alt="Truth Files artwork"></div><div class="card-copy"><span class="number">02 · Faith, facts, discernment</span><h3>Truth Files</h3><p>Trust, evidence, red flags, patterns, Scripture, and the wisdom to investigate without losing faith.</p><span class="text-link">Open series</span></div></a>
           <a class="series-card" href="/being-deleted-after-a-relationship-ends.html"><div class="card-art"><img src="/images/being-human-unfiltered-episode-2.png?v=20260721" alt="Being Human Unfiltered artwork"></div><div class="card-copy"><span class="number">03 · Intimacy</span><h3>Being Human</h3><p>Personal writing about closeness, healing, timing, online cruelty, and the courage to leave what no longer fits.</p><span class="text-link">Start reading</span></div></a>
           <a class="series-card" href="/afraid-of-ai.html"><div class="card-art"><img src="/images/optimized/afraid-of-ai-cover.jpg?v=20260721" alt="Afraid of AI artwork"></div><div class="card-copy"><span class="number">04 · Technology, work, fear</span><h3>Afraid of AI</h3><p>What technology reveals about professions, power, insecurity, reinvention, and the fog gathering around work.</p><span class="text-link">Open series</span></div></a>
