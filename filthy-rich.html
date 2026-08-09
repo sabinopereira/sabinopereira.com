@@ -13,6 +13,7 @@
   <meta property="og:description" content="Episode 01 — Financially Delusional. An original series by Sabino Pereira.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://sabinopereira.com/filthy-rich.html">
+  <meta property="og:image" content="https://sabinopereira.com/assets/filthy-rich/season-01-the-performance-cover-web.jpg">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEVDEH8PGZ"></script>
   <script src="/analytics.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,18 +30,41 @@
   </style>
   <link rel="stylesheet" href="/reira-studio.css">
   <link rel="stylesheet" href="/reira-worlds-unified.css?v=1">
+  <style>
+    .hero{min-height:92vh;display:block;padding:112px 0 46px;background:linear-gradient(135deg,#071017,#263b47 55%,#080e12)!important}
+    .hero:before,.hero:after{display:none}
+    .filthy-hero{display:grid;grid-template-columns:minmax(0,.85fr) minmax(390px,.62fr);gap:clamp(55px,8vw,120px);align-items:center}
+    .hero-copy{padding:35px 0;position:relative;z-index:2}
+    .hero-cover{position:relative;z-index:1;margin:0;display:grid;place-items:center}
+    .hero-cover img{display:block;width:auto;max-width:100%;max-height:calc(92vh - 150px);box-shadow:0 30px 70px rgba(0,0,0,.34)}
+    .episode{padding:86px 0}
+    .episode-head{margin-bottom:42px}
+    .story{max-width:780px}
+    .story p{margin:0 0 1.05em;font-size:19px;line-height:1.72}
+    .story p.dialogue{margin-top:1.2em;margin-bottom:1.2em;padding-left:1.2em;border-left:1px solid rgba(154,123,63,.4)}
+    @media(max-width:760px){
+      .hero{min-height:0;padding:90px 0 48px}
+      .filthy-hero{grid-template-columns:1fr;gap:38px}
+      .hero-copy{padding:25px 0 0}
+      .hero-cover{width:min(100%,520px);margin:auto}
+      .hero-cover img{max-height:none}
+      .episode{padding:66px 0}
+      .episode-head{margin-bottom:34px}
+      .story p{font-size:18px;line-height:1.68;margin-bottom:1em}
+    }
+  </style>
 </head>
 <body>
   <header><nav class="nav shell"><a class="brand" href="/">Reira Bin</a><div class="nav-links"><a href="/series.html">Series</a><a href="/books.html">Books</a><a href="/music.html">Music</a><a href="/">Studio</a></div></nav></header>
   <main>
-    <section class="hero"><div class="hero-copy shell"><p class="eyebrow">Original editorial series · SP</p><h1>Season One<br>The Performance</h1><p>Modern ambition, expensive performances and the stories people tell when appearance becomes identity.</p><div class="meta"><span>Season 01</span><span>Episode 01 available</span><span>New episodes weekly or fortnightly</span></div></div></section>
+    <section class="hero"><div class="filthy-hero shell"><div class="hero-copy"><p class="eyebrow">Original editorial series · SP</p><h1>Season One<br>The Performance</h1><p>Modern ambition, expensive performances and the stories people tell when appearance becomes identity.</p><div class="meta"><span>Season 01</span><span>Episode 01 available</span><span>New episodes weekly or fortnightly</span></div></div><figure class="hero-cover"><img src="/assets/filthy-rich/season-01-the-performance-cover-web.jpg" alt="Filthy Rich — Season One: The Performance cover" width="1024" height="1536"></figure></div></section>
     <section class="series-intro shell"><div><p class="eyebrow">About the series</p><h2>Looking rich.<br>Living differently.</h2></div><div><p><em>Filthy Rich</em> follows people who have learned to package debt, loneliness, anxiety and performance as success. The satire is sharp, but the people remain recognisably human.</p><p class="release-note">Only published episodes appear here. Future titles remain private until release.</p></div></section>
     <section class="episode" id="episode-01"><div class="episode-head"><p class="eyebrow">Season One · Episode 01</p><h2>Financially Delusional</h2><p>Daniel had never missed a payment. He had postponed several. There was a difference.</p></div><article class="story" data-episode-source="/content/filthy-rich/season-01/episode-01-financially-delusional.md"><noscript><p>Enable JavaScript to read this episode on the website.</p></noscript></article></section>
     <div class="story-status">Episode 02 remains private until its official release · Follow the next chapter on social media</div>
   </main>
   <footer><div class="foot shell"><strong>Filthy Rich</strong><div class="foot-links"><a href="https://www.instagram.com/reira.bin/" target="_blank" rel="noopener">Instagram</a><a href="https://www.youtube.com/@REIRA_BIN" target="_blank" rel="noopener">YouTube</a><a href="/series.html">All series</a><a href="/">Reira Bin Studio</a></div></div></footer>
   <script>
-    (()=>{const container=document.querySelector('[data-episode-source]');if(!container)return;fetch(container.dataset.episodeSource).then(response=>{if(!response.ok)throw new Error('Episode unavailable');return response.text()}).then(text=>{const lines=text.replace(/\r/g,'').split('\n');const body=lines.slice(5).join('\n').trim();body.split(/\n\s*\n/).forEach(block=>{const clean=block.replace(/^#+\s*/,'').trim();if(!clean)return;const p=document.createElement('p');p.textContent=clean.replace(/\n/g,' ');container.appendChild(p)})}).catch(()=>{const p=document.createElement('p');p.textContent='This episode will be available with the official series launch.';container.appendChild(p)})})();
+    (()=>{const container=document.querySelector('[data-episode-source]');if(!container)return;fetch(container.dataset.episodeSource).then(response=>{if(!response.ok)throw new Error('Episode unavailable');return response.text()}).then(text=>{const lines=text.replace(/\r/g,'').split('\n');const units=lines.slice(5).join('\n').trim().split(/\n\s*\n/).map(block=>block.replace(/^#+\s*/,'').replace(/\s*\n\s*/g,' ').trim()).filter(Boolean);let narrative=[];let words=0;const add=(copy,dialogue=false)=>{const p=document.createElement('p');p.textContent=copy;if(dialogue)p.className='dialogue';container.appendChild(p)};const flush=()=>{if(!narrative.length)return;add(narrative.join(' '));narrative=[];words=0};units.forEach(unit=>{const dialogue=/^[“\"]/.test(unit);if(dialogue){flush();add(unit,true);return}const count=unit.split(/\s+/).length;if(narrative.length&&(words+count>72||narrative.length>=5))flush();narrative.push(unit);words+=count});flush()}).catch(()=>{const p=document.createElement('p');p.textContent='This episode will be available with the official series launch.';container.appendChild(p)})})();
   </script>
 </body>
 </html>
