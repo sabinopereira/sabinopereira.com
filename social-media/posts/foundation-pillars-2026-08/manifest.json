@@ -1,0 +1,11 @@
+{
+  "campaign": "REIRA BIN foundation pillars",
+  "assets": [
+    {"file": "music-by-reira-bin.png", "scheduledTarget": "2026-08-17T19:00:00+01:00"},
+    {"file": "books-by-sabino-pereira.png", "scheduledTarget": "2026-08-19T19:00:00+01:00"}
+  ],
+  "format": "Instagram portrait post",
+  "dimensions": "1080x1350",
+  "sourceStyle": "/Users/binopereira/Downloads/R.B Pin Post.png",
+  "exactTextOverlay": true
+}
