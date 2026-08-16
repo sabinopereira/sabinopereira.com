@@ -4542,7 +4542,7 @@ does not hang
 on how white the fabric is
 or how many vows you’ve made.
 
-— Diana”
+— Diana
 
 She smiled,
 half sad,

@@ -11,7 +11,7 @@ from pathlib import Path
 from PIL import Image
 from pypdf import PdfReader, PdfWriter
 from reportlab.lib import colors
-from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY
+from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_LEFT
 from reportlab.lib.pagesizes import inch
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.pdfbase import pdfmetrics
@@ -31,7 +31,7 @@ section_content = MODULE["section_content"]
 AUTHOR = "Sabino Pereira"
 TRIM_W, TRIM_H = 6 * inch, 9 * inch
 BLEED = 0.125 * inch
-CREAM_SPINE_PER_PAGE = 0.0025 * inch
+GROUNDWOOD_SPINE_PER_PAGE = 0.00235 * inch
 INK = colors.HexColor("#22191c")
 WINE = colors.HexColor("#6f2434")
 ROSE = colors.HexColor("#b87682")
@@ -76,6 +76,7 @@ def styles() -> dict[str, ParagraphStyle]:
         "body": ParagraphStyle("Body", parent=base["Normal"], fontName="Georgia", fontSize=10.5, leading=15.8, textColor=INK, alignment=TA_JUSTIFY, firstLineIndent=16, spaceAfter=7.5),
         "first": ParagraphStyle("First", parent=base["Normal"], fontName="Georgia", fontSize=10.5, leading=15.8, textColor=INK, alignment=TA_JUSTIFY, firstLineIndent=0, spaceAfter=7.5),
         "verse": ParagraphStyle("Verse", parent=base["Normal"], fontName="Georgia", fontSize=10.4, leading=16, textColor=INK, leftIndent=14, rightIndent=8, spaceAfter=12),
+        "internal": ParagraphStyle("Internal", parent=base["Heading3"], fontName="Georgia-Bold", fontSize=11.2, leading=15, textColor=WINE, alignment=TA_LEFT, spaceBefore=14, spaceAfter=7),
         "small": ParagraphStyle("Small", parent=base["Normal"], fontName="Georgia", fontSize=8.8, leading=13.5, textColor=MUTED, spaceAfter=9),
     }
 
@@ -113,10 +114,15 @@ def build_interior(book, sections, output: Path) -> int:
         story.extend([Spacer(1, 0.55 * inch), Paragraph(html.escape(section.heading), st["heading"])])
         story.append(Paragraph(html.escape(section.subtitle), st["subheading"]) if section.subtitle else Spacer(1, 12))
         first = True
-        for content, verse in section_content(section):
+        for content, kind in section_content(section):
             if content:
-                story.append(Paragraph(content, st["verse"] if verse else st["first"] if first else st["body"]))
-                first = False
+                story.append(Paragraph(content, st["verse"] if kind == "verse" else st["internal"] if kind == "internal" else st["first"] if first else st["body"]))
+                if kind == "internal":
+                    # Keep short internal headings visually separate even when
+                    # they land close to a page break or a tightly filled line.
+                    story.append(Spacer(1, 3))
+                if kind == "prose":
+                    first = False
         story.append(PageBreak())
     story.extend([Spacer(1, 1.1 * inch), Paragraph("About the Author", st["heading"]), Paragraph("Sabino Pereira creates fiction, reflective books, music, and work about behavior, healing, discernment, faith, and modern life.", st["first"]), Paragraph("sabinopereira.com", st["subtitle"])])
     doc.build(story, canvasmaker=EmbeddedCanvas)
@@ -146,7 +152,7 @@ def draw_wrapped(c: canvas.Canvas, text: str, x: float, y: float, width: float, 
 
 
 def build_cover(book, pages: int, output: Path) -> dict[str, float]:
-    spine = pages * CREAM_SPINE_PER_PAGE
+    spine = pages * GROUNDWOOD_SPINE_PER_PAGE
     width = 2 * BLEED + 2 * TRIM_W + spine
     height = TRIM_H + 2 * BLEED
     back_x, spine_x, front_x = BLEED, BLEED + TRIM_W, BLEED + TRIM_W + spine
@@ -172,7 +178,7 @@ def build_cover(book, pages: int, output: Path) -> dict[str, float]:
         c.setFillColor(colors.HexColor("#fbf5ed")); c.setFont("Georgia-Bold", 7); c.drawCentredString(0, -2, book.title)
         c.restoreState()
     c.showPage(); c.save()
-    return {"pages": pages, "trim_width_in": 6, "trim_height_in": 9, "paper": "cream", "interior_bleed": False, "cover_bleed_in": 0.125, "spine_width_in": spine / inch, "cover_width_in": width / inch, "cover_height_in": height / inch}
+    return {"pages": pages, "trim_width_in": 6, "trim_height_in": 9, "paper": "groundwood", "interior_bleed": False, "cover_bleed_in": 0.125, "spine_width_in": spine / inch, "cover_width_in": width / inch, "cover_height_in": height / inch}
 
 
 def main() -> None:
@@ -194,7 +200,7 @@ Upload cover: {cover.name}
 KDP settings
 - Trim size: 6 x 9 in
 - Interior: black and white
-- Paper: cream
+- Paper: groundwood
 - Interior bleed: no bleed
 - Cover bleed: included (0.125 in)
 - Page count: {pages}

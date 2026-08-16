@@ -6,7 +6,7 @@ Upload cover: bad-girl-gospel-naomi-paperback-cover-kdp.pdf
 KDP settings
 - Trim size: 6 x 9 in
 - Interior: black and white
-- Paper: cream
+- Paper: groundwood
 - Interior bleed: no bleed
 - Cover bleed: included (0.125 in)
 - Page count: 108

@@ -53,7 +53,7 @@ I have stayed with people who were clearly leaving.
 
 Don’t worship me.
 
-Understand me — or move.
+Understand me, or move.
 
 I still talk to God.
 
@@ -607,7 +607,7 @@ He texted, but not to monitor. He called, but not to demand. He showed up when h
 
 “How you pretend you don’t care about birthdays, then remember everyone’s.”
 
-He did not flinch when she pulled away in small ways. When she made jokes out of serious things. When she rolled her eyes at compliments that hit too close to need. One night, after a long day, she fell asleep on his couch mid‑movie. No makeup, no pose, no curated version.
+He did not flinch when she pulled away in small ways. When she made jokes out of serious things. When she rolled her eyes at compliments that hit too close to need. One night, after a long day, she fell asleep on his couch mid-movie. No makeup, no pose, no curated version.
 
 She woke up under a blanket she didn’t remember asking for. A glass of water on the table. Her phone charging. No photos. No hands where they shouldn’t have been.
 
@@ -675,7 +675,7 @@ There were other men. The savior, who needed her broken to feel useful. The buye
 
 Selah had met them all. Sometimes she walked away before they did damage. Sometimes she stayed long enough to become someone she did not recognize. Soft in public, rage in private. Smiling at dinners, numb in bed.
 
-Posting cute photos, deleting long paragraphs she knew they’d never really read. There were ex‑lovers who told people, “She used me.” There were ex‑friends who said, “She only cares about herself.” There were ex‑almosts who said, “She ran when it got real.” They weren’t always lying.
+Posting cute photos, deleting long paragraphs she knew they’d never really read. There were ex-lovers who told people, “She used me.” There were ex-friends who said, “She only cares about herself.” There were ex-almosts who said, “She ran when it got real.” They weren’t always lying.
 
 Sometimes she had used people. For attention. For distraction. For confirmation that she was still desirable even when she felt terrible. Sometimes she had cared more about her comfort than their confusion.
 
@@ -700,7 +700,7 @@ And every time a man walked away who hadn’t tried to own her, she had one less
 
 Selah did not come to God clean. She came late. She came tired. She came after things she would never post. She came honest, or at least as honest as she knew how to be.
 
-Most nights, the world only saw two versions of her: Selah on display — sharp, dressed, composed. Selah desired — soft, laughing, chosen. There was a third version. The one nobody clapped for.
+Most nights, the world only saw two versions of her: Selah on display, sharp, dressed, composed. Selah desired, soft, laughing, chosen. There was a third version. The one nobody clapped for.
 
 The one that showed up when the makeup was half-off, the shoes were on the floor, and the room finally stopped asking her to be interesting. That was the version that tried to talk to God. Sometimes it was in a hotel bathroom, the fan humming too loud, mascara blurred at the edges. Sometimes it was in the back of an Uber, forehead against cold glass, city lights dragging past like excuses. Sometimes it was on her own bed, phone on silent, silence on loud.
 
@@ -708,7 +708,7 @@ She didn’t kneel perfectly. She didn’t fold her hands the way children’s b
 
 “Hey. It’s me.”
 
-As if God didn’t know. As if she needed to remind herself that she was still someone in His direction, not just a rumor in everyone else’s. She talked to God like someone who knew she wasn’t innocent — but still hopes she wasn’t lost.
+As if God didn’t know. As if she needed to remind herself that she was still someone in His direction, not just a rumor in everyone else’s. She talked to God like someone who knew she wasn’t innocent, but still hopes she wasn’t lost.
 
 “I know You saw that,” she would say, staring at the ceiling.
 
@@ -866,7 +866,7 @@ She did not ask God to erase the past. She asked Him not to let the past become 
 
 “If You’re going to save me,” she said, honest to the edge of disrespect, “save me from the parts I enjoy that are slowly killing me.”
 
-There was a time when she thought repentance meant coming to God only after she had cleaned up. Now she was starting to suspect that the only real repentance she had ever done was showing up messy and refusing to pretend otherwise. She talked to God like someone who knew she was guilty — but still believed He might want the real her more than the well-dressed lie. She didn’t promise to stop being a bad girl. She didn’t even know exactly what that meant anymore.
+There was a time when she thought repentance meant coming to God only after she had cleaned up. Now she was starting to suspect that the only real repentance she had ever done was showing up messy and refusing to pretend otherwise. She talked to God like someone who knew she was guilty, but still believed He might want the real her more than the well-dressed lie. She didn’t promise to stop being a bad girl. She didn’t even know exactly what that meant anymore.
 
 She just prayed, again and again, in bathrooms and cars and beds and quiet rooms:
 
@@ -933,7 +933,7 @@ Not because she missed the person. Because she missed the version of herself in 
 
 Then there was him. The almost-good man. He had his flaws. He was not a saint. But he had not lied to her.
 
-He had tried to love her in a way that did not require a performance. And she had treated him like a suspect. Not because of what he did, but because of what others had done before him. She found small excuses to doubt him—a late reply, a canceled plan—and called it proof. He left because he was tired of being tried for cases he hadn’t committed.
+He had tried to love her in a way that did not require a performance. And she had treated him like a suspect. Not because of what he did, but because of what others had done before him. She found small excuses to doubt him, a late reply, a canceled plan, and called it proof. He left because he was tired of being tried for cases he hadn’t committed.
 
 Selah told herself he would have hurt her eventually. Maybe he would have. She would never know. Because she had hurt him first. It felt like proof that she could break something good without anyone needing to be a villain.
 
@@ -1054,7 +1054,7 @@ The friend swallowed.
 
 “And when you confronted her, she always had language. Good language. Healing language. Boundaries. Peace. Energy. Trauma. She knew how to explain herself so well that you left the conversation wondering if your hurt was just bad comprehension.”
 
-Selah closed eyes. Because she had done that. She had turned self-awareness into a shield. She had used the vocabulary of healing to avoid the labor of repair.
+Selah closed her eyes. Because she had done that. She had turned self-awareness into a shield. She had used the vocabulary of healing to avoid the labor of repair.
 
 “I don’t think she’s evil,” the friend said. “I think she learned survival so young that she started treating normal love like an ambush.”
 
@@ -1188,7 +1188,7 @@ She took a breath.
 
 Another breath.
 
-“My friend is right. I used language as a shield. I know all the words — healing, boundaries, trauma, triggers. I know how to arrange them so I sound self-aware while avoiding the part where I actually change.”
+“My friend is right. I used language as a shield. I know all the words, healing, boundaries, trauma, triggers. I know how to arrange them so I sound self-aware while avoiding the part where I actually change.”
 
 Her mouth twisted into something that wasn’t quite a smile.
 
@@ -1242,7 +1242,7 @@ The friend adjusted her expectations. The rival kept watching from a distance. T
 
 All of them knew something. Everyone told the truth. That was the problem. None of them told all of it. The trial did not end with a sentence.
 
-It ended with a weight. The weight of knowing that Selah was exactly what the world had decided she was — and also nothing like it. Somewhere between their testimonies and her own, a question formed that would follow her into the next chapter: If all of this is true, then who am I when no one is watching, when no one is hurt, when no one is clapping, when no one is calling me bad or brave or broken?
+It ended with a weight. The weight of knowing that Selah was exactly what the world had decided she was, and also nothing like it. Somewhere between their testimonies and her own, a question formed that would follow her into the next chapter: If all of this is true, then who am I when no one is watching, when no one is hurt, when no one is clapping, when no one is calling me bad or brave or broken?
 
 The trial could not answer that. It could only strip away the comfort of pretending that everyone else had lied. Before the world put Selah on trial, she had already started hearing the witnesses inside her own head. Now she had heard the ones outside too. The next part of the story would not be about their voices.
 
@@ -1408,11 +1408,11 @@ Maybe sometimes freedom was boiling water. Washing a glass. Putting the phone do
 
 Not empty. Quiet. There was a difference. Empty demanded filling. Quiet allowed listening.
 
-Selah sat on the edge of the bed, barefoot, with the cup warming her hands. She thought about all the names she had answered to—*Baddie, Bad girl, Heartbreaker, Gold digger, Difficult, Dangerous, Too much, Untouchable.* Each had entered her life like an accusation, turned into armor, and ended as a prison. The strange thing about a label is that it can begin as something thrown at you and end as something you decorate. Selah had decorated hers beautifully. She had made distant look elegant, unavailable look like power, and loneliness look selective.
+Selah sat on the edge of the bed, barefoot, with the cup warming her hands. She thought about all the names she had answered to, *Baddie, Bad girl, Heartbreaker, Gold digger, Difficult, Dangerous, Too much, Untouchable.* Each had entered her life like an accusation, turned into armor, and ended as a prison. The strange thing about a label is that it can begin as something thrown at you and end as something you decorate. Selah had decorated hers beautifully. She had made distant look elegant, unavailable look like power, and loneliness look selective.
 
 And people had believed it, because people love a polished wound. It asks nothing of them. Selah was tired of being admired for not bleeding where people could see. She did not want to become soft or sweet for public approval. Harmless had never been the goal. Whole was the goal. And whole, she was learning, did not mean without edges. It meant knowing which edges were boundaries and which were blades.
 
-Her body had known the difference for a long time. It knew the exhaustion after winning arguments no one else was having, the tightness after leaving rooms she secretly wanted to stay in, and the cold difference between peace and numbness. She had called many things freedom—silence, distance, being hard to reach, being impossible to read. Some of those things had helped her survive, and she would not curse the version of herself that had carried her through. The bad girl had protected her. Selah would not curse her for that. But she would not worship her either. She would thank her. Then ask her to sit down.
+Her body had known the difference for a long time. It knew the exhaustion after winning arguments no one else was having, the tightness after leaving rooms she secretly wanted to stay in, and the cold difference between peace and numbness. She had called many things freedom, silence, distance, being hard to reach, being impossible to read. Some of those things had helped her survive, and she would not curse the version of herself that had carried her through. The bad girl had protected her. Selah would not curse her for that. But she would not worship her either. She would thank her. Then ask her to sit down.
 
 There were rooms where she might still need that part of herself. There were men who still did not hear no unless it sounded like thunder. There were places where softness without discernment was not holiness, but danger. There were days when the world would still mistake gentleness for permission. Selah was not going to become naïve in the name of healing.
 

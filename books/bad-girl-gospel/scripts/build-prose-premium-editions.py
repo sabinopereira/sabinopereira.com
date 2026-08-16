@@ -65,8 +65,36 @@ BOOKS = [
 ]
 
 
+TEXT_CORRECTIONS = {
+    "Selah closed eyes.": "Selah closed her eyes.",
+}
+
+INTERNAL_HEADINGS = {
+    "The encounter",
+    "The myth he tried to reclaim",
+    "Seeing clearly",
+    "Who she really missed",
+    "The first real funeral",
+    "After",
+    "Opening the box",
+    "What the dress had carried",
+    "Trying it on",
+    "Letting go of the testimonies",
+    "Decision",
+    "Death of performance",
+    "After the dress",
+}
+
+
 def clean(text: str) -> str:
-    return re.sub(r"\s+", " ", text.replace("  ", " ")).strip()
+    text = re.sub(r"\s+", " ", text.replace("  ", " ")).strip()
+    text = text.replace("‑", "-")
+    # Retain an em dash only when it is deliberately used as a signature.
+    if not text.startswith("— "):
+        text = re.sub(r"\s*—\s*", ", ", text)
+    for old, new in TEXT_CORRECTIONS.items():
+        text = text.replace(old, new)
+    return text
 
 
 def markup(text: str) -> str:
@@ -89,8 +117,18 @@ def markdown_sections(path: Path) -> list[Section]:
         subtitle = next((x[4:].strip() for x in lines if x.startswith("### ")), "")
         body = [x.rstrip() for x in lines if not x.startswith(("# ", "## ", "### "))]
         blocks, current = [], []
-        for line in body + [""]:
+        for index, line in enumerate(body + [""]):
             if line.strip():
+                # The source manuscripts contain short internal subheadings that
+                # immediately follow the preceding paragraph.  Preserve them as
+                # headings instead of joining them to either paragraph.
+                next_is_blank = index + 1 >= len(body) or not body[index + 1].strip()
+                if (looks_like_heading(line.strip()) or line.strip() in INTERNAL_HEADINGS) and next_is_blank:
+                    if current:
+                        blocks.append(current)
+                        current = []
+                    blocks.append([line.strip()])
+                    continue
                 current.append(line.strip().rstrip("  "))
             elif current:
                 blocks.append(current)
@@ -127,23 +165,24 @@ def looks_like_heading(text: str) -> bool:
     return 0 < len(words) <= 7 and not re.search(r"[.!?;:,\"”]$", text) and all(w[:1].isupper() or w.lower() in {"a", "and", "of", "the", "to", "in", "with", "without"} for w in words)
 
 
-def reflow(blocks: list[list[str]]) -> list[tuple[str, bool]]:
-    """Return (text, preserve_lines) blocks for a prose section."""
+def reflow(blocks: list[list[str]]) -> list[tuple[str, str]]:
+    """Return (text, kind) blocks for a prose section."""
     units = [clean(" ".join(lines)) for lines in blocks if clean(" ".join(lines))]
-    out: list[tuple[str, bool]] = []
+    out: list[tuple[str, str]] = []
     buffer: list[str] = []
 
     def flush() -> None:
         if buffer:
-            out.append((" ".join(buffer), False))
+            out.append((" ".join(buffer), "prose"))
             buffer.clear()
 
     for unit in units:
         # Dialogue, internal headings, and refrain-like lists remain distinct.
-        special = unit.startswith(("“", '"', "—")) or looks_like_heading(unit)
+        internal_heading = looks_like_heading(unit) or unit in INTERNAL_HEADINGS
+        special = unit.startswith(("“", '"', "—")) or internal_heading
         if special:
             flush()
-            out.append((unit, False))
+            out.append((unit, "internal" if internal_heading else "prose"))
             continue
         candidate = " ".join(buffer + [unit])
         if buffer and (len(candidate) > 620 or len(buffer) >= 5):
@@ -153,10 +192,10 @@ def reflow(blocks: list[list[str]]) -> list[tuple[str, bool]]:
     return out
 
 
-def section_content(section: Section) -> list[tuple[str, bool]]:
+def section_content(section: Section) -> list[tuple[str, str]]:
     if section.verse:
-        return [("<br/>".join(markup(clean(line)) for line in block if clean(line)), True) for block in section.blocks]
-    return [(markup(text), keep) for text, keep in reflow(section.blocks)]
+        return [("<br/>".join(markup(clean(line)) for line in block if clean(line)), "verse") for block in section.blocks]
+    return [(markup(text), kind) for text, kind in reflow(section.blocks)]
 
 
 def write_clean_manuscript(book: Book, sections: list[Section]) -> Path:
@@ -176,9 +215,9 @@ def write_clean_manuscript(book: Book, sections: list[Section]) -> Path:
                     lines.append("  \n".join(clean_lines))
                     lines.append("")
         else:
-            for text, _ in reflow(section.blocks):
+            for text, kind in reflow(section.blocks):
                 if text:
-                    lines.extend([text, ""])
+                    lines.extend([f"#### {text}" if kind == "internal" else text, ""])
     output.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
     return output
 
@@ -217,6 +256,7 @@ def pdf_styles():
         "subheading": ParagraphStyle("Subheading", parent=base["Normal"], fontName="Georgia-Italic", fontSize=11.5, leading=16, textColor=ROSE, alignment=TA_CENTER, spaceAfter=25),
         "body": ParagraphStyle("Body", parent=base["Normal"], fontName="Georgia", fontSize=10.45, leading=16.1, textColor=INK, alignment=TA_JUSTIFY, firstLineIndent=16, spaceAfter=8),
         "first": ParagraphStyle("First", parent=base["Normal"], fontName="Georgia", fontSize=10.45, leading=16.1, textColor=INK, alignment=TA_JUSTIFY, firstLineIndent=0, spaceAfter=8),
+        "internal": ParagraphStyle("Internal", parent=base["Heading3"], fontName="Georgia-Bold", fontSize=11.2, leading=15, textColor=WINE, alignment=TA_LEFT, spaceBefore=14, spaceAfter=7),
         "verse": ParagraphStyle("Verse", parent=base["Normal"], fontName="Georgia", fontSize=10.35, leading=16.2, textColor=INK, alignment=TA_LEFT, leftIndent=16, rightIndent=10, spaceAfter=13),
         "small": ParagraphStyle("Small", parent=base["Normal"], fontName="Georgia", fontSize=8.8, leading=13.5, textColor=MUTED, spaceAfter=9),
     }
@@ -235,10 +275,10 @@ def build_pdf(book: Book, sections: list[Section]) -> Path:
         if section.subtitle: story.append(Paragraph(html.escape(section.subtitle), styles["subheading"]))
         else: story.append(Spacer(1, 12))
         first = True
-        for content, verse in section_content(section):
+        for content, kind in section_content(section):
             if not content: continue
-            story.append(Paragraph(content, styles["verse"] if verse else styles["first"] if first else styles["body"]))
-            first = False
+            story.append(Paragraph(content, styles["verse"] if kind == "verse" else styles["internal"] if kind == "internal" else styles["first"] if first else styles["body"]))
+            if kind == "prose": first = False
         story.append(PageBreak())
     story += [Spacer(1, 1*inch), Paragraph("About the Author", styles["heading"]), Paragraph("Sabino Pereira creates fiction, reflective books, music, and work about behavior, healing, discernment, faith, and modern life.", styles["first"]), Paragraph(f'<link href="https://{SITE}" color="#6f2434">{SITE}</link>', styles["subtitle"])]
     doc.build(story)
@@ -256,7 +296,7 @@ def build_epub(book: Book, sections: list[Section]) -> Path:
     (build / "mimetype").write_text("application/epub+zip", encoding="utf-8")
     (build / "META-INF/container.xml").write_text('<?xml version="1.0"?><container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container"><rootfiles><rootfile full-path="OEBPS/content.opf" media-type="application/oebps-package+xml"/></rootfiles></container>', encoding="utf-8")
     shutil.copyfile(book.cover, build / "OEBPS/images/cover.jpg")
-    css = 'body{font-family:Georgia,serif;color:#22191c;line-height:1.58;margin:0 7%;}h1{text-align:center;color:#6f2434;margin:2.3em 0 .5em;}h2{text-align:center;color:#9b5866;font-size:1.05em;font-style:italic;margin:0 0 2em;}p{margin:.55em 0;text-indent:1.2em;text-align:justify;}p.first,p.verse,p.front{text-indent:0;}p.verse{text-align:left;margin:.8em 5%;}.cover{text-align:center;margin:0}.cover img{max-width:100%;}.author{text-align:center;font-weight:bold}.site{text-align:center;color:#6f2434}.chapter{break-before:page;}'
+    css = 'body{font-family:Georgia,serif;color:#22191c;line-height:1.58;margin:0 7%;}h1{text-align:center;color:#6f2434;margin:2.3em 0 .5em;}h2{text-align:center;color:#9b5866;font-size:1.05em;font-style:italic;margin:0 0 2em;}p{margin:.55em 0;text-indent:1.2em;text-align:justify;}p.first,p.verse,p.front,p.internal{text-indent:0;}p.verse{text-align:left;margin:.8em 5%;}p.internal{font-weight:bold;color:#6f2434;margin:1.25em 0 .45em;text-align:left;}.cover{text-align:center;margin:0}.cover img{max-width:100%;}.author{text-align:center;font-weight:bold}.site{text-align:center;color:#6f2434}.chapter{break-before:page;}'
     (build / "OEBPS/styles.css").write_text(css, encoding="utf-8")
     (build / "OEBPS/cover.xhtml").write_text(xhtml("Cover", f'<div class="cover"><img src="images/cover.jpg" alt="Cover of {html.escape(book.title)}"/></div>'), encoding="utf-8")
     (build / "OEBPS/title.xhtml").write_text(xhtml("Title", f'<h1>{html.escape(book.title)}</h1><h2>{html.escape(book.subtitle)}</h2><p class="author">{AUTHOR}</p>'), encoding="utf-8")
@@ -264,9 +304,11 @@ def build_epub(book: Book, sections: list[Section]) -> Path:
     nav_items = []
     for i, section in enumerate(sections, 1):
         paras=[]
-        for j,(content,verse) in enumerate(section_content(section)):
-            cls = "verse" if verse else "first" if j == 0 else ""
+        prose_seen = False
+        for content,kind in section_content(section):
+            cls = "verse" if kind == "verse" else "internal" if kind == "internal" else "first" if not prose_seen else ""
             paras.append(f'<p class="{cls}">{content}</p>')
+            if kind == "prose": prose_seen = True
         name=f"section-{i:02d}.xhtml"; files.append(name); nav_items.append(f'<li><a href="{name}">{html.escape(section.heading)}</a></li>')
         (build/f"OEBPS/{name}").write_text(xhtml(section.heading, f'<section class="chapter"><h1>{html.escape(section.heading)}</h1>{f"<h2>{html.escape(section.subtitle)}</h2>" if section.subtitle else ""}{"".join(paras)}</section>'), encoding="utf-8")
     (build/"OEBPS/nav.xhtml").write_text(xhtml("Contents", f'<nav epub:type="toc"><h1>Contents</h1><ol>{"".join(nav_items)}</ol></nav>'), encoding="utf-8"); files.append("nav.xhtml")

@@ -2,10 +2,10 @@
   "pages": 108,
   "trim_width_in": 6,
   "trim_height_in": 9,
-  "paper": "cream",
+  "paper": "groundwood",
   "interior_bleed": false,
   "cover_bleed_in": 0.125,
-  "spine_width_in": 0.26999999999999996,
-  "cover_width_in": 12.520000000000001,
+  "spine_width_in": 0.2538,
+  "cover_width_in": 12.5038,
   "cover_height_in": 9.25
 }

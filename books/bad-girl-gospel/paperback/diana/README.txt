@@ -6,10 +6,10 @@ Upload cover: bad-girl-gospel-diana-paperback-cover-kdp.pdf
 KDP settings
 - Trim size: 6 x 9 in
 - Interior: black and white
-- Paper: cream
+- Paper: groundwood
 - Interior bleed: no bleed
 - Cover bleed: included (0.125 in)
-- Page count: 88
+- Page count: 90
 - Reading direction: left to right
 - Cover finish: matte recommended
 

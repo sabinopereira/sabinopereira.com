@@ -853,7 +853,7 @@ with acceptance instead of correction. She could not unhear that. Names are more
 
 To exist. To be called on. For the first time,
 
-Present
+#### Present
 
 felt like an honest answer.
 
@@ -1157,7 +1157,9 @@ She needed to separate God from the voices that had used His name to keep her sm
 
 by stepping inside my own truth?” Silence. Then, over time, not answers,
 
-but Presence. In moments no one else saw. A bus ride where a stranger’s kindness made her cry. A sunset that felt like a wink. A passage of Scripture
+but Presence. In moments no one else saw. A bus ride where a stranger’s kindness made her cry. A sunset that felt like a wink. A passage
+
+#### of Scripture
 
 that refused to behave the way it had always been preached. Before I formed you in the womb, I knew you. She had heard it her whole life.
 
@@ -1234,7 +1236,7 @@ The ones who wanted to listen asked questions that recognised her. How was it fo
 
 The others moved quickly toward the edges of her body.
 
-So…
+#### So…
 
 how does it work? Have you already…? Can I be honest? I’ve always been curious. Curiosity. A neutral word that, in certain mouths,
 

@@ -209,7 +209,7 @@ Naomi had learned too early that when hunger enters a house, love is often the f
 ## Chapter 2
 ### The House That Counted Everything
 
-The House That Counted Everything
+#### The House That Counted Everything
 
 Before Naomi loved money, she feared what happened when there was none. The house she grew up in did not just count money. It counted everything. Bread. Milk.
 
@@ -350,7 +350,7 @@ learning that security was never a feeling. It was always a number someone else 
 ## Chapter 3
 ### Good Women Stay Hungry
 
-Good Women Stay Hungry
+#### Good Women Stay Hungry
 
 Naomi learned early that good women were often just hungry women praised for not complaining. The neighbourhood had a very specific idea of feminine virtue. A good woman did not ask for too much. A good woman knew how to stretch a meal,
 
@@ -515,7 +515,7 @@ it should not require a woman to disappear to prove she had it.
 ## Chapter 4
 ### The First Time Money Answered
 
-The First Time Money Answered
+#### The First Time Money Answered
 
 The first time money answered, Naomi mistook the sound for peace. It did not look like much. No lottery. No miracle cheque.
 
@@ -738,7 +738,7 @@ and realize, for the first time, that hunger did not have to win every argument.
 ## Chapter 5
 ### The Men Who Called It Love
 
-The Men Who Called It Love
+#### The Men Who Called It Love
 
 Naomi learned that some men did not offer love. They offered shelter with locks only they could open. By the time men started noticing her properly, Naomi had already learned two languages. Money.
 
@@ -1163,7 +1163,7 @@ whether she could ever feel safe in a world where security was no longer her onl
 ## Chapter 8
 ### Hunger in Designer Clothes
 
-Hunger in Designer Clothes
+#### Hunger in Designer Clothes
 
 Hunger did not leave Naomi when the money came. It learned how to dress better. On paper, she had outrun the life that raised her. Accounts with padding. Savings that could hold an emergency without breaking.
 
@@ -1310,7 +1310,7 @@ with the same urgency: Be ready to run.
 ## Chapter 9
 ### The People She Used
 
-The People She Used
+#### The People She Used
 
 Naomi had been hurt by hunger, but hunger had also taught her how to hurt without calling it cruelty. For a long time, she did not see it that way.
 
@@ -1346,7 +1346,7 @@ for her vulnerability, for her time outside emergencies, for her presence when t
 
 Changed topics.
 
-Rescheduled
+#### Rescheduled
 
 until the friendship thinned. Naomi told herself it was boundaries. Sometimes it was. Sometimes it was simply an unwillingness to offer tenderness
 
