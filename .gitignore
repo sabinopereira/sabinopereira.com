@@ -7,3 +7,9 @@ node_modules/
 output/youtube/**/*.mp4
 **/.remotion/chrome-headless-shell/
 social-clips/public/*.mp4
+
+# Local build caches and machine-specific dependency links.
+**/.cache/
+**/.remotion/
+podcast-video/node_modules
+social-clips/node_modules
