@@ -2,3 +2,8 @@ node_modules/
 **/node_modules/
 .DS_Store
 .sites-reira-bin/
+
+# Generated video exports and Remotion's downloaded browser runtime.
+output/youtube/**/*.mp4
+**/.remotion/chrome-headless-shell/
+social-clips/public/*.mp4

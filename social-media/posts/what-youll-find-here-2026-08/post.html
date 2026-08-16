@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 1080px; height: 1350px; overflow: hidden; }
+    body {
+      color: #171514;
+      background: #e8dfd2 url('background.png') center center / cover no-repeat;
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+    .canvas {
+      width: 1080px;
+      height: 1350px;
+      display: flex;
+      justify-content: center;
+      padding-top: 170px;
+    }
+    .content { width: 620px; text-align: center; }
+    .eyebrow {
+      font: 600 20px/1.2 Arial, sans-serif;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+    }
+    .rule { width: 260px; height: 1px; margin: 0 auto 40px; background: #2b2724; opacity: .65; }
+    h1 {
+      margin: 0 0 46px;
+      font-size: 75px;
+      line-height: .95;
+      font-weight: 500;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+    }
+    h1 em { color: #8e241b; font-style: normal; }
+    .items { display: grid; gap: 20px; margin: 0 auto 38px; width: 520px; }
+    .item {
+      display: grid;
+      grid-template-columns: 126px 1fr;
+      gap: 18px;
+      align-items: baseline;
+      text-align: left;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(38, 31, 27, .28);
+    }
+    .item strong {
+      color: #8e241b;
+      font: 700 24px/1.1 Arial, sans-serif;
+      letter-spacing: 2px;
+    }
+    .item span { font-size: 23px; line-height: 1.25; }
+    .tagline {
+      margin-top: 34px;
+      color: #8e241b;
+      font-size: 27px;
+      font-style: italic;
+      line-height: 1.3;
+    }
+    .follow {
+      margin-top: 18px;
+      font: 600 18px/1.2 Arial, sans-serif;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <main class="canvas">
+    <section class="content">
+      <div class="eyebrow">REIRA BIN</div>
+      <div class="rule"></div>
+      <h1>What you'll<br><em>find here</em></h1>
+      <div class="items">
+        <div class="item"><strong>Music</strong><span>Songs that become stories</span></div>
+        <div class="item"><strong>Books</strong><span>Characters, questions and grace</span></div>
+        <div class="item"><strong>Series</strong><span>Ideas worth returning to</span></div>
+        <div class="item"><strong>Shop</strong><span>Wear the story</span></div>
+      </div>
+      <div class="tagline">Original worlds to read, hear and feel.</div>
+      <div class="follow">Follow the worlds as they grow</div>
+    </section>
+  </main>
+</body>
+</html>

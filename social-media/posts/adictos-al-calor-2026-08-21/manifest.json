@@ -1,0 +1,51 @@
+{
+  "campaign": "Adictos al calor",
+  "artist": "REIRA BIN",
+  "release_date": "2026-08-21",
+  "timezone": "Europe/Lisbon",
+  "audience": "Spanish-speaking listeners",
+  "assets": [
+    {
+      "file": "adictos-teaser-reel.mp4",
+      "format": "1080x1920 MP4",
+      "duration_seconds": 10,
+      "audio_master_offset_seconds": 63.8
+    },
+    {
+      "file": "adictos-launch-reel.mp4",
+      "format": "1080x1920 MP4",
+      "duration_seconds": 27,
+      "audio_master_offset_seconds": 45.1
+    },
+    {
+      "file": "adictos-countdown-story.jpg",
+      "format": "1080x1920 JPEG"
+    }
+  ],
+  "planned_publications": [
+    {
+      "datetime": "2026-08-20T19:00:00+01:00",
+      "asset": "adictos-teaser-reel.mp4",
+      "platforms": ["Instagram", "TikTok", "YouTube Shorts"]
+    },
+    {
+      "datetime": "2026-08-21T10:00:00+01:00",
+      "asset": "adictos-countdown-story.jpg",
+      "platforms": ["Instagram Story"]
+    },
+    {
+      "datetime": "2026-08-21T19:00:00+01:00",
+      "asset": "adictos-launch-reel.mp4",
+      "platforms": ["Instagram", "YouTube Shorts"]
+    },
+    {
+      "datetime": "2026-08-21T20:10:00+01:00",
+      "asset": "adictos-launch-reel.mp4",
+      "platforms": ["TikTok"]
+    }
+  ],
+  "youtube_shorts": {
+    "teaser": "https://youtube.com/shorts/IC79zAM-yhM",
+    "launch": "https://youtube.com/shorts/0ifFIfw7KvI"
+  }
+}

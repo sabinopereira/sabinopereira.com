@@ -403,7 +403,9 @@ def build_epub(preface: list[str], parts: list[Part], author_note: list[str]) ->
             nav_items.append(f'<li><a href="{filename}">{complaint.number}. {html.escape(complaint.title)}</a></li>')
         nav_items.append('</ol></li>')
     files.append(("author-note.xhtml", "authornote", xhtml("Nota do autor", '<p class="kicker">DEPOIS DA ÚLTIMA RECLAMAÇÃO</p><h1>Nota do autor</h1>' + epub_paragraphs(author_note))))
-    files.append(("discover.xhtml", "discover", xhtml("Continua a descobrir", f'<p class="kicker">CONTINUA A DESCOBRIR</p><h1>Mais livros, ensaios e música</h1><p>Visita o site do autor para descobrires os outros projetos.</p><div class="cta"><p><a href="{SITE}">Visitar sabinopereira.com</a></p><p><a href="{AMAZON}">Comprar a edição impressa na Amazon</a></p></div>')))
+    # Keep the retail EPUB vendor-neutral so aggregators can distribute the same
+    # file to Apple Books and other stores without competitor-link rejections.
+    files.append(("discover.xhtml", "discover", xhtml("Continua a descobrir", f'<p class="kicker">CONTINUA A DESCOBRIR</p><h1>Mais livros, ensaios e música</h1><p>Visita o site do autor para descobrires os outros projetos.</p><div class="cta"><p><a href="{SITE}">Visitar sabinopereira.com</a></p></div>')))
     nav_items.extend(['<li><a href="author-note.xhtml">Nota do autor</a></li>', '<li><a href="discover.xhtml">Continua a descobrir</a></li>'])
     book_id = str(uuid.uuid4())
     nav = xhtml("Índice", '<nav epub:type="toc" xmlns:epub="http://www.idpf.org/2007/ops"><h1>Índice</h1><ol>' + "".join(nav_items) + '</ol></nav>')
