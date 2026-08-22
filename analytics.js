@@ -56,4 +56,35 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
+
+  document.querySelectorAll('a[href^="http"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      const url = new URL(link.href, window.location.origin);
+      if (url.hostname === window.location.hostname) {
+        return;
+      }
+
+      const platformMap = [
+        ["spotify.com", "spotify"],
+        ["music.apple.com", "apple_music"],
+        ["youtube.com", "youtube"],
+        ["youtu.be", "youtube"],
+        ["instagram.com", "instagram"],
+        ["tiktok.com", "tiktok"],
+        ["amazon.", "amazon"],
+        ["fourthwall.com", "fourthwall"],
+        ["x.com", "x"]
+      ];
+      const match = platformMap.find(([host]) => url.hostname.includes(host));
+
+      window.trackEvent("outbound_platform_click", {
+        page_path: window.location.pathname,
+        page_title: document.title,
+        link_text: (link.textContent || "").trim(),
+        platform: match ? match[1] : "other",
+        destination_host: url.hostname,
+        destination_path: url.pathname
+      });
+    });
+  });
 });
