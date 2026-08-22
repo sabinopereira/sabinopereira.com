@@ -1,6 +1,6 @@
 # REIRA BIN Shop post — 12 August 2026
 
-- Platform: Instagram (`@bp.pereirabin`)
+- Platform: Instagram (`@reira.bin`)
 - Format: 1080 × 1350 feed post
 - Scheduled: 12 August 2026, 00:28 (Europe/Lisbon)
 - CTA: Explore the shop via the main link in bio.

@@ -1,6 +1,6 @@
 # Books — Instagram Highlight
 
-Seven-story sequence for `@bp.pereirabin`, exported at 2160 × 3840 px (9:16).
+Seven-story sequence for `@reira.bin`, exported at 2160 × 3840 px (9:16).
 
 ## Publishing order
 

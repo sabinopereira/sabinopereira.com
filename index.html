@@ -33,11 +33,10 @@
       --cream:#faf5ec;
       --line:rgba(33,30,27,.12);
       --max:1420px;
-      /* Warm Liquid Glass styling */
-      --glass: rgba(250, 245, 236, 0.72);
+      /* Warm Editorial Styling */
+      --glass: rgba(250, 245, 236, 0.94);
       --glass-border: rgba(33, 30, 27, 0.07);
-      --glass-shadow: rgba(47, 38, 31, 0.05);
-      --blur: 18px;
+      --glass-shadow: rgba(47, 38, 31, 0.04);
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -47,21 +46,21 @@
     .shell{width:min(var(--max),calc(100% - 56px));margin:auto}
     body:before{content:"";position:fixed;inset:0;z-index:-1;opacity:.14;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E");mix-blend-mode:multiply}
     
-    /* Header - Floating Glassmorphism Sticky */
+    /* Header - Pinned Sticky Navigation */
     header{
       position: sticky;
       top: 0;
       z-index: 100;
       color: var(--ink);
       background: var(--glass);
-      backdrop-filter: blur(var(--blur));
-      -webkit-backdrop-filter: blur(var(--blur));
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--glass-border);
       transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
     }
     header.is-scrolled {
-      box-shadow: 0 4px 30px rgba(47, 38, 31, 0.04);
-      background: rgba(250, 245, 236, 0.85);
+      box-shadow: 0 4px 30px rgba(47, 38, 31, 0.03);
+      background: rgba(250, 245, 236, 0.88);
     }
     .nav{
       height: 80px;
@@ -109,70 +108,63 @@
     .tagline{max-width:490px;margin:35px 0 0;color:#4e4842;font:400 23px/1.45 "Cormorant Garamond",serif}
     .tagline strong{color:var(--sea);font-weight:500}
     .hero-actions{display:flex;gap:10px;margin-top:34px}
+    
+    /* Elegant Flat Editorial Buttons */
     .btn{
-      min-height:48px;
+      min-height:38px;
       display:inline-flex;
       align-items:center;
-      padding:0 24px;
-      border:1px solid var(--ink);
-      border-radius: 24px;
+      padding:0 0 4px;
+      border:0;
+      border-bottom:1px solid var(--ink);
+      border-radius: 0;
       font-size:9px;
       font-weight:600;
       letter-spacing:.2em;
       text-transform:uppercase;
-      transition: background 0.3s, color 0.3s, border-color 0.3s, transform 0.2s;
+      background:transparent;
+      color:var(--ink);
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
     }
     .btn:hover {
-      background: var(--ink);
-      color: var(--paper);
+      color: var(--sea);
+      border-color: var(--sea);
+      background: transparent;
     }
     .btn.primary{
-      padding:0 0 6px;
-      min-height:38px;
-      border:0;
-      border-radius: 0;
-      border-bottom:1px solid var(--sea);
-      background:transparent;
       color:var(--sea);
+      border-color:var(--sea);
     }
     .btn.primary:hover{
-      background: transparent;
       color: var(--ink);
       border-color: var(--ink);
     }
     .hero-art{
       position:relative;
-      animation: floatArt 6s ease-in-out infinite alternate;
-    }
-    @keyframes floatArt {
-      0% { transform: translateY(0px) rotate(0deg); }
-      100% { transform: translateY(-10px) rotate(0.5deg); }
     }
     .hero-art img{
       width:100%;
       max-height:calc(100vh - 220px);
       object-fit:contain;
-      border-radius: 16px;
-      box-shadow:0 30px 70px rgba(47,38,31,.16);
+      border-radius: 4px;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 12px 36px var(--glass-shadow);
     }
     
-    /* Signatures Section - Elevated Panel Vibe */
+    /* Signatures Section */
     .hero-signatures{
       position:relative;
       z-index:1;
       display:grid;
       grid-template-columns:1fr 1fr;
       margin-top:48px;
-      background: var(--glass);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid var(--glass-border);
-      border-radius: 16px;
-      box-shadow: 0 10px 30px var(--glass-shadow);
-      overflow: hidden;
+      background: var(--cream);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
     .hero-signature{display:flex;justify-content:center;align-items:baseline;gap:12px;padding:24px 20px 20px;text-transform:uppercase}
-    .hero-signature:first-child{border-right:1px solid var(--glass-border)}
+    .hero-signature:first-child{border-right:1px solid var(--line)}
     .hero-signature b{color:var(--sea);font:500 30px/1 "Cormorant Garamond",serif}
     .hero-signature strong{font:500 17px/1 "Cormorant Garamond",serif;letter-spacing:.16em}
     .hero-signature small{color:#776d64;font-size:8px;font-weight:600;letter-spacing:.16em}
@@ -189,7 +181,7 @@
     .signature small{display:block;color:#71808a;font-size:8px;letter-spacing:.16em;text-transform:uppercase}
     .signature strong{font:500 16px/1.2 "Cormorant Garamond",serif}
     
-    /* Series Section with Elevated Grid Items */
+    /* Series Section with Flat Grid Items */
     .series{padding:105px 0 120px;background:var(--cream)}
     .section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:42px}
     .section-head>a{padding-bottom:5px;border-bottom:1px solid;font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
@@ -199,32 +191,51 @@
       overflow:hidden;
       color:#fff;
       background:var(--night);
-      border-radius: 12px;
-      box-shadow: 0 4px 18px var(--glass-shadow);
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 12px var(--glass-shadow);
+      transition: border-color 0.3s ease;
     }
     .world:first-child{grid-row:1/-1}
-    .world img{height:100%;object-fit:cover;transition:transform .7s cubic-bezier(0.16, 1, 0.3, 1)}
+    .world img{height:100%;object-fit:cover;transition:transform 0.6s ease}
     .world:hover{
-      transform: translateY(-6px);
-      box-shadow: 0 16px 36px rgba(47, 38, 31, 0.15);
+      border-color: var(--ink);
     }
-    .world:hover img{transform:scale(1.03)}
+    .world:hover img{transform:scale(1.015)}
     .world:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,19,30,.92),transparent 65%)}
     .world-copy{position:absolute;z-index:2;right:0;bottom:0;left:0;padding:clamp(22px,3vw,44px)}
     .world-label{font-size:8px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#d4e0e5}
     .world h3{margin:12px 0 4px;font:500 clamp(36px,5vw,70px)/.9 "Cormorant Garamond",serif}
     .world:not(:first-child) h3{font-size:clamp(27px,3vw,43px)}
     .world p{max-width:460px;margin:11px 0 0;color:#d8e1e4;font:italic 18px/1.4 "Cormorant Garamond",serif}
+    
+    /* Excerpt Button on Cards */
+    .btn-read-excerpt {
+      display: inline-block;
+      margin-top: 16px;
+      padding-bottom: 2px;
+      border-bottom: 1px solid rgba(255,255,255,0.4);
+      color: #fff;
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .world:hover .btn-read-excerpt {
+      border-color: #fff;
+      color: #fff;
+    }
+    
     .world-meta{display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;font-size:8px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#bfcdd3}
     .world.filthy{background:radial-gradient(circle at 78% 22%,rgba(222,190,127,.22),transparent 28%),linear-gradient(145deg,#0a1720,#253742 52%,#090f13)}
     .world.filthy:before{content:"FILTHY\A RICH";white-space:pre;position:absolute;top:9%;left:8%;color:rgba(245,230,196,.92);font:500 clamp(70px,8vw,124px)/.68 "Cormorant Garamond",serif;letter-spacing:-.06em}
-    .episode-now{display:inline-block;margin-top:18px;padding:10px 13px;border:1px solid rgba(255,255,255,.38);border-radius: 4px;font-size:8px;font-weight:600;letter-spacing:.17em;text-transform:uppercase}
+    .episode-now{display:inline-block;margin-top:18px;padding:10px 13px;border:1px solid rgba(255,255,255,.38);font-size:8px;font-weight:600;letter-spacing:.17em;text-transform:uppercase}
     
     /* Channels Section */
     .channels{padding:110px 0}
-    .channel-grid{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);border-radius: 12px;overflow:hidden;box-shadow: 0 4px 15px var(--glass-shadow)}
-    .channel{min-height:330px;display:flex;flex-direction:column;padding:30px;border-right:1px solid var(--line);transition:background .3s,color .3s,transform 0.3s}
+    .channel-grid{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);box-shadow: 0 4px 12px var(--glass-shadow)}
+    .channel{min-height:330px;display:flex;flex-direction:column;padding:30px;border-right:1px solid var(--line);transition:background .3s,color .3s}
     .channel:last-child{border:0}
     .channel:not(.is-soon):hover{background:var(--night);color:#fff}
     .channel-no{font:italic 15px "Cormorant Garamond",serif;color:var(--sea)}
@@ -234,12 +245,12 @@
     .channel-arrow{margin-top:26px;font-size:20px;transition:transform 0.3s ease}
     .channel:hover .channel-arrow {transform: translate(3px, -3px)}
     .channel.is-soon{background:#e7e0d4}
-    .soon{display:inline-block;align-self:flex-start;margin-top:24px;padding:8px 10px;border:1px solid var(--line);border-radius: 4px;font-size:8px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+    .soon{display:inline-block;align-self:flex-start;margin-top:24px;padding:8px 10px;border:1px solid var(--line);font-size:8px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
     
-    /* Podcast Feature Card - Glassmorphism touch */
+    /* Podcast Feature Card */
     .podcast-feature{padding:110px 0;background:var(--night);color:#fff}
     .podcast-layout{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(44px,8vw,120px);align-items:center}
-    .podcast-mark{aspect-ratio:1;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(28px,5vw,64px);border:1px solid rgba(255,255,255,.16);border-radius: 16px;background:radial-gradient(circle at 78% 20%,rgba(143,45,37,.55),transparent 30%),linear-gradient(145deg,#30221f,#0f1e27);box-shadow: 0 12px 30px rgba(0,0,0,0.2)}
+    .podcast-mark{aspect-ratio:1;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(28px,5vw,64px);border:1px solid rgba(255,255,255,.16);background:radial-gradient(circle at 78% 20%,rgba(143,45,37,.55),transparent 30%),linear-gradient(145deg,#30221f,#0f1e27);box-shadow: 0 12px 30px rgba(0,0,0,0.2)}
     .podcast-mark span{font-size:9px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:#d7c8bd}
     .podcast-mark strong{font:500 clamp(58px,8vw,112px)/.72 "Cormorant Garamond",serif;letter-spacing:-.05em;text-transform:uppercase}
     .podcast-mark em{font:italic 400 clamp(18px,2vw,26px)/1.3 "Cormorant Garamond",serif;color:#eadfd4}
@@ -249,7 +260,7 @@
     .podcast-feature .btn{margin-top:16px;color:#fff;border-color:rgba(255,255,255,.55)}
     .podcast-feature .btn:hover{background:#fff;color:var(--night)}
     
-    /* Music Shelf with Modernized Cards & Audio Buttons */
+    /* Music Shelf with Minimalist Flat Cards */
     .music-shelf{padding:110px 0;background:#ded3c4}
     .album-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
     .album-card{
@@ -257,25 +268,20 @@
       flex-direction:column;
       min-width:0;
       background:var(--cream);
-      border:1px solid var(--glass-border);
-      border-radius: 12px;
-      overflow:hidden;
-      box-shadow: 0 4px 18px var(--glass-shadow);
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease, border-color 0.5s ease;
+      border:1px solid var(--line);
+      transition: border-color 0.3s ease;
     }
     .album-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 36px rgba(47, 38, 31, 0.12);
-      border-color: rgba(143, 45, 37, 0.22);
+      border-color: var(--ink);
     }
-    .album-card img{aspect-ratio:1;object-fit:cover;transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)}
-    .album-card:hover img{transform: scale(1.025)}
+    .album-card img{aspect-ratio:1;object-fit:cover;transition: transform 0.6s ease}
+    .album-card:hover img{transform: scale(1.015)}
     .album-copy{display:flex;flex:1;flex-direction:column;padding:24px}
     .album-kind{color:var(--sea);font-size:8px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
     .album-card h3{margin:11px 0 8px;font:500 30px/1 "Cormorant Garamond",serif}
     .album-card p{margin:0 0 18px;color:#6b7a83;font-size:11px;line-height:1.5}
     
-    /* Audio Controls on card */
+    /* Flat Preview Audio Button on card */
     .album-actions-row {
       display: flex;
       align-items: center;
@@ -286,91 +292,174 @@
       border-top: 1px solid rgba(33, 30, 27, 0.07);
     }
     .btn-preview {
-      min-height: 32px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px 4px;
-      border: 1px solid var(--ink);
-      border-radius: 16px;
-      color: var(--ink);
-      background: transparent;
-      font-size: 8px;
+      background: none !important;
+      border: none !important;
+      padding: 0 0 2px !important;
+      border-radius: 0 !important;
+      color: var(--sea) !important;
+      border-bottom: 1px solid var(--sea) !important;
+      font-size: 8px !important;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: background 0.3s, color 0.3s, border-color 0.3s, transform 0.2s;
+      transition: color 0.2s, border-color 0.2s;
     }
     .btn-preview:hover {
-      background: var(--ink);
-      color: var(--paper);
-      transform: scale(1.02);
+      color: var(--ink) !important;
+      border-color: var(--ink) !important;
     }
     .btn-preview.is-playing {
-      background: var(--sea);
-      color: #fff;
-      border-color: var(--sea);
+      color: var(--sea) !important;
+      border-color: var(--sea) !important;
     }
     .btn-preview svg {
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       fill: currentColor;
+      vertical-align: middle;
+      margin-right: 2px;
     }
     .album-links{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:0;padding-top:0}
-    .album-links a{min-height:30px;display:inline-flex;align-items:center;gap:6px;padding:4px 0;border-bottom:2px solid var(--ink);color:var(--ink);font-size:9px;font-weight:600;letter-spacing:.1em;line-height:1.25;text-transform:uppercase;transition:color .2s,border-color .2s}
+    .album-links a{min-height:30px;display:inline-flex;align-items:center;gap:6px;padding:4px 0;border-bottom:2px solid var(--ink);color:var(--ink);font-size:9px;font-weight:600;letter-spacing:.15em;line-height:1.25;text-transform:uppercase;transition:color .2s,border-color .2s}
     .album-links a:after{content:"↗";font-size:11px}
     .album-links a:hover,.album-links a:focus-visible{border-color:var(--sea);color:var(--sea)}
     .album-links a:focus-visible{outline:2px solid rgba(95,126,145,.3);outline-offset:3px}
     
-    /* Floating Audio Player Bar style */
-    .audio-player-bar {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 1000;
-      width: min(380px, calc(100vw - 48px));
-      background: rgba(250, 245, 236, 0.9);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid var(--glass-border);
-      border-radius: 16px;
-      padding: 16px 20px;
-      box-shadow: 0 16px 40px rgba(47, 38, 31, 0.16);
+    /* Merch Showcase Shelf */
+    .merch-shelf {
+      padding: 110px 0;
+      background: var(--cream);
+      border-top: 1px solid var(--line);
+    }
+    .merch-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .merch-card {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      transform: translateY(150%) scale(0.95);
-      opacity: 0;
-      pointer-events: none;
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      transition: border-color 0.3s ease;
+    }
+    .merch-card:hover {
+      border-color: var(--ink);
+    }
+    .merch-image {
+      aspect-ratio: 1;
+      overflow: hidden;
+      background: #e7e0d4;
+    }
+    .merch-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .merch-card:hover img {
+      transform: scale(1.015);
+    }
+    .merch-copy {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .merch-collection {
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--sea);
+      margin-bottom: 8px;
+    }
+    .merch-card h3 {
+      margin: 0 0 10px;
+      font: 500 24px/1.1 "Cormorant Garamond", serif;
+      letter-spacing: -0.01em;
+    }
+    .merch-card p {
+      margin: 0 0 20px;
+      font-size: 11px;
+      line-height: 1.5;
+      color: #5e564f;
+    }
+    .merch-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid rgba(33, 30, 27, 0.06);
+    }
+    .merch-price {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .merch-link {
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 2px;
+    }
+    .merch-link:hover {
+      color: var(--sea);
+      border-color: var(--sea);
+    }
+    
+    /* Slim Spotify-like Bottom Audio Bar */
+    .audio-player-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: 56px;
+      background: rgba(250, 245, 236, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid var(--glass-border);
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 -4px 20px rgba(47, 38, 31, 0.04);
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .audio-player-bar.is-active {
-      transform: translateY(0) scale(1);
-      opacity: 1;
-      pointer-events: all;
+      transform: translateY(0);
     }
     .player-header {
       display: flex;
-      justify-content: space-between;
       align-items: center;
       gap: 12px;
+      min-width: 200px;
+      max-width: 30%;
     }
     .player-title-info {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      align-items: baseline;
+      gap: 8px;
       min-width: 0;
     }
     .player-label {
       font-size: 8px;
       font-weight: 600;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--sea);
-      margin-bottom: 2px;
+      white-space: nowrap;
     }
     .player-title {
-      font: 500 16px/1.2 "Cormorant Garamond", serif;
+      font: italic 500 14px "Cormorant Garamond", serif;
       color: var(--ink);
       white-space: nowrap;
       overflow: hidden;
@@ -380,21 +469,25 @@
       background: none;
       border: none;
       color: var(--ink);
-      font-size: 20px;
+      font-size: 18px;
       cursor: pointer;
-      opacity: 0.5;
+      opacity: 0.4;
       padding: 4px;
       transition: opacity 0.2s;
+      margin-left: 8px;
     }
     .player-close:hover { opacity: 1; }
     .player-body {
+      flex: 1;
       display: flex;
       align-items: center;
-      gap: 14px;
+      justify-content: center;
+      gap: 18px;
+      max-width: 50%;
     }
     .player-btn {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       border: 1px solid var(--ink);
       background: var(--ink);
@@ -404,45 +497,114 @@
       justify-content: center;
       cursor: pointer;
       flex-shrink: 0;
-      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      transition: all 0.2s;
     }
     .player-btn:hover {
       background: var(--sea);
       border-color: var(--sea);
-      transform: scale(1.05);
     }
     .player-timeline {
       flex: 1;
-      height: 4px;
-      background: rgba(33, 30, 27, 0.1);
-      border-radius: 2px;
+      height: 3px;
+      background: rgba(33, 30, 27, 0.08);
+      border-radius: 1.5px;
       cursor: pointer;
       position: relative;
     }
     .player-progress {
       height: 100%;
       background: var(--sea);
-      border-radius: 2px;
+      border-radius: 1.5px;
       width: 0%;
       transition: width 0.1s linear;
     }
     .player-time {
       font-size: 9px;
-      font-weight: 500;
+      font-family: monospace;
       color: #776d64;
       min-width: 32px;
       text-align: right;
     }
     
-    /* Scroll Reveal Animation Classes */
+    /* Editorial Reading Modal Overlay */
+    .reading-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: #fcfbf9;
+      color: var(--ink);
+      overflow-y: auto;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      padding: 80px 24px;
+    }
+    .reading-modal.is-active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .reading-modal-close {
+      position: fixed;
+      top: 24px;
+      right: 28px;
+      background: none;
+      border: none;
+      color: var(--ink);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 8px;
+      opacity: 0.6;
+      transition: all 0.2s;
+      border-bottom: 1px solid transparent;
+    }
+    .reading-modal-close:hover {
+      opacity: 1;
+      border-color: var(--ink);
+    }
+    .reading-content-wrapper {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .reading-kicker {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--sea);
+      margin-bottom: 24px;
+      display: block;
+    }
+    .reading-title {
+      font: 500 clamp(36px, 5vw, 64px)/1.05 "Cormorant Garamond", serif;
+      margin: 0 0 40px;
+      letter-spacing: -0.02em;
+    }
+    .reading-body {
+      font: 400 20px/1.65 "Cormorant Garamond", serif;
+      color: #3b3631;
+    }
+    .reading-body p {
+      margin: 0 0 24px;
+    }
+    .reading-body p:first-of-type::first-letter {
+      font-size: 3.5em;
+      float: left;
+      line-height: 0.8;
+      margin: 4px 8px 0 0;
+      font-family: "Cormorant Garamond", serif;
+      color: var(--sea);
+    }
+    
+    /* Subtle static-like fade reveal */
     .reveal-item {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 0.5s ease;
     }
     .reveal-item.is-revealed {
       opacity: 1;
-      transform: translateY(0);
     }
     .feature{display:grid;grid-template-columns:1fr 1fr;min-height:720px;background:var(--night);color:#fff}.feature-art{background:url('/images/echoes-of-childhood/album-cover.jpg') center/cover}.feature-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(48px,8vw,120px)}.feature h2{margin:0;font:500 clamp(58px,7vw,104px)/.82 "Cormorant Garamond",serif}.feature p{max-width:500px;color:#b9c9d1;font:400 21px/1.5 "Cormorant Garamond",serif}.feature .btn{align-self:flex-start;margin-top:18px}
     footer{padding:54px 0;background:#091d2c;color:#afc0c8}.foot{display:flex;justify-content:space-between;gap:30px;align-items:end}.foot-logo{color:#fff;font:500 34px/1 "Cormorant Garamond",serif;letter-spacing:.12em}.foot p{margin:8px 0 0;font-size:8px;letter-spacing:.2em;text-transform:uppercase}.foot-links{display:flex;gap:22px;font-size:8px;letter-spacing:.18em;text-transform:uppercase}
@@ -462,9 +624,9 @@
     <section class="hero" aria-labelledby="hero-title"><div class="hero-layout shell"><div class="hero-copy"><p class="kicker">Reira Bin · Creative Studio</p><h1 id="hero-title">Enter the<em>worlds.</em></h1><p class="tagline">Stories by <strong>SP.</strong> Music by <strong>RB.</strong></p><div class="hero-actions"><a class="btn primary" href="#series">Explore the studio ↗</a></div></div><figure class="hero-art"><img src="/images/reira-bin-studio-entrance.jpg" alt="Reira Bin creative studio collage combining books, music, cityscapes and imagined worlds" width="1254" height="1254"></figure></div><div class="hero-signatures shell"><div class="hero-signature"><b>SP</b><strong>Sabino Pereira</strong><small>Books &amp; stories</small></div><div class="hero-signature"><b>RB</b><strong>Reira Bin</strong><small>Music &amp; soundtracks</small></div></div></section>
     <section class="series" id="series"><div class="shell"><div class="section-head"><div><p class="eyebrow">Publishing now</p><h2 class="section-title">Editorial series</h2></div><a href="/series.html">View series</a></div><div class="series-grid">
       <a class="world filthy reveal-item" href="/filthy-rich.html"><img src="/assets/filthy-rich/season-01-the-performance-cover-web.jpg" alt="Filthy Rich — Season One: The Performance cover" width="1024" height="1536"><div class="world-copy"><span class="world-label">New original series · Season one</span><h3>Filthy Rich</h3><p>Modern ambition, expensive performances and the stories people tell when appearance becomes identity.</p><div class="world-meta"><span>The Performance</span><span>New episodes weekly or fortnightly</span></div><span class="episode-now">Episode 01 · Financially Delusional</span></div></a>
-      <a class="world reveal-item" href="/truth-files.html"><img src="/images/truth-files.png" alt="Truth Files"><div class="world-copy"><span class="world-label">Faith · Facts · Discernment</span><h3>Truth Files</h3><div class="world-meta"><span>Published cases only</span></div></div></a>
-      <a class="world reveal-item" href="/being-deleted-after-a-relationship-ends.html"><img src="/images/being-human-unfiltered-episode-4.png" alt="Being Human"><div class="world-copy"><span class="world-label">Intimacy · Healing</span><h3>Being Human</h3><div class="world-meta"><span>Published essays only</span></div></div></a>
-      <a class="world reveal-item" href="/afraid-of-ai.html"><img src="/images/optimized/afraid-of-ai-cover.jpg" alt="Afraid of AI"><div class="world-copy"><span class="world-label">Technology · Work · Fear</span><h3>Afraid of AI</h3><div class="world-meta"><span>Published episodes only</span></div></div></a>
+      <a class="world reveal-item" href="/truth-files.html"><img src="/images/truth-files.png" alt="Truth Files"><div class="world-copy"><span class="world-label">Faith · Facts · Discernment</span><h3>Truth Files</h3><div class="world-meta"><span>Published cases only</span></div><span class="btn-read-excerpt" data-excerpt-key="truth-files">Ler Excerto</span></div></a>
+      <a class="world reveal-item" href="/being-deleted-after-a-relationship-ends.html"><img src="/images/being-human-unfiltered-episode-4.png" alt="Being Human"><div class="world-copy"><span class="world-label">Intimacy · Healing</span><h3>Being Human</h3><div class="world-meta"><span>Published essays only</span></div><span class="btn-read-excerpt" data-excerpt-key="being-human">Ler Excerto</span></div></a>
+      <a class="world reveal-item" href="/afraid-of-ai.html"><img src="/images/optimized/afraid-of-ai-cover.jpg" alt="Afraid of AI"><div class="world-copy"><span class="world-label">Technology · Work · Fear</span><h3>Afraid of AI</h3><div class="world-meta"><span>Published episodes only</span></div><span class="btn-read-excerpt" data-excerpt-key="afraid-of-ai">Ler Excerto</span></div></a>
       <a class="world reveal-item" href="/life-is-a-bug.html"><img src="/images/optimized/life-is-a-bug-cover.jpg" alt="Life is a Bug"><div class="world-copy"><span class="world-label">Human glitches</span><h3>Life is a Bug</h3><div class="world-meta"><span>Published episodes only</span></div></div></a>
     </div></div></section>
     <section class="channels shell" id="channels"><div class="section-head"><div><p class="eyebrow">Explore by form</p><h2 class="section-title">The studio</h2></div></div><div class="channel-grid">
@@ -484,9 +646,75 @@
        <article class="album-card reveal-item"><img src="/images/optimized/everybody-acting-insane-cover.png" alt="Everybody Acting Insane album cover"><div class="album-copy"><span class="album-kind">Independent album · RB</span><h3>Everybody Acting Insane</h3><p>An independent Reira Bin release with its own visual and emotional identity.</p><div class="album-actions-row"><div class="album-links"><a href="https://open.spotify.com/album/7l7QUMTgrARJcVeUK719Xf" target="_blank" rel="noopener">Spotify</a><a href="https://music.apple.com/pt/artist/reira-bin/6774230941?l=en-GB" target="_blank" rel="noopener">Apple Music</a></div></div></div></article>
        <article class="album-card reveal-item"><img src="/images/siempre-nosotros/album-cover.png" alt="Siempre Nosotros EP cover"><div class="album-copy"><span class="album-kind">Upcoming independent EP · Spanish</span><h3>Siempre Nosotros</h3><p>Six songs about love in the small things, arriving at the end of August 2026.</p><div class="album-actions-row"><button class="btn-preview" data-src="audio/siempre-nosotros/06-siempre-nosotros.mp3" data-title="Siempre Nosotros"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Ouvir Excerto</button><div class="album-links"><a href="/siempre-nosotros.html">Enter the EP</a><a href="https://music.apple.com/pt/artist/reira-bin/6774230941?l=en-GB" target="_blank" rel="noopener">Apple Music</a></div></div></div></article>
      </div></div></section>
-    <section class="feature" id="experience"><div class="feature-art" role="img" aria-label="Echoes of Childhood album artwork"></div><div class="feature-copy"><p class="eyebrow">A connected experience</p><h2>Echoes of Childhood</h2><p>A memory book and an instrumental album created as two doors into the same emotional world.</p><a class="btn" href="/music.html">Enter the experience</a></div></section>
+    <section class="merch-shelf" id="studio-shop">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Studio merch</p>
+            <h2 class="section-title">Vestuário &amp; Coleções</h2>
+          </div>
+          <a href="/shop.html">Explorar Loja</a>
+        </div>
+        <div class="merch-grid">
+          <article class="merch-card reveal-item">
+            <figure class="merch-image">
+              <img src="/images/shop/new-arrivals/real-is-rare-mockup.png" alt="Love Loudly Real Is Rare Hoodie" loading="lazy">
+            </figure>
+            <div class="merch-copy">
+              <span class="merch-collection">Love Loudly</span>
+              <h3>Real Is Rare Hoodie</h3>
+              <p>Streetwear com capuz em algodão encorpado. Desenhado para quem prefere a verdade à performance.</p>
+              <div class="merch-footer">
+                <span class="merch-price">€55.00</span>
+                <a class="merch-link" href="https://quiet-power-shop.fourthwall.com/en-eur/products/real-is-rare-mockup" target="_blank" rel="noopener">Comprar ↗</a>
+              </div>
+            </div>
+          </article>
+          <article class="merch-card reveal-item">
+            <figure class="merch-image">
+              <img src="/images/shop/new-arrivals/soft-but-not-simple-mockup.png" alt="Soft But Not Simple Tee" loading="lazy">
+            </figure>
+            <div class="merch-copy">
+              <span class="merch-collection">Quiet Power Essentials</span>
+              <h3>Soft But Not Simple Tee</h3>
+              <p>T-shirt premium de corte relaxado. Simplicidade com profundidade e suavidade ao toque.</p>
+              <div class="merch-footer">
+                <span class="merch-price">€28.00</span>
+                <a class="merch-link" href="https://quiet-power-shop.fourthwall.com/en-eur/collections/quiet-power-essentials" target="_blank" rel="noopener">Comprar ↗</a>
+              </div>
+            </div>
+          </article>
+          <article class="merch-card reveal-item">
+            <figure class="merch-image">
+              <img src="/images/shop/quiet-power.png" alt="Speak Less Move Different T-Shirt" loading="lazy">
+            </figure>
+            <div class="merch-copy">
+              <span class="merch-collection">Quiet Power</span>
+              <h3>Speak Less T-Shirt</h3>
+              <p>T-shirt estruturada preta, com a máxima que guia a coleção: Falar Menos, Agir Diferente.</p>
+              <div class="merch-footer">
+                <span class="merch-price">€30.00</span>
+                <a class="merch-link" href="https://quiet-power-shop.fourthwall.com/en-eur/products/quiet-power" target="_blank" rel="noopener">Comprar ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  <!-- Editorial Reading Modal -->
+  <div id="reading-modal" class="reading-modal" aria-hidden="true" role="dialog">
+    <button id="reading-modal-close-btn" class="reading-modal-close" aria-label="Fechar leitor">Fechar &times;</button>
+    <div class="reading-content-wrapper">
+      <span id="reading-kicker" class="reading-kicker">Série Editorial</span>
+      <h2 id="reading-title" class="reading-title">Título</h2>
+      <div id="reading-body" class="reading-body">
+        <!-- Content loaded dynamically -->
+      </div>
+    </div>
+  </div>
   </main>
-  <footer><div class="foot shell"><div><div class="foot-logo">Reira Bin</div><p>Original worlds to read, hear and feel.</p></div><div class="foot-links"><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="https://www.instagram.com/bp.pereirabin/" target="_blank" rel="noopener">Instagram</a><a href="https://www.youtube.com/@REIRA_BIN" target="_blank" rel="noopener">YouTube</a><a href="https://open.spotify.com/artist/0CUmVxNUbIaLa4GMwOoD1C" target="_blank" rel="noopener">Spotify</a><a href="https://music.apple.com/pt/artist/reira-bin/6774230941?l=en-GB" target="_blank" rel="noopener">Apple Music</a></div></div></footer>
+  <footer><div class="foot shell"><div><div class="foot-logo">Reira Bin</div><p>Original worlds to read, hear and feel.</p></div><div class="foot-links"><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="https://www.instagram.com/reira.bin/" target="_blank" rel="noopener">Instagram</a><a href="https://www.youtube.com/@REIRA_BIN" target="_blank" rel="noopener">YouTube</a><a href="https://open.spotify.com/artist/0CUmVxNUbIaLa4GMwOoD1C" target="_blank" rel="noopener">Spotify</a><a href="https://music.apple.com/pt/artist/reira-bin/6774230941?l=en-GB" target="_blank" rel="noopener">Apple Music</a></div></div></footer>
 
   <!-- Floating Audio Player Bar -->
   <div id="audio-player-container" class="audio-player-bar">
@@ -526,13 +754,13 @@
         });
       }
 
-      // 2. Scroll Reveal Observer
+      // 2. Scroll Reveal Observer (Subtle opacity fade)
       const revealItems = document.querySelectorAll('.reveal-item');
       if (revealItems.length > 0 && 'IntersectionObserver' in window) {
         const observerOptions = {
           root: null,
-          rootMargin: '0px 0px -60px 0px',
-          threshold: 0.12
+          rootMargin: '0px 0px -40px 0px',
+          threshold: 0.08
         };
 
         const observer = new IntersectionObserver((entries, obs) => {
@@ -544,14 +772,10 @@
           });
         }, observerOptions);
 
-        revealItems.forEach((item, index) => {
-          // Stagger effect for layout alignment
-          const gridIndex = index % 3;
-          item.style.transitionDelay = `${gridIndex * 80}ms`;
+        revealItems.forEach(item => {
           observer.observe(item);
         });
       } else {
-        // Fallback for older browsers
         revealItems.forEach(item => item.classList.add('is-revealed'));
       }
 
@@ -598,7 +822,6 @@
         }
       }
 
-      // Listen preview events on album grids
       const previewBtns = document.querySelectorAll('.btn-preview');
       previewBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -665,6 +888,74 @@
         const rect = playerTimeline.getBoundingClientRect();
         const pos = (e.clientX - rect.left) / rect.width;
         audio.currentTime = pos * audio.duration;
+      });
+
+      // 4. Reading Modal Excerpts & Controller
+      const excerpts = {
+        'truth-files': {
+          kicker: 'Truth Files · Caso 01',
+          title: 'A Ilusão da Verdade Algorítmica',
+          body: `
+            <p>Passamos horas a deslizar o dedo pelo ecrã, consumindo fragmentos de informação que alimentam as nossas certezas pré-fabricadas. Mas o que acontece quando a verdade deixa de ser um facto e passa a ser apenas o resultado de uma equação matemática concebida para nos manter envolvidos?<\/p>
+            <p>O discernimento na era digital não é apenas uma competência técnica; é um ato de resistência espiritual. Quando tudo à nossa volta nos convida a reagir instantaneamente com base no instinto e na indignação, a única forma de recuperar a lucidez é parar. Silenciar o ruído para escutar o que é real.<\/p>
+            <p>Estes ficheiros não são relatórios de teorias de conspiração ou análises políticas. São registos de discernimento — investigações íntimas sobre o que resta da verdade quando removemos o filtro da conveniência e do ego. É a procura da realidade crua, por mais desconfortável que seja.<\/p>
+          `
+        },
+        'being-human': {
+          kicker: 'Being Human (Unfiltered) · Episódio 04',
+          title: 'Being Deleted After a Relationship Ends — I Don’t Want to Disappear',
+          body: `
+            <p>Há um momento estranho depois de algo terminar. Não é o fim da relação, não é o silêncio, nem sequer a distância. É quando ela te pede para apagares as fotos. Os vídeos. As partes íntimas do que partilharam. Porque "já não faz sentido". Porque ela precisa de "se proteger".<\/p>
+            <p>E tu ficas ali sentado a pensar... Proteger-se de quê? Do facto de termos sido reais? É curioso como algo que antes parecia tão natural, tão próximo, tão nosso, de repente se torna algo que precisa de ser apagado. Como se tivesse sido um erro. Como se nunca devesse ter existido.<\/p>
+            <p>E nesse instante, percebes: não estás apenas a perder a pessoa. Estás a ser removido da história. E eu não queria desaparecer. Não precisava de continuar no presente dela, mas queria existir no que foi verdade. Porque eu fui real.<\/p>
+            <p>Nós não apagamos pessoas. Apenas aprendemos a viver sem as provas físicas da sua existência. Eu não desapareci. Apenas deixei de aparecer onde já não pertencia.<\/p>
+          `
+        },
+        'afraid-of-ai': {
+          kicker: 'Afraid of AI · Episódio 01',
+          title: 'O Medo Humano de Ser Substituído',
+          body: `
+            <p>A inteligência artificial não nos assusta pelo que é capaz de fazer, mas pelo que revela sobre nós. Quando um algoritmo consegue imitar a nossa escrita, a nossa arte ou a nossa lógica profissional, a pergunta que ecoa no silêncio da noite é: o que nos resta?<\/p>
+            <p>Temos medo de nos tornarmos obsoletos, mas o verdadeiro perigo não está no facto de as máquinas pensarem como nós, mas sim no facto de nós começarmos a pensar como elas — funcionando de forma puramente mecânica, otimizada e sem alma.<\/p>
+            <p>Ser humano é ser falível, é carregar a imperfeição como parte da nossa beleza original. O trabalho criativo e literário que expomos neste estúdio é um testemunho disso mesmo: imperfeito, manual, mas carregado de uma intenção que nenhuma máquina conseguirá simular.<\/p>
+          `
+        }
+      };
+
+      const readingModal = document.getElementById('reading-modal');
+      const readingKicker = document.getElementById('reading-kicker');
+      const readingTitle = document.getElementById('reading-title');
+      const readingBody = document.getElementById('reading-body');
+      const readingCloseBtn = document.getElementById('reading-modal-close-btn');
+
+      const excerptBtns = document.querySelectorAll('.btn-read-excerpt');
+      excerptBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+
+          const key = btn.getAttribute('data-excerpt-key');
+          const data = excerpts[key];
+          if (data) {
+            readingKicker.textContent = data.kicker;
+            readingTitle.textContent = data.title;
+            readingBody.innerHTML = data.body;
+            readingModal.classList.add('is-active');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      });
+
+      readingCloseBtn.addEventListener('click', () => {
+        readingModal.classList.remove('is-active');
+        document.body.style.overflow = '';
+      });
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && readingModal.classList.contains('is-active')) {
+          readingModal.classList.remove('is-active');
+          document.body.style.overflow = '';
+        }
       });
     });
   </script>
