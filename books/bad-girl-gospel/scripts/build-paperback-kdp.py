@@ -159,7 +159,23 @@ def build_cover(book, pages: int, output: Path) -> dict[str, float]:
     c = EmbeddedCanvas(str(output), pagesize=(width, height), pageCompression=1)
     c.setTitle(f"{book.title} - KDP Paperback Cover"); c.setAuthor(AUTHOR)
     c.setFillColor(colors.HexColor("#21171a")); c.rect(0, 0, width, height, fill=1, stroke=0)
-    c.drawImage(str(book.cover), front_x, 0, width=TRIM_W + BLEED, height=height, preserveAspectRatio=False, mask="auto")
+    if book.slug == "diana":
+        # Diana's original front artwork contains text close to the outer edge.
+        # Frame the complete artwork inside the 0.375 in KDP safe zone instead
+        # of cropping it, then redraw the author name clearly for QA/OCR.
+        safe_front_w = TRIM_W - 0.75 * inch
+        safe_front_h = safe_front_w * 1.5
+        safe_front_x = front_x + 0.375 * inch
+        safe_front_y = BLEED + (TRIM_H - safe_front_h) / 2
+        c.drawImage(str(book.cover), safe_front_x, safe_front_y, width=safe_front_w, height=safe_front_h, preserveAspectRatio=False, mask="auto")
+        author_band_y = safe_front_y
+        c.setFillColor(colors.HexColor("#21171a"))
+        c.rect(safe_front_x, author_band_y, safe_front_w, 0.78 * inch, fill=1, stroke=0)
+        c.setFillColor(colors.HexColor("#fbf5ed"))
+        c.setFont("Georgia-Bold", 11)
+        c.drawCentredString(safe_front_x + safe_front_w / 2, author_band_y + 0.30 * inch, AUTHOR)
+    else:
+        c.drawImage(str(book.cover), front_x, 0, width=TRIM_W + BLEED, height=height, preserveAspectRatio=False, mask="auto")
     safe_x = back_x + 0.48 * inch
     y = height - 0.88 * inch
     c.setFillColor(colors.HexColor("#fbf5ed")); c.setFont("Georgia-Bold", 20)
