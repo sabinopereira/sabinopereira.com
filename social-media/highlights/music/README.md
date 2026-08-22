@@ -1,6 +1,6 @@
 # Music — Instagram Highlight
 
-Seven-story sequence for `@reira.bin`. Master files are 2160 × 3840 px; `instagram-ready/` contains the 1080 × 1920 px publishing exports.
+Seven-story sequence for `@bp.pereirabin`. Master files are 2160 × 3840 px; `instagram-ready/` contains the 1080 × 1920 px publishing exports.
 
 ## Publishing order
 

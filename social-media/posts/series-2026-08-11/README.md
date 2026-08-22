@@ -1,6 +1,6 @@
 # REIRA BIN Series post — 11 August 2026
 
-- Platform: Instagram (`@reira.bin`)
+- Platform: Instagram (`@bp.pereirabin`)
 - Format: 1080 × 1350
 - Scheduled: 11 August 2026, 00:28 (Europe/Lisbon)
 
@@ -14,6 +14,6 @@ Four original series exploring truth, technology, ambition, memory — and the s
 
 Which world should open first?
 
-Follow @reira.bin and choose in the comments.
+Follow @bp.pereirabin and choose in the comments.
 
 #ReiraBin #OriginalSeries #CreativeUniverse #TruthFiles #AfraidOfAI #FilthyRich #Storytelling

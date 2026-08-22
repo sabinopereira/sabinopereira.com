@@ -1,0 +1,216 @@
+/* Bad Girl Gospel — final editorial polish after the shared site themes. */
+body.book-editorial-page {
+  --bgg-ink: #1d1916;
+  --bgg-muted: #665e56;
+  --bgg-paper: #f3eee5;
+  --bgg-cream: #fbf8f1;
+  --bgg-red: #9d2927;
+  --bgg-gold: #b68135;
+  --bgg-line: rgba(29, 25, 22, 0.16);
+}
+
+/* The shared studio stylesheet turns the header dark, so its contents must
+   explicitly follow the same high-contrast palette. */
+body.book-editorial-page .book-global-header {
+  background: rgba(10, 19, 17, 0.97) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+body.book-editorial-page .book-global-brand,
+body.book-editorial-page .book-global-links,
+body.book-editorial-page .book-global-links a {
+  color: #f8f3e9 !important;
+}
+
+body.book-editorial-page .book-global-brand small,
+body.book-editorial-page .book-global-links a:hover,
+body.book-editorial-page .book-global-links a:focus-visible,
+body.book-editorial-page .book-global-links a[aria-current="page"] {
+  color: #c64a3c !important;
+}
+
+body.book-editorial-page .book-global-links .book-contact {
+  border-color: rgba(248, 243, 233, 0.5) !important;
+  color: #f8f3e9 !important;
+}
+
+/* Restore readable colors for components originally designed for a dark page. */
+body.book-editorial-page .quote-panel blockquote,
+body.book-editorial-page .excerpt,
+body.book-editorial-page .tracklist,
+body.book-editorial-page .series-card h3,
+body.book-editorial-page .series-preview,
+body.book-editorial-page .series-status,
+body.book-editorial-page .meta-line {
+  color: var(--bgg-ink) !important;
+}
+
+body.book-editorial-page .series-kicker,
+body.book-editorial-page .series-card [class*="kicker"],
+body.book-editorial-page .tracklist .bonus {
+  color: var(--bgg-red) !important;
+}
+
+body.book-editorial-page .section,
+body.book-editorial-page .hero {
+  border-bottom: 1px solid var(--bgg-line) !important;
+}
+
+/* Shorter, more intentional rhythm. */
+body.book-editorial-page .hero {
+  min-height: 0 !important;
+  padding-top: clamp(42px, 5vw, 68px) !important;
+  padding-bottom: clamp(48px, 5.5vw, 76px) !important;
+}
+
+body.book-editorial-page .section {
+  padding-top: clamp(58px, 6.5vw, 84px) !important;
+  padding-bottom: clamp(58px, 6.5vw, 84px) !important;
+}
+
+body.book-editorial-page .section-head {
+  grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.72fr);
+  gap: clamp(28px, 5vw, 68px);
+  align-items: center;
+  margin-bottom: 34px;
+}
+
+body.book-editorial-page .section-head h2,
+body.book-editorial-page .album-copy h2 {
+  max-width: 760px;
+  font-size: clamp(44px, 5.4vw, 72px);
+  line-height: 0.98;
+  overflow-wrap: anywhere;
+}
+
+body.book-editorial-page .section-head p {
+  max-width: 560px;
+}
+
+body.book-editorial-page .quote-panel {
+  gap: 18px;
+  padding: clamp(28px, 4vw, 46px) !important;
+}
+
+body.book-editorial-page .quote-panel blockquote {
+  font-size: clamp(34px, 4.2vw, 54px);
+}
+
+/* Four books belong on one deliberate shelf instead of leaving an orphaned
+   fourth card and a large empty right-hand area. */
+body.book-editorial-page .series-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+body.book-editorial-page .series-card {
+  gap: 15px;
+  padding: 14px;
+  border-color: var(--bgg-line) !important;
+  background: rgba(251, 248, 241, 0.68) !important;
+}
+
+body.book-editorial-page .series-card h3 {
+  font-size: clamp(22px, 2vw, 28px);
+  overflow-wrap: anywhere;
+}
+
+body.book-editorial-page .series-card p,
+body.book-editorial-page .series-preview {
+  font-size: 14px;
+  line-height: 1.52;
+}
+
+body.book-editorial-page .series-preview {
+  border-left-color: rgba(157, 41, 39, 0.38);
+}
+
+body.book-editorial-page .series-status {
+  border-color: rgba(157, 41, 39, 0.34);
+  background: rgba(157, 41, 39, 0.06);
+}
+
+body.book-editorial-page .album-block {
+  align-items: start;
+}
+
+body.book-editorial-page .album-cover {
+  max-width: 400px;
+}
+
+body.book-editorial-page .tracklist li {
+  border-bottom-color: var(--bgg-line);
+}
+
+@media (max-width: 1040px) {
+  body.book-editorial-page .series-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  body.book-editorial-page .book-global-nav,
+  body.book-editorial-page .book-global-links,
+  body.book-editorial-page .page,
+  body.book-editorial-page .section,
+  body.book-editorial-page .section-head,
+  body.book-editorial-page .section-head > *,
+  body.book-editorial-page .series-card,
+  body.book-editorial-page .series-copy,
+  body.book-editorial-page .album-copy {
+    min-width: 0;
+  }
+
+  body.book-editorial-page .book-global-brand {
+    color: #f8f3e9 !important;
+  }
+
+  body.book-editorial-page .section-head,
+  body.book-editorial-page .series-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body.book-editorial-page .section-head {
+    gap: 16px;
+    margin-bottom: 26px;
+  }
+
+  body.book-editorial-page .section-head h2,
+  body.book-editorial-page .album-copy h2 {
+    max-width: 100%;
+    font-size: clamp(36px, 11vw, 46px);
+  }
+
+  body.book-editorial-page .series-card {
+    grid-template-columns: 112px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  body.book-editorial-page .series-cover {
+    max-width: 112px;
+  }
+
+  body.book-editorial-page .series-preview {
+    display: none;
+  }
+
+  body.book-editorial-page .section {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+}
+
+@media (max-width: 430px) {
+  body.book-editorial-page .book-global-links {
+    gap: 10px;
+    font-size: 9px;
+  }
+
+  body.book-editorial-page .series-card {
+    grid-template-columns: 96px minmax(0, 1fr);
+  }
+
+  body.book-editorial-page .series-cover {
+    max-width: 96px;
+  }
+}
