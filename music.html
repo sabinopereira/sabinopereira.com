@@ -25,14 +25,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: var(--studio-paper);
-      --panel: var(--studio-cream);
-      --text: var(--studio-ink);
-      --soft: #555e6b;
-      --muted: #726b64;
-      --gold: var(--studio-accent);
-      --gold-2: var(--studio-accent);
-      --line: var(--studio-line);
+      --bg: #080604;
+      --panel: #11100e;
+      --text: #f7ead8;
+      --soft: #c8b397;
+      --muted: #8d775b;
+      --gold: #d5a657;
+      --gold-2: #efcb7c;
+      --line: rgba(247, 234, 216, 0.14);
       --max: 1180px;
     }
 
@@ -42,7 +42,9 @@
       margin: 0;
       min-height: 100vh;
       color: var(--text);
-      background: var(--bg);
+      background:
+        radial-gradient(circle at 52% 0%, rgba(213, 166, 87, 0.2), transparent 420px),
+        linear-gradient(180deg, #050403 0%, #1a1109 52%, #060403 100%);
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
@@ -325,7 +327,7 @@
   <header class="studio-header">
     <nav class="studio-nav" aria-label="Main navigation">
       <a class="studio-brand" href="/">Reira Bin<small>Creative Studio</small></a>
-      <div class="studio-links"><a href="/series.html">Series</a><a href="/books.html">Books</a><a href="/music.html" aria-current="page">Music</a><a href="/beyond-the-story.html">Podcast</a><a href="/shop.html">Shop</a><a href="/experiences.html">Experiences</a><a href="/about.html">About</a><a class="studio-contact" href="/contact.html">Contact</a></div>
+      <div class="studio-links"><a href="/series.html">Series</a><a href="/books.html">Books</a><a href="/music.html" aria-current="page">Music</a><a href="/beyond-the-story.html">Podcast</a><a href="/about.html">About</a><a href="/shop.html">Shop</a><a class="studio-contact" href="/contact.html">Contact</a></div>
     </nav>
   </header>
 

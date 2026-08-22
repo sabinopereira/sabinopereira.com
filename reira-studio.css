@@ -1,14 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap");
 
 :root {
-  --studio-ink: #172635; /* Navy escuro */
-  --studio-night: #111a24; /* Night escuro */
-  --studio-sea: #2a3d4f; /* Azul-acinzentado */
-  --studio-mist: #d8dde4; /* Azul-névoa claro */
-  --studio-paper: #faf5ec; /* Creme de fundo */
-  --studio-cream: #fcfbf9; /* Off-white */
-  --studio-line: rgba(23, 38, 53, 0.08); /* Linhas finas */
-  --studio-accent: #bda282; /* Bronze / Dourado */
+  --studio-ink: #10283b;
+  --studio-night: #0d2435;
+  --studio-sea: #5f7e91;
+  --studio-mist: #d9e3e5;
+  --studio-paper: #f2ede2;
+  --studio-cream: #fbf7ef;
+  --studio-line: rgba(16, 40, 59, .17);
 }
 
 body {
@@ -42,7 +41,7 @@ h1, h2, h3, blockquote {
   top: 0;
   z-index: 50;
   border-bottom: 1px solid var(--studio-line);
-  background: rgba(250, 245, 236, .91);
+  background: rgba(242, 237, 226, .91);
   color: var(--studio-ink);
   backdrop-filter: blur(18px);
 }
