@@ -1,0 +1,8 @@
+Campaign: Built by Grace Reflections, Sunday Faith & Grace
+Exact copy: THIS SUNDAY / May God give rest to the part of you that has been strong all week
+Source artwork: built by grace reflections.png, supplied by the user
+Exports:
+- built-by-grace-sunday-template-1080x1920.png, vertical master for TikTok, YouTube Shorts and Instagram Reels
+- built-by-grace-sunday-feed-1080x1350.png, Instagram feed portrait
+Composition: deterministic typography and layout using the supplied artwork
+AI image generation: none

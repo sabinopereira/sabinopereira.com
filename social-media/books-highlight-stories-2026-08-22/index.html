@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>REIRA BIN — Books Highlight</title>
+<style>
+  *{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{font-family:Georgia,"Times New Roman",serif;color:#171512;background:#efe3cf}
+  .page{position:relative;width:1080px;height:1920px;padding:115px 92px 92px;background:
+    radial-gradient(circle at 18% 12%,rgba(255,255,255,.58),transparent 34%),
+    radial-gradient(circle at 84% 86%,rgba(116,31,24,.08),transparent 28%),
+    repeating-linear-gradient(0deg,rgba(65,45,25,.018) 0,rgba(65,45,25,.018) 1px,transparent 1px,transparent 4px),#efe3cf}
+  .page:before,.page:after{content:"";position:absolute;background:#80251d;opacity:.9}
+  .page:before{width:230px;height:16px;left:-35px;top:232px;transform:rotate(-3deg)}
+  .page:after{width:150px;height:10px;right:-25px;bottom:250px;transform:rotate(2deg)}
+  .brand{font:600 21px/1 Arial,sans-serif;letter-spacing:9px;text-transform:uppercase}
+  .number{position:absolute;right:92px;top:114px;font:italic 21px Georgia;color:#80251d}
+  .rule{width:82px;height:3px;background:#80251d;margin-top:27px}
+  .footer{position:absolute;left:92px;right:92px;bottom:82px;display:flex;justify-content:space-between;align-items:center;font:600 18px/1 Arial,sans-serif;letter-spacing:5px;text-transform:uppercase}
+  .footer i{font-family:Georgia;font-weight:400;letter-spacing:0;text-transform:none;color:#80251d}
+
+  .intro{position:absolute;left:92px;right:92px;top:50%;transform:translateY(-52%)}
+  .kicker{font:600 20px/1.3 Arial,sans-serif;letter-spacing:5px;text-transform:uppercase;color:#80251d;margin-bottom:42px}
+  h1{font-weight:400;font-size:91px;line-height:1.02;letter-spacing:-2px;margin:0 0 36px}
+  h1 em{color:#80251d;font-weight:400}
+  .lead{font-size:39px;line-height:1.38;max-width:850px;margin:0}
+  .small{font:500 21px/1.5 Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:#5d554a;margin-top:43px}
+  .door-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:70px}
+  .door-grid span{height:160px;border:1px solid rgba(128,37,29,.45);display:flex;align-items:center;justify-content:center;font:500 18px/1.3 Arial,sans-serif;letter-spacing:3px;text-align:center;text-transform:uppercase;background:rgba(255,255,255,.2)}
+
+  .book-layout{position:absolute;left:92px;right:92px;top:275px;bottom:170px;display:grid;grid-template-rows:930px 1fr;gap:58px}
+  .cover-stage{display:flex;align-items:center;justify-content:center;position:relative}
+  .cover-stage:before{content:"";position:absolute;width:670px;height:790px;background:rgba(74,47,25,.15);filter:blur(42px);border-radius:50%}
+  .cover{position:relative;display:block;max-height:930px;max-width:760px;width:auto;height:auto;object-fit:contain;box-shadow:0 32px 70px rgba(36,22,12,.30),0 4px 12px rgba(36,22,12,.16)}
+  .cover.square{width:760px;height:760px;object-fit:contain;background:#171512}
+  .copy{display:grid;grid-template-columns:1fr 240px;gap:38px;align-items:end;border-top:1px solid rgba(23,21,18,.22);padding-top:42px}
+  .copy h1{font-size:63px;line-height:1.01;margin-bottom:24px}
+  .copy .kicker{font-size:17px;margin-bottom:22px;letter-spacing:4px}
+  .description{font-size:29px;line-height:1.35;margin:0;max-width:630px}
+  .cta{align-self:end;justify-self:end;width:230px;min-height:92px;border:2px solid #80251d;display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;font:600 18px/1.25 Arial,sans-serif;letter-spacing:4px;text-transform:uppercase;color:#80251d;background:rgba(255,255,255,.16)}
+
+  .outro{position:absolute;left:92px;right:92px;top:50%;transform:translateY(-52%)}
+  .outro .cta{margin-top:68px;width:390px;min-height:104px;justify-self:start}
+  .outro .small{max-width:620px}
+</style>
+</head>
+<body><main id="app"></main>
+<script>
+const pages=[
+ {type:'intro',k:'The library',h:'Stories for every<br>kind of <em>journey</em>',l:'Faith. Memory. Survival. Silence. Satire. Strategy.',s:'Six books. Six different doors.'},
+ {type:'book',k:'Memory · Wonder · Home',h:'Echoes of Childhood',l:'A memory book for the moments that made us.',img:'../../images/echoes-of-childhood/memory-book-cover.jpg',cta:'Explore'},
+ {type:'book',k:'Four Confessions · One Gospel',h:'Bad Girl Gospel',l:'Four women. Four labels. Four stories beneath them.',img:'../../images/bad-girl-gospel-book-cover.jpg',cta:'Explore'},
+ {type:'book',k:'Faith · Healing · Family',h:'Built by Grace',l:'A prayerful journey through healing, love and home.',img:'../../images/built-by-grace-cover.jpg',square:true,cta:'Explore'},
+ {type:'book',lang:'pt',k:'Crónicas · Humor · Absurdo',h:'Livro de Reclamações para o Mundo',l:'Trinta crónicas sobre os absurdos da vida moderna.',img:'../../images/optimized/livro-reclamacoes-cover.jpg',cta:'Explorar'},
+ {type:'book',k:'Stillness · Return · Self',h:'A Journey Back to Silence',l:'A quiet return to yourself after the world becomes too loud.',img:'../../books/a-journey-back-to-silence/assets/cover/a-journey-back-to-silence-book-cover.png',cta:'Explore'},
+ {type:'book',lang:'pt',k:'Estratégia · Pressão · Sobrevivência',h:'Xadrez no Comando',l:'O xadrez como metáfora para as batalhas invisíveis da vida.',img:'../../images/optimized/xadrez-no-comando-cover.png',cta:'Explorar'},
+ {type:'outro',k:'The complete catalogue',h:'Choose your<br>next <em>world</em>',l:'Every book is another door.',s:'Read the story that speaks to you first.',cta:'Explore all books'}
+];
+const p=Math.max(1,Math.min(8,Number(new URLSearchParams(location.search).get('p')||1)));const d=pages[p-1];
+const shell=(content)=>`<section class="page"><div class="brand">REIRA BIN</div><div class="number">0${p}</div><div class="rule"></div>${content}<div class="footer"><span>BOOKS</span><i>Original worlds to read, hear and feel.</i></div></section>`;
+let content='';
+if(d.type==='intro') content=`<div class="intro"><div class="kicker">${d.k}</div><h1>${d.h}</h1><p class="lead">${d.l}</p><div class="small">${d.s}</div><div class="door-grid"><span>Memory</span><span>Faith</span><span>Survival</span><span>Silence</span><span>Satire</span><span>Strategy</span></div></div>`;
+if(d.type==='book') content=`<div class="book-layout"><div class="cover-stage"><img class="cover${d.square?' square':''}" src="${d.img}" alt=""></div><div class="copy"><div><div class="kicker">${d.k}</div><h1>${d.h}</h1><p class="description">${d.l}</p></div><div class="cta">${d.cta}</div></div></div>`;
+if(d.type==='outro') content=`<div class="outro"><div class="kicker">${d.k}</div><h1>${d.h}</h1><p class="lead">${d.l}</p><div class="cta">${d.cta}</div><div class="small">${d.s}</div></div>`;
+document.getElementById('app').innerHTML=shell(content);
+</script></body></html>

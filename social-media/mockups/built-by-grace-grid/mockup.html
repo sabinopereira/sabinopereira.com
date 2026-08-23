@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>REIRA BIN Instagram Grid Mockup</title>
+<style>
+  *{box-sizing:border-box} html,body{margin:0;background:#f7f7f7;color:#111;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  .page{width:1536px;min-height:1120px;margin:0 auto;background:#fff;padding:44px 128px 70px}
+  .profile{display:grid;grid-template-columns:260px 1fr;gap:76px;align-items:center;max-width:1050px;margin:0 auto 34px}
+  .avatar{width:190px;height:190px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px #ddd}
+  .top{display:flex;align-items:center;gap:18px;margin-bottom:22px}.handle{font-size:29px;font-weight:500}.verified{font-size:20px}.button{background:#efefef;border-radius:9px;padding:10px 20px;font-size:15px;font-weight:600}
+  .stats{display:flex;gap:40px;font-size:17px;margin-bottom:22px}.stats b{font-weight:650}.name{font-size:17px;font-weight:650;margin-bottom:8px}.bio{font-size:16px;line-height:1.48}.link{font-weight:650;margin-top:4px}
+  .highlights{display:flex;justify-content:center;gap:46px;margin:38px auto 45px;max-width:1150px}
+  .highlight{text-align:center;font-size:14px;font-weight:600}.circle{width:106px;height:106px;border-radius:50%;padding:6px;border:1px solid #ddd;margin-bottom:10px;background:#fff}.inner{width:100%;height:100%;border-radius:50%;border:1px solid #8d271d;background:#efe0c7;display:grid;place-items:center;font-family:Georgia,serif;font-size:15px;letter-spacing:2px;color:#17120f;position:relative}.inner:after{content:"";position:absolute;width:32px;height:1px;background:#8d271d;top:62%}
+  .tabs{height:54px;border-top:1px solid #ddd;display:flex;justify-content:center;gap:90px;align-items:center;color:#777}.tabs span:first-child{color:#111;border-top:2px solid #111;height:54px;display:grid;place-items:center;margin-top:-2px}
+  .grid{max-width:1260px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.tile{aspect-ratio:1/1;overflow:hidden;position:relative;background:#eee}
+  .booktile{background:#efe1c8;display:grid;place-items:center}.booktile:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 25% 20%,rgba(255,255,255,.58),transparent 42%),linear-gradient(135deg,rgba(112,58,28,.10),transparent 38%)}.booktile img{width:auto;height:auto;max-width:61%;max-height:91%;object-fit:contain;box-shadow:0 15px 35px rgba(38,23,12,.25);position:relative}
+  .quote{background:#f2e7d3;display:flex;align-items:center;justify-content:center;text-align:center;padding:46px}.quote:before{content:"";position:absolute;inset:20px;border:1px solid rgba(126,74,37,.18)}.quote .path{position:absolute;width:170px;height:170px;border-radius:50%;border:1px solid rgba(172,122,64,.13);transform:rotate(-18deg)}.quote blockquote{margin:0;position:relative;font-family:Georgia,"Times New Roman",serif;font-size:30px;line-height:1.28;letter-spacing:.2px;color:#1f1914}.quote .source{display:block;margin-top:28px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:11px;letter-spacing:3.2px;color:#853126}.album img{width:100%;height:100%;object-fit:cover}.reel{position:absolute;right:17px;top:15px;color:#fff;font-size:25px;text-shadow:0 2px 8px #000}
+  .note{max-width:1260px;margin:20px auto 0;text-align:center;color:#696969;font-size:14px;letter-spacing:.2px}.note b{color:#111}
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="profile">
+    <img class="avatar" src="profile.png" alt="REIRA BIN profile">
+    <div>
+      <div class="top"><span class="handle">reira.bin</span><span class="verified">◉</span><span class="button">Edit profile</span><span class="button">View archive</span></div>
+      <div class="stats"><span><b>4</b> posts</span><span><b>19</b> followers</span><span><b>34</b> following</span></div>
+      <div class="name">REIRA BIN / RB</div>
+      <div class="bio">Music. Books. Original Worlds.<br>Creative merch, stories &amp; sound.<br>Original worlds to read, hear and feel.</div>
+      <div class="link">↗ www.sabinopereira.com and 4 more</div>
+    </div>
+  </section>
+  <section class="highlights">
+    <div class="highlight"><div class="circle"><div class="inner">MUSIC</div></div>Music</div>
+    <div class="highlight"><div class="circle"><div class="inner">BOOKS</div></div>Books</div>
+    <div class="highlight"><div class="circle"><div class="inner">START</div></div>Start Here</div>
+    <div class="highlight"><div class="circle"><div class="inner">SERIES</div></div>Series</div>
+    <div class="highlight"><div class="circle"><div class="inner">SHOP</div></div>Shop</div>
+    <div class="highlight"><div class="circle"><div class="inner">PODCAST</div></div>Podcast</div>
+  </section>
+  <div class="tabs"><span>▦ POSTS</span><span>▣ REELS</span><span>◇ TAGGED</span></div>
+  <section class="grid">
+    <div class="tile booktile"><img src="book.png" alt="Built by Grace book"></div>
+    <div class="tile quote"><div class="path"></div><blockquote>“God is not ashamed<br>of unfinished hearts.<br>He knows how to build<br>with broken pieces.”<span class="source">BUILT BY GRACE</span></blockquote></div>
+    <div class="tile album"><img src="album.jpg" alt="Built by Grace album"><span class="reel">▻</span></div>
+  </section>
+  <div class="note"><b>Visual order:</b> Book · Quote · Album Reel</div>
+</main>
+</body>
+</html>

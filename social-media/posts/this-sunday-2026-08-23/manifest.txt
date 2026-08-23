@@ -1,0 +1,7 @@
+Asset: this-sunday-02-prayer-instagram-1080x1350.png
+Format: Instagram portrait post, 1080 x 1350 pixels
+Copy: Approved by user and composed deterministically
+Photo: cottonbro studio, Pexels photo 6284267
+Source: https://www.pexels.com/photo/a-woman-in-black-long-sleeves-praying-with-her-eyes-closed-6284267/
+Method: Real stock photograph with deterministic typography and layout
+AI image generation: None
