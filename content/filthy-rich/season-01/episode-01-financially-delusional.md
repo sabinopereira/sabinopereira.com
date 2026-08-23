@@ -4,452 +4,206 @@ Season One — The Performance
 
 Episode 01 — Financially Delusional
 
-Daniel had never missed a payment.
+A practical guide to spending money you will definitely have later.
 
-He had postponed several.
+## Your financial position
 
-There was a difference.
+Income: Respectable
 
-At least, there was when he explained it.
+Expenses: Visionary
 
-The new credit card arrived on a Tuesday morning in a black box with silver lettering and a piece of paper congratulating him on being selected.
+Savings: Temporarily unavailable
 
-Daniel read the word selected twice.
+Credit limit: Emotionally supportive
 
-He had applied online three weeks earlier.
+Future earnings: Extremely confident
 
-Still, selection was selection.
+You are not living beyond your means.
 
-The card was metal.
+You are living ahead of them.
 
-It made a satisfying sound when he placed it on the kitchen counter.
+The money will catch up.
 
-A serious sound.
+It knows the address.
 
-The kind of sound money made when it no longer needed to explain itself.
+## Essential vocabulary
 
-Daniel turned it over in his hand.
+### Debt
 
-Zero percent interest for twelve months.
+An unnecessarily negative word for things you already own.
 
-Double reward points on travel, dining and professional expenses.
+### Investment
 
-A credit limit high enough to feel like trust.
+Anything expensive that makes you feel briefly serious.
 
-“It’s not debt,” he said.
+### Cash flow
 
-The apartment was empty.
+Money arriving and leaving.
 
-“It’s runway.”
+Mostly leaving.
 
-He said it again.
+### Personal brand
 
-The second version sounded more responsible.
+The reason your chair costs more than your desk.
 
-Daniel worked in marketing for a software company.
+### Professional expense
 
-He was good at it.
+Something visible during video calls.
 
-He understood attention, positioning and the quiet power of presenting an unfinished thing as if everyone else had arrived late.
+### Lifestyle inflation
 
-His salary was respectable.
+A term used to describe other people’s spending.
 
-His expenses were ambitious.
+### Financial freedom
 
-For the past eighteen months, Daniel had been building what he called his personal brand.
+The freedom to avoid opening the banking app.
 
-The brand had not yet produced income.
+## The investment portfolio
 
-It had produced a logo.
+Your portfolio may include:
 
-The first thing he bought with the new card was a chair.
+- An Italian chair that clients will notice subconsciously.
+- A microphone for the podcast you are researching.
+- A camera that creates executive presence.
+- A watch that suggests your time has value.
+- A course about turning expertise into income.
+- Another course about finishing the first course.
+- A coffee machine for morning-routine content.
+- A leather notebook because successful ideas prefer paper.
+- A metal credit card that makes a reassuring sound.
 
-It cost twelve hundred dollars.
+None of these purchases has produced income.
 
-The chair was Italian, although Daniel could not remember which part of Italy had designed it.
+Several have produced content.
 
-It was low, cream and uncomfortable in a way that suggested confidence.
+Content is capital.
 
-He placed it behind his desk, exactly where it would appear during video calls.
+This sentence is not recognised by most banks.
 
-Clients trusted people who had considered their chairs.
+## Current strategy
 
-“You already have a chair,” his sister Maya said when she visited that evening.
+Spend today as the person you expect to become tomorrow.
 
-“That’s a dining chair.”
+When tomorrow arrives, move the expectation forward.
 
-“You sit on it.”
+This creates momentum.
 
-“That’s not the same thing.”
+It does not create money, but the language is better.
 
-Maya looked at the new chair.
+## Warning signs that everything is going well
 
-“Is this one better for sitting?”
+- Your card is declined because of fraud protection.
+- Your rent is late because of a temporary liquidity event.
+- Your savings are low because you believe in yourself.
+- Your accountant lacks vision.
+- Your friends are thinking too small.
+- Your bank only sees numbers.
+- You see potential.
+- The payment reminder arrived during a manifestation exercise.
 
-“It’s not really about sitting.”
+Do not panic.
 
-Daniel adjusted the angle.
+Panic is a scarcity mindset.
 
-The chair looked more expensive when it faced slightly away from the light.
+## Monthly statement
 
-“It’s part of the environment.”
+### Chair — $1,200
 
-“What environment?”
+Supports posture, authority and one jacket.
 
-“The one I’m building.”
+### Camera — $900
 
-Maya looked around.
+Captured eleven videos. Published two.
 
-The apartment had one lamp, no curtains and three unopened boxes marked ESSENTIAL BRAND EQUIPMENT.
+### Lighting — $340
 
-“What exactly are you building?”
+Made the unpaid invoice look beautiful.
 
-Daniel smiled.
+### Courses and subscriptions — $684
 
-“Trust.”
+Knowledge acquired: Significant
 
-The chair appeared in his next video call.
+Lessons completed: Emotionally sufficient
 
-Nobody mentioned it.
+### Industry dinner — $275
 
-Daniel considered this a success.
+New contacts: Two
 
-Premium things were not supposed to ask for attention.
+Follow requests: One
 
-They were supposed to be noticed subconsciously.
+Revenue: Impolite question
 
-That Friday, he ordered a new camera.
+Total invested in future self: $3,399
 
-His laptop camera worked perfectly.
+Amount earned by future self: Still building
 
-That was not the point.
+## Frequently avoided questions
 
-The new one produced cinematic depth.
+### Can you afford it?
 
-Daniel had watched six reviews.
+This is not the useful question.
 
-One reviewer had used the phrase executive presence.
+### What is the useful question?
 
-The camera cost nine hundred dollars.
+Does it align with where you are going?
 
-The lens cost another four hundred.
+### Where are you going?
 
-The lighting kit was on sale.
+That is currently evolving.
 
-Not buying it would have been wasteful.
+### When will it become profitable?
 
-When Maya called again, Daniel was sitting between two softbox lights in a T-shirt he had changed three times.
+Personal brands take time.
 
-“You look like you’re being interviewed about a crime,” she said.
+### How much time?
 
-“It’s a test setup.”
+More than the interest-free period.
 
-“For what?”
+### How much do you owe?
 
-“Content.”
+You are measuring the past.
 
-“What content?”
+## Responsible decision-making
 
-Daniel looked at the camera.
+Before buying anything, ask:
 
-“That’s still evolving.”
+1. Will this improve my life?
+2. Will this improve how my life appears?
+3. Can the second answer be described as the first?
+4. Are monthly payments available?
 
-Over the next month, Daniel upgraded quietly.
+If yes, proceed thoughtfully.
 
-A microphone because bad sound damaged credibility.
+Use the metal card.
 
-A watch because people noticed wrists during hand gestures.
+The sound is part of the strategy.
 
-A coffee machine because morning-routine content performed well.
+## Twelve-month projection
 
-A leather notebook because writing ideas into his phone looked distracted.
+Current balance: Concerning
 
-Each purchase had a purpose.
+Projected balance: Transformational
 
-Each purpose had a sentence.
+Evidence: Mindset
 
-Daniel rarely bought anything until he could explain why it was necessary.
+Assumptions: All of them
 
-The explanations usually arrived before the money did.
+Risk level: Poorly lit
 
-At work, Daniel gave excellent advice.
+Expected return: A better version of you
 
-He told junior colleagues to avoid lifestyle inflation.
-
-He told one of them not to finance a car just because the monthly payment looked manageable.
-
-“Monthly payments hide the real cost,” Daniel said.
-
-The junior colleague nodded and wrote it down.
-
-Daniel liked being written down.
-
-At lunch, a coworker named Leah asked him how he managed money so confidently.
-
-“I think long-term,” he said.
-
-He did.
-
-Usually about how things would look six months from now.
-
-That afternoon, Daniel received an email inviting him to a private industry dinner.
-
-The event was not private.
-
-It had a website.
-
-But the restaurant was expensive, the guest list included two people with large online followings, and the invitation used his first name.
-
-Daniel read it three times.
-
-The dress code was Elevated Business Casual.
-
-His current wardrobe was business casual.
-
-There was no elevation.
-
-At six, he entered a menswear store.
-
-A salesperson approached him.
-
-“Looking for anything specific?”
-
-“Something understated.”
-
-The salesperson nodded.
-
-“Of course.”
-
-Daniel tried on a charcoal suit.
-
-It fit perfectly.
-
-This concerned him.
-
-Perfect things were rarely affordable.
-
-“How much?” he asked.
-
-The salesperson told him.
-
-Daniel kept looking at himself in the mirror.
-
-The suit changed his posture.
-
-It made his apartment seem temporary.
-
-“It’s an investment piece,” the salesperson said.
-
-Daniel smiled.
-
-He appreciated professional language.
-
-He paid with the metal card.
-
-The sound was excellent.
-
-At home, Maya was sitting at the kitchen counter when he arrived.
-
-She looked at the garment bag.
-
-“What did you buy?”
-
-“A suit.”
-
-“You own suits.”
-
-“Not for this room.”
-
-“What room?”
-
-“The room I’m moving into.”
-
-Maya looked at him.
-
-“Do you mean a restaurant?”
-
-Daniel placed the garment bag carefully over the new chair.
-
-“It’s about positioning.”
-
-“How much was it?”
-
-“That’s not the useful question.”
-
-“It’s the first useful question.”
-
-Daniel opened the refrigerator.
-
-There was mustard, sparkling water and half a lemon.
-
-He closed it.
-
-“The suit will pay for itself.”
-
-“How?”
-
-“Access.”
-
-“To food?”
-
-“To opportunity.”
-
-Maya watched him place a delivery order on his phone.
-
-His card was declined.
-
-Daniel frowned.
-
-He tried again.
-
-Declined.
-
-Maya said nothing.
-
-Daniel switched cards.
-
-The payment went through.
-
-“Bank issue,” he said.
-
-“Of course.”
-
-The dinner took place on Friday.
-
-Daniel arrived twelve minutes late.
-
-Not because he was delayed.
-
-Because arriving first looked eager.
-
-The restaurant was dark, polished and designed to make every table feel unavailable.
-
-Daniel handed his coat to the host.
-
-The suit performed beautifully.
-
-At the table, he spoke about brand equity, long-term value and the danger of confusing visibility with credibility.
-
-People listened.
-
-One of the influencers asked for his opinion on a campaign.
-
-Daniel gave a good answer.
-
-A genuinely good one.
-
-For twenty minutes, the future looked close enough to invoice.
-
-Then the bill arrived.
-
-The group had ordered freely.
-
-Daniel had ordered carefully.
-
-This did not matter.
-
-Someone suggested splitting the total evenly.
-
-Everyone agreed quickly.
-
-Daniel looked at the number.
-
-It was not impossible.
-
-It was simply located in a different version of the week.
-
-He placed the metal card on the tray.
-
-It made the same serious sound.
-
-The waiter returned two minutes later.
-
-“There seems to be an issue with this one.”
-
-The table remained quiet for half a second.
-
-Daniel smiled.
-
-“Fraud protection.”
-
-He took out another card.
-
-The second card worked.
-
-Barely.
-
-The conversation moved on.
-
-Nobody appeared to notice.
-
-Daniel noticed everyone not noticing.
-
-Outside the restaurant, one of the influencers shook his hand.
-
-“Great meeting you,” he said. “You’re clearly doing very well.”
-
-Daniel smiled.
-
-“Building.”
-
-The word was useful.
-
-It could mean progress.
-
-It could mean unfinished.
-
-It could mean there were still walls missing.
-
-On the ride home, Daniel opened his banking app.
-
-The balance loaded slowly.
-
-He turned down the brightness.
-
-The suit lay beside him in the back seat, still holding the shape of the evening.
-
-Three card payments were due before payday.
-
-The rent was due Monday.
-
-The camera had not earned anything.
-
-The chair had not earned anything.
-
-The dinner had produced two new contacts, one follow request and a photograph in which Daniel looked exactly like the person he planned to become.
-
-He opened the photograph.
-
-It was good.
-
-Better than good.
-
-He looked established.
+The future version of you is successful.
 
 Calm.
 
-Expensive in a quiet way.
+Established.
 
-Daniel posted it.
+Financially disciplined.
 
-Always grateful to be in rooms where the conversation is bigger than the table.
+He understands why every purchase was necessary.
 
-He watched the first likes arrive.
+He is grateful that you believed in him early.
 
-At home, Daniel hung the suit carefully outside the wardrobe.
+He has not contributed anything yet.
 
-The wardrobe was too full.
-
-He sat in the Italian chair.
-
-It remained uncomfortable.
-
-His phone displayed a notification.
-
-Payment due in 3 days.
-
-Daniel dismissed it.
-
-Three days was plenty of time.
-
-By then, he planned to be someone else.
+But he looks excellent in the chair.

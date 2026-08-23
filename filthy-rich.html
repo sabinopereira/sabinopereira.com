@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Filthy Rich — An Original Series by Sabino Pereira</title>
-  <meta name="description" content="Filthy Rich is an original editorial series about modern ambition, expensive performances, and the stories people tell when appearance becomes identity.">
+  <meta name="description" content="Filthy Rich is a modern social satire about the language, habits and small performances people use to appear successful, desirable and completely under control.">
   <meta name="author" content="Sabino Pereira">
   <meta name="theme-color" content="#0b151c">
   <link rel="canonical" href="https://sabinopereira.com/filthy-rich.html">
@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet">
   <style>
-    :root{--night:#09151d;--slate:#22343f;--gold:#d2b982;--paper:#eee8dc;--ink:#162936;--muted:#6e7b82;--line:rgba(210,185,130,.24);--max:1120px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif}a{color:inherit;text-decoration:none}.shell{width:min(var(--max),calc(100% - 48px));margin:auto}
+    :root{--night:#09151d;--slate:#22343f;--gold:#d2b982;--paper:#eee8dc;--ink:#162936;--muted:#6e7b82;--line:rgba(210,185,130,.24);--max:1120px}*{box-sizing:border-box}html{scroll-behavior:smooth}html,body{max-width:100%;overflow-x:hidden}body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif}a{color:inherit;text-decoration:none}.shell{width:min(var(--max),calc(100% - 48px));margin:auto}
     header{position:absolute;inset:0 0 auto;z-index:10;color:#fff}.nav{height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.18)}.brand{font:500 25px/1 "Cormorant Garamond",serif;letter-spacing:.14em;text-transform:uppercase}.nav-links{display:flex;gap:23px;font-size:9px;font-weight:600;letter-spacing:.17em;text-transform:uppercase;color:#c2ccd1}
     .hero{position:relative;min-height:92vh;display:grid;align-items:end;overflow:hidden;background:radial-gradient(circle at 78% 23%,rgba(210,185,130,.24),transparent 24rem),linear-gradient(135deg,#071017,#263b47 55%,#080e12);color:#fff}.hero:before{content:"FILTHY\A RICH";white-space:pre;position:absolute;top:16%;right:4%;color:rgba(239,220,178,.92);font:500 clamp(92px,15vw,224px)/.65 "Cormorant Garamond",serif;letter-spacing:-.075em}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,12,18,.88),transparent 60%)}.hero-copy{position:relative;z-index:2;padding:150px 0 70px}.eyebrow{margin:0 0 17px;color:var(--gold);font-size:9px;font-weight:600;letter-spacing:.27em;text-transform:uppercase}.hero h1{max-width:720px;margin:0;font:500 clamp(53px,8vw,102px)/.83 "Cormorant Garamond",serif}.hero p:not(.eyebrow){max-width:560px;margin:24px 0 0;color:#c6d0d4;font:italic 21px/1.5 "Cormorant Garamond",serif}.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}.meta span{padding:9px 12px;border:1px solid rgba(255,255,255,.28);font-size:8px;font-weight:600;letter-spacing:.17em;text-transform:uppercase}
     .series-intro{display:grid;grid-template-columns:.65fr 1fr;gap:70px;padding:100px 0;border-bottom:1px solid rgba(22,41,54,.16)}h2{margin:0;font:500 clamp(47px,6vw,76px)/.9 "Cormorant Garamond",serif}.series-intro p{margin:0;color:var(--muted);font:400 22px/1.55 "Cormorant Garamond",serif}.release-note{margin-top:24px!important;color:var(--ink)!important;font:600 9px/1.5 "DM Sans",sans-serif!important;letter-spacing:.17em;text-transform:uppercase}
@@ -63,11 +63,24 @@
     .reader-page .episode-head h2{font-size:clamp(62px,7vw,102px)}
     .story{max-width:760px;margin:0}
     .story p{font-size:21px;line-height:1.68}
+    .story .story-deck{margin:0 0 52px;padding:0 0 30px;border-bottom:1px solid rgba(22,41,54,.18);color:#756c63;font:italic 500 25px/1.35 "Cormorant Garamond",serif}
+    .story .story-deck:first-letter{float:none;margin:0;color:inherit;font-size:inherit;line-height:inherit}
+    .story h3{margin:64px 0 24px;color:#172a36;font:500 clamp(38px,4.5vw,56px)/1 "Cormorant Garamond",serif}
+    .story h4{margin:30px 0 7px;color:#9c2e26;font:600 10px/1.35 "DM Sans",sans-serif;letter-spacing:.17em;text-transform:uppercase}
+    .story ul,.story ol{margin:24px 0 38px;padding-left:1.25em}
+    .story li{margin:0 0 12px;padding-left:.45em;font:400 20px/1.58 "Cormorant Garamond",serif}
+    .story .metric{display:grid;grid-template-columns:minmax(150px,.42fr) 1fr;gap:20px;margin:0;padding:15px 0;border-bottom:1px solid rgba(22,41,54,.1)}
+    .story .metric strong{color:#9c2e26;font:600 9px/1.5 "DM Sans",sans-serif;letter-spacing:.13em;text-transform:uppercase}
+    .story .metric span{font:500 20px/1.35 "Cormorant Garamond",serif}
     .story blockquote{max-width:560px;margin:58px 0;padding:8px 0 8px 28px;border-left:1px solid #a52e24;color:#9c2e26;font:italic 500 clamp(32px,4vw,48px)/1.08 "Cormorant Garamond",serif}
     @media(max-width:760px){
+      .shell{width:calc(100% - 28px)}
+      .nav-links{display:none}
       .hero{min-height:0;padding:86px 0 42px}
       .filthy-hero{grid-template-columns:1fr;gap:28px}
-      .hero-copy{padding:25px 0 0}
+      .hero-copy{width:100%;min-width:0;max-width:100%;padding:25px 0 0}
+      .hero h1{max-width:100%;font-size:44px;overflow-wrap:anywhere}
+      .hero p:not(.eyebrow){width:100%;max-width:100%;font-size:18px}
       .meta{flex-wrap:wrap!important}
       .meta span:last-child{flex-basis:100%}
       .hero-cover{width:min(66vw,270px);height:auto;margin:auto}
@@ -87,15 +100,21 @@
       .reader-page .episode-head{margin-bottom:38px}
       .reader-page .episode-head h2{font-size:58px}
       .story blockquote{margin:42px 0;font-size:34px}
+      .story .story-deck{font-size:22px;margin-bottom:40px}
+      .story h3{margin-top:52px;font-size:39px}
+      .story h4{margin-top:26px}
+      .story li{font-size:18px}
+      .story .metric{grid-template-columns:1fr;gap:4px;padding:13px 0}
+      .story .metric span{font-size:19px}
     }
   </style>
 </head>
 <body>
   <header><nav class="nav shell"><a class="brand" href="/">Reira Bin</a><div class="nav-links"><a href="/series.html">Series</a><a href="/books.html">Books</a><a href="/music.html">Music</a><a href="/">Studio</a></div></nav></header>
   <main>
-    <section class="hero"><div class="filthy-hero shell"><div class="hero-copy"><p class="eyebrow">Original editorial series · SP</p><h1>Season One<br>The Performance</h1><p>Modern ambition, expensive performances and the stories people tell when appearance becomes identity.</p><div class="meta"><span>Season 01</span><span>Episode 01 available</span><span>New episodes weekly or fortnightly</span></div></div><figure class="hero-cover"><img src="/assets/filthy-rich/season-01-the-performance-cover-web.jpg" alt="Filthy Rich — Season One: The Performance cover" width="1024" height="1536"></figure></div></section>
-    <section class="series-intro shell"><div><p class="eyebrow">About the series</p><h2>Looking rich.<br>Living differently.</h2></div><div><p><em>Filthy Rich</em> follows people who have learned to package debt, loneliness, anxiety and performance as success. The satire is sharp, but the people remain recognisably human.</p><p class="release-note">Only published episodes appear here. Future titles remain private until release.</p></div></section>
-    <section class="episode" id="episode-01"><div class="reader-layout shell"><aside class="reader-rail" aria-label="Filthy Rich episode information"><div class="rail-sticky"><figure class="rail-cover"><img src="/assets/filthy-rich/season-01-the-performance-cover-web.jpg" alt="Filthy Rich — Season One: The Performance cover" width="1024" height="1536"></figure><div class="rail-title"><strong>Filthy Rich</strong><span>Season One · The Performance</span><span>Episode 01</span></div><div class="rail-marks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div></aside><div class="reader-page"><div class="reader-progress" aria-label="Reading progress"><span>Episode 01</span><span class="progress-track"><i id="reading-progress"></i></span><span class="read-time" id="read-time">Reading</span><span class="reading-percent" id="reading-percent">0%</span></div><div class="episode-head"><p class="eyebrow">Season One · Episode 01</p><h2>Financially Delusional</h2><p>Daniel had never missed a payment. He had postponed several. There was a difference.</p></div><article class="story" data-episode-source="/content/filthy-rich/season-01/episode-01-financially-delusional.md"><noscript><p>Enable JavaScript to read this episode on the website.</p></noscript></article></div></div></section>
+    <section class="hero"><div class="filthy-hero shell"><div class="hero-copy"><p class="eyebrow">Original editorial series · SP</p><h1>Season One<br>The Performance</h1><p>Modern social satire about the language, habits and small performances people use to look completely under control.</p><div class="meta"><span>Season 01</span><span>Episode 01 available</span><span>New episodes weekly or fortnightly</span></div></div><figure class="hero-cover"><img src="/assets/filthy-rich/season-01-the-performance-cover-web.jpg" alt="Filthy Rich — Season One: The Performance cover" width="1024" height="1536"></figure></div></section>
+    <section class="series-intro shell"><div><p class="eyebrow">About the series</p><h2>The uncomfortable truth.<br>Professionally formatted.</h2></div><div><p><em>Filthy Rich</em> is modern social satire about the language, habits and small performances people use to appear successful, desirable and completely under control.</p><p class="release-note">Only published episodes appear here. Future titles remain private until release.</p></div></section>
+    <section class="episode" id="episode-01"><div class="reader-layout shell"><aside class="reader-rail" aria-label="Filthy Rich episode information"><div class="rail-sticky"><figure class="rail-cover"><img src="/assets/filthy-rich/season-01-the-performance-cover-web.jpg" alt="Filthy Rich — Season One: The Performance cover" width="1024" height="1536"></figure><div class="rail-title"><strong>Filthy Rich</strong><span>Season One · The Performance</span><span>Episode 01</span></div><div class="rail-marks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div></aside><div class="reader-page"><div class="reader-progress" aria-label="Reading progress"><span>Episode 01</span><span class="progress-track"><i id="reading-progress"></i></span><span class="read-time" id="read-time">Reading</span><span class="reading-percent" id="reading-percent">0%</span></div><div class="episode-head"><p class="eyebrow">Season One · Episode 01</p><h2>Financially Delusional</h2></div><article class="story" data-episode-source="/content/filthy-rich/season-01/episode-01-financially-delusional.md"><noscript><p>Enable JavaScript to read this episode on the website.</p></noscript></article></div></div></section>
     <div class="story-status">Episode 02 remains private until its official release · Follow the next chapter on social media</div>
   </main>
   <footer><div class="foot shell"><strong>Filthy Rich</strong><div class="foot-links"><a href="https://www.instagram.com/reira.bin/" target="_blank" rel="noopener">Instagram</a><a href="https://www.youtube.com/@REIRA_BIN" target="_blank" rel="noopener">YouTube</a><a href="/series.html">All series</a><a href="/">Reira Bin Studio</a></div></div></footer>
@@ -118,22 +137,23 @@
         .then(response=>{if(!response.ok)throw new Error('Episode unavailable');return response.text()})
         .then(text=>{
           const lines=text.replace(/\r/g,'').split('\n');
-          const units=lines.slice(5).join('\n').trim().split(/\n\s*\n/).map(block=>block.replace(/^#+\s*/,'').replace(/\s*\n\s*/g,' ').trim()).filter(Boolean);
-          let narrative=[];
-          let words=0;
-          const add=(copy,dialogue=false)=>{const p=document.createElement('p');p.textContent=copy;if(dialogue)p.className='dialogue';container.appendChild(p)};
-          const flush=()=>{if(!narrative.length)return;add(narrative.join(' '));narrative=[];words=0};
-          units.forEach(unit=>{
-            const dialogue=/^[“\"]/.test(unit);
-            if(dialogue){flush();add(unit,true);return}
-            const count=unit.split(/\s+/).length;
-            if(narrative.length&&(words+count>72||narrative.length>=5))flush();
-            narrative.push(unit);words+=count;
+          const units=lines.slice(5).join('\n').trim().split(/\n\s*\n/).map(block=>block.replace(/\s*\n\s*/g,' ').trim()).filter(Boolean);
+          const addText=(tag,copy,className='')=>{const el=document.createElement(tag);el.textContent=copy;if(className)el.className=className;container.appendChild(el);return el};
+          let list=null;
+          units.forEach((unit,index)=>{
+            const heading=unit.match(/^(#{2,3})\s+(.+)$/);
+            if(heading){list=null;addText(heading[1].length===2?'h3':'h4',heading[2]);return}
+            const item=unit.match(/^([-*]|\d+\.)\s+(.+)$/);
+            if(item){const ordered=/\d+\./.test(item[1]);if(!list||list.tagName!==(ordered?'OL':'UL')){list=document.createElement(ordered?'ol':'ul');container.appendChild(list)}const li=document.createElement('li');li.textContent=item[2];list.appendChild(li);return}
+            list=null;
+            if(index===0){addText('p',unit,'story-deck');return}
+            const metric=unit.match(/^([^:]{2,38}):\s+(.+)$/);
+            if(metric){const row=document.createElement('div');row.className='metric';const key=document.createElement('strong');const value=document.createElement('span');key.textContent=metric[1];value.textContent=metric[2];row.append(key,value);container.appendChild(row);return}
+            addText('p',unit);
           });
-          flush();
           const quote=document.createElement('blockquote');
-          quote.textContent='“It’s not debt. It’s runway.”';
-          const anchor=container.querySelectorAll('p')[7];
+          quote.textContent='“You are not living beyond your means. You are living ahead of them.”';
+          const anchor=container.querySelectorAll('p')[5];
           if(anchor)anchor.after(quote);
           const totalWords=units.join(' ').split(/\s+/).length;
           readTime.textContent=`${Math.max(1,Math.ceil(totalWords/220))} min read`;

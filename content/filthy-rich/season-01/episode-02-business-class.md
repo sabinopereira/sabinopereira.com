@@ -4,290 +4,382 @@ Season One — The Performance
 
 Episode 02 — Business Class
 
-Maya arrived at the airport four hours early.
+A practical guide to travelling well without technically travelling well.
 
-Her flight was at six.
+## Your travel class
 
-Her content started at two.
+Booked: Economy
 
-She wore a beige coat, oversized sunglasses and shoes that had been designed for photographs rather than distance.
+Displayed: Business
 
-Her suitcase rolled quietly behind her.
+Experienced: Group 6
 
-It was mostly empty.
+Communicated: Frequent flyer
 
-The credit card used to buy it was not.
+Seat: 38B
 
-At the entrance to the business lounge, Maya stopped beside a gold sign.
+Mindset: 1A
 
-She placed her passport over the boarding pass.
+The boarding pass is a private document.
 
-Economy Class faced down.
+The airport is public.
 
-She took fourteen photographs.
+Use this distinction wisely.
 
-In one, she held a coffee.
+## Recommended arrival time
 
-In another, she looked away from the camera as though someone important had just called her name.
+Your flight leaves at 6:00 p.m.
 
-Nobody had.
+Your content begins at 2:00 p.m.
 
-A family walked around her and entered the lounge.
+Arrive four hours early.
 
-Maya waited for the doors to close.
+This allows sufficient time for:
 
-Then she posted the photograph.
+- one photograph beside the lounge;
+- three photographs inside a luxury shop;
+- a slow walk through Priority Boarding;
+- coffee purchased somewhere that resembles a hotel;
+- fourteen attempts to look accidentally photographed.
+
+You are not waiting for a flight.
+
+You are producing departure.
+
+## Essential vocabulary
+
+### Airport lounge
+
+Any area within eight metres of an airport lounge.
+
+### Priority
+
+A sign you may stand beside.
+
+### Upgrade
+
+Deleting the economy queue from the video.
+
+### Travelling well
+
+Travelling badly in an expensive coat.
+
+### Frequent flyer
+
+Someone who has visited an airport more than once this year.
+
+### Business trip
+
+Opening an email before take-off.
+
+## The lounge strategy
+
+You do not need lounge access.
+
+You need the entrance.
+
+Stand beside the gold sign.
+
+Place your passport over the boarding pass.
+
+Make sure ECONOMY faces down.
+
+Hold a coffee.
+
+Look away from the camera.
+
+You are not lost.
+
+Someone important has just called your name.
+
+Nobody has.
+
+Post immediately:
 
 Airport mornings.
 
 Somewhere between ambition and altitude.
 
-She added the location.
+Add the location:
 
 Business Lounge.
 
-Technically, she was beside it.
+Technically, you are beside it.
 
-Her friend Chloe replied almost immediately.
+Geography is not dishonesty.
 
-Business class again?? 👀
+It is framing.
 
-Maya typed:
+## Frequently received questions
 
-You know me 😂
+### “Business class again?? 👀”
 
-She deleted it.
-
-Then wrote:
+Recommended response:
 
 I’ve learned to invest in comfort.
 
-That sounded more expensive.
+Do not write:
 
-At 3:15, Maya bought a coffee from the kiosk opposite the lounge.
+You know me 😂
 
-It cost nine dollars.
+It sounds too available.
 
-She photographed it before drinking.
+### “How do you afford this lifestyle?”
 
-The foam collapsed while she adjusted the brightness.
+Recommended response:
 
-At 3:42, she entered a luxury store.
+Priorities.
 
-She picked up a handbag and turned slowly toward the mirror.
+This is accurate.
 
-A sales assistant approached.
+Rent was also an option.
 
-“Would you like to try it on?”
+### “Where are you flying?”
 
-“I’m deciding,” Maya said.
+Recommended response:
 
-She held the bag at waist height and took three photographs.
+Somewhere I can breathe.
 
-The assistant waited.
+The correct answer is Birmingham.
 
-Maya checked the pictures.
+## Airport coffee
 
-“Do you mind taking one?”
+Price: $9
 
-The assistant took the phone.
+Temperature when purchased: Hot
 
-Maya turned slightly.
+Temperature after photographs: Unclear
 
-Not too much.
+Time spent drinking: Four minutes
 
-The label needed to remain visible.
+Time spent adjusting brightness: Eleven minutes
 
-“Perfect,” Maya said.
+The foam will collapse.
 
-She returned the bag.
+The lifestyle will not.
 
-“Still deciding?”
+## Luxury retail protocol
 
-“Always.”
+Enter a designer store.
 
-The assistant nodded.
+Pick up a handbag.
 
-She had met ambition before.
+Turn towards the mirror.
 
-Maya posted the photograph.
+Wait for the sales assistant.
+
+When asked whether you would like to try it on, say:
+
+I’m deciding.
+
+This creates the impression that the decision concerns the handbag.
+
+Take three photographs.
+
+Request one more from the sales assistant.
+
+Keep the label visible.
+
+Return the bag.
+
+Post:
 
 Tempted.
 
-At 4:20, she recorded herself walking past the departure boards.
+You are not tempted.
 
-She filmed the business-class check-in area.
+Your card has already made the decision.
 
-Then the first-class entrance.
+## What to film
 
-Then herself.
+Film the business-class check-in area.
 
-The video stopped before the economy queue appeared.
+Film the first-class entrance.
 
-At 5:05, her flight moved to Gate 47.
+Film the word PRIORITY.
 
-It was a twenty-minute walk.
+Film your suitcase moving through the terminal.
 
-Maya looked down at her shoes.
+Film the departure board.
 
-They had already begun to disagree with the journey.
+Stop filming before:
 
-At the gate, passengers formed several lines.
+- Group 6 is announced;
+- your middle seat becomes visible;
+- the baby arrives;
+- the overhead compartment rejects your suitcase;
+- the flight attendant announces that Wi-Fi costs $18.
 
-Maya stood near Priority Boarding.
+Every journey contains unnecessary information.
+
+Good travellers remove it.
+
+## The priority boarding method
+
+Stand near the Priority Boarding lane.
 
 Not inside it.
 
 Near it.
 
-She raised her phone and recorded the sign.
+Record the sign.
 
-PRIORITY
+End the video.
 
-The video ended before Group 6 was called.
+Wait for Groups 1 through 5.
 
-When boarding began, Maya waited.
+Continue scrolling.
 
-Group 1.
+When Group 6 is nearly called, stand immediately.
 
-Group 2.
+You prefer to look ready.
 
-Group 3.
+Readiness is free.
 
-She continued scrolling.
+Priority is not.
 
-Group 4.
+## Your seat
 
-Group 5.
+Row: 38
 
-Maya stood before anyone announced Group 6.
+Seat: B
 
-She preferred to look ready.
+View: Two shoulders
 
-On the plane, she found seat 38B.
+Legroom: Personal
 
-Middle seat.
+Neighbour: Sleeping
 
-A man was already sitting by the window.
+Additional passenger: Baby
 
-A woman entered behind her carrying a baby.
+Emotional destination: Business Class
 
-Maya stepped aside.
+Place the beige coat across your knees.
 
-The woman placed the baby in the aisle seat.
+Keep the handbag upright between your feet.
 
-Maya smiled.
+There may not be room for your legs.
 
-“Would either of you prefer the middle?”
+There must always be room for the brand.
 
-The man looked out of the window.
+## Seat negotiation
 
-The woman adjusted the baby.
+If you are seated between a man by the window and a woman travelling with a baby, ask:
 
-Maya sat down.
+Would either of you prefer the middle?
 
-Her coat rested across her knees.
+They will not.
 
-Her handbag remained upright between her feet.
+Remain gracious.
 
-There was no room for the version of her that had arrived at the airport.
+They have not yet learned to invest in comfort.
 
-Before takeoff, Maya opened Instagram.
+## In-flight behaviour
 
-The lounge photograph had 312 likes.
+The baby begins to cry.
 
-Chloe had commented:
+Increase the brightness on your phone.
 
-The lifestyle 😍
+The woman falls asleep on your shoulder.
 
-Another friend wrote:
+Call this human connection.
 
-Teach me your ways.
+The man asks to use the bathroom three times.
 
-Maya smiled.
+Call this movement.
 
-The baby began to cry.
+Your shoes begin to hurt.
 
-She turned up the brightness on her phone.
+Keep them on.
 
-The flight attendant announced that onboard Wi-Fi cost eighteen dollars.
+Removing them would mean accepting what they have done to you.
 
-Maya locked the screen.
+Growth is often uncomfortable.
 
-“I don’t really use Wi-Fi when I travel,” she said.
+Especially in leather.
 
-Nobody had asked.
+## Wi-Fi policy
 
-During the flight, the woman beside her fell asleep on Maya’s shoulder.
+Onboard Wi-Fi costs $18.
 
-The baby kicked her handbag.
+Say:
 
-The man by the window asked to use the bathroom three times.
+I don’t really use Wi-Fi when I travel.
 
-Maya kept her shoes on.
+Nobody needs to ask.
 
-Removing them would have meant accepting what they had done to her feet.
+This is not about the money.
 
-Two hours later, the plane landed.
+You are protecting your peace.
 
-Passengers stood immediately.
+Your peace currently has 2% battery.
 
-Maya remained seated.
+## Arrival content
 
-She said she preferred to avoid the rush.
+Wait until the cabin is empty.
 
-The truth was that her left shoe had become difficult to negotiate with.
+Stand in the aisle.
 
-When the cabin emptied, she stood in the aisle.
+Remove all evidence of:
 
-Empty seats.
+- the middle seat;
+- the sleeping passenger;
+- the baby;
+- Group 6;
+- the part of the journey involving other people.
 
-Soft morning light.
-
-No baby.
-
-No middle seat.
-
-No evidence.
-
-She took one final photograph.
+Take one photograph.
 
 Then another.
 
 Then one with the sunglasses.
 
-She posted it before reaching baggage claim.
+Post:
 
 There’s nothing like travelling well.
 
-At the carousel, her suitcase did not arrive.
+This is true.
 
-Maya waited beside a family from her flight.
+There is nothing like it anywhere near you.
 
-The baby was asleep.
+## Baggage claim
 
-The mother looked rested.
+Suitcase status: Delayed
 
-Maya checked the airline app.
+Credit-card payment: Tomorrow
 
-Her luggage had been delayed.
+Left foot: Negotiating
 
-Her credit card payment was due the next morning.
+Coffee: Still visible online
 
-Her feet hurt.
+Lifestyle: Operational
 
-Her coffee was still visible in the first photograph.
-
-Chloe sent another message.
+Your friend sends:
 
 You make it look effortless.
 
-Maya looked at the carousel.
-
-Then at the message.
-
-She typed:
+Reply:
 
 It really is.
 
-The carousel continued without her suitcase.
+You are not lying.
+
+The effort was removed during editing.
+
+## Final destination
+
+You flew Economy.
+
+You sat in the middle.
+
+You paid nine dollars for coffee you drank cold.
+
+Your luggage went somewhere else.
+
+Your shoes have ended the relationship.
+
+But 427 people believe you travelled beautifully.
+
+The airline transported your body.
+
+You upgraded everything else.
