@@ -4,208 +4,415 @@ Season One — The Performance
 
 Episode 03 — Couple Goals
 
-Olivia never posted photographs immediately.
+A performance review for two people who are doing extremely well online.
 
-Happiness looked more expensive after careful editing.
+## Relationship status
 
-She and Ethan had been together for four years.
+Together: Four years
 
-Instagram had celebrated at least six.
+Celebrated online: Six years
 
-Every anniversary arrived with a professionally written caption.
+Current mood: Pending
 
-Every holiday came with a sunset.
+Public perception: Perfect
 
-Every argument waited.
+Private conversation: Rescheduled
 
-On Friday evening, they booked a table at the city’s newest restaurant.
+Engagement rate: Excellent
 
-Reservations were difficult.
+The relationship is healthy.
 
-Which meant people wanted to know you had one.
+The content is healthier.
 
-Olivia chose the table nearest the window.
+Some people want love.
 
-Natural light forgave almost everything.
+Others want proof.
 
-Ethan picked up the menu.
+## Primary objective
 
-Olivia picked up her phone.
+To appear:
 
-“Don’t touch it yet,” she said.
+- deeply in love;
+- emotionally mature;
+- financially comfortable;
+- spontaneously romantic;
+- permanently on holiday;
+- unaware that anyone is watching.
 
-“The food?”
+Everyone is watching.
 
-“The evening.”
+This is the point.
 
-The waiter arrived.
+## Essential vocabulary
 
-“Would you like sparkling or still?”
+### Quality time
 
-Olivia smiled.
+Time spent together selecting photographs of time spent together.
 
-“Whichever photographs better.”
+### Date night
 
-The waiter looked at the bottles.
+Dinner with lighting.
 
-“Sparkling,” he said.
+### Communication
 
-The drinks arrived first.
+Sending each other posts about communication.
 
-Olivia moved Ethan’s glass three times.
+### Intimacy
 
-She turned the candle slightly.
+Knowing which photograph your partner will approve.
 
-She asked him to lean closer.
+### Relationship goals
 
-“Not that close.”
+A compliment from someone who has never seen you argue about parking.
 
-He moved back.
+### Privacy
 
-“Perfect.”
+Not posting the argument.
 
-Ethan watched her take twelve photographs.
+## Anniversary protocol
 
-“You can drink now,” she said.
+Every anniversary requires a caption.
 
-“I wasn’t thirsty anymore.”
+The caption must begin with:
 
-The food arrived.
+Another year with my best friend.
 
-Nobody touched it.
+Your partner does not need to be your best friend.
 
-Olivia stood up.
+That position may currently belong to Chloe.
 
-“Just one overhead shot.”
+Continue with:
 
-The waiter walked around her.
+I would choose you in every lifetime.
 
-Another couple waited while she photographed the pasta from three different angles.
+You have struggled to choose a restaurant in this one.
 
-By the time they started eating, the food was warm instead of hot.
+Conclude with:
 
-“It still tastes good,” Ethan said.
+Forever grateful for this love.
 
-Olivia looked at the photograph.
+Do not mention that the caption was copied from last year.
 
-“It looked better before.”
+Love is timeless.
 
-Halfway through dinner, she posted it.
+So is the Notes app.
 
-My favorite place.
+## Recommended anniversary photograph
 
-Two red hearts.
+Use a picture from a holiday.
+
+Preferably sunset.
+
+Both people should be:
+
+- tanned;
+- facing the same direction;
+- wearing neutral colours;
+- far enough away to avoid visible tension;
+- close enough to suggest emotional availability.
+
+Do not use a recent photograph if the relationship looked better in Greece.
+
+Chronology is less important than continuity.
+
+## Date-night preparation
+
+Reservation: 8:00 p.m.
+
+Photography begins: 7:42 p.m.
+
+Conversation begins: Subject to availability
+
+Choose the table nearest the window.
+
+Natural light forgives almost everything.
+
+Move the candle.
+
+Move the glasses.
+
+Move your partner.
+
+Ask them to lean closer.
+
+Not that close.
+
+A little further away.
+
+Perfect.
+
+You are now ready to experience the evening later.
+
+## Ordering strategy
+
+Select food according to visual compatibility.
+
+### Recommended
+
+- pasta with visible ingredients;
+- grilled fish;
+- small plates nobody understands;
+- dessert with architectural responsibilities;
+- sparkling water in a heavy glass bottle.
+
+### Avoid
+
+- brown food;
+- soup;
+- anything described as hearty;
+- dishes that reveal how hungry you are;
+- your partner’s actual preference.
+
+The fish photographs better.
+
+Order the fish.
+
+Love sometimes requires sacrifice.
+
+Usually from the other person.
+
+## Food arrival procedure
+
+When the food arrives:
+
+1. Do not touch it.
+2. Move both plates towards the better light.
+3. Stand up.
+4. Apologise to nobody.
+5. Take the overhead photograph.
+6. Adjust the cutlery.
+7. Take another.
+8. Ask your partner to move their hand into frame.
+9. Ask them to remove it.
+10. Replace it with the watch.
+
+The food will become warm instead of hot.
+
+The photograph will remain fresh indefinitely.
+
+## Approved captions
+
+### Casual romance
+
+My favourite place with my favourite person.
+
+### Gratitude
 
 Grateful for this life. ❤️
 
-The comments appeared within seconds.
+### Established couple
 
-Couple goals.
+Still choosing you.
 
-You two are perfect.
+### Mild relationship trouble
 
-Manifesting this.
+Love is a verb.
 
-Olivia smiled.
+### Serious relationship trouble
 
-Ethan watched her smile.
+Us against the world.
 
-“Do you still want me here?” he asked.
+The world has not been informed.
 
-She looked up.
+## Expected public response
 
-“Of course.”
+Within five minutes:
 
-“You haven’t looked at me all evening.”
+- Couple goals.
+- You two are perfect.
+- Manifesting this.
+- Never settle.
+- The kind of love everyone deserves.
 
-“I’m looking at you now.”
+Do not correct them.
 
-Her phone vibrated.
+They are responding to the available evidence.
 
-She turned it over.
+## Engagement analysis
 
-“Sorry. I just want to reply while it’s fresh.”
+Photographs posted: 5
 
-Ethan nodded.
+Words exchanged over dinner: 23
 
-The waiter returned.
+Times your partner was repositioned: 7
 
-“Everything okay?”
+Times your partner was asked how they felt: 0
 
-“Perfect,” Olivia said.
+Comments mentioning love: 46
 
-Ethan looked at the untouched side of his plate.
+Love experienced during upload: Difficult to measure
 
-“It’s good.”
+The evening is performing above expectations.
 
-The waiter collected the dishes.
+## Conversation management
 
-Olivia ordered dessert.
+Your partner may say:
 
-Neither of them wanted dessert.
+You look happier reading the comments than talking to me.
 
-The lighting had improved.
+Recommended response:
 
-Outside the restaurant, Ethan stopped walking.
+Don’t be dramatic.
 
-Olivia continued scrolling.
+Do not investigate whether this is true.
 
-“When were you going to put it away?” he asked.
+Investigation creates negativity.
 
-She looked up.
+They may continue:
 
-“I have now.”
+We haven’t had one real conversation tonight.
 
-The phone was still in her hand.
+Recommended response:
 
-“Olivia.”
+We’re talking now.
 
-“What?”
+This is technically correct.
 
-He looked at her for a moment.
+Technical accuracy is essential in modern relationships.
 
-“Nothing.”
+## Phone-down exercise
 
-They walked towards the car in silence.
+Place your phone face down.
 
-Before getting in, Olivia stopped beneath a streetlight.
+Maintain this position for fourteen seconds.
 
-“The light is beautiful.”
+If it vibrates, turn it over immediately.
 
-She lifted her phone.
+Say:
 
-Ethan stood beside her.
+Sorry. I just want to reply while it’s fresh.
 
-He smiled automatically.
+The relationship is four years old.
 
-Years of practice.
+The comment is thirty seconds old.
 
-The photograph was perfect.
+Priorities require context.
 
-In the car, Olivia began choosing a filter.
+## Couple photography
 
-Ethan drove without speaking.
+When taking a photograph together, remember:
 
-“When are you posting that one?” he asked.
+- your partner is not a person;
+- your partner is visual evidence;
+- their smile should appear natural;
+- their arm should appear affectionate;
+- their watch should remain visible;
+- any unresolved issue should remain below the frame.
 
-“Tomorrow morning.”
+If they seem unhappy, take another.
 
-He kept his eyes on the road.
+Persistence is romantic.
 
-“And when are we telling people?”
+## Automatic smile technology
 
-Olivia looked at the photograph.
+After several years, your partner may smile whenever a phone is raised.
 
-“Not tomorrow.”
+This is normal.
 
-At home, Ethan opened the trunk.
+It does not mean they are happy.
 
-His suitcase was still inside.
+It means the system is working.
 
-Olivia’s phone vibrated.
+Years of practice can make affection appear instantaneous.
 
-You two give me hope.
+## Signs of a successful relationship
 
-She liked the comment.
+- Strangers regularly call you perfect.
+- Friends ask for advice.
+- Your anniversary post receives more words than your anniversary conversation.
+- Nobody knows you drove home in silence.
+- Both partners remember the restaurant’s Wi-Fi password.
+- The relationship looks effortless.
+- Considerable effort is required.
 
-Online, they were still having dinner.
+## Frequently avoided questions
+
+### “Are we actually happy?”
+
+This question is too broad.
+
+Check the comments.
+
+### “When did we last talk properly?”
+
+Define properly.
+
+### “Why do we need to post everything?”
+
+We don’t.
+
+We choose to.
+
+Repeatedly.
+
+### “Who is this for?”
+
+People who care about us.
+
+And several hundred who do not.
+
+### “Would we still go out if nobody knew?”
+
+This question contains negative energy.
+
+## Monthly relationship statement
+
+Attention received from strangers: 14,820 views
+
+Attention given to each other: Processing
+
+Public affection: Unlimited
+
+Private patience: Low balance
+
+Shared memories: 186 photographs
+
+Uninterrupted conversations: 0
+
+Overall appearance: Strong
+
+No immediate action is required.
+
+The grid remains balanced.
+
+## Relationship maintenance
+
+If the relationship begins to feel distant:
+
+- book dinner;
+- wear something neutral;
+- order dessert;
+- sit near a window;
+- take a photograph;
+- add two red hearts;
+- describe the evening as needed.
+
+Do not confuse documentation with repair.
+
+Unless the photograph performs well.
+
+Then allow twenty-four hours before revisiting the issue.
+
+## Final assessment
+
+You arrived together.
+
+You photographed the drinks.
+
+You photographed the food.
+
+You photographed the restaurant.
+
+You photographed yourselves looking at each other.
+
+You did not look at each other again until the car park.
+
+The post received more love from strangers than either of you had expressed all week.
+
+They were not pretending to be in love.
+
+They were spending all their love proving it.
+
+The relationship may need attention.
+
+Fortunately, the photograph is perfect.
