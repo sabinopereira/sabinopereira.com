@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap");
+
+:root {
+  --brand-black: #090a0a;
+  --brand-charcoal: #171817;
+  --brand-paper: #f4f1ed;
+  --brand-cream: #faf8f5;
+  --brand-orange: #e75b00;
+  --brand-line: rgba(17, 17, 17, .16);
+  --brand-display: "Barlow Condensed", Arial, sans-serif;
+  --brand-sans: "DM Sans", Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--brand-paper); color: #111; font-family: var(--brand-sans); }
+
+/* One persistent identity across the studio. */
+.studio-header,
+body > header:first-of-type {
+  background: rgba(9, 10, 10, .97) !important;
+  color: #fff !important;
+  border-bottom: 1px solid rgba(255, 255, 255, .09) !important;
+  backdrop-filter: blur(16px);
+}
+
+.studio-brand,
+.logo {
+  color: #fff !important;
+  font-family: var(--brand-display) !important;
+  font-weight: 700 !important;
+  letter-spacing: .04em !important;
+}
+
+.studio-brand small,
+.logo small { color: var(--brand-orange) !important; letter-spacing: .14em !important; }
+
+.studio-links,
+.links { color: #fff !important; }
+
+.studio-links a,
+.links a {
+  color: #fff !important;
+  font-weight: 600 !important;
+  border-bottom-color: transparent !important;
+}
+
+.studio-links a:hover,
+.studio-links a[aria-current="page"],
+.links a:hover { color: var(--brand-orange) !important; border-bottom-color: var(--brand-orange) !important; }
+
+.studio-links .studio-contact,
+.links .enter { border-color: var(--brand-orange) !important; background: var(--brand-orange) !important; color: #fff !important; }
+
+h1, h2, h3, .section-title, blockquote {
+  font-family: var(--brand-display) !important;
+  font-style: normal !important;
+}
+
+h1 { font-weight: 800 !important; letter-spacing: -.025em !important; }
+h2, h3 { font-weight: 700 !important; }
+h1 em, h2 em, h3 em { color: var(--brand-orange) !important; }
+
+.eyebrow,
+.kicker,
+.presented,
+.book-tag,
+.project-kind,
+.number,
+.world-label,
+.album-kind,
+.merch-collection {
+  color: var(--brand-orange) !important;
+  font-family: var(--brand-display) !important;
+  font-weight: 700 !important;
+  letter-spacing: .09em !important;
+  text-transform: uppercase !important;
+}
+
+.button,
+.btn,
+.hero-action,
+.open,
+.section-head > a {
+  border-radius: 0 !important;
+  font-family: var(--brand-sans) !important;
+  font-weight: 700 !important;
+  letter-spacing: .04em !important;
+  text-transform: uppercase !important;
+}
+
+.btn.primary,
+.button.primary { background: var(--brand-orange) !important; border-color: var(--brand-orange) !important; color: #fff !important; }
+
+.book-card,
+.project-card,
+.series-card,
+.world,
+.album-card,
+.channel,
+.product,
+.arrival,
+.contact-card,
+.contact-panel {
+  border-radius: 0 !important;
+  border-color: var(--brand-line) !important;
+}
+
+.channel-arrow,
+.episode-now,
+.open,
+.hero-action { color: var(--brand-orange) !important; }
+
+footer,
+.site-footer { background: var(--brand-black) !important; color: #d2cfca !important; }
+
+@media (max-width: 620px) {
+  html, body { max-width: 100%; overflow-x: hidden; }
+  .shell,
+  .studio-nav {
+    width: calc(100% - 28px) !important;
+    max-width: calc(100% - 28px) !important;
+  }
+  .hero-layout,
+  .hero-grid,
+  .series-grid,
+  .book-grid,
+  .album-grid,
+  .channel-grid,
+  .podcast-layout,
+  main,
+  section { min-width: 0; }
+  .studio-links .studio-contact { background: transparent !important; border-color: rgba(255,255,255,.45) !important; }
+}
