@@ -114,9 +114,20 @@ footer,
 .site-footer { background: var(--brand-black) !important; color: #d2cfca !important; }
 
 @media (max-width: 620px) {
-  html, body { max-width: 100%; overflow-x: hidden; }
+  html, body { width: 100%; max-width: 100%; overflow-x: clip; }
+  body > * { max-width: 100vw; }
+  body > div,
+  body > main { width: 100% !important; max-width: 100vw !important; margin-inline: 0 !important; }
+  main, header, footer, nav, section, article, aside, div { min-width: 0; }
+  main, section, article, aside { max-width: 100% !important; }
+  img, video, iframe, canvas, svg { max-width: 100%; height: auto; }
+  h1, h2, h3, p, li, blockquote { overflow-wrap: anywhere; }
   .shell,
-  .studio-nav {
+  .studio-nav,
+  .container,
+  .wrap,
+  .page-shell,
+  .content-shell {
     width: calc(100% - 28px) !important;
     max-width: calc(100% - 28px) !important;
   }
