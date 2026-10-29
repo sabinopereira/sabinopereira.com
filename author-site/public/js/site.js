@@ -1,0 +1,6 @@
+// Release date uses Europe/Lisbon. Missing album URLs deliberately fall back to artist pages.
+(() => {
+ const day = new Intl.DateTimeFormat('en-CA', {timeZone:'Europe/Lisbon',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+ if(day >= '2026-11-06') document.querySelectorAll('[data-echo-cta]').forEach(el => {el.innerHTML = '<p class="eyebrow">Listen now · Reira Bin artist pages</p><div class="btn-row"><a class="btn btn-ghost" href="https://open.spotify.com/artist/0CUmVxNUbIaLa4GMwOoD1C" target="_blank" rel="noopener noreferrer">Spotify</a><a class="btn btn-ghost" href="https://music.apple.com/us/artist/reira-bin/6774230941" target="_blank" rel="noopener noreferrer">Apple Music</a><a class="btn btn-ghost" href="https://www.youtube.com/@REIRA_BIN" target="_blank" rel="noopener noreferrer">YouTube</a></div>';});
+ if(day >= '2026-12-01') {const feature=document.getElementById('featured-music');if(feature){feature.hidden=true;const albums=document.getElementById('albums');if(!albums){const link=document.createElement('a');link.href='/music/#albums';link.className='btn btn-ghost';link.textContent='Explore the albums';feature.parentNode.insertBefore(link,feature);}}}
+})();
